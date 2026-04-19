@@ -106,6 +106,18 @@
       background: var(--ink-50); border-radius: var(--r-pill);
       cursor: pointer; place-items: center;
     }
+    /* ===== HEADER CHARS ===== */
+    .header__chars {
+      display: flex; align-items: flex-end; gap: 0;
+      margin-right: 4px;
+    }
+    .header__chars img {
+      height: 48px; width: auto;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.13));
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1);
+    }
+    .header__chars img:hover { transform: translateY(-8px) scale(1.12); }
+    @media (max-width: 1100px) { .header__chars { display: none; } }
 
     /* ===== ADSENSE PLACEHOLDER ===== */
     .ad-banner {
@@ -133,7 +145,7 @@
     .hero {
       background: var(--hero-blue);
       position: relative; overflow: hidden;
-      min-height: 460px;
+      min-height: 560px;
     }
     /* ドットパターン */
     .hero::before {
@@ -176,12 +188,12 @@
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
     /* 個別サイズ調整 */
-    .chara-cell:nth-child(1) img { height: clamp(160px, 15vw, 230px); max-width: 100%; } /* まなドラ */
-    .chara-cell:nth-child(2) img { height: clamp(175px, 17vw, 250px); max-width: 100%; } /* ルミナ先生 */
-    .chara-cell:nth-child(3) img { height: clamp(120px, 11vw, 160px); max-width: 100%; } /* レン先生 */
-    .chara-cell:nth-child(4) img { height: clamp(155px, 14vw, 210px); max-width: 100%; } /* クエ丸 */
-    .chara-cell:nth-child(5) img { height: clamp(155px, 14vw, 210px); max-width: 100%; } /* ゼータ */
-    .chara-cell:nth-child(6) img { height: clamp(145px, 13vw, 195px); max-width: 100%; } /* ミル */
+    .chara-cell:nth-child(1) img { height: clamp(220px, 22vw, 340px); max-width: 100%; } /* まなドラ */
+    .chara-cell:nth-child(2) img { height: clamp(240px, 26vw, 380px); max-width: 100%; } /* ルミナ先生 */
+    .chara-cell:nth-child(3) img { height: clamp(170px, 16vw, 250px); max-width: 100%; } /* レン先生 */
+    .chara-cell:nth-child(4) img { height: clamp(220px, 20vw, 320px); max-width: 100%; } /* クエ丸 */
+    .chara-cell:nth-child(5) img { height: clamp(220px, 20vw, 320px); max-width: 100%; } /* ゼータ */
+    .chara-cell:nth-child(6) img { height: clamp(200px, 18vw, 290px); max-width: 100%; } /* ミル */
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
@@ -194,11 +206,11 @@
       margin-bottom: 20px;
     }
     .hero__title {
-      font-size: clamp(32px, 5vw, 56px); font-weight: 900;
+      font-size: clamp(28px, 4vw, 46px); font-weight: 900;
       color: var(--white); line-height: 1.25;
       margin-bottom: 16px;
     }
-    .hero__title .accent { color: var(--accent-yellow); }
+    .hero__title .accent { color: var(--accent-yellow); white-space: nowrap; }
     .hero__sub {
       font-size: clamp(14px, 2vw, 17px); color: rgba(255,255,255,.78);
       line-height: 1.7; max-width: 520px; margin-bottom: 36px;
@@ -683,6 +695,14 @@
       <a href="#category">パズル</a>
     </nav>
 
+    <div class="header__chars">
+      <img src="assets/chara/manadra.png" alt="まなドラ">
+      <img src="assets/chara/lumina.png" alt="ルミナ先生">
+      <img src="assets/chara/ren.png" alt="レン先生">
+      <img src="assets/chara/kuemaru.png" alt="クエ丸">
+      <img src="assets/chara/zeta.png" alt="ゼータ">
+      <img src="assets/chara/mil.png" alt="ミル">
+    </div>
     <a href="catalog.html" class="header__catalog-btn" id="indexCatalogBtn">📖 図鑑</a>
     <button class="header__search" aria-label="検索">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6785" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -763,7 +783,7 @@
         <img src="assets/chara/lumina.png" alt="ルミナ先生" class="shindan-chara shindan-chara--lumina">
         <img src="assets/chara/ren.png" alt="レン先生" class="shindan-chara shindan-chara--ren">
         <div class="shindan-feature__card-preview">
-          <div class="shindan-card-type">🧠 INTJ</div>
+          <div class="shindan-card-type">🔍 あなたのタイプは？</div>
           <div class="shindan-card-name">知を極める設計者型</div>
           <div class="shindan-card-sub">探求型 × 思考力</div>
         </div>
