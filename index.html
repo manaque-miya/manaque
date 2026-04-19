@@ -133,6 +133,7 @@
     .hero {
       background: var(--hero-blue);
       position: relative; overflow: hidden;
+      min-height: 460px;
     }
     /* ドットパターン */
     .hero::before {
@@ -171,10 +172,8 @@
       max-width: 100%; object-fit: contain;
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
-    /* 上段：背が高いキャラは高さを抑える */
-    .hero__charas img:nth-child(-n+3) { height: clamp(100px, 10vw, 150px); }
-    /* 下段：小さいキャラは少し大きめ */
-    .hero__charas img:nth-child(n+4)  { height: clamp(90px, 9vw, 130px); }
+    .hero__charas img:nth-child(-n+3) { height: clamp(160px, 18vw, 260px); }
+    .hero__charas img:nth-child(n+4)  { height: clamp(140px, 16vw, 220px); }
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
