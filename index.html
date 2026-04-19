@@ -862,23 +862,52 @@ function renderUnits(gi, si) {
     const gacha   = unit.gacha
       ? '<span class="badge" style="background:#ECE5FA;color:#5C3FBF;">🎰 ガチャあり</span>'
       : '';
-    const isMap    = unit.quizId === 'map';
-    const isMapTap = unit.quizId === 'map-tap';
-    const base    = isMap
-      ? `map-quiz-new.html?autostart=1`
-      : isMapTap
-        ? `map-tap-quiz.html?autostart=1`
-        : `quiz.html?id=${unit.quizId}&amp;autostart=1`;
+    const isMap      = unit.quizId === 'map';
+    const isMapTap   = unit.quizId === 'map-tap';
+    const isCapitals = unit.quizId === 'map-capitals';
+    const isNanpure  = unit.quizId === 'nanpure';
+    // 専用ページへのルーティング
+    const base = isMap      ? `map-quiz-new.html?autostart=1`
+               : isMapTap   ? `map-tap-quiz.html?autostart=1`
+               : isCapitals ? `map-capitals.html?autostart=1`
+               : isNanpure  ? `nanpure.html`
+               : `quiz.html?id=${unit.quizId}&amp;autostart=1`;
     // デフォルト10問。問題数がそれ未満なら全問がデフォルト
-    const defaultCount = unit.count >= 10 ? 10 : unit.count;
-    const cnt3Href  = isMap ? `map-quiz-new.html?count=5&amp;autostart=1`  : isMapTap ? `map-tap-quiz.html?count=5&amp;autostart=1` : `${base}&amp;count=3`;
-    const cnt10Href = isMap ? `map-quiz-new.html?count=10&amp;autostart=1` : isMapTap ? `map-tap-quiz.html?count=10&amp;autostart=1` : `${base}&amp;count=10`;
-    const cntAllHref= isMap ? `map-quiz-new.html?count=47&amp;autostart=1` : isMapTap ? `map-tap-quiz.html?count=47&amp;autostart=1` : `${base}&amp;count=all`;
-    const btn3    = unit.count >= 3
-      ? `<a href="${cnt3Href}" class="count-btn${defaultCount===3?' count-btn--default':''}">${(isMap||isMapTap)?'5問':'3問'}</a>` : '';
-    const btn10   = unit.count >= 10
+    const defaultCount = (unit.count && unit.count >= 10) ? 10 : unit.count;
+    const cnt3Href  = isMap ? `map-quiz-new.html?count=5&amp;autostart=1`
+                    : isMapTap ? `map-tap-quiz.html?count=5&amp;autostart=1`
+                    : isCapitals ? `map-capitals.html?count=5&amp;autostart=1`
+                    : `${base}&amp;count=3`;
+    const cnt10Href = isMap ? `map-quiz-new.html?count=10&amp;autostart=1`
+                    : isMapTap ? `map-tap-quiz.html?count=10&amp;autostart=1`
+                    : isCapitals ? `map-capitals.html?count=10&amp;autostart=1`
+                    : `${base}&amp;count=10`;
+    const cntAllHref= isMap ? `map-quiz-new.html?count=47&amp;autostart=1`
+                    : isMapTap ? `map-tap-quiz.html?count=47&amp;autostart=1`
+                    : isCapitals ? `map-capitals.html?count=47&amp;autostart=1`
+                    : isNanpure ? `nanpure.html`
+                    : `${base}&amp;count=all`;
+    // ナンプレは問題数ボタン不要・直接リンクのみ
+    if(isNanpure) {
+      const btn3 = '', btn10 = '';
+      const btnAll = `<a href="nanpure.html" class="count-btn count-btn--default">あそぶ</a>`;
+      return \`
+      <div class="unit-card\${unit.gacha ? ' unit-card--gacha' : ''}">
+        <div class="unit-card__tags">\${tagHtml}\${gacha}</div>
+        <div class="unit-card__title">\${unit.label}</div>
+        <div class="unit-card__meta">
+          <span>🔢 かんたん〜むずかしい</span>
+          <span>⏱ 自由</span>
+          <span class="unit-card__difficulty">\${stars}</span>
+        </div>
+        <div class="count-btns">\${btnAll}</div>
+      </div>\`;
+    }
+    const btn3    = (unit.count && unit.count >= 3)
+      ? `<a href="${cnt3Href}" class="count-btn${defaultCount===3?' count-btn--default':''}">${(isMap||isMapTap||isCapitals)?'5問':'3問'}</a>` : '';
+    const btn10   = (unit.count && unit.count >= 10)
       ? `<a href="${cnt10Href}" class="count-btn count-btn--default">10問</a>` : '';
-    const btnAll  = `<a href="${cntAllHref}" class="count-btn${unit.count < 10?' count-btn--default':''}">全問<small style="font-size:10px;opacity:.7">(${unit.count})</small></a>`;
+    const btnAll  = `<a href="${cntAllHref}" class="count-btn${(!unit.count||unit.count < 10)?' count-btn--default':''}">全問<small style="font-size:10px;opacity:.7">(${unit.count})</small></a>`;
     return `
       <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
         <div class="unit-card__tags">${tagHtml}${gacha}</div>

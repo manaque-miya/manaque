@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LDNLC7PWNM');
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ナンプレ | まなクエ！</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#2563EB; --blue-light:#EAF2FE; --blue-mid:#BFDBFE;
+  --yellow:#F6C744; --red:#EF4444; --green:#22C55E;
+  --ink:#0F1830; --ink-mid:#5B6785; --white:#fff;
+  --border:#CBD5E1; --surface:#F1F5F9;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;font-family:'M PLUS Rounded 1c',sans-serif;background:var(--blue-light);}
+
+/* ══ HEADER ══ */
+.header{display:flex;align-items:center;justify-content:space-between;
+        padding:10px 20px;background:#fff;
+        box-shadow:0 1px 8px rgba(37,99,235,.1);}
+.logo{font-size:18px;font-weight:900;color:var(--ink);}
+.logo span{color:var(--blue);}
+.new-btn{background:var(--blue);color:#fff;border:none;border-radius:20px;
+         padding:7px 18px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;}
+
+/* ══ DIFFICULTY ══ */
+.diff-bar{display:flex;gap:8px;padding:10px 20px 0;}
+.diff-btn{padding:7px 18px;border:2px solid var(--border);border-radius:20px;
+          background:#fff;font-size:13px;font-weight:800;cursor:pointer;
+          font-family:inherit;color:var(--ink-mid);transition:.15s;}
+.diff-btn.active{border-color:var(--blue);background:var(--blue);color:#fff;}
+
+/* ══════════════════════════════════
+   PC LAYOUT  (≥640px): 2カラム
+══════════════════════════════════ */
+@media(min-width:640px){
+  .app{display:grid;grid-template-columns:1fr 280px;
+       grid-template-rows:auto 1fr;gap:0;
+       height:calc(100vh - 52px); /* header height */}
+  .diff-bar{grid-column:1/3;padding:12px 24px 0;}
+  .left-col{display:flex;align-items:center;justify-content:center;padding:20px;}
+  .right-col{display:flex;flex-direction:column;gap:16px;padding:20px 24px 20px 8px;
+             overflow-y:auto;}
+  .status{flex-direction:column;gap:12px;}
+  .status-item{flex-direction:row;align-items:center;justify-content:space-between;
+               background:#fff;border-radius:12px;padding:10px 16px;
+               box-shadow:0 2px 8px rgba(37,99,235,.08);}
+  .status-label{font-size:13px;}
+  .status-val{font-size:20px;}
+  /* PC cell size */
+  :root{--cell:min(7.5vw,62px);}
+  /* PC numpad: 3x3 grid */
+  .pad{grid-template-columns:repeat(3,1fr) !important;}
+  .num-btn{aspect-ratio:1;font-size:28px !important;}
+  .actions{flex-wrap:wrap;}
+  .action-btn{min-width:45%;}
+  /* PC note hint */
+  .pc-note-hint{display:block;}
+}
+
+/* ══════════════════════════════════
+   MOBILE (< 640px): 縦並び
+══════════════════════════════════ */
+@media(max-width:639px){
+  .app{display:flex;flex-direction:column;align-items:center;}
+  .left-col{width:100%;display:flex;justify-content:center;padding:10px 8px 4px;}
+  .right-col{width:100%;padding:0 8px 12px;}
+  .status{flex-direction:row;justify-content:space-around;padding:6px 16px;}
+  .status-item{flex-direction:column;align-items:center;}
+  :root{--cell:min(10vw,50px);}
+  .pad{grid-template-columns:repeat(5,1fr) !important;}
+  .num-btn{font-size:22px !important;}
+  .pc-note-hint{display:none;}
+}
+
+/* ══ STATUS ══ */
+.status{display:flex;}
+.status-item{display:flex;gap:6px;}
+.status-label{color:var(--ink-mid);font-weight:700;font-size:12px;}
+.status-val{font-weight:900;color:var(--ink);}
+.status-val.red{color:var(--red);}
+
+/* ══ GRID ══ */
+.grid-wrap{background:#fff;border-radius:16px;
+           box-shadow:0 4px 24px rgba(37,99,235,.15);padding:10px;}
+.grid{display:grid;grid-template-columns:repeat(9,var(--cell));
+      grid-template-rows:repeat(9,var(--cell));border:2.5px solid var(--ink);}
+.cell{width:var(--cell);height:var(--cell);display:flex;align-items:center;
+      justify-content:center;border:.5px solid #CBD5E1;
+      font-size:calc(var(--cell)*.48);font-weight:800;color:var(--ink);
+      cursor:pointer;position:relative;transition:background .1s;user-select:none;}
+.cell[data-col="0"]{border-left:2.5px solid var(--ink);}
+.cell[data-col="3"]{border-left:2px solid var(--ink);}
+.cell[data-col="6"]{border-left:2px solid var(--ink);}
+.cell[data-row="0"]{border-top:2.5px solid var(--ink);}
+.cell[data-row="3"]{border-top:2px solid var(--ink);}
+.cell[data-row="6"]{border-top:2px solid var(--ink);}
+.cell.given{color:var(--ink);}
+.cell.user-num{color:var(--blue);}
+.cell.selected{background:#BFDBFE !important;}
+.cell.highlight{background:#EFF6FF;}
+.cell.same-num{background:#FEF9C3;}
+.cell.error{color:var(--red) !important;}
+.cell.note-active{background:#F0FDF4 !important;}
+.cell.hint-flash{animation:hFlash .5s ease;}
+@keyframes hFlash{0%,100%{background:transparent}50%{background:#BBF7D0}}
+.notes-grid{display:grid;grid-template-columns:repeat(3,1fr);
+            grid-template-rows:repeat(3,1fr);width:100%;height:100%;padding:1px;}
+.note-num{display:flex;align-items:center;justify-content:center;
+          font-size:calc(var(--cell)*.22);font-weight:700;color:var(--ink-mid);}
+
+/* ══ PAD ══ */
+.pad{display:grid;gap:8px;}
+.num-btn{border:none;border-radius:12px;background:#fff;font-weight:900;
+         color:var(--ink);cursor:pointer;font-family:inherit;
+         box-shadow:0 2px 8px rgba(0,0,0,.08);transition:transform .1s;
+         display:flex;align-items:center;justify-content:center;
+         aspect-ratio:1;width:100%;}
+.num-btn:active{transform:scale(.91);}
+.num-btn.used{opacity:.25;pointer-events:none;}
+
+/* ══ ACTIONS ══ */
+.actions{display:flex;gap:8px;}
+.action-btn{flex:1;padding:12px 0;border:none;border-radius:12px;
+            font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;
+            display:flex;flex-direction:column;align-items:center;gap:3px;
+            background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.07);color:var(--ink-mid);}
+.action-btn .icon{font-size:18px;}
+
+/* note mode indicator */
+.note-mode-bar{display:none;background:#DCFCE7;color:#166534;border-radius:10px;
+               padding:7px 14px;font-size:12px;font-weight:800;text-align:center;}
+.note-mode-bar.show{display:block;}
+
+/* pc hint */
+.pc-note-hint{background:var(--surface);border-radius:10px;padding:10px 14px;
+              font-size:12px;color:var(--ink-mid);line-height:1.7;}
+.pc-note-hint b{color:var(--ink);}
+
+/* ══ COMPLETE OVERLAY ══ */
+.overlay{position:fixed;inset:0;background:rgba(15,24,48,.6);display:flex;
+         align-items:center;justify-content:center;z-index:100;
+         opacity:0;pointer-events:none;transition:opacity .3s;}
+.overlay.show{opacity:1;pointer-events:all;}
+.complete-card{background:#fff;border-radius:24px;padding:32px 28px;text-align:center;
+               max-width:320px;width:90%;box-shadow:0 16px 48px rgba(37,99,235,.25);}
+.complete-icon{font-size:60px;margin-bottom:8px;}
+.complete-title{font-size:24px;font-weight:900;color:var(--ink);margin-bottom:4px;}
+.complete-sub{font-size:14px;color:var(--ink-mid);margin-bottom:20px;}
+.complete-stats{display:flex;justify-content:space-around;background:var(--blue-light);
+                border-radius:14px;padding:14px;margin-bottom:20px;}
+.cstat{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.cstat-val{font-size:22px;font-weight:900;color:var(--blue);}
+.cstat-label{font-size:11px;color:var(--ink-mid);font-weight:700;}
+.complete-btn{width:100%;padding:14px;background:var(--blue);color:#fff;border:none;
+              border-radius:14px;font-size:16px;font-weight:900;cursor:pointer;font-family:inherit;}
+
+/* ══ GACHA OVERLAY ══ */
+@keyframes capsuleSpin{0%{transform:rotate(0) scale(1)}60%{transform:rotate(540deg) scale(1.3)}100%{transform:rotate(720deg) scale(1)}}
+@keyframes cardFlipIn{0%{transform:rotateY(90deg) scale(.8);opacity:0}100%{transform:rotateY(0) scale(1);opacity:1}}
+@keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+@keyframes srGlowPulse{0%,100%{box-shadow:0 0 30px #ffd700,0 0 60px rgba(255,215,0,.4)}50%{box-shadow:0 0 50px #ffd700,0 0 90px rgba(255,215,0,.6)}}
+@keyframes gachaBtnPulse{0%,100%{transform:scale(1);box-shadow:0 4px 20px rgba(124,58,237,.45)}50%{transform:scale(1.03);box-shadow:0 6px 28px rgba(124,58,237,.65)}}
+.gacha-capsule{font-size:72px;display:flex;align-items:center;justify-content:center;margin:16px auto;}
+.gacha-capsule.spin{animation:capsuleSpin 1.6s cubic-bezier(0.25,0.46,0.45,0.94) forwards;}
+.gacha-rarity-announce{font-size:22px;font-weight:900;text-align:center;margin:4px 0;animation:popIn 0.4s ease;}
+.gacha-card{width:200px;border-radius:16px;overflow:hidden;animation:cardFlipIn 0.6s ease forwards;position:relative;}
+.gacha-card.sr{box-shadow:0 0 30px #ffd700,0 0 60px rgba(255,215,0,0.4);animation:cardFlipIn 0.6s ease forwards,srGlowPulse 2s ease-in-out 0.6s infinite;}
+.gacha-card.r{box-shadow:0 0 20px #a78bfa,0 0 40px rgba(167,139,250,0.35);}
+.gacha-pity-bar-wrap{width:200px;background:rgba(255,255,255,0.12);border-radius:10px;height:6px;margin-top:10px;}
+.gacha-pity-bar{height:100%;background:linear-gradient(90deg,#ffd700,#f59e0b);border-radius:10px;transition:width 0.4s;}
+.gacha-pity-text{font-size:10px;color:rgba(255,255,255,0.35);margin-top:4px;text-align:center;}
+.gacha-next-btn{padding:14px 40px;background:linear-gradient(135deg,#2E6DE5,#1A449E);border:none;border-radius:14px;color:#fff;font-size:16px;font-weight:900;cursor:pointer;margin-top:14px;box-shadow:0 4px 20px rgba(46,109,229,0.4);font-family:'M PLUS Rounded 1c',sans-serif;}
+.gacha-close-btn{padding:10px 28px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:12px;color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;cursor:pointer;margin-top:8px;font-family:'M PLUS Rounded 1c',sans-serif;}
+.gacha-trigger-btn{width:100%;padding:18px;background:linear-gradient(135deg,#7c3aed,#a855f7);border:none;border-radius:16px;color:#fff;font-size:18px;font-weight:900;cursor:pointer;margin-bottom:12px;box-shadow:0 4px 20px rgba(124,58,237,0.45);animation:gachaBtnPulse 1.6s ease-in-out infinite;font-family:'M PLUS Rounded 1c',sans-serif;}
+.btn-catalog-link{display:block;width:100%;padding:14px;background:rgba(255,215,0,0.08);border:1.5px solid rgba(255,215,0,0.3);border-radius:12px;color:#b8860b;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:12px;text-align:center;text-decoration:none;font-family:'M PLUS Rounded 1c',sans-serif;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html" style="text-decoration:none;color:inherit;" class="logo">まな<span>クエ！</span>　ナンプレ</a>
+  <div style="display:flex;gap:8px;align-items:center">
+    <a href="catalog.html" style="background:rgba(255,215,0,0.15);border:1.5px solid rgba(255,215,0,0.5);border-radius:20px;padding:7px 14px;font-size:13px;font-weight:800;color:#b8860b;text-decoration:none;">📖（<span id="catalogBtnCount">0</span>）</a>
+    <button class="new-btn" onclick="newGame()">新しい問題</button>
+  </div>
+</div>
+
+<div class="app">
+  <div class="diff-bar">
+    <button class="diff-btn active" onclick="setDiff(this,'easy')">かんたん</button>
+    <button class="diff-btn" onclick="setDiff(this,'medium')">ふつう</button>
+    <button class="diff-btn" onclick="setDiff(this,'hard')">むずかしい</button>
+  </div>
+
+  <!-- LEFT: grid -->
+  <div class="left-col">
+    <div class="grid-wrap">
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: controls -->
+  <div class="right-col">
+    <div class="status" id="status">
+      <div class="status-item">
+        <span class="status-label">⏱</span>
+        <span class="status-val" id="timer">00:00</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">❌ ミス</span>
+        <span class="status-val red" id="mistakes">0</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">💡</span>
+        <span class="status-val" id="hints-left">3</span>
+      </div>
+    </div>
+
+    <div class="note-mode-bar" id="note-bar">✏️ メモモード ON（スマホ: 長押し）</div>
+
+    <div class="pad" id="pad"></div>
+
+    <div class="actions">
+      <button class="action-btn" onclick="undo()">
+        <span class="icon">↩️</span><span>もどす</span>
+      </button>
+      <button class="action-btn" onclick="toggleNote()">
+        <span class="icon" id="note-icon">✏️</span>
+        <span id="note-label">メモ</span>
+      </button>
+      <button class="action-btn" onclick="useHint()">
+        <span class="icon">💡</span>
+        <span>ヒント(<span id="hleft">3</span>)</span>
+      </button>
+      <button class="action-btn" onclick="eraseCell()">
+        <span class="icon">🗑️</span><span>けす</span>
+      </button>
+    </div>
+
+    <div class="pc-note-hint">
+      <b>PC操作ガイド：</b><br>
+      左クリック＋数字 → 入力<br>
+      右クリック＋数字 → メモ<br>
+      矢印キー → 移動<br>
+      Delete / Backspace → 消す
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="complete-card">
+    <div class="complete-icon">🎉</div>
+    <div class="complete-title">完成！</div>
+    <div class="complete-sub" id="c-diff"></div>
+    <div class="complete-stats">
+      <div class="cstat"><span class="cstat-val" id="c-time">-</span><span class="cstat-label">タイム</span></div>
+      <div class="cstat"><span class="cstat-val" id="c-mistakes">-</span><span class="cstat-label">ミス</span></div>
+      <div class="cstat"><span class="cstat-val" id="c-hints">-</span><span class="cstat-label">ヒント</span></div>
+    </div>
+    <div id="c-gacha-info" style="display:none;margin-bottom:12px;">
+      <div style="font-size:13px;color:#5B6785;margin-bottom:8px;">🎰 ガチャ <strong id="c-gacha-pulls">1</strong>回分げっと！</div>
+      <button class="complete-btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7);margin-bottom:8px;" onclick="closeOverlay();startGachaFromResult()">🎰 ガチャを回す！</button>
+    </div>
+    <a href="catalog.html" style="display:block;padding:12px;background:rgba(255,215,0,0.1);border:1.5px solid rgba(255,215,0,0.3);border-radius:12px;color:#b8860b;font-size:14px;font-weight:800;text-decoration:none;margin-bottom:12px;">📖 カード図鑑（<span id="catalogBtnCount2">0</span> / 20枚）</a>
+    <button class="complete-btn" onclick="newGame();closeOverlay()">次の問題へ →</button>
+  </div>
+</div>
+
+<script>
+// ══ STATE ══
+let solution=[],puzzle=[],board=[],given=[],notes=[];
+let selected=null,noteMode=false;
+let mistakes=0,hintsLeft=3,hintsUsed=0;
+let timerSec=0,timerInterval=null;
+let difficulty='easy',history=[];
+const REMOVES={easy:30,medium:42,hard:52};
+const DIFF_JP={easy:'かんたん',medium:'ふつう',hard:'むずかしい'};
+
+// ══ GENERATOR ══
+function generateSolution(){
+  const b=Array(9).fill(null).map(()=>Array(9).fill(0));
+  fillBoard(b); return b;
+}
+function fillBoard(b){
+  for(let r=0;r<9;r++) for(let c=0;c<9;c++){
+    if(b[r][c]===0){
+      const nums=[1,2,3,4,5,6,7,8,9].sort(()=>Math.random()-.5);
+      for(const n of nums){
+        if(isOK(b,r,c,n)){b[r][c]=n;if(fillBoard(b))return true;b[r][c]=0;}
+      }
+      return false;
+    }
+  }
+  return true;
+}
+function isOK(b,r,c,n){
+  if(b[r].includes(n))return false;
+  for(let i=0;i<9;i++)if(b[i][c]===n)return false;
+  const br=Math.floor(r/3)*3,bc=Math.floor(c/3)*3;
+  for(let i=br;i<br+3;i++)for(let j=bc;j<bc+3;j++)if(b[i][j]===n)return false;
+  return true;
+}
+function makePuzzle(sol,removes){
+  const p=sol.map(r=>[...r]);
+  const pos=[];
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++)pos.push([r,c]);
+  pos.sort(()=>Math.random()-.5);
+  for(let i=0;i<removes;i++)p[pos[i][0]][pos[i][1]]=0;
+  return p;
+}
+
+// ══ GAME ══
+function newGame(){
+  stopTimer();
+  solution=generateSolution();
+  puzzle=makePuzzle(solution,REMOVES[difficulty]);
+  board=puzzle.map(r=>[...r]);
+  given=puzzle.map(r=>r.map(v=>v!==0));
+  notes=Array(9).fill(null).map(()=>Array(9).fill(null).map(()=>new Set()));
+  selected=null;noteMode=false;mistakes=0;hintsLeft=3;hintsUsed=0;history=[];
+  document.getElementById('mistakes').textContent='0';
+  document.getElementById('hints-left').textContent='3';
+  document.getElementById('hleft').textContent='3';
+  document.getElementById('note-icon').textContent='✏️';
+  document.getElementById('note-label').textContent='メモ';
+  document.getElementById('note-bar').classList.remove('show');
+  resetTimer(); renderGrid(); renderPad(); startTimer();
+}
+function setDiff(btn,d){
+  difficulty=d;
+  document.querySelectorAll('.diff-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  newGame();
+}
+
+// ══ TIMER ══
+function startTimer(){timerInterval=setInterval(()=>{timerSec++;const m=String(Math.floor(timerSec/60)).padStart(2,'0'),s=String(timerSec%60).padStart(2,'0');document.getElementById('timer').textContent=`${m}:${s}`;},1000);}
+function stopTimer(){clearInterval(timerInterval);timerInterval=null;}
+function resetTimer(){stopTimer();timerSec=0;document.getElementById('timer').textContent='00:00';}
+function getTimeStr(){return String(Math.floor(timerSec/60)).padStart(2,'0')+':'+String(timerSec%60).padStart(2,'0');}
+
+// ══ RENDER ══
+function renderGrid(){
+  const g=document.getElementById('grid');g.innerHTML='';
+  for(let r=0;r<9;r++) for(let c=0;c<9;c++){
+    const el=document.createElement('div');
+    el.className='cell';el.dataset.row=r;el.dataset.col=c;
+    const v=board[r][c];
+    if(given[r][c]){el.classList.add('given');el.textContent=v;}
+    else if(v!==0){
+      el.classList.add('user-num');
+      if(v!==solution[r][c])el.classList.add('error');
+      el.textContent=v;
+    } else {
+      const ns=notes[r][c];
+      if(ns.size>0){
+        const ng=document.createElement('div');ng.className='notes-grid';
+        for(let n=1;n<=9;n++){const nd=document.createElement('div');nd.className='note-num';nd.textContent=ns.has(n)?n:'';ng.appendChild(nd);}
+        el.appendChild(ng);
+      }
+    }
+    // クリック
+    el.addEventListener('click',()=>selectCell(r,c));
+    // 長押し（スマホ用メモ切り替え）
+    let pressTimer;
+    el.addEventListener('pointerdown',()=>{pressTimer=setTimeout(()=>{toggleNote();el.classList.add('note-active');setTimeout(()=>el.classList.remove('note-active'),300);},500);});
+    el.addEventListener('pointerup',()=>clearTimeout(pressTimer));
+    el.addEventListener('pointerleave',()=>clearTimeout(pressTimer));
+    g.appendChild(el);
+  }
+  applyHL();
+}
+
+function applyHL(){
+  document.querySelectorAll('.cell').forEach(el=>{
+    el.classList.remove('selected','highlight','same-num');
+  });
+  if(!selected)return;
+  const[sr,sc]=selected;const sv=board[sr][sc];
+  document.querySelectorAll('.cell').forEach(el=>{
+    const r=+el.dataset.row,c=+el.dataset.col;
+    if(r===sr&&c===sc){el.classList.add('selected');return;}
+    const box=Math.floor(r/3)===Math.floor(sr/3)&&Math.floor(c/3)===Math.floor(sc/3);
+    if(r===sr||c===sc||box)el.classList.add('highlight');
+    if(sv!==0&&board[r][c]===sv)el.classList.add('same-num');
+  });
+}
+
+function renderPad(){
+  const pad=document.getElementById('pad');pad.innerHTML='';
+  const counts=Array(10).fill(0);
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++)if(board[r][c]!==0&&board[r][c]===solution[r][c])counts[board[r][c]]++;
+  for(let n=1;n<=9;n++){
+    const btn=document.createElement('button');
+    btn.className='num-btn';btn.textContent=n;
+    if(counts[n]>=9)btn.classList.add('used');
+    // 左クリック = 入力
+    btn.addEventListener('click',e=>{e.preventDefault();inputNum(n,false);});
+    // 右クリック = メモ
+    btn.addEventListener('contextmenu',e=>{e.preventDefault();inputNum(n,true);});
+    pad.appendChild(btn);
+  }
+}
+
+// ══ INPUT ══
+function selectCell(r,c){selected=[r,c];applyHL();}
+
+function inputNum(n, forceNote=false){
+  if(!selected)return;
+  const[r,c]=selected;if(given[r][c])return;
+  const isNote=forceNote||noteMode;
+  if(isNote){
+    if(board[r][c]!==0)return;
+    if(notes[r][c].has(n))notes[r][c].delete(n);else notes[r][c].add(n);
+    renderGrid();return;
+  }
+  history.push({r,c,prev:board[r][c],prevNotes:new Set(notes[r][c])});
+  notes[r][c].clear();
+  if(board[r][c]===n){board[r][c]=0;renderGrid();renderPad();return;}
+  board[r][c]=n;
+  if(n!==solution[r][c]){mistakes++;document.getElementById('mistakes').textContent=mistakes;}
+  renderGrid();renderPad();checkComplete();
+}
+
+function eraseCell(){
+  if(!selected)return;
+  const[r,c]=selected;if(given[r][c])return;
+  history.push({r,c,prev:board[r][c],prevNotes:new Set(notes[r][c])});
+  board[r][c]=0;notes[r][c].clear();renderGrid();renderPad();
+}
+
+function undo(){
+  if(!history.length)return;
+  const{r,c,prev,prevNotes}=history.pop();
+  board[r][c]=prev;notes[r][c]=prevNotes;renderGrid();renderPad();
+}
+
+function toggleNote(){
+  noteMode=!noteMode;
+  document.getElementById('note-icon').textContent=noteMode?'📝':'✏️';
+  document.getElementById('note-label').textContent=noteMode?'メモON':'メモ';
+  document.getElementById('note-bar').classList.toggle('show',noteMode);
+}
+
+function useHint(){
+  if(hintsLeft<=0)return;
+  const empties=[];
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++)
+    if(!given[r][c]&&(board[r][c]===0||board[r][c]!==solution[r][c]))empties.push([r,c]);
+  if(!empties.length)return;
+  const[r,c]=empties[Math.floor(Math.random()*empties.length)];
+  history.push({r,c,prev:board[r][c],prevNotes:new Set(notes[r][c])});
+  board[r][c]=solution[r][c];notes[r][c].clear();
+  hintsLeft--;hintsUsed++;
+  document.getElementById('hints-left').textContent=hintsLeft;
+  document.getElementById('hleft').textContent=hintsLeft;
+  selected=[r,c];renderGrid();renderPad();
+  setTimeout(()=>{
+    const el=document.querySelector(`.cell[data-row="${r}"][data-col="${c}"]`);
+    if(el){el.classList.add('hint-flash');setTimeout(()=>el.classList.remove('hint-flash'),600);}
+  },50);
+  checkComplete();
+}
+
+// ══ COMPLETE ══
+function checkComplete(){
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++)if(board[r][c]!==solution[r][c])return;
+  stopTimer();setTimeout(showComplete,400);
+}
+function showComplete(){
+  document.getElementById('c-diff').textContent=`${DIFF_JP[difficulty]} をクリア！`;
+  document.getElementById('c-time').textContent=getTimeStr();
+  document.getElementById('c-mistakes').textContent=mistakes;
+  document.getElementById('c-hints').textContent=hintsUsed;
+  document.getElementById('overlay').classList.add('show');
+  // ガチャ発動
+  const pulls = getGachaPullsByDiff();
+  document.getElementById('c-gacha-pulls').textContent = pulls;
+  document.getElementById('c-gacha-info').style.display = 'block';
+}
+function closeOverlay(){document.getElementById('overlay').classList.remove('show');}
+
+// ══ KEYBOARD ══
+document.addEventListener('keydown',e=>{
+  if(!selected)return;
+  if(e.key>='1'&&e.key<='9')inputNum(+e.key,e.shiftKey);
+  if(e.key==='Backspace'||e.key==='Delete')eraseCell();
+  const moves={'ArrowUp':[-1,0],'ArrowDown':[1,0],'ArrowLeft':[0,-1],'ArrowRight':[0,1]};
+  if(moves[e.key]){
+    e.preventDefault();
+    selected=[Math.max(0,Math.min(8,selected[0]+moves[e.key][0])),
+              Math.max(0,Math.min(8,selected[1]+moves[e.key][1]))];
+    applyHL();
+  }
+});
+
+
+// ══ GACHA ══
+let gachaState = null;
+let _pullResults = [];
+let _pullIdx = 0;
+
+function initGacha() {
+  gachaState = loadGachaState();
+  updateCatalogBtn();
+}
+
+function updateCatalogBtn() {
+  const n = gachaState ? gachaState.collected.length : 0;
+  const el = document.getElementById('catalogBtnCount');
+  if(el) el.textContent = n;
+}
+
+function getGachaPullsByDiff() {
+  if(difficulty === 'hard') return 3;
+  if(difficulty === 'medium') return 2;
+  return 1; // easy
+}
+
+function startGachaFromResult() {
+  const pulls = getGachaPullsByDiff();
+  _pullResults = [];
+  _pullIdx = 0;
+  for(let i = 0; i < pulls; i++) _pullResults.push(drawSingleCard(gachaState));
+  updateCatalogBtn();
+  showGachaOverlay();
+  runGachaAnimation();
+}
+
+function showGachaOverlay() {
+  document.getElementById('gachaOverlay').style.display = 'flex';
+}
+
+function hideGachaOverlay() {
+  document.getElementById('gachaOverlay').style.display = 'none';
+}
+
+function runGachaAnimation() {
+  const ci = document.getElementById('gachaCountIndicator');
+  if(_pullResults.length > 1) {
+    ci.textContent = `${_pullIdx + 1} / ${_pullResults.length} 回目`;
+    ci.style.display = 'block';
+  }
+  document.getElementById('gachaCapsulePhase').style.display = 'flex';
+  document.getElementById('gachaCardPhase').style.display   = 'none';
+  const cap = document.getElementById('gachaCapsule');
+  cap.textContent = '🎱';
+  cap.className = 'gacha-capsule';
+  setTimeout(() => { cap.className = 'gacha-capsule spin'; }, 50);
+  setTimeout(() => {
+    document.getElementById('gachaCapsulePhase').style.display = 'none';
+    document.getElementById('gachaCardPhase').style.display   = 'flex';
+    const { card, isNew, pts } = _pullResults[_pullIdx];
+    const ann = document.getElementById('gachaRarityAnnounce');
+    const rarityLabel = { sr: '⭐⭐⭐ SR!', r: '⭐⭐ R', n: '⭐ N' };
+    ann.textContent = rarityLabel[card.rarity] || '';
+    ann.style.color = card.rarity === 'sr' ? '#ffd700' : card.rarity === 'r' ? '#a78bfa' : '#94a3b8';
+    document.getElementById('gachaCardDisplay').innerHTML = `
+      <div class="gacha-card ${card.rarity}" style="width:200px;border-radius:16px;overflow:hidden;position:relative">
+        <img src="${card.img}" style="width:100%;display:block" onerror="this.style.display='none'">
+        <div style="padding:10px;background:${card.rarity==='sr'?'linear-gradient(135deg,#1a1a2e,#16213e)':card.rarity==='r'?'linear-gradient(135deg,#1e1b4b,#312e81)':'#1e293b'}">
+          <div style="font-size:11px;font-weight:900;color:${card.rarity==='sr'?'#ffd700':card.rarity==='r'?'#a78bfa':'#94a3b8'}">${card.rarity.toUpperCase()}</div>
+          <div style="font-size:14px;font-weight:900;color:#fff;margin:2px 0">${card.name}</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.6)">${card.team||''}</div>
+          <div style="font-size:13px;font-weight:700;color:#ffd700;margin-top:4px">+${pts}pt ${isNew?'<span style="color:#34c38f">NEW!</span>':''}</div>
+        </div>
+      </div>`;
+    const pPct = Math.min(100, Math.round(gachaState.pityCount / gachaState.pityThreshold * 100));
+    document.getElementById('gachaPityBar').style.width = pPct + '%';
+    document.getElementById('gachaPityText').textContent = `天井まで あと${gachaState.pityThreshold - gachaState.pityCount}回`;
+    const nextBtn = document.getElementById('gachaNextBtn');
+    const closeBtn = document.getElementById('gachaCloseBtn');
+    _pullIdx++;
+    if(_pullIdx < _pullResults.length) {
+      nextBtn.textContent = 'つぎへ →';
+      nextBtn.onclick = runGachaAnimation;
+      closeBtn.style.display = 'none';
+    } else {
+      nextBtn.style.display = 'none';
+      closeBtn.style.display = 'block';
+      closeBtn.textContent = '✕ 閉じる';
+      closeBtn.onclick = hideGachaOverlay;
+    }
+  }, 1700);
+}
+// ══ INIT ══
+newGame();
+initGacha();
+</script>
+
+<!-- ガチャオーバーレイ -->
+<div id="gachaOverlay" style="display:none;position:fixed;inset:0;background:radial-gradient(ellipse at 50% 20%,#1e0050 0%,#080018 55%,#000005 100%);z-index:1000;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center">
+  <div id="gachaCountIndicator" style="font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:6px;display:none"></div>
+  <div id="gachaCapsulePhase" style="display:flex;flex-direction:column;align-items:center">
+    <div style="font-size:28px;font-weight:900;color:#fff;margin-bottom:8px">🎰 ガチャタイム！</div>
+    <div id="gachaCapsule" class="gacha-capsule">🎱</div>
+  </div>
+  <div id="gachaCardPhase" style="display:none;flex-direction:column;align-items:center">
+    <div id="gachaRarityAnnounce" class="gacha-rarity-announce"></div>
+    <div id="gachaCardDisplay" style="position:relative"></div>
+    <div class="gacha-pity-bar-wrap"><div id="gachaPityBar" class="gacha-pity-bar" style="width:0%"></div></div>
+    <div id="gachaPityText" class="gacha-pity-text"></div>
+    <button id="gachaNextBtn" class="gacha-next-btn">つぎへ →</button>
+    <button id="gachaCloseBtn" class="gacha-close-btn">✕ 閉じる</button>
+  </div>
+</div>
+<script src="data/cards.js"></script>
+<script src="data/gacha.js"></script>
+</body>
+</html>

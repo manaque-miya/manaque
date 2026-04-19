@@ -51,6 +51,15 @@ const SITE_STRUCTURE = [
             difficulty: 3,
             gacha: true,
             tags: [{ text: '地図', cls: 'badge--sky' }, { text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }]
+          },
+          {
+            label: '県庁所在地クイズ',
+            quizId: 'map-capitals',
+            count: 47,
+            time: '約25分',
+            difficulty: 3,
+            gacha: true,
+            tags: [{ text: '地図', cls: 'badge--sky' }, { text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }]
           }
         ]
       },
@@ -208,6 +217,23 @@ const SITE_STRUCTURE = [
             time: '約5分',
             difficulty: 2,
             gacha: false,
+            tags: [{ text: '思考', cls: 'badge--yellow' }, { text: 'パズル', cls: 'badge--neutral' }]
+          }
+        ]
+      },
+      {
+        id: 'sudoku',
+        label: 'ナンプレ',
+        emoji: '🔢',
+        badge: { text: 'ナンプレ', cls: 'badge--yellow' },
+        units: [
+          {
+            label: 'ナンプレ（数独）',
+            quizId: 'nanpure',
+            count: null,
+            time: '自由',
+            difficulty: 2,
+            gacha: true,
             tags: [{ text: '思考', cls: 'badge--yellow' }, { text: 'パズル', cls: 'badge--neutral' }]
           }
         ]
