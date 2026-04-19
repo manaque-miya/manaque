@@ -10,7 +10,7 @@ const RARITY_CONFIG = {
 // ポイントランク定義（catalog.htmlで使用）
 const POINT_RANKS = [
   { min: 0,    label: 'みならい',   emoji: '📖' },
-  { min: 100,  label: 'しょにゅう', emoji: '✏️' },
+  { min: 100,  label: 'しょきゅう', emoji: '✏️' },
   { min: 500,  label: 'ちゅうきゅう', emoji: '📚' },
   { min: 2000, label: 'じょうきゅう', emoji: '🎓' },
   { min: 5000, label: 'マスター',   emoji: '🏆' },
