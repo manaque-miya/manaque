@@ -152,24 +152,29 @@
     }
     .hero__inner {
       max-width: 1200px; margin: 0 auto;
-      padding: 56px 32px 48px;
+      padding: 48px 32px 40px;
       position: relative; z-index: 1;
-      max-width: 55%;
+      max-width: 56%;
     }
     .hero__charas {
       position: absolute;
-      right: 0; bottom: 0;
-      display: flex; align-items: flex-end;
+      right: 0; top: 0; bottom: 0;
+      width: 43%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      align-items: end;
       pointer-events: none;
-      width: 44%;
-      justify-content: flex-end;
+      padding: 8px 8px 0;
     }
     .hero__charas img {
-      height: clamp(80px, 8.5vw, 140px);
-      width: auto; object-fit: contain;
+      width: 100%; height: auto;
+      max-height: 49%;
+      object-fit: contain;
+      object-position: bottom;
       filter: drop-shadow(0 3px 8px rgba(0,0,0,.28));
     }
-    @media (max-width: 900px) { .hero__charas img { height: 70px; } }
+    @media (max-width: 860px) { .hero__charas { width: 42%; } }
     @media (max-width: 640px) { .hero__charas { display: none; }
       .hero__inner { max-width: 100%; padding: 40px 16px 36px; } }
     .hero__eyebrow {
@@ -583,10 +588,12 @@
       </a>
     </div>
     <div class="hero__charas">
-      <img src="assets/chara/kuemaru.png" alt="クエ丸">
+      <!-- 上段：背が高めキャラ -->
       <img src="assets/chara/manadra.png" alt="まなドラ">
       <img src="assets/chara/lumina.png" alt="ルミナ先生">
       <img src="assets/chara/ren.png" alt="レン先生">
+      <!-- 下段：小さめ・かわいい系キャラ -->
+      <img src="assets/chara/kuemaru.png" alt="クエ丸">
       <img src="assets/chara/zeta.png" alt="ゼータ">
       <img src="assets/chara/mil.png" alt="ミル">
     </div>
