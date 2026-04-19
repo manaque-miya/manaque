@@ -155,6 +155,15 @@
       padding: 64px 32px 56px;
       position: relative; z-index: 1;
     }
+    .hero__chara {
+      position: absolute;
+      right: clamp(60px, 8vw, 130px); bottom: 0;
+      height: clamp(100px, 14vw, 180px);
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,.3));
+    }
+    @media (max-width: 640px) { .hero__chara { height: 80px; right: 10px; } }
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
@@ -535,6 +544,7 @@
         カテゴリから選ぶ →
       </a>
     </div>
+    <img class="hero__chara" src="character/クエ丸/ガッツポーズ.png" alt="クエ丸">
   </div>
 </section>
 

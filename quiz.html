@@ -95,6 +95,7 @@
     .result-card::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.18) 1px,transparent 1px);background-size:24px 24px;border-radius:var(--r-xl);}
     .result-card__inner{position:relative;z-index:1;}
     .result-card__icon{font-size:64px;margin-bottom:12px;}
+    .result-chara-img{display:block;margin:0 auto 4px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 10px rgba(0,0,0,.3));}
     .result-card__rank{font-size:15px;font-weight:800;color:var(--accent-yellow);margin-bottom:8px;}
     .result-card__score{font-size:56px;font-weight:900;color:var(--white);line-height:1;margin-bottom:4px;}
     .result-card__score span{font-size:22px;color:rgba(255,255,255,.6);}
@@ -296,6 +297,7 @@
   <div class="screen" id="screen-result">
     <div class="result-card">
       <div class="result-card__inner">
+        <img class="result-chara-img" src="character/クエ丸/表情.png" alt="クエ丸">
         <div class="result-card__icon" id="result-icon">🎉</div>
         <div class="result-card__rank" id="result-rank"></div>
         <div class="result-card__score"><span id="result-score">0</span><span id="result-total"> / 5</span></div>
