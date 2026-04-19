@@ -155,15 +155,19 @@
       padding: 64px 32px 56px;
       position: relative; z-index: 1;
     }
-    .hero__chara {
+    .hero__charas {
       position: absolute;
-      right: clamp(60px, 8vw, 130px); bottom: 0;
-      height: clamp(100px, 14vw, 180px);
-      object-fit: contain;
-      pointer-events: none;
-      filter: drop-shadow(0 4px 14px rgba(0,0,0,.3));
+      right: 12px; bottom: 0;
+      display: flex; align-items: flex-end; gap: 2px;
+      pointer-events: none; z-index: 2;
     }
-    @media (max-width: 640px) { .hero__chara { height: 80px; right: 10px; } }
+    .hero__charas img {
+      height: clamp(72px, 9vw, 120px);
+      width: auto; object-fit: contain;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,.28));
+    }
+    @media (max-width: 900px) { .hero__charas img { height: 72px; } }
+    @media (max-width: 600px) { .hero__charas { display: none; } }
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
@@ -575,7 +579,14 @@
         カテゴリから選ぶ →
       </a>
     </div>
-    <img class="hero__chara" src="assets/chara/kuemaru_guts.png" alt="クエ丸">
+    <div class="hero__charas">
+      <img src="assets/chara/kuemaru.png" alt="クエ丸">
+      <img src="assets/chara/manadra.png" alt="まなドラ">
+      <img src="assets/chara/lumina.png" alt="ルミナ先生">
+      <img src="assets/chara/ren.png" alt="レン先生">
+      <img src="assets/chara/zeta.png" alt="ゼータ">
+      <img src="assets/chara/mil.png" alt="ミル">
+    </div>
   </div>
 </section>
 
