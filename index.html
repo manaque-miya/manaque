@@ -169,14 +169,19 @@
     }
     .chara-cell {
       display: flex; align-items: flex-end; justify-content: center;
-      overflow: hidden;
     }
     .chara-cell img {
-      width: 100%; height: 100%;
-      object-fit: contain;
+      width: auto; object-fit: contain;
       object-position: bottom center;
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
+    /* 個別サイズ調整 */
+    .chara-cell:nth-child(1) img { height: 200px; } /* まなドラ */
+    .chara-cell:nth-child(2) img { height: 220px; } /* ルミナ先生 */
+    .chara-cell:nth-child(3) img { height: 160px; } /* レン先生（小さめ） */
+    .chara-cell:nth-child(4) img { height: 180px; } /* クエ丸 */
+    .chara-cell:nth-child(5) img { height: 190px; } /* ゼータ */
+    .chara-cell:nth-child(6) img { height: 170px; } /* ミル */
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
