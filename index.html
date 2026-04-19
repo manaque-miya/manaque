@@ -901,17 +901,17 @@ function renderUnits(gi, si) {
     if(isNanpure) {
       const btn3 = '', btn10 = '';
       const btnAll = `<a href="nanpure.html" class="count-btn count-btn--default">あそぶ</a>`;
-      return \`
-      <div class="unit-card\${unit.gacha ? ' unit-card--gacha' : ''}">
-        <div class="unit-card__tags">\${tagHtml}\${gacha}</div>
-        <div class="unit-card__title">\${unit.label}</div>
+      return `
+      <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
+        <div class="unit-card__tags">${tagHtml}${gacha}</div>
+        <div class="unit-card__title">${unit.label}</div>
         <div class="unit-card__meta">
           <span>🔢 かんたん〜むずかしい</span>
           <span>⏱ 自由</span>
-          <span class="unit-card__difficulty">\${stars}</span>
+          <span class="unit-card__difficulty">${stars}</span>
         </div>
-        <div class="count-btns">\${btnAll}</div>
-      </div>\`;
+        <div class="count-btns">${btnAll}</div>
+      </div>`;
     }
     const btn3    = (unit.count && unit.count >= 3)
       ? `<a href="${cnt3Href}" class="count-btn${defaultCount===3?' count-btn--default':''}">${(isMap||isMapTap||isCapitals)?'5問':'3問'}</a>` : '';
