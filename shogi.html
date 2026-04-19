@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>詰将棋入門</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a22;
+    --border: #2a2a38;
+    --text: #f0f0f5;
+    --muted: #7a7a9a;
+    --yellow: #FFD60A;
+    --red: #FF453A;
+    --board: #DCB35C;
+    --board-dark: #C49A3C;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+  }
+  .container { max-width: 640px; margin: 0 auto; }
+
+  /* ヘッダー */
+  .page-header { text-align: center; margin-bottom: 32px; }
+  .page-header h1 { font-size: 28px; font-weight: 900; letter-spacing: .03em; }
+  .page-header h1 span { color: var(--yellow); }
+  .page-header p { color: var(--muted); font-size: 13px; margin-top: 8px; }
+
+  /* カード */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--yellow);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  /* 駒説明グリッド */
+  .koma-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .koma-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 6px;
+    text-align: center;
+  }
+  .koma-char {
+    font-size: 22px;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .koma-name { font-size: 10px; font-weight: 700; color: var(--yellow); display: block; }
+  .koma-move { font-size: 10px; color: var(--muted); line-height: 1.5; margin-top: 4px; display: block; }
+
+  /* 動き図（3x3グリッド） */
+  .move-diagram {
+    display: grid;
+    grid-template-columns: repeat(3, 20px);
+    gap: 2px;
+    margin: 4px auto 0;
+    width: fit-content;
+  }
+  .move-diagram .cell {
+    width: 20px; height: 20px;
+    background: #2a2a38;
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+  }
+  .move-diagram .cell.can { background: rgba(255,214,10,.25); color: var(--yellow); font-weight: 700; }
+  .move-diagram .cell.me { background: var(--yellow); color: #000; font-weight: 900; font-size: 8px; }
+
+  /* 盤面 */
+  .board-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .board {
+    display: grid;
+    gap: 2px;
+    background: #8B6914;
+    padding: 6px;
+    border-radius: 8px;
+    border: 2px solid #6B4F10;
+  }
+  /* 5x5用 */
+  .board-5 { grid-template-columns: repeat(5, 52px); }
+  .board-9 { grid-template-columns: repeat(9, 44px); }
+
+  .cell {
+    background: var(--board);
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+    transition: background .15s;
+    user-select: none;
+  }
+  .board-9 .cell { width: 44px; height: 44px; font-size: 15px; }
+
+  .cell:hover { background: #E8C472; }
+  .cell.highlight-target { background: rgba(255,214,10,.35) !important; }
+  .cell.highlight-move { background: rgba(255,214,10,.15) !important; cursor: default; }
+
+  .piece {
+    display: flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px;
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 900;
+    position: relative;
+  }
+  .board-9 .piece { width: 36px; height: 36px; font-size: 14px; }
+  .piece.sente { background: #f5f0e0; color: #1a0a00; border: 1.5px solid #c8a052; }
+  .piece.gote { background: #2a1810; color: #f5d080; border: 1.5px solid #8B6914; transform: rotate(180deg); }
+
+  /* 問題ナビ */
+  .problem-nav {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .nav-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .nav-btn:hover, .nav-btn.active { background: var(--yellow); color: #000; border-color: var(--yellow); }
+
+  /* 問題情報 */
+  .problem-info {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .problem-info h3 { font-size: 16px; font-weight: 900; margin-bottom: 6px; }
+  .problem-info p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .problem-hint {
+    font-size: 12px;
+    color: var(--yellow);
+    font-weight: 700;
+    margin-top: 8px;
+  }
+
+  /* 答えボタン */
+  .answer-btn {
+    background: transparent;
+    border: 1.5px solid var(--yellow);
+    color: var(--yellow);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .15s;
+    display: block;
+    margin: 0 auto;
+  }
+  .answer-btn:hover { background: var(--yellow); color: #000; }
+
+  .answer-box {
+    background: rgba(255,214,10,.08);
+    border: 1px solid rgba(255,214,10,.3);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    display: none;
+  }
+  .answer-box.show { display: block; }
+  .answer-box .answer-title { font-size: 12px; font-weight: 700; color: var(--yellow); margin-bottom: 8px; }
+  .answer-box .answer-text { font-size: 14px; font-weight: 700; line-height: 1.7; }
+  .answer-box .answer-why { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.65; }
+
+  /* 凡例 */
+  .legend {
+    display: flex; gap: 12px; justify-content: center; font-size: 11px;
+    color: var(--muted); margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .legend span { display: flex; align-items: center; gap: 4px; }
+  .legend-sente { width: 14px; height: 14px; background: #f5f0e0; border-radius: 3px; border: 1px solid #c8a052; }
+  .legend-gote { width: 14px; height: 14px; background: #2a1810; border-radius: 3px; border: 1px solid #8B6914; }
+
+  /* セクション区切り */
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .08em;
+    color: var(--muted); text-align: center;
+    margin: 28px 0 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ルール説明 */
+  .rule-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .rule-num {
+    width: 24px; height: 24px; min-width: 24px;
+    background: var(--yellow); color: #000;
+    border-radius: 50%; font-size: 12px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rule-text { font-size: 13px; line-height: 1.7; }
+  .rule-text strong { color: var(--yellow); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="page-header">
+    <h1>♟ 詰将棋<span>入門</span></h1>
+    <p>ルールの基本 → 1手詰め問題 → 答えで確認</p>
+  </div>
+
+  <!-- 将棋の基本ルール -->
+  <div class="card">
+    <div class="card-title">📖 将棋の基本ルール</div>
+    <div class="rule-item">
+      <div class="rule-num">1</div>
+      <div class="rule-text">将棋は9×9の盤面で行う2人のゲーム。<strong>王将（玉将）</strong>を取られると負け。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">2</div>
+      <div class="rule-text">手番ごとに1つの駒を動かす。<strong>相手の駒がいるマスに移動すると、その駒を取れる</strong>。取った駒は「持ち駒」として後で使える。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">3</div>
+      <div class="rule-text">「<strong>詰み</strong>」とは——王将がどこに逃げても捕まる状態。詰ませた方が勝ち。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">4</div>
+      <div class="rule-text">手番は<strong>下側の駒（先手）が白っぽい駒</strong>、上側（後手）が暗い駒で表示。先手が先に動かす。</div>
+    </div>
+  </div>
+
+  <!-- 駒の動き -->
+  <div class="card">
+    <div class="card-title">🎯 駒の動き方</div>
+    <div class="koma-grid">
+
+      <div class="koma-item">
+        <span class="koma-char">王</span>
+        <span class="koma-name">王将</span>
+        <div class="move-diagram">
+          <div class="cell can">●</div><div class="cell can">●</div><div class="cell can">●</div>
+          <div class="cell can">●</div><div class="cell me">王</div><div class="cell can">●</div>
+          <div class="cell can">●</div><div class="cell can">●</div><div class="cell can">●</div>
+        </div>
+        <span class="koma-move">全方向に1マス</span>
+      </div>
+
+      <div class="koma-item">
+        <span class="koma-char">飛</span>
+        <span class="koma-name">飛車</span>
+        <div class="move-diagram">
+          <div class="cell"></div><div class="cell can">●</div><div class="cell"></div>
+          <div class="cell can">●</div><div class="cell me">飛</div><div class="cell can">●</div>
+          <div class="cell"></div><div class="cell can">●</div><div class="cell"></div>
+        </div>
+        <span class="koma-move">縦横に何マスでも</span>
+      </div>
+
+      <div class="koma-item">
+        <span class="koma-char">角</span>
+        <span class="koma-name">角行</span>
+        <div class="move-diagram">
+          <div class="cell can">●</div><div class="cell"></div><div class="cell can">●</div>
+          <div class="cell"></div><div class="cell me">角</div><div class="cell"></div>
+          <div class="cell can">●</div><div class="cell"></div><div class="cell can">●</div>
+        </div>
+        <span class="koma-move">斜めに何マスでも</span>
+      </div>
+
+      <div class="koma-item">
+        <span class="koma-char">金</span>
+        <span class="koma-name">金将</span>
+        <div class="move-diagram">
+          <div class="cell can">●</div><div class="cell can">●</div><div class="cell can">●</div>
+          <div class="cell can">●</div><div class="cell me">金</div><div class="cell can">●</div>
+          <div class="cell"></div><div class="cell can">●</div><div class="cell"></div>
+        </div>
+        <span class="koma-move">前・横・斜め前に1マス</span>
+      </div>
+
+      <div class="koma-item">
+        <span class="koma-char">銀</span>
+        <span class="koma-name">銀将</span>
+        <div class="move-diagram">
+          <div class="cell can">●</div><div class="cell can">●</div><div class="cell can">●</div>
+          <div class="cell"></div><div class="cell me">銀</div><div class="cell"></div>
+          <div class="cell can">●</div><div class="cell"></div><div class="cell can">●</div>
+        </div>
+        <span class="koma-move">前・斜めに1マス</span>
+      </div>
+
+      <div class="koma-item">
+        <span class="koma-char">桂</span>
+        <span class="koma-name">桂馬</span>
+        <div class="move-diagram">
+          <div class="cell can">●</div><div class="cell"></div><div class="cell can">●</div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          <div class="cell"></div><div class="cell me">桂</div><div class="cell"></div>
+        </div>
+        <span class="koma-move">前2・横1の「L字」のみ</span>
+      </div>
+
+      <div class="koma-item">
+        <span class="koma-char">香</span>
+        <span class="koma-name">香車</span>
+        <div class="move-diagram">
+          <div class="cell"></div><div class="cell can">●</div><div class="cell"></div>
+          <div class="cell"></div><div class="cell can">●</div><div class="cell"></div>
+          <div class="cell"></div><div class="cell me">香</div><div class="cell"></div>
+        </div>
+        <span class="koma-move">前にのみ何マスでも</span>
+      </div>
+
+      <div class="koma-item">
+        <span class="koma-char">歩</span>
+        <span class="koma-name">歩兵</span>
+        <div class="move-diagram">
+          <div class="cell"></div><div class="cell can">●</div><div class="cell"></div>
+          <div class="cell"></div><div class="cell me">歩</div><div class="cell"></div>
+          <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        </div>
+        <span class="koma-move">前に1マスのみ</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 詰将棋とは -->
+  <div class="card">
+    <div class="card-title">💡 詰将棋とは？</div>
+    <div class="rule-item">
+      <div class="rule-num">▶</div>
+      <div class="rule-text">「<strong>先手（あなた）が次の1手で王将を詰ます</strong>」問題。正解の手を1手選べばOK。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">▶</div>
+      <div class="rule-text">詰みの条件：<strong>王将が移動できる全マスに、あなたの駒が利いている</strong>（攻撃が届いている）状態。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">▶</div>
+      <div class="rule-text">まず「王将の逃げ場はどこか」を考え、次に「その逃げ場を全部ふさげる手はあるか」を探すのがコツ。</div>
+    </div>
+  </div>
+
+  <!-- 問題セクション -->
+  <div class="section-label">1手詰め問題</div>
+
+  <div class="card">
+    <div class="problem-nav" id="problemNav"></div>
+    <div class="legend">
+      <span><div class="legend-sente"></div>先手（あなた）の駒</span>
+      <span><div class="legend-gote"></div>後手（相手）の駒</span>
+    </div>
+    <div id="problemArea"></div>
+  </div>
+
+</div>
+
+<script>
+// ===== 問題データ =====
+// board: 5×5の配列 [行0=上, 行4=下] [列0=左, 列4=右]
+// piece: {name, side:'sente'|'gote'}
+// turn: 'sente'
+// answer: {from:[row,col], to:[row,col], piece:'name', why:'解説'}
+// または持ち駒を打つ場合: {drop: true, to:[row,col], piece:'name', why:'解説'}
+
+const PROBLEMS = [
+  {
+    title: '問題1：金将で詰め',
+    desc: '後手の王将（上側の暗い駒）を1手で詰ませてください。どこに金将を動かすと詰みになる？',
+    hint: '王将の逃げ道を確認してから、金将の利きを考えよう',
+    board: [
+      [null, null, null, null, null],
+      [null, null, {name:'王',side:'gote'}, null, null],
+      [null, null, null, null, null],
+      [null, null, {name:'金',side:'sente'}, null, null],
+      [null, null, null, null, null],
+    ],
+    answer: { from:[3,2], to:[2,2],
+      text: '金将を1つ前進（3行→2行）',
+      why: '金将は前・横・斜め前に動ける。2行2列に進むと、王将のいる1行2列に利きが届く。王将は左右に逃げようとしても、金将の利きが横にも届くので詰み。' }
+  },
+  {
+    title: '問題2：飛車で詰め',
+    desc: '飛車を使って1手で詰ませよう。飛車は縦横どこまでも動ける。',
+    hint: '王将の上下左右の逃げ場をふさぐには？',
+    board: [
+      [null, {name:'王',side:'gote'}, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, {name:'飛',side:'sente'}, null, null, null],
+      [{name:'金',side:'sente'}, null, null, null, null],
+    ],
+    answer: { from:[3,1], to:[0,1],
+      text: '飛車を縦に一直線（3行→0行）',
+      why: '飛車を0行1列に移動すると、王将のいる0行1列を直接狙う——いや、取ってしまう！相手の駒を取って詰み。これを「飛車で王手＋取り」という。王将は0行0列に逃げようとするが、4行0列の金将の利きが届いているので逃げられない。' }
+  },
+  {
+    title: '問題3：角行で詰め',
+    desc: '角行は斜めに何マスでも動ける。1手詰めを探そう。',
+    hint: '斜め方向のラインをたどってみよう',
+    board: [
+      [null, null, {name:'王',side:'gote'}, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, {name:'角',side:'sente'}],
+      [null, {name:'金',side:'sente'}, null, null, null],
+    ],
+    answer: { from:[3,4], to:[0,1],
+      text: '角行を左上斜め（3行4列→0行1列）',
+      why: '角行は斜め直線で動く。3行4列から左上に3マス進むと0行1列。そこから王将（0行2列）に斜めの利きが届く——いや、実は0行1列に着地した時点で王将の隣に角が来る。さらに王将の逃げ場（1行1列、1行2列、1行3列）に金将の利きも届いているので詰み。' }
+  },
+  {
+    title: '問題4：銀将で詰め',
+    desc: '銀将（斜め全方向＋真正面）を活かして詰ませよう。',
+    hint: '銀将が1手で王将を直接取りに行けるマスはどこ？',
+    board: [
+      [{name:'王',side:'gote'}, null, null, null, null],
+      [null, null, null, null, null],
+      [null, {name:'銀',side:'sente'}, null, null, null],
+      [null, null, null, null, null],
+      [null, null, {name:'飛',side:'sente'}, null, null],
+    ],
+    answer: { from:[2,1], to:[1,0],
+      text: '銀将を左斜め前（2行1列→1行0列）',
+      why: '銀将は斜め全方向と真前に1マス動ける。1行0列に移動すると0行0列の王将に斜め前の利きが届く。王将の逃げ場：0行1列は銀将の利き・1行0列は銀将自身、さらに4行2列の飛車が2列目の縦ラインを抑えているので詰み。' }
+  },
+  {
+    title: '問題5：持ち駒を打つ',
+    desc: '持ち駒の金将を盤上に置いて（打って）1手詰め。駒は空きマスにしか打てない。',
+    hint: '王将の周囲の空きマスに金将を打ったとき、逃げ場がゼロになるマスはどこ？',
+    board: [
+      [null, null, null, null, null],
+      [null, null, {name:'王',side:'gote'}, null, null],
+      [null, {name:'飛',side:'sente'}, null, {name:'飛',side:'sente'}, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+    ],
+    hand: ['金'],
+    answer: { drop: true, to:[0,2], piece:'金',
+      text: '持ち駒の金将を0行2列に打つ',
+      why: '0行2列（王将の真上）に金将を打つと、王将への直接攻撃（王手）。王将は逃げようとするが——左（1行1列）は2行1列の左飛車の利き、右（1行3列）は2行3列の右飛車の利き、上（0行1列・0行3列）は金将の斜め前の利きが届く。全方向ふさがれて詰み。' }
+  }
+];
+
+// ===== 状態 =====
+let currentProblem = 0;
+let answerShown = false;
+
+// ===== 描画 =====
+function renderNav() {
+  const nav = document.getElementById('problemNav');
+  nav.innerHTML = PROBLEMS.map((p, i) =>
+    `<button class="nav-btn ${i===currentProblem?'active':''}" onclick="loadProblem(${i})">問${i+1}</button>`
+  ).join('');
+}
+
+function renderBoard(board, highlight) {
+  const rows = board.length;
+  const cols = board[0].length;
+  let html = `<div class="board board-5">`;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cell = board[r][c];
+      let cls = 'cell';
+      if (highlight) {
+        if (highlight.from && highlight.from[0]===r && highlight.from[1]===c) cls += ' highlight-target';
+        if (highlight.to && highlight.to[0]===r && highlight.to[1]===c) cls += ' highlight-move';
+      }
+      let inner = '';
+      if (cell) {
+        inner = `<div class="piece ${cell.side}">${cell.name}</div>`;
+      }
+      html += `<div class="${cls}">${inner}</div>`;
+    }
+  }
+  html += '</div>';
+  return html;
+}
+
+function loadProblem(idx) {
+  currentProblem = idx;
+  answerShown = false;
+  const p = PROBLEMS[idx];
+  const area = document.getElementById('problemArea');
+
+  let handHtml = '';
+  if (p.hand && p.hand.length > 0) {
+    handHtml = `<div style="text-align:center;margin-bottom:8px;font-size:12px;color:var(--muted);">
+      持ち駒（先手）：${p.hand.map(k=>`<span style="background:var(--board);color:#1a0a00;border-radius:4px;padding:2px 8px;font-weight:900;margin:0 3px;">${k}</span>`).join('')}
+    </div>`;
+  }
+
+  area.innerHTML = `
+    <div class="problem-info">
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <p class="problem-hint">💡 ヒント：${p.hint}</p>
+    </div>
+    ${handHtml}
+    <div class="board-wrap">
+      <div style="font-size:11px;color:var(--muted);">後手（相手）</div>
+      <div id="boardArea">${renderBoard(p.board, null)}</div>
+      <div style="font-size:11px;color:var(--muted);">先手（あなた）</div>
+    </div>
+    <button class="answer-btn" id="answerBtn" onclick="showAnswer()">答えを見る</button>
+    <div class="answer-box" id="answerBox">
+      <div class="answer-title">✅ 正解の1手</div>
+      <div class="answer-text" id="answerText"></div>
+      <div class="answer-why" id="answerWhy"></div>
+    </div>
+  `;
+  renderNav();
+}
+
+function showAnswer() {
+  const p = PROBLEMS[currentProblem];
+  const box = document.getElementById('answerBox');
+  const btn = document.getElementById('answerBtn');
+  const highlight = p.answer.drop ? { to: p.answer.to } : { from: p.answer.from, to: p.answer.to };
+
+  document.getElementById('boardArea').innerHTML = renderBoard(p.board, highlight);
+  document.getElementById('answerText').textContent = p.answer.text;
+  document.getElementById('answerWhy').textContent = p.answer.why;
+  box.classList.add('show');
+  btn.style.display = 'none';
+  answerShown = true;
+}
+
+// 初期表示
+renderNav();
+loadProblem(0);
+</script>
+</body>
+</html>

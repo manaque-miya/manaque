@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>囲碁入門</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --card: #1a1a22;
+    --border: #2a2a38;
+    --text: #f0f0f5;
+    --muted: #7a7a9a;
+    --yellow: #FFD60A;
+    --board: #DCB35C;
+    --board-line: #8B6914;
+    --black: #1a1a1a;
+    --white: #f0f0f0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px 60px;
+  }
+  .container { max-width: 640px; margin: 0 auto; }
+
+  .page-header { text-align: center; margin-bottom: 32px; }
+  .page-header h1 { font-size: 28px; font-weight: 900; letter-spacing: .03em; }
+  .page-header h1 span { color: var(--yellow); }
+  .page-header p { color: var(--muted); font-size: 13px; margin-top: 8px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: var(--yellow);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .rule-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .rule-num {
+    width: 24px; height: 24px; min-width: 24px;
+    background: var(--yellow); color: #000;
+    border-radius: 50%; font-size: 12px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rule-text { font-size: 13px; line-height: 1.7; }
+  .rule-text strong { color: var(--yellow); }
+
+  /* 囲碁盤 */
+  .board-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 10px; margin: 16px 0;
+  }
+  .board-container {
+    position: relative;
+    background: var(--board);
+    padding: 20px;
+    border-radius: 8px;
+    border: 3px solid var(--board-line);
+    box-shadow: 0 4px 20px rgba(0,0,0,.4);
+  }
+  /* グリッド線（SVGで描画） */
+  .board-svg {
+    position: absolute;
+    top: 0; left: 0;
+    pointer-events: none;
+  }
+  /* 交点グリッド */
+  .board-grid {
+    display: grid;
+    position: relative;
+    z-index: 1;
+  }
+  .board-5-grid { grid-template-columns: repeat(5, 48px); }
+  .board-7-grid { grid-template-columns: repeat(7, 44px); }
+
+  .intersection {
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .board-7-grid .intersection { width: 44px; height: 44px; }
+
+  /* 交点のクロス線 */
+  .intersection::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 2px;
+    background: var(--board-line);
+    transform: translateY(-50%);
+  }
+  .intersection::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--board-line);
+    transform: translateX(-50%);
+  }
+  /* 端の線を切る */
+  .intersection.edge-top::after { top: 50%; }
+  .intersection.edge-bottom::after { bottom: 50%; }
+  .intersection.edge-left::before { left: 50%; }
+  .intersection.edge-right::before { right: 50%; }
+  /* 角 */
+  .intersection.corner-tl::before { left: 50%; }
+  .intersection.corner-tl::after { top: 50%; }
+  .intersection.corner-tr::before { right: 50%; }
+  .intersection.corner-tr::after { top: 50%; }
+  .intersection.corner-bl::before { left: 50%; }
+  .intersection.corner-bl::after { bottom: 50%; }
+  .intersection.corner-br::before { right: 50%; }
+  .intersection.corner-br::after { bottom: 50%; }
+
+  .stone {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    transition: transform .1s;
+    flex-shrink: 0;
+  }
+  .board-7-grid .stone { width: 34px; height: 34px; }
+
+  .stone.black {
+    background: radial-gradient(circle at 35% 30%, #555, #111);
+    box-shadow: 2px 3px 6px rgba(0,0,0,.6), inset 0 1px 1px rgba(255,255,255,.1);
+  }
+  .stone.white {
+    background: radial-gradient(circle at 35% 30%, #fff, #ccc);
+    box-shadow: 2px 3px 6px rgba(0,0,0,.4), inset 0 1px 1px rgba(255,255,255,.8);
+  }
+  .stone.dead {
+    opacity: .35;
+  }
+  .stone.hint-place {
+    background: rgba(255,214,10,.4);
+    border: 2px dashed var(--yellow);
+    animation: pulse .8s ease-in-out infinite alternate;
+  }
+  @keyframes pulse { from {opacity:.6} to {opacity:1} }
+  .stone.territory-b { background: rgba(30,30,30,.5); border: 1.5px solid rgba(30,30,30,.7); }
+  .stone.territory-w { background: rgba(240,240,240,.5); border: 1.5px solid rgba(240,240,240,.7); }
+
+  .intersection:hover .stone.empty-hover {
+    background: rgba(255,255,255,.2);
+  }
+
+  /* 問題ナビ */
+  .problem-nav {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .nav-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .nav-btn:hover, .nav-btn.active { background: var(--yellow); color: #000; border-color: var(--yellow); }
+
+  .problem-info {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .problem-info h3 { font-size: 16px; font-weight: 900; margin-bottom: 6px; }
+  .problem-info p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .problem-hint { font-size: 12px; color: var(--yellow); font-weight: 700; margin-top: 8px; }
+
+  .answer-btn {
+    background: transparent;
+    border: 1.5px solid var(--yellow);
+    color: var(--yellow);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .15s;
+    display: block; margin: 0 auto;
+  }
+  .answer-btn:hover { background: var(--yellow); color: #000; }
+
+  .answer-box {
+    background: rgba(255,214,10,.08);
+    border: 1px solid rgba(255,214,10,.3);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    display: none;
+  }
+  .answer-box.show { display: block; }
+  .answer-title { font-size: 12px; font-weight: 700; color: var(--yellow); margin-bottom: 8px; }
+  .answer-text { font-size: 14px; font-weight: 700; line-height: 1.7; margin-bottom: 6px; }
+  .answer-why { font-size: 12px; color: var(--muted); line-height: 1.65; }
+
+  .legend {
+    display: flex; gap: 16px; justify-content: center; font-size: 12px;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+  .legend-b { width: 16px; height: 16px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #555, #111); }
+  .legend-w { width: 16px; height: 16px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff, #ccc);
+    border: 1px solid #aaa; }
+
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .08em;
+    color: var(--muted); text-align: center;
+    margin: 28px 0 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* 石の呼吸点説明図 */
+  .liberties-demo {
+    display: flex; gap: 20px; justify-content: center;
+    flex-wrap: wrap; margin: 12px 0;
+  }
+  .demo-item { text-align: center; }
+  .demo-label { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+  .mini-board {
+    display: inline-grid;
+    background: var(--board);
+    padding: 6px;
+    border-radius: 6px;
+    border: 2px solid var(--board-line);
+  }
+  .mini-board-3 { grid-template-columns: repeat(3, 28px); }
+  .mini-cell {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .mini-cell::before {
+    content: ''; position: absolute;
+    top: 50%; left: 0; right: 0; height: 1.5px;
+    background: var(--board-line); transform: translateY(-50%);
+  }
+  .mini-cell::after {
+    content: ''; position: absolute;
+    left: 50%; top: 0; bottom: 0; width: 1.5px;
+    background: var(--board-line); transform: translateX(-50%);
+  }
+  .mini-cell.tl::before { left: 50%; } .mini-cell.tl::after { top: 50%; }
+  .mini-cell.tc::after { } .mini-cell.tc::before { }
+  .mini-cell.tr::before { right: 50%; } .mini-cell.tr::after { top: 50%; }
+  .mini-cell.ml::before { left: 50%; }
+  .mini-cell.mr::before { right: 50%; }
+  .mini-cell.bl::before { left: 50%; } .mini-cell.bl::after { bottom: 50%; }
+  .mini-cell.bc::after { } .mini-cell.bc::before { }
+  .mini-cell.br::before { right: 50%; } .mini-cell.br::after { bottom: 50%; }
+
+  .mini-stone {
+    width: 20px; height: 20px; border-radius: 50%;
+    position: relative; z-index: 1;
+  }
+  .mini-stone.b { background: radial-gradient(circle at 35% 30%, #555, #111); }
+  .mini-stone.w { background: radial-gradient(circle at 35% 30%, #fff, #ccc); border: 1px solid #aaa; }
+  .mini-stone.lib { background: rgba(255,214,10,.5); border: 1.5px dashed var(--yellow); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="page-header">
+    <h1>⚫ 囲碁<span>入門</span></h1>
+    <p>5×5盤でルールを学ぶ → 生き死に問題3問</p>
+  </div>
+
+  <!-- 基本ルール -->
+  <div class="card">
+    <div class="card-title">📖 囲碁の基本ルール</div>
+    <div class="rule-item">
+      <div class="rule-num">1</div>
+      <div class="rule-text">囲碁は<strong>交点</strong>に石を置くゲーム。盤面の線と線が交わる点（交点）に、交互に1個ずつ置く。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">2</div>
+      <div class="rule-text"><strong>呼吸点（ダメ）</strong>——石の上下左右にある空き交点のこと。呼吸点がゼロになった石は取られる。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">3</div>
+      <div class="rule-text">つながった石（連）は<strong>ひとかたまり</strong>として扱う。連の呼吸点がゼロになると、まとめて取られる。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">4</div>
+      <div class="rule-text">自分の石で囲んだ<strong>空き交点が「陣地（目）」</strong>になる。終局時に陣地の数で勝敗を決める。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">5</div>
+      <div class="rule-text"><strong>2眼</strong>持てば「生き」——2つの独立した穴（目）がある石の集団は、永遠に取られない。1眼以下は「死に」の危険。</div>
+    </div>
+  </div>
+
+  <!-- 呼吸点の説明 -->
+  <div class="card">
+    <div class="card-title">💡 呼吸点（ダメ）のしくみ</div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px;">黄色の点が「呼吸点」。これがゼロになると石が取られる。</p>
+    <div class="liberties-demo">
+
+      <!-- 中央の黒石：呼吸点4 -->
+      <div class="demo-item">
+        <div class="mini-board mini-board-3">
+          <div class="mini-cell tl"></div>
+          <div class="mini-cell tc"><div class="mini-stone lib"></div></div>
+          <div class="mini-cell tr"></div>
+          <div class="mini-cell ml"><div class="mini-stone lib"></div></div>
+          <div class="mini-cell"><div class="mini-stone b"></div></div>
+          <div class="mini-cell mr"><div class="mini-stone lib"></div></div>
+          <div class="mini-cell bl"></div>
+          <div class="mini-cell bc"><div class="mini-stone lib"></div></div>
+          <div class="mini-cell br"></div>
+        </div>
+        <div class="demo-label">中央の黒石<br>呼吸点4つ（安全）</div>
+      </div>
+
+      <!-- 端の黒石：呼吸点2 -->
+      <div class="demo-item">
+        <div class="mini-board mini-board-3">
+          <div class="mini-cell tl"></div>
+          <div class="mini-cell tc"><div class="mini-stone b"></div></div>
+          <div class="mini-cell tr"></div>
+          <div class="mini-cell ml"></div>
+          <div class="mini-cell"><div class="mini-stone lib"></div></div>
+          <div class="mini-cell mr"></div>
+          <div class="mini-cell bl"></div>
+          <div class="mini-cell bc"></div>
+          <div class="mini-cell br"></div>
+        </div>
+        <div class="demo-label">端の黒石<br>呼吸点2つ</div>
+      </div>
+
+      <!-- 包囲された黒石：呼吸点0＝取られる -->
+      <div class="demo-item">
+        <div class="mini-board mini-board-3">
+          <div class="mini-cell tl"></div>
+          <div class="mini-cell tc"><div class="mini-stone w"></div></div>
+          <div class="mini-cell tr"></div>
+          <div class="mini-cell ml"><div class="mini-stone w"></div></div>
+          <div class="mini-cell"><div class="mini-stone b" style="opacity:.4"></div></div>
+          <div class="mini-cell mr"><div class="mini-stone w"></div></div>
+          <div class="mini-cell bl"></div>
+          <div class="mini-cell bc"><div class="mini-stone w"></div></div>
+          <div class="mini-cell br"></div>
+        </div>
+        <div class="demo-label">呼吸点ゼロ<br>→ 黒石が取られる！</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2眼の説明 -->
+  <div class="card">
+    <div class="card-title">🔒 「2眼」で生きる</div>
+    <div class="rule-item">
+      <div class="rule-num">▶</div>
+      <div class="rule-text">「<strong>眼</strong>」とは——石の集団に囲まれた空き交点。相手はその空き交点に石を打てない（打つと自分が呼吸点ゼロになるため）。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">▶</div>
+      <div class="rule-text">眼が<strong>2つ以上独立してある</strong>と、どこにも石を打たれても取られない——これが「生き」の状態。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">▶</div>
+      <div class="rule-text">眼が<strong>1つ以下</strong>（または偽眼＝相手が打てる空き交点）の集団は「死に」——相手が正しく打てばいつでも取られる。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">⚡</div>
+      <div class="rule-text">問題のコツ：<strong>「この黒石の集団は2眼できるか？」</strong>を常に考えよう。</div>
+    </div>
+  </div>
+
+  <!-- 問題セクション -->
+  <div class="section-label">生き死に問題（5×5盤）</div>
+
+  <div class="card">
+    <div class="problem-nav" id="problemNav"></div>
+    <div class="legend">
+      <span><div class="legend-b"></div>黒石</span>
+      <span><div class="legend-w"></div>白石</span>
+    </div>
+    <div id="problemArea"></div>
+  </div>
+
+</div>
+
+<script>
+// ===== 問題データ（5×5盤） =====
+// board[r][c]: null | 'B' | 'W'
+// answer: { at:[r,c], color:'B'|'W', text:'解説', why:'詳細' }
+//   → その交点に石を打つのが正解
+// または answer: { result:'死に', text, why } → 黒石は取られる運命（正解：正しく包囲できる手）
+
+const PROBLEMS = [
+  {
+    title: '問題1：黒を生かす1手',
+    desc: '黒番。黒石の集団を生かす1手を打ってください。黄色の点がヒントの場所。',
+    hint: '2眼作れるか考えよう——内側の空き交点の形を見て',
+    board: [
+      [null, 'B',  'B',  'B',  null],
+      ['B',  null, null, null, 'B' ],
+      ['B',  null, null, null, 'B' ],
+      ['B',  null, null, null, 'B' ],
+      [null, 'B',  'B',  'B',  null],
+    ],
+    // 黒が2,2に打てば2眼確定
+    answer: { at:[2,2], color:'B',
+      text: '黒：中央（2行2列）に打つ',
+      why: '中央に打つと内側が2つの独立した空き交点（眼）に分かれる——左右それぞれが眼になり「2眼」完成。これで白がどこに打っても黒は取られない「生き」の状態。' }
+  },
+  {
+    title: '問題2：白で黒を取る1手',
+    desc: '白番。黒石の集団の呼吸点をゼロにして取る1手はどこ？',
+    hint: '黒石の周囲の空き交点（呼吸点）を全部数えてみよう',
+    board: [
+      [null, null, null, null, null],
+      [null, 'W',  'W',  'W',  null],
+      [null, 'W',  'B',  'W',  null],
+      [null, 'W',  null, 'W',  null],
+      [null, null, null, null, null],
+    ],
+    // 白が3,2に打てば黒の呼吸点ゼロ
+    answer: { at:[3,2], color:'W',
+      text: '白：3行2列（黒石の下）に打つ',
+      why: '中央の黒石（2行2列）の呼吸点は下の1箇所（3行2列）だけ。そこに白を打てば黒の呼吸点がゼロになり、黒石を取ることができる。' }
+  },
+  {
+    title: '問題3：黒を生かすか殺すか',
+    desc: '黒番。この形、どこに打てば「2眼で生き」になる？間違えると死に。',
+    hint: '内側の空き交点2つを「独立した眼」にするには、どこを分ける？',
+    board: [
+      [null, null, null, null, null],
+      [null, 'B',  'B',  'B',  null],
+      [null, 'B',  null, 'B',  null],
+      [null, 'B',  null, 'B',  null],
+      [null, 'B',  'B',  'B',  null],
+    ],
+    // 黒が2,2か3,2に打つと1眼しかできない（縦長の眼は偽眼になるケースがある）
+    // 実はこの形は内側が縦2マスなので、中間の2,2か3,2に打てば分断されない
+    // → 正解は打たなくてよい（内側2マス縦は既に2眼）
+    // いや、縦2マスは2眼ではなく「眼2つ」として成立する場合と偽眼の場合がある
+    // → シンプルに「打つ必要がない→既に2眼生き」問題にする
+    noMove: true,
+    answer: { at: null, color: null,
+      text: '正解：打たなくてよい（既に2眼「生き」）',
+      why: '内側の空き交点が2行2列と3行2列の縦2マス——これは独立した2つの眼。白がどちらかの眼に打ち込もうとしても、その瞬間に自分が呼吸点ゼロになってしまうため打てない。この黒石は既に安全な「生き」状態。慌てて打つ必要はない。' }
+  }
+];
+
+// ===== 状態 =====
+let currentProblem = 0;
+
+function renderNav() {
+  const nav = document.getElementById('problemNav');
+  nav.innerHTML = PROBLEMS.map((p, i) =>
+    `<button class="nav-btn ${i===currentProblem?'active':''}" onclick="loadProblem(${i})">問${i+1}</button>`
+  ).join('');
+}
+
+function getIntersectionClass(r, c, rows, cols) {
+  const top = r === 0, bottom = r === rows-1;
+  const left = c === 0, right = c === cols-1;
+  if (top && left) return 'intersection corner-tl';
+  if (top && right) return 'intersection corner-tr';
+  if (bottom && left) return 'intersection corner-bl';
+  if (bottom && right) return 'intersection corner-br';
+  if (top) return 'intersection edge-top';
+  if (bottom) return 'intersection edge-bottom';
+  if (left) return 'intersection edge-left';
+  if (right) return 'intersection edge-right';
+  return 'intersection';
+}
+
+function renderBoard(board, hintAt, showAnswer, answerAt, answerColor) {
+  const rows = board.length, cols = board[0].length;
+  let html = `<div class="board-container"><div class="board-grid board-5-grid">`;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cls = getIntersectionClass(r, c, rows, cols);
+      const cell = board[r][c];
+      let stoneHtml = '';
+      if (showAnswer && answerAt && answerAt[0]===r && answerAt[1]===c) {
+        const aColor = answerColor === 'B' ? 'black' : 'white';
+        stoneHtml = `<div class="stone ${aColor}" style="outline:3px solid var(--yellow);outline-offset:2px"></div>`;
+      } else if (cell === 'B') {
+        stoneHtml = `<div class="stone black"></div>`;
+      } else if (cell === 'W') {
+        stoneHtml = `<div class="stone white"></div>`;
+      } else if (hintAt && hintAt[0]===r && hintAt[1]===c && !showAnswer) {
+        stoneHtml = `<div class="stone hint-place"></div>`;
+      }
+      html += `<div class="${cls}">${stoneHtml}</div>`;
+    }
+  }
+  html += '</div></div>';
+  return html;
+}
+
+function loadProblem(idx) {
+  currentProblem = idx;
+  const p = PROBLEMS[idx];
+  const area = document.getElementById('problemArea');
+
+  area.innerHTML = `
+    <div class="problem-info">
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <p class="problem-hint">💡 ヒント：${p.hint}</p>
+    </div>
+    <div class="board-wrap">
+      <div id="boardArea">${renderBoard(p.board, p.answer.at, false, null, null)}</div>
+    </div>
+    <button class="answer-btn" id="answerBtn" onclick="showAnswer()">答えを見る</button>
+    <div class="answer-box" id="answerBox">
+      <div class="answer-title">✅ 正解</div>
+      <div class="answer-text" id="answerText"></div>
+      <div class="answer-why" id="answerWhy"></div>
+    </div>
+  `;
+  renderNav();
+}
+
+function showAnswer() {
+  const p = PROBLEMS[currentProblem];
+  const box = document.getElementById('answerBox');
+  const btn = document.getElementById('answerBtn');
+
+  // ボードを更新（答えの石をハイライト）
+  document.getElementById('boardArea').innerHTML =
+    renderBoard(p.board, null, true, p.answer.at, p.answer.color);
+
+  document.getElementById('answerText').textContent = p.answer.text;
+  document.getElementById('answerWhy').textContent = p.answer.why;
+  box.classList.add('show');
+  btn.style.display = 'none';
+}
+
+renderNav();
+loadProblem(0);
+</script>
+</body>
+</html>

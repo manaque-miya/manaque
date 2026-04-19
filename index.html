@@ -1116,11 +1116,15 @@ function renderUnits(gi, si) {
     const isMapTap   = unit.quizId === 'map-tap';
     const isCapitals = unit.quizId === 'map-capitals';
     const isNanpure  = unit.quizId === 'nanpure';
+    const isIgo      = unit.quizId === 'igo';
+    const isShogi    = unit.quizId === 'shogi';
     // 専用ページへのルーティング
     const base = isMap      ? `map-quiz-new.html?autostart=1`
                : isMapTap   ? `map-tap-quiz.html?autostart=1`
                : isCapitals ? `map-capitals.html?autostart=1`
                : isNanpure  ? `nanpure.html`
+               : isIgo      ? `igo.html`
+               : isShogi    ? `shogi.html`
                : `quiz.html?id=${unit.quizId}&amp;autostart=1`;
     // デフォルト10問。問題数がそれ未満なら全問がデフォルト
     const defaultCount = (unit.count && unit.count >= 10) ? 10 : unit.count;
@@ -1148,6 +1152,23 @@ function renderUnits(gi, si) {
         <div class="unit-card__meta">
           <span>🔢 かんたん〜むずかしい</span>
           <span>⏱ 自由</span>
+          <span class="unit-card__difficulty">${stars}</span>
+        </div>
+        <div class="count-btns">${btnAll}</div>
+      </div>`;
+    }
+    // 囲碁・将棋は専用ページへ直接リンク
+    if(isIgo || isShogi) {
+      const page = isIgo ? 'igo.html' : 'shogi.html';
+      const meta = isIgo ? '⚫ ルール解説＋問題3問' : '♟ ルール解説＋問題5問';
+      const btnAll = `<a href="${page}" class="count-btn count-btn--default">はじめる</a>`;
+      return `
+      <div class="unit-card">
+        <div class="unit-card__tags">${tagHtml}</div>
+        <div class="unit-card__title">${unit.label}</div>
+        <div class="unit-card__meta">
+          <span>${meta}</span>
+          <span>⏱ ${unit.time}</span>
           <span class="unit-card__difficulty">${stars}</span>
         </div>
         <div class="count-btns">${btnAll}</div>
