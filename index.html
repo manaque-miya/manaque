@@ -163,14 +163,18 @@
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
       align-items: end;
+      justify-items: center;
       pointer-events: none;
+      padding-top: 8px;
     }
     .hero__charas img {
-      width: 100%; height: auto;
-      object-fit: contain;
-      object-position: bottom center;
+      max-width: 100%; object-fit: contain;
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
+    /* 上段：背が高いキャラは高さを抑える */
+    .hero__charas img:nth-child(-n+3) { height: clamp(100px, 10vw, 150px); }
+    /* 下段：小さいキャラは少し大きめ */
+    .hero__charas img:nth-child(n+4)  { height: clamp(90px, 9vw, 130px); }
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
