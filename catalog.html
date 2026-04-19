@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>まなクエ！｜カード図鑑</title>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <script src="data/cards.js"></script>
+  <script src="data/gacha.js"></script>
+  <style>
+    :root {
+      --brand-500:#2E6DE5; --brand-600:#1F56C6; --brand-700:#1A449E;
+      --ink-900:#0F1830; --ink-700:#2B3858; --ink-500:#5B6785; --ink-400:#8693AE;
+      --ink-100:#ECEFF5; --white:#FFFFFF; --border:#E4E9F2; --surface:#EAF2FE;
+      --accent-yellow:#F6C744; --accent-yellow-dark:#D4A60E;
+      --r-lg:20px; --r-xl:28px; --r-pill:999px;
+      --shadow-sm:0 2px 6px rgba(30,50,110,.06),0 1px 2px rgba(30,50,110,.04);
+      --shadow-md:0 8px 20px rgba(30,50,110,.08),0 2px 4px rgba(30,50,110,.04);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:"M PLUS Rounded 1c",-apple-system,system-ui,sans-serif;background:var(--surface);color:var(--ink-700);min-height:100vh;}
+
+    /* HEADER */
+    .header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+    .header__inner{max-width:900px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+    .logo__icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;box-shadow:0 2px 6px rgba(30,50,110,.2);}
+    .logo__text{font-size:20px;font-weight:900;color:var(--ink-900);}
+    .logo__text span{color:var(--brand-600);}
+    .back-btn{font-size:13px;font-weight:700;color:var(--brand-600);text-decoration:none;}
+
+    /* MAIN */
+    .main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+
+    /* POINTS HERO */
+    .pts-hero{background:linear-gradient(135deg,#1a0f45 0%,#2E6DE5 100%);border-radius:var(--r-xl);padding:32px 28px;margin-bottom:28px;position:relative;overflow:hidden;}
+    .pts-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.12) 1px,transparent 1px);background-size:22px 22px;}
+    .pts-hero__inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+    .pts-hero__left{}
+    .pts-hero__rank-emoji{font-size:40px;margin-bottom:6px;}
+    .pts-hero__rank-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:2px;}
+    .pts-hero__rank-name{font-size:22px;font-weight:900;color:var(--accent-yellow);}
+    .pts-hero__right{text-align:right;}
+    .pts-hero__pts-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:4px;}
+    .pts-hero__pts{font-size:52px;font-weight:900;color:#fff;line-height:1;}
+    .pts-hero__pts-unit{font-size:18px;color:rgba(255,255,255,.6);}
+
+    /* PROGRESS TO NEXT RANK */
+    .pts-next{margin-top:16px;position:relative;z-index:1;}
+    .pts-next__label{font-size:11px;color:rgba(255,255,255,.45);margin-bottom:6px;}
+    .pts-next__bar-wrap{background:rgba(255,255,255,.15);border-radius:var(--r-pill);height:8px;overflow:hidden;}
+    .pts-next__bar{height:100%;background:var(--accent-yellow);border-radius:var(--r-pill);transition:width .6s ease;}
+
+    /* COLLECTION SUMMARY */
+    .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
+    .summary-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:16px;text-align:center;box-shadow:var(--shadow-sm);}
+    .summary-card__count{font-size:32px;font-weight:900;margin-bottom:4px;}
+    .summary-card__label{font-size:12px;color:var(--ink-500);font-weight:700;}
+    .summary-card--sr .summary-card__count{color:#d97706;}
+    .summary-card--r  .summary-card__count{color:#7c3aed;}
+    .summary-card--n  .summary-card__count{color:var(--ink-500);}
+
+    /* CARD SECTION */
+    .section-title{font-size:15px;font-weight:800;color:var(--ink-700);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .card-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px;}
+
+    /* CARD MINI */
+    .card-mini{aspect-ratio:5/7;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s;display:flex;flex-direction:column;}
+    .card-mini:hover{transform:translateY(-3px) scale(1.03);}
+    .card-mini.locked{background:#1e1b3a;border:2px solid #3a3560;opacity:.55;}
+    .card-mini.sr{box-shadow:0 0 12px rgba(255,215,0,.35);}
+    .card-mini.r {box-shadow:0 0 8px rgba(167,139,250,.3);}
+
+    .mini-art{flex:1;display:flex;align-items:center;justify-content:center;font-size:28px;}
+    .mini-art.n {background:linear-gradient(160deg,#dbeafe,#93c5fd);}
+    .mini-art.r {background:linear-gradient(160deg,#1e0040,#7c3aed);}
+    .mini-art.sr{background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24,#d97706,#92400e);background-size:300% 300%;animation:shimmer 3s ease infinite;}
+    .mini-art.locked{background:#1e1b3a;}
+    .mini-art.locked span{filter:grayscale(1);opacity:.15;}
+
+    .mini-info{padding:5px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:2px;}
+    .mini-info.n {background:linear-gradient(180deg,#f0f0f0,#d8d8d8);}
+    .mini-info.r {background:linear-gradient(180deg,#3b0764,#4c1d95);}
+    .mini-info.sr{background:linear-gradient(180deg,#7c2d00,#5c1f00);}
+    .mini-info.locked{background:#1a1740;}
+    .mini-rarity{font-size:8px;font-weight:900;letter-spacing:.1em;padding:2px 7px;border-radius:20px;}
+    .mini-rarity.n {background:rgba(0,0,0,.1);color:#555;}
+    .mini-rarity.r {background:rgba(255,255,255,.18);color:#e9d5ff;}
+    .mini-rarity.sr{background:rgba(0,0,0,.25);color:#fef3c7;}
+    .mini-rarity.locked{background:rgba(255,255,255,.05);color:rgba(255,255,255,.15);}
+    .mini-name{font-size:8px;font-weight:700;text-align:center;line-height:1.2;}
+    .mini-name.n {color:#1a1a1a;} .mini-name.r{color:#fff;} .mini-name.sr{color:#fef3c7;}
+    .mini-name.locked{color:rgba(255,255,255,.08);}
+
+    /* PTS BADGE on card */
+    .mini-new{position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:8px;font-weight:900;padding:2px 6px;border-radius:20px;}
+
+    @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+    /* EMPTY STATE */
+    .empty-state{text-align:center;padding:48px 16px;color:var(--ink-400);}
+    .empty-state__icon{font-size:48px;margin-bottom:12px;}
+    .empty-state__msg{font-size:15px;font-weight:700;}
+    .empty-state__sub{font-size:13px;margin-top:8px;}
+
+    /* CTA */
+    .cta{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:24px;text-align:center;box-shadow:var(--shadow-sm);}
+    .cta__title{font-size:16px;font-weight:800;color:var(--ink-900);margin-bottom:8px;}
+    .cta__sub{font-size:13px;color:var(--ink-500);margin-bottom:16px;}
+    .cta__btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--brand-500);color:#fff;border-radius:var(--r-pill);font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 4px 0 var(--brand-700);}
+
+    @media(max-width:600px){
+      .card-grid{grid-template-columns:repeat(4,1fr);}
+      .summary{grid-template-columns:repeat(3,1fr);}
+      .pts-hero__inner{flex-direction:column;text-align:center;}
+      .pts-hero__right{text-align:center;}
+    }
+    @media(max-width:400px){
+      .card-grid{grid-template-columns:repeat(3,1fr);}
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="logo">
+      <span class="logo__icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M6 4h9l5 5v11a1 1 0 01-1 1H6a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M14 4v5h5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+          <circle cx="12" cy="15" r="1.5" fill="#F6C744"/>
+        </svg>
+      </span>
+      <span class="logo__text">まな<span>クエ！</span></span>
+    </a>
+    <a href="index.html" class="back-btn">← TOPにもどる</a>
+  </div>
+</header>
+
+<main class="main">
+  <!-- ポイント・ランクヒーロー -->
+  <div class="pts-hero">
+    <div class="pts-hero__inner">
+      <div class="pts-hero__left">
+        <div class="pts-hero__rank-emoji" id="rankEmoji">📖</div>
+        <div class="pts-hero__rank-label">ランク</div>
+        <div class="pts-hero__rank-name" id="rankName">みならい</div>
+      </div>
+      <div class="pts-hero__right">
+        <div class="pts-hero__pts-label">累計ポイント</div>
+        <div class="pts-hero__pts"><span id="totalPts">0</span><span class="pts-hero__pts-unit"> pt</span></div>
+      </div>
+    </div>
+    <div class="pts-next">
+      <div class="pts-next__label" id="nextRankLabel"></div>
+      <div class="pts-next__bar-wrap">
+        <div class="pts-next__bar" id="nextRankBar" style="width:0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- コレクション集計 -->
+  <div class="summary">
+    <div class="summary-card summary-card--sr">
+      <div class="summary-card__count" id="countSR">0 / 5</div>
+      <div class="summary-card__label">⭐ SR</div>
+    </div>
+    <div class="summary-card summary-card--r">
+      <div class="summary-card__count" id="countR">0 / 10</div>
+      <div class="summary-card__label">✨ R</div>
+    </div>
+    <div class="summary-card summary-card--n">
+      <div class="summary-card__count" id="countN">0 / 5</div>
+      <div class="summary-card__label">▪ N</div>
+    </div>
+  </div>
+
+  <!-- SR -->
+  <div class="section-title">⭐ スーパーレア <span style="font-size:12px;color:var(--ink-400);font-weight:600">SR 200pt / 重複 80pt</span></div>
+  <div class="card-grid" id="gridSR"></div>
+
+  <!-- R -->
+  <div class="section-title">✨ レア <span style="font-size:12px;color:var(--ink-400);font-weight:600">R 50pt / 重複 20pt</span></div>
+  <div class="card-grid" id="gridR"></div>
+
+  <!-- N -->
+  <div class="section-title">▪ ノーマル <span style="font-size:12px;color:var(--ink-400);font-weight:600">N 10pt / 重複 3pt</span></div>
+  <div class="card-grid" id="gridN"></div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="cta__title">クイズを解いてカードを集めよう！</div>
+    <div class="cta__sub">80%以上正解でガチャ1回・全問正解でガチャ2〜3連！</div>
+    <a href="index.html#category" class="cta__btn">📚 クイズをえらぶ</a>
+  </div>
+</main>
+
+<script>
+(function() {
+  const state = loadGachaState();
+  const collected = new Set(state.collected);
+  const pts = state.points || 0;
+
+  // ポイント表示
+  document.getElementById('totalPts').textContent = pts.toLocaleString();
+
+  // ランク
+  const rank = getPointRank(pts);
+  document.getElementById('rankEmoji').textContent = rank.emoji;
+  document.getElementById('rankName').textContent  = rank.label;
+
+  // 次のランクまでのバー
+  const rankIdx = POINT_RANKS.indexOf(rank);
+  if (rankIdx < POINT_RANKS.length - 1) {
+    const next = POINT_RANKS[rankIdx + 1];
+    const pct  = Math.min(100, Math.round((pts - rank.min) / (next.min - rank.min) * 100));
+    document.getElementById('nextRankBar').style.width = pct + '%';
+    document.getElementById('nextRankLabel').textContent =
+      `次のランク「${next.label}」まで あと ${(next.min - pts).toLocaleString()}pt`;
+  } else {
+    document.getElementById('nextRankBar').style.width = '100%';
+    document.getElementById('nextRankLabel').textContent = '🏆 最高ランク達成！';
+  }
+
+  // 集計
+  const srCards = CARD_DATA.filter(c => c.rarity === 'sr');
+  const rCards  = CARD_DATA.filter(c => c.rarity === 'r');
+  const nCards  = CARD_DATA.filter(c => c.rarity === 'n');
+  document.getElementById('countSR').textContent = `${srCards.filter(c=>collected.has(c.id)).length} / ${srCards.length}`;
+  document.getElementById('countR').textContent  = `${rCards.filter(c=>collected.has(c.id)).length} / ${rCards.length}`;
+  document.getElementById('countN').textContent  = `${nCards.filter(c=>collected.has(c.id)).length} / ${nCards.length}`;
+
+  // カードグリッド描画
+  function buildGrid(cards, gridId) {
+    document.getElementById(gridId).innerHTML = cards.map(c => {
+      const owned = collected.has(c.id);
+      const cls   = owned ? c.rarity : 'locked';
+      return `
+        <div class="card-mini ${cls}" title="${owned ? c.name : '???'}">
+          <div class="mini-art ${cls}">
+            <span>${owned ? c.emoji : '❓'}</span>
+          </div>
+          <div class="mini-info ${cls}">
+            <span class="mini-rarity ${cls}">${owned ? RARITY_CONFIG[c.rarity].label : '?'}</span>
+            <span class="mini-name ${cls}">${owned ? c.name : '???'}</span>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  buildGrid(srCards, 'gridSR');
+  buildGrid(rCards,  'gridR');
+  buildGrid(nCards,  'gridN');
+})();
+</script>
+</body>
+</html>

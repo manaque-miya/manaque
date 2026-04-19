@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>クエ丸 ガッツポーズ 16フレームデモ</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #EAF2FE;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      gap: 36px;
+    }
+
+    /* スプライト表示窓 */
+    .sprite-wrap {
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 24px;
+    }
+    .sprite {
+      width: 200px;
+      height: 200px;
+      background-image: url('ガッツポーズ16フレーム.png');
+      background-size: 800px 800px; /* 1024px → 200px表示に縮小 */
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+
+    /* コントロール */
+    .controls { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      padding: 11px 24px;
+      border: none;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform .1s;
+    }
+    .btn:active { transform: scale(.95); }
+    .btn-loop  { background: #2563EB; color: #fff; }
+    .btn-once  { background: #F6C744; color: #1A449E; }
+    .btn-stop  { background: #ECEFF5; color: #5B6785; }
+
+    /* スピード */
+    .speed-row { display: flex; align-items: center; gap: 12px; }
+    label { font-size: 14px; font-weight: 700; color: #5B6785; }
+    input[type=range] { width: 160px; accent-color: #2563EB; }
+    .speed-val { font-size: 15px; font-weight: 900; color: #2563EB; min-width: 44px; }
+
+    /* フレーム番号表示 */
+    .frame-info { font-size: 13px; color: #8693AE; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <div class="sprite-wrap">
+    <div class="sprite" id="sprite"></div>
+  </div>
+
+  <div class="frame-info" id="frameInfo">F1 / 16</div>
+
+  <div class="controls">
+    <button class="btn btn-loop" onclick="playLoop()">🔁 ループ</button>
+    <button class="btn btn-once" onclick="playOnce()">▶ 1回だけ</button>
+    <button class="btn btn-stop" onclick="stopAnim()">■ 停止</button>
+  </div>
+
+  <div class="speed-row">
+    <label>スピード</label>
+    <input type="range" min="1" max="20" value="8" id="speedSlider" oninput="onSpeedChange()">
+    <span class="speed-val" id="speedVal">8fps</span>
+  </div>
+
+  <script>
+    const COLS = 4;
+    const FRAME_SIZE = 200; // 表示サイズ(px)
+    const TOTAL = 16;
+
+    const sprite   = document.getElementById('sprite');
+    const info     = document.getElementById('frameInfo');
+    const slider   = document.getElementById('speedSlider');
+    const speedVal = document.getElementById('speedVal');
+
+    let currentFrame = 0;
+    let timer = null;
+    let loopMode = false;
+
+    function setFrame(n) {
+      const col = n % COLS;
+      const row = Math.floor(n / COLS);
+      sprite.style.backgroundPosition =
+        `${-col * FRAME_SIZE}px ${-row * FRAME_SIZE}px`;
+      info.textContent = `F${n + 1} / ${TOTAL}`;
+    }
+
+    function getFps() {
+      return parseInt(slider.value);
+    }
+
+    function getInterval() {
+      return Math.round(1000 / getFps());
+    }
+
+    function clearTimer() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    function playLoop() {
+      loopMode = true;
+      clearTimer();
+      timer = setInterval(() => {
+        currentFrame = (currentFrame + 1) % TOTAL;
+        setFrame(currentFrame);
+      }, getInterval());
+    }
+
+    function playOnce() {
+      loopMode = false;
+      clearTimer();
+      currentFrame = 0;
+      setFrame(0);
+      timer = setInterval(() => {
+        currentFrame++;
+        if (currentFrame >= TOTAL) {
+          clearTimer();
+          currentFrame = 0;
+          setFrame(0);
+          return;
+        }
+        setFrame(currentFrame);
+      }, getInterval());
+    }
+
+    function stopAnim() {
+      loopMode = false;
+      clearTimer();
+      currentFrame = 0;
+      setFrame(0);
+    }
+
+    function onSpeedChange() {
+      speedVal.textContent = getFps() + 'fps';
+      // 再生中なら速度を即反映
+      if (timer) {
+        loopMode ? playLoop() : null;
+      }
+    }
+
+    // 初期表示 & 自動ループ開始
+    setFrame(0);
+    playLoop();
+  </script>
+</body>
+</html>

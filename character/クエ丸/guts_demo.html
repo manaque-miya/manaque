@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>クエ丸 ガッツポーズ アニメーションデモ</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #EAF2FE;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      gap: 48px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #2B3858;
+    }
+
+    .controls {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #5B6785;
+    }
+
+    input[type=range] {
+      width: 160px;
+      accent-color: #2563EB;
+    }
+
+    /* ===== スプライトアニメーション本体 ===== */
+
+    /*
+      画像サイズ: 1536 × 1024px（4フレーム横並び）
+      1フレーム: 384 × 1024px
+      表示倍率: 160/384 ≒ 0.417
+      → 表示サイズ: 160 × 427px
+      → background-size: 640px × 427px
+    */
+
+    .sprite-wrap {
+      /* 1フレーム分の窓 */
+      width: 160px;
+      height: 427px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sprite {
+      width: 160px;
+      height: 427px;
+      background-image: url('ガッツポーズ.png');
+      background-size: 640px 427px;   /* 全体を縮小 */
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+
+    /* ループ再生 */
+    .sprite.playing {
+      animation: guts-loop var(--fps, 0.6s) steps(4) infinite;
+    }
+
+    /* 1回だけ再生 */
+    .sprite.once {
+      animation: guts-loop var(--fps, 0.6s) steps(4) 1 forwards;
+    }
+
+    @keyframes guts-loop {
+      from { background-position:    0 0; }
+      to   { background-position: -640px 0; }
+    }
+
+    /* ===== ボタン ===== */
+    .btn {
+      padding: 12px 28px;
+      border: none;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform .1s;
+    }
+    .btn:active { transform: scale(.96); }
+    .btn-loop  { background: #2563EB; color: #fff; box-shadow: 0 4px 12px rgba(37,99,235,.35); }
+    .btn-once  { background: #F6C744; color: #1A449E; box-shadow: 0 4px 12px rgba(246,199,68,.4); }
+    .btn-stop  { background: #ECEFF5; color: #5B6785; }
+
+    .speed-label {
+      font-size: 15px;
+      font-weight: 800;
+      color: #2563EB;
+      min-width: 48px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>クエ丸 ガッツポーズ</h2>
+
+  <div class="sprite-wrap">
+    <div class="sprite" id="sprite"></div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-loop" onclick="playLoop()">🔁 ループ</button>
+    <button class="btn btn-once" onclick="playOnce()">▶ 1回だけ</button>
+    <button class="btn btn-stop" onclick="stop()">■ 停止</button>
+  </div>
+
+  <div class="controls">
+    <label>スピード</label>
+    <input type="range" min="1" max="10" value="5" id="speed" oninput="updateSpeed(this.value)">
+    <span class="speed-label" id="speedLabel">×1.0</span>
+  </div>
+
+  <script>
+    const sprite = document.getElementById('sprite');
+
+    // スピード: スライダー1〜10 → 秒数に変換（遅い↔速い）
+    function calcDuration(v) {
+      // v=1: 1.2s(遅い)  v=5: 0.6s(標準)  v=10: 0.15s(速い)
+      return (1.25 - (v - 1) * 0.12).toFixed(2) + 's';
+    }
+
+    function setFps(v) {
+      const dur = calcDuration(v);
+      sprite.style.setProperty('--fps', dur);
+    }
+
+    function updateSpeed(v) {
+      setFps(v);
+      document.getElementById('speedLabel').textContent = '×' + (v / 5).toFixed(1);
+      // 再生中なら反映
+      if (sprite.classList.contains('playing') || sprite.classList.contains('once')) {
+        const wasLoop = sprite.classList.contains('playing');
+        stop();
+        void sprite.offsetWidth;
+        wasLoop ? playLoop() : playOnce();
+      }
+    }
+
+    function playLoop() {
+      setFps(document.getElementById('speed').value);
+      sprite.classList.remove('once');
+      void sprite.offsetWidth;
+      sprite.classList.add('playing');
+    }
+
+    function playOnce() {
+      setFps(document.getElementById('speed').value);
+      sprite.classList.remove('playing', 'once');
+      void sprite.offsetWidth;
+      sprite.classList.add('once');
+      sprite.addEventListener('animationend', stop, { once: true });
+    }
+
+    function stop() {
+      sprite.classList.remove('playing', 'once');
+      sprite.style.backgroundPosition = '0 0';
+    }
+
+    // 最初からループ再生
+    playLoop();
+  </script>
+</body>
+</html>
