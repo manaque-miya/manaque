@@ -163,17 +163,20 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      align-items: end;
-      justify-items: center;
       pointer-events: none;
       padding-top: 8px;
+      gap: 0 4px;
     }
-    .hero__charas img {
-      max-width: 100%; object-fit: contain;
+    .chara-cell {
+      display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden;
+    }
+    .chara-cell img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
-    .hero__charas img:nth-child(-n+3) { height: clamp(160px, 18vw, 260px); }
-    .hero__charas img:nth-child(n+4)  { height: clamp(140px, 16vw, 220px); }
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
@@ -589,14 +592,12 @@
       </a>
     </div>
     <div class="hero__charas">
-      <!-- 上段：背が高めキャラ -->
-      <img src="assets/chara/manadra.png" alt="まなドラ">
-      <img src="assets/chara/lumina.png" alt="ルミナ先生">
-      <img src="assets/chara/ren.png" alt="レン先生">
-      <!-- 下段：小さめ・かわいい系キャラ -->
-      <img src="assets/chara/kuemaru.png" alt="クエ丸">
-      <img src="assets/chara/zeta.png" alt="ゼータ">
-      <img src="assets/chara/mil.png" alt="ミル">
+      <div class="chara-cell"><img src="assets/chara/manadra.png" alt="まなドラ"></div>
+      <div class="chara-cell"><img src="assets/chara/lumina.png" alt="ルミナ先生"></div>
+      <div class="chara-cell"><img src="assets/chara/ren.png" alt="レン先生"></div>
+      <div class="chara-cell"><img src="assets/chara/kuemaru.png" alt="クエ丸"></div>
+      <div class="chara-cell"><img src="assets/chara/zeta.png" alt="ゼータ"></div>
+      <div class="chara-cell"><img src="assets/chara/mil.png" alt="ミル"></div>
     </div>
   </div>
 </section>
