@@ -1,0 +1,1317 @@
+<!--
+=======================================================================
+  まなクエ！診断  ―  設計思想ドキュメント
+  作成：2026-04-19  宮﨑泰介 × Claude
+=======================================================================
+
+【コンセプト】
+  「どこにもない学習診断」として、既存のMBTI・エニアグラム・
+  ビッグファイブ・ストレングスファインダーを"参照元"として使い、
+  まなクエ独自の複合プロファイルを出力する。
+  著作権的にはどの指標名も「参考にした」であり、型・結果・
+  名称はすべてオリジナル。
+
+【使用フレームワークと役割分担】
+  ① MBTI（4軸・32問）─ 基盤
+    認知スタイルを測る。E/I・N/S・T/F・J/P の4軸から16タイプを判定。
+    → 「どう学ぶか」を決める。
+
+  ② エニアグラム（動機・2問）─ 強スパイス
+    3動機グループ（探求型／達成型／共鳴型）を判定。
+    MBTIが測れない「なぜ学ぶか」を補完。
+    質問が中立の場合はMBTIスコアで補完（N高→探求/TJ高→達成/EF高→共鳴）。
+
+  ③ ビッグファイブ（神経症傾向・1問）─ ピンポイント抽出
+    ビッグファイブ5因子の中で学業成績への影響が最も実証されている
+    「誠実性」はMBTIのJ/P軸と重複するため割愛。
+    MBTIが完全に無視している「神経症傾向（プレッシャー耐性）」だけを
+    1問で抽出。試験前不安のある学習者に特化した対策を提示する。
+
+  ④ ストレングスファインダー（実行力 vs 思考力・1問）─ 強み補完
+    4ドメイン（実行力／影響力／関係構築／戦略的思考）を
+    学習文脈に最適化して「実行力 vs 思考力」の2分類に圧縮。
+    1問で十分な弁別力がある。
+
+【質問設計】
+  総問数：36問（MBTI 32 + 特殊 4）
+  配置：8問MBTIごとに特殊問1問を挿入（Q9・Q18・Q27・Q36）
+  　→ 軸内シャッフル→4軸インターリーブで回答バイアスを低減
+
+【スコアリング】
+  各軸：-16 ～ +16（8問 × 最大2点）
+  正値 → ポジティブ側（E/N/T/J）
+  負値 → ネガティブ側（I/S/F/P）
+  5段階評価：-2/-1/0/+1/+2（Yes/Noより精度高、7段階より離脱率低）
+
+【出力設計】
+  MBTIタイプ（16種）× 動機タイプ（3種）= 最大48種の複合キャッチフレーズ
+  「知を極める設計者型」のような まなクエ独自名を動的生成。
+  スコアバーで4軸の強度を可視化 → シェア・比較欲求を刺激。
+
+【SNS拡散設計】
+  シェアテキスト：タイプコード＋名称＋動機＋ドメイン＋キャッチ＋#まなクエ診断
+  → 1ツイートで「自分の個性」が伝わり、見た人が「自分もやりたい」と動く構造。
+
+【デザインシステム】
+  メインカラー：#2563EB（まなクエブランド青）
+  アクセント：#F6C744（黄）/ #34C38F（緑）
+  フォント：M PLUS Rounded 1c（Google Fonts・無料）
+  4タイプグループ色：analyst=藍 / diplomat=緑 / sentinel=空 / explorer=橙
+
+【今後の拡張ポイント】
+  - ?type=INTJ 形式のURL化（結果直リンク・SEO対策）
+  - OGP画像の動的生成（タイプ別シェアカード）
+  - タイプ×動機別のクイズCTA最適化
+  - SEO記事「INTJ 勉強法」等との連携
+
+=======================================================================
+-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>まなクエ！診断｜16タイプでわかる勉強スタイル診断</title>
+  <meta name="description" content="37問に答えるだけ！16タイプの学習スタイル＋やる気の源泉・プレッシャー耐性・強みタイプがわかる無料診断。あなただけの最強勉強法を発見しよう。">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:       #2563EB;
+      --yellow:     #F6C744;
+      --green:      #34C38F;
+      --pink:       #FF8FA3;
+      --purple:     #9B7BE8;
+      --sky:        #0EA5E9;
+      --orange:     #F97316;
+      --bg:         #EEF2FF;
+      --card:       #FFFFFF;
+      --text:       #1E293B;
+      --muted:      #64748B;
+      --border:     #E2E8F0;
+      --radius:     20px;
+      --shadow:     0 8px 32px rgba(37,99,235,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      background: var(--blue);
+      color: white;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-logo { font-size: 20px; font-weight: 900; }
+    .header-sep  { opacity: 0.4; }
+    .header-sub  { font-size: 13px; font-weight: 700; opacity: 0.85; }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 28px 16px 48px;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pop {
+      0%  { transform: scale(0.75); opacity: 0; }
+      70% { transform: scale(1.06); }
+      100%{ transform: scale(1);    opacity: 1; }
+    }
+    .fade-up { animation: fadeUp 0.38s ease both; }
+    .pop-in  { animation: pop   0.48s ease both; }
+
+    /* ===== START ===== */
+    .start-screen { text-align: center; }
+    .start-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 100px;
+      margin-bottom: 22px;
+    }
+    .start-title {
+      font-size: clamp(28px, 8vw, 44px);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .start-title em { color: var(--blue); font-style: normal; }
+    .start-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .start-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 28px;
+      text-align: left;
+      box-shadow: var(--shadow);
+    }
+    .start-card h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: .05em;
+      margin-bottom: 16px;
+    }
+    .start-features { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .start-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .feat-icon {
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    /* フレームワーク説明 */
+    .framework-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .fw-chip {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      letter-spacing: .03em;
+    }
+    .fw-mbti     { background: #DBEAFE; color: #1D4ED8; }
+    .fw-ennia    { background: #D1FAE5; color: #065F46; }
+    .fw-big5     { background: #FEF3C7; color: #92400E; }
+    .fw-strength { background: #EDE9FE; color: #5B21B6; }
+
+    .btn-start {
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      padding: 18px 0;
+      font-size: 18px;
+      font-weight: 900;
+      font-family: inherit;
+      cursor: pointer;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 8px 28px rgba(37,99,235,0.38);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-start:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(37,99,235,0.48); }
+    .btn-start:active { transform: translateY(0); }
+    .start-note { margin-top: 12px; font-size: 12px; color: var(--muted); }
+
+    /* ===== QUIZ ===== */
+    .quiz-screen { display: none; }
+    .progress-wrap { margin-bottom: 24px; }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px; font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--border);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--sky));
+      border-radius: 100px;
+      transition: width .35s ease;
+    }
+    .axis-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+      letter-spacing: .05em;
+    }
+    .axis-e  { background: #DBEAFE; color: #1D4ED8; }
+    .axis-n  { background: #D1FAE5; color: #065F46; }
+    .axis-t  { background: #EDE9FE; color: #5B21B6; }
+    .axis-j  { background: #FEF3C7; color: #92400E; }
+    .axis-sp { background: #FCE7F3; color: #9D174D; } /* special */
+
+    .question-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      min-height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .question-text {
+      font-size: clamp(17px, 4.5vw, 22px);
+      font-weight: 700;
+      line-height: 1.65;
+      text-align: center;
+    }
+    .answers { display: flex; flex-direction: column; gap: 9px; }
+    .answer-btn {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 20px;
+      font-size: 14px; font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: center;
+      color: var(--text);
+      transition: border-color .12s, background .12s, transform .1s;
+    }
+    .answer-btn:hover { border-color: var(--blue); background: #EEF2FF; color: var(--blue); }
+    .answer-btn:active { transform: scale(0.97); }
+
+    /* 励まし演出 */
+    .cheer-banner {
+      background: linear-gradient(135deg, var(--yellow), #FCD34D);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--text);
+      animation: fadeUp .4s ease;
+    }
+
+    /* ===== RESULT ===== */
+    .result-screen { display: none; }
+
+    .result-hero {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .type-letters {
+      display: inline-flex;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .type-letter {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      font-size: 24px; font-weight: 900;
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .result-name  { font-size: clamp(26px, 7vw, 36px); font-weight: 900; margin-bottom: 6px; }
+    .result-combined-catch {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+    .result-catch { font-size: 14px; color: var(--muted); line-height: 1.6; font-weight: 700; }
+
+    .result-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    }
+    .result-card-title {
+      font-size: 13px; font-weight: 700;
+      color: var(--blue);
+      letter-spacing: .05em;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* 複合プロファイルカード */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .profile-item {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+    }
+    .profile-item-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .04em;
+      margin-bottom: 6px;
+    }
+    .profile-item-value {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .profile-item-source {
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .profile-motive   .profile-item-value { color: #065F46; }
+    .profile-pressure .profile-item-value { color: #92400E; }
+    .profile-strength .profile-item-value { color: #5B21B6; }
+
+    /* 追加インサイト */
+    .insight-box {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+    .insight-box p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .insight-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .04em;
+      margin-bottom: 6px;
+    }
+
+    .result-desc { font-size: 14px; line-height: 1.85; color: var(--text); }
+    .result-desc p { margin-bottom: 16px; }
+    .result-desc p:last-child { margin-bottom: 0; }
+    .method-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .method-list li { display: flex; gap: 10px; font-size: 14px; line-height: 1.65; }
+    .method-check { color: var(--green); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+    .weak-text { font-size: 14px; line-height: 1.85; color: var(--text); }
+
+    /* traits あるある */
+    .traits-intro {
+      font-size: 13px; font-weight: 700; color: var(--muted);
+      margin-bottom: 16px; letter-spacing: .02em;
+    }
+    .traits-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .traits-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; line-height: 1.65; font-weight: 700;
+    }
+    .traits-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--yellow); flex-shrink: 0; margin-top: 7px;
+    }
+
+    /* 即行動ボックス */
+    .action-box {
+      background: linear-gradient(135deg, var(--yellow) 0%, #FCD34D 100%);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-top: 16px;
+    }
+    .action-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .05em; color: var(--text);
+      margin-bottom: 8px;
+    }
+    .action-text {
+      font-size: 14px; font-weight: 900;
+      color: var(--text); line-height: 1.6;
+    }
+
+    /* スコアバー */
+    .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .score-labels {
+      display: flex; justify-content: space-between;
+      font-size: 11px; font-weight: 700;
+      margin-bottom: 5px; color: var(--muted);
+    }
+    .score-bar-wrap { height: 8px; background: var(--border); border-radius: 100px; overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 100px; transition: width 1s ease .3s; }
+
+    /* シェア */
+    .share-section { text-align: center; margin: 22px 0 14px; }
+    .share-title { font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 12px; }
+    .share-btns { display: flex; gap: 10px; justify-content: center; }
+    .btn-share {
+      flex: 1; max-width: 180px;
+      padding: 13px 12px;
+      border-radius: 100px; border: none;
+      font-family: inherit; font-size: 14px; font-weight: 700;
+      cursor: pointer;
+      transition: opacity .15s, transform .15s;
+    }
+    .btn-share:hover { opacity: .85; transform: translateY(-1px); }
+    .btn-x    { background: #000;    color: white; }
+    .btn-line { background: #06C755; color: white; }
+
+    .quiz-cta {
+      background: linear-gradient(135deg, var(--blue) 0%, #4F46E5 100%);
+      border-radius: var(--radius);
+      padding: 24px; text-align: center;
+      color: white; margin-bottom: 14px;
+    }
+    .quiz-cta h3 { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+    .quiz-cta p  { font-size: 13px; opacity: .85; margin-bottom: 18px; line-height: 1.7; }
+    .btn-quiz {
+      display: inline-block;
+      background: var(--yellow); color: var(--text);
+      padding: 13px 28px; border-radius: 100px;
+      font-weight: 900; font-size: 14px;
+      text-decoration: none;
+      transition: transform .15s;
+    }
+    .btn-quiz:hover { transform: scale(1.04); }
+
+    .btn-retry {
+      display: block; width: 100%;
+      padding: 15px; border-radius: 100px;
+      border: 2px solid var(--blue); background: white;
+      color: var(--blue);
+      font-family: inherit; font-size: 15px; font-weight: 700;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .btn-retry:hover { background: var(--blue); color: white; }
+
+    /* タイプカラーテーマ */
+    .theme-analyst  .type-letter  { background: #4F46E5; }
+    .theme-diplomat .type-letter  { background: #34C38F; }
+    .theme-sentinel .type-letter  { background: #0EA5E9; }
+    .theme-explorer .type-letter  { background: #F97316; }
+    .theme-analyst  .result-name  { color: #4F46E5; }
+    .theme-diplomat .result-name  { color: #34C38F; }
+    .theme-sentinel .result-name  { color: #0EA5E9; }
+    .theme-explorer .result-name  { color: #F97316; }
+    .theme-analyst  .score-bar-fill { background: #4F46E5; }
+    .theme-diplomat .score-bar-fill { background: #34C38F; }
+    .theme-sentinel .score-bar-fill { background: #0EA5E9; }
+    .theme-explorer .score-bar-fill { background: #F97316; }
+
+    @media (max-width: 480px) {
+      .container { padding: 20px 12px 40px; }
+      .question-card { padding: 24px 16px; }
+      .result-card   { padding: 18px 14px; }
+      .score-grid    { grid-template-columns: 1fr; }
+      .profile-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-logo">まなクエ！</div>
+  <div class="header-sep">|</div>
+  <div class="header-sub">勉強タイプ診断</div>
+</header>
+
+<main class="container">
+
+  <!-- ========== START ========== -->
+  <section id="startScreen" class="start-screen fade-up">
+    <div class="start-badge">✨ まなクエ！オリジナル診断　無料</div>
+    <h1 class="start-title">あなたの勉強、<br><em>うまくいかない</em><br>理由がわかる。</h1>
+    <p class="start-sub">
+      37の問いが、あなたの学びの本質に迫ります。<br>
+      直感で答えるだけでOK。
+    </p>
+
+    <div class="start-card">
+      <h3>▷ 診断を受けた人が気づいたこと</h3>
+      <ul class="start-features">
+        <li><span class="feat-icon">💡</span>「なぜ続かないか」の本当の理由がわかった</li>
+        <li><span class="feat-icon">🎯</span>自分に合った勉強法が具体的にわかった</li>
+        <li><span class="feat-icon">⚡</span>本番で実力を出し切るコツがわかった</li>
+        <li><span class="feat-icon">🔥</span>やる気の上げ方が人によって違うと知った</li>
+        <li><span class="feat-icon">📊</span>結果をそのままSNSにシェアできた</li>
+      </ul>
+    </div>
+
+    <button class="btn-start" onclick="startQuiz()">今すぐ診断する →</button>
+    <p class="start-note">全37問・直感で答えるだけ・約5分</p>
+  </section>
+
+  <!-- ========== QUIZ ========== -->
+  <section id="quizScreen" class="quiz-screen">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="qNum">質問 1 / 36</span>
+        <span id="qPct">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div id="cheerBanner"></div>
+
+    <div style="text-align:center">
+      <span class="axis-label" id="axisLabel"></span>
+    </div>
+
+    <div class="question-card">
+      <p class="question-text" id="questionText"></p>
+    </div>
+
+    <div class="answers" id="answers"></div>
+  </section>
+
+  <!-- ========== RESULT ========== -->
+  <section id="resultScreen" class="result-screen">
+
+    <div class="result-hero fade-up" id="resultHero">
+      <div class="type-letters pop-in" id="typeLetters"></div>
+      <div class="result-name"          id="resultName"></div>
+      <div class="result-combined-catch" id="resultCombinedCatch"></div>
+      <div class="result-catch"          id="resultCatch"></div>
+    </div>
+
+    <!-- 複合プロファイル -->
+    <div class="result-card fade-up" style="animation-delay:.06s">
+      <div class="result-card-title">🔍 あなたをもう少し深く見ると</div>
+      <div class="profile-grid">
+        <div class="profile-item profile-motive">
+          <div class="profile-item-label">やる気の火種</div>
+          <div class="profile-item-value" id="profileMotive">—</div>
+          <div class="profile-item-source">何が原動力か</div>
+        </div>
+        <div class="profile-item profile-pressure">
+          <div class="profile-item-label">本番との付き合い方</div>
+          <div class="profile-item-value" id="profilePressure">—</div>
+          <div class="profile-item-source">緊張との距離感</div>
+        </div>
+        <div class="profile-item profile-strength">
+          <div class="profile-item-label">得意な動き方</div>
+          <div class="profile-item-value" id="profileStrength">—</div>
+          <div class="profile-item-source">自然な学習スタイル</div>
+        </div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-label">この組み合わせのポイント</div>
+        <p id="profileInsight"></p>
+      </div>
+    </div>
+
+    <div class="result-card fade-up" style="animation-delay:.12s">
+      <div class="result-card-title">📖 あなたの学習スタイル</div>
+      <p class="result-desc" id="resultDesc"></p>
+    </div>
+
+    <div class="result-card fade-up" style="animation-delay:.18s">
+      <div class="result-card-title">🎯 こんな経験ない？</div>
+      <p class="traits-intro">あなたの特徴を、もっと具体的に言うと——</p>
+      <ul class="traits-list" id="resultTraits"></ul>
+    </div>
+
+    <div class="result-card fade-up" style="animation-delay:.24s">
+      <div class="result-card-title">✅ おすすめ勉強法</div>
+      <ul class="method-list" id="resultMethods"></ul>
+    </div>
+
+    <div class="result-card fade-up" style="animation-delay:.30s">
+      <div class="result-card-title">⚡ 4軸スコア</div>
+      <div class="score-grid" id="scoreGrid"></div>
+    </div>
+
+    <div class="result-card fade-up" style="animation-delay:.36s">
+      <div class="result-card-title">⚠️ 弱点と対策</div>
+      <p class="weak-text" id="resultWeak"></p>
+      <div class="action-box" id="resultAction">
+        <div class="action-label">🚀 明日から1つだけ変えるなら</div>
+        <div class="action-text" id="resultActionText"></div>
+      </div>
+    </div>
+
+    <div class="share-section fade-up" style="animation-delay:.42s">
+      <div class="share-title">結果をシェアする</div>
+      <div class="share-btns">
+        <button class="btn-share btn-x"    onclick="shareX()">𝕏 でシェア</button>
+        <button class="btn-share btn-line" onclick="shareLine()">LINE でシェア</button>
+      </div>
+    </div>
+
+    <div class="quiz-cta fade-up" style="animation-delay:.48s">
+      <h3>🎯 クイズで実力を試そう！</h3>
+      <p>まなクエ！の学習クイズで、<br>楽しみながら本当の力をつけよう</p>
+      <a href="index.html" class="btn-quiz">クイズをやってみる →</a>
+    </div>
+
+    <button class="btn-retry fade-up" style="animation-delay:.54s" onclick="resetQuiz()">
+      もう一度診断する
+    </button>
+  </section>
+
+</main>
+
+<script>
+// =====================================================
+// MBTI 32問（4軸 × 8問）
+// dir: 1 = 同意がポジティブ側、-1 = 同意がネガティブ側
+// =====================================================
+const MBTI_QUESTIONS = [
+  // E/I
+  { text:"友達と話すと、なぜかエネルギーが湧いてくる",              axis:'e', dir: 1 },
+  { text:"一人でいる時間があると、どこかホッとする",                axis:'e', dir:-1 },
+  { text:"グループで議論するより、一人で考えをまとめる方が好きだ",  axis:'e', dir:-1 },
+  { text:"初対面の人とも、わりとすぐに打ち解けられる",             axis:'e', dir: 1 },
+  { text:"大勢の場にいると、どっと疲れることがある",               axis:'e', dir:-1 },
+  { text:"考えをまとめるとき、声に出しながら整理することが多い",   axis:'e', dir: 1 },
+  { text:"週末は外に出て人と過ごす方が充実感がある",               axis:'e', dir: 1 },
+  { text:"自分の内側でじっくり考えてから話す方だと思う",           axis:'e', dir:-1 },
+  // N/S
+  { text:"細かい手順より、まず全体像をつかみたいと思う",           axis:'n', dir: 1 },
+  { text:"「なぜ？」を深く追いかけるのが好きだ",                  axis:'n', dir: 1 },
+  { text:"可能性やアイデアを考えることが、事実確認より楽しい",     axis:'n', dir: 1 },
+  { text:"直感で「これだ」と感じることをわりと信じる方だ",        axis:'n', dir: 1 },
+  { text:"事実や実績をもとに判断する方が安心できる",               axis:'n', dir:-1 },
+  { text:"将来のことや抽象的な話題をよく考える",                   axis:'n', dir: 1 },
+  { text:"新しいアイデアより、実証済みの方法を好む",               axis:'n', dir:-1 },
+  { text:"物事の裏にあるパターンや意味を考えるのが好きだ",         axis:'n', dir: 1 },
+  // T/F
+  { text:"決断するとき、感情より論理や事実を重視する",             axis:'t', dir: 1 },
+  { text:"批判やフィードバックは改善のチャンスだと思える",         axis:'t', dir: 1 },
+  { text:"みんなが納得するより、正しい答えを出す方が大事だと思う", axis:'t', dir: 1 },
+  { text:"誰かが悲しんでいると、理屈より共感が先に来る",          axis:'t', dir:-1 },
+  { text:"議論や討論で意見をぶつけ合うのは嫌いではない",           axis:'t', dir: 1 },
+  { text:"感情ではなく、データや根拠で話す方が楽だ",              axis:'t', dir: 1 },
+  { text:"人間関係の調和は、論理的な正しさより大切だと思う",       axis:'t', dir:-1 },
+  { text:"褒め言葉より、具体的なアドバイスの方が役に立つ",        axis:'t', dir: 1 },
+  // J/P
+  { text:"行動する前に、計画をしっかり立てたい",                   axis:'j', dir: 1 },
+  { text:"締め切りより前に終わらせておかないと落ち着かない",       axis:'j', dir: 1 },
+  { text:"やることリストを作るのが好きだ",                         axis:'j', dir: 1 },
+  { text:"予定が急に変わると、ストレスを感じやすい",               axis:'j', dir: 1 },
+  { text:"物事はある程度決まっていた方が動きやすい",               axis:'j', dir: 1 },
+  { text:"面白そうなことが出てきたら、予定を変えてでも飛びつく",   axis:'j', dir:-1 },
+  { text:"机やバッグの中は、整理されていないと落ち着かない",       axis:'j', dir: 1 },
+  { text:"締め切りギリギリの方が、なぜか集中できる",               axis:'j', dir:-1 },
+];
+
+// =====================================================
+// 特殊5問（各フレームワークのクリティカルポイント）
+// エニアグラム3問：探求・達成・共鳴を対称に配置（チャッピー指摘対応）
+// =====================================================
+const SPECIAL_QUESTIONS = [
+  // エニアグラム①：探求動機
+  {
+    text: "勉強していて一番嬉しい瞬間は「新しいことを知ること自体」だ",
+    axis: 'me', dir: 1,
+    axisLabel: '学習の動機（エニアグラム）'
+  },
+  // エニアグラム②：達成動機
+  {
+    text: "テストの点数や順位が上がると、一番やる気が出る",
+    axis: 'ma', dir: 1,
+    axisLabel: '学習の動機（エニアグラム）'
+  },
+  // エニアグラム③：共鳴動機（追加・37問目）
+  {
+    text: "誰かの役に立てると思うと、勉強のやる気が一番上がる",
+    axis: 'mc', dir: 1,
+    axisLabel: '学習の動機（エニアグラム）'
+  },
+  // ビッグファイブ：神経症傾向（プレッシャー耐性）
+  {
+    text: "試験前や締め切り前に、不安で頭がいっぱいになることがある",
+    axis: 'ne', dir: 1,
+    axisLabel: 'プレッシャー耐性（ビッグファイブ）'
+  },
+  // ストレングスファインダー：実行力 vs 戦略的思考
+  {
+    text: "アイデアを考えるより、実際に手を動かして進める方が好きだ",
+    axis: 'se', dir: 1,
+    axisLabel: '強みのタイプ（強み指標）'
+  },
+];
+
+// 軸ラベル表示
+const AXIS_META = {
+  e:  { label:'エネルギー',          cls:'axis-e' },
+  n:  { label:'情報の受け取り方',    cls:'axis-n' },
+  t:  { label:'判断の仕方',          cls:'axis-t' },
+  j:  { label:'生活スタイル',        cls:'axis-j' },
+  me: { label:'やる気の源泉', cls:'axis-sp' },
+  ma: { label:'やる気の源泉', cls:'axis-sp' },
+  mc: { label:'やる気の源泉', cls:'axis-sp' },
+  ne: { label:'メンタル傾向', cls:'axis-sp' },
+  se: { label:'強みタイプ',   cls:'axis-sp' },
+};
+
+// =====================================================
+// 16タイプデータ（base + motiveDesc 構造）
+// base: 全動機共通の長文性格文（褒め中心・学生対応）
+// motiveDesc: 探求型／達成型／共鳴型 の動機別段落
+// =====================================================
+const TYPES = {
+  INTJ:{ name:'設計者型', group:'analyst',
+    catch:'先が読める、戦略的一匹狼',
+    base:`先が見える。物事の全体像を一瞬で把握し、どこに問題があるかを見抜く力がある。「なぜこれをするのか」という目的が明確でないと動けない——それは弱さじゃなく、あなたが本質を重視している証拠だ。無駄を嫌い、最短ルートを探す頭がある。その精度は、多くの人が持っていないものだ。
+
+一人で考える時間が黄金タイム。静かな環境で、ひとつのことを深く掘り下げるとき——本当の力が発揮される。人に合わせてテンポを落とすことのストレスは、人一倍感じているかもしれない。先が見えすぎるぶん、誰にもわかってもらえないもどかしさを感じることもある。それはあなたが群を抜いているということの裏側だ。
+
+「冷たい」「感情がない」と見られることがあるかもしれない。でもそれは、感情ではなく論理で判断しているから。正しい答えを出すことへの集中が、そう見せてしまうだけ。あなたは誰よりも誠実に、正しいことを考えている。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`知ること自体が報酬——「この仕組みはどうなっているのか」を理解したとき、ゾーンに入れるのがあなただ。知識の体系が完成していくあの感覚が、何よりの快感だとわかっている。だからあなたには——まず全体の構造を把握してから細部に入る学習法が合っている。目次を読んで「地図」を作り、各章を深く掘り下げていく。理解の地図が完成したとき、あなたは誰よりも強くなる。`,
+      '達成型':`目標に向けて逆算し、完璧に仕上げる——それがあなたの深い喜びだ。「計画が狂うことへの苛立ち」は、それだけ本気でゴールを見据えている証拠だ。だからあなたには——長期目標から週次タスクに分解する計画術が最大の武器になる。「〇月の模試で△点」から逆算して、今週やることを3つだけ決める。計画の精度が上がるほど、結果も精緻になっていく。`,
+      '共鳴型':`誰かの役に立てると信じたとき、静かに燃える——「この力を使って、大切な人の助けになりたい」という動機が、あなたを深いところから動かす。論理で考えているように見えて、根っこには人への思いがある。だからあなたには——「この知識が誰かの役に立つ」という文脈を意識しながら学ぶ方法が合っている。将来の目標を「人への貢献」として設定すると、学ぶ理由が強固で揺るがないものになる。`,
+    },
+    traits:['一人で黙々と作業する時間が、何より充実している','計画を立てずに動くことへの抵抗感が強い','非効率なやり方を見ると、黙っていられなくなる','感情で動く人の行動が、なかなか理解できない','長期的な目標がないと、何となく落ち着かない','完璧でないものを提出することに、強い抵抗感がある','表面的な会話より、深い話ができる人と話したい','一度決めた判断を、後から人に合わせて変えるのが苦手','「なぜそうするか」の理由がないと、やる気が出ない','人と話すより、一人で考え抜く方が答えが出やすい'],
+    methods:['全体像→詳細の順で学ぶ。まず目次・章タイトルを俯瞰する','目標から逆算してスケジュールを立てる','一人で集中できる静かな環境を必ず確保する','理論・仕組みを理解してから暗記に入る','非効率な勉強法は即切り捨てて最適化し続ける'],
+    weak:'完璧主義が発動すると一科目に時間をかけすぎてしまう。それはあなたの高い基準の裏側だ。「80点でOK」と割り切るルールを事前に決めておくと、全体の効率が一気に上がる。',
+    action:'今日の学習の前に「ここまでできればOK」のラインを1つ決めてから始める。' },
+
+  INTP:{ name:'探究者型', group:'analyst',
+    catch:'理論の海を泳ぐ、深掘り系天才',
+    base:`「なぜ？」が止まらない。ひとつの疑問が次の疑問を呼び、気づいたら誰も行ったことのない深さまで掘り下げている——それがあなたの最大の強みだ。理論の美しさがわかる。体系的に物事を理解する力は、本物の武器だ。
+
+正解を丸暗記するより、仕組みを理解してから覚えたい——その感覚は正しい。考えが深すぎるぶん、結論が出ないまま時間だけが過ぎる焦りを感じることもある。でも本当に理解したことは忘れない。応用もきく。遠回りに見えて、実は最短ルートをあなたは知っている。
+
+「決断が遅い」「考えすぎる」と言われることがあるかもしれない。でもそれは、どんな可能性も見落としたくないからだ。完璧な理解を求める姿勢が、そう見せてしまうだけ。考え抜いた答えの精度は、誰も追いつけない。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`知ること自体が快感——それが最大のエンジンだ。「わかった！」の瞬間のために学ぶ。その感覚が一度でも味わえると、止まれなくなる。だからあなたには——「なぜそうなるか」を先に理解してから演習に入る勉強法が最適だ。参考書の解説を深く読み込み、自分の言葉で説明できるまで理解してから次へ進む。その深さが、本番で本物の力になる。`,
+      '達成型':`「正確に答えを出す」という達成感があなたを動かす。スコアで実力が証明されるとき、言葉にならない満足感がある——その感覚を知っているはずだ。だからあなたには——模擬問題で「完全解答」を目指す勉強法が合っている。ひとつひとつの問題を完璧に理解してから次へ進む。積み上げた理解の厚みが、最終的に最高のスコアになる。`,
+      '共鳴型':`「この知識が、誰かの疑問に答えられる」と思ったとき、学ぶ意欲が一気に高まる——そういうタイプだ。知識は、人と共有することで完成する。だからあなたには——学んだことを「誰かに教える」前提で理解する方法が合っている。「これを友達にどう説明するか？」を考えながら学ぶと、理解が格段に深まり、記憶にも刻まれる。`,
+    },
+    traits:['「なぜ？」が止まらず、ひとつの疑問が次の疑問を生む','正しいことにこだわりすぎて、決断が遅くなることがある','興味のないことへのやる気のなさが、自分でもわかる','一人でいる時間が、最も頭が整理される','体系的に理解できないと、なんとなく気持ち悪い','暗記より「なぜそうなるか」を理解してから覚えたい','アイデアは次々浮かぶが、実行に移すまでに時間がかかる','議論や知的な会話が、何より楽しいと感じる','自分が正しいと思ったことは、なかなか曲げられない','感情より論理で考える方が、ずっと自然にできる'],
+    methods:['「なぜそうなるか」を先に理解してから暗記する','体系的に整理してから次のテーマへ進む','一人でじっくり考える時間を毎日確保する','興味の芋づる式で学ぶ。好きな分野から広げる','複数の参考書・説明を比較して本質をつかむ'],
+    weak:'興味のない科目のやる気が出にくくなってしまう——それは本物を知っているから、偽物に心が動かないだけだ。「理解すれば面白い」を前提に、まず教科書の「なぜ」だけを拾い読みするとエンジンがかかりやすい。',
+    action:'苦手な科目の「なぜ？」を1つだけ調べてみる。それだけでエンジンがかかる。' },
+
+  ENTJ:{ name:'指揮官型', group:'analyst',
+    catch:'目標から逆算、最短で頂点を目指す',
+    base:`目標が決まった瞬間、エンジンが全開になる。どこへ向かうかが明確になれば、どんな障害も乗り越えられる——それがあなただ。計画力と実行力の両方を持つ、稀有な存在だ。
+
+長期目標から逆算して今やることを決め、非効率を削り続ける。PDCAを無意識に回している。グループの中にいると、自然とまとめる立場になる。目標への集中が強すぎるぶん、一人で走りすぎて孤立している感覚になることもある。それはあなたが誰よりも本気だという裏側だ。
+
+「強引」「周りを考えていない」と言われることがあるかもしれない。でもそれは、ゴールへの最短ルートが見えているから、回り道に付き合えないだけだ。あなたがいると、物事が前に進む。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`「なぜこの方法が最適なのか」を理解してから動く——それがさらに強くなるあなたのやり方だ。戦略に知的根拠があると、迷わず突き進める。だからあなたには——学習メソッドそのものを研究する姿勢が合っている。「どの勉強法が最も効率的か」を検証しながら学ぶ。理論武装した学習戦略が、最強の武器になる。`,
+      '達成型':`結果で証明する。それが最大のモチベーションだ。目標スコアを「絶対に落とせない数字」として設定すると、本気のスイッチが入る。だからあなたには——長期目標→月次→週次と逆算して計画を立て、毎週自己採点して進捗を確認する方法が合っている。PDCA最速で回し続ける者が、最後に笑う。`,
+      '共鳴型':`チームで成果を出すとき——それが最高の達成感だ。一人より多くの人を巻き込んだほうが、大きな結果を出せると知っている。だからあなたには——学習グループをリードしながら共に学ぶ方法が合っている。教えることで自分の理解が深まり、グループ全体の成果として返ってくる。それがあなたの喜びだ。`,
+    },
+    traits:['目標が決まると、すぐに動き始めずにはいられない','非効率なやり方を見ると、すぐに改善策が浮かぶ','グループでは自然と段取りや役割分担を考えてしまう','「できない理由」より「どうすればできるか」を考える','長期目標がないと、何となく落ち着かない','人に厳しく接してしまい、後から反省することがある','結果が出ないことへの焦りが、人より強い','競争や挑戦がある環境の方が、力が出る','「やるなら本気で」というスタンスが、自分の芯にある','計画通りに進まないことへのストレスが大きい'],
+    methods:['長期→月次→週次と逆算してプランを立てる','非効率な部分を週1回洗い出して改善する','ライバルや目標スコアを設定して競争モードに','テスト後は必ず自己採点して弱点を即修正','リーダー・まとめ役として学習グループを引っ張る'],
+    weak:'人に厳しくなりすぎてグループ学習が崩壊しがちになってしまう——それは基準が高いからだ。一人で勉強する時間と、人を頼る時間を曜日で分けると、力が最大限に機能する。',
+    action:'今週の目標を1つ書き出して、逆算で今日やることを15分で決める。' },
+
+  ENTP:{ name:'発明家型', group:'analyst',
+    catch:'議論で磨く、逆張りの天才',
+    base:`話を聞いた瞬間に答えが見える。授業中も、グループ作業中も——先が見えてしまうから、回り道が苦しい。頭の回転が速くて、「まだその話？」と感じてしまうことがある。それはあなたの頭が人より速く動いているということだ。
+
+「本当にそうか？」と疑いながら考えるのが得意。権威に乗っかるのではなく、自分の頭で検証する。頭が速すぎるぶん、誰とも同じテンポで話せない孤独を感じることがある。でもその孤独は、あなたが群を抜いているということの裏側だ。
+
+「落ち着きがない」「気配りができない」と見られることがあるかもしれない。でもそれは、非効率な話し合いに付き合う時間がもったいないと感じてしまうだけ。「この議論、意味ある？」が誰よりも先に見えてしまうから。そういう人だ。あなたは。`,
+    motiveDesc:{
+      '探求型':`知りたいことを知り尽くすまで止まれない——それがあなたのエンジンだ。「なぜ？」「本当に？」「もっと深く」が止まらない。だからあなたには——まず「なぜそうなるか」の仕組みを理解することから始める勉強法が合っている。教科書の余白に自分なりの疑問を書き込み、それを解消しながら進む。理解の深さが、最終的に最大の武器になる。`,
+      '達成型':`「結果で証明したい」気持ちが強い。スコアが上がること、順位が見えること——それが何よりの燃料だ。結果が出れば一気に加速できる。だからあなたには——目標スコアを先に決めて逆算する勉強法が合っている。「模試で○○点」という具体的なゴールを設定して、そこから逆算して今週やることを決める。ゲームのようにレベルアップを楽しもう。`,
+      '共鳴型':`「誰かの役に立てる」とわかった途端、エンジンが全開になる。自分だけのためじゃ続かなくても、大切な人のためなら走れる——そういう人だ。だからあなたには——「教えること」を勉強の中心に置く方法が合っている。学んだことを友達に説明することで、あなたの理解も一気に深まる。人の「わかった！」という顔が、最高の報酬になる。`,
+    },
+    traits:['議論が好きで、無意識に勝ちたくなってしまう','好奇心の塊で、面白いと思ったらじっとしていられない','初対面でも意見を言うハードルが低い方だ','「昔からこうだから」という非効率なルールが心底苦手','頭の中では常に新しいアイデアが次々と生まれている','感情や空気より、論理と事実で判断したい','一つのことに長く集中し続けるのが少し苦手','「常識」「当たり前」を疑って新しい視点で捉え直すのが好き','何をやるにしても「負けたくない」「一番でありたい」気持ちが強い','強そうに見られるが、一人で反省会しがち'],
+    methods:['「本当に正しいか？」と疑いながら教科書を読む','友人との議論・ディベートで理解を言語化する','同じテーマの複数の解法・説を比較する','飽きたら難問・応用問題に挑戦して刺激を入れる','新しい学び方（アプリ・動画・ゲーム）を実験する'],
+    weak:'広げすぎて一科目が中途半端になってしまう——それはアンテナの感度が高すぎるからだ。「今週はこの科目だけ」と週単位で絞ると、その深さに驚くことになる。',
+    action:'今週1科目だけ深掘りする科目を今日決める。それだけでいい。' },
+
+  INFJ:{ name:'洞察者型', group:'diplomat',
+    catch:'本質を見抜く、静かなる天才',
+    base:`誰も気づかないところで、本質を見抜いている。表面の現象ではなく、その奥にある意味やパターンを捉える力——これは特別な才能だ。人の感情を読む力も高く、場の空気を察して動ける。
+
+静かな環境で集中するとき、本当の力が出る。内側で熟成されたアイデアは、驚くほど精密で深い。深く感じすぎるぶん、自分だけが世界の重さを背負っているような疲れを感じることもある。それはあなたの感受性が人より遥かに深いからだ。
+
+「難しく考えすぎ」「もっと気楽に」と言われることがあるかもしれない。でもそれは、あなたが物事の深さと複雑さを本当に理解しているからだ。表面だけを見て満足できないのは、洞察力が鋭すぎるから。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`知識の奥にある「意味」を見つけたい——それがあなたのエンジンだ。なぜこの公式が成り立つのか、なぜ歴史はこう動いたのか——その「なぜ」が見えたとき、学ぶことが深い喜びになる。だからあなたには——マインドマップで全体像を整理し、各知識の「意味のネットワーク」を作る勉強法が合っている。つながりが見えるほど、記憶が強固になる。`,
+      '達成型':`積み上げた力を実証する機会——それが成長の確認になる。「どこまで来たか」が見えると、さらに深く進める。だからあなたには——定期的に模擬問題を解いて進捗を可視化する方法が合っている。長期目標を設定し、週次でどれだけ近づいたかを確認する。小さな進歩の積み重ねが、揺るぎない自信になる。`,
+      '共鳴型':`「この力で、誰かの人生の助けになれる」という使命感——それが最も深い動機だ。だからあなたには——学ぶ目的を「人への貢献」として設定する方法が合っている。将来何をしたいか、誰を助けたいかを具体的にイメージしながら学ぶ。その使命感が、どんな壁も越えさせてくれる。`,
+    },
+    traits:['人の感情や気持ちを、言葉がなくても察せてしまう','表面的な会話より、深い話ができる人と時間を過ごしたい','完璧にしたいと思いすぎて、なかなか進めないことがある','将来のビジョンや理想を、常に頭の中に持っている','誰かに傷つけられた記憶が、長く心に残りやすい','静かな環境でないと、本来の力が発揮できない','「なぜこれをするのか」の意味がないと、やる気が出ない','物事を深く考えすぎて、気づいたら疲弊していることがある','第一印象で「この人は合いそう/合わなそう」と感じやすい','人の役に立てていると感じるとき、最もエネルギーが出る'],
+    methods:['マインドマップで全体像を整理してから細部へ','「この知識がどこで役立つか」を意識しながら学ぶ','静かな環境での集中時間を毎日確保する','日記や要約ノートで学んだことを言語化する','大きな目標（将来の夢等）と学習を結びつける'],
+    weak:'完璧に理解しようとして進みが遅くなってしまう——それは深さを追う本能だ。「70%理解で次へ進む」ルールを設けると、深さを保ちながら積み上がるようになる。',
+    action:'「70%理解で次へ進む」と声に出してから今日の学習を始める。' },
+
+  INFP:{ name:'夢想家型', group:'diplomat',
+    catch:'意味を求めて学ぶ、内なる情熱家',
+    base:`感じる力が鋭い。物事の美しさ、意味、感情の機微——他の人が見落とすものを、あなたは捉えている。想像力が豊かで、学んだことを自分なりの世界に昇華できる。
+
+「なぜ学ぶか」が明確になると、誰も追いつけないほどの集中力が出る。感じる力が強すぎるぶん、何でもない一言が深く刺さって、しばらく引きずることがある。でもその感受性こそが、あなたの最大の武器でもある。
+
+「気分屋」「続かない」と見られることがあるかもしれない。でもそれは、魂が揺さぶられることにしか本気になれないから。本物の熱量で動くとき——あなたの力は本物だ。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`知識の先に「美しい世界」が広がっているとき、止まれない。だからあなたには——興味のある単元から入って、関連する知識の世界を旅するように学ぶ方法が合っている。教科書の余白に気づいたことをメモしながら読む。知的好奇心を燃料にすれば、学ぶことが旅になり、止まる理由がなくなる。`,
+      '達成型':`目標が明確になったとき、静かな炎が燃える。「あそこまで行く」という決意が固まると、ブレない。だからあなたには——具体的な目標（スコア・合否・期日）を視覚化して毎日目に入る場所に貼る方法が合っている。ゴールを「感情的にリアル」にすることが、あなたの最大の燃料になる。`,
+      '共鳴型':`「大切な誰かの役に立てる」という確信——それが最大の動力だ。だからあなたには——学ぶ目的を「具体的な誰か」に結びつける方法が合っている。「あの人を助けたい」「大切な人に喜んでほしい」——その人の顔を思い浮かべながら学ぶ。感情が最大のアンカーになる。`,
+    },
+    traits:['「なぜ学ぶか」という意味を、常に求めている','感受性が高く、映画・音楽・本に深く感情移入する','やる気が気分に大きく左右されることがある','自分の価値観を曲げられることに、強い抵抗感がある','誰かを傷つけてしまったかもしれないと、後からずっと引きずる','批判や否定に、人より敏感に反応してしまう','表面的な人間関係より、深く心が通じ合う関係を求める','理想と現実のギャップに、悩むことが多い','「自分らしくある」ことが、何よりも大切だと思っている','一人の時間で想像力を膨らませるのが好きだ'],
+    methods:['「なぜこれを学ぶか」を言語化してから始める','歴史・エピソード・物語と結びつけて覚える','静かな場所で想像力を使いながら学ぶ','学んだことを日記やブログに書いて定着させる','好きな科目・興味のある単元から学習を始める'],
+    weak:'やる気が気分に左右されやすくなってしまう——それは感受性が高すぎるから、低調な日は本当に動けない。「5分だけやる」スタートルールを作ると、始められれば続けられる。',
+    action:'勉強を始める前に「なぜこれを学ぶか」を1文だけ書いてみる。' },
+
+  ENFJ:{ name:'導き手型', group:'diplomat',
+    catch:'人を巻き込んで学ぶ、カリスマ勉強家',
+    base:`人を動かす言葉を持っている。自分が学んだことを誰かに伝えたとき——その人の顔が輝くのを見たとき——これ以上の報酬はないと感じる。それがあなたの本質だ。
+
+人の可能性を信じる力がある。「あなたならできる」を本当に思えるから、言葉に力が宿る。グループに入ると、自然と中心になる。人のために動きすぎるぶん、ふとした瞬間に「自分はどうしたいのか」がわからなくなることがある。あなたの感情も、ちゃんとそこにある。
+
+「お人好し」「自分を後回しにする」と言われることがあるかもしれない。でもそれは、人への共感力が深すぎるから。だからこそ、人が信頼してついてくる。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`「知識は、伝えることで完成する」——あなたはそう感じているはずだ。だからあなたには——学んだことを「誰かに教える」前提でノートを作る方法が合っている。「わかりやすく説明するにはどうすればいいか」を考えながら学ぶ。それがあなたの理解を何倍にも深め、さらに人に伝えたくなる好循環をつくる。`,
+      '達成型':`目標達成は、チームとともにある——あなたの達成感はそこにある。だからあなたには——学習グループをリードしながら自分も学ぶ方法が合っている。「みんなでこのスコアを目指す」という目標を設定して、グループ全体を引っ張る。みんなの成果があなたの達成感になる。`,
+      '共鳴型':`「この学びが、誰かの人生を変える」という実感——それが最大の燃料だ。だからあなたには——将来の目標を「人への貢献」として具体的に描く方法が合っている。どんな人を助けたいか、どんな形で人に関わりたいか——その未来をリアルにイメージするほど、今の学びに力が入る。`,
+    },
+    traits:['人の感情を自分のことのように感じてしまうことがある','グループに入ると、自然とまとめ役・相談役になる','誰かの成長や変化を見届けると、心から嬉しくなる','頼まれると断れず、自分のキャパを超えることがある','誰かが傷ついているのを見ると、放っておけない','人に喜ばれることが、最大のモチベーションになる','場の空気を読みすぎて、自分の意見を後回しにすることがある','尊敬できる人を見つけると、深く憧れる気持ちが湧く','大きな目標や社会への貢献と、自分の行動を結びつけて考える','「誰かのために」という理由があると、急に力が出る'],
+    methods:['学んだことを友達や家族に説明して定着させる','勉強グループを自分でまとめる役割を担う','「この勉強が将来誰かの役に立つ」と意味付けする','尊敬する人や目標とする人を見つけて真似る','感情のエピソードと知識を結びつけて記憶する'],
+    weak:'人の期待に応えようとしすぎて自分のペースを失ってしまう——それは共感力が高すぎるからだ。「今日は自分のための勉強時間」と意識して一人の時間を守ることが、長く続けるための鍵になる。',
+    action:'今日学んだことを誰かに5分で話す機会を作る。教えることが最速の復習になる。' },
+
+  ENFP:{ name:'冒険家型', group:'diplomat',
+    catch:'可能性を信じて、どこまでも広がる学び',
+    base:`可能性を感じる嗅覚が鋭い。「これ面白そう！」という直感は、ほとんど外れない。好奇心のアンテナが常に全方位に立っていて、誰も気づかない面白さを見つけ出す。それはギフトだ。
+
+新しいことへの飛び込み力も高い。「どうせ無理」という声を無視して、とりあえず動いてみる——その行動力が、経験値を積み上げていく。可能性が広がりすぎるぶん、「自分は何をすべきなのか」という問いに答えが出ないまま焦ることがある。でもその焦りは、あなたのポテンシャルが大きすぎるサインだ。
+
+「飽き性」「続かない」と見られることがあるかもしれない。でもそれは、ひとつに縛られるには可能性が広すぎるから。「また別のことを…」じゃなく「またアンテナに引っかかった」——そういう人だ。`,
+    motiveDesc:{
+      '探求型':`知らないことを知る瞬間——それが最高に楽しい。だからあなたには——興味の芋づる式学習が合っている。ひとつの単元から関連する知識へどんどん広げ、「地図」を描くように学ぶ。飽きたら違う単元の「面白そうなところ」から入る。興味を燃料にすれば、止まらなくなる。`,
+      '達成型':`スコアが上がったとき、テンションが上がる——その感覚を知っているはずだ。だからあなたには——短期の目標を細かく設定して「達成祭り」を連続させる方法が合っている。「今週この問題集1章を完璧にする」という小さな勝利を積み重ねる。勝つたびに加速するタイプだ。`,
+      '共鳴型':`「仲間と一緒に高め合う」感覚——それが最大の燃料だ。だからあなたには——友達と一緒に学ぶ環境を作る方法が合っている。教え合い、励まし合い、競い合う。人との相互作用がある場所では、あなたの力は確実に倍増する。`,
+    },
+    traits:['「面白そう！」という直感だけで動き始めることがある','新しい可能性やアイデアを考えているときが、最も楽しい','興味が次々と移ってしまい、一つのことが続きにくい','未来や可能性を話す時間が、何より充実している','感情表現が豊かで、喜怒哀楽が顔に出やすい','誰とでもすぐに打ち解けられる一方、深い関係を求めている','やり始めると熱中するが、完成させる前に次に進んでしまうことがある','「絶対こうしなければ」というルールが、苦手だ','人との会話からインスピレーションを得ることが多い','自分のポテンシャルをまだ出し切れていない感覚がある'],
+    methods:['興味のある単元から入って関連分野へ広げる','アイデアや気づきをその場でメモする','友達と話しながら・教え合いながら理解を深める','複数科目を短いセッションでローテーション','ゴールのイメージを鮮明にしてモチベーション維持'],
+    weak:'始めやすいが続けにくくなってしまう——それは常に新しいものに引かれるからだ。週次のチェックポイントを設定して、どこまで進んだか可視化すると長く続けやすくなる。',
+    action:'今週末に「どこまで進んだか」を確認するアラームを今すぐ設定する。' },
+
+  ISTJ:{ name:'几帳面型', group:'sentinel',
+    catch:'コツコツ積み上げる、揺るぎない実力者',
+    base:`積み上げる力が、誰よりも強い。決めたことをコツコツと、確実に、毎日続けられる——それは特別な才能だ。「コツコツより才能」と言う人がいるが、才能より続けられる人の方が、最終的に遠くへ行く。あなたはその本質を体現している。
+
+記録する、整理する、確認する——この3つを無意識にやっている。やることリストを作り、ひとつひとつ消していくとき——その達成感は本物だ。積み上げることへの誠実さが強すぎるぶん、うまくいかない日の自己嫌悪が人より深くなることがある。それはそれだけ真剣だということだ。
+
+「融通が利かない」「堅い」と言われることがあるかもしれない。でもそれは、一度決めたことを全力でやり切るからだ。「融通が利かない」じゃなく「言葉を守る」——そういう人だ。`,
+    motiveDesc:{
+      '探求型':`深く理解することに喜びを感じる——だからこそ、表面的な暗記では満足できない。だからあなたには——「なぜそうなるか」を理解してから暗記に入る方法が合っている。一度本当に理解したことは忘れない。あなたの「丁寧に積み上げる力」に「理解の深さ」が加わると、本当に無敵になる。`,
+      '達成型':`「計画通りに進んでいる」という実感——それが最高のモチベーションだ。だからあなたには——週次の進捗を記録・可視化する方法が合っている。「今週やること」を書き出し、完了したら線を引く。その線が積み重なるほど、自信が厚くなり、さらに進めるようになる。`,
+      '共鳴型':`誰かのために力になれると感じたとき、最大限の力が出る——あなたはそういうタイプだ。だからあなたには——「この成績を上げて、大切な人に貢献したい」という具体的な目標を設定する方法が合っている。大切な人への思いが、コツコツを支える原動力になる。`,
+    },
+    traits:['一度決めたことは、最後までやり遂げなければ気が済まない','計画外のことが起きると、強いストレスを感じる','物事はきちんと順序立てて進めたい','責任感が強く、頼まれたことは絶対にやり遂げる','実績や経験をもとに判断する方が、安心できる','「なんとかなる」という楽観的な考え方が、なかなかできない','コツコツ積み上げることに、誰よりも真剣になれる','新しいやり方より、実証済みの方法を好む','感情より事実・データで物事を判断したい','整理整頓されていないと、落ち着かない'],
+    methods:['週間・月間の計画表を作って毎日少しずつ進める','ノートを授業後に整理・まとめ直す','問題集を3回繰り返して完璧にする','試験3週間前から復習を始める','暗記は毎日短時間の反復で定着させる'],
+    weak:'計画通りに進まないと気持ちが崩れやすくなってしまう——それは計画への誠実さが強すぎるからだ。「予備日」を週1日設定しておくと、軌道修正がスムーズになり、全体が安定する。',
+    action:'今週の計画に「予備日」を1日追加する。それだけで全体が安定する。' },
+
+  ISFJ:{ name:'守護者型', group:'sentinel',
+    catch:'人のために学ぶ、縁の下の力持ち',
+    base:`人の気持ちがわかる。誰が困っているか、何を必要としているか——言葉がなくても察せる。その共感力は、本物の力だ。あなたがそこにいるだけで、場が安心する。それがあなたの持つ磁力だ。
+
+細かいことに気づく力もある。他の人が見落とすディテールを拾い上げ、丁寧に対処する。人に与えることが自然すぎるぶん、誰にも気づかれずに疲れ果てていることがある。その疲れは、あなたが誰かのために全力を注いできた証拠だ。
+
+「自分を後回しにする」「主張が弱い」と見られることがあるかもしれない。でもそれは、人への配慮が自然に先立つからだ。あなたの優しさは、弱さじゃない。`,
+    motiveDesc:{
+      '探求型':`丁寧に積み上げた知識が、誰かの役に立つ瞬間——それが最高だ。だからあなたには——「誰かに説明できるか」を基準にして、丁寧に理解しながら学ぶ方法が合っている。テキストの内容を自分の言葉でまとめながら進む。その丁寧さが、揺るぎない実力になる。`,
+      '達成型':`コツコツ積み上げた結果が、形になったとき——深い満足感がある。だからあなたには——毎日の学習記録をつけて「積み上げの可視化」をする方法が合っている。何ページ進んだか、何問解いたか——記録が積み上がるほど、自信が強くなる。`,
+      '共鳴型':`「誰かのために頑張る」——それが最大のエンジンだ。だからあなたには——学ぶ目的を「具体的な誰か」への貢献として設定する方法が合っている。「この人のために頑張る」が明確なとき、あなたの力は何倍にもなる。その思いを忘れないよう、目に見える場所に書いておこう。`,
+    },
+    traits:['誰かに「ありがとう」と言われると、それだけで頑張れる','人の気持ちや状況を、先に察して動くことが多い','頼まれると断れず、自分のことを後回しにしてしまう','変化より安定を好み、慣れた環境の方が力が出る','細かいことへの気配りが、自然とできてしまう','誰かのために頑張る時に、最大の力が出る','自分の気持ちより相手の気持ちを優先してしまうことがある','人との関係を大切にするあまり、衝突を避けがちになる','丁寧で几帳面な作業が、苦にならない','言葉がなくても、場の空気を読んで動ける'],
+    methods:['学んだことを家族や友達に説明してみる','静かな場所でじっくり・繰り返し取り組む','抽象的な内容は具体的な例と結びつけて覚える','グループ学習でサポート役を担って理解を深める','ノートを丁寧にまとめて見返しやすくする'],
+    weak:'人を優先しすぎて自分の学習時間が削られがちになってしまう——それは共感力が本能的だからだ。「自分の勉強タイム」をカレンダーに確保して守ることが、長く力を発揮するための大切な習慣になる。',
+    action:'今週「自分の勉強タイム」を1枠だけカレンダーに入れる。それを守るだけでいい。' },
+
+  ESTJ:{ name:'管理者型', group:'sentinel',
+    catch:'組織立てて攻める、計画の達人',
+    base:`組織する力がある。混沌を秩序に変え、物事を正しい順番で進められる——それがあなたの才能だ。「あなたがいるとうまく進む」という経験があるはずだ。それは本物だ。
+
+責任感が強く、言ったことはやり切る。「やります」と言ったら必ずやる——その信頼性は、積み上げた実績だ。正しくあろうとする力が強すぎるぶん、思い通りにいかない日のフラストレーションが人より大きくなることがある。でもその悔しさが、次の改善の原動力になる。
+
+「細かすぎる」「融通が利かない」と言われることがあるかもしれない。でもそれは、きちんとやりたいからだ。その高い基準が、最終的に最高の結果を生む。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`「なぜこうなるのか」を理解してから行動したい——だからこそ、仕組みを理解した計画は強い。だからあなたには——学習メソッドを研究して最適化する方法が合っている。どの参考書が最も効率的か、どの勉強スケジュールが成果を出しやすいか——検証しながら学ぶ。合理的な戦略があなたの力を最大化する。`,
+      '達成型':`結果で証明することが、最大のモチベーションだ。だからあなたには——週次の自己評価と目標設定を繰り返すPDCAサイクルが合っている。「今週の目標」「達成率」「来週の改善点」を毎週日曜に記録する。記録が実績になり、実績が自信になる。`,
+      '共鳴型':`チームをまとめ、みんなで目標を達成する——それが最大の達成感だ。だからあなたには——学習グループを組織してリードする方法が合っている。目標・ルール・役割を明確にして、グループを正しく機能させる。あなたのリーダーシップが、みんなの力を引き出す。`,
+    },
+    traits:['計画・ルール・秩序がある環境の方が、力が出る','「やると決めたらやる」という姿勢が、自分の芯にある','非効率なやり方や、いい加減な仕事を見ると我慢できない','責任感が強く、引き受けたことは必ずやり遂げる','グループでは自然と段取りや役割分担を考えてしまう','感情より結果・事実で評価されたい','グループのルールや目標を明確にしないと、気が済まない','「とりあえず」という曖昧な進め方が苦手だ','人に合わせすぎると疲弊する感覚がある','新しいやり方より、実績のある方法を好む'],
+    methods:['週次のスケジュールを日曜に作り、毎日確認する','目標を小さなチェックリストに分解する','実績（問題数・暗記数）を記録して可視化','参考書は1冊を完璧に仕上げてから次へ','定期的に自己採点・弱点分析して修正する'],
+    weak:'柔軟性が低く、想定外の事態で崩れやすくなってしまう——それは計画の精度が高いからこそ、ズレたときのギャップが大きい。計画に「バッファ時間」を20%混ぜておくと、余裕が生まれて全体が安定する。',
+    action:'今日の計画に「バッファ20分」を追加する。それだけで余裕の質が変わる。' },
+
+  ESFJ:{ name:'協力者型', group:'sentinel',
+    catch:'みんなと学んで輝く、調和の達人',
+    base:`場を温める力がある。あなたがいると、空気が柔らかくなる。緊張していた人が笑い、バラバラだったグループがひとつになる——それはあなたが持つ、人を引き寄せる磁力だ。
+
+人に喜ばれることが、何よりもエネルギーになる。「ありがとう」「助かった」——その言葉が、次の行動への燃料になる。人を大切にする気持ちが強すぎるぶん、気づいたら自分が空っぽになっていることがある。その空っぽは、あなたが誰かのために全力を尽くした証だ。
+
+「空気を読みすぎる」「断れない」と言われることがあるかもしれない。でもそれは、人への配慮が本能的だからだ。自分より相手を大切にできるその感性は、長期的に必ず返ってくる。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`「知識が増えると、もっと人の役に立てる」——そう感じるとき、学ぶことが楽しくなる。だからあなたには——「これを知ればあの人に教えられる」を動機にして学ぶ方法が合っている。学んだことを友達に説明することを前提にすると、理解の質が上がる。人のために知識を積む——それがあなたの自然な学び方だ。`,
+      '達成型':`グループ全体の成果が上がったとき——それがあなたの達成感だ。だからあなたには——学習グループでお互いの目標を設定・共有する方法が合っている。仲間の成長が自分のモチベーションになる。みんなで達成するからこそ、深く喜べる。`,
+      '共鳴型':`「誰かの役に立てること」が最大の燃料——それがあなただ。だからあなたには——学ぶ目的を「人への貢献」として明確にする方法が合っている。「この力を使って誰を助けたいか」を具体的に描く。その使命感が、毎日の勉強を支える力になる。`,
+    },
+    traits:['人が喜んでいる姿を見ると、心から嬉しくなる','グループの雰囲気を良くするために、自然と動いてしまう','人に気を使いすぎて、自分が疲れてしまうことがある','「ありがとう」「助かった」の言葉が、最大のエネルギーになる','誰かが落ち込んでいると、放っておけない','みんなと仲良くしたいので、対立や衝突を避けがちになる','一人でいる時間より、誰かといる時間の方が充実する','批判されると、人より深く傷つくことがある','決まったルーティンがある方が、安心して動ける','人のために動くとき、本来の力が発揮できる'],
+    methods:['友達と一緒に勉強する時間を定期的に作る','人に教えることで定着させる（教え合い学習）','目標達成したら自分にご褒美を設定する','決まった時間・場所・順番でルーティン化する','「みんなの役に立つ」目標と結びつける'],
+    weak:'一人での学習がおろそかになりがちになってしまう——それはグループのエネルギーが好きすぎるからだ。グループ学習で学んだことを「一人で仕上げる時間」を週に確保すると、しっかりと自分の力になる。',
+    action:'今週のグループ学習の後に「一人で復習する15分」を確保する。' },
+
+  ISTP:{ name:'職人型', group:'explorer',
+    catch:'実際にやって覚える、行動派の勉強家',
+    base:`手を動かすと、頭が動く。理論を読むより、実際にやってみるほうが10倍速く理解できる——それがあなたの特性だ。「仕組みが気になる」「どうやって動くか知りたい」——その探求心は、本物の知性の表れだ。
+
+集中力の質が違う。一度「これだ」と入ったとき——ゾーンに入ったあなたは、誰も追いつけない速さで進む。自分のペースへのこだわりが強すぎるぶん、チームのリズムに合わせられず孤立感を感じることがある。でも一人で完成させる力は、本物だ。
+
+「雑」「テキトー」と見られることがあるかもしれない。でもそれは、完璧な準備より動くことを優先するからだ。動いて修正できる人の方が、最終的に遠くへ行く。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`「仕組みを理解したい」が最大のエンジン——それがあなただ。だからあなたには——まず問題を解いて「なぜこうなるのか」を理解する帰納的な学習法が合っている。解説を読んで仕組みを把握したら、同じタイプの問題を何問も解く。「わかった！」の感触を積み重ねることが、最強の勉強になる。`,
+      '達成型':`「できた！」「解けた！」——その瞬間が最高の報酬だ。だからあなたには——問題集を解いて「正解の数を増やす」ゲーム感覚の勉強法が合っている。毎日の問題数・正解率を記録して、上昇グラフを見ながら進む。数字が上がるたびにテンションが上がり、さらに進められる。`,
+      '共鳴型':`「誰かの役に立てる力をつける」という明確な目的——それがあなたを動かす。だからあなたには——将来どう人の役に立ちたいかを具体的にイメージしてから学ぶ方法が合っている。「この技術で〇〇を助けられる」という文脈で学ぶと、継続力が大きく上がる。`,
+    },
+    traits:['まず手を動かして試してみることが、何より早いと思っている','「仕組みがどうなっているか」を知りたくなる','一人でひたすら集中している時間が、最も心地よい','感情的な話し合いより、論理的な解決策を求める','初めてのことでも、やってみると意外と早く慣れる','人に細かく指示されることへの抵抗感がある','興味のないことへの集中力の低下が、自分でもわかる','黙って実力を見せる方が、言葉で説明するより得意','短時間で高い集中力を発揮できる','ルールより合理性を優先する場面がある'],
+    methods:['まず問題を解いてみて、つまずいたら解説を読む','実験・図解・手を動かしながら理解する','25分集中→5分休憩のポモドーロで短期集中','仕組みや原理を理解して丸暗記を最小化する','興味のある分野・得意科目から入ってエンジンをかける'],
+    weak:'興味のないことへの集中が続きにくくなってしまう——それは本物のことにしか本気になれないからだ。「この知識がどう使えるか」の具体的場面を先に調べると、食いつきが変わる。',
+    action:'苦手な問題の「なぜこうなるのか」を1つだけ今日調べてみる。' },
+
+  ISFP:{ name:'芸術家型', group:'explorer',
+    catch:'感じて学ぶ、独自センスの持ち主',
+    base:`感じる力が美しい。色、形、音、感触——五感を通じて世界を理解する特別な感受性がある。その感性は、他の人にはない見え方を持っているということだ。あなただけの世界がある。
+
+今この瞬間に集中する力がある。過去でも未来でもなく「今」——その集中が、深い学びを生む。感じる力が繊細すぎるぶん、誰も気にしないようなことに深く傷ついて、一人で抱え込むことがある。その繊細さが、あなたの感受性の深さの証でもある。
+
+「のんびりしている」「マイペース」と見られることがあるかもしれない。でもそれは、自分のリズムを知っているからだ。自分のペースで動く人は、長期的に強い。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`美しいと感じる知識——それを見つけたとき、止まれない。だからあなたには——感覚的に「面白い」「美しい」と感じる切り口から学ぶ方法が合っている。色ペンや図解を使って、視覚的に美しいノートを作る。見ていて心地よいノートが、復習の動機になる。`,
+      '達成型':`自分自身の成長を感じたとき——静かな満足感がある。だからあなたには——「昨日の自分より少しだけ前へ」という小さな目標設定が合っている。他人との比較ではなく、自分史上最高を更新することが最大の達成感になる。その積み重ねが、本物の実力になる。`,
+      '共鳴型':`「この力が、大切な人の笑顔につながる」——そう感じると、最大の集中力が出る。だからあなたには——「誰のために学ぶか」を心の中心に置く方法が合っている。その人の笑顔を想像しながら勉強する。感情がアンカーになると、あなたの学びは深くなる。`,
+    },
+    traits:['感受性が豊かで、美しいものや心地よいものへのこだわりがある','自分のペースを乱されると、力が出なくなる','プレッシャーをかけられると逆効果になることがある','自分の気持ちを言葉で表現するのが、少し苦手だ','感覚的に「これだ」と感じたことへの信頼が強い','人の気持ちに敏感で、傷つきやすい一面がある','深く考えすぎて、決断が遅くなることがある','強制や管理より、自由に動ける環境の方が力が出る','一人の時間でエネルギーを回復するタイプだ','「今この瞬間」に集中して生きていたい'],
+    methods:['色ペン・図・イラストを使ってノートをビジュアル化','好きな音楽（歌詞なし）を聴きながら集中する','具体的なイメージ・体験と結びつけて覚える','自分のペースで、プレッシャーなく進める','好きな科目から始めてモチベーションを上げる'],
+    weak:'プレッシャーをかけられると逆効果になってしまう——それは内側のリズムで動くタイプだから。「今日はここまで」と自分で決めて達成感を積み上げる方が、長く続けられる。',
+    action:'勉強を始める前に「今日はここまで」というゴールを1つだけ決める。' },
+
+  ESTP:{ name:'挑戦者型', group:'explorer',
+    catch:'今すぐやる、瞬発力の勉強家',
+    base:`今この瞬間を生きている。行動して、感じて、修正する——そのサイクルが誰よりも速い。「とりあえずやってみよう」が口癖な人は多いが、あなたはそれを本当に実行できる数少ない人だ。その行動力は本物だ。
+
+瞬発力がある。チャンスが来た瞬間に動ける。状況の変化を読む力も高い。今に全力を注げるぶん、後からじわじわと「あのときもっと準備すれば」と後悔することもある。でもその経験が次の行動を速くする。
+
+「計画性がない」「先を考えていない」と言われることがあるかもしれない。でもそれは、今できることに全力を注いでいるからだ。それは鍛えてもなかなか手に入らない能力だ。そういう人だ。`,
+    motiveDesc:{
+      '探求型':`「これはどういう仕組みなんだ？」という好奇心が爆発したとき——止まれない。だからあなたには——まず問題を解いて「なぜこうなるのか」を逆に辿る学習法が合っている。答えから仕組みを探っていく。実践を通じた探求が、あなたの最速ルートだ。`,
+      '達成型':`ライバルがいると、一気に燃える。比べる対象がある方が、力が出る——その感覚を知っているはずだ。だからあなたには——目標スコアとライバルを設定して「競争モード」で学ぶ方法が合っている。「次の模試で〇〇を抜く」という具体的なターゲットがあると、短期集中力が最大化する。`,
+      '共鳴型':`「仲間のために戦う」という感覚——それが最大の燃料だ。だからあなたには——グループで競い合い、励まし合いながら学ぶ方法が合っている。仲間の存在が、あなたのエンジンを加速させる。一人より仲間がいる方が、確実に強くなる。`,
+    },
+    traits:['まずやってみて、考えるのは後でいいと思っている','今この瞬間に全力を注ぐ方が、得意だ','長期計画より、今日・今週の目標で動く方が動きやすい','ライバルや競争相手がいると、一気にやる気が上がる','理論より実践、説明より体験の方が理解が速い','飽きっぽいと言われるが、それは感度が高いからだと思っている','退屈な状況が苦手で、刺激がないと力が出ない','人前でも物怖じせず、すぐに場に溶け込める','迷ったらとりあえず動く、が自然な習慣になっている','状況の変化を読む力が高く、空気が変わったのを最初に感じる'],
+    methods:['まず問題を解いて、つまずいたら解説を読む','25分集中→10分完全休憩でメリハリをつける','ライバルや目標スコアを設定して競争モードに','声に出して読む・歩きながら音声を聴く','飽きたら即座に科目・場所・方法を変える'],
+    weak:'長期間のコツコツが苦手になってしまう——それは今この瞬間の力が強すぎるからだ。週ごとの勝負テーマを設定して、短期決戦の連続として学習を設計すると、あなたの力が最大限に活きる。',
+    action:'今週の「勝負テーマ」を1つだけ今日決める。それだけで集中の質が変わる。' },
+
+  ESFP:{ name:'表現者型', group:'explorer',
+    catch:'楽しみながら学ぶ、みんなのムードメーカー',
+    base:`場を盛り上げる力がある。笑いが生まれ、緊張がほぐれ、みんなが前向きになる——あなたがいると、エネルギーが変わる。その力は、本物だ。周りの人はそれを知っている。
+
+今この瞬間を楽しむ力がある。記憶力もいい——楽しかったことは、細かいディテールまで鮮明に覚えている。その「楽しさと記憶の連動」は、学びの最大の武器になる。楽しければ、自然と覚えられるのだ。
+
+「ふざけすぎ」「真剣さが足りない」と言われることがあるかもしれない。でもそれは、真剣に楽しむことができるからだ。楽しみながら本気を出せる人は少ない。あなたはその両立ができる。
+
+楽しさへの感度が高すぎるぶん、楽しくない現実と向き合うとき、思った以上に気持ちが落ちることがある。「自分だけが空回りしている」と感じる瞬間も、知っているはずだ。そういう人だ。あなたは。`,
+    motiveDesc:{
+      '探求型':`「これ、めちゃくちゃ面白い！」という発見——それが最大の燃料だ。だからあなたには——学習ゲームや動画、クイズ形式など、楽しい切り口から入る方法が合っている。「面白さ」を感じながら学ぶと、記憶が定着する速度が上がる。楽しさと好奇心を追いかけると、自然と深みが生まれる。`,
+      '達成型':`「やった！できた！」の瞬間——テンションが最高に上がる。だからあなたには——小さな目標をたくさん設定して「達成の連続」を作る方法が合っている。今日中に〇問解く、今週この範囲を終わらせる——次々とクリアする快感が、勉強を続ける原動力になる。`,
+      '共鳴型':`仲間と笑いながら高め合う——それが最高の時間だ。だからあなたには——友達と一緒に勉強する環境を作る方法が合っている。教え合い、励まし合い、時には競い合う。人との相互作用の中で、あなたの力は最大化する。`,
+    },
+    traits:['場を盛り上げることが、自然とできてしまう','みんなが笑顔になっている瞬間が、最も充実している','楽しくないと、やる気がほとんど出ない','感情表現が豊かで、喜怒哀楽がわかりやすい','新しい経験や体験が大好きで、刺激を求めている','人から褒められると、一気にやる気が上がる','計画より、その場の流れで動く方が自然体でいられる','一人でいる時間より、誰かといる時間の方が充実する','深く考えすぎず、直感で動くことが多い','楽しいと思えると、集中力のスイッチが入る'],
+    methods:['グループで楽しく・笑いながら学ぶ','声に出して読む・替え歌で覚える','実体験や見聞きしたことと結びつけて覚える','細切れ時間（移動・休憩）をうまく活用する','達成のたびに小さなご褒美を設定する'],
+    weak:'楽しくないと全くやる気が出なくなってしまう——それは楽しさへの感度が高すぎるからだ。「クイズ形式」「友達と競争」など、常に遊びの要素を学習に混ぜておくと、自然とエンジンがかかる。',
+    action:'今日の勉強に「クイズ形式」か「友達と一緒」の要素を1つ入れる。それだけでいい。' },
+};
+
+// 動機キャッチフレーズ修飾語
+const MOTIVE_PREFIX = {
+  '探求型': '知を極める',
+  '達成型': '頂点を目指す',
+  '共鳴型': '仲間と駆ける',
+};
+
+// =====================================================
+// STATE
+// =====================================================
+let currentQ = 0;
+let allQ     = [];
+let scores   = {};
+let _lastCode= '';
+let _motive  = '';
+let _pressure= '';
+let _strength= '';
+
+// =====================================================
+// CORE
+// =====================================================
+function startQuiz() {
+  // MBTI 32問をシャッフル（軸内シャッフル→インターリーブ）
+  const grouped = { e:[], n:[], t:[], j:[] };
+  MBTI_QUESTIONS.forEach(q => grouped[q.axis].push({...q}));
+  ['e','n','t','j'].forEach(ax => shuffle(grouped[ax]));
+
+  const mbti = [];
+  for (let i = 0; i < 8; i++) {
+    ['e','n','t','j'].forEach(ax => mbti.push(grouped[ax][i]));
+  }
+
+  // 特殊5問を挿入：最初の4問を8問ごと、最後の1問を末尾
+  // 配置: [8MBTI+特殊] × 4 + 最後の特殊1問 = 37問
+  allQ = [];
+  for (let i = 0; i < 4; i++) {
+    allQ.push(...mbti.slice(i * 8, (i + 1) * 8));
+    allQ.push(SPECIAL_QUESTIONS[i]);
+  }
+  allQ.push(SPECIAL_QUESTIONS[4]);
+  // allQ.length = 37
+
+  currentQ = 0;
+  scores   = { e:0, n:0, t:0, j:0, me:0, ma:0, mc:0, ne:0, se:0 };
+
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('quizScreen').style.display  = 'block';
+  renderQuestion();
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function renderQuestion() {
+  const q   = allQ[currentQ];
+  const pct = Math.round((currentQ / 37) * 100);
+
+  document.getElementById('qNum').textContent         = `質問 ${currentQ + 1} / 37`;
+  document.getElementById('qPct').textContent         = `${pct}%`;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+
+  // 励まし演出（18問目・残り10問）
+  const banner = document.getElementById('cheerBanner');
+  if (currentQ === 18) {
+    banner.innerHTML = `<div class="cheer-banner">🎉 折り返し！あと半分！このまま行こう</div>`;
+  } else if (currentQ === 27) {
+    banner.innerHTML = `<div class="cheer-banner">⚡ あと10問！ゴールが見えてきた</div>`;
+  } else {
+    banner.innerHTML = '';
+  }
+
+  // 軸ラベル
+  const m   = AXIS_META[q.axis];
+  const lbl = document.getElementById('axisLabel');
+  lbl.textContent = m.label;
+  lbl.className   = `axis-label ${m.cls}`;
+
+  // 質問テキスト
+  const qt = document.getElementById('questionText');
+  qt.classList.remove('fade-up');
+  void qt.offsetWidth;
+  qt.textContent = q.text;
+  qt.classList.add('fade-up');
+
+  // 選択肢
+  const OPTS = [
+    { label:'全くそう思わない', val:-2 },
+    { label:'そう思わない',     val:-1 },
+    { label:'どちらでもない',   val: 0 },
+    { label:'そう思う',         val: 1 },
+    { label:'とてもそう思う',   val: 2 },
+  ];
+  const container = document.getElementById('answers');
+  container.innerHTML = '';
+  OPTS.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className            = 'answer-btn fade-up';
+    btn.style.animationDelay = `${i * 0.055}s`;
+    btn.textContent          = opt.label;
+    btn.onclick              = () => recordAnswer(opt.val);
+    container.appendChild(btn);
+  });
+}
+
+function recordAnswer(val) {
+  const q = allQ[currentQ];
+  scores[q.axis] += val * q.dir;
+  currentQ++;
+  if (currentQ >= 37) showResult();
+  else renderQuestion();
+}
+
+function showResult() {
+  // ── MBTI タイプ ──
+  const E = scores.e >= 0 ? 'E' : 'I';
+  const N = scores.n >= 0 ? 'N' : 'S';
+  const T = scores.t >= 0 ? 'T' : 'F';
+  const J = scores.j >= 0 ? 'J' : 'P';
+  const code = E + N + T + J;
+  _lastCode  = code;
+  const type = TYPES[code];
+
+  // ── 動機タイプ（エニアグラム）──
+  // me: 探求 / ma: 達成 / mc: 共鳴  の3問を対称比較
+  // チャッピー指摘：共鳴型を先に拾う順序で精度UP
+  const me = scores.me, ma = scores.ma, mc = scores.mc;
+  const maxScore = Math.max(me, ma, mc);
+
+  if (maxScore <= 0) {
+    // 全問が中立 → MBTIスコアで補完（共鳴→探求→達成の優先順）
+    if (scores.e > 2 && scores.t < 0) _motive = '共鳴型';   // 外向+感情
+    else if (scores.n > 4)            _motive = '探求型';   // 直感強め
+    else if (scores.t > 4 && scores.j > 4) _motive = '達成型'; // 思考+計画
+    else                              _motive = '共鳴型';   // デフォルト
+  } else if (mc === maxScore && mc > 0) {
+    _motive = '共鳴型';   // 共鳴を先に拾う
+  } else if (me >= ma) {
+    _motive = '探求型';
+  } else {
+    _motive = '達成型';
+  }
+
+  // ── プレッシャー耐性（ビッグファイブ神経症傾向）──
+  _pressure = scores.ne > 0 ? '注意型' : '安定型';
+
+  // ── 強みドメイン（ストレングスファインダー）──
+  _strength = scores.se > 0 ? '実行力' : '思考力';
+
+  // ── 複合プロファイルのインサイト生成 ──
+  const insight = buildInsight(code, _motive, _pressure, _strength);
+
+  // ── 複合キャッチフレーズ ──
+  const combinedCatch = `"${MOTIVE_PREFIX[_motive]}${type.name}"`;
+
+  // ── DOM更新 ──
+  document.getElementById('quizScreen').style.display   = 'none';
+  document.getElementById('resultScreen').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // テーマ
+  document.getElementById('resultScreen').className = `result-screen theme-${type.group}`;
+  document.getElementById('resultHero').className   = `result-hero fade-up theme-${type.group}`;
+
+  // バッジ
+  document.getElementById('typeLetters').innerHTML =
+    code.split('').map(l => `<div class="type-letter">${l}</div>`).join('');
+
+  document.getElementById('resultName').textContent         = type.name;
+  document.getElementById('resultCombinedCatch').textContent = combinedCatch;
+  document.getElementById('resultCatch').textContent        = `— ${type.catch}`;
+
+  // 複合プロファイル
+  document.getElementById('profileMotive').textContent   = _motive;
+  document.getElementById('profilePressure').textContent = `プレッシャー${_pressure}`;
+  document.getElementById('profileStrength').textContent = `${_strength}ドメイン`;
+  document.getElementById('profileInsight').textContent  = insight;
+
+  // 説明・勉強法・弱点（base + 動機別段落を組み合わせて表示）
+  const fullDesc = (type.base || '') + '\n\n' + (type.motiveDesc && type.motiveDesc[_motive] ? type.motiveDesc[_motive] : '');
+  document.getElementById('resultDesc').innerHTML =
+    fullDesc.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+  document.getElementById('resultTraits').innerHTML =
+    (type.traits || []).map(t => `<li><span class="traits-dot"></span>${t}</li>`).join('');
+  document.getElementById('resultMethods').innerHTML =
+    type.methods.map(m => `<li><span class="method-check">✓</span>${m}</li>`).join('');
+  document.getElementById('resultWeak').textContent = type.weak;
+  document.getElementById('resultActionText').textContent = type.action || '';
+
+  // スコアバー
+  renderScoreBars();
+}
+
+function buildInsight(code, motive, pressure, strength) {
+  // チャッピー指摘：テンプレ連結→因果でつなぐストーリー形式に
+  const motiveText = {
+    '探求型': '「知りたい」が最大のエンジン',
+    '達成型': '「結果を出したい」が最大のエンジン',
+    '共鳴型': '「誰かの役に立ちたい」が最大のエンジン',
+  }[motive];
+
+  const pressureText = {
+    '注意型': 'ただし試験前に不安が高まりやすい傾向があるため、早めに着手して当日のプレッシャーを分散させると最大能力を発揮できます。',
+    '安定型': '本番に強いメンタルが武器です。ただし余裕があるぶん着手が遅れやすいので、定期的な自己点検を意識しましょう。',
+  }[pressure];
+
+  const strengthText = {
+    '実行力': '考え込むより「まず1問解く」ことで一気に加速するタイプです。',
+    '思考力': '「なぜそうなるか」を先に理解してから動く方が、実力が安定して積み上がります。',
+  }[strength];
+
+  return `あなたは${motiveText}の持ち主です。${pressureText} ${strengthText}`;
+}
+
+function renderScoreBars() {
+  const MAX  = 16;
+  const axes = [
+    { key:'e', pos:'E（外向）', neg:'I（内向）' },
+    { key:'n', pos:'N（直感）', neg:'S（感覚）' },
+    { key:'t', pos:'T（思考）', neg:'F（感情）' },
+    { key:'j', pos:'J（計画）', neg:'P（柔軟）' },
+  ];
+  const grid = document.getElementById('scoreGrid');
+  grid.innerHTML = axes.map(a => {
+    const raw    = scores[a.key];
+    const winner = raw >= 0 ? a.pos : a.neg;
+    const pct    = Math.round(Math.min(Math.abs(raw) / MAX * 100, 100));
+    return `<div>
+      <div class="score-labels"><span>${winner}</span><span>${pct}%</span></div>
+      <div class="score-bar-wrap">
+        <div class="score-bar-fill" style="width:0%" data-pct="${pct}"></div>
+      </div></div>`;
+  }).join('');
+  setTimeout(() => {
+    document.querySelectorAll('.score-bar-fill').forEach(el => {
+      el.style.width = el.dataset.pct + '%';
+    });
+  }, 100);
+}
+
+function shareX() {
+  const type = TYPES[_lastCode];
+  const text = `【まなクエ！診断】\n${_lastCode}：${type.name}\n動機：${_motive} ／ ${_strength}ドメイン\n"${MOTIVE_PREFIX[_motive]}${type.name}"\n\n#まなクエ診断\nあなたも試してみよう👇\n`;
+  window.open(
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(location.href)}`,
+    '_blank'
+  );
+}
+
+function shareLine() {
+  const type = TYPES[_lastCode];
+  const msg  = `【まなクエ！診断】${_lastCode}：${type.name}（${_motive}）"${MOTIVE_PREFIX[_motive]}${type.name}" #まなクエ診断 ${location.href}`;
+  window.open(
+    `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(msg)}`,
+    '_blank'
+  );
+}
+
+function resetQuiz() {
+  document.getElementById('resultScreen').style.display = 'none';
+  document.getElementById('startScreen').style.display  = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
