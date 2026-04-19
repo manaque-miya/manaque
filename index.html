@@ -152,22 +152,22 @@
     }
     .hero__inner {
       max-width: 1200px; margin: 0 auto;
-      padding: 64px 32px 56px;
+      padding: 56px 32px 0;
       position: relative; z-index: 1;
+      display: flex; align-items: flex-end; gap: 8px;
     }
+    .hero__content { flex: 1; min-width: 0; padding-bottom: 48px; }
     .hero__charas {
-      position: absolute;
-      right: 12px; bottom: 0;
-      display: flex; align-items: flex-end; gap: 2px;
-      pointer-events: none; z-index: 2;
+      display: flex; align-items: flex-end; gap: 0px;
+      flex-shrink: 0; pointer-events: none;
     }
     .hero__charas img {
-      height: clamp(72px, 9vw, 120px);
+      height: clamp(100px, 11vw, 155px);
       width: auto; object-fit: contain;
       filter: drop-shadow(0 3px 8px rgba(0,0,0,.28));
     }
-    @media (max-width: 900px) { .hero__charas img { height: 72px; } }
-    @media (max-width: 600px) { .hero__charas { display: none; } }
+    @media (max-width: 900px) { .hero__charas img { height: 90px; } }
+    @media (max-width: 640px) { .hero__charas { display: none; } }
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
@@ -415,7 +415,8 @@
       .header__inner { padding: 12px 16px; }
       .header__nav { display: none; }
       .header__menu-btn { display: grid; }
-      .hero__inner { padding: 40px 16px 36px; }
+      .hero__inner { padding: 40px 16px 0; }
+      .hero__content { padding-bottom: 36px; }
       .hero::after { font-size: 120px; opacity: .06; }
       .section { padding: 40px 16px; }
       .ad-wrap { padding: 12px 16px; }
@@ -561,23 +562,25 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero__inner">
-    <div class="hero__eyebrow">
-      🔥 今週のいちばん：都道府県クイズ
-    </div>
-    <h1 class="hero__title">
-      <span class="accent">赤ちゃんから大人まで、</span><br>
-      学べるクイズがここにある。
-    </h1>
-    <p class="hero__sub">
-      読むだけじゃ身につかない。4択で答えてから覚える、あたらしい学習のかたち。年齢も学年も関係なし。
-    </p>
-    <div class="hero__btns">
-      <a href="quiz.html?id=geography&amp;autostart=1" class="btn btn--yellow">
-        いまからクイズ →
-      </a>
-      <a href="#category" class="btn btn--outline">
-        カテゴリから選ぶ →
-      </a>
+    <div class="hero__content">
+      <div class="hero__eyebrow">
+        🔥 今週のいちばん：都道府県クイズ
+      </div>
+      <h1 class="hero__title">
+        <span class="accent">赤ちゃんから大人まで、</span><br>
+        学べるクイズがここにある。
+      </h1>
+      <p class="hero__sub">
+        読むだけじゃ身につかない。4択で答えてから覚える、あたらしい学習のかたち。年齢も学年も関係なし。
+      </p>
+      <div class="hero__btns">
+        <a href="quiz.html?id=geography&amp;autostart=1" class="btn btn--yellow">
+          いまからクイズ →
+        </a>
+        <a href="#category" class="btn btn--outline">
+          カテゴリから選ぶ →
+        </a>
+      </div>
     </div>
     <div class="hero__charas">
       <img src="assets/chara/kuemaru.png" alt="クエ丸">
@@ -589,36 +592,6 @@
     </div>
   </div>
 </section>
-
-<!-- ===== CHARACTER BAND ===== -->
-<div class="chara-band">
-  <div class="chara-band__inner">
-    <a class="chara-item" href="#">
-      <img src="assets/chara/kuemaru.png" alt="クエ丸">
-      <span class="chara-item__name">クエ丸</span>
-    </a>
-    <a class="chara-item" href="#">
-      <img src="assets/chara/manadra.png" alt="まなドラ">
-      <span class="chara-item__name">まなドラ</span>
-    </a>
-    <a class="chara-item" href="#">
-      <img src="assets/chara/lumina.png" alt="ルミナ先生">
-      <span class="chara-item__name">ルミナ先生</span>
-    </a>
-    <a class="chara-item" href="#">
-      <img src="assets/chara/ren.png" alt="レン先生">
-      <span class="chara-item__name">レン先生</span>
-    </a>
-    <a class="chara-item" href="#">
-      <img src="assets/chara/zeta.png" alt="ゼータ">
-      <span class="chara-item__name">ゼータ</span>
-    </a>
-    <a class="chara-item" href="#">
-      <img src="assets/chara/mil.png" alt="ミル">
-      <span class="chara-item__name">ミル</span>
-    </a>
-  </div>
-</div>
 
 <!-- ===== CATEGORY ===== -->
 <section class="section" id="category">
