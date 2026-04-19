@@ -369,6 +369,37 @@
       font-size: 12px; color: rgba(255,255,255,.3);
     }
 
+    /* ===== CHARACTER BAND ===== */
+    .chara-band {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 32px;
+    }
+    .chara-band__inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: flex-end; justify-content: center;
+      gap: 8px; flex-wrap: wrap;
+    }
+    .chara-item {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 6px; text-decoration: none;
+      transition: transform .2s;
+    }
+    .chara-item:hover { transform: translateY(-6px); }
+    .chara-item img {
+      height: clamp(64px, 9vw, 100px);
+      object-fit: contain;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,.12));
+    }
+    .chara-item__name {
+      font-size: 11px; font-weight: 800;
+      color: var(--ink-500);
+      background: var(--ink-100);
+      border-radius: var(--r-pill);
+      padding: 2px 8px;
+      white-space: nowrap;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .category-grid { grid-template-columns: repeat(3, 1fr); }
@@ -547,6 +578,36 @@
     <img class="hero__chara" src="assets/chara/kuemaru_guts.png" alt="クエ丸">
   </div>
 </section>
+
+<!-- ===== CHARACTER BAND ===== -->
+<div class="chara-band">
+  <div class="chara-band__inner">
+    <a class="chara-item" href="#">
+      <img src="assets/chara/kuemaru.png" alt="クエ丸">
+      <span class="chara-item__name">クエ丸</span>
+    </a>
+    <a class="chara-item" href="#">
+      <img src="assets/chara/manadra.png" alt="まなドラ">
+      <span class="chara-item__name">まなドラ</span>
+    </a>
+    <a class="chara-item" href="#">
+      <img src="assets/chara/lumina.png" alt="ルミナ先生">
+      <span class="chara-item__name">ルミナ先生</span>
+    </a>
+    <a class="chara-item" href="#">
+      <img src="assets/chara/ren.png" alt="レン先生">
+      <span class="chara-item__name">レン先生</span>
+    </a>
+    <a class="chara-item" href="#">
+      <img src="assets/chara/zeta.png" alt="ゼータ">
+      <span class="chara-item__name">ゼータ</span>
+    </a>
+    <a class="chara-item" href="#">
+      <img src="assets/chara/mil.png" alt="ミル">
+      <span class="chara-item__name">ミル</span>
+    </a>
+  </div>
+</div>
 
 <!-- ===== CATEGORY ===== -->
 <section class="section" id="category">
