@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分数の計算 | 全10問</title>
+<meta name="description" content="小学生向け分数の計算クイズ10問。通分・約分・分数の足し算引き算掛け算割り算を解説つきで学ぼう。">
+<style>
+:root {
+  --bg:#0f0f13;--card:#1a1a22;--border:#2a2a38;
+  --text:#f0f0f5;--muted:#7a7a9a;
+  --accent:#FFD60A;--green:#30D158;--red:#FF453A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;min-height:100vh;padding:24px 16px 80px}
+.container{max-width:640px;margin:0 auto}
+.page-header{text-align:center;margin-bottom:32px}
+.grade-tag{display:inline-block;background:var(--accent);color:#000;font-size:11px;font-weight:900;letter-spacing:.08em;padding:4px 12px;border-radius:20px;margin-bottom:10px}
+.page-header h1{font-size:26px;font-weight:900}
+.page-header p{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.6}
+.progress-wrap{margin-bottom:24px}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+.progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .4s ease;width:0%}
+.question-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-bottom:16px}
+.q-number{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:10px}
+.q-text{font-size:18px;font-weight:900;line-height:1.5;margin-bottom:8px}
+.q-sub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.q-formula{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:17px;font-weight:900;text-align:center;letter-spacing:.03em;margin-bottom:16px;font-family:'Courier New',monospace;white-space:pre-line}
+.choices{display:flex;flex-direction:column;gap:10px}
+.choice-btn{background:var(--bg);border:1.5px solid var(--border);color:var(--text);border-radius:12px;padding:14px 16px;font-size:15px;font-weight:700;cursor:pointer;text-align:left;transition:all .15s;display:flex;align-items:center;gap:12px}
+.choice-btn:hover:not(:disabled){border-color:var(--accent);background:rgba(128,128,128,.06)}
+.choice-btn.correct{border-color:var(--green);background:rgba(48,209,88,.12);color:var(--green)}
+.choice-btn.wrong{border-color:var(--red);background:rgba(255,69,58,.12);color:var(--red)}
+.choice-btn:disabled{cursor:default}
+.choice-label{width:26px;height:26px;min-width:26px;background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
+.choice-btn.correct .choice-label{background:var(--green);color:#000}
+.choice-btn.wrong .choice-label{background:var(--red);color:#fff}
+.feedback{margin-top:14px;border-radius:12px;padding:14px 16px;display:none}
+.feedback.show{display:block}
+.feedback.correct-fb{background:rgba(48,209,88,.1);border:1px solid rgba(48,209,88,.3)}
+.feedback.wrong-fb{background:rgba(255,69,58,.1);border:1px solid rgba(255,69,58,.3)}
+.feedback-label{font-size:12px;font-weight:900;margin-bottom:6px}
+.feedback.correct-fb .feedback-label{color:var(--green)}
+.feedback.wrong-fb .feedback-label{color:var(--red)}
+.feedback-text{font-size:13px;line-height:1.7}
+.next-btn{width:100%;background:var(--accent);color:#000;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:900;cursor:pointer;margin-top:12px;display:none;transition:opacity .15s}
+.next-btn.show{display:block}
+.next-btn:hover{opacity:.85}
+.score-screen{display:none;text-align:center}
+.score-screen.show{display:block}
+.score-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 24px;margin-bottom:20px}
+.score-emoji{font-size:52px;margin-bottom:12px}
+.score-num{font-size:56px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:4px}
+.score-denom{font-size:20px;color:var(--muted);margin-bottom:16px}
+.score-msg{font-size:16px;font-weight:700;line-height:1.6}
+.score-bar-wrap{margin:20px 0}
+.score-bar-bg{height:12px;background:var(--border);border-radius:6px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:6px;background:var(--accent);transition:width 1s ease}
+.retry-btn{display:inline-block;background:transparent;border:1.5px solid var(--accent);color:var(--accent);border-radius:12px;padding:12px 28px;font-size:15px;font-weight:900;cursor:pointer;transition:all .15s;margin-top:8px}
+.retry-btn:hover{background:var(--accent);color:#000}
+.review-list{margin-top:20px}
+.review-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;gap:10px;align-items:flex-start;text-align:left}
+.review-icon{font-size:16px;flex-shrink:0}
+.review-q{font-size:13px;font-weight:700;margin-bottom:4px}
+.review-a{font-size:12px;color:var(--muted)}
+.review-a span{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="page-header">
+  <div class="grade-tag">🏫 小学生向け</div>
+  <h1>分数の計算クイズ　全10問</h1>
+  <p>通分・約分をマスターして分数を自由に計算しよう！</p>
+</div>
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="progressText">問題 1 / 10</span>
+    <span id="scoreText">正解 0問</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+<div id="quizArea"></div>
+<div class="score-screen" id="scoreScreen">
+  <div class="score-card">
+    <div class="score-emoji" id="scoreEmoji"></div>
+    <div class="score-num" id="scoreNum"></div>
+    <div class="score-denom">/ 10問</div>
+    <div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" id="scoreBarFill" style="width:0%"></div></div></div>
+    <div class="score-msg" id="scoreMsg"></div>
+  </div>
+  <button class="retry-btn" onclick="restart()">もう一度チャレンジ</button>
+  <div class="review-list" id="reviewList"></div>
+</div>
+</div>
+<script>
+const QUESTIONS=[{"q": "1/2 + 1/4 = ？", "sub": "分母をそろえる（通分）。1/2=2/4として計算。", "formula": null, "choices": ["1/3", "2/6", "3/4", "1/2"], "answer": 2, "explain": "1/2=2/4。2/4+1/4=3/4。分母が違う分数を足すときは通分して分母をそろえる。"}, {"q": "3/4 - 1/4 = ？", "sub": "分母が同じ場合は分子だけ引けばOK。", "formula": null, "choices": ["1/4", "2/4（=1/2）", "3/8", "2/8"], "answer": 1, "explain": "3/4-1/4=2/4=1/2。分母が同じ場合は分子だけ計算。2/4は約分すると1/2（2と4の最大公約数2で割る）。"}, {"q": "2/3 + 1/3 = ？", "sub": "分母が同じ。2+1=3で分子を計算すると？", "formula": null, "choices": ["1/3", "2/3", "3/6", "1（整数）"], "answer": 3, "explain": "2/3+1/3=3/3=1。分子と分母が同じになると1（整数）になる。3/3=1は「全体を3等分したものが3つ分=全部」。"}, {"q": "1/2 + 1/3 = ？", "sub": "分母が違う。最小公倍数6で通分しよう。", "formula": null, "choices": ["2/5", "2/6", "5/6", "1/6"], "answer": 2, "explain": "通分：1/2=3/6、1/3=2/6。3/6+2/6=5/6。2と3の最小公倍数は6——そこに通分する。"}, {"q": "3/4 - 1/3 = ？", "sub": "分母4と3の最小公倍数は12。12に通分しよう。", "formula": null, "choices": ["2/1", "5/12", "7/12", "1/12"], "answer": 1, "explain": "3/4=9/12、1/3=4/12。9/12-4/12=5/12。4と3の最小公倍数は12。"}, {"q": "2/5 × 3 = ？", "sub": "分数×整数。分子に整数をかけるだけ。", "formula": null, "choices": ["5/6", "6/5（=1と1/5）", "6/15", "2/15"], "answer": 1, "explain": "2/5×3=6/5。分子2に3をかけて6/5。6/5は仮分数で、帯分数で表すと1と1/5（1余り1）。"}, {"q": "1/2 × 1/3 = ？", "sub": "分数×分数。分子同士・分母同士をかける。", "formula": null, "choices": ["1/6", "2/6", "1/5", "2/5"], "answer": 0, "explain": "1/2×1/3=（1×1）/（2×3）=1/6。分数の掛け算は「分子×分子」÷「分母×分母」。"}, {"q": "3/4 ÷ 3 = ？", "sub": "分数÷整数。分母に整数をかけるか、整数の逆数をかける。", "formula": null, "choices": ["9/4", "3/12", "1/4", "4/3"], "answer": 2, "explain": "3/4÷3=3/4×1/3=3/12=1/4。分数を整数で割るときは「整数の逆数（1/3）をかける」。または分母に3をかけて3/12=1/4。"}, {"q": "2/3 ÷ 1/2 = ？", "sub": "分数÷分数。わる分数を逆数にしてかけよう。", "formula": null, "choices": ["1/3", "1/2", "4/3（=1と1/3）", "4/6"], "answer": 2, "explain": "2/3÷1/2=2/3×2/1=4/3=1と1/3。分数で割るときは「わる数の逆数（分子と分母をひっくり返す）をかける」。"}, {"q": "1と1/2 + 2と1/3 = ？", "sub": "帯分数の足し算。整数部分と分数部分を分けて計算。", "formula": null, "choices": ["3と1/5", "3と5/6", "3と2/5", "4と1/6"], "answer": 1, "explain": "整数：1+2=3。分数：1/2+1/3=3/6+2/6=5/6。合わせて3と5/6。"}];
+let current=0,score=0,answered=[];
+function renderQuestion(idx){
+  const q=QUESTIONS[idx];
+  const fml=q.formula?`<div class="q-formula">${q.formula}</div>`:'';
+  document.getElementById('quizArea').innerHTML=`
+    <div class="question-card">
+      <div class="q-number">問題 ${idx+1} / ${QUESTIONS.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="q-sub">${q.sub}</div>
+      ${fml}
+      <div class="choices">
+        ${q.choices.map((c,i)=>`<button class="choice-btn" onclick="selectAnswer(${i})" id="choice-${i}"><span class="choice-label">${'ABCD'[i]}</span>${c}</button>`).join('')}
+      </div>
+      <div class="feedback" id="feedback"><div class="feedback-label" id="feedbackLabel"></div><div class="feedback-text" id="feedbackText"></div></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">${idx<QUESTIONS.length-1?'次の問題へ →':'結果を見る'}</button>
+    </div>`;
+  document.getElementById('progressFill').style.width=(idx/QUESTIONS.length*100)+'%';
+  document.getElementById('progressText').textContent=`問題 ${idx+1} / ${QUESTIONS.length}`;
+}
+function selectAnswer(sel){
+  const q=QUESTIONS[current];const ok=sel===q.answer;
+  if(ok)score++;answered.push({idx:current,selected:sel,correct:ok});
+  document.querySelectorAll('.choice-btn').forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.answer)b.classList.add('correct');
+    else if(i===sel&&!ok)b.classList.add('wrong');
+  });
+  const fb=document.getElementById('feedback');
+  fb.className=`feedback show ${ok?'correct-fb':'wrong-fb'}`;
+  document.getElementById('feedbackLabel').textContent=ok?'✅ 正解！':`❌ 不正解。正解は「${q.choices[q.answer]}」`;
+  document.getElementById('feedbackText').textContent=q.explain;
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('scoreText').textContent=`正解 ${score}問`;
+}
+function nextQuestion(){current++;if(current>=QUESTIONS.length)showScore();else renderQuestion(current);}
+function showScore(){
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('progressFill').style.width='100%';
+  document.getElementById('progressText').textContent='完了！';
+  document.getElementById('scoreScreen').classList.add('show');
+  const p=score/QUESTIONS.length;
+  let e,m;
+  if(p===1){e='🏆';m='全問正解！完璧だ！'}
+  else if(p>=.8){e='🎉';m='すばらしい！あと少しで満点！'}
+  else if(p>=.6){e='😊';m='よくできました！解説を読んで復習しよう。'}
+  else if(p>=.4){e='📚';m='もう一歩！解説をしっかり確認しよう。'}
+  else{e='💪';m='もう一度チャレンジ！解説が理解の近道。'}
+  document.getElementById('scoreEmoji').textContent=e;
+  document.getElementById('scoreNum').textContent=score;
+  document.getElementById('scoreMsg').textContent=m;
+  setTimeout(()=>{document.getElementById('scoreBarFill').style.width=(p*100)+'%';},100);
+  document.getElementById('reviewList').innerHTML=
+    '<div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:10px;text-align:left;">📋 振り返り</div>'+
+    answered.map(a=>{const q=QUESTIONS[a.idx];return`<div class="review-item"><div class="review-icon">${a.correct?'✅':'❌'}</div><div><div class="review-q">${q.q}</div><div class="review-a">正解：<span>${q.choices[q.answer]}</span>　あなたの回答：${q.choices[a.selected]}</div></div></div>`;}).join('');
+}
+function restart(){
+  current=0;score=0;answered=[];
+  document.getElementById('quizArea').style.display='block';
+  document.getElementById('scoreScreen').classList.remove('show');
+  document.getElementById('scoreText').textContent='正解 0問';
+  renderQuestion(0);
+}
+renderQuestion(0);
+</script>
+</body>
+</html>

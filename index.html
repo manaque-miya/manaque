@@ -1118,6 +1118,21 @@ function renderUnits(gi, si) {
     const isNanpure  = unit.quizId === 'nanpure';
     const isIgo      = unit.quizId === 'igo';
     const isShogi    = unit.quizId === 'shogi';
+    // standaloneフラグがある場合は専用HTMLへ直接リンク
+    if (unit.standalone) {
+      const btnAll = `<a href="${unit.quizId}.html" class="count-btn count-btn--default">はじめる</a>`;
+      return `
+      <div class="unit-card">
+        <div class="unit-card__tags">${tagHtml}</div>
+        <div class="unit-card__title">${unit.label}</div>
+        <div class="unit-card__meta">
+          <span>📘 ${unit.count}問</span>
+          <span>⏱ ${unit.time}</span>
+          <span class="unit-card__difficulty">${stars}</span>
+        </div>
+        <div class="count-btns">${btnAll}</div>
+      </div>`;
+    }
     // 専用ページへのルーティング
     const base = isMap      ? `map-quiz-new.html?autostart=1`
                : isMapTap   ? `map-tap-quiz.html?autostart=1`

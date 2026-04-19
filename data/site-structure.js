@@ -94,7 +94,17 @@ const SITE_STRUCTURE = [
             difficulty: 3,
             gacha: false,
             tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }]
-          }
+          },
+          { label: 'たし算・ひき算',    quizId: 'elem-math-01', standalone: true, count: 10, time: '約5分', difficulty: 1, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: 'かけ算・九九',      quizId: 'elem-math-02', standalone: true, count: 10, time: '約5分', difficulty: 1, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: 'わり算',            quizId: 'elem-math-03', standalone: true, count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '小数の計算',        quizId: 'elem-math-04', standalone: true, count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '分数の計算',        quizId: 'elem-math-05', standalone: true, count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '面積・体積',        quizId: 'elem-math-06', standalone: true, count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '割合・百分率',      quizId: 'elem-math-07', standalone: true, count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '速さ・時間・距離',  quizId: 'elem-math-08', standalone: true, count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '図形（角度・性質）',quizId: 'elem-math-09', standalone: true, count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '比・比の値',        quizId: 'elem-math-10', standalone: true, count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '算数', cls: 'badge--yellow' }, { text: '小学生', cls: 'badge--neutral' }] }
         ]
       },
       {
@@ -124,6 +134,24 @@ const SITE_STRUCTURE = [
     emoji: '📚',
     colorClass: 'cat--middle',
     subjects: [
+      {
+        id: 'math-mid',
+        label: '数学',
+        emoji: '📐',
+        badge: { text: '数学', cls: 'badge--sky' },
+        units: [
+          { label: '正負の数',          quizId: 'mid-math-01', standalone: true, count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '文字と式',          quizId: 'mid-math-02', standalone: true, count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '一次方程式',        quizId: 'mid-math-03', standalone: true, count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '比例・反比例',      quizId: 'mid-math-04', standalone: true, count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '連立方程式',        quizId: 'mid-math-05', standalone: true, count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '一次関数',          quizId: 'mid-math-06', standalone: true, count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '式の展開・因数分解',quizId: 'mid-math-07', standalone: true, count: 10, time: '約5分', difficulty: 4, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '平方根',            quizId: 'mid-math-08', standalone: true, count: 10, time: '約5分', difficulty: 4, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '二次方程式',        quizId: 'mid-math-09', standalone: true, count: 10, time: '約5分', difficulty: 4, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '確率',              quizId: 'mid-math-10', standalone: true, count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] }
+        ]
+      },
       {
         id: 'english',
         label: '英語',

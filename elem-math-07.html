@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>割合・百分率 | 全10問</title>
+<meta name="description" content="小学生向け割合・百分率クイズ10問。%・割・分の変換や割引・割増の計算を解説つきで学ぼう。">
+<style>
+:root {
+  --bg:#0f0f13;--card:#1a1a22;--border:#2a2a38;
+  --text:#f0f0f5;--muted:#7a7a9a;
+  --accent:#FFD60A;--green:#30D158;--red:#FF453A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;min-height:100vh;padding:24px 16px 80px}
+.container{max-width:640px;margin:0 auto}
+.page-header{text-align:center;margin-bottom:32px}
+.grade-tag{display:inline-block;background:var(--accent);color:#000;font-size:11px;font-weight:900;letter-spacing:.08em;padding:4px 12px;border-radius:20px;margin-bottom:10px}
+.page-header h1{font-size:26px;font-weight:900}
+.page-header p{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.6}
+.progress-wrap{margin-bottom:24px}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+.progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .4s ease;width:0%}
+.question-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;margin-bottom:16px}
+.q-number{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:10px}
+.q-text{font-size:18px;font-weight:900;line-height:1.5;margin-bottom:8px}
+.q-sub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.q-formula{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:17px;font-weight:900;text-align:center;letter-spacing:.03em;margin-bottom:16px;font-family:'Courier New',monospace;white-space:pre-line}
+.choices{display:flex;flex-direction:column;gap:10px}
+.choice-btn{background:var(--bg);border:1.5px solid var(--border);color:var(--text);border-radius:12px;padding:14px 16px;font-size:15px;font-weight:700;cursor:pointer;text-align:left;transition:all .15s;display:flex;align-items:center;gap:12px}
+.choice-btn:hover:not(:disabled){border-color:var(--accent);background:rgba(128,128,128,.06)}
+.choice-btn.correct{border-color:var(--green);background:rgba(48,209,88,.12);color:var(--green)}
+.choice-btn.wrong{border-color:var(--red);background:rgba(255,69,58,.12);color:var(--red)}
+.choice-btn:disabled{cursor:default}
+.choice-label{width:26px;height:26px;min-width:26px;background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
+.choice-btn.correct .choice-label{background:var(--green);color:#000}
+.choice-btn.wrong .choice-label{background:var(--red);color:#fff}
+.feedback{margin-top:14px;border-radius:12px;padding:14px 16px;display:none}
+.feedback.show{display:block}
+.feedback.correct-fb{background:rgba(48,209,88,.1);border:1px solid rgba(48,209,88,.3)}
+.feedback.wrong-fb{background:rgba(255,69,58,.1);border:1px solid rgba(255,69,58,.3)}
+.feedback-label{font-size:12px;font-weight:900;margin-bottom:6px}
+.feedback.correct-fb .feedback-label{color:var(--green)}
+.feedback.wrong-fb .feedback-label{color:var(--red)}
+.feedback-text{font-size:13px;line-height:1.7}
+.next-btn{width:100%;background:var(--accent);color:#000;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:900;cursor:pointer;margin-top:12px;display:none;transition:opacity .15s}
+.next-btn.show{display:block}
+.next-btn:hover{opacity:.85}
+.score-screen{display:none;text-align:center}
+.score-screen.show{display:block}
+.score-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px 24px;margin-bottom:20px}
+.score-emoji{font-size:52px;margin-bottom:12px}
+.score-num{font-size:56px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:4px}
+.score-denom{font-size:20px;color:var(--muted);margin-bottom:16px}
+.score-msg{font-size:16px;font-weight:700;line-height:1.6}
+.score-bar-wrap{margin:20px 0}
+.score-bar-bg{height:12px;background:var(--border);border-radius:6px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:6px;background:var(--accent);transition:width 1s ease}
+.retry-btn{display:inline-block;background:transparent;border:1.5px solid var(--accent);color:var(--accent);border-radius:12px;padding:12px 28px;font-size:15px;font-weight:900;cursor:pointer;transition:all .15s;margin-top:8px}
+.retry-btn:hover{background:var(--accent);color:#000}
+.review-list{margin-top:20px}
+.review-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;gap:10px;align-items:flex-start;text-align:left}
+.review-icon{font-size:16px;flex-shrink:0}
+.review-q{font-size:13px;font-weight:700;margin-bottom:4px}
+.review-a{font-size:12px;color:var(--muted)}
+.review-a span{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="page-header">
+  <div class="grade-tag">🏫 小学生向け</div>
+  <h1>割合・百分率クイズ　全10問</h1>
+  <p>パーセント・割・分——割合の3つの表し方をマスターしよう！</p>
+</div>
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="progressText">問題 1 / 10</span>
+    <span id="scoreText">正解 0問</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+<div id="quizArea"></div>
+<div class="score-screen" id="scoreScreen">
+  <div class="score-card">
+    <div class="score-emoji" id="scoreEmoji"></div>
+    <div class="score-num" id="scoreNum"></div>
+    <div class="score-denom">/ 10問</div>
+    <div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" id="scoreBarFill" style="width:0%"></div></div></div>
+    <div class="score-msg" id="scoreMsg"></div>
+  </div>
+  <button class="retry-btn" onclick="restart()">もう一度チャレンジ</button>
+  <div class="review-list" id="reviewList"></div>
+</div>
+</div>
+<script>
+const QUESTIONS=[{"q": "40人中10人は何%？", "sub": "割合=（比べる量÷もとにする量）×100", "formula": null, "choices": ["20%", "25%", "30%", "40%"], "answer": 1, "explain": "10÷40=0.25、0.25×100=25%。「10は40の何%か」=10/40×100=25%。"}, {"q": "100のうち35は何%？", "sub": "もとが100のときは分子がそのままパーセント。", "formula": null, "choices": ["3.5%", "35%", "350%", "3500%"], "answer": 1, "explain": "35÷100=0.35、0.35×100=35%。全体が100の場合、その数値が直接%になる。"}, {"q": "200の15%はいくつ？", "sub": "200×0.15を計算しよう。", "formula": null, "choices": ["15", "20", "30", "40"], "answer": 2, "explain": "200×0.15=30。または200×15÷100=3000÷100=30。15%=15/100=0.15として掛け算。"}, {"q": "50人の40%は何人？", "sub": "50×0.40=？", "formula": null, "choices": ["15人", "20人", "25人", "30人"], "answer": 1, "explain": "50×0.4=20人。または50×40÷100=2000÷100=20人。「40%=40/100=2/5」なので50×2/5=20でも計算できる。"}, {"q": "定価1200円の品が30%引きのとき値段は？", "sub": "30%引き=元値の70%。1200×0.7=？", "formula": null, "choices": ["360円", "720円", "840円", "960円"], "answer": 2, "explain": "1200×（1-0.3）=1200×0.7=840円。「30%引き」は「元値の70%」。間違えて1200×0.3=360（引く額）としないように。"}, {"q": "定価500円の品が20%引きのとき売値は？", "sub": "20%引き=元値の80%。500×0.8=？", "formula": null, "choices": ["300円", "380円", "400円", "480円"], "answer": 2, "explain": "500×0.8=400円。引く額は500×0.2=100円。500-100=400円でも同じ答え。"}, {"q": "もとの値段600円を20%増しにすると？", "sub": "20%増し=元値の120%。600×1.2=？", "formula": null, "choices": ["620円", "680円", "720円", "740円"], "answer": 2, "explain": "600×1.2=720円。「20%増し」は「元値の120%」。または600×0.2=120（増える額）、600+120=720円。"}, {"q": "150円の品に消費税10%を加えた税込み価格は？", "sub": "税込み=元値×1.1（10%増し）", "formula": null, "choices": ["155円", "160円", "165円", "170円"], "answer": 2, "explain": "150×1.1=165円。消費税10%=元値の10%が加わるので「1+0.1=1.1倍」。150×0.1=15（税額）、150+15=165円でもOK。"}, {"q": "120人の75%は何人？", "sub": "120×0.75=？。75%=3/4と考えてもOK。", "formula": null, "choices": ["80人", "85人", "90人", "95人"], "answer": 2, "explain": "120×0.75=90人。または75%=3/4なので120×3/4=90人。「120を4等分すると30人、その3つ分=90人」。"}, {"q": "60点は何点満点の75%？", "sub": "□×0.75=60。□=60÷0.75", "formula": null, "choices": ["45点", "70点", "80点", "90点"], "answer": 2, "explain": "□×0.75=60→□=60÷0.75=80。60÷0.75は60×4÷3=240÷3=80で計算してもOK。「60点は80点満点の75%」。"}];
+let current=0,score=0,answered=[];
+function renderQuestion(idx){
+  const q=QUESTIONS[idx];
+  const fml=q.formula?`<div class="q-formula">${q.formula}</div>`:'';
+  document.getElementById('quizArea').innerHTML=`
+    <div class="question-card">
+      <div class="q-number">問題 ${idx+1} / ${QUESTIONS.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="q-sub">${q.sub}</div>
+      ${fml}
+      <div class="choices">
+        ${q.choices.map((c,i)=>`<button class="choice-btn" onclick="selectAnswer(${i})" id="choice-${i}"><span class="choice-label">${'ABCD'[i]}</span>${c}</button>`).join('')}
+      </div>
+      <div class="feedback" id="feedback"><div class="feedback-label" id="feedbackLabel"></div><div class="feedback-text" id="feedbackText"></div></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">${idx<QUESTIONS.length-1?'次の問題へ →':'結果を見る'}</button>
+    </div>`;
+  document.getElementById('progressFill').style.width=(idx/QUESTIONS.length*100)+'%';
+  document.getElementById('progressText').textContent=`問題 ${idx+1} / ${QUESTIONS.length}`;
+}
+function selectAnswer(sel){
+  const q=QUESTIONS[current];const ok=sel===q.answer;
+  if(ok)score++;answered.push({idx:current,selected:sel,correct:ok});
+  document.querySelectorAll('.choice-btn').forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.answer)b.classList.add('correct');
+    else if(i===sel&&!ok)b.classList.add('wrong');
+  });
+  const fb=document.getElementById('feedback');
+  fb.className=`feedback show ${ok?'correct-fb':'wrong-fb'}`;
+  document.getElementById('feedbackLabel').textContent=ok?'✅ 正解！':`❌ 不正解。正解は「${q.choices[q.answer]}」`;
+  document.getElementById('feedbackText').textContent=q.explain;
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('scoreText').textContent=`正解 ${score}問`;
+}
+function nextQuestion(){current++;if(current>=QUESTIONS.length)showScore();else renderQuestion(current);}
+function showScore(){
+  document.getElementById('quizArea').style.display='none';
+  document.getElementById('progressFill').style.width='100%';
+  document.getElementById('progressText').textContent='完了！';
+  document.getElementById('scoreScreen').classList.add('show');
+  const p=score/QUESTIONS.length;
+  let e,m;
+  if(p===1){e='🏆';m='全問正解！完璧だ！'}
+  else if(p>=.8){e='🎉';m='すばらしい！あと少しで満点！'}
+  else if(p>=.6){e='😊';m='よくできました！解説を読んで復習しよう。'}
+  else if(p>=.4){e='📚';m='もう一歩！解説をしっかり確認しよう。'}
+  else{e='💪';m='もう一度チャレンジ！解説が理解の近道。'}
+  document.getElementById('scoreEmoji').textContent=e;
+  document.getElementById('scoreNum').textContent=score;
+  document.getElementById('scoreMsg').textContent=m;
+  setTimeout(()=>{document.getElementById('scoreBarFill').style.width=(p*100)+'%';},100);
+  document.getElementById('reviewList').innerHTML=
+    '<div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:10px;text-align:left;">📋 振り返り</div>'+
+    answered.map(a=>{const q=QUESTIONS[a.idx];return`<div class="review-item"><div class="review-icon">${a.correct?'✅':'❌'}</div><div><div class="review-q">${q.q}</div><div class="review-a">正解：<span>${q.choices[q.answer]}</span>　あなたの回答：${q.choices[a.selected]}</div></div></div>`;}).join('');
+}
+function restart(){
+  current=0;score=0;answered=[];
+  document.getElementById('quizArea').style.display='block';
+  document.getElementById('scoreScreen').classList.remove('show');
+  document.getElementById('scoreText').textContent='正解 0問';
+  renderQuestion(0);
+}
+renderQuestion(0);
+</script>
+</body>
+</html>
