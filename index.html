@@ -204,6 +204,18 @@
       line-height: 1.7; max-width: 520px; margin-bottom: 36px;
     }
     .hero__btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn--shindan {
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: #fff; font-weight: 900;
+      padding: 14px 28px; font-size: 16px;
+      box-shadow: 0 4px 20px rgba(124,58,237,.5), 0 0 0 3px rgba(255,255,255,.2);
+      animation: shindanPulse 2.4s ease-in-out infinite;
+    }
+    .btn--shindan:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,.65), 0 0 0 3px rgba(255,255,255,.3); }
+    @keyframes shindanPulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(124,58,237,.5), 0 0 0 3px rgba(255,255,255,.2); }
+      50%      { box-shadow: 0 4px 32px rgba(168,85,247,.8), 0 0 0 5px rgba(255,255,255,.35); }
+    }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       border: none; border-radius: var(--r-pill); cursor: pointer;
@@ -227,6 +239,128 @@
       background: var(--brand-500); color: var(--white);
       padding: 14px 28px; font-size: 15px;
       box-shadow: 0 4px 0 var(--brand-700), 0 6px 12px rgba(30,50,110,.2);
+    }
+
+    /* ===== SHINDAN FEATURE SECTION ===== */
+    .shindan-feature {
+      background: linear-gradient(135deg, #0f0c29 0%, #1a1060 40%, #24243e 100%);
+      position: relative; overflow: hidden;
+      padding: 64px 32px;
+    }
+    .shindan-feature::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 20% 50%, rgba(168,85,247,.18) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 30%, rgba(99,102,241,.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .shindan-feature::after {
+      content: '🧠';
+      position: absolute; right: -20px; bottom: -20px;
+      font-size: 220px; opacity: .04; line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .shindan-feature__inner {
+      max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    .shindan-feature__badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, rgba(168,85,247,.3), rgba(124,58,237,.3));
+      border: 1px solid rgba(168,85,247,.5);
+      border-radius: 999px; padding: 6px 18px;
+      font-size: 13px; font-weight: 800; color: #d8b4fe;
+      margin-bottom: 28px;
+      letter-spacing: .04em;
+    }
+    .shindan-feature__body {
+      display: flex; align-items: center; gap: 48px;
+    }
+    .shindan-feature__text {
+      flex: 1; min-width: 0;
+    }
+    .shindan-feature__title {
+      font-size: clamp(26px, 3.5vw, 42px); font-weight: 900;
+      color: #fff; line-height: 1.3; margin-bottom: 18px;
+    }
+    .shindan-feature__title span {
+      background: linear-gradient(90deg, #a855f7, #818cf8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .shindan-feature__desc {
+      font-size: 15px; line-height: 1.8; color: rgba(255,255,255,.7);
+      margin-bottom: 24px; max-width: 520px;
+    }
+    .shindan-feature__chips {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+    }
+    .fw-chip {
+      display: inline-flex; align-items: center;
+      height: 28px; padding: 0 14px; border-radius: 999px;
+      font-size: 12px; font-weight: 800; letter-spacing: .03em;
+    }
+    .fw-mbti   { background: rgba(168,85,247,.2); color: #d8b4fe; border: 1px solid rgba(168,85,247,.4); }
+    .fw-ennia  { background: rgba(99,102,241,.2);  color: #a5b4fc; border: 1px solid rgba(99,102,241,.4); }
+    .fw-big5   { background: rgba(14,165,233,.2);  color: #7dd3fc; border: 1px solid rgba(14,165,233,.4); }
+    .fw-strength { background: rgba(52,195,143,.2); color: #6ee7b7; border: 1px solid rgba(52,195,143,.4); }
+    .shindan-feature__btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: #fff; font-weight: 900; font-size: 18px;
+      padding: 18px 36px; border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 6px 30px rgba(124,58,237,.55), 0 0 0 4px rgba(168,85,247,.25);
+      transition: transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
+      animation: shindanPulse 2.4s ease-in-out infinite;
+      margin-bottom: 14px;
+    }
+    .shindan-feature__btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 40px rgba(124,58,237,.7), 0 0 0 5px rgba(168,85,247,.35);
+    }
+    .shindan-feature__note {
+      font-size: 13px; color: rgba(255,255,255,.45); font-weight: 600;
+    }
+    /* Visual: right side */
+    .shindan-feature__visual {
+      width: 380px; flex-shrink: 0;
+      position: relative; height: 320px;
+    }
+    .shindan-chara {
+      position: absolute; bottom: 0;
+      height: 260px; object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,.5));
+    }
+    .shindan-chara--lumina { left: 20px; height: 280px; }
+    .shindan-chara--ren    { right: 20px; height: 240px; }
+    .shindan-feature__card-preview {
+      position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 20px; padding: 18px 24px; text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      white-space: nowrap; min-width: 160px;
+    }
+    .shindan-card-type {
+      font-size: 22px; font-weight: 900; color: #d8b4fe; margin-bottom: 6px;
+    }
+    .shindan-card-name {
+      font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px;
+    }
+    .shindan-card-sub {
+      font-size: 12px; color: rgba(255,255,255,.55); font-weight: 600;
+    }
+    @media (max-width: 900px) {
+      .shindan-feature__body { flex-direction: column; gap: 32px; }
+      .shindan-feature__visual { width: 100%; height: 200px; }
+      .shindan-chara--lumina { height: 180px; }
+      .shindan-chara--ren    { height: 160px; }
+    }
+    @media (max-width: 768px) {
+      .shindan-feature { padding: 48px 16px; }
+      .shindan-feature__visual { display: none; }
     }
 
     /* ===== SECTION COMMON ===== */
@@ -589,13 +723,14 @@
       読むだけじゃ身につかない。4択で答えてから覚える、あたらしい学習のかたち。年齢も学年も関係なし。
     </p>
     <div class="hero__btns">
-      <a href="quiz.html?id=geography&amp;autostart=1" class="btn btn--yellow">
-        いまからクイズ →
+      <a href="shindan.html" class="btn btn--shindan">
+        🔍 学習スタイル診断 →
       </a>
-      <a href="#category" class="btn btn--outline">
-        カテゴリから選ぶ →
+      <a href="quiz.html?id=geography&amp;autostart=1" class="btn btn--yellow">
+        クイズをやる →
       </a>
     </div>
+    <p style="font-size:12px;color:rgba(255,255,255,.65);margin-top:10px;">✨ NEW｜36問でわかる、あなただけの勉強法</p>
     <div class="hero__charas">
       <div class="chara-cell"><img src="assets/chara/manadra.png" alt="まなドラ"></div>
       <div class="chara-cell"><img src="assets/chara/lumina.png" alt="ルミナ先生"></div>
@@ -603,6 +738,36 @@
       <div class="chara-cell"><img src="assets/chara/kuemaru.png" alt="クエ丸"></div>
       <div class="chara-cell"><img src="assets/chara/zeta.png" alt="ゼータ"></div>
       <div class="chara-cell"><img src="assets/chara/mil.png" alt="ミル"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHINDAN FEATURE ===== -->
+<section class="shindan-feature">
+  <div class="shindan-feature__inner">
+    <div class="shindan-feature__badge">✨ NEW コンテンツ</div>
+    <div class="shindan-feature__body">
+      <div class="shindan-feature__text">
+        <h2 class="shindan-feature__title">あなたの学習スタイルは？<br><span>36問でわかる、まなクエ診断</span></h2>
+        <p class="shindan-feature__desc">MBTI・エニアグラム・ビッグファイブを組み合わせた独自診断。16タイプ×3動機で「あなただけの最強勉強法」を導きだす。結果はXでシェアできる！</p>
+        <div class="shindan-feature__chips">
+          <span class="fw-chip fw-mbti">16タイプ</span>
+          <span class="fw-chip fw-ennia">動機分析</span>
+          <span class="fw-chip fw-big5">プレッシャー耐性</span>
+          <span class="fw-chip fw-strength">強みタイプ</span>
+        </div>
+        <a href="shindan.html" class="shindan-feature__btn">🔍 無料で診断する →</a>
+        <p class="shindan-feature__note">36問・約5分・無料・登録不要</p>
+      </div>
+      <div class="shindan-feature__visual">
+        <img src="assets/chara/lumina.png" alt="ルミナ先生" class="shindan-chara shindan-chara--lumina">
+        <img src="assets/chara/ren.png" alt="レン先生" class="shindan-chara shindan-chara--ren">
+        <div class="shindan-feature__card-preview">
+          <div class="shindan-card-type">🧠 INTJ</div>
+          <div class="shindan-card-name">知を極める設計者型</div>
+          <div class="shindan-card-sub">探求型 × 思考力</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
