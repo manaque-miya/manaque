@@ -712,12 +712,12 @@
 
     <nav class="header__nav">
       <a href="index.html" class="active">ホーム</a>
-      <a href="#category">こども</a>
-      <a href="#category">小学生</a>
-      <a href="#category">中学生</a>
-      <a href="#category">高校生</a>
-      <a href="#category">大人</a>
-      <a href="#category">パズル</a>
+      <a href="#category" onclick="goToCategory(0)">こども</a>
+      <a href="#category" onclick="goToCategory(1)">小学生</a>
+      <a href="#category" onclick="goToCategory(2)">中学生</a>
+      <a href="#category" onclick="goToCategory(3)">高校生</a>
+      <a href="#category" onclick="goToCategory(4)">大人</a>
+      <a href="#category" onclick="goToCategory(5)">パズル</a>
     </nav>
 
     <a href="shindan.html" class="header__shindan">
@@ -766,7 +766,7 @@
       <a href="shindan.html" class="btn btn--shindan">
         🔍 学習スタイル診断 →
       </a>
-      <a href="quiz.html?id=geography&amp;autostart=1" class="btn btn--yellow">
+      <a href="#category" class="btn btn--yellow">
         クイズをやる →
       </a>
     </div>
@@ -1083,6 +1083,14 @@ let _drillLevel = 0, _drillGrade = null;
 
 function countTotalUnits(grade) {
   return grade.subjects.reduce((n, s) => n + s.units.length, 0);
+}
+
+// ===== ナビからカテゴリを直接開く =====
+function goToCategory(idx) {
+  setTimeout(() => {
+    const cards = document.querySelectorAll('.cat-card');
+    if (cards[idx]) cards[idx].click();
+  }, 150);
 }
 
 // ===== LATEST自動生成（isNew: trueのunitを最大6件表示）=====

@@ -165,10 +165,11 @@ function initQuiz(meta, questions) {
     return;
   }
 
-  // 選択肢を生成（10・20・全問）
+  // 選択肢を生成（3・5・10・全問）
   const opts = [];
+  if (questions.length >= 3)  opts.push(3);
+  if (questions.length >= 5)  opts.push(5);
   if (questions.length >= 10) opts.push(10);
-  if (questions.length >= 20) opts.push(20);
   opts.push(questions.length); // 全問
 
   document.getElementById('app').innerHTML = `
