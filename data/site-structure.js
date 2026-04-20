@@ -207,9 +207,9 @@ const SITE_STRUCTURE = [
             gacha: false,
             tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }]
           },
-          { label: 'be動詞・一般動詞',          quizId: 'mid-english-01', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
-          { label: '疑問文・否定文',             quizId: 'mid-english-02', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
-          { label: '進行形・過去形',             quizId: 'mid-english-03', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '中学英語クイズ【中1レベル】', quizId: 'mid-english-01', count: 30, time: '約15分', difficulty: 2, gacha: false, isNew: true, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '中学英語クイズ【中2レベル】', quizId: 'mid-english-02', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '中学英語クイズ【中3レベル】', quizId: 'mid-english-03', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
           { label: '未来形・助動詞',             quizId: 'mid-english-04', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
           { label: '比較（比較級・最上級）',     quizId: 'mid-english-05', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
           { label: '不定詞・動名詞',             quizId: 'mid-english-06', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
@@ -297,8 +297,8 @@ const SITE_STRUCTURE = [
         emoji: '🌍',
         badge: { text: '英語', cls: 'badge--sky' },
         units: [
-          { label: '英文法（時制・仮定法・関係詞）', quizId: 'high-english-01', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] },
-          { label: '英単語・熟語・語法',             quizId: 'high-english-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] }
+          { label: '高校英語クイズ【共通テスト基礎】', quizId: 'high-english-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '高校英語クイズ【難関大レベル】',   quizId: 'high-english-02', count: 30, time: '約15分', difficulty: 5, gacha: false, isNew: true, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] }
         ]
       },
       {
@@ -408,6 +408,20 @@ const SITE_STRUCTURE = [
         ]
       },
       {
+        id: 'toeic-adult', label: 'TOEIC',
+        emoji: '🌐',
+        units: [
+          { label: 'TOEIC頻出動詞クイズ',             quizId: 'adult-toeic-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'TOEIC', cls: 'badge--sky' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'TOEIC頻出名詞クイズ',             quizId: 'adult-toeic-02', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'TOEIC', cls: 'badge--sky' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'TOEIC頻出形容詞・副詞クイズ',     quizId: 'adult-toeic-03', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'TOEIC', cls: 'badge--sky' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'TOEICビジネス英語フレーズクイズ', quizId: 'adult-toeic-04', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true,
+            tags: [{ text: 'TOEIC', cls: 'badge--sky' }, { text: '大人向け', cls: 'badge--neutral' }] },
+        ]
+      },
+      {
         id: 'japanese-adult', label: '日本語',
         emoji: '📝',
         units: [
@@ -454,6 +468,8 @@ const SITE_STRUCTURE = [
           { label: '食べ物・料理の意外な豆知識', quizId: 'adult-food-01', count: 20, time: '約10分', difficulty: 2, gacha: false, isNew: true,
             tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: '心理学の面白い法則・現象', quizId: 'adult-psych-01', count: 20, time: '約10分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: '雑学', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'カタカナ語の本当の意味クイズ', quizId: 'adult-katakana-01', count: 20, time: '約10分', difficulty: 2, gacha: false, isNew: true,
             tags: [{ text: '雑学', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
         ]
       },
