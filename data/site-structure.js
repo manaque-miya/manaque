@@ -327,6 +327,53 @@ const SITE_STRUCTURE = [
   },
 
   {
+    id: 'adult',
+    label: '大人',
+    ruby: 'おとな',
+    emoji: '👔',
+    colorClass: 'cat--adult',
+    subjects: [
+      {
+        id: 'exam-adult', label: '資格・検定',
+        units: [
+          { label: '漢字検定2級レベル', quizId: 'adult-exam-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級・お金の基礎知識', quizId: 'adult-exam-02', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '英検2級レベル 英語', quizId: 'adult-exam-03', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '宅建基礎知識', quizId: 'adult-exam-04', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'ITパスポート基礎', quizId: 'adult-exam-05', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+        ]
+      },
+      {
+        id: 'japanese-adult', label: '日本語',
+        units: [
+          { label: '難読漢字クイズ', quizId: 'adult-kanji-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'ことわざ・四字熟語', quizId: 'adult-kotowaza-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '実は間違えてる日本語', quizId: 'adult-nihongo-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '全国難読地名', quizId: 'adult-chimei-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
+            tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+        ]
+      },
+      {
+        id: 'trivia-adult', label: '雑学',
+        units: [
+          { label: '日本の雑学・豆知識', quizId: 'adult-trivia-01', count: 30, time: '約15分', difficulty: 2, gacha: false,
+            tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '世界の雑学・豆知識', quizId: 'adult-trivia-02', count: 30, time: '約15分', difficulty: 2, gacha: false,
+            tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+        ]
+      },
+    ]
+  },
+
+  {
     id: 'puzzle',
     label: 'パズル',
     ruby: 'ぱずる',

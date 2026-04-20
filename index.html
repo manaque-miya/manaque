@@ -443,6 +443,10 @@
     .cat--high .cat-card__icon { background: #FEF0E6; }
     .cat--high .cat-card__count { color: #C0621A; }
 
+    .cat--adult .cat-card__blob { background: #8E44AD; }
+    .cat--adult .cat-card__icon { background: #F5EEF8; }
+    .cat--adult .cat-card__count { color: #6C3483; }
+
     .cat--chujuken .cat-card__blob { background: var(--accent-pink); }
     .cat--chujuken .cat-card__icon { background: var(--accent-pink-bg); }
     .cat--chujuken .cat-card__count { color: var(--accent-pink); }
@@ -493,6 +497,7 @@
     .badge--pink   { background: #FFE4EA; color: #B04351; }
     .badge--purple { background: #ECE5FA; color: #5C3FBF; }
     .badge--brand  { background: #EAF2FE; color: #1A449E; }
+    .badge--orange { background: #FEF0E6; color: #C0621A; }
     .badge--neutral{ background: #ECEFF5; color: #2B3858; }
     .badge--new    { background: #FF8FA3; color: #fff; font-size: 10px; }
     .quiz-card__title { font-size: 16px; font-weight: 900; color: var(--ink-900); line-height: 1.35; }
@@ -706,6 +711,7 @@
       <a href="#category">小学生</a>
       <a href="#category">中学生</a>
       <a href="#category">高校</a>
+      <a href="#category">大人</a>
       <a href="#category">パズル</a>
     </nav>
 
@@ -1042,7 +1048,7 @@
       <div class="footer__heading">カテゴリ</div>
       <div class="footer__links">
         <a href="#category">小学生</a><a href="#category">中学生</a>
-        <a href="#category">高校</a><a href="#category">パズル</a>
+        <a href="#category">高校</a><a href="#category">大人</a><a href="#category">パズル</a>
       </div>
     </div>
     <div>
@@ -1127,8 +1133,9 @@ function renderUnits(gi, si) {
     const isNanpure  = unit.quizId === 'nanpure';
     const isIgo      = unit.quizId === 'igo';
     const isShogi    = unit.quizId === 'shogi';
-    // unit-quiz形式（elem/mid/high の science・social・english・japanese）
-    if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId)) {
+    // unit-quiz形式（elem/mid/high の science・social・english・japanese、adult系）
+    if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
+        /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia)-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
       return `
       <div class="unit-card">
