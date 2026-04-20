@@ -175,31 +175,32 @@
       position: relative; z-index: 1;
     }
     .hero__charas {
+      /* bottom: 0 をやめて固定高さにする → heroが伸びても行高が変わらない */
       position: absolute;
-      right: 0; top: 0; bottom: 0;
+      right: 0; top: 0;
       width: 42%;
+      height: 680px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-rows: 340px 340px;
       pointer-events: none;
-      padding-top: 8px;
       gap: 0 4px;
     }
     .chara-cell {
       display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden;
     }
     .chara-cell img {
       width: auto; object-fit: contain;
-      object-position: bottom center;
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
-    /* 個別サイズ調整（min-height:720px → 1行360px に合わせて上限調整） */
-    .chara-cell:nth-child(1) img { height: clamp(200px, 20vw, 320px); max-width: 100%; } /* まなドラ */
-    .chara-cell:nth-child(2) img { height: clamp(220px, 22vw, 340px); max-width: 100%; } /* ルミナ先生 */
-    .chara-cell:nth-child(3) img { height: clamp(160px, 15vw, 240px); max-width: 100%; } /* レン先生 */
-    .chara-cell:nth-child(4) img { height: clamp(200px, 18vw, 300px); max-width: 100%; } /* クエ丸 */
-    .chara-cell:nth-child(5) img { height: clamp(200px, 18vw, 300px); max-width: 100%; } /* ゼータ */
-    .chara-cell:nth-child(6) img { height: clamp(180px, 16vw, 270px); max-width: 100%; } /* ミル */
+    /* 個別サイズ調整（1行340px 基準） */
+    .chara-cell:nth-child(1) img { height: clamp(190px, 18vw, 300px); max-width: 100%; } /* まなドラ */
+    .chara-cell:nth-child(2) img { height: clamp(210px, 20vw, 320px); max-width: 100%; } /* ルミナ先生 */
+    .chara-cell:nth-child(3) img { height: clamp(150px, 14vw, 230px); max-width: 100%; } /* レン先生 */
+    .chara-cell:nth-child(4) img { height: clamp(190px, 17vw, 280px); max-width: 100%; } /* クエ丸 */
+    .chara-cell:nth-child(5) img { height: clamp(190px, 17vw, 280px); max-width: 100%; } /* ゼータ */
+    .chara-cell:nth-child(6) img { height: clamp(170px, 15vw, 260px); max-width: 100%; } /* ミル */
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
@@ -341,16 +342,16 @@
     }
     /* Visual: right side */
     .shindan-feature__visual {
-      width: 460px; flex-shrink: 0;
+      width: 500px; flex-shrink: 0;
       position: relative; height: 320px;
     }
     .shindan-chara {
       position: absolute; bottom: 0;
-      height: 260px; object-fit: contain;
+      object-fit: contain;
       filter: drop-shadow(0 8px 24px rgba(0,0,0,.5));
     }
-    .shindan-chara--lumina { left: 0; height: 270px; }
-    .shindan-chara--ren    { right: 0; height: 230px; }
+    .shindan-chara--lumina { left: 0;   height: 240px; }
+    .shindan-chara--ren    { right: 0;  height: 210px; }
     .shindan-feature__card-preview {
       position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
       background: rgba(255,255,255,.08);
