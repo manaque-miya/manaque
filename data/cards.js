@@ -2,9 +2,10 @@
 // ガチャ・図鑑・ポイントシステムすべてがここを参照する
 
 const RARITY_CONFIG = {
-  sr: { label: 'SR', pts: 200, dupPts: 80  },
-  r:  { label: 'R',  pts: 50,  dupPts: 20  },
-  n:  { label: 'N',  pts: 10,  dupPts: 3   },
+  ssr: { label: 'SSR', pts: 500, dupPts: 150 },
+  sr:  { label: 'SR',  pts: 200, dupPts: 80  },
+  r:   { label: 'R',   pts: 50,  dupPts: 20  },
+  n:   { label: 'N',   pts: 10,  dupPts: 3   },
 };
 
 // ポイントランク定義（catalog.htmlで使用）
@@ -24,6 +25,14 @@ function getPointRank(pts) {
 }
 
 const CARD_DATA = [
+  // ===== SSR（スーパースーパーレア・1%）=====
+  { id:'ssr01', rarity:'ssr', emoji:'👑', name:'源頼朝',
+    flavor:'武士の世を開いた鎌倉幕府の初代将軍。\n義経を追い、天下を手中に収めた冷徹な策士。' },
+  { id:'ssr02', rarity:'ssr', emoji:'🌊', name:'平清盛',
+    flavor:'武士として初めて太政大臣に昇り詰めた平家の棟梁。\n「平氏にあらずんば人にあらず」と言わしめた権勢。' },
+  { id:'ssr03', rarity:'ssr', emoji:'🏅', name:'足利義満',
+    flavor:'室町幕府3代将軍にして金閣寺を建立。\n日明貿易で莫大な富を蓄えた文武両道の覇者。' },
+
   // ===== SR（スーパーレア）=====
   { id:'sr01', rarity:'sr', emoji:'🔥', name:'織田信長',
     flavor:'天下布武を掲げ戦国の世を\n席巻した革命児。比叡山を焼く。' },

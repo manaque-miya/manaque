@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LDNLC7PWNM');
-  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNC"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>まなクエ！｜カード図鑑</title>
@@ -16,157 +10,199 @@
   <script src="data/cards.js"></script>
   <script src="data/gacha.js"></script>
   <style>
-    :root {
-      --brand-500:#2E6DE5; --brand-600:#1F56C6; --brand-700:#1A449E;
-      --ink-900:#0F1830; --ink-700:#2B3858; --ink-500:#5B6785; --ink-400:#8693AE;
-      --ink-100:#ECEFF5; --white:#FFFFFF; --border:#E4E9F2; --surface:#EAF2FE;
-      --accent-yellow:#F6C744; --accent-yellow-dark:#D4A60E;
-      --r-lg:20px; --r-xl:28px; --r-pill:999px;
+    :root{
+      --brand-500:#2E6DE5;--brand-600:#1F56C6;--brand-700:#1A449E;
+      --ink-900:#0F1830;--ink-700:#2B3858;--ink-500:#5B6785;--ink-400:#8693AE;
+      --ink-100:#ECEFF5;--white:#FFFFFF;--border:#E4E9F2;--surface:#EAF2FE;
+      --accent-yellow:#F6C744;--r-lg:20px;--r-xl:28px;--r-pill:999px;
       --shadow-sm:0 2px 6px rgba(30,50,110,.06),0 1px 2px rgba(30,50,110,.04);
-      --shadow-md:0 8px 20px rgba(30,50,110,.08),0 2px 4px rgba(30,50,110,.04);
     }
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:"M PLUS Rounded 1c",-apple-system,system-ui,sans-serif;background:var(--surface);color:var(--ink-700);min-height:100vh;}
+    body{font-family:"M PLUS Rounded 1c",-apple-system,sans-serif;background:var(--surface);color:var(--ink-700);min-height:100vh;}
 
     /* HEADER */
     .header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
     .header__inner{max-width:900px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
     .logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
-    .logo__icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;box-shadow:0 2px 6px rgba(30,50,110,.2);}
+    .logo__icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
     .logo__text{font-size:20px;font-weight:900;color:var(--ink-900);}
     .logo__text span{color:var(--brand-600);}
     .back-btn{font-size:13px;font-weight:700;color:var(--brand-600);text-decoration:none;}
 
-    /* MAIN */
-    .main{max-width:900px;margin:0 auto;padding:32px 16px 64px;}
+    .main{max-width:900px;margin:0 auto;padding:24px 16px 64px;}
 
     /* POINTS HERO */
-    .pts-hero{background:linear-gradient(135deg,#1a0f45 0%,#2E6DE5 100%);border-radius:var(--r-xl);padding:32px 28px;margin-bottom:28px;position:relative;overflow:hidden;}
+    .pts-hero{background:linear-gradient(135deg,#1a0f45 0%,#2E6DE5 100%);border-radius:var(--r-xl);padding:28px;margin-bottom:20px;position:relative;overflow:hidden;}
     .pts-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.12) 1px,transparent 1px);background-size:22px 22px;}
-    .pts-hero__inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-    .pts-hero__rank-emoji{font-size:40px;margin-bottom:6px;}
-    .pts-hero__rank-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:2px;}
-    .pts-hero__rank-name{font-size:22px;font-weight:900;color:var(--accent-yellow);}
+    .pts-hero__inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+    .pts-hero__rank-emoji{font-size:36px;margin-bottom:4px;}
+    .pts-hero__rank-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:2px;}
+    .pts-hero__rank-name{font-size:20px;font-weight:900;color:var(--accent-yellow);}
     .pts-hero__right{text-align:right;}
-    .pts-hero__pts-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:4px;}
-    .pts-hero__pts{font-size:52px;font-weight:900;color:#fff;line-height:1;}
-    .pts-hero__pts-unit{font-size:18px;color:rgba(255,255,255,.6);}
-    .pts-next{margin-top:16px;position:relative;z-index:1;}
-    .pts-next__label{font-size:11px;color:rgba(255,255,255,.45);margin-bottom:6px;}
-    .pts-next__bar-wrap{background:rgba(255,255,255,.15);border-radius:var(--r-pill);height:8px;overflow:hidden;}
+    .pts-hero__pts-label{font-size:11px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:2px;}
+    .pts-hero__pts{font-size:48px;font-weight:900;color:#fff;line-height:1;}
+    .pts-hero__pts-unit{font-size:16px;color:rgba(255,255,255,.6);}
+    .pts-next{margin-top:14px;position:relative;z-index:1;}
+    .pts-next__label{font-size:11px;color:rgba(255,255,255,.45);margin-bottom:5px;}
+    .pts-next__bar-wrap{background:rgba(255,255,255,.15);border-radius:var(--r-pill);height:7px;overflow:hidden;}
     .pts-next__bar{height:100%;background:var(--accent-yellow);border-radius:var(--r-pill);transition:width .6s ease;}
 
-    /* COLLECTION SUMMARY */
-    .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
-    .summary-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:16px;text-align:center;box-shadow:var(--shadow-sm);}
-    .summary-card__count{font-size:28px;font-weight:900;margin-bottom:2px;}
-    .summary-card__sub{font-size:11px;color:var(--ink-400);font-weight:600;margin-bottom:4px;}
-    .summary-card__label{font-size:12px;color:var(--ink-500);font-weight:700;}
-    .summary-card--sr .summary-card__count{color:#d97706;}
-    .summary-card--r  .summary-card__count{color:#7c3aed;}
-    .summary-card--n  .summary-card__count{color:var(--ink-500);}
+    /* GACHA SECTION */
+    .gacha-box{background:linear-gradient(135deg,#0f0726,#1a0f45);border-radius:var(--r-xl);padding:24px;margin-bottom:20px;border:1.5px solid rgba(255,255,255,.1);}
+    .gacha-box__title{font-size:16px;font-weight:900;color:#fff;margin-bottom:4px;}
+    .gacha-box__rates{font-size:11px;color:rgba(255,255,255,.45);margin-bottom:16px;}
+    .gacha-box__btns{display:flex;gap:10px;margin-bottom:12px;}
+    .gacha-btn{flex:1;padding:14px 10px;border:none;border-radius:var(--r-pill);font-size:14px;font-weight:900;cursor:pointer;transition:all .15s;}
+    .gacha-btn--1{background:var(--accent-yellow);color:#1a0f45;box-shadow:0 4px 0 #a07800;}
+    .gacha-btn--1:hover{background:#ffe55c;}
+    .gacha-btn--1:active{transform:translateY(2px);box-shadow:0 2px 0 #a07800;}
+    .gacha-btn--10{background:linear-gradient(135deg,#ff6b6b,#ee5a24);color:#fff;box-shadow:0 4px 0 #c0392b;}
+    .gacha-btn--10:hover{background:linear-gradient(135deg,#ff8585,#ff6b3d);}
+    .gacha-btn--10:active{transform:translateY(2px);box-shadow:0 2px 0 #c0392b;}
+    .gacha-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;}
+    .gacha-box__pity{font-size:12px;color:rgba(255,255,255,.4);text-align:center;}
+    .gacha-box__pity span{color:rgba(255,255,255,.7);font-weight:700;}
 
-    /* SECTION */
-    .section-title{font-size:15px;font-weight:800;color:var(--ink-700);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-    .card-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px;}
+    /* SUMMARY */
+    .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+    .summary-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:12px;text-align:center;}
+    .summary-card__count{font-size:22px;font-weight:900;margin-bottom:2px;}
+    .summary-card__sub{font-size:10px;color:var(--ink-400);font-weight:600;margin-bottom:3px;}
+    .summary-card__label{font-size:11px;color:var(--ink-500);font-weight:700;}
+    .summary-card--ssr .summary-card__count{background:linear-gradient(135deg,#ff6b6b,#ffd700,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .summary-card--sr  .summary-card__count{color:#d97706;}
+    .summary-card--r   .summary-card__count{color:#7c3aed;}
+    .summary-card--n   .summary-card__count{color:var(--ink-500);}
+
+    /* CARD GRID */
+    .section-title{font-size:15px;font-weight:800;color:var(--ink-700);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .card-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px;}
 
     /* CARD MINI */
     .card-mini{aspect-ratio:5/7;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s;display:flex;flex-direction:column;position:relative;}
     .card-mini:hover{transform:translateY(-3px) scale(1.03);}
-    .card-mini.unknown{background:#1e1b3a;border:2px solid #3a3560;opacity:.55;cursor:default;}
+    .card-mini.unknown{opacity:.5;cursor:default;}
     .card-mini.unknown:hover{transform:none;}
-    .card-mini.sr{box-shadow:0 0 12px rgba(255,215,0,.35);}
-    .card-mini.r {box-shadow:0 0 8px rgba(167,139,250,.3);}
+    .card-mini.ssr{box-shadow:0 0 16px rgba(255,200,50,.6),0 0 32px rgba(255,100,100,.3);}
+    .card-mini.sr {box-shadow:0 0 12px rgba(255,215,0,.35);}
+    .card-mini.r  {box-shadow:0 0 8px rgba(167,139,250,.3);}
 
     .mini-art{flex:1;display:flex;align-items:center;justify-content:center;font-size:28px;}
-    .mini-art.n      {background:linear-gradient(160deg,#dbeafe,#93c5fd);}
-    .mini-art.r      {background:linear-gradient(160deg,#1e0040,#7c3aed);}
-    .mini-art.sr     {background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24,#d97706,#92400e);background-size:300% 300%;animation:shimmer 3s ease infinite;}
+    .mini-art.ssr{background:linear-gradient(135deg,#1a0000,#8b0000,#ff6b6b,#ffd700,#ff6b6b,#8b0000,#1a0000);background-size:400% 400%;animation:ssrShimmer 2s ease infinite;}
+    .mini-art.sr {background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24,#d97706,#92400e);background-size:300% 300%;animation:shimmer 3s ease infinite;}
+    .mini-art.r  {background:linear-gradient(160deg,#1e0040,#7c3aed);}
+    .mini-art.n  {background:linear-gradient(160deg,#dbeafe,#93c5fd);}
     .mini-art.unknown{background:#1e1b3a;}
-    .mini-art.sold   {background:linear-gradient(160deg,#2a2a2a,#444);filter:grayscale(1);}
+    .mini-art.sold{background:linear-gradient(160deg,#2a2a2a,#444);filter:grayscale(1);}
 
     .mini-info{padding:5px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:2px;}
-    .mini-info.n      {background:linear-gradient(180deg,#f0f0f0,#d8d8d8);}
-    .mini-info.r      {background:linear-gradient(180deg,#3b0764,#4c1d95);}
-    .mini-info.sr     {background:linear-gradient(180deg,#7c2d00,#5c1f00);}
+    .mini-info.ssr{background:linear-gradient(180deg,#4a0000,#2d0000);}
+    .mini-info.sr {background:linear-gradient(180deg,#7c2d00,#5c1f00);}
+    .mini-info.r  {background:linear-gradient(180deg,#3b0764,#4c1d95);}
+    .mini-info.n  {background:linear-gradient(180deg,#f0f0f0,#d8d8d8);}
     .mini-info.unknown{background:#1a1740;}
-    .mini-info.sold   {background:linear-gradient(180deg,#2a2a2a,#333);}
+    .mini-info.sold{background:linear-gradient(180deg,#2a2a2a,#333);}
 
     .mini-rarity{font-size:8px;font-weight:900;letter-spacing:.1em;padding:2px 7px;border-radius:20px;}
-    .mini-rarity.n      {background:rgba(0,0,0,.1);color:#555;}
-    .mini-rarity.r      {background:rgba(255,255,255,.18);color:#e9d5ff;}
-    .mini-rarity.sr     {background:rgba(0,0,0,.25);color:#fef3c7;}
+    .mini-rarity.ssr{background:linear-gradient(135deg,#ffd700,#ff6b6b);color:#1a0000;}
+    .mini-rarity.sr {background:rgba(0,0,0,.25);color:#fef3c7;}
+    .mini-rarity.r  {background:rgba(255,255,255,.18);color:#e9d5ff;}
+    .mini-rarity.n  {background:rgba(0,0,0,.1);color:#555;}
     .mini-rarity.unknown{background:rgba(255,255,255,.05);color:rgba(255,255,255,.15);}
-    .mini-rarity.sold   {background:rgba(255,255,255,.1);color:#888;}
+    .mini-rarity.sold{background:rgba(255,255,255,.1);color:#888;}
 
     .mini-name{font-size:8px;font-weight:700;text-align:center;line-height:1.2;}
-    .mini-name.n      {color:#1a1a1a;}
-    .mini-name.r      {color:#fff;}
-    .mini-name.sr     {color:#fef3c7;}
+    .mini-name.ssr{color:#ffd700;}
+    .mini-name.sr {color:#fef3c7;}
+    .mini-name.r  {color:#fff;}
+    .mini-name.n  {color:#1a1a1a;}
     .mini-name.unknown{color:rgba(255,255,255,.08);}
-    .mini-name.sold   {color:#777;}
+    .mini-name.sold{color:#777;}
 
-    /* 売却済みバッジ */
-    .mini-sold-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);color:#aaa;font-size:9px;font-weight:900;padding:3px 8px;border-radius:20px;letter-spacing:.05em;white-space:nowrap;}
-
-    /* 手持ち枚数バッジ */
+    .mini-sold-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);color:#aaa;font-size:9px;font-weight:900;padding:3px 8px;border-radius:20px;white-space:nowrap;}
     .mini-count{position:absolute;top:4px;left:4px;background:rgba(0,0,0,.6);color:#fff;font-size:9px;font-weight:900;padding:2px 6px;border-radius:20px;}
 
+    @keyframes ssrShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
     @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
     /* CTA */
-    .cta{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:24px;text-align:center;box-shadow:var(--shadow-sm);}
+    .cta{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:24px;text-align:center;}
     .cta__title{font-size:16px;font-weight:800;color:var(--ink-900);margin-bottom:8px;}
     .cta__sub{font-size:13px;color:var(--ink-500);margin-bottom:16px;}
     .cta__btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--brand-500);color:#fff;border-radius:var(--r-pill);font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 4px 0 var(--brand-700);}
 
-    /* ===== MODAL ===== */
-    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;}
+    /* CARD MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;}
     .modal-overlay.active{opacity:1;pointer-events:all;}
     .modal-box{background:var(--white);border-radius:var(--r-xl);width:100%;max-width:340px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);transform:scale(.92);transition:transform .2s;}
     .modal-overlay.active .modal-box{transform:scale(1);}
-
-    .modal-art-wrap{height:160px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;}
-    .modal-art-wrap.n {background:linear-gradient(160deg,#dbeafe,#93c5fd);}
-    .modal-art-wrap.r {background:linear-gradient(160deg,#1e0040,#7c3aed);}
+    .modal-art-wrap{height:160px;display:flex;align-items:center;justify-content:center;font-size:72px;}
+    .modal-art-wrap.ssr{background:linear-gradient(135deg,#1a0000,#8b0000,#ff6b6b,#ffd700,#ff6b6b,#8b0000);background-size:400% 400%;animation:ssrShimmer 2s ease infinite;}
     .modal-art-wrap.sr{background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24,#d97706,#92400e);background-size:300% 300%;animation:shimmer 3s ease infinite;}
-
+    .modal-art-wrap.r{background:linear-gradient(160deg,#1e0040,#7c3aed);}
+    .modal-art-wrap.n{background:linear-gradient(160deg,#dbeafe,#93c5fd);}
     .modal-body{padding:20px 24px 24px;}
     .modal-rarity-badge{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.1em;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+    .modal-rarity-badge.ssr{background:linear-gradient(135deg,#ffd700,#ff6b6b);color:#1a0000;}
     .modal-rarity-badge.sr{background:#fef3c7;color:#92400e;}
-    .modal-rarity-badge.r {background:#f3e8ff;color:#6d28d9;}
-    .modal-rarity-badge.n {background:#f1f5f9;color:#475569;}
+    .modal-rarity-badge.r{background:#f3e8ff;color:#6d28d9;}
+    .modal-rarity-badge.n{background:#f1f5f9;color:#475569;}
     .modal-name{font-size:22px;font-weight:900;color:var(--ink-900);margin-bottom:8px;}
     .modal-flavor{font-size:13px;color:var(--ink-500);line-height:1.7;white-space:pre-wrap;margin-bottom:16px;}
     .modal-hand-count{font-size:13px;font-weight:700;color:var(--ink-700);margin-bottom:16px;padding:10px 14px;background:var(--surface);border-radius:10px;}
-
     .modal-sell-section{border-top:1.5px solid var(--border);padding-top:16px;}
     .modal-sell-price{font-size:13px;color:var(--ink-500);margin-bottom:10px;}
     .modal-sell-price strong{color:#d97706;font-size:18px;}
-    .modal-sell-btn{width:100%;padding:14px;background:#ef4444;color:#fff;border:none;border-radius:var(--r-pill);font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #b91c1c;transition:background .15s;}
+    .modal-sell-btn{width:100%;padding:14px;background:#ef4444;color:#fff;border:none;border-radius:var(--r-pill);font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #b91c1c;}
     .modal-sell-btn:hover{background:#dc2626;}
     .modal-sell-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #b91c1c;}
     .modal-sell-warning{font-size:11px;color:var(--ink-400);text-align:center;margin-top:8px;}
-
     .modal-sold-note{text-align:center;padding:16px 0 4px;font-size:13px;color:#888;}
     .modal-close-btn{width:100%;padding:12px;background:var(--ink-100);color:var(--ink-700);border:none;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;}
 
-    /* 売却成功トースト */
-    .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:var(--r-pill);font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:all .3s;z-index:200;white-space:nowrap;}
+    /* GACHA RESULT MODAL */
+    .gacha-result-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
+    .gacha-result-overlay.active{opacity:1;pointer-events:all;}
+    .gacha-result__title{font-size:20px;font-weight:900;color:#fff;margin-bottom:20px;text-align:center;}
+    .gacha-result__cards{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:500px;margin-bottom:24px;}
+    .gacha-result__card{width:80px;border-radius:10px;overflow:hidden;animation:popIn .3s ease backwards;}
+    @keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+    .gacha-result__art{height:80px;display:flex;align-items:center;justify-content:center;font-size:32px;}
+    .gacha-result__art.ssr{background:linear-gradient(135deg,#1a0000,#8b0000,#ff6b6b,#ffd700);background-size:300% 300%;animation:ssrShimmer 2s ease infinite,popIn .3s ease backwards;}
+    .gacha-result__art.sr{background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24);background-size:300% 300%;animation:shimmer 3s ease infinite,popIn .3s ease backwards;}
+    .gacha-result__art.r{background:linear-gradient(160deg,#1e0040,#7c3aed);}
+    .gacha-result__art.n{background:linear-gradient(160deg,#dbeafe,#93c5fd);}
+    .gacha-result__info{padding:4px 6px 6px;text-align:center;}
+    .gacha-result__info.ssr{background:#2d0000;}
+    .gacha-result__info.sr{background:#5c1f00;}
+    .gacha-result__info.r{background:#3b0764;}
+    .gacha-result__info.n{background:#d8d8d8;}
+    .gacha-result__rarity{font-size:7px;font-weight:900;letter-spacing:.08em;}
+    .gacha-result__rarity.ssr{color:#ffd700;}
+    .gacha-result__rarity.sr{color:#fbbf24;}
+    .gacha-result__rarity.r{color:#e9d5ff;}
+    .gacha-result__rarity.n{color:#555;}
+    .gacha-result__name{font-size:8px;font-weight:700;color:#fff;line-height:1.2;margin-top:2px;}
+    .gacha-result__name.n{color:#1a1a1a;}
+    .gacha-result__new{font-size:7px;background:#ef4444;color:#fff;padding:1px 5px;border-radius:10px;font-weight:900;margin-top:2px;display:inline-block;}
+    .gacha-result__close{padding:14px 40px;background:var(--accent-yellow);color:#1a0f45;border:none;border-radius:var(--r-pill);font-size:16px;font-weight:900;cursor:pointer;}
+
+    /* TOAST */
+    .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:var(--r-pill);font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:all .3s;z-index:300;white-space:nowrap;}
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
     @media(max-width:600px){
       .card-grid{grid-template-columns:repeat(4,1fr);}
-      .summary{grid-template-columns:repeat(3,1fr);}
+      .summary{grid-template-columns:repeat(2,1fr);}
       .pts-hero__inner{flex-direction:column;text-align:center;}
       .pts-hero__right{text-align:center;}
+      .gacha-box__btns{flex-direction:column;}
     }
     @media(max-width:400px){
       .card-grid{grid-template-columns:repeat(3,1fr);}
     }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
-       crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -187,7 +223,8 @@
 </header>
 
 <main class="main">
-  <!-- ポイント・ランクヒーロー -->
+
+  <!-- ポイント・ランク -->
   <div class="pts-hero">
     <div class="pts-hero__inner">
       <div class="pts-hero__left">
@@ -196,20 +233,34 @@
         <div class="pts-hero__rank-name" id="rankName">みならい</div>
       </div>
       <div class="pts-hero__right">
-        <div class="pts-hero__pts-label">ポイント</div>
+        <div class="pts-hero__pts-label">保有ポイント</div>
         <div class="pts-hero__pts"><span id="totalPts">0</span><span class="pts-hero__pts-unit"> pt</span></div>
       </div>
     </div>
     <div class="pts-next">
       <div class="pts-next__label" id="nextRankLabel"></div>
-      <div class="pts-next__bar-wrap">
-        <div class="pts-next__bar" id="nextRankBar" style="width:0%"></div>
-      </div>
+      <div class="pts-next__bar-wrap"><div class="pts-next__bar" id="nextRankBar" style="width:0%"></div></div>
     </div>
+  </div>
+
+  <!-- ガチャボックス -->
+  <div class="gacha-box">
+    <div class="gacha-box__title">🎲 ガチャを回す</div>
+    <div class="gacha-box__rates">SSR 1% / SR 4% / R 25% / N 70%　｜　天井 30回でSSR/SR確定</div>
+    <div class="gacha-box__btns">
+      <button class="gacha-btn gacha-btn--1"  id="gacha1Btn"  onclick="doGacha(1)">1回　100 pt</button>
+      <button class="gacha-btn gacha-btn--10" id="gacha10Btn" onclick="doGacha(10)">10連　900 pt <span style="font-size:10px;opacity:.7">（100pt割引）</span></button>
+    </div>
+    <div class="gacha-box__pity">天井まで あと <span id="pityLeft">30</span> 回</div>
   </div>
 
   <!-- コレクション集計 -->
   <div class="summary">
+    <div class="summary-card summary-card--ssr">
+      <div class="summary-card__count" id="countSSR">0 / 3</div>
+      <div class="summary-card__sub" id="handSSR">手持ち 0枚</div>
+      <div class="summary-card__label">🌈 SSR</div>
+    </div>
     <div class="summary-card summary-card--sr">
       <div class="summary-card__count" id="countSR">0 / 5</div>
       <div class="summary-card__sub" id="handSR">手持ち 0枚</div>
@@ -227,6 +278,10 @@
     </div>
   </div>
 
+  <!-- SSR -->
+  <div class="section-title">🌈 スーパースーパーレア <span style="font-size:12px;color:var(--ink-400);font-weight:600">売却 500pt</span></div>
+  <div class="card-grid" id="gridSSR"></div>
+
   <!-- SR -->
   <div class="section-title">⭐ スーパーレア <span style="font-size:12px;color:var(--ink-400);font-weight:600">売却 200pt</span></div>
   <div class="card-grid" id="gridSR"></div>
@@ -239,9 +294,8 @@
   <div class="section-title">▪ ノーマル <span style="font-size:12px;color:var(--ink-400);font-weight:600">売却 10pt</span></div>
   <div class="card-grid" id="gridN"></div>
 
-  <!-- CTA -->
   <div class="cta">
-    <div class="cta__title">クイズを解いてカードを集めよう！</div>
+    <div class="cta__title">クイズを解いてポイントを稼ごう！</div>
     <div class="cta__sub">80%以上正解でガチャ1回・全問正解でガチャ2〜3連！</div>
     <a href="index.html#category" class="cta__btn">📚 クイズをえらぶ</a>
   </div>
@@ -256,172 +310,183 @@
       <div class="modal-name" id="modalName"></div>
       <div class="modal-flavor" id="modalFlavor"></div>
       <div class="modal-hand-count" id="modalHandCount"></div>
-      <!-- 手持ちあり → 売るボタン -->
       <div class="modal-sell-section" id="modalSellSection">
         <div class="modal-sell-price" id="modalSellPrice"></div>
         <button class="modal-sell-btn" id="modalSellBtn">このカードを売る</button>
         <div class="modal-sell-warning">⚠️ 売るともとに戻せません</div>
       </div>
-      <!-- 売却済み表示 -->
       <div class="modal-sold-note" id="modalSoldNote"></div>
       <button class="modal-close-btn" id="modalCloseBtn">とじる</button>
     </div>
   </div>
 </div>
 
-<!-- 売却成功トースト -->
+<!-- ガチャ結果モーダル -->
+<div class="gacha-result-overlay" id="gachaResultModal">
+  <div class="gacha-result__title" id="gachaResultTitle"></div>
+  <div class="gacha-result__cards" id="gachaResultCards"></div>
+  <button class="gacha-result__close" onclick="closeGachaResult()">OK！</button>
+</div>
+
 <div class="toast" id="sellToast"></div>
 
 <script>
-// ===== 状態管理 =====
 let _currentCardId = null;
 
 function getState() {
   const s = loadGachaState();
   const counts = {};
-  s.collected.forEach(id => { counts[id] = (counts[id] || 0) + 1; });
-  const obtained = new Set(s.obtained);
-  return { s, counts, obtained, pts: s.points };
+  s.collected.forEach(id => { counts[id] = (counts[id]||0)+1; });
+  return { s, counts, obtained: new Set(s.obtained), pts: s.points, totalEarned: s.totalEarned||s.points };
 }
 
-// ===== ポイント・ランク表示 =====
-function renderHero(pts) {
+// ランク（totalEarnedベース）
+function renderHero(pts, totalEarned) {
   document.getElementById('totalPts').textContent = pts.toLocaleString();
-  const rank = getPointRank(pts);
+  const rank = getPointRank(totalEarned);
   document.getElementById('rankEmoji').textContent = rank.emoji;
   document.getElementById('rankName').textContent  = rank.label;
-  const rankIdx = POINT_RANKS.indexOf(rank);
-  if (rankIdx < POINT_RANKS.length - 1) {
-    const next = POINT_RANKS[rankIdx + 1];
-    const pct  = Math.min(100, Math.round((pts - rank.min) / (next.min - rank.min) * 100));
-    document.getElementById('nextRankBar').style.width = pct + '%';
-    document.getElementById('nextRankLabel').textContent =
-      `次のランク「${next.label}」まで あと ${(next.min - pts).toLocaleString()}pt`;
+  const idx = POINT_RANKS.indexOf(rank);
+  if (idx < POINT_RANKS.length-1) {
+    const next = POINT_RANKS[idx+1];
+    const pct = Math.min(100, Math.round((totalEarned-rank.min)/(next.min-rank.min)*100));
+    document.getElementById('nextRankBar').style.width = pct+'%';
+    document.getElementById('nextRankLabel').textContent = `次のランク「${next.label}」まで あと ${(next.min-totalEarned).toLocaleString()}pt`;
   } else {
     document.getElementById('nextRankBar').style.width = '100%';
     document.getElementById('nextRankLabel').textContent = '🏆 最高ランク達成！';
   }
 }
 
-// ===== 集計表示 =====
-function renderSummary(counts, obtained) {
-  const srCards = CARD_DATA.filter(c => c.rarity === 'sr');
-  const rCards  = CARD_DATA.filter(c => c.rarity === 'r');
-  const nCards  = CARD_DATA.filter(c => c.rarity === 'n');
-
-  // 図鑑完成度（obtained基準）
-  document.getElementById('countSR').textContent = `${srCards.filter(c=>obtained.has(c.id)).length} / ${srCards.length}`;
-  document.getElementById('countR').textContent  = `${rCards.filter(c=>obtained.has(c.id)).length} / ${rCards.length}`;
-  document.getElementById('countN').textContent  = `${nCards.filter(c=>obtained.has(c.id)).length} / ${nCards.length}`;
-
-  // 手持ち枚数（collected基準）
-  const handSR = srCards.reduce((sum,c) => sum + (counts[c.id]||0), 0);
-  const handR  = rCards.reduce((sum,c) => sum + (counts[c.id]||0), 0);
-  const handN  = nCards.reduce((sum,c) => sum + (counts[c.id]||0), 0);
-  document.getElementById('handSR').textContent = `手持ち ${handSR}枚`;
-  document.getElementById('handR').textContent  = `手持ち ${handR}枚`;
-  document.getElementById('handN').textContent  = `手持ち ${handN}枚`;
+function renderGachaBox(s) {
+  const pts = s.points;
+  document.getElementById('gacha1Btn').disabled  = pts < GACHA_COST_1;
+  document.getElementById('gacha10Btn').disabled = pts < GACHA_COST_10;
+  document.getElementById('pityLeft').textContent = PITY_THRESHOLD - (s.pityCount||0);
 }
 
-// ===== カードグリッド描画 =====
+function renderSummary(counts, obtained) {
+  const byr = r => CARD_DATA.filter(c=>c.rarity===r);
+  const sum  = (arr,key) => arr.reduce((s,c)=>(s+(counts[c.id]||0)),0);
+  ['ssr','sr','r','n'].forEach(r=>{
+    const cards = byr(r);
+    const R = r.toUpperCase();
+    document.getElementById('count'+R).textContent = `${cards.filter(c=>obtained.has(c.id)).length} / ${cards.length}`;
+    document.getElementById('hand'+R).textContent  = `手持ち ${sum(cards)}枚`;
+  });
+}
+
 function buildGrid(cards, gridId, counts, obtained) {
   document.getElementById(gridId).innerHTML = cards.map(c => {
-    const cnt  = counts[c.id] || 0;
-    const wasObtained = obtained.has(c.id);
-
-    if (cnt > 0) {
-      // 手持ちあり
-      return `
-        <div class="card-mini ${c.rarity}" data-id="${c.id}" onclick="openModal('${c.id}')">
-          ${cnt > 1 ? `<div class="mini-count">×${cnt}</div>` : ''}
-          <div class="mini-art ${c.rarity}"><span>${c.emoji}</span></div>
-          <div class="mini-info ${c.rarity}">
-            <span class="mini-rarity ${c.rarity}">${RARITY_CONFIG[c.rarity].label}</span>
-            <span class="mini-name ${c.rarity}">${c.name}</span>
-          </div>
-        </div>`;
-    } else if (wasObtained) {
-      // 売却済み（図鑑記録あり）
-      return `
-        <div class="card-mini sold" data-id="${c.id}" onclick="openModal('${c.id}')">
-          <div class="mini-art sold" style="position:relative"><span style="filter:grayscale(1);opacity:.4">${c.emoji}</span></div>
-          <div class="mini-info sold">
-            <span class="mini-rarity sold">${RARITY_CONFIG[c.rarity].label}</span>
-            <span class="mini-name sold">${c.name}</span>
-          </div>
-          <div class="mini-sold-badge">売却済み</div>
-        </div>`;
-    } else {
-      // 未入手
-      return `
-        <div class="card-mini unknown">
-          <div class="mini-art unknown"><span>❓</span></div>
-          <div class="mini-info unknown">
-            <span class="mini-rarity unknown">?</span>
-            <span class="mini-name unknown">???</span>
-          </div>
-        </div>`;
-    }
+    const cnt = counts[c.id]||0;
+    const was = obtained.has(c.id);
+    if (cnt>0) return `
+      <div class="card-mini ${c.rarity}" data-id="${c.id}" onclick="openModal('${c.id}')">
+        ${cnt>1?`<div class="mini-count">×${cnt}</div>`:''}
+        <div class="mini-art ${c.rarity}"><span>${c.emoji}</span></div>
+        <div class="mini-info ${c.rarity}">
+          <span class="mini-rarity ${c.rarity}">${RARITY_CONFIG[c.rarity].label}</span>
+          <span class="mini-name ${c.rarity}">${c.name}</span>
+        </div>
+      </div>`;
+    if (was) return `
+      <div class="card-mini sold" data-id="${c.id}" onclick="openModal('${c.id}')">
+        <div class="mini-art sold"><span style="filter:grayscale(1);opacity:.4">${c.emoji}</span></div>
+        <div class="mini-info sold">
+          <span class="mini-rarity sold">${RARITY_CONFIG[c.rarity].label}</span>
+          <span class="mini-name sold">${c.name}</span>
+        </div>
+        <div class="mini-sold-badge">売却済み</div>
+      </div>`;
+    return `
+      <div class="card-mini unknown">
+        <div class="mini-art unknown"><span>❓</span></div>
+        <div class="mini-info unknown">
+          <span class="mini-rarity unknown">?</span>
+          <span class="mini-name unknown">???</span>
+        </div>
+      </div>`;
   }).join('');
 }
 
-// ===== 全体再描画 =====
 function renderAll() {
-  const { counts, obtained, pts } = getState();
-  renderHero(pts);
+  const {s, counts, obtained, pts, totalEarned} = getState();
+  renderHero(pts, totalEarned);
+  renderGachaBox(s);
   renderSummary(counts, obtained);
-  const srCards = CARD_DATA.filter(c => c.rarity === 'sr');
-  const rCards  = CARD_DATA.filter(c => c.rarity === 'r');
-  const nCards  = CARD_DATA.filter(c => c.rarity === 'n');
-  buildGrid(srCards, 'gridSR', counts, obtained);
-  buildGrid(rCards,  'gridR',  counts, obtained);
-  buildGrid(nCards,  'gridN',  counts, obtained);
+  buildGrid(CARD_DATA.filter(c=>c.rarity==='ssr'), 'gridSSR', counts, obtained);
+  buildGrid(CARD_DATA.filter(c=>c.rarity==='sr'),  'gridSR',  counts, obtained);
+  buildGrid(CARD_DATA.filter(c=>c.rarity==='r'),   'gridR',   counts, obtained);
+  buildGrid(CARD_DATA.filter(c=>c.rarity==='n'),   'gridN',   counts, obtained);
 }
 
-// ===== モーダル =====
+// ===== ガチャ購入 =====
+function doGacha(count) {
+  const results = buyGacha(count);
+  if (!results) { showToast('ポイントが足りません！'); return; }
+  showGachaResult(results);
+  renderAll();
+}
+
+function showGachaResult(results) {
+  const hasSSR = results.some(r=>r.card.rarity==='ssr');
+  const hasSR  = results.some(r=>r.card.rarity==='sr');
+  document.getElementById('gachaResultTitle').textContent =
+    hasSSR ? '🌈🌈 SSR確定！！おめでとう！！ 🌈🌈' :
+    hasSR  ? '⭐ SR出た！おめでとう！ ⭐' :
+    `${results.length}枚ゲット！`;
+
+  document.getElementById('gachaResultCards').innerHTML = results.map((r,i) => `
+    <div class="gacha-result__card" style="animation-delay:${i*0.06}s">
+      <div class="gacha-result__art ${r.card.rarity}"><span>${r.card.emoji}</span></div>
+      <div class="gacha-result__info ${r.card.rarity}">
+        <div class="gacha-result__rarity ${r.card.rarity}">${RARITY_CONFIG[r.card.rarity].label}</div>
+        <div class="gacha-result__name ${r.card.rarity}">${r.card.name}</div>
+        ${r.isNew?'<div class="gacha-result__new">NEW</div>':''}
+      </div>
+    </div>`).join('');
+
+  document.getElementById('gachaResultModal').classList.add('active');
+}
+
+function closeGachaResult() {
+  document.getElementById('gachaResultModal').classList.remove('active');
+}
+
+// ===== カード詳細モーダル =====
 function openModal(cardId) {
-  const card = CARD_DATA.find(c => c.id === cardId);
+  const card = CARD_DATA.find(c=>c.id===cardId);
   if (!card) return;
   _currentCardId = cardId;
-
-  const { counts, obtained } = getState();
-  const cnt = counts[cardId] || 0;
-  const wasObtained = obtained.has(cardId);
+  const {counts, obtained} = getState();
+  const cnt = counts[cardId]||0;
+  const was = obtained.has(cardId);
   const sellPts = RARITY_CONFIG[card.rarity].pts;
 
-  // アート
   const artEl = document.getElementById('modalArt');
-  artEl.className = `modal-art-wrap ${card.rarity}`;
-  artEl.textContent = cnt > 0 ? card.emoji : (wasObtained ? card.emoji : '❓');
-  if (wasObtained && cnt === 0) artEl.style.filter = 'grayscale(1)';
-  else artEl.style.filter = '';
+  artEl.className = `modal-art-wrap ${(cnt>0||was)?card.rarity:'n'}`;
+  artEl.textContent = (cnt>0||was) ? card.emoji : '❓';
+  artEl.style.filter = (was&&cnt===0) ? 'grayscale(1)' : '';
 
-  // テキスト
   document.getElementById('modalRarity').className = `modal-rarity-badge ${card.rarity}`;
   document.getElementById('modalRarity').textContent = RARITY_CONFIG[card.rarity].label;
   document.getElementById('modalName').textContent   = card.name;
   document.getElementById('modalFlavor').textContent = card.flavor;
   document.getElementById('modalHandCount').textContent =
-    cnt > 0 ? `手持ち：${cnt}枚` : wasObtained ? '手持ち：0枚（売却済み）' : '未入手';
+    cnt>0 ? `手持ち：${cnt}枚` : was ? '手持ち：0枚（売却済み）' : '未入手';
 
-  // 売るボタン表示切替
   const sellSection = document.getElementById('modalSellSection');
   const soldNote    = document.getElementById('modalSoldNote');
-  if (cnt > 0) {
-    sellSection.style.display = 'block';
-    soldNote.style.display    = 'none';
-    document.getElementById('modalSellPrice').innerHTML =
-      `売却価格：<strong>＋${sellPts.toLocaleString()} pt</strong>`;
+  if (cnt>0) {
+    sellSection.style.display='block'; soldNote.style.display='none';
+    document.getElementById('modalSellPrice').innerHTML = `売却価格：<strong>＋${sellPts.toLocaleString()} pt</strong>`;
     document.getElementById('modalSellBtn').textContent = `このカードを売る（${cnt}枚中1枚）`;
-  } else if (wasObtained) {
-    sellSection.style.display = 'none';
-    soldNote.style.display    = 'block';
-    soldNote.textContent      = '📖 図鑑に記録済み（売却済み）';
+  } else if (was) {
+    sellSection.style.display='none'; soldNote.style.display='block';
+    soldNote.textContent='📖 図鑑に記録済み（売却済み）';
   } else {
-    sellSection.style.display = 'none';
-    soldNote.style.display    = 'none';
+    sellSection.style.display='none'; soldNote.style.display='none';
   }
-
   document.getElementById('cardModal').classList.add('active');
 }
 
@@ -430,33 +495,26 @@ function closeModal() {
   _currentCardId = null;
 }
 
-// ===== 売却処理 =====
 function doSell() {
   if (!_currentCardId) return;
   const result = sellCard(_currentCardId);
   if (!result) return;
-
   closeModal();
   renderAll();
-  showToast(`✨ ${result.card.name} を売却！ +${result.pts}pt 獲得`);
+  showToast(`✨ ${result.card.name} を売却！ +${result.pts}pt`);
 }
 
-// ===== トースト =====
 function showToast(msg) {
   const t = document.getElementById('sellToast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
 }
 
-// ===== イベント =====
 document.getElementById('modalSellBtn').addEventListener('click', doSell);
 document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
-document.getElementById('cardModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
+document.getElementById('cardModal').addEventListener('click', e=>{ if(e.target===e.currentTarget) closeModal(); });
+document.getElementById('gachaResultModal').addEventListener('click', e=>{ if(e.target===e.currentTarget) closeGachaResult(); });
 
-// ===== 初期描画 =====
 renderAll();
 </script>
 </body>
