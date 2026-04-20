@@ -1088,7 +1088,7 @@ function countTotalUnits(grade) {
 // ===== LATEST自動生成（isNew: trueのunitを最大6件表示）=====
 function getQuizUrl(quizId) {
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(quizId) ||
-      /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia)-\d+$/.test(quizId) ||
+      /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand)-\d+$/.test(quizId) ||
       /^kids-nazo-\d+$/.test(quizId)) return `unit-quiz.html?id=${quizId}`;
   if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}`;
   return `quiz.html?id=${quizId}&autostart=1`;
@@ -1186,7 +1186,7 @@ function renderUnits(gi, si) {
     const isShogi    = unit.quizId === 'shogi';
     // unit-quiz形式（elem/mid/high の science・social・english・japanese、adult系、kids-nazo）
     if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
-        /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia)-\d+$/.test(unit.quizId) ||
+        /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand)-\d+$/.test(unit.quizId) ||
         /^kids-nazo-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
       return `

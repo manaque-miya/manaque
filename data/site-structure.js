@@ -391,6 +391,10 @@ const SITE_STRUCTURE = [
             tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: '世界の雑学・豆知識', quizId: 'adult-trivia-02', count: 30, time: '約15分', difficulty: 2, gacha: false,
             tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '動物の驚き豆知識', quizId: 'adult-animal-01', count: 30, time: '約15分', difficulty: 2, gacha: false, isNew: true,
+            tags: [{ text: '雑学', cls: 'badge--green' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '読めないブランド名', quizId: 'adult-brand-01', count: 30, time: '約15分', difficulty: 2, gacha: false, isNew: true,
+            tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
         ]
       },
     ]
