@@ -44,7 +44,6 @@
     .pts-hero{background:linear-gradient(135deg,#1a0f45 0%,#2E6DE5 100%);border-radius:var(--r-xl);padding:32px 28px;margin-bottom:28px;position:relative;overflow:hidden;}
     .pts-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.12) 1px,transparent 1px);background-size:22px 22px;}
     .pts-hero__inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-    .pts-hero__left{}
     .pts-hero__rank-emoji{font-size:40px;margin-bottom:6px;}
     .pts-hero__rank-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:2px;}
     .pts-hero__rank-name{font-size:22px;font-weight:900;color:var(--accent-yellow);}
@@ -52,8 +51,6 @@
     .pts-hero__pts-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:4px;}
     .pts-hero__pts{font-size:52px;font-weight:900;color:#fff;line-height:1;}
     .pts-hero__pts-unit{font-size:18px;color:rgba(255,255,255,.6);}
-
-    /* PROGRESS TO NEXT RANK */
     .pts-next{margin-top:16px;position:relative;z-index:1;}
     .pts-next__label{font-size:11px;color:rgba(255,255,255,.45);margin-bottom:6px;}
     .pts-next__bar-wrap{background:rgba(255,255,255,.15);border-radius:var(--r-pill);height:8px;overflow:hidden;}
@@ -62,60 +59,101 @@
     /* COLLECTION SUMMARY */
     .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;}
     .summary-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:16px;text-align:center;box-shadow:var(--shadow-sm);}
-    .summary-card__count{font-size:32px;font-weight:900;margin-bottom:4px;}
+    .summary-card__count{font-size:28px;font-weight:900;margin-bottom:2px;}
+    .summary-card__sub{font-size:11px;color:var(--ink-400);font-weight:600;margin-bottom:4px;}
     .summary-card__label{font-size:12px;color:var(--ink-500);font-weight:700;}
     .summary-card--sr .summary-card__count{color:#d97706;}
     .summary-card--r  .summary-card__count{color:#7c3aed;}
     .summary-card--n  .summary-card__count{color:var(--ink-500);}
 
-    /* CARD SECTION */
+    /* SECTION */
     .section-title{font-size:15px;font-weight:800;color:var(--ink-700);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
     .card-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px;}
 
     /* CARD MINI */
-    .card-mini{aspect-ratio:5/7;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s;display:flex;flex-direction:column;}
+    .card-mini{aspect-ratio:5/7;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s;display:flex;flex-direction:column;position:relative;}
     .card-mini:hover{transform:translateY(-3px) scale(1.03);}
-    .card-mini.locked{background:#1e1b3a;border:2px solid #3a3560;opacity:.55;}
+    .card-mini.unknown{background:#1e1b3a;border:2px solid #3a3560;opacity:.55;cursor:default;}
+    .card-mini.unknown:hover{transform:none;}
     .card-mini.sr{box-shadow:0 0 12px rgba(255,215,0,.35);}
     .card-mini.r {box-shadow:0 0 8px rgba(167,139,250,.3);}
 
     .mini-art{flex:1;display:flex;align-items:center;justify-content:center;font-size:28px;}
-    .mini-art.n {background:linear-gradient(160deg,#dbeafe,#93c5fd);}
-    .mini-art.r {background:linear-gradient(160deg,#1e0040,#7c3aed);}
-    .mini-art.sr{background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24,#d97706,#92400e);background-size:300% 300%;animation:shimmer 3s ease infinite;}
-    .mini-art.locked{background:#1e1b3a;}
-    .mini-art.locked span{filter:grayscale(1);opacity:.15;}
+    .mini-art.n      {background:linear-gradient(160deg,#dbeafe,#93c5fd);}
+    .mini-art.r      {background:linear-gradient(160deg,#1e0040,#7c3aed);}
+    .mini-art.sr     {background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24,#d97706,#92400e);background-size:300% 300%;animation:shimmer 3s ease infinite;}
+    .mini-art.unknown{background:#1e1b3a;}
+    .mini-art.sold   {background:linear-gradient(160deg,#2a2a2a,#444);filter:grayscale(1);}
 
     .mini-info{padding:5px 6px 7px;display:flex;flex-direction:column;align-items:center;gap:2px;}
-    .mini-info.n {background:linear-gradient(180deg,#f0f0f0,#d8d8d8);}
-    .mini-info.r {background:linear-gradient(180deg,#3b0764,#4c1d95);}
-    .mini-info.sr{background:linear-gradient(180deg,#7c2d00,#5c1f00);}
-    .mini-info.locked{background:#1a1740;}
-    .mini-rarity{font-size:8px;font-weight:900;letter-spacing:.1em;padding:2px 7px;border-radius:20px;}
-    .mini-rarity.n {background:rgba(0,0,0,.1);color:#555;}
-    .mini-rarity.r {background:rgba(255,255,255,.18);color:#e9d5ff;}
-    .mini-rarity.sr{background:rgba(0,0,0,.25);color:#fef3c7;}
-    .mini-rarity.locked{background:rgba(255,255,255,.05);color:rgba(255,255,255,.15);}
-    .mini-name{font-size:8px;font-weight:700;text-align:center;line-height:1.2;}
-    .mini-name.n {color:#1a1a1a;} .mini-name.r{color:#fff;} .mini-name.sr{color:#fef3c7;}
-    .mini-name.locked{color:rgba(255,255,255,.08);}
+    .mini-info.n      {background:linear-gradient(180deg,#f0f0f0,#d8d8d8);}
+    .mini-info.r      {background:linear-gradient(180deg,#3b0764,#4c1d95);}
+    .mini-info.sr     {background:linear-gradient(180deg,#7c2d00,#5c1f00);}
+    .mini-info.unknown{background:#1a1740;}
+    .mini-info.sold   {background:linear-gradient(180deg,#2a2a2a,#333);}
 
-    /* PTS BADGE on card */
-    .mini-new{position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:8px;font-weight:900;padding:2px 6px;border-radius:20px;}
+    .mini-rarity{font-size:8px;font-weight:900;letter-spacing:.1em;padding:2px 7px;border-radius:20px;}
+    .mini-rarity.n      {background:rgba(0,0,0,.1);color:#555;}
+    .mini-rarity.r      {background:rgba(255,255,255,.18);color:#e9d5ff;}
+    .mini-rarity.sr     {background:rgba(0,0,0,.25);color:#fef3c7;}
+    .mini-rarity.unknown{background:rgba(255,255,255,.05);color:rgba(255,255,255,.15);}
+    .mini-rarity.sold   {background:rgba(255,255,255,.1);color:#888;}
+
+    .mini-name{font-size:8px;font-weight:700;text-align:center;line-height:1.2;}
+    .mini-name.n      {color:#1a1a1a;}
+    .mini-name.r      {color:#fff;}
+    .mini-name.sr     {color:#fef3c7;}
+    .mini-name.unknown{color:rgba(255,255,255,.08);}
+    .mini-name.sold   {color:#777;}
+
+    /* 売却済みバッジ */
+    .mini-sold-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.65);color:#aaa;font-size:9px;font-weight:900;padding:3px 8px;border-radius:20px;letter-spacing:.05em;white-space:nowrap;}
+
+    /* 手持ち枚数バッジ */
+    .mini-count{position:absolute;top:4px;left:4px;background:rgba(0,0,0,.6);color:#fff;font-size:9px;font-weight:900;padding:2px 6px;border-radius:20px;}
 
     @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
-    /* EMPTY STATE */
-    .empty-state{text-align:center;padding:48px 16px;color:var(--ink-400);}
-    .empty-state__icon{font-size:48px;margin-bottom:12px;}
-    .empty-state__msg{font-size:15px;font-weight:700;}
-    .empty-state__sub{font-size:13px;margin-top:8px;}
 
     /* CTA */
     .cta{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:24px;text-align:center;box-shadow:var(--shadow-sm);}
     .cta__title{font-size:16px;font-weight:800;color:var(--ink-900);margin-bottom:8px;}
     .cta__sub{font-size:13px;color:var(--ink-500);margin-bottom:16px;}
     .cta__btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--brand-500);color:#fff;border-radius:var(--r-pill);font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 4px 0 var(--brand-700);}
+
+    /* ===== MODAL ===== */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;}
+    .modal-overlay.active{opacity:1;pointer-events:all;}
+    .modal-box{background:var(--white);border-radius:var(--r-xl);width:100%;max-width:340px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);transform:scale(.92);transition:transform .2s;}
+    .modal-overlay.active .modal-box{transform:scale(1);}
+
+    .modal-art-wrap{height:160px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;}
+    .modal-art-wrap.n {background:linear-gradient(160deg,#dbeafe,#93c5fd);}
+    .modal-art-wrap.r {background:linear-gradient(160deg,#1e0040,#7c3aed);}
+    .modal-art-wrap.sr{background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24,#d97706,#92400e);background-size:300% 300%;animation:shimmer 3s ease infinite;}
+
+    .modal-body{padding:20px 24px 24px;}
+    .modal-rarity-badge{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.1em;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+    .modal-rarity-badge.sr{background:#fef3c7;color:#92400e;}
+    .modal-rarity-badge.r {background:#f3e8ff;color:#6d28d9;}
+    .modal-rarity-badge.n {background:#f1f5f9;color:#475569;}
+    .modal-name{font-size:22px;font-weight:900;color:var(--ink-900);margin-bottom:8px;}
+    .modal-flavor{font-size:13px;color:var(--ink-500);line-height:1.7;white-space:pre-wrap;margin-bottom:16px;}
+    .modal-hand-count{font-size:13px;font-weight:700;color:var(--ink-700);margin-bottom:16px;padding:10px 14px;background:var(--surface);border-radius:10px;}
+
+    .modal-sell-section{border-top:1.5px solid var(--border);padding-top:16px;}
+    .modal-sell-price{font-size:13px;color:var(--ink-500);margin-bottom:10px;}
+    .modal-sell-price strong{color:#d97706;font-size:18px;}
+    .modal-sell-btn{width:100%;padding:14px;background:#ef4444;color:#fff;border:none;border-radius:var(--r-pill);font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #b91c1c;transition:background .15s;}
+    .modal-sell-btn:hover{background:#dc2626;}
+    .modal-sell-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #b91c1c;}
+    .modal-sell-warning{font-size:11px;color:var(--ink-400);text-align:center;margin-top:8px;}
+
+    .modal-sold-note{text-align:center;padding:16px 0 4px;font-size:13px;color:#888;}
+    .modal-close-btn{width:100%;padding:12px;background:var(--ink-100);color:var(--ink-700);border:none;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;}
+
+    /* 売却成功トースト */
+    .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1a2e;color:#fff;padding:12px 24px;border-radius:var(--r-pill);font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:all .3s;z-index:200;white-space:nowrap;}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
     @media(max-width:600px){
       .card-grid{grid-template-columns:repeat(4,1fr);}
@@ -158,7 +196,7 @@
         <div class="pts-hero__rank-name" id="rankName">みならい</div>
       </div>
       <div class="pts-hero__right">
-        <div class="pts-hero__pts-label">累計ポイント</div>
+        <div class="pts-hero__pts-label">ポイント</div>
         <div class="pts-hero__pts"><span id="totalPts">0</span><span class="pts-hero__pts-unit"> pt</span></div>
       </div>
     </div>
@@ -174,28 +212,31 @@
   <div class="summary">
     <div class="summary-card summary-card--sr">
       <div class="summary-card__count" id="countSR">0 / 5</div>
+      <div class="summary-card__sub" id="handSR">手持ち 0枚</div>
       <div class="summary-card__label">⭐ SR</div>
     </div>
     <div class="summary-card summary-card--r">
       <div class="summary-card__count" id="countR">0 / 10</div>
+      <div class="summary-card__sub" id="handR">手持ち 0枚</div>
       <div class="summary-card__label">✨ R</div>
     </div>
     <div class="summary-card summary-card--n">
       <div class="summary-card__count" id="countN">0 / 5</div>
+      <div class="summary-card__sub" id="handN">手持ち 0枚</div>
       <div class="summary-card__label">▪ N</div>
     </div>
   </div>
 
   <!-- SR -->
-  <div class="section-title">⭐ スーパーレア <span style="font-size:12px;color:var(--ink-400);font-weight:600">SR 200pt / 重複 80pt</span></div>
+  <div class="section-title">⭐ スーパーレア <span style="font-size:12px;color:var(--ink-400);font-weight:600">売却 200pt</span></div>
   <div class="card-grid" id="gridSR"></div>
 
   <!-- R -->
-  <div class="section-title">✨ レア <span style="font-size:12px;color:var(--ink-400);font-weight:600">R 50pt / 重複 20pt</span></div>
+  <div class="section-title">✨ レア <span style="font-size:12px;color:var(--ink-400);font-weight:600">売却 50pt</span></div>
   <div class="card-grid" id="gridR"></div>
 
   <!-- N -->
-  <div class="section-title">▪ ノーマル <span style="font-size:12px;color:var(--ink-400);font-weight:600">N 10pt / 重複 3pt</span></div>
+  <div class="section-title">▪ ノーマル <span style="font-size:12px;color:var(--ink-400);font-weight:600">売却 10pt</span></div>
   <div class="card-grid" id="gridN"></div>
 
   <!-- CTA -->
@@ -206,21 +247,49 @@
   </div>
 </main>
 
+<!-- カード詳細モーダル -->
+<div class="modal-overlay" id="cardModal">
+  <div class="modal-box">
+    <div class="modal-art-wrap" id="modalArt"></div>
+    <div class="modal-body">
+      <div class="modal-rarity-badge" id="modalRarity"></div>
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-flavor" id="modalFlavor"></div>
+      <div class="modal-hand-count" id="modalHandCount"></div>
+      <!-- 手持ちあり → 売るボタン -->
+      <div class="modal-sell-section" id="modalSellSection">
+        <div class="modal-sell-price" id="modalSellPrice"></div>
+        <button class="modal-sell-btn" id="modalSellBtn">このカードを売る</button>
+        <div class="modal-sell-warning">⚠️ 売るともとに戻せません</div>
+      </div>
+      <!-- 売却済み表示 -->
+      <div class="modal-sold-note" id="modalSoldNote"></div>
+      <button class="modal-close-btn" id="modalCloseBtn">とじる</button>
+    </div>
+  </div>
+</div>
+
+<!-- 売却成功トースト -->
+<div class="toast" id="sellToast"></div>
+
 <script>
-(function() {
-  const state = loadGachaState();
-  const collected = new Set(state.collected);
-  const pts = state.points || 0;
+// ===== 状態管理 =====
+let _currentCardId = null;
 
-  // ポイント表示
+function getState() {
+  const s = loadGachaState();
+  const counts = {};
+  s.collected.forEach(id => { counts[id] = (counts[id] || 0) + 1; });
+  const obtained = new Set(s.obtained);
+  return { s, counts, obtained, pts: s.points };
+}
+
+// ===== ポイント・ランク表示 =====
+function renderHero(pts) {
   document.getElementById('totalPts').textContent = pts.toLocaleString();
-
-  // ランク
   const rank = getPointRank(pts);
   document.getElementById('rankEmoji').textContent = rank.emoji;
   document.getElementById('rankName').textContent  = rank.label;
-
-  // 次のランクまでのバー
   const rankIdx = POINT_RANKS.indexOf(rank);
   if (rankIdx < POINT_RANKS.length - 1) {
     const next = POINT_RANKS[rankIdx + 1];
@@ -232,37 +301,163 @@
     document.getElementById('nextRankBar').style.width = '100%';
     document.getElementById('nextRankLabel').textContent = '🏆 最高ランク達成！';
   }
+}
 
-  // 集計
+// ===== 集計表示 =====
+function renderSummary(counts, obtained) {
   const srCards = CARD_DATA.filter(c => c.rarity === 'sr');
   const rCards  = CARD_DATA.filter(c => c.rarity === 'r');
   const nCards  = CARD_DATA.filter(c => c.rarity === 'n');
-  document.getElementById('countSR').textContent = `${srCards.filter(c=>collected.has(c.id)).length} / ${srCards.length}`;
-  document.getElementById('countR').textContent  = `${rCards.filter(c=>collected.has(c.id)).length} / ${rCards.length}`;
-  document.getElementById('countN').textContent  = `${nCards.filter(c=>collected.has(c.id)).length} / ${nCards.length}`;
 
-  // カードグリッド描画
-  function buildGrid(cards, gridId) {
-    document.getElementById(gridId).innerHTML = cards.map(c => {
-      const owned = collected.has(c.id);
-      const cls   = owned ? c.rarity : 'locked';
+  // 図鑑完成度（obtained基準）
+  document.getElementById('countSR').textContent = `${srCards.filter(c=>obtained.has(c.id)).length} / ${srCards.length}`;
+  document.getElementById('countR').textContent  = `${rCards.filter(c=>obtained.has(c.id)).length} / ${rCards.length}`;
+  document.getElementById('countN').textContent  = `${nCards.filter(c=>obtained.has(c.id)).length} / ${nCards.length}`;
+
+  // 手持ち枚数（collected基準）
+  const handSR = srCards.reduce((sum,c) => sum + (counts[c.id]||0), 0);
+  const handR  = rCards.reduce((sum,c) => sum + (counts[c.id]||0), 0);
+  const handN  = nCards.reduce((sum,c) => sum + (counts[c.id]||0), 0);
+  document.getElementById('handSR').textContent = `手持ち ${handSR}枚`;
+  document.getElementById('handR').textContent  = `手持ち ${handR}枚`;
+  document.getElementById('handN').textContent  = `手持ち ${handN}枚`;
+}
+
+// ===== カードグリッド描画 =====
+function buildGrid(cards, gridId, counts, obtained) {
+  document.getElementById(gridId).innerHTML = cards.map(c => {
+    const cnt  = counts[c.id] || 0;
+    const wasObtained = obtained.has(c.id);
+
+    if (cnt > 0) {
+      // 手持ちあり
       return `
-        <div class="card-mini ${cls}" title="${owned ? c.name : '???'}">
-          <div class="mini-art ${cls}">
-            <span>${owned ? c.emoji : '❓'}</span>
-          </div>
-          <div class="mini-info ${cls}">
-            <span class="mini-rarity ${cls}">${owned ? RARITY_CONFIG[c.rarity].label : '?'}</span>
-            <span class="mini-name ${cls}">${owned ? c.name : '???'}</span>
+        <div class="card-mini ${c.rarity}" data-id="${c.id}" onclick="openModal('${c.id}')">
+          ${cnt > 1 ? `<div class="mini-count">×${cnt}</div>` : ''}
+          <div class="mini-art ${c.rarity}"><span>${c.emoji}</span></div>
+          <div class="mini-info ${c.rarity}">
+            <span class="mini-rarity ${c.rarity}">${RARITY_CONFIG[c.rarity].label}</span>
+            <span class="mini-name ${c.rarity}">${c.name}</span>
           </div>
         </div>`;
-    }).join('');
+    } else if (wasObtained) {
+      // 売却済み（図鑑記録あり）
+      return `
+        <div class="card-mini sold" data-id="${c.id}" onclick="openModal('${c.id}')">
+          <div class="mini-art sold" style="position:relative"><span style="filter:grayscale(1);opacity:.4">${c.emoji}</span></div>
+          <div class="mini-info sold">
+            <span class="mini-rarity sold">${RARITY_CONFIG[c.rarity].label}</span>
+            <span class="mini-name sold">${c.name}</span>
+          </div>
+          <div class="mini-sold-badge">売却済み</div>
+        </div>`;
+    } else {
+      // 未入手
+      return `
+        <div class="card-mini unknown">
+          <div class="mini-art unknown"><span>❓</span></div>
+          <div class="mini-info unknown">
+            <span class="mini-rarity unknown">?</span>
+            <span class="mini-name unknown">???</span>
+          </div>
+        </div>`;
+    }
+  }).join('');
+}
+
+// ===== 全体再描画 =====
+function renderAll() {
+  const { counts, obtained, pts } = getState();
+  renderHero(pts);
+  renderSummary(counts, obtained);
+  const srCards = CARD_DATA.filter(c => c.rarity === 'sr');
+  const rCards  = CARD_DATA.filter(c => c.rarity === 'r');
+  const nCards  = CARD_DATA.filter(c => c.rarity === 'n');
+  buildGrid(srCards, 'gridSR', counts, obtained);
+  buildGrid(rCards,  'gridR',  counts, obtained);
+  buildGrid(nCards,  'gridN',  counts, obtained);
+}
+
+// ===== モーダル =====
+function openModal(cardId) {
+  const card = CARD_DATA.find(c => c.id === cardId);
+  if (!card) return;
+  _currentCardId = cardId;
+
+  const { counts, obtained } = getState();
+  const cnt = counts[cardId] || 0;
+  const wasObtained = obtained.has(cardId);
+  const sellPts = RARITY_CONFIG[card.rarity].pts;
+
+  // アート
+  const artEl = document.getElementById('modalArt');
+  artEl.className = `modal-art-wrap ${card.rarity}`;
+  artEl.textContent = cnt > 0 ? card.emoji : (wasObtained ? card.emoji : '❓');
+  if (wasObtained && cnt === 0) artEl.style.filter = 'grayscale(1)';
+  else artEl.style.filter = '';
+
+  // テキスト
+  document.getElementById('modalRarity').className = `modal-rarity-badge ${card.rarity}`;
+  document.getElementById('modalRarity').textContent = RARITY_CONFIG[card.rarity].label;
+  document.getElementById('modalName').textContent   = card.name;
+  document.getElementById('modalFlavor').textContent = card.flavor;
+  document.getElementById('modalHandCount').textContent =
+    cnt > 0 ? `手持ち：${cnt}枚` : wasObtained ? '手持ち：0枚（売却済み）' : '未入手';
+
+  // 売るボタン表示切替
+  const sellSection = document.getElementById('modalSellSection');
+  const soldNote    = document.getElementById('modalSoldNote');
+  if (cnt > 0) {
+    sellSection.style.display = 'block';
+    soldNote.style.display    = 'none';
+    document.getElementById('modalSellPrice').innerHTML =
+      `売却価格：<strong>＋${sellPts.toLocaleString()} pt</strong>`;
+    document.getElementById('modalSellBtn').textContent = `このカードを売る（${cnt}枚中1枚）`;
+  } else if (wasObtained) {
+    sellSection.style.display = 'none';
+    soldNote.style.display    = 'block';
+    soldNote.textContent      = '📖 図鑑に記録済み（売却済み）';
+  } else {
+    sellSection.style.display = 'none';
+    soldNote.style.display    = 'none';
   }
 
-  buildGrid(srCards, 'gridSR');
-  buildGrid(rCards,  'gridR');
-  buildGrid(nCards,  'gridN');
-})();
+  document.getElementById('cardModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('cardModal').classList.remove('active');
+  _currentCardId = null;
+}
+
+// ===== 売却処理 =====
+function doSell() {
+  if (!_currentCardId) return;
+  const result = sellCard(_currentCardId);
+  if (!result) return;
+
+  closeModal();
+  renderAll();
+  showToast(`✨ ${result.card.name} を売却！ +${result.pts}pt 獲得`);
+}
+
+// ===== トースト =====
+function showToast(msg) {
+  const t = document.getElementById('sellToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ===== イベント =====
+document.getElementById('modalSellBtn').addEventListener('click', doSell);
+document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+document.getElementById('cardModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ===== 初期描画 =====
+renderAll();
 </script>
 </body>
 </html>
