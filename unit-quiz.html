@@ -84,6 +84,19 @@
 
     /* ローディング */
     .loading{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
+
+    /* スタート画面 */
+    .start-screen{text-align:center;padding:12px 0}
+    .start-screen h1{font-size:22px;font-weight:900;line-height:1.5;margin-bottom:6px}
+    .start-screen .grade-tag{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:900;letter-spacing:.08em;padding:4px 12px;border-radius:20px;margin-bottom:14px}
+    .start-meta{font-size:13px;color:var(--muted);margin-bottom:28px}
+    .count-label{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:.04em}
+    .count-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+    .count-btn{background:var(--card);border:1.5px solid var(--border);color:var(--text);border-radius:12px;padding:14px 22px;font-size:15px;font-weight:900;cursor:pointer;transition:all .15s;min-width:90px}
+    .count-btn:hover{border-color:var(--accent);color:var(--accent)}
+    .count-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+    .start-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:16px;font-size:16px;font-weight:900;cursor:pointer;transition:opacity .15s}
+    .start-btn:hover{opacity:.85}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
        crossorigin="anonymous"></script>
@@ -139,13 +152,66 @@ if (!quizId) {
 let current = 0, score = 0, answered = [];
 let QUESTIONS = [];
 
+let _allQuestions = [];
+let _meta = {};
+
 function initQuiz(meta, questions) {
+  _allQuestions = questions;
+  _meta = meta;
+
+  // 10問未満は選択画面なしで即スタート
+  if (questions.length < 10) {
+    startQuiz(questions);
+    return;
+  }
+
+  // 選択肢を生成（10・20・全問）
+  const opts = [];
+  if (questions.length >= 10) opts.push(10);
+  if (questions.length >= 20) opts.push(20);
+  opts.push(questions.length); // 全問
+
+  document.getElementById('app').innerHTML = `
+    <div class="start-screen">
+      <div class="grade-tag">${meta.gradeTag}</div>
+      <h1>${meta.title}</h1>
+      <div class="start-meta">全 ${questions.length} 問収録</div>
+      <div class="count-label">何問チャレンジする？</div>
+      <div class="count-btns">
+        ${opts.map((n, i) => `
+          <button class="count-btn${i === 0 ? ' active' : ''}"
+            onclick="selectCount(this, ${n})">
+            ${n === questions.length && n !== 10 && n !== 20 ? `全問<br><span style="font-size:12px;font-weight:700">${n}問</span>` : `${n}問`}
+          </button>`).join('')}
+      </div>
+      <button class="start-btn" onclick="startFromScreen()">スタート！</button>
+    </div>
+  `;
+  _selectedCount = opts[0];
+}
+
+let _selectedCount = 10;
+
+function selectCount(el, n) {
+  document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  _selectedCount = n;
+}
+
+function startFromScreen() {
+  // シャッフルして指定問数を切り出す
+  const shuffled = [..._allQuestions].sort(() => Math.random() - 0.5);
+  startQuiz(shuffled.slice(0, _selectedCount));
+}
+
+function startQuiz(questions) {
   QUESTIONS = questions;
+  current = 0; score = 0; answered = [];
 
   document.getElementById('app').innerHTML = `
     <div class="page-header">
-      <div class="grade-tag">${meta.gradeTag}</div>
-      <h1>${meta.fullTitle}</h1>
+      <div class="grade-tag">${_meta.gradeTag}</div>
+      <h1>${_meta.title}　${questions.length}問チャレンジ</h1>
     </div>
     <div class="progress-wrap">
       <div class="progress-label">
@@ -236,11 +302,8 @@ function showScore() {
 }
 
 function restart() {
-  current = 0; score = 0; answered = [];
-  document.getElementById('quizArea').style.display = 'block';
-  document.getElementById('scoreScreen').classList.remove('show');
-  document.getElementById('scoreText').textContent = '正解 0問';
-  renderQuestion(0);
+  // スタート画面に戻る（問題数を選び直せる）
+  initQuiz(_meta, _allQuestions);
 }
 </script>
 </body>
