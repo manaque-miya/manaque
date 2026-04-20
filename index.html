@@ -184,26 +184,25 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      align-items: center;
       pointer-events: none;
-      gap: 8px 8px;
+      gap: 0 8px;
     }
     .chara-cell {
-      display: flex; align-items: center; justify-content: center;
-      overflow: visible;
+      display: flex; align-items: flex-end; justify-content: center;
+      overflow: hidden;
     }
     .chara-cell img {
-      width: auto; max-width: 96%; max-height: 92%;
+      width: auto; max-width: 96%;
       object-fit: contain;
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
-    /* 個別サイズ調整 */
-    .chara-cell:nth-child(1) img { height: clamp(240px, 19vw, 320px); } /* まなドラ */
-    .chara-cell:nth-child(2) img { height: clamp(255px, 20vw, 335px); } /* ルミナ先生 */
-    .chara-cell:nth-child(3) img { height: clamp(200px, 15vw, 260px); } /* レン先生 */
-    .chara-cell:nth-child(4) img { height: clamp(225px, 17vw, 295px); } /* クエ丸 */
-    .chara-cell:nth-child(5) img { height: clamp(225px, 17vw, 295px); } /* ゼータ */
-    .chara-cell:nth-child(6) img { height: clamp(210px, 16vw, 275px); } /* ミル */
+    /* 個別サイズ調整（317px行高に合わせて下寄せ） */
+    .chara-cell:nth-child(1) img { height: clamp(240px, 20vw, 295px); } /* まなドラ */
+    .chara-cell:nth-child(2) img { height: clamp(255px, 22vw, 310px); } /* ルミナ先生 */
+    .chara-cell:nth-child(3) img { height: clamp(200px, 16vw, 265px); } /* レン先生 */
+    .chara-cell:nth-child(4) img { height: clamp(240px, 19vw, 295px); } /* クエ丸 */
+    .chara-cell:nth-child(5) img { height: clamp(240px, 19vw, 295px); } /* ゼータ */
+    .chara-cell:nth-child(6) img { height: clamp(220px, 17vw, 275px); } /* ミル */
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
