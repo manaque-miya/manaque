@@ -151,7 +151,7 @@
     .hero {
       background: var(--hero-blue);
       position: relative; overflow: hidden;
-      min-height: 560px;
+      min-height: 720px;
     }
     /* ドットパターン */
     .hero::before {
@@ -193,13 +193,13 @@
       object-position: bottom center;
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
-    /* 個別サイズ調整 */
-    .chara-cell:nth-child(1) img { height: clamp(220px, 22vw, 340px); max-width: 100%; } /* まなドラ */
-    .chara-cell:nth-child(2) img { height: clamp(240px, 26vw, 380px); max-width: 100%; } /* ルミナ先生 */
-    .chara-cell:nth-child(3) img { height: clamp(170px, 16vw, 250px); max-width: 100%; } /* レン先生 */
-    .chara-cell:nth-child(4) img { height: clamp(220px, 20vw, 320px); max-width: 100%; } /* クエ丸 */
-    .chara-cell:nth-child(5) img { height: clamp(220px, 20vw, 320px); max-width: 100%; } /* ゼータ */
-    .chara-cell:nth-child(6) img { height: clamp(200px, 18vw, 290px); max-width: 100%; } /* ミル */
+    /* 個別サイズ調整（min-height:720px → 1行360px に合わせて上限調整） */
+    .chara-cell:nth-child(1) img { height: clamp(200px, 20vw, 320px); max-width: 100%; } /* まなドラ */
+    .chara-cell:nth-child(2) img { height: clamp(220px, 22vw, 340px); max-width: 100%; } /* ルミナ先生 */
+    .chara-cell:nth-child(3) img { height: clamp(160px, 15vw, 240px); max-width: 100%; } /* レン先生 */
+    .chara-cell:nth-child(4) img { height: clamp(200px, 18vw, 300px); max-width: 100%; } /* クエ丸 */
+    .chara-cell:nth-child(5) img { height: clamp(200px, 18vw, 300px); max-width: 100%; } /* ゼータ */
+    .chara-cell:nth-child(6) img { height: clamp(180px, 16vw, 270px); max-width: 100%; } /* ミル */
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
