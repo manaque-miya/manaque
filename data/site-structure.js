@@ -419,6 +419,20 @@ const SITE_STRUCTURE = [
             tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: '全国難読地名', quizId: 'adult-chimei-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
             tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '語源クイズ〜この言葉どこから来た？〜', quizId: 'adult-gogen-01', count: 20, time: '約10分', difficulty: 2, gacha: false, isNew: true,
+            tags: [{ text: '日本語', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+        ]
+      },
+      {
+        id: 'kyoyo-adult', label: '教養',
+        emoji: '🎓',
+        units: [
+          { label: '防災・緊急時の正しい行動クイズ', quizId: 'adult-bousai-01', count: 20, time: '約10分', difficulty: 2, gacha: false, isNew: true,
+            tags: [{ text: '教養', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '知らないと損する法律クイズ', quizId: 'adult-law-01', count: 20, time: '約10分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: '教養', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'マナー違反チェッククイズ', quizId: 'adult-manner-01', count: 20, time: '約10分', difficulty: 2, gacha: false, isNew: true,
+            tags: [{ text: '教養', cls: 'badge--green' }, { text: '大人向け', cls: 'badge--neutral' }] },
         ]
       },
       {

@@ -1090,7 +1090,7 @@ function goToCategory(idx) {
 // ===== LATEST自動生成（isNew: trueのunitを最大6件表示）=====
 function getQuizUrl(quizId) {
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(quizId) ||
-      /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych)-\d+$/.test(quizId) ||
+      /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner)-\d+$/.test(quizId) ||
       /^uni-spi-(lang|math)-\d+$/.test(quizId) ||
       /^kids-nazo-\d+$/.test(quizId)) return `unit-quiz.html?id=${quizId}`;
   if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}`;
