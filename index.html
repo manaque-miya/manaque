@@ -1087,10 +1087,11 @@ function countTotalUnits(grade) {
 
 // ===== ナビからカテゴリを直接開く =====
 function goToCategory(idx) {
+  renderGrades(); // 一旦カテゴリ一覧に戻す
   setTimeout(() => {
     const cards = document.querySelectorAll('.cat-card');
     if (cards[idx]) cards[idx].click();
-  }, 150);
+  }, 50);
 }
 
 // ===== LATEST自動生成（isNew: trueのunitを最大6件表示）=====
