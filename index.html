@@ -447,6 +447,10 @@
     .cat--kids .cat-card__icon { background: #FFF0EB; }
     .cat--kids .cat-card__count { color: #D94E1C; }
 
+    .cat--uni .cat-card__blob { background: #2980B9; }
+    .cat--uni .cat-card__icon { background: #EAF4FB; }
+    .cat--uni .cat-card__count { color: #1A6A9A; }
+
     .cat--adult .cat-card__blob { background: #8E44AD; }
     .cat--adult .cat-card__icon { background: #F5EEF8; }
     .cat--adult .cat-card__count { color: #6C3483; }
@@ -716,8 +720,9 @@
       <a href="#category" onclick="goToCategory(1)">小学生</a>
       <a href="#category" onclick="goToCategory(2)">中学生</a>
       <a href="#category" onclick="goToCategory(3)">高校生</a>
-      <a href="#category" onclick="goToCategory(4)">大人</a>
-      <a href="#category" onclick="goToCategory(5)">パズル</a>
+      <a href="#category" onclick="goToCategory(4)">大学生</a>
+      <a href="#category" onclick="goToCategory(5)">大人</a>
+      <a href="#category" onclick="goToCategory(6)">パズル</a>
     </nav>
 
     <a href="shindan.html" class="header__shindan">
@@ -1057,7 +1062,7 @@
       <div class="footer__heading">カテゴリ</div>
       <div class="footer__links">
         <a href="#category">こども</a><a href="#category">小学生</a><a href="#category">中学生</a>
-        <a href="#category">高校生</a><a href="#category">大人</a><a href="#category">パズル</a>
+        <a href="#category">高校生</a><a href="#category">大学生</a><a href="#category">大人</a><a href="#category">パズル</a>
       </div>
     </div>
     <div>
@@ -1098,6 +1103,7 @@ function goToCategory(idx) {
 function getQuizUrl(quizId) {
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(quizId) ||
       /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand)-\d+$/.test(quizId) ||
+      /^uni-spi-(lang|math)-\d+$/.test(quizId) ||
       /^kids-nazo-\d+$/.test(quizId)) return `unit-quiz.html?id=${quizId}`;
   if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}`;
   return `quiz.html?id=${quizId}&autostart=1`;
@@ -1196,6 +1202,7 @@ function renderUnits(gi, si) {
     // unit-quiz形式（elem/mid/high の science・social・english・japanese、adult系、kids-nazo）
     if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
         /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand)-\d+$/.test(unit.quizId) ||
+        /^uni-spi-(lang|math)-\d+$/.test(unit.quizId) ||
         /^kids-nazo-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
       return `

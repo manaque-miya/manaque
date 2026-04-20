@@ -347,6 +347,44 @@ const SITE_STRUCTURE = [
   },
 
   {
+    id: 'uni',
+    label: '大学生',
+    ruby: 'だいがくせい',
+    emoji: '🎓',
+    colorClass: 'cat--uni',
+    subjects: [
+      {
+        id: 'spi-lang', label: 'SPI言語',
+        emoji: '📖',
+        units: [
+          { label: 'SPI言語：二語の関係・類義語・対義語', quizId: 'uni-spi-lang-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI言語：語句の意味・用法',           quizId: 'uni-spi-lang-02', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI言語：文章完成・接続詞補充',       quizId: 'uni-spi-lang-03', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI言語：長文読解・文章理解',         quizId: 'uni-spi-lang-04', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+        ]
+      },
+      {
+        id: 'spi-math', label: 'SPI非言語',
+        emoji: '🔢',
+        units: [
+          { label: 'SPI非言語：割合・比・濃度',       quizId: 'uni-spi-math-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI非言語：速さ・時間・距離',     quizId: 'uni-spi-math-02', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI非言語：場合の数・確率',       quizId: 'uni-spi-math-03', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI非言語：推論・集合・論理',     quizId: 'uni-spi-math-04', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+        ]
+      },
+    ]
+  },
+
+  {
     id: 'adult',
     label: '大人',
     ruby: 'おとな',
