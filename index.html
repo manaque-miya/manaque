@@ -439,6 +439,10 @@
     .cat--middle .cat-card__icon { background: var(--brand-50); }
     .cat--middle .cat-card__count { color: var(--brand-600); }
 
+    .cat--high .cat-card__blob { background: #E67E22; }
+    .cat--high .cat-card__icon { background: #FEF0E6; }
+    .cat--high .cat-card__count { color: #C0621A; }
+
     .cat--chujuken .cat-card__blob { background: var(--accent-pink); }
     .cat--chujuken .cat-card__icon { background: var(--accent-pink-bg); }
     .cat--chujuken .cat-card__count { color: var(--accent-pink); }
@@ -701,8 +705,7 @@
       <a href="index.html" class="active">ホーム</a>
       <a href="#category">小学生</a>
       <a href="#category">中学生</a>
-      <a href="#category">中学受験</a>
-      <a href="#category">高校受験</a>
+      <a href="#category">高校</a>
       <a href="#category">パズル</a>
     </nav>
 
@@ -893,7 +896,7 @@
       <a href="quiz.html?id=meiji&amp;autostart=1" class="quiz-card">
         <div class="quiz-card__tags">
           <span class="badge badge--green">社会</span>
-          <span class="badge badge--brand">中学受験</span>
+          <span class="badge badge--neutral">中学生</span>
         </div>
         <h3 class="quiz-card__title">明治時代の出来事</h3>
         <div class="quiz-card__meta">
@@ -1039,7 +1042,7 @@
       <div class="footer__heading">カテゴリ</div>
       <div class="footer__links">
         <a href="#category">小学生</a><a href="#category">中学生</a>
-        <a href="#">中学受験対策</a><a href="#">高校受験対策</a><a href="#category">パズル</a>
+        <a href="#category">高校</a><a href="#category">パズル</a>
       </div>
     </div>
     <div>
@@ -1124,8 +1127,8 @@ function renderUnits(gi, si) {
     const isNanpure  = unit.quizId === 'nanpure';
     const isIgo      = unit.quizId === 'igo';
     const isShogi    = unit.quizId === 'shogi';
-    // unit-quiz形式（elem/mid の science・social・english）
-    if (/^(elem|mid)-(science|social|english)-\d+$/.test(unit.quizId)) {
+    // unit-quiz形式（elem/mid/high の science・social・english・japanese）
+    if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
       return `
       <div class="unit-card">
@@ -1139,8 +1142,8 @@ function renderUnits(gi, si) {
         <div class="count-btns">${btnAll}</div>
       </div>`;
     }
-    // math-quiz形式（elem-math-XX / mid-math-XX）
-    if (/^(elem|mid)-math-\d+$/.test(unit.quizId)) {
+    // math-quiz形式（elem-math-XX / mid-math-XX / high-math-XX）
+    if (/^(elem|mid|high)-math-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="math-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
       return `
       <div class="unit-card">

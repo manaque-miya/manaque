@@ -257,7 +257,7 @@ const SITE_STRUCTURE = [
             time: '約5分',
             difficulty: 4,
             gacha: false,
-            tags: [{ text: '歴史', cls: 'badge--orange' }, { text: '中学受験', cls: 'badge--brand' }]
+            tags: [{ text: '歴史', cls: 'badge--orange' }, { text: '中学生', cls: 'badge--neutral' }]
           }
         ]
       }
@@ -265,27 +265,62 @@ const SITE_STRUCTURE = [
   },
 
   {
-    id: 'entrance',
-    label: '中学受験',
-    ruby: 'ちゅうじゅけん',
-    emoji: '✏️',
-    colorClass: 'cat--chujuken',
+    id: 'high',
+    label: '高校',
+    ruby: 'こうこう',
+    emoji: '🎓',
+    colorClass: 'cat--high',
     subjects: [
       {
-        id: 'history-exam',
-        label: '歴史',
-        emoji: '📜',
-        badge: { text: '歴史', cls: 'badge--orange' },
+        id: 'english-high',
+        label: '英語',
+        emoji: '🌍',
+        badge: { text: '英語', cls: 'badge--sky' },
         units: [
-          {
-            label: '明治時代クイズ',
-            quizId: 'meiji',
-            count: 5,
-            time: '約5分',
-            difficulty: 4,
-            gacha: false,
-            tags: [{ text: '歴史', cls: 'badge--orange' }, { text: '中学受験', cls: 'badge--brand' }]
-          }
+          { label: '英文法（時制・仮定法・関係詞）', quizId: 'high-english-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '英単語・熟語・語法',             quizId: 'high-english-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] }
+        ]
+      },
+      {
+        id: 'japanese-high',
+        label: '国語',
+        emoji: '📖',
+        badge: { text: '国語', cls: 'badge--orange' },
+        units: [
+          { label: '現代文（語彙・読解・文学史）', quizId: 'high-japanese-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文・漢文基礎',               quizId: 'high-japanese-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] }
+        ]
+      },
+      {
+        id: 'math-high',
+        label: '数学',
+        emoji: '📐',
+        badge: { text: '数学', cls: 'badge--sky' },
+        units: [
+          { label: '数と式・方程式・不等式',         quizId: 'high-math-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '二次関数・場合の数・確率',       quizId: 'high-math-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '数学', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] }
+        ]
+      },
+      {
+        id: 'science-high',
+        label: '理科',
+        emoji: '🔬',
+        badge: { text: '理科', cls: 'badge--purple' },
+        units: [
+          { label: '物理基礎（力学・波動・電磁気）', quizId: 'high-science-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '化学基礎（原子・化学結合・反応）',quizId: 'high-science-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '生物基礎（細胞・遺伝・生態系）', quizId: 'high-science-03', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '地学基礎（地球・気象・宇宙）',   quizId: 'high-science-04', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] }
+        ]
+      },
+      {
+        id: 'social-high',
+        label: '社会',
+        emoji: '🌏',
+        badge: { text: '社会', cls: 'badge--green' },
+        units: [
+          { label: '日本史基礎（古代〜現代）',       quizId: 'high-social-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '世界史・地理・公民',             quizId: 'high-social-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '高校生', cls: 'badge--neutral' }] }
         ]
       }
     ]
