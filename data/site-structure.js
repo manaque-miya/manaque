@@ -335,6 +335,7 @@ const SITE_STRUCTURE = [
     subjects: [
       {
         id: 'exam-adult', label: '資格・検定',
+        emoji: '📋',
         units: [
           { label: '漢字検定2級レベル', quizId: 'adult-exam-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
             tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
@@ -350,6 +351,7 @@ const SITE_STRUCTURE = [
       },
       {
         id: 'japanese-adult', label: '日本語',
+        emoji: '📝',
         units: [
           { label: '難読漢字クイズ', quizId: 'adult-kanji-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
             tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
@@ -363,6 +365,7 @@ const SITE_STRUCTURE = [
       },
       {
         id: 'trivia-adult', label: '雑学',
+        emoji: '💡',
         units: [
           { label: '日本の雑学・豆知識', quizId: 'adult-trivia-01', count: 30, time: '約15分', difficulty: 2, gacha: false,
             tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
