@@ -1119,9 +1119,9 @@ function renderUnits(gi, si) {
     const isNanpure  = unit.quizId === 'nanpure';
     const isIgo      = unit.quizId === 'igo';
     const isShogi    = unit.quizId === 'shogi';
-    // standaloneフラグがある場合は専用HTMLへ直接リンク
-    if (unit.standalone) {
-      const btnAll = `<a href="${unit.quizId}.html" class="count-btn count-btn--default">はじめる</a>`;
+    // math-quiz形式（elem-math-XX / mid-math-XX）
+    if (/^(elem|mid)-math-\d+$/.test(unit.quizId)) {
+      const btnAll = `<a href="math-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
       return `
       <div class="unit-card">
         <div class="unit-card__tags">${tagHtml}</div>
