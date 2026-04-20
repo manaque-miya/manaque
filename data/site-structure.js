@@ -266,8 +266,8 @@ const SITE_STRUCTURE = [
 
   {
     id: 'high',
-    label: '高校',
-    ruby: 'こうこう',
+    label: '高校生',
+    ruby: 'こうこうせい',
     emoji: '🎓',
     colorClass: 'cat--high',
     subjects: [
