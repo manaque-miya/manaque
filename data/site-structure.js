@@ -4,6 +4,26 @@
 
 const SITE_STRUCTURE = [
   {
+    id: 'kids',
+    label: 'こども',
+    ruby: 'こども',
+    emoji: '🧒',
+    colorClass: 'cat--kids',
+    subjects: [
+      {
+        id: 'nazo-kids', label: 'なぞなぞ',
+        emoji: '🤔',
+        units: [
+          { label: 'こどもなぞなぞ（かんたん）', quizId: 'kids-nazo-01', count: 20, time: '約10分', difficulty: 1, gacha: false, isNew: true,
+            tags: [{ text: 'なぞなぞ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
+          { label: 'こどもなぞなぞ（すこしむずかしい）', quizId: 'kids-nazo-02', count: 20, time: '約10分', difficulty: 2, gacha: false, isNew: true,
+            tags: [{ text: 'なぞなぞ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
+        ]
+      },
+    ]
+  },
+
+  {
     id: 'elementary',
     label: '小学生',
     ruby: 'しょうがくせい',
@@ -277,7 +297,7 @@ const SITE_STRUCTURE = [
         emoji: '🌍',
         badge: { text: '英語', cls: 'badge--sky' },
         units: [
-          { label: '英文法（時制・仮定法・関係詞）', quizId: 'high-english-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '英文法（時制・仮定法・関係詞）', quizId: 'high-english-01', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] },
           { label: '英単語・熟語・語法',             quizId: 'high-english-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '高校生', cls: 'badge--neutral' }] }
         ]
       },
@@ -307,7 +327,7 @@ const SITE_STRUCTURE = [
         emoji: '🔬',
         badge: { text: '理科', cls: 'badge--purple' },
         units: [
-          { label: '物理基礎（力学・波動・電磁気）', quizId: 'high-science-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '物理基礎（力学・波動・電磁気）', quizId: 'high-science-01', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] },
           { label: '化学基礎（原子・化学結合・反応）',quizId: 'high-science-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] },
           { label: '生物基礎（細胞・遺伝・生態系）', quizId: 'high-science-03', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] },
           { label: '地学基礎（地球・気象・宇宙）',   quizId: 'high-science-04', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '高校生', cls: 'badge--neutral' }] }
@@ -319,7 +339,7 @@ const SITE_STRUCTURE = [
         emoji: '🌏',
         badge: { text: '社会', cls: 'badge--green' },
         units: [
-          { label: '日本史基礎（古代〜現代）',       quizId: 'high-social-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '日本史基礎（古代〜現代）',       quizId: 'high-social-01', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '社会', cls: 'badge--green' }, { text: '高校生', cls: 'badge--neutral' }] },
           { label: '世界史・地理・公民',             quizId: 'high-social-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '高校生', cls: 'badge--neutral' }] }
         ]
       }
@@ -337,7 +357,7 @@ const SITE_STRUCTURE = [
         id: 'exam-adult', label: '資格・検定',
         emoji: '📋',
         units: [
-          { label: '漢字検定2級レベル', quizId: 'adult-exam-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
+          { label: '漢字検定2級レベル', quizId: 'adult-exam-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
             tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: 'FP3級・お金の基礎知識', quizId: 'adult-exam-02', count: 30, time: '約15分', difficulty: 3, gacha: false,
             tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
@@ -353,7 +373,7 @@ const SITE_STRUCTURE = [
         id: 'japanese-adult', label: '日本語',
         emoji: '📝',
         units: [
-          { label: '難読漢字クイズ', quizId: 'adult-kanji-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
+          { label: '難読漢字クイズ', quizId: 'adult-kanji-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
             tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: 'ことわざ・四字熟語', quizId: 'adult-kotowaza-01', count: 30, time: '約15分', difficulty: 3, gacha: false,
             tags: [{ text: '日本語', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
@@ -367,7 +387,7 @@ const SITE_STRUCTURE = [
         id: 'trivia-adult', label: '雑学',
         emoji: '💡',
         units: [
-          { label: '日本の雑学・豆知識', quizId: 'adult-trivia-01', count: 30, time: '約15分', difficulty: 2, gacha: false,
+          { label: '日本の雑学・豆知識', quizId: 'adult-trivia-01', count: 30, time: '約15分', difficulty: 2, gacha: false, isNew: true,
             tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: '世界の雑学・豆知識', quizId: 'adult-trivia-02', count: 30, time: '約15分', difficulty: 2, gacha: false,
             tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },

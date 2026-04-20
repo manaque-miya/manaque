@@ -443,6 +443,10 @@
     .cat--high .cat-card__icon { background: #FEF0E6; }
     .cat--high .cat-card__count { color: #C0621A; }
 
+    .cat--kids .cat-card__blob { background: #FF6B35; }
+    .cat--kids .cat-card__icon { background: #FFF0EB; }
+    .cat--kids .cat-card__count { color: #D94E1C; }
+
     .cat--adult .cat-card__blob { background: #8E44AD; }
     .cat--adult .cat-card__icon { background: #F5EEF8; }
     .cat--adult .cat-card__count { color: #6C3483; }
@@ -708,6 +712,7 @@
 
     <nav class="header__nav">
       <a href="index.html" class="active">ホーム</a>
+      <a href="#category">こども</a>
       <a href="#category">小学生</a>
       <a href="#category">中学生</a>
       <a href="#category">高校生</a>
@@ -833,10 +838,10 @@
         <div class="section__label">LATEST</div>
         <h2 class="section__title" style="margin-bottom:0">あたらしいクイズ</h2>
       </div>
-      <a href="#quizlist" class="latest-header__all">すべて見る ›</a>
+      <a href="#category" class="latest-header__all">すべて見る ›</a>
     </div>
 
-    <div class="quiz-grid">
+    <div class="quiz-grid" id="latest-grid">
       <!-- card 1 -->
       <a href="unit-quiz.html?id=adult-exam-01" class="quiz-card">
         <span class="quiz-card__new"><span class="badge badge--new">NEW</span></span>
@@ -1051,7 +1056,7 @@
     <div>
       <div class="footer__heading">カテゴリ</div>
       <div class="footer__links">
-        <a href="#category">小学生</a><a href="#category">中学生</a>
+        <a href="#category">こども</a><a href="#category">小学生</a><a href="#category">中学生</a>
         <a href="#category">高校生</a><a href="#category">大人</a><a href="#category">パズル</a>
       </div>
     </div>
@@ -1079,6 +1084,48 @@ let _drillLevel = 0, _drillGrade = null;
 function countTotalUnits(grade) {
   return grade.subjects.reduce((n, s) => n + s.units.length, 0);
 }
+
+// ===== LATEST自動生成（isNew: trueのunitを最大6件表示）=====
+function getQuizUrl(quizId) {
+  if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(quizId) ||
+      /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia)-\d+$/.test(quizId) ||
+      /^kids-nazo-\d+$/.test(quizId)) return `unit-quiz.html?id=${quizId}`;
+  if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}`;
+  return `quiz.html?id=${quizId}&autostart=1`;
+}
+function renderLatest() {
+  const grid = document.getElementById('latest-grid');
+  if (!grid || typeof SITE_STRUCTURE === 'undefined') return;
+  const newUnits = [];
+  SITE_STRUCTURE.forEach(grade => {
+    grade.subjects.forEach(subj => {
+      subj.units.forEach(unit => {
+        if (unit.isNew) newUnits.push({ unit, grade, subj });
+      });
+    });
+  });
+  if (newUnits.length === 0) return;
+  const show = newUnits.slice(0, 6);
+  grid.innerHTML = show.map(({ unit }) => {
+    const stars = '★'.repeat(unit.difficulty) + '<span class="quiz-card__star empty">★</span>'.repeat(5 - unit.difficulty);
+    const tagHtml = unit.tags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
+    return `
+      <a href="${getQuizUrl(unit.quizId)}" class="quiz-card">
+        <span class="quiz-card__new"><span class="badge badge--new">NEW</span></span>
+        <div class="quiz-card__tags">${tagHtml}</div>
+        <h3 class="quiz-card__title">${unit.label}</h3>
+        <div class="quiz-card__meta">
+          <span>📘 ${unit.count}問</span><span>⏱ ${unit.time}</span>
+          <div class="quiz-card__stars">${unit.difficulty ? '★'.repeat(unit.difficulty) + '<span class="quiz-card__star empty">★</span>'.repeat(5-unit.difficulty) : ''}</div>
+        </div>
+        <div class="quiz-card__footer">
+          <span class="quiz-card__plays">▶ 0回</span>
+          <span class="quiz-card__link">はじめる →</span>
+        </div>
+      </a>`;
+  }).join('');
+}
+document.addEventListener('DOMContentLoaded', renderLatest);
 
 function renderGrades() {
   _drillLevel = 0; _drillGrade = null;
@@ -1137,9 +1184,10 @@ function renderUnits(gi, si) {
     const isNanpure  = unit.quizId === 'nanpure';
     const isIgo      = unit.quizId === 'igo';
     const isShogi    = unit.quizId === 'shogi';
-    // unit-quiz形式（elem/mid/high の science・social・english・japanese、adult系）
+    // unit-quiz形式（elem/mid/high の science・social・english・japanese、adult系、kids-nazo）
     if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
-        /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia)-\d+$/.test(unit.quizId)) {
+        /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia)-\d+$/.test(unit.quizId) ||
+        /^kids-nazo-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
       return `
       <div class="unit-card">
