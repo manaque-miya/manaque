@@ -1189,7 +1189,7 @@ function renderUnits(gi, si) {
     const isShogi    = unit.quizId === 'shogi';
     // unit-quiz形式（elem/mid/high の science・social・english・japanese、adult系、kids-nazo）
     if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
-        /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand)-\d+$/.test(unit.quizId) ||
+        /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner)-\d+$/.test(unit.quizId) ||
         /^uni-spi-(lang|math)-\d+$/.test(unit.quizId) ||
         /^kids-nazo-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
