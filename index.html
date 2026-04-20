@@ -1119,8 +1119,8 @@ function renderUnits(gi, si) {
     const isNanpure  = unit.quizId === 'nanpure';
     const isIgo      = unit.quizId === 'igo';
     const isShogi    = unit.quizId === 'shogi';
-    // unit-quiz形式（elem-science-XX / elem-social-XX）
-    if (/^elem-(science|social)-\d+$/.test(unit.quizId)) {
+    // unit-quiz形式（elem/mid の science・social・english）
+    if (/^(elem|mid)-(science|social|english)-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
       return `
       <div class="unit-card">

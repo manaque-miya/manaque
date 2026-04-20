@@ -186,7 +186,53 @@ const SITE_STRUCTURE = [
             difficulty: 3,
             gacha: false,
             tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }]
-          }
+          },
+          { label: 'be動詞・一般動詞',          quizId: 'mid-english-01', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '疑問文・否定文',             quizId: 'mid-english-02', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '進行形・過去形',             quizId: 'mid-english-03', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '未来形・助動詞',             quizId: 'mid-english-04', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '比較（比較級・最上級）',     quizId: 'mid-english-05', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '不定詞・動名詞',             quizId: 'mid-english-06', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '接続詞・前置詞',             quizId: 'mid-english-07', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '関係代名詞',                 quizId: 'mid-english-08', count: 10, time: '約5分', difficulty: 4, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '受動態',                     quizId: 'mid-english-09', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '現在完了形',                 quizId: 'mid-english-10', count: 10, time: '約5分', difficulty: 4, gacha: false, tags: [{ text: '英語', cls: 'badge--sky' }, { text: '中学生', cls: 'badge--neutral' }] }
+        ]
+      },
+      {
+        id: 'science-mid',
+        label: '理科',
+        emoji: '🔬',
+        badge: { text: '理科', cls: 'badge--purple' },
+        units: [
+          { label: '植物の分類と光合成',         quizId: 'mid-science-01', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '動物の分類と体のしくみ',     quizId: 'mid-science-02', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '細胞・遺伝',                 quizId: 'mid-science-03', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '状態変化・物質の性質',       quizId: 'mid-science-04', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '化学変化・化学式',           quizId: 'mid-science-05', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '酸・アルカリ・中和',         quizId: 'mid-science-06', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '力・圧力・浮力',             quizId: 'mid-science-07', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '電流・電圧・抵抗',           quizId: 'mid-science-08', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '光・音・熱',                 quizId: 'mid-science-09', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '天体・地球と宇宙',           quizId: 'mid-science-10', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '中学生', cls: 'badge--neutral' }] }
+        ]
+      },
+      {
+        id: 'social-mid',
+        label: '社会',
+        emoji: '🗾',
+        badge: { text: '社会', cls: 'badge--green' },
+        units: [
+          { label: '世界の地形・気候',               quizId: 'mid-social-01', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: 'アジア・アフリカの地理',         quizId: 'mid-social-02', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: 'ヨーロッパ・南北アメリカの地理', quizId: 'mid-social-03', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '日本の地理（地形・気候）',       quizId: 'mid-social-04', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '日本の地理（産業・人口）',       quizId: 'mid-social-05', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '日本の歴史①（古代〜鎌倉）',     quizId: 'mid-social-06', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '日本の歴史②（室町〜江戸）',     quizId: 'mid-social-07', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '日本の歴史③（明治〜昭和戦前）', quizId: 'mid-social-08', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '日本の歴史④（昭和戦後〜現代）', quizId: 'mid-social-09', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '公民（憲法・政治・経済）',       quizId: 'mid-social-10', count: 10, time: '約5分', difficulty: 3, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '中学生', cls: 'badge--neutral' }] }
         ]
       },
       {
