@@ -171,36 +171,39 @@
     }
     .hero__inner {
       max-width: 1200px; margin: 0 auto;
-      padding: 48px 44% 40px 32px;
+      padding: 48px 42% 40px 32px;
       position: relative; z-index: 1;
+      min-height: 720px;
     }
     .hero__charas {
-      /* bottom: 0 をやめて固定高さにする → heroが伸びても行高が変わらない */
       position: absolute;
-      right: 0; top: 0;
-      width: 42%;
-      height: 680px;
+      right: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 44%;
+      height: min(88%, 640px);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 340px 340px;
+      grid-template-rows: repeat(2, 1fr);
+      align-items: center;
       pointer-events: none;
-      gap: 0 4px;
+      gap: 8px 8px;
     }
     .chara-cell {
-      display: flex; align-items: flex-end; justify-content: center;
-      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      overflow: visible;
     }
     .chara-cell img {
-      width: auto; object-fit: contain;
+      width: auto; max-width: 96%; max-height: 92%;
+      object-fit: contain;
       filter: drop-shadow(0 3px 10px rgba(0,0,0,.3));
     }
-    /* 個別サイズ調整（1行340px 基準） */
-    .chara-cell:nth-child(1) img { height: clamp(190px, 18vw, 300px); max-width: 100%; } /* まなドラ */
-    .chara-cell:nth-child(2) img { height: clamp(210px, 20vw, 320px); max-width: 100%; } /* ルミナ先生 */
-    .chara-cell:nth-child(3) img { height: clamp(150px, 14vw, 230px); max-width: 100%; } /* レン先生 */
-    .chara-cell:nth-child(4) img { height: clamp(190px, 17vw, 280px); max-width: 100%; } /* クエ丸 */
-    .chara-cell:nth-child(5) img { height: clamp(190px, 17vw, 280px); max-width: 100%; } /* ゼータ */
-    .chara-cell:nth-child(6) img { height: clamp(170px, 15vw, 260px); max-width: 100%; } /* ミル */
+    /* 個別サイズ調整 */
+    .chara-cell:nth-child(1) img { height: clamp(240px, 19vw, 320px); } /* まなドラ */
+    .chara-cell:nth-child(2) img { height: clamp(255px, 20vw, 335px); } /* ルミナ先生 */
+    .chara-cell:nth-child(3) img { height: clamp(200px, 15vw, 260px); } /* レン先生 */
+    .chara-cell:nth-child(4) img { height: clamp(225px, 17vw, 295px); } /* クエ丸 */
+    .chara-cell:nth-child(5) img { height: clamp(225px, 17vw, 295px); } /* ゼータ */
+    .chara-cell:nth-child(6) img { height: clamp(210px, 16vw, 275px); } /* ミル */
     @media (max-width: 768px) {
       .hero__inner { padding: 40px 16px 36px; }
       .hero__charas { display: none; }
