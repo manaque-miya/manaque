@@ -433,6 +433,14 @@ const SITE_STRUCTURE = [
             tags: [{ text: '雑学', cls: 'badge--green' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: '読めないブランド名', quizId: 'adult-brand-01', count: 30, time: '約15分', difficulty: 2, gacha: false, isNew: true,
             tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '人体の不思議クイズ', quizId: 'adult-body-01', count: 20, time: '約10分', difficulty: 2, gacha: false, isNew: true,
+            tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '経済学の基本クイズ', quizId: 'adult-econ-01', count: 20, time: '約10分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: '雑学', cls: 'badge--sky' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '食べ物・料理の意外な豆知識', quizId: 'adult-food-01', count: 20, time: '約10分', difficulty: 2, gacha: false, isNew: true,
+            tags: [{ text: '雑学', cls: 'badge--orange' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '心理学の面白い法則・現象', quizId: 'adult-psych-01', count: 20, time: '約10分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: '雑学', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
         ]
       },
     ]
