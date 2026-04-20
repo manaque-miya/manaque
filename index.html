@@ -1119,6 +1119,21 @@ function renderUnits(gi, si) {
     const isNanpure  = unit.quizId === 'nanpure';
     const isIgo      = unit.quizId === 'igo';
     const isShogi    = unit.quizId === 'shogi';
+    // unit-quiz形式（elem-science-XX / elem-social-XX）
+    if (/^elem-(science|social)-\d+$/.test(unit.quizId)) {
+      const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
+      return `
+      <div class="unit-card">
+        <div class="unit-card__tags">${tagHtml}</div>
+        <div class="unit-card__title">${unit.label}</div>
+        <div class="unit-card__meta">
+          <span>📘 ${unit.count}問</span>
+          <span>⏱ ${unit.time}</span>
+          <span class="unit-card__difficulty">${stars}</span>
+        </div>
+        <div class="count-btns">${btnAll}</div>
+      </div>`;
+    }
     // math-quiz形式（elem-math-XX / mid-math-XX）
     if (/^(elem|mid)-math-\d+$/.test(unit.quizId)) {
       const btnAll = `<a href="math-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;

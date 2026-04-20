@@ -60,7 +60,17 @@ const SITE_STRUCTURE = [
             difficulty: 3,
             gacha: true,
             tags: [{ text: '地図', cls: 'badge--sky' }, { text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }]
-          }
+          },
+          { label: '農業・漁業・林業クイズ',               quizId: 'elem-social-01', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '工業・産業クイズ',                      quizId: 'elem-social-02', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '交通・通信クイズ',                      quizId: 'elem-social-03', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '日本の歴史①（縄文〜奈良時代）クイズ', quizId: 'elem-social-04', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '日本の歴史②（平安〜室町時代）クイズ', quizId: 'elem-social-05', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '日本の歴史③（安土桃山〜江戸時代）クイズ', quizId: 'elem-social-06', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '日本の歴史④（明治〜昭和時代）クイズ', quizId: 'elem-social-07', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '政治のしくみクイズ（国会・内閣・裁判所）', quizId: 'elem-social-08', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '世界地理クイズ',                        quizId: 'elem-social-09', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '環境・現代社会クイズ',                  quizId: 'elem-social-10', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '社会', cls: 'badge--green' }, { text: '小学生', cls: 'badge--neutral' }] }
         ]
       },
       {
@@ -77,7 +87,17 @@ const SITE_STRUCTURE = [
             difficulty: 2,
             gacha: false,
             tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }]
-          }
+          },
+          { label: '植物のつくりクイズ',         quizId: 'elem-science-01', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '動物・昆虫クイズ',            quizId: 'elem-science-02', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '天気と気象クイズ',            quizId: 'elem-science-03', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '太陽・月・星クイズ',          quizId: 'elem-science-04', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '水溶液・ものの溶け方クイズ',  quizId: 'elem-science-05', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: 'てこ・電気クイズ',            quizId: 'elem-science-06', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '人体のしくみクイズ',          quizId: 'elem-science-07', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '生物と環境クイズ',            quizId: 'elem-science-08', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: 'ものの燃え方クイズ',          quizId: 'elem-science-09', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: '光と音クイズ',                quizId: 'elem-science-10', count: 10, time: '約5分', difficulty: 2, gacha: false, tags: [{ text: '理科', cls: 'badge--purple' }, { text: '小学生', cls: 'badge--neutral' }] }
         ]
       },
       {
