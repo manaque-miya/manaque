@@ -1050,13 +1050,14 @@ function goToCategory(idx) {
 }
 
 // ===== LATEST自動生成（isNew: trueのunitを最大6件表示）=====
-function getQuizUrl(quizId) {
+function getQuizUrl(quizId, count) {
+  const c = count ? `&count=${count}` : '';
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(quizId) ||
       /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner|toeic|katakana)-\d+$/.test(quizId) ||
       /^uni-spi-(lang|math)-\d+$/.test(quizId) ||
       /^kids-nazo-\d+$/.test(quizId) ||
-      /^(geography|body|fraction|english|meiji|logic)$/.test(quizId)) return `unit-quiz.html?id=${quizId}`;
-  if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}`;
+      /^(geography|body|fraction|english|meiji|logic)$/.test(quizId)) return `unit-quiz.html?id=${quizId}${c}`;
+  if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}${c}`;
   return `quiz.html?id=${quizId}&autostart=1`;
 }
 function renderLatest() {
@@ -1076,7 +1077,7 @@ function renderLatest() {
     const stars = '★'.repeat(unit.difficulty) + '<span class="quiz-card__star empty">★</span>'.repeat(5 - unit.difficulty);
     const tagHtml = unit.tags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
     return `
-      <a href="${getQuizUrl(unit.quizId)}" class="quiz-card">
+      <a href="${getQuizUrl(unit.quizId, 5)}" class="quiz-card">
         <span class="quiz-card__new"><span class="badge badge--new">NEW</span></span>
         <div class="quiz-card__tags">${tagHtml}</div>
         <h3 class="quiz-card__title">${unit.label}</h3>
@@ -1086,7 +1087,7 @@ function renderLatest() {
         </div>
         <div class="quiz-card__footer">
           <span class="quiz-card__plays">▶ 0回</span>
-          <span class="quiz-card__link">はじめる →</span>
+          <span class="quiz-card__link">5問やってみる →</span>
         </div>
       </a>`;
   }).join('');
