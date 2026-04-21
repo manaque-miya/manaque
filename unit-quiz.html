@@ -292,6 +292,7 @@ function startQuiz(questions) {
         <div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" id="scoreBarFill" style="width:0%"></div></div></div>
         <div class="score-msg" id="scoreMsg"></div>
       </div>
+      <button id="gachaBtnScore" onclick="triggerGachaReward()" style="display:none;margin-bottom:12px;padding:16px 40px;background:linear-gradient(135deg,#a855f7,#7c3aed);border:none;border-radius:14px;color:#fff;font-size:18px;font-weight:900;cursor:pointer;box-shadow:0 4px 20px rgba(168,85,247,.5);animation:orbPulse .8s ease-in-out infinite">🎰 ガチャを引く！</button>
       <button class="retry-btn" onclick="restart()">もう一度チャレンジ</button>
       <div class="review-list" id="reviewList"></div>
     </div>
@@ -362,8 +363,12 @@ function showScore() {
     if (p >= 0.6) { sc.classList.add('chara-inline--bounce'); }
   }
   setTimeout(() => { document.getElementById('scoreBarFill').style.width = (p*100)+'%'; }, 100);
-  // ガチャ報酬（1秒後に表示）
-  setTimeout(triggerGachaReward, 1000);
+  // ガチャ報酬ボタンを表示（報酬がある場合のみ）
+  setTimeout(() => {
+    const pulls = typeof calcGachaPulls === 'function' ? calcGachaPulls(score, QUESTIONS.length) : 0;
+    const btn = document.getElementById('gachaBtnScore');
+    if (btn && pulls > 0) btn.style.display = 'block';
+  }, 800);
   document.getElementById('reviewList').innerHTML =
     '<div style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:10px;text-align:left;">📋 振り返り</div>' +
     answered.map(a => {
@@ -380,6 +385,8 @@ function restart() {
 // ===== ガチャ報酬 =====
 function triggerGachaReward() {
   if (typeof claimQuizGacha !== 'function') return;
+  const btn = document.getElementById('gachaBtnScore');
+  if (btn) btn.style.display = 'none';
   const { pulls, results, alreadyCleared } = claimQuizGacha(quizId, score, QUESTIONS.length);
   showGachaRewardOverlay(pulls, results, alreadyCleared);
 }
