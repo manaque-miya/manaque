@@ -260,10 +260,10 @@
       letter-spacing: .04em;
     }
     .shindan-feature__body {
-      display: flex; align-items: flex-start; gap: 32px;
+      display: block;
     }
     .shindan-feature__text {
-      flex: 1; min-width: 0;
+      max-width: 680px;
     }
     .shindan-feature__title {
       font-size: clamp(26px, 3.5vw, 42px); font-weight: 900;
@@ -309,18 +309,6 @@
       font-size: 13px; color: rgba(255,255,255,.45); font-weight: 600;
     }
     /* Visual: right side */
-    .shindan-feature__visual {
-      width: 480px; flex-shrink: 0;
-      position: relative; height: 580px;
-    }
-    .shindan-chara {
-      width: 50%;
-      position: absolute; bottom: 0;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 24px rgba(0,0,0,.5));
-    }
-    .shindan-chara--lumina { left: 0;  height: 580px; object-position: right bottom; }
-    .shindan-chara--ren    { right: 0; height: 580px; object-position: left bottom; }
     @media (max-width: 900px) {
       .shindan-feature__body { flex-direction: column; gap: 0; }
       .shindan-feature__visual { display: none; }
@@ -766,10 +754,6 @@
         </div>
         <a href="shindan.html" class="shindan-feature__btn">🔍 無料で診断する →</a>
         <p class="shindan-feature__note">36問・約5分・無料・登録不要</p>
-      </div>
-      <div class="shindan-feature__visual">
-        <img src="assets/img/characters/lumina/base.png" alt="ルミナ先生" class="shindan-chara shindan-chara--lumina">
-        <img src="assets/img/characters/ren/base.png" alt="レン先生" class="shindan-chara shindan-chara--ren">
       </div>
       </div>
     </div>
