@@ -167,7 +167,11 @@
       position: relative; z-index: 1;
     }
     @media (max-width: 768px) {
-      .hero__inner { padding: 40px 16px 36px; }
+      .hero__inner { padding: 32px 16px 28px; }
+      .hero__title { font-size: 26px; }
+      .hero__sub { font-size: 13px; margin-bottom: 24px; }
+      .hero__btns { gap: 10px; }
+      .btn--yellow, .btn--shindan { padding: 12px 20px; font-size: 14px; }
     }
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 6px;
@@ -337,14 +341,15 @@
       font-size: 12px; color: rgba(255,255,255,.55); font-weight: 600;
     }
     @media (max-width: 900px) {
-      .shindan-feature__body { flex-direction: column; gap: 32px; }
-      .shindan-feature__visual { width: 100%; height: 200px; }
-      .shindan-chara--lumina { height: 180px; }
-      .shindan-chara--ren    { height: 160px; }
+      .shindan-feature__body { flex-direction: column; gap: 0; }
+      .shindan-feature__visual { display: none; }
+      .shindan-feature__title { font-size: 22px; line-height: 1.4; }
+      .shindan-feature__title br { display: none; }
+      .shindan-feature__desc { font-size: 14px; }
+      .shindan-feature__btn { font-size: 16px; padding: 14px 28px; }
     }
     @media (max-width: 768px) {
-      .shindan-feature { padding: 48px 16px; }
-      .shindan-feature__visual { display: none; }
+      .shindan-feature { padding: 36px 16px 40px; }
     }
 
     /* ===== SECTION COMMON ===== */
