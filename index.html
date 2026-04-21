@@ -653,6 +653,33 @@
     .unit-card--gacha .count-btn--default { background: #7c3aed; border-color: #7c3aed; box-shadow: 0 3px 0 #5b21b6; }
     .unit-card--gacha .count-btn--default:hover { background: #6d28d9; }
 
+    /* ===== タグフィルターバー ===== */
+    .tag-filter-bar {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tag-filter {
+      height: 32px; padding: 0 16px;
+      border: 1.5px solid var(--border); border-radius: var(--r-pill);
+      background: var(--white); color: var(--ink-500);
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      transition: all .15s;
+    }
+    .tag-filter:hover { border-color: var(--brand-500); color: var(--brand-600); background: var(--brand-50); }
+    .tag-filter--active { background: var(--brand-500); color: #fff; border-color: var(--brand-500); }
+
+    /* ===== 科目セクションヘッダー ===== */
+    .subj-section { margin-bottom: 32px; }
+    .subj-section:last-child { margin-bottom: 0; }
+    .subj-header {
+      display: flex; align-items: center; gap: 8px;
+      padding-bottom: 12px; margin-bottom: 14px;
+      border-bottom: 2px solid var(--border);
+      font-size: 14px; font-weight: 800; color: var(--ink-700);
+    }
+    .subj-header__emoji { font-size: 18px; }
+
     @media (max-width: 768px) {
       .subj-grid { grid-template-columns: repeat(2, 1fr); }
       .unit-grid { grid-template-columns: 1fr; }
@@ -1117,6 +1144,9 @@ function renderGrades() {
   `).join('');
 }
 
+// 学年タグ（文脈上不要なもの）
+const GRADE_TAGS = new Set(['大人向け','小学生','中学生','高校生','大学生','こども','大学生向け','高校生向け','スピリチュアル']);
+
 function renderSubjects(gi) {
   _drillLevel = 1; _drillGrade = gi;
   const grade = SITE_STRUCTURE[gi];
@@ -1125,22 +1155,73 @@ function renderSubjects(gi) {
   document.getElementById('drill-label').textContent = grade.label;
   document.getElementById('drill-title').textContent = 'クイズを選ぶ';
   const g = document.getElementById('drill-grid');
-  g.className = 'unit-grid';
-  let html = '';
+  g.className = '';
+
+  // ユニークタグを収集（学年タグは除外）
+  const allTags = new Map();
   grade.subjects.forEach(subj => {
     subj.units.forEach(unit => {
-      html += buildUnitCard(unit, subj.label);
+      (unit.tags || []).forEach(t => {
+        if (!GRADE_TAGS.has(t.text)) allTags.set(t.text, t.cls);
+      });
     });
   });
-  g.innerHTML = html;
+
+  // フィルターバーHTML（タグが2種類以上あれば表示）
+  let filterHtml = '';
+  if (allTags.size >= 2) {
+    const pills = Array.from(allTags.entries()).map(([text, cls]) =>
+      `<button class="tag-filter badge ${cls}" data-tag="${text}" onclick="filterByTag(this)">${text}</button>`
+    ).join('');
+    filterHtml = `<div class="tag-filter-bar">
+      <button class="tag-filter tag-filter--active" data-tag="" onclick="clearTagFilter(this)">すべて</button>
+      ${pills}
+    </div>`;
+  }
+
+  // 科目セクションHTML
+  const multiSubj = grade.subjects.length > 1;
+  let sectionsHtml = grade.subjects.map(subj => {
+    const header = multiSubj
+      ? `<div class="subj-header"><span class="subj-header__emoji">${subj.emoji || '📚'}</span><span>${subj.label}</span></div>`
+      : '';
+    const cards = subj.units.map(unit => buildUnitCard(unit, null)).join('');
+    return `<div class="subj-section">${header}<div class="unit-grid">${cards}</div></div>`;
+  }).join('');
+
+  g.innerHTML = filterHtml + sectionsHtml;
 }
 
-// ===== カードHTML生成ヘルパー（科目ラベル付き） =====
+function filterByTag(btn) {
+  document.querySelectorAll('.tag-filter').forEach(b => b.classList.remove('tag-filter--active'));
+  btn.classList.add('tag-filter--active');
+  const tag = btn.dataset.tag;
+  document.querySelectorAll('#drill-grid .unit-card').forEach(card => {
+    const tags = Array.from(card.querySelectorAll('.badge')).map(b => b.textContent.trim());
+    card.style.display = tags.includes(tag) ? '' : 'none';
+  });
+  // 空セクションを非表示
+  document.querySelectorAll('.subj-section').forEach(sec => {
+    const visible = Array.from(sec.querySelectorAll('.unit-card')).some(c => c.style.display !== 'none');
+    sec.style.display = visible ? '' : 'none';
+  });
+}
+
+function clearTagFilter(btn) {
+  document.querySelectorAll('.tag-filter').forEach(b => b.classList.remove('tag-filter--active'));
+  btn.classList.add('tag-filter--active');
+  document.querySelectorAll('#drill-grid .unit-card').forEach(card => card.style.display = '');
+  document.querySelectorAll('.subj-section').forEach(sec => sec.style.display = '');
+}
+
+// ===== カードHTML生成ヘルパー =====
 function buildUnitCard(unit, subjLabel) {
   const stars   = '★'.repeat(unit.difficulty) + '☆'.repeat(5 - unit.difficulty);
-  const tagHtml = unit.tags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
-  const gacha   = unit.gacha ? '<span class="badge" style="background:#ECE5FA;color:#5C3FBF;">🎰 ガチャあり</span>' : '';
-  const subjTag = subjLabel  ? `<span class="badge" style="background:#EFF6FF;color:#1D4ED8;font-size:10px;">${subjLabel}</span>` : '';
+  // 学年タグと科目タグの重複を除外してすっきり表示
+  const filteredTags = (unit.tags || []).filter(t => !GRADE_TAGS.has(t.text));
+  const tagHtml = filteredTags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
+  const gacha   = unit.gacha ? '<span class="badge badge--purple">🎰 ガチャあり</span>' : '';
+  const subjTag = ''; // セクションヘッダーに移動したため廃止
 
   const isMap      = unit.quizId === 'map';
   const isMapTap   = unit.quizId === 'map-tap';
