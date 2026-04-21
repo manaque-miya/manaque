@@ -314,10 +314,10 @@
       object-fit: contain;
       filter: drop-shadow(0 8px 24px rgba(0,0,0,.5));
     }
-    .shindan-chara--lumina { left: 0;   height: 240px; }
-    .shindan-chara--ren    { right: 0;  height: 210px; }
+    .shindan-chara--lumina { left: 0;   height: 230px; z-index: 1; }
+    .shindan-chara--ren    { right: 80px; height: 200px; z-index: 1; }
     .shindan-feature__card-preview {
-      position: absolute; top: 0px; left: 50%; transform: translateX(-50%);
+      position: absolute; top: 0px; right: 10px; left: auto;
       background: rgba(255,255,255,.08);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -325,6 +325,7 @@
       border-radius: 20px; padding: 18px 24px; text-align: center;
       box-shadow: 0 8px 32px rgba(0,0,0,.4);
       white-space: nowrap; min-width: 160px;
+      z-index: 2;
     }
     .shindan-card-type {
       font-size: 22px; font-weight: 900; color: #d8b4fe; margin-bottom: 6px;
