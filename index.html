@@ -1092,7 +1092,8 @@ function getQuizUrl(quizId) {
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(quizId) ||
       /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner|toeic|katakana)-\d+$/.test(quizId) ||
       /^uni-spi-(lang|math)-\d+$/.test(quizId) ||
-      /^kids-nazo-\d+$/.test(quizId)) return `unit-quiz.html?id=${quizId}`;
+      /^kids-nazo-\d+$/.test(quizId) ||
+      /^(geography|body|fraction|english|meiji|logic)$/.test(quizId)) return `unit-quiz.html?id=${quizId}`;
   if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}`;
   return `quiz.html?id=${quizId}&autostart=1`;
 }
@@ -1184,7 +1185,8 @@ function buildUnitCard(unit, subjLabel) {
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
       /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner|toeic|katakana)-\d+$/.test(unit.quizId) ||
       /^uni-spi-(lang|math)-\d+$/.test(unit.quizId) ||
-      /^kids-nazo-\d+$/.test(unit.quizId)) {
+      /^kids-nazo-\d+$/.test(unit.quizId) ||
+      /^(geography|body|fraction|english|meiji|logic)$/.test(unit.quizId)) {
     const c = unit.count || 10;
     const b3  = c >= 3  ? `<a href="unit-quiz.html?id=${unit.quizId}&amp;count=3"  class="count-btn">3問</a>`  : '';
     const b5  = c >= 5  ? `<a href="unit-quiz.html?id=${unit.quizId}&amp;count=5"  class="count-btn">5問</a>`  : '';

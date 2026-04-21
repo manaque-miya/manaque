@@ -39,7 +39,7 @@ const SITE_STRUCTURE = [
           {
             label: '都道府県クイズ',
             quizId: 'geography',
-            count: 5,
+            count: 15,
             time: '約5分',
             difficulty: 2,
             gacha: false,
@@ -102,7 +102,7 @@ const SITE_STRUCTURE = [
           {
             label: 'からだのしくみクイズ',
             quizId: 'body',
-            count: 5,
+            count: 15,
             time: '約5分',
             difficulty: 2,
             gacha: false,
@@ -129,7 +129,7 @@ const SITE_STRUCTURE = [
           {
             label: '分数のひっ算クイズ',
             quizId: 'fraction',
-            count: 5,
+            count: 15,
             time: '約5分',
             difficulty: 3,
             gacha: false,
@@ -201,7 +201,7 @@ const SITE_STRUCTURE = [
           {
             label: 'よく出る英単語クイズ',
             quizId: 'english',
-            count: 5,
+            count: 15,
             time: '約5分',
             difficulty: 3,
             gacha: false,
@@ -273,7 +273,7 @@ const SITE_STRUCTURE = [
           {
             label: '明治時代クイズ',
             quizId: 'meiji',
-            count: 5,
+            count: 15,
             time: '約5分',
             difficulty: 4,
             gacha: false,
@@ -492,7 +492,7 @@ const SITE_STRUCTURE = [
           {
             label: 'ロジカルパズル入門',
             quizId: 'logic',
-            count: 5,
+            count: 15,
             time: '約5分',
             difficulty: 2,
             gacha: false,
