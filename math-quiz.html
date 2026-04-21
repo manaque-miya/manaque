@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>数学クイズ｜まなクエ！</title>
+  <meta name="description" content="まなクエ！の無料数学・算数クイズ。小学生から高校生まで対応。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="まなクエ！">
+  <meta property="og:title" content="数学クイズ｜まなクエ！">
+  <meta property="og:description" content="まなクエ！の無料数学・算数クイズ。小学生から高校生まで対応。">
+  <meta property="og:url" content="https://manaque.net/math-quiz.html">
+  <meta property="og:image" content="https://manaque.net/assets/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://manaque.net/math-quiz.html">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
   <script>
@@ -157,8 +166,19 @@ s.onload = () => {
   if (MATH_QUIZ.meta.grade === 'mid') {
     document.documentElement.style.setProperty('--accent-text', '#fff');
   }
-  // タイトルを更新
-  document.title = `${MATH_QUIZ.meta.title}｜まなクエ！`;
+  // ===== SEO: タイトル・description・OGP を動的設定 =====
+  const m = MATH_QUIZ.meta;
+  const pageTitle = `${m.fullTitle || m.title}｜無料${m.grade === 'elem' ? '算数' : '数学'}クイズ｜まなクエ！`;
+  const pageDesc = m.desc
+    ? `${m.desc} ${m.gradeTag || ''}向け。3問・5問・10問・全問から選択可能。まなクエ！`
+    : `${m.fullTitle || m.title}を無料でプレイ。${m.gradeTag || ''}向けの計算・数学クイズ。まなクエ！`;
+  document.title = pageTitle;
+  const setMeta = (sel, val, attr='content') => { const el = document.querySelector(sel); if(el) el.setAttribute(attr, val); };
+  setMeta('meta[name="description"]', pageDesc);
+  setMeta('meta[property="og:title"]', pageTitle);
+  setMeta('meta[property="og:description"]', pageDesc);
+  setMeta('meta[property="og:url"]', location.href);
+  setMeta('link[rel="canonical"]', location.href, 'href');
   initQuiz(MATH_QUIZ.meta, MATH_QUIZ.questions);
 };
 document.head.appendChild(s);

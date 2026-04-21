@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>クイズ｜まなクエ！</title>
+  <meta name="description" content="まなクエ！の無料4択クイズ。学年・教科別に問題を選んで学習できます。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="まなクエ！">
+  <meta property="og:title" content="クイズ｜まなクエ！">
+  <meta property="og:description" content="まなクエ！の無料4択クイズ。学年・教科別に問題を選んで学習できます。">
+  <meta property="og:url" content="https://manaque.net/unit-quiz.html">
+  <meta property="og:image" content="https://manaque.net/assets/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://manaque.net/unit-quiz.html">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
   <script>
@@ -170,8 +179,17 @@ if (!quizId) {
     const meta = UNIT_QUIZ.meta;
     // アクセントカラー適用
     document.documentElement.style.setProperty('--accent', meta.accent);
-    // タイトル更新
-    document.title = `${meta.title}｜まなクエ！`;
+    // ===== SEO: タイトル・description・OGP を動的設定 =====
+    const pageTitle = `${meta.fullTitle || meta.title}｜無料4択クイズ｜まなクエ！`;
+    const subjStr = meta.subject ? `${meta.subject}の` : '';
+    const pageDesc = `${subjStr}${meta.fullTitle || meta.title}を無料でプレイ。${meta.gradeTag || ''}の4択クイズ。3問・5問・10問・全問から選択可能。ブラウザで直接遊べる学習クイズサイト まなクエ！`;
+    document.title = pageTitle;
+    const setMeta = (sel, val, attr='content') => { const el = document.querySelector(sel); if(el) el.setAttribute(attr, val); };
+    setMeta('meta[name="description"]', pageDesc);
+    setMeta('meta[property="og:title"]', pageTitle);
+    setMeta('meta[property="og:description"]', pageDesc);
+    setMeta('meta[property="og:url"]', location.href);
+    setMeta('link[rel="canonical"]', location.href, 'href');
     initQuiz(meta, UNIT_QUIZ.questions);
   };
   document.head.appendChild(s);
