@@ -1154,150 +1154,159 @@ function renderSubjects(gi) {
   document.getElementById('drill-nav').style.display = 'flex';
   document.getElementById('drill-breadcrumb').textContent = grade.label;
   document.getElementById('drill-label').textContent = grade.label;
-  document.getElementById('drill-title').textContent = '科目から選ぶ';
-  const g = document.getElementById('drill-grid');
-  g.className = 'subj-grid';
-  g.innerHTML = grade.subjects.map((subj, si) => `
-    <button class="subj-card" onclick="renderUnits(${gi}, ${si})">
-      <div class="subj-card__emoji">${subj.emoji}</div>
-      <div class="subj-card__label">${subj.label}</div>
-      <div class="subj-card__count">${subj.units.length}単元 ›</div>
-    </button>
-  `).join('');
-}
-
-function renderUnits(gi, si) {
-  _drillLevel = 2;
-  const grade = SITE_STRUCTURE[gi];
-  const subj  = grade.subjects[si];
-  document.getElementById('drill-breadcrumb').textContent = `${grade.label} › ${subj.label}`;
-  document.getElementById('drill-label').textContent = subj.label;
-  document.getElementById('drill-title').textContent = '単元を選ぶ';
+  document.getElementById('drill-title').textContent = 'クイズを選ぶ';
   const g = document.getElementById('drill-grid');
   g.className = 'unit-grid';
-  g.innerHTML = subj.units.map(unit => {
-    const stars   = '★'.repeat(unit.difficulty) + '☆'.repeat(5 - unit.difficulty);
-    const tagHtml = unit.tags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
-    const gacha   = unit.gacha
-      ? '<span class="badge" style="background:#ECE5FA;color:#5C3FBF;">🎰 ガチャあり</span>'
-      : '';
-    const isMap      = unit.quizId === 'map';
-    const isMapTap   = unit.quizId === 'map-tap';
-    const isCapitals = unit.quizId === 'map-capitals';
-    const isNanpure  = unit.quizId === 'nanpure';
-    const isIgo      = unit.quizId === 'igo';
-    const isShogi    = unit.quizId === 'shogi';
-    // unit-quiz形式（elem/mid/high の science・social・english・japanese、adult系、kids-nazo）
-    if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
-        /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner)-\d+$/.test(unit.quizId) ||
-        /^uni-spi-(lang|math)-\d+$/.test(unit.quizId) ||
-        /^kids-nazo-\d+$/.test(unit.quizId)) {
-      const btnAll = `<a href="unit-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
-      return `
-      <div class="unit-card">
-        <div class="unit-card__tags">${tagHtml}</div>
-        <div class="unit-card__title">${unit.label}</div>
-        <div class="unit-card__meta">
-          <span>📘 ${unit.count}問</span>
-          <span>⏱ ${unit.time}</span>
-          <span class="unit-card__difficulty">${stars}</span>
-        </div>
-        <div class="count-btns">${btnAll}</div>
-      </div>`;
-    }
-    // math-quiz形式（elem-math-XX / mid-math-XX / high-math-XX）
-    if (/^(elem|mid|high)-math-\d+$/.test(unit.quizId)) {
-      const btnAll = `<a href="math-quiz.html?id=${unit.quizId}" class="count-btn count-btn--default">はじめる</a>`;
-      return `
-      <div class="unit-card">
-        <div class="unit-card__tags">${tagHtml}</div>
-        <div class="unit-card__title">${unit.label}</div>
-        <div class="unit-card__meta">
-          <span>📘 ${unit.count}問</span>
-          <span>⏱ ${unit.time}</span>
-          <span class="unit-card__difficulty">${stars}</span>
-        </div>
-        <div class="count-btns">${btnAll}</div>
-      </div>`;
-    }
-    // 専用ページへのルーティング
-    const base = isMap      ? `map-quiz-new.html?autostart=1`
-               : isMapTap   ? `map-tap-quiz.html?autostart=1`
-               : isCapitals ? `map-capitals.html?autostart=1`
-               : isNanpure  ? `nanpure.html`
-               : isIgo      ? `igo.html`
-               : isShogi    ? `shogi.html`
-               : `quiz.html?id=${unit.quizId}&amp;autostart=1`;
-    // デフォルト10問。問題数がそれ未満なら全問がデフォルト
-    const defaultCount = (unit.count && unit.count >= 10) ? 10 : unit.count;
-    const cnt3Href  = isMap ? `map-quiz-new.html?count=5&amp;autostart=1`
-                    : isMapTap ? `map-tap-quiz.html?count=5&amp;autostart=1`
-                    : isCapitals ? `map-capitals.html?count=5&amp;autostart=1`
-                    : `${base}&amp;count=3`;
-    const cnt10Href = isMap ? `map-quiz-new.html?count=10&amp;autostart=1`
-                    : isMapTap ? `map-tap-quiz.html?count=10&amp;autostart=1`
-                    : isCapitals ? `map-capitals.html?count=10&amp;autostart=1`
-                    : `${base}&amp;count=10`;
-    const cntAllHref= isMap ? `map-quiz-new.html?count=47&amp;autostart=1`
-                    : isMapTap ? `map-tap-quiz.html?count=47&amp;autostart=1`
-                    : isCapitals ? `map-capitals.html?count=47&amp;autostart=1`
-                    : isNanpure ? `nanpure.html`
-                    : `${base}&amp;count=all`;
-    // ナンプレは問題数ボタン不要・直接リンクのみ
-    if(isNanpure) {
-      const btn3 = '', btn10 = '';
-      const btnAll = `<a href="nanpure.html" class="count-btn count-btn--default">あそぶ</a>`;
-      return `
-      <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
-        <div class="unit-card__tags">${tagHtml}${gacha}</div>
-        <div class="unit-card__title">${unit.label}</div>
-        <div class="unit-card__meta">
-          <span>🔢 かんたん〜むずかしい</span>
-          <span>⏱ 自由</span>
-          <span class="unit-card__difficulty">${stars}</span>
-        </div>
-        <div class="count-btns">${btnAll}</div>
-      </div>`;
-    }
-    // 囲碁・将棋は専用ページへ直接リンク
-    if(isIgo || isShogi) {
-      const page = isIgo ? 'igo.html' : 'shogi.html';
-      const meta = isIgo ? '⚫ ルール解説＋問題3問' : '♟ ルール解説＋問題5問';
-      const btnAll = `<a href="${page}" class="count-btn count-btn--default">はじめる</a>`;
-      return `
-      <div class="unit-card">
-        <div class="unit-card__tags">${tagHtml}</div>
-        <div class="unit-card__title">${unit.label}</div>
-        <div class="unit-card__meta">
-          <span>${meta}</span>
-          <span>⏱ ${unit.time}</span>
-          <span class="unit-card__difficulty">${stars}</span>
-        </div>
-        <div class="count-btns">${btnAll}</div>
-      </div>`;
-    }
-    const btn3    = (unit.count && unit.count >= 3)
-      ? `<a href="${cnt3Href}" class="count-btn${defaultCount===3?' count-btn--default':''}">${(isMap||isMapTap||isCapitals)?'5問':'3問'}</a>` : '';
-    const btn10   = (unit.count && unit.count >= 10)
-      ? `<a href="${cnt10Href}" class="count-btn count-btn--default">10問</a>` : '';
-    const btnAll  = `<a href="${cntAllHref}" class="count-btn${(!unit.count||unit.count < 10)?' count-btn--default':''}">全問<small style="font-size:10px;opacity:.7">(${unit.count})</small></a>`;
+  let html = '';
+  grade.subjects.forEach(subj => {
+    subj.units.forEach(unit => {
+      html += buildUnitCard(unit, subj.label);
+    });
+  });
+  g.innerHTML = html;
+}
+
+// ===== カードHTML生成ヘルパー（科目ラベル付き） =====
+function buildUnitCard(unit, subjLabel) {
+  const stars   = '★'.repeat(unit.difficulty) + '☆'.repeat(5 - unit.difficulty);
+  const tagHtml = unit.tags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
+  const gacha   = unit.gacha ? '<span class="badge" style="background:#ECE5FA;color:#5C3FBF;">🎰 ガチャあり</span>' : '';
+  const subjTag = subjLabel  ? `<span class="badge" style="background:#EFF6FF;color:#1D4ED8;font-size:10px;">${subjLabel}</span>` : '';
+
+  const isMap      = unit.quizId === 'map';
+  const isMapTap   = unit.quizId === 'map-tap';
+  const isCapitals = unit.quizId === 'map-capitals';
+  const isNanpure  = unit.quizId === 'nanpure';
+  const isIgo      = unit.quizId === 'igo';
+  const isShogi    = unit.quizId === 'shogi';
+
+  // ===== unit-quiz形式 =====
+  if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
+      /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner|toeic|katakana)-\d+$/.test(unit.quizId) ||
+      /^uni-spi-(lang|math)-\d+$/.test(unit.quizId) ||
+      /^kids-nazo-\d+$/.test(unit.quizId)) {
+    const c = unit.count || 10;
+    const b3  = c >= 3  ? `<a href="unit-quiz.html?id=${unit.quizId}&amp;count=3"  class="count-btn">3問</a>`  : '';
+    const b5  = c >= 5  ? `<a href="unit-quiz.html?id=${unit.quizId}&amp;count=5"  class="count-btn">5問</a>`  : '';
+    const b10 = c >= 10 ? `<a href="unit-quiz.html?id=${unit.quizId}&amp;count=10" class="count-btn count-btn--default">10問</a>` : '';
+    const bAll= `<a href="unit-quiz.html?id=${unit.quizId}&amp;count=${c}" class="count-btn${c < 10 ? ' count-btn--default' : ''}">全問<small style="font-size:10px;opacity:.7">(${c})</small></a>`;
     return `
-      <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
-        <div class="unit-card__tags">${tagHtml}${gacha}</div>
-        <div class="unit-card__title">${unit.label}</div>
-        <div class="unit-card__meta">
-          <span>📘 全${unit.count}問</span>
-          <span>⏱ ${unit.time}</span>
-          <span class="unit-card__difficulty">${stars}</span>
-        </div>
-        <div class="unit-card__counts">${btn3}${btn10}${btnAll}</div>
-      </div>`;
-  }).join('');
+    <div class="unit-card">
+      <div class="unit-card__tags">${subjTag}${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>📘 全${c}問</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts">${b3}${b5}${b10}${bAll}</div>
+    </div>`;
+  }
+
+  // ===== math-quiz形式 =====
+  if (/^(elem|mid|high)-math-\d+$/.test(unit.quizId)) {
+    const c = unit.count || 10;
+    const b3  = c >= 3  ? `<a href="math-quiz.html?id=${unit.quizId}&amp;count=3"  class="count-btn">3問</a>`  : '';
+    const b5  = c >= 5  ? `<a href="math-quiz.html?id=${unit.quizId}&amp;count=5"  class="count-btn">5問</a>`  : '';
+    const b10 = c >= 10 ? `<a href="math-quiz.html?id=${unit.quizId}&amp;count=10" class="count-btn count-btn--default">10問</a>` : '';
+    const bAll= `<a href="math-quiz.html?id=${unit.quizId}&amp;count=${c}" class="count-btn${c < 10 ? ' count-btn--default' : ''}">全問<small style="font-size:10px;opacity:.7">(${c})</small></a>`;
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${subjTag}${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>📘 全${c}問</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts">${b3}${b5}${b10}${bAll}</div>
+    </div>`;
+  }
+
+  // ===== ナンプレ =====
+  if (isNanpure) {
+    return `
+    <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
+      <div class="unit-card__tags">${subjTag}${tagHtml}${gacha}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>🔢 かんたん〜むずかしい</span>
+        <span>⏱ 自由</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="count-btns"><a href="nanpure.html" class="count-btn count-btn--default">あそぶ</a></div>
+    </div>`;
+  }
+
+  // ===== 囲碁・将棋 =====
+  if (isIgo || isShogi) {
+    const page = isIgo ? 'igo.html' : 'shogi.html';
+    const metaStr = isIgo ? '⚫ ルール解説＋問題3問' : '♟ ルール解説＋問題5問';
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${subjTag}${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>${metaStr}</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="count-btns"><a href="${page}" class="count-btn count-btn--default">はじめる</a></div>
+    </div>`;
+  }
+
+  // ===== 地図・その他専用ページ =====
+  const base = isMap      ? `map-quiz-new.html?autostart=1`
+             : isMapTap   ? `map-tap-quiz.html?autostart=1`
+             : isCapitals ? `map-capitals.html?autostart=1`
+             : `quiz.html?id=${unit.quizId}&amp;autostart=1`;
+  const defaultCount = (unit.count && unit.count >= 10) ? 10 : unit.count;
+  const cnt3Href  = isMap      ? `map-quiz-new.html?count=5&amp;autostart=1`
+                  : isMapTap   ? `map-tap-quiz.html?count=5&amp;autostart=1`
+                  : isCapitals ? `map-capitals.html?count=5&amp;autostart=1`
+                  : `${base}&amp;count=3`;
+  const cnt10Href = isMap      ? `map-quiz-new.html?count=10&amp;autostart=1`
+                  : isMapTap   ? `map-tap-quiz.html?count=10&amp;autostart=1`
+                  : isCapitals ? `map-capitals.html?count=10&amp;autostart=1`
+                  : `${base}&amp;count=10`;
+  const cntAllHref= isMap      ? `map-quiz-new.html?count=47&amp;autostart=1`
+                  : isMapTap   ? `map-tap-quiz.html?count=47&amp;autostart=1`
+                  : isCapitals ? `map-capitals.html?count=47&amp;autostart=1`
+                  : `${base}&amp;count=all`;
+  const btn3  = (unit.count && unit.count >= 3)
+    ? `<a href="${cnt3Href}" class="count-btn${defaultCount===3?' count-btn--default':''}">${(isMap||isMapTap||isCapitals)?'5問':'3問'}</a>` : '';
+  const btn10 = (unit.count && unit.count >= 10)
+    ? `<a href="${cnt10Href}" class="count-btn count-btn--default">10問</a>` : '';
+  const btnAll= `<a href="${cntAllHref}" class="count-btn${(!unit.count||unit.count < 10)?' count-btn--default':''}">全問<small style="font-size:10px;opacity:.7">(${unit.count})</small></a>`;
+  return `
+    <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
+      <div class="unit-card__tags">${subjTag}${tagHtml}${gacha}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>📘 全${unit.count}問</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts">${btn3}${btn10}${btnAll}</div>
+    </div>`;
+}
+
+// 後方互換（ブックマーク等からの直接アクセス用）
+function renderUnits(gi, si) {
+  _drillLevel = 1; _drillGrade = gi;
+  const grade = SITE_STRUCTURE[gi];
+  const subj  = grade.subjects[si];
+  document.getElementById('drill-nav').style.display = 'flex';
+  document.getElementById('drill-breadcrumb').textContent = `${grade.label} › ${subj.label}`;
+  document.getElementById('drill-label').textContent = subj.label;
+  document.getElementById('drill-title').textContent = 'クイズを選ぶ';
+  const g = document.getElementById('drill-grid');
+  g.className = 'unit-grid';
+  g.innerHTML = subj.units.map(u => buildUnitCard(u, '')).join('');
 }
 
 function drillBack() {
-  if (_drillLevel === 2) renderSubjects(_drillGrade);
-  else renderGrades();
+  if (_drillLevel >= 1) renderGrades();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

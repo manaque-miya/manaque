@@ -17,17 +17,19 @@ function loadGachaState() {
       if (s.totalEarned === undefined) s.totalEarned = s.points; // 旧データ補完
       if (!Array.isArray(s.pointsLog)) s.pointsLog   = [];
       if (!Array.isArray(s.obtained))  s.obtained    = [...new Set(s.collected)];
+      if (!s.clearedQuizzes || typeof s.clearedQuizzes !== 'object') s.clearedQuizzes = {};
       return s;
     }
   } catch(e) {}
   return {
-    collected:    [],   // 手持ちカード（重複あり・売却で削除）
-    obtained:     [],   // 図鑑記録（初入手のみ記録・永続）
-    pityCount:    0,    // 天井カウント
-    totalPulls:   0,
-    points:       0,    // 現在の保有ポイント（消費で減る）
-    totalEarned:  0,    // 累計獲得ポイント（ランク表示用・減らない）
-    pointsLog:    [],
+    collected:      [],   // 手持ちカード（重複あり・売却で削除）
+    obtained:       [],   // 図鑑記録（初入手のみ記録・永続）
+    pityCount:      0,    // 天井カウント
+    totalPulls:     0,
+    points:         0,    // 現在の保有ポイント（消費で減る）
+    totalEarned:    0,    // 累計獲得ポイント（ランク表示用・減らない）
+    pointsLog:      [],
+    clearedQuizzes: {},   // { quizId: pullsGiven } 初回クリア記録
   };
 }
 
@@ -36,11 +38,50 @@ function saveGachaState(s) {
 }
 
 // クイズ正解数 → ガチャ回数（クイズ報酬）
+// 30問以上: 全問→10連 / 80%以上→5連 / 60%以上→3連 / それ以下→1連
+// 10問以上: 全問→3連 / 80%以上→2連 / 60%以上→1連 / それ以下→0
+// 5問以上:  全問→1連 / それ以下→0
+// 5問未満:  全問→1連 / それ以下→0
 function calcGachaPulls(ok, total) {
-  if (total >= 10 && ok === total) return 3;
-  if (ok === total && total >= 5)  return 2;
-  if (ok >= Math.ceil(total * 0.8)) return 1;
-  return 0;
+  if (total >= 30) {
+    if (ok === total)              return 10;
+    if (ok >= Math.floor(total * 0.8)) return 5;
+    if (ok >= Math.floor(total * 0.6)) return 3;
+    return 1;
+  }
+  if (total >= 10) {
+    if (ok === total)              return 3;
+    if (ok >= Math.floor(total * 0.8)) return 2;
+    if (ok >= Math.floor(total * 0.6)) return 1;
+    return 0;
+  }
+  // 5問以下（または5問未満）
+  return ok === total ? 1 : 0;
+}
+
+// クイズ初回クリア時のみガチャ報酬を付与
+// 戻り値: { pulls, results, alreadyCleared }
+function claimQuizGacha(quizId, ok, total) {
+  const s = loadGachaState();
+  if (!s.clearedQuizzes) s.clearedQuizzes = {};
+
+  // 既クリア済み → 報酬なし
+  if (s.clearedQuizzes[quizId] !== undefined) {
+    return { pulls: 0, results: [], alreadyCleared: true };
+  }
+
+  const pulls = calcGachaPulls(ok, total);
+  s.clearedQuizzes[quizId] = pulls;  // 0連でも「クリア済み」として記録
+  saveGachaState(s);
+
+  if (pulls === 0) return { pulls: 0, results: [], alreadyCleared: false };
+
+  const results = [];
+  for (let i = 0; i < pulls; i++) {
+    const freshState = loadGachaState();
+    results.push(drawSingleCard(freshState));
+  }
+  return { pulls, results, alreadyCleared: false };
 }
 
 // 1枚引く（内部関数）
