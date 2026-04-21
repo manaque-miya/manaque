@@ -71,8 +71,12 @@ function claimQuizGacha(quizId, ok, total) {
   }
 
   const pulls = calcGachaPulls(ok, total);
-  s.clearedQuizzes[quizId] = pulls;  // 0連でも「クリア済み」として記録
-  saveGachaState(s);
+
+  // 報酬がある場合のみクリア済みとして記録（0pullsなら再チャレンジ可能）
+  if (pulls > 0) {
+    s.clearedQuizzes[quizId] = pulls;
+    saveGachaState(s);
+  }
 
   if (pulls === 0) return { pulls: 0, results: [], alreadyCleared: false };
 

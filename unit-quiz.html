@@ -94,12 +94,11 @@
     .review-a{font-size:12px;color:var(--muted)}
     .review-a span{color:var(--accent);font-weight:700}
 
-    /* ===== クエ丸コンパニオン ===== */
-    .chara-companion{position:fixed;right:16px;bottom:16px;width:110px;z-index:20;pointer-events:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
-    .chara-companion img{width:100%;filter:drop-shadow(0 4px 16px rgba(30,50,110,.2))}
-    .chara-companion.bounce{animation:charaBounce .4s ease}
-    @keyframes charaBounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px)}70%{transform:translateY(-6px)}}
-    @media(max-width:640px){.chara-companion{width:80px;right:8px;bottom:8px}}
+    /* ===== クエ丸（スタート・スコア画面専用） ===== */
+    .chara-inline{display:block;width:130px;margin:0 auto 16px;filter:drop-shadow(0 6px 18px rgba(30,50,110,.15));animation:floatChara 3s ease-in-out infinite}
+    .chara-inline--score{width:110px;margin:0 auto 8px;animation:none}
+    .chara-inline--bounce{animation:charaBounce .5s ease forwards}
+    @keyframes charaBounce{0%,100%{transform:translateY(0)}35%{transform:translateY(-16px)}65%{transform:translateY(-6px)}}
 
     /* ローディング */
     .loading{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
@@ -132,7 +131,7 @@
 
     /* スタート画面 */
     .start-screen{text-align:center;padding:12px 0}
-    .start-chara{width:140px;margin:0 auto 16px;display:block;filter:drop-shadow(0 4px 16px rgba(30,50,110,.15));animation:floatChara 3s ease-in-out infinite}
+    .start-chara{width:130px;margin:0 auto 16px;display:block;filter:drop-shadow(0 4px 16px rgba(30,50,110,.15));animation:floatChara 3s ease-in-out infinite}
     @keyframes floatChara{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
     .start-screen h1{font-size:22px;font-weight:900;line-height:1.5;margin-bottom:6px;color:var(--text)}
     .start-screen .grade-tag{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:900;letter-spacing:.08em;padding:4px 14px;border-radius:999px;margin-bottom:14px}
@@ -170,10 +169,6 @@
   <div id="app"><div class="loading">読み込み中…</div></div>
 </div>
 
-<!-- クエ丸コンパニオン -->
-<div class="chara-companion" id="charaCompanion">
-  <img src="character/クエ丸/クエ丸.png" id="charaImg" alt="クエ丸">
-</div>
 
 <script>
 // URLパラメータからクイズIDと問題数を取得
@@ -279,7 +274,7 @@ function startQuiz(questions) {
     <div id="quizArea"></div>
     <div class="score-screen" id="scoreScreen">
       <div class="score-card">
-        <img src="character/クエ丸/ガッツポーズ.png" class="score-chara" alt="クエ丸" id="scoreChara">
+        <img src="character/クエ丸/クエ丸.png" class="chara-inline chara-inline--score" alt="クエ丸" id="scoreChara">
         <div class="score-emoji" id="scoreEmoji"></div>
         <div class="score-num" id="scoreNum"></div>
         <div class="score-denom">/ ${questions.length}問</div>
@@ -326,15 +321,6 @@ function selectAnswer(sel) {
   document.getElementById('feedbackText').textContent = q.exp;
   document.getElementById('nextBtn').classList.add('show');
   document.getElementById('scoreText').textContent = `正解 ${score}問`;
-  // クエ丸の表情変化
-  const ci = document.getElementById('charaImg');
-  const cc = document.getElementById('charaCompanion');
-  if (ci) {
-    ci.src = ok ? 'character/クエ丸/ガッツポーズ.png' : 'character/クエ丸/クエ丸.png';
-    cc.classList.remove('bounce');
-    void cc.offsetWidth; // reflow
-    if (ok) cc.classList.add('bounce');
-  }
 }
 
 function nextQuestion() {
@@ -358,11 +344,12 @@ function showScore() {
   document.getElementById('scoreEmoji').textContent = e;
   document.getElementById('scoreNum').textContent = score;
   document.getElementById('scoreMsg').textContent = m;
-  // スコアに応じてクエ丸の画像を変える
+  // スコアに応じてクエ丸の画像を切り替え
   const sc = document.getElementById('scoreChara');
-  if (sc) sc.src = p >= 0.6 ? 'character/クエ丸/ガッツポーズ.png' : 'character/クエ丸/クエ丸.png';
-  const ci2 = document.getElementById('charaImg');
-  if (ci2) ci2.src = p >= 0.6 ? 'character/クエ丸/ガッツポーズ.png' : 'character/クエ丸/クエ丸.png';
+  if (sc) {
+    sc.src = p >= 0.6 ? 'character/クエ丸/ガッツポーズ.png' : 'character/クエ丸/クエ丸.png';
+    if (p >= 0.6) { sc.classList.add('chara-inline--bounce'); }
+  }
   setTimeout(() => { document.getElementById('scoreBarFill').style.width = (p*100)+'%'; }, 100);
   // ガチャ報酬（1秒後に表示）
   setTimeout(triggerGachaReward, 1000);
