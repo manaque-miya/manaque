@@ -538,25 +538,21 @@
       .quiz-grid { grid-template-columns: repeat(2, 1fr); }
       .footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
-    /* スマホ・タブレット：カード2列・タッチ最適化 */
+    /* タブレット：カード2列レイアウト（サイズはMOBILE CLEANで管理） */
     @media (max-width: 1100px) {
       .category-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      .cat-card { padding: 24px 16px 18px; align-items: center; text-align: center; gap: 8px; }
-      .cat-card__icon { width: 64px; height: 64px; font-size: 36px; }
-      .cat-card__name { font-size: 18px; }
-      .cat-card__ruby { font-size: 13px; margin-top: -2px; }
-      .cat-card__count { font-size: 14px; justify-content: center; width: 100%; }
-      .cat-card__blob { width: 80px; height: 80px; }
-      .section__title { font-size: 20px; }
+      .cat-card { align-items: center; text-align: center; }
+      .cat-card__count { justify-content: center; width: 100%; }
     }
 
+    /* タブレット：広告切り替え・ヘッダー調整（menu-btnは768px MOBILE CLEANで表示上書き） */
     @media (max-width: 1024px) {
       .ad-banner--leaderboard { display: none; }
       .ad-banner--mobile { display: flex; }
       .header__inner { padding: 10px 16px; gap: 6px; }
       .header__nav a { font-size: 12px; padding: 6px 8px; }
       .header__catalog-btn { font-size: 11px; padding: 5px 10px; }
-      .header__menu-btn { display: none; }
+      .header__menu-btn { display: none; } /* 768px以下でMOBILE CLEANが display:grid!important で上書き */
     }
 
 
@@ -1424,6 +1420,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btn && s.points > 0) btn.textContent = `📖 図鑑 💎${s.points.toLocaleString()}pt`;
   } catch(e) {}
 
+});
+</script>
+
+<!-- ハンバーガーメニュー：#categoryへスムーズスクロール -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuBtn = document.querySelector('.header__menu-btn');
+  const category = document.querySelector('#category');
+  if (menuBtn && category) {
+    menuBtn.addEventListener('click', () => {
+      category.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 });
 </script>
 </body>
