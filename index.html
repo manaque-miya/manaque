@@ -705,53 +705,6 @@
       .subj-grid { grid-template-columns: repeat(2, 1fr); }
       .unit-grid { grid-template-columns: 1fr; }
     }
-
-    /* ===== スマホ最適化パッチ ===== */
-    @media (max-width: 768px) {
-      /* Header */
-      .header__inner { padding: 10px 14px; gap: 8px; }
-      .header__nav, .header__catalog-btn, .header__shindan { display: none; }
-      .header__menu-btn { display: grid !important; place-items: center; margin-left: auto; width: 40px; height: 40px; background: var(--ink-50); border: 1px solid var(--border); }
-      .logo__text { font-size: 20px; }
-      .logo__icon { width: 30px; height: 30px; }
-
-      /* Hero */
-      .hero__inner { padding: 22px 16px 18px; }
-      .hero__eyebrow { font-size: 11px; padding: 4px 10px; margin-bottom: 14px; }
-      .hero__title { font-size: 28px; line-height: 1.22; margin-bottom: 10px; }
-      .hero__sub { font-size: 14px; line-height: 1.6; margin-bottom: 18px; }
-      .hero__btns { display: grid; grid-template-columns: 1fr; gap: 10px; }
-      .btn--shindan, .btn--yellow, .btn--outline { width: 100%; justify-content: center; padding: 12px 18px; font-size: 14px; }
-      .btn--shindan { animation: none; }
-
-      /* Shindan section */
-      .shindan-feature { padding: 28px 16px 32px; }
-      .shindan-feature__title { font-size: 20px; }
-      .shindan-feature__desc { font-size: 13px; }
-      .shindan-feature__btn { width: 100%; font-size: 15px; padding: 13px 18px; animation: none; }
-
-      /* Category cards */
-      .category-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .cat-card { padding: 14px 10px 12px; gap: 4px; border-radius: 18px; }
-      .cat-card__icon { width: 52px; height: 52px; font-size: 28px; }
-      .cat-card__name { font-size: 17px; }
-      .cat-card__ruby { font-size: 11px; }
-      .cat-card__count { font-size: 12px; font-weight: 800; }
-
-      /* Quiz cards */
-      .quiz-card__stars { display: none; }
-      .quiz-card__plays { display: none; }
-      .quiz-card { padding: 14px; }
-      .quiz-card__title { font-size: 16px; font-weight: 900; line-height: 1.4; }
-      .quiz-card__footer { justify-content: flex-end; }
-
-      /* Section spacing */
-      .section { padding: 32px 16px; }
-      .section__title { font-size: 20px; margin-bottom: 18px; }
-
-      /* Ads */
-      .header + .ad-wrap { display: none; }
-    }
   </style>
   <!-- ナビゲーション構造データ -->
   <script src="data/site-structure.js"></script>
@@ -826,14 +779,40 @@
       読むだけじゃ身につかない。4択で答えてから覚える、あたらしい学習のかたち。年齢も学年も関係なし。
     </p>
     <div class="hero__btns">
-      <a href="#category" class="btn btn--yellow">
-        クイズをやる →
-      </a>
       <a href="shindan.html" class="btn btn--shindan">
         🔍 学習スタイル診断 →
       </a>
+      <a href="#category" class="btn btn--yellow">
+        クイズをやる →
+      </a>
     </div>
     <p style="font-size:12px;color:rgba(255,255,255,.65);margin-top:10px;">✨ NEW｜36問でわかる、あなただけの勉強法</p>
+  </div>
+</section>
+
+<!-- ===== SHINDAN FEATURE ===== -->
+<section class="shindan-feature">
+  <div class="shindan-feature__inner">
+    <div class="shindan-feature__badge">✨ NEW コンテンツ</div>
+    <div class="shindan-feature__body">
+      <div class="shindan-feature__text">
+        <h2 class="shindan-feature__title">あなたの学習スタイルは？<br><span>36問でわかる、まなクエ診断</span></h2>
+        <p class="shindan-feature__desc">さまざまな性格指標を組み合わせた独自診断。16タイプ×3動機で「あなただけの最強勉強法」を導きだす。結果はXでシェアできる！</p>
+        <div class="shindan-feature__chips">
+          <span class="fw-chip fw-mbti">16タイプ</span>
+          <span class="fw-chip fw-ennia">動機分析</span>
+          <span class="fw-chip fw-big5">プレッシャー耐性</span>
+          <span class="fw-chip fw-strength">強みタイプ</span>
+        </div>
+        <a href="shindan.html" class="shindan-feature__btn">🔍 無料で診断する →</a>
+        <p class="shindan-feature__note">36問・約5分・無料・登録不要</p>
+      </div>
+      <div class="shindan-feature__visual">
+        <img src="assets/img/characters/lumina/base.png" alt="ルミナ先生" class="shindan-chara">
+        <img src="assets/img/characters/ren/base.png" alt="レン先生" class="shindan-chara">
+      </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1014,32 +993,6 @@
           <span class="quiz-card__link" style="color:#7c3aed;">はじめる →</span>
         </div>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SHINDAN FEATURE ===== -->
-<section class="shindan-feature">
-  <div class="shindan-feature__inner">
-    <div class="shindan-feature__badge">✨ NEW コンテンツ</div>
-    <div class="shindan-feature__body">
-      <div class="shindan-feature__text">
-        <h2 class="shindan-feature__title">あなたの学習スタイルは？<br><span>36問でわかる、まなクエ診断</span></h2>
-        <p class="shindan-feature__desc">さまざまな性格指標を組み合わせた独自診断。16タイプ×3動機で「あなただけの最強勉強法」を導きだす。結果はXでシェアできる！</p>
-        <div class="shindan-feature__chips">
-          <span class="fw-chip fw-mbti">16タイプ</span>
-          <span class="fw-chip fw-ennia">動機分析</span>
-          <span class="fw-chip fw-big5">プレッシャー耐性</span>
-          <span class="fw-chip fw-strength">強みタイプ</span>
-        </div>
-        <a href="shindan.html" class="shindan-feature__btn">🔍 無料で診断する →</a>
-        <p class="shindan-feature__note">36問・約5分・無料・登録不要</p>
-      </div>
-      <div class="shindan-feature__visual">
-        <img src="assets/img/characters/lumina/base.png" alt="ルミナ先生" class="shindan-chara">
-        <img src="assets/img/characters/ren/base.png" alt="レン先生" class="shindan-chara">
-      </div>
-      </div>
     </div>
   </div>
 </section>
