@@ -167,13 +167,6 @@
       padding: 48px 32px 40px;
       position: relative; z-index: 1;
     }
-    @media (max-width: 768px) {
-      .hero__inner { padding: 32px 16px 28px; }
-      .hero__title { font-size: 26px; }
-      .hero__sub { font-size: 13px; margin-bottom: 24px; }
-      .hero__btns { gap: 10px; }
-      .btn--yellow, .btn--shindan { padding: 12px 20px; font-size: 14px; }
-    }
     .hero__eyebrow {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
@@ -327,12 +320,6 @@
       .shindan-feature__title br { display: none; }
       .shindan-feature__desc { font-size: 14px; }
       .shindan-feature__btn { font-size: 16px; padding: 14px 28px; }
-    }
-    @media (max-width: 768px) {
-      .shindan-feature { padding: 36px 16px 40px; }
-      .shindan-feature__text { width: 100%; }
-      .shindan-feature__title { font-size: 18px; }
-      .section { padding: 40px 16px; }
     }
 
     /* ===== SECTION COMMON ===== */
@@ -562,13 +549,6 @@
       .cat-card__blob { width: 80px; height: 80px; }
       .section__title { font-size: 20px; }
     }
-    @media (max-width: 768px) {
-      .cat-card { padding: clamp(18px,5vw,24px) clamp(10px,3vw,16px) clamp(14px,4vw,20px); gap: 6px; }
-      .cat-card__icon { width: clamp(52px,13vw,64px); height: clamp(52px,13vw,64px); font-size: clamp(30px,8vw,38px); }
-      .cat-card__name { font-size: clamp(17px,4.5vw,22px); }
-      .cat-card__ruby { font-size: clamp(12px,3vw,14px); margin-top:-3px; }
-      .cat-card__count { font-size: clamp(13px,3.5vw,16px); font-weight:900; }
-    }
 
     @media (max-width: 1024px) {
       .ad-banner--leaderboard { display: none; }
@@ -578,40 +558,8 @@
       .header__catalog-btn { font-size: 11px; padding: 5px 10px; }
       .header__menu-btn { display: none; }
     }
-    @media (max-width: 768px) {
-      .hero::after { font-size: 120px; opacity: .06; }
-      .section { padding: 40px 16px; }
-      .ad-wrap { padding: 12px 16px; }
-      .category-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .quiz-grid { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; gap: 24px; }
-      .footer { padding: 40px 16px 24px; }
-      .footer__inner { grid-template-columns: 1fr; gap: 28px; }
-      .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
-    }
 
-    @media (max-width: 480px) {
-      .category-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .hero__btns { flex-direction: column; }
-      .btn--yellow, .btn--outline { width: 100%; justify-content: center; }
-      /* カードをスマホサイズで大胆に拡大 */
-      .cat-card { padding: 22px 12px 18px; gap: 6px; align-items: center; text-align: center; }
-      .cat-card__icon { width: 70px; height: 70px; font-size: 42px; }
-      .cat-card__name { font-size: 22px; font-weight: 900; }
-      .cat-card__ruby { font-size: 12px; margin-top: -4px; opacity: .7; }
-      .cat-card__count { font-size: 18px; font-weight: 900; justify-content: center; width: 100%; }
-    }
 
-    /* ─ クイズカード：スマホで情報を絞る ─ */
-    @media(max-width:768px){
-      .quiz-card__stars{display:none}
-      .quiz-card__plays{display:none}
-      .quiz-card{padding:14px}
-      .quiz-card__title{font-size:16px;font-weight:900;line-height:1.4}
-      .quiz-card__footer{justify-content:flex-end}
-      /* ヘッダー直下の広告を非表示 */
-      .header+.ad-wrap{display:none}
-    }
 
     /* ===== DRILL-DOWN NAV ===== */
     .drill-nav { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
@@ -701,238 +649,99 @@
     }
     .subj-header__emoji { font-size: 18px; }
 
+    /* ===== MOBILE CLEAN ===== */
     @media (max-width: 768px) {
-      .subj-grid { grid-template-columns: repeat(2, 1fr); }
-      .unit-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ===== スマホ最適化（チャッピー設計・完全版） ===== */
-
-    /* 1. ヘッダー */
-    @media (max-width: 768px) {
-      .header__inner {
-        padding: 10px 14px;
-        gap: 8px;
-      }
-      .header__nav,
-      .header__catalog-btn,
-      .header__shindan {
-        display: none;
-      }
+      /* ヘッダー */
+      .header__inner { padding: 10px 14px; gap: 8px; }
+      .header__nav, .header__catalog-btn, .header__shindan { display: none; }
       .header__menu-btn {
         display: grid !important;
         margin-left: auto;
-        width: 40px;
-        height: 40px;
+        width: 40px; height: 40px;
         background: var(--ink-50);
         border: 1px solid var(--border);
       }
       .logo__text { font-size: 20px; }
       .logo__icon { width: 30px; height: 30px; }
-    }
+      .header + .ad-wrap { display: none; }
 
-    /* 2. ヒーロー */
-    @media (max-width: 768px) {
-      .hero::after {
-        font-size: 88px;
-        right: 3%;
-        opacity: 0.04;
-      }
-      .hero__inner {
-        padding: 22px 16px 18px;
-      }
-      .hero__eyebrow {
-        font-size: 11px;
-        padding: 4px 10px;
-        margin-bottom: 14px;
-      }
-      .hero__title {
-        font-size: 28px;
-        line-height: 1.22;
-        margin-bottom: 10px;
-      }
-      .hero__sub {
-        font-size: 14px;
-        line-height: 1.6;
-        margin-bottom: 18px;
-        max-width: none;
-      }
-      .hero__btns {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      .btn--shindan,
-      .btn--yellow,
-      .btn--outline {
-        width: 100%;
-        justify-content: center;
-        padding: 12px 18px;
-        font-size: 14px;
+      /* ヒーロー */
+      .hero::after { font-size: 88px; right: 3%; opacity: 0.04; }
+      .hero__inner { padding: 22px 16px 18px; }
+      .hero__eyebrow { font-size: 11px; padding: 4px 10px; margin-bottom: 14px; }
+      .hero__title { font-size: 28px; line-height: 1.22; margin-bottom: 10px; }
+      .hero__sub { font-size: 14px; line-height: 1.6; margin-bottom: 18px; max-width: none; }
+      .hero__btns { display: grid; grid-template-columns: 1fr; gap: 10px; }
+      .btn--shindan, .btn--yellow, .btn--outline {
+        width: 100%; justify-content: center; padding: 12px 18px; font-size: 14px;
       }
       .btn--shindan {
         box-shadow: 0 3px 14px rgba(124,58,237,.35), 0 0 0 2px rgba(255,255,255,.16);
         animation: none;
       }
       .hero__inner > p[style*="font-size:12px"] {
-        font-size: 11px !important;
-        margin-top: 8px !important;
-        color: rgba(255,255,255,.52) !important;
+        font-size: 11px !important; margin-top: 8px !important; color: rgba(255,255,255,.52) !important;
       }
-    }
 
-    /* 3. 診断セクション */
-    @media (max-width: 768px) {
-      .shindan-feature {
-        padding: 28px 16px 32px;
-      }
-      .shindan-feature__badge {
-        font-size: 11px;
-        padding: 5px 12px;
-        margin-bottom: 18px;
-      }
-      .shindan-feature__title {
-        font-size: 20px;
-        line-height: 1.4;
-        margin-bottom: 12px;
-      }
-      .shindan-feature__desc {
-        font-size: 13px;
-        line-height: 1.7;
-        margin-bottom: 18px;
-      }
-      .shindan-feature__chips {
-        gap: 6px;
-        margin-bottom: 18px;
-      }
-      .fw-chip {
-        height: 24px;
-        padding: 0 10px;
-        font-size: 11px;
-      }
-      .shindan-feature__btn {
-        width: 100%;
-        justify-content: center;
-        font-size: 15px;
-        padding: 13px 18px;
-        margin-bottom: 10px;
-        animation: none;
-        box-shadow: 0 4px 18px rgba(124,58,237,.35), 0 0 0 2px rgba(168,85,247,.16);
-      }
-      .shindan-feature__note {
-        font-size: 11px;
-      }
-    }
-
-    /* 4. カテゴリカード */
-    @media (max-width: 768px) {
-      .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-      .cat-card {
-        padding: 14px 10px 12px;
-        gap: 4px;
-        border-radius: 18px;
-        min-height: 0;
-      }
-      .cat-card__blob {
-        width: 58px;
-        height: 58px;
-        top: -10px;
-        right: -10px;
-        opacity: 0.26;
-      }
-      .cat-card__icon {
-        width: 52px;
-        height: 52px;
-        font-size: 28px;
-      }
-      .cat-card__name {
-        font-size: 17px;
-        line-height: 1.2;
-      }
-      .cat-card__ruby {
-        font-size: 11px;
-        margin-top: -2px;
-      }
-      .cat-card__count {
-        font-size: 12px;
-        font-weight: 800;
-      }
-    }
-    @media (max-width: 480px) {
-      .cat-card {
-        padding: 13px 8px 11px;
-      }
-      .cat-card__icon {
-        width: 48px;
-        height: 48px;
-        font-size: 26px;
-      }
-      .cat-card__name { font-size: 16px; }
-      .cat-card__count { font-size: 11px; }
-    }
-
-    /* 5. 新着クイズカード */
-    @media (max-width: 768px) {
-      .quiz-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      .quiz-card {
-        padding: 14px;
-        border-radius: 18px;
-        gap: 8px;
-      }
-      .quiz-card__tags { gap: 5px; }
-      .badge {
-        font-size: 10px;
-        height: 20px;
-        padding: 0 8px;
-      }
-      .quiz-card__title {
-        font-size: 15px;
-        line-height: 1.4;
-      }
-      .quiz-card__meta {
-        gap: 8px;
-        flex-wrap: wrap;
-        font-size: 11px;
-      }
-      .quiz-card__stars,
-      .quiz-card__plays {
-        display: none;
-      }
-      .quiz-card__footer {
-        padding-top: 8px;
-        justify-content: flex-end;
-      }
-      .quiz-card__link { font-size: 13px; }
-      .quiz-card__new {
-        top: 12px;
-        right: 12px;
-      }
-    }
-
-    /* 6. セクション余白 */
-    @media (max-width: 768px) {
+      /* セクション余白 */
       .section { padding: 32px 16px; }
       .section__label { margin-bottom: 6px; }
-      .section__title {
-        font-size: 20px;
-        margin-bottom: 18px;
-      }
-      .latest-header {
-        margin-bottom: 14px;
-        align-items: flex-end;
-      }
+      .section__title { font-size: 20px; margin-bottom: 18px; }
+      .latest-header { margin-bottom: 14px; align-items: flex-end; }
       .latest-header__all { font-size: 12px; }
+
+      /* カテゴリカード */
+      .category-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .cat-card { padding: 14px 10px 12px; gap: 4px; border-radius: 18px; min-height: 0; }
+      .cat-card__blob { width: 58px; height: 58px; top: -10px; right: -10px; opacity: 0.26; }
+      .cat-card__icon { width: 52px; height: 52px; font-size: 28px; }
+      .cat-card__name { font-size: 17px; line-height: 1.2; }
+      .cat-card__ruby { font-size: 11px; margin-top: -2px; }
+      .cat-card__count { font-size: 12px; font-weight: 800; }
+
+      /* 新着クイズカード */
+      .quiz-grid { grid-template-columns: 1fr; gap: 12px; }
+      .quiz-card { padding: 14px; border-radius: 18px; gap: 8px; }
+      .quiz-card__tags { gap: 5px; }
+      .badge { font-size: 10px; height: 20px; padding: 0 8px; }
+      .quiz-card__title { font-size: 15px; line-height: 1.4; }
+      .quiz-card__meta { gap: 8px; flex-wrap: wrap; font-size: 11px; }
+      .quiz-card__stars, .quiz-card__plays { display: none; }
+      .quiz-card__footer { padding-top: 8px; justify-content: flex-end; }
+      .quiz-card__link { font-size: 13px; }
+      .quiz-card__new { top: 12px; right: 12px; }
+
+      /* 診断セクション */
+      .shindan-feature { padding: 28px 16px 32px; }
+      .shindan-feature__badge { font-size: 11px; padding: 5px 12px; margin-bottom: 18px; }
+      .shindan-feature__title { font-size: 20px; line-height: 1.4; margin-bottom: 12px; }
+      .shindan-feature__desc { font-size: 13px; line-height: 1.7; margin-bottom: 18px; }
+      .shindan-feature__chips { gap: 6px; margin-bottom: 18px; }
+      .fw-chip { height: 24px; padding: 0 10px; font-size: 11px; }
+      .shindan-feature__btn {
+        width: 100%; justify-content: center; font-size: 15px;
+        padding: 13px 18px; margin-bottom: 10px; animation: none;
+        box-shadow: 0 4px 18px rgba(124,58,237,.35), 0 0 0 2px rgba(168,85,247,.16);
+      }
+      .shindan-feature__note { font-size: 11px; }
+
+      /* フッター・その他 */
+      .features-grid { grid-template-columns: 1fr; gap: 24px; }
+      .footer { padding: 40px 16px 24px; }
+      .footer__inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .subj-grid { grid-template-columns: repeat(2, 1fr); }
+      .unit-grid { grid-template-columns: 1fr; }
     }
 
-    /* 7. 広告 */
-    @media (max-width: 768px) {
-      .header + .ad-wrap { display: none; }
+    /* 小型スマホ微調整 */
+    @media (max-width: 480px) {
+      .cat-card { padding: 13px 8px 11px; }
+      .cat-card__icon { width: 48px; height: 48px; font-size: 26px; }
+      .cat-card__name { font-size: 16px; }
+      .cat-card__count { font-size: 11px; }
+      .hero__title { font-size: 25px; }
+      .hero__sub { font-size: 13px; }
     }
   </style>
   <!-- ナビゲーション構造データ -->
