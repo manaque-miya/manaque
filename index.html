@@ -548,23 +548,26 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      .category-grid { grid-template-columns: repeat(3, 1fr); }
       .quiz-grid { grid-template-columns: repeat(2, 1fr); }
       .footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-      /* カテゴリカード：中央揃え＋バランス調整 */
-      .cat-card { padding: 22px 12px 16px; align-items: center; text-align: center; gap: 6px; }
-      .cat-card__icon { width: 56px; height: 56px; font-size: 32px; }
-      .cat-card__name { font-size: 16px; }
-      .cat-card__ruby { font-size: 12px; margin-top: -2px; }
-      .cat-card__count { font-size: 13px; justify-content: center; width: 100%; }
-      .cat-card__blob { width: 64px; height: 64px; }
+    }
+    /* スマホ・タブレット：カード2列・タッチ最適化 */
+    @media (max-width: 1100px) {
+      .category-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .cat-card { padding: 24px 16px 18px; align-items: center; text-align: center; gap: 8px; }
+      .cat-card__icon { width: 64px; height: 64px; font-size: 36px; }
+      .cat-card__name { font-size: 18px; }
+      .cat-card__ruby { font-size: 13px; margin-top: -2px; }
+      .cat-card__count { font-size: 14px; justify-content: center; width: 100%; }
+      .cat-card__blob { width: 80px; height: 80px; }
+      .section__title { font-size: 20px; }
     }
     @media (max-width: 768px) {
-      .cat-card { padding: 16px 8px 12px; }
-      .cat-card__icon { width: 44px; height: 44px; font-size: 26px; }
-      .cat-card__name { font-size: 14px; }
-      .cat-card__ruby { font-size: 11px; }
-      .cat-card__count { font-size: 12px; }
+      .cat-card { padding: 20px 12px 14px; }
+      .cat-card__icon { width: 56px; height: 56px; font-size: 30px; }
+      .cat-card__name { font-size: 16px; }
+      .cat-card__ruby { font-size: 12px; }
+      .cat-card__count { font-size: 13px; }
     }
 
     @media (max-width: 1024px) {
