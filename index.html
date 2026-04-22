@@ -591,9 +591,15 @@
     }
 
     @media (max-width: 480px) {
-      .category-grid { grid-template-columns: 1fr 1fr; }
+      .category-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
       .hero__btns { flex-direction: column; }
       .btn--yellow, .btn--outline { width: 100%; justify-content: center; }
+      /* カードをスマホサイズで大胆に拡大 */
+      .cat-card { padding: 22px 12px 18px; gap: 6px; align-items: center; text-align: center; }
+      .cat-card__icon { width: 70px; height: 70px; font-size: 42px; }
+      .cat-card__name { font-size: 22px; font-weight: 900; }
+      .cat-card__ruby { font-size: 12px; margin-top: -4px; opacity: .7; }
+      .cat-card__count { font-size: 18px; font-weight: 900; justify-content: center; width: 100%; }
     }
 
     /* ===== DRILL-DOWN NAV ===== */
