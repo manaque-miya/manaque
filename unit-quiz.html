@@ -104,42 +104,74 @@
     .loading{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
 
     /* ===== ガチャ報酬オーバーレイ ===== */
-    .gacha-reward-overlay{display:none;position:fixed;inset:0;background:radial-gradient(ellipse at 50% 30%,#3b0764 0%,#1e0050 40%,#0f0030 100%);z-index:1000;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;overflow-y:auto;opacity:0;transition:opacity .4s ease}
+    .gacha-reward-overlay{display:none;position:fixed;inset:0;background:radial-gradient(ellipse at center,#0d1a3a 0%,#050810 100%);z-index:1000;align-items:center;justify-content:center;overflow:hidden}
     .gacha-reward-overlay.show{display:flex}
-    .gacha-reward-overlay.show.fade{opacity:1}
-    /* ===== 演出フェーズ ===== */
-    .gacha-pull-phase{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
-    .gacha-pull-phase.hidden{display:none}
-    .gacha-orb{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c084fc,#7c3aed 50%,#1e0050);box-shadow:0 0 40px rgba(168,85,247,.8),0 0 80px rgba(168,85,247,.4);animation:orbSpin 1.2s ease-in-out infinite,orbPulse 0.6s ease-in-out infinite}
-    @keyframes orbSpin{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.15)}100%{transform:rotate(360deg) scale(1)}}
+    /* 星フィールド */
+    .g-star{position:absolute;background:white;border-radius:50%;animation:gTwinkle var(--d) ease-in-out infinite alternate}
+    @keyframes gTwinkle{from{opacity:.1;transform:scale(.8)}to{opacity:.9;transform:scale(1.2)}}
+    /* フラッシュ */
+    #gachaFlash{position:absolute;inset:0;background:white;opacity:0;pointer-events:none;z-index:50}
+    #gachaFlash.active{animation:gFlash .4s ease-out forwards}
+    @keyframes gFlash{0%{opacity:.9}100%{opacity:0}}
+    /* ？マーク */
+    #gachaQmark{position:absolute;font-size:180px;font-weight:900;color:#2563EB;text-shadow:0 0 20px #2563EB,0 0 50px #2563EB,0 0 100px #1d4ed8,0 0 10px #F6C744;opacity:0;transform:scale(.3);user-select:none;z-index:10;line-height:1}
+    #gachaQmark.appear{animation:gQappear .6s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes gQappear{to{opacity:1;transform:scale(1)}}
+    #gachaQmark.pulse{animation:gQpulse .4s ease-in-out 3}
+    @keyframes gQpulse{0%{transform:scale(1);text-shadow:0 0 20px #2563EB,0 0 50px #2563EB}50%{transform:scale(1.15);text-shadow:0 0 40px #F6C744,0 0 80px #F6C744}100%{transform:scale(1);text-shadow:0 0 20px #2563EB,0 0 50px #2563EB}}
+    #gachaQmark.explode{animation:gQexplode .3s ease-in forwards}
+    @keyframes gQexplode{0%{opacity:1;transform:scale(1)}50%{opacity:1;transform:scale(1.4);filter:brightness(3)}100%{opacity:0;transform:scale(0)}}
+    /* パーティクル */
+    .g-particle{position:absolute;border-radius:50%;pointer-events:none;z-index:20}
+    .g-particle.star-shape{clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);border-radius:0}
+    /* カードラッパー */
+    #gachaCardWrap{position:absolute;width:260px;height:380px;perspective:1000px;opacity:0;z-index:30}
+    #gachaCardWrap.reveal{animation:gCardReveal .5s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes gCardReveal{0%{opacity:0;transform:translateY(60px) scale(.7)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    #gachaCardInner{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:gCardFlip .7s ease-out forwards;animation-play-state:paused}
+    #gachaCardInner.flip{animation-play-state:running}
+    @keyframes gCardFlip{0%{transform:rotateY(180deg)}100%{transform:rotateY(0)}}
+    .g-card-back{position:absolute;inset:0;backface-visibility:hidden;transform:rotateY(180deg);background:linear-gradient(135deg,#0d1a3a,#1a3a6e);border-radius:18px;border:3px solid #F6C744;display:flex;align-items:center;justify-content:center;font-size:80px;box-shadow:0 0 30px rgba(246,199,68,.4)}
+    .g-card-front{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;overflow:hidden}
+    /* ノート風カードデザイン */
+    .g-card-outer{width:100%;height:100%;border-radius:18px;border:3px solid #F6C744;padding:8px 8px 8px 22px;position:relative;background:linear-gradient(180deg,#1a3a6e,#0f2456)}
+    .g-card-outer.r{border-color:#60a5fa}
+    .g-card-outer.sr{border-color:#a78bfa;background:linear-gradient(180deg,#2d1b69,#1a0f45)}
+    .g-card-outer.ssr{border-color:#ffd700;background:linear-gradient(180deg,#5a2800,#2a1200);box-shadow:0 0 20px rgba(255,215,0,.4)}
+    .g-ring{position:absolute;left:-4px;width:16px;height:16px;background:linear-gradient(135deg,#aaa,#eee,#aaa);border-radius:50%;border:2px solid #888}
+    .g-card-paper{width:100%;height:100%;background:linear-gradient(180deg,#fdf8ee,#f5edda);border-radius:10px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center}
+    .g-card-paper::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent,transparent 22px,rgba(150,190,230,.4) 22px,rgba(150,190,230,.4) 23px);top:55px}
+    .g-badge{position:absolute;top:-3px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,#1a3a8e,#0d2060);border:2px solid #F6C744;border-radius:0 0 14px 14px;padding:4px 14px 6px;font-size:16px;font-weight:900;color:#F6C744;letter-spacing:2px;z-index:2}
+    .g-badge.r{border-color:#60a5fa;color:#60a5fa;background:linear-gradient(180deg,#1a3060,#0d2050)}
+    .g-badge.sr{border-color:#a78bfa;color:#a78bfa;background:linear-gradient(180deg,#2d1b69,#1a0f45)}
+    .g-badge.ssr{border-color:#ffd700;color:#ffd700;background:linear-gradient(180deg,#5a2800,#2a1200);animation:gSsrPulse 1s ease-in-out infinite}
+    @keyframes gSsrPulse{0%,100%{box-shadow:0 0 8px rgba(255,215,0,.5)}50%{box-shadow:0 0 20px rgba(255,215,0,.9)}}
+    .g-char-area{width:100%;flex:1;display:flex;align-items:center;justify-content:center;padding:50px 10px 0;position:relative;z-index:1}
+    .g-char-emoji{font-size:70px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.2))}
+    .g-name-area{width:85%;margin:8px auto 10px;background:rgba(255,248,231,.95);border:2px solid #C8960C;border-radius:20px;padding:5px 10px;text-align:center;position:relative;z-index:1}
+    .g-char-name{font-size:15px;font-weight:bold;color:#1a2855}
+    .g-char-new{font-size:9px;background:#ef4444;color:#fff;border-radius:4px;padding:1px 5px;font-weight:900;display:inline-block;margin-top:2px}
+    /* レアリティバナー */
+    #gachaRarityBanner{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);padding:8px 40px;font-size:15px;font-weight:bold;letter-spacing:4px;white-space:nowrap;opacity:0;transition:opacity .4s,bottom .4s;text-shadow:0 0 10px rgba(246,199,68,.8);z-index:31;color:white;background:linear-gradient(90deg,transparent,#1a3a6e,#F6C744,#1a3a6e,transparent)}
+    #gachaRarityBanner.sr-banner{background:linear-gradient(90deg,transparent,#2d1b69,#a78bfa,#2d1b69,transparent);text-shadow:0 0 10px rgba(167,139,250,.8)}
+    #gachaRarityBanner.ssr-banner{background:linear-gradient(90deg,transparent,#5a2800,#ffd700,#5a2800,transparent);text-shadow:0 0 10px rgba(255,215,0,.9)}
+    #gachaRarityBanner.show{opacity:1;bottom:-50px}
+    /* カウンター */
+    #gachaCounter{position:absolute;top:20px;right:20px;color:rgba(255,255,255,.6);font-size:14px;font-weight:700;z-index:40}
+    /* 次へ / 閉じる ボタン */
+    #gachaNextBtn,#gachaCloseBtn{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);padding:12px 36px;border:none;border-radius:12px;font-size:15px;font-weight:900;cursor:pointer;z-index:40;display:none;white-space:nowrap;font-family:inherit}
+    #gachaNextBtn{background:rgba(37,99,235,.25);color:#F6C744;border:2px solid #F6C744;letter-spacing:.05em}
+    #gachaNextBtn:hover{background:rgba(37,99,235,.45)}
+    #gachaCloseBtn{background:linear-gradient(135deg,#2E6DE5,#1A449E);color:#fff;box-shadow:0 4px 20px rgba(46,109,229,.4)}
+    #gachaNextBtn.show,#gachaCloseBtn.show{display:block}
+    /* 報酬なし / クリア済み */
+    #gachaNorewardPhase{display:none;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:20px}
+    #gachaNorewardPhase.show{display:flex}
+    .g-noreward-title{font-size:22px;font-weight:900;color:#fff}
+    .g-noreward-sub{font-size:14px;color:rgba(255,255,255,.55);max-width:280px;line-height:1.6}
+    .g-noreward-close{padding:12px 36px;background:linear-gradient(135deg,#2E6DE5,#1A449E);border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit}
+    /* ガチャボタン用（スコア画面） */
     @keyframes orbPulse{0%,100%{box-shadow:0 0 40px rgba(168,85,247,.8),0 0 80px rgba(168,85,247,.4)}50%{box-shadow:0 0 60px rgba(168,85,247,1),0 0 120px rgba(168,85,247,.6)}}
-    .gacha-pull-text{font-size:18px;font-weight:900;color:#d8b4fe;letter-spacing:.1em;animation:textFlash .6s ease-in-out infinite}
-    @keyframes textFlash{0%,100%{opacity:1}50%{opacity:.4}}
-    /* ===== 結果フェーズ ===== */
-    .gacha-result-phase{display:none;flex-direction:column;align-items:center}
-    .gacha-result-phase.show{display:flex}
-    .gacha-reward-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px}
-    .gacha-reward-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:24px}
-    .gacha-reward-already{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:24px}
-    .gacha-cards-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:480px;margin-bottom:24px}
-    .gacha-card-item{width:88px;border-radius:12px;overflow:hidden;opacity:0;transform:translateY(20px) scale(.85);transition:opacity .4s ease,transform .4s ease;background:#1a1a2e;border:2px solid #333}
-    .gacha-card-item.reveal{opacity:1;transform:translateY(0) scale(1)}
-    .gacha-card-item.ssr{border-color:#ffd700;box-shadow:0 0 16px rgba(255,215,0,.6),0 0 40px rgba(255,215,0,.3);animation:ssrPulse 1.8s ease-in-out infinite}
-    .gacha-card-item.sr{border-color:#a78bfa;box-shadow:0 0 12px rgba(167,139,250,.5)}
-    .gacha-card-item.r{border-color:#60a5fa}
-    .gacha-card-item.n{border-color:#444}
-    @keyframes ssrPulse{0%,100%{box-shadow:0 0 16px rgba(255,215,0,.6),0 0 40px rgba(255,215,0,.3)}50%{box-shadow:0 0 24px rgba(255,215,0,.9),0 0 60px rgba(255,215,0,.5)}}
-    .gcitem-emoji{font-size:32px;padding:10px 0 4px}
-    .gcitem-rarity{font-size:10px;font-weight:900;letter-spacing:.06em;padding:2px 0}
-    .gcitem-rarity.ssr{color:#ffd700}
-    .gcitem-rarity.sr{color:#a78bfa}
-    .gcitem-rarity.r{color:#60a5fa}
-    .gcitem-rarity.n{color:#aaa}
-    .gcitem-name{font-size:11px;color:#eee;font-weight:700;padding:2px 4px 8px;line-height:1.3}
-    .gcitem-new{font-size:9px;background:#ef4444;color:#fff;border-radius:4px;padding:1px 5px;font-weight:900;margin-bottom:4px;display:inline-block}
-    .gacha-reward-close{padding:14px 40px;background:linear-gradient(135deg,#2E6DE5,#1A449E);border:none;border-radius:14px;color:#fff;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 4px 20px rgba(46,109,229,.4);margin-top:4px}
-    .gacha-reward-close:active{transform:scale(.97)}
-    .gacha-no-reward{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:24px}
 
     /* スタート画面 */
     .start-screen{text-align:center;padding:12px 0}
@@ -383,7 +415,183 @@ function restart() {
   initQuiz(_meta, _allQuestions);
 }
 
-// ===== ガチャ報酬 =====
+// ===== ガチャ演出システム =====
+let _gachaResults = [];
+let _gachaIdx = 0;
+let _gachaStarsReady = false;
+
+function gachaClose() {
+  const ov = document.getElementById('gachaRewardOverlay');
+  ov.style.transition = 'opacity .4s ease';
+  ov.style.opacity = '0';
+  setTimeout(() => {
+    ov.classList.remove('show');
+    ov.style.opacity = '';
+    _gachaReset();
+  }, 400);
+}
+
+function _gachaReset() {
+  const qm = document.getElementById('gachaQmark');
+  const cw = document.getElementById('gachaCardWrap');
+  const ci = document.getElementById('gachaCardInner');
+  const banner = document.getElementById('gachaRarityBanner');
+  qm.className = ''; qm.style.cssText = '';
+  document.getElementById('gachaFlash').classList.remove('active');
+  cw.classList.remove('reveal'); cw.style.opacity = '0';
+  ci.className = '';
+  banner.className = ''; banner.classList.remove('show'); banner.textContent = '';
+  document.getElementById('gachaNextBtn').classList.remove('show');
+  document.getElementById('gachaCloseBtn').classList.remove('show');
+  document.getElementById('gachaNorewardPhase').classList.remove('show');
+  document.getElementById('gachaParticles').innerHTML = '';
+  document.getElementById('gachaCounter').textContent = '';
+}
+
+function _gachaInitStars() {
+  if (_gachaStarsReady) return;
+  const sf = document.getElementById('gachaStarField');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    const sz = Math.random() * 3 + 1;
+    s.className = 'g-star';
+    s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${1+Math.random()*3}s;animation-delay:${Math.random()*3}s`;
+    sf.appendChild(s);
+  }
+  _gachaStarsReady = true;
+}
+
+function _gachaParticles(rarity) {
+  const con = document.getElementById('gachaParticles');
+  con.innerHTML = '';
+  const palettes = {
+    n:   ['#F6C744','#2563EB','#ffffff','#60a5fa','#93c5fd'],
+    r:   ['#60a5fa','#2563EB','#ffffff','#93c5fd','#bfdbfe'],
+    sr:  ['#a78bfa','#7c3aed','#F6C744','#ffffff','#c4b5fd'],
+    ssr: ['#ffd700','#ff6b35','#ff1493','#00bfff','#ffffff','#a78bfa']
+  };
+  const colors = palettes[rarity] || palettes.n;
+  const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+  for (let i = 0; i < 60; i++) {
+    const p = document.createElement('div');
+    const isStar = Math.random() > 0.5;
+    p.className = 'g-particle' + (isStar ? ' star-shape' : '');
+    const sz = Math.random() * 16 + 6;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const angle = (Math.PI * 2 * i) / 60 + Math.random() * 0.3;
+    const dist = 150 + Math.random() * 300;
+    const tx = Math.cos(angle) * dist, ty = Math.sin(angle) * dist;
+    const dur = 600 + Math.random() * 600, delay = Math.random() * 100;
+    p.style.cssText = `width:${sz}px;height:${sz}px;left:${cx}px;top:${cy}px;background:${color};box-shadow:0 0 ${sz}px ${color};transform:translate(-50%,-50%)`;
+    con.appendChild(p);
+    p.animate([
+      {transform:'translate(-50%,-50%) scale(1)',opacity:1},
+      {transform:`translate(calc(-50% + ${tx}px),calc(-50% + ${ty}px)) scale(0)`,opacity:0}
+    ], {duration:dur, delay, easing:'cubic-bezier(0,0,0.2,1)', fill:'forwards'});
+  }
+}
+
+function _gachaCardHTML(result) {
+  const c = result.card, r = c.rarity;
+  const labels = {n:'N',r:'R',sr:'SR',ssr:'SSR'};
+  const rings = [30,72,114,156,198,240,282,324,366].map(t =>
+    `<div class="g-ring" style="top:${t}px"></div>`).join('');
+  return `<div class="g-card-outer ${r}">${rings}<div class="g-card-paper">
+    <div class="g-badge ${r}">${labels[r]||r.toUpperCase()}</div>
+    <div class="g-char-area"><div class="g-char-emoji">${c.emoji}</div></div>
+    <div class="g-name-area">
+      <div class="g-char-name">${c.name}</div>
+      ${result.isNew ? '<div class="g-char-new">NEW!</div>' : ''}
+    </div>
+  </div></div>`;
+}
+
+function _gachaBanner(rarity) {
+  const cfg = {
+    n:   {cls:'',          text:'✦ NORMAL ✦'},
+    r:   {cls:'',          text:'✦ RARE ✦'},
+    sr:  {cls:'sr-banner', text:'✦ SUPER RARE ✦'},
+    ssr: {cls:'ssr-banner',text:'🌈 SUPER SUPER RARE 🌈'}
+  };
+  return cfg[rarity] || cfg.n;
+}
+
+function _gachaShowCard(idx, fullAnim) {
+  const result = _gachaResults[idx];
+  const total = _gachaResults.length;
+  const isLast = idx === total - 1;
+  const rarity = result.card.rarity;
+
+  document.getElementById('gachaCounter').textContent = total > 1 ? `${idx+1} / ${total}枚` : '';
+  document.getElementById('gachaCardFront').innerHTML = _gachaCardHTML(result);
+
+  const banner = document.getElementById('gachaRarityBanner');
+  const bCfg = _gachaBanner(rarity);
+  banner.className = bCfg.cls;
+  banner.textContent = bCfg.text;
+
+  const cw = document.getElementById('gachaCardWrap');
+  const ci = document.getElementById('gachaCardInner');
+  const nextBtn = document.getElementById('gachaNextBtn');
+  const closeBtn = document.getElementById('gachaCloseBtn');
+
+  if (fullAnim) {
+    // ===== 1枚目：フル演出 =====
+    const qm = document.getElementById('gachaQmark');
+    const flash = document.getElementById('gachaFlash');
+    qm.className = ''; qm.style.cssText = '';
+
+    setTimeout(() => qm.classList.add('appear'), 400);
+    setTimeout(() => {
+      qm.classList.remove('appear');
+      qm.style.opacity = '1'; qm.style.transform = 'scale(1)';
+      qm.classList.add('pulse');
+    }, 1100);
+    setTimeout(() => {
+      qm.classList.remove('pulse');
+      qm.classList.add('explode');
+      flash.classList.add('active');
+      _gachaParticles(rarity);
+    }, 2350);
+    setTimeout(() => {
+      cw.style.opacity = '0';
+      cw.classList.add('reveal');
+      setTimeout(() => ci.classList.add('flip'), 100);
+    }, 2600);
+    setTimeout(() => banner.classList.add('show'), 3400);
+    setTimeout(() => {
+      if (isLast) closeBtn.classList.add('show');
+      else nextBtn.classList.add('show');
+    }, 3800);
+
+  } else {
+    // ===== 2枚目以降：フリップのみ =====
+    cw.style.opacity = '0';
+    ci.className = '';
+    void cw.offsetWidth;
+    cw.classList.add('reveal');
+    setTimeout(() => ci.classList.add('flip'), 100);
+    setTimeout(() => banner.classList.add('show'), 900);
+    setTimeout(() => {
+      if (isLast) closeBtn.classList.add('show');
+      else nextBtn.classList.add('show');
+    }, 1300);
+  }
+}
+
+function gachaNextCard() {
+  const cw = document.getElementById('gachaCardWrap');
+  const ci = document.getElementById('gachaCardInner');
+  const banner = document.getElementById('gachaRarityBanner');
+  document.getElementById('gachaNextBtn').classList.remove('show');
+  document.getElementById('gachaCloseBtn').classList.remove('show');
+  cw.classList.remove('reveal'); cw.style.opacity = '0';
+  ci.className = '';
+  banner.classList.remove('show');
+  _gachaIdx++;
+  setTimeout(() => _gachaShowCard(_gachaIdx, false), 150);
+}
+
 function triggerGachaReward() {
   if (typeof claimQuizGacha !== 'function') return;
   const btn = document.getElementById('gachaBtnScore');
@@ -394,83 +602,57 @@ function triggerGachaReward() {
 
 function showGachaRewardOverlay(pulls, results, alreadyCleared) {
   const ov = document.getElementById('gachaRewardOverlay');
-  const pullPhase   = document.getElementById('gachaPullPhase');
-  const resultPhase = document.getElementById('gachaResultPhase');
+  _gachaReset();
+  _gachaInitStars();
+  _gachaResults = results || [];
+  _gachaIdx = 0;
 
-  // alreadyCleared / pulls===0 はすぐ結果表示（演出なし）
+  ov.style.opacity = '0';
+  ov.classList.add('show');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    ov.style.transition = 'opacity .4s ease';
+    ov.style.opacity = '1';
+  }));
+
   if (alreadyCleared || pulls === 0) {
-    pullPhase.classList.add('hidden');
-    resultPhase.classList.add('show');
-    document.getElementById('gachaRewardAlready').style.display = 'none';
-    if (alreadyCleared) {
-      document.getElementById('gachaRewardTitle').textContent = '📚 クリア済み';
-      document.getElementById('gachaRewardSub').textContent = 'ガチャ報酬は初回クリアのみです。';
-      document.getElementById('gachaCardsWrap').innerHTML = '';
-      document.getElementById('gachaRewardAlready').style.display = 'block';
-      document.getElementById('gachaRewardAlready').textContent = '別のクイズをクリアして新しいカードをゲットしよう！';
-    } else {
-      document.getElementById('gachaRewardTitle').textContent = '📖 クイズ完了！';
-      document.getElementById('gachaRewardSub').textContent = 'もう少し正解するとガチャが回せるよ！';
-      document.getElementById('gachaCardsWrap').innerHTML = '<div class="gacha-no-reward">正答率を上げてガチャ報酬をゲットしよう！</div>';
-    }
-    ov.classList.add('show');
-    requestAnimationFrame(() => requestAnimationFrame(() => ov.classList.add('fade')));
+    const np = document.getElementById('gachaNorewardPhase');
+    np.classList.add('show');
+    document.getElementById('gachaNorewardTitle').textContent =
+      alreadyCleared ? '📚 クリア済み' : '📖 クイズ完了！';
+    document.getElementById('gachaNorewardSub').textContent =
+      alreadyCleared
+        ? '別のクイズをクリアして新しいカードをゲットしよう！'
+        : 'もう少し正解するとガチャが回せるよ！';
     return;
   }
 
-  // ===== 演出あり：まず玉アニメ =====
-  pullPhase.classList.remove('hidden');
-  resultPhase.classList.remove('show');
-  ov.classList.add('show');
-  requestAnimationFrame(() => requestAnimationFrame(() => ov.classList.add('fade')));
-
-  // 1.8秒後に結果表示
-  setTimeout(() => {
-    pullPhase.classList.add('hidden');
-
-    const hasSSR = results.some(r => r.card.rarity === 'ssr');
-    const hasSR  = results.some(r => r.card.rarity === 'sr');
-    document.getElementById('gachaRewardTitle').textContent =
-      hasSSR ? '🌈🌈 SSR確定！！おめでとう！！' :
-      hasSR  ? '⭐ SR出た！おめでとう！' :
-      `🎰 ${pulls}連ガチャ！`;
-    document.getElementById('gachaRewardSub').textContent = `${pulls}枚のカードをゲット！`;
-    document.getElementById('gachaRewardAlready').style.display = 'none';
-
-    const wrap = document.getElementById('gachaCardsWrap');
-    wrap.innerHTML = results.map(r => `
-      <div class="gacha-card-item ${r.card.rarity}">
-        <div class="gcitem-emoji">${r.card.emoji}</div>
-        <div class="gcitem-rarity ${r.card.rarity}">${RARITY_CONFIG[r.card.rarity].label}</div>
-        <div class="gcitem-name">${r.card.name}</div>
-        ${r.isNew ? '<div class="gcitem-new">NEW!</div>' : ''}
-      </div>`).join('');
-
-    resultPhase.classList.add('show');
-
-    // カードを順番にreveal
-    const items = wrap.querySelectorAll('.gacha-card-item');
-    items.forEach((el, i) => {
-      setTimeout(() => el.classList.add('reveal'), 150 * i);
-    });
-  }, 1800);
+  setTimeout(() => _gachaShowCard(0, true), 300);
 }
 </script>
 
 <!-- ガチャ報酬オーバーレイ -->
 <div class="gacha-reward-overlay" id="gachaRewardOverlay">
-  <!-- フェーズ1: 演出 -->
-  <div class="gacha-pull-phase" id="gachaPullPhase">
-    <div class="gacha-orb"></div>
-    <div class="gacha-pull-text">ガチャ演出中…</div>
+  <div id="gachaStarField"></div>
+  <div id="gachaFlash"></div>
+  <div id="gachaParticles"></div>
+  <div id="gachaQmark">？</div>
+  <div id="gachaCounter"></div>
+  <!-- カード（1枚ずつ表示） -->
+  <div id="gachaCardWrap">
+    <div id="gachaCardInner">
+      <div class="g-card-back">？</div>
+      <div class="g-card-front" id="gachaCardFront"></div>
+    </div>
   </div>
-  <!-- フェーズ2: 結果 -->
-  <div class="gacha-result-phase" id="gachaResultPhase">
-    <div class="gacha-reward-title" id="gachaRewardTitle"></div>
-    <div class="gacha-reward-sub" id="gachaRewardSub"></div>
-    <div class="gacha-reward-already" id="gachaRewardAlready" style="display:none"></div>
-    <div class="gacha-cards-wrap" id="gachaCardsWrap"></div>
-    <button class="gacha-reward-close" onclick="const o=document.getElementById('gachaRewardOverlay');o.classList.remove('show','fade')">OK！図鑑で確認する →</button>
+  <div id="gachaRarityBanner"></div>
+  <!-- ナビボタン -->
+  <button id="gachaNextBtn" onclick="gachaNextCard()">次のカードへ →</button>
+  <button id="gachaCloseBtn" onclick="gachaClose()">OK！図鑑で確認する →</button>
+  <!-- 報酬なし / クリア済み -->
+  <div id="gachaNorewardPhase">
+    <div class="g-noreward-title" id="gachaNorewardTitle"></div>
+    <div class="g-noreward-sub" id="gachaNorewardSub"></div>
+    <button class="g-noreward-close" onclick="gachaClose()">閉じる</button>
   </div>
 </div>
 
