@@ -15,7 +15,7 @@
   <style>
     :root{--accent:#FFD60A;--green:#30D158;--red:#FF453A;--bg:#0f0f13;--card:#1a1a22;--border:#2a2a38;--text:#f0f0f5;--muted:#7a7a9a}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--text);font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;min-height:100vh;padding:0 0 80px}
+    body{background:var(--bg);color:var(--text);font-family:'M PLUS Rounded 1c','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;min-height:100vh;padding:0 0 80px}
 
     /* ヘッダー */
     .site-header{background:rgba(15,15,19,.95);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;gap:10px;}
@@ -113,6 +113,10 @@
     .gacha-reward-close{padding:14px 40px;background:linear-gradient(135deg,#2E6DE5,#1A449E);border:none;border-radius:14px;color:#fff;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 4px 20px rgba(46,109,229,.4);margin-top:4px}
     .gacha-reward-close:active{transform:scale(.97)}
     .gacha-no-reward{font-size:14px;color:rgba(255,255,255,.45);margin-bottom:24px}
+    @media(max-width:768px){
+      body{min-height:unset;padding-bottom:40px;}
+      .container{padding:12px 12px;}
+    }
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
        crossorigin="anonymous"></script>
