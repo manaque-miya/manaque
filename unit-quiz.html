@@ -190,42 +190,30 @@
     .start-btn:hover{opacity:.9;transform:translateY(-1px)}
     .start-btn:active{transform:translateY(2px);box-shadow:none}
 
-    /* ===== スマホ専用：全画面クイズ（CSSの末尾に置くことで基本CSSを正しく上書き）===== */
+    /* ===== スマホ専用（CSSの末尾に配置→基本CSSを正しく上書き）===== */
     @media(max-width:700px){
-      body{
-        min-height:100vh;
-        min-height:100svh;
-        padding-bottom:0;
-        display:flex;
-        flex-direction:column;
-      }
-      .site-header{flex-shrink:0;padding:10px 16px}
-      .container{
-        flex:1;
-        max-width:100%;
-        width:100%;
-        padding:10px 10px 8px;
-        display:flex;
-        flex-direction:column;
-      }
-      #app{flex:1;display:flex;flex-direction:column}
-      .page-header{margin-bottom:8px;flex-shrink:0}
-      .progress-wrap{margin-bottom:8px;flex-shrink:0}
-      /* quizAreaが#appとquestion-cardの間に入るので必須 */
-      #quizArea{flex:1;display:flex;flex-direction:column;min-height:0}
-      /* 問題カード：画面残りを埋める */
+      /* containerを全幅に */
+      .container{max-width:100%;width:100%;padding:10px 10px 8px}
+      .page-header{margin-bottom:8px}
+      .progress-wrap{margin-bottom:8px}
+
+      /* ── question-cardをビューポート高さ基準で直接サイズ指定 ──
+         flexチェーンに依存しないシンプルな方法。
+         200px = header(50) + padding(10) + page-header(95) + progress(45) の概算 */
       .question-card{
-        flex:1;
         display:flex;
         flex-direction:column;
-        padding:14px 12px 10px;   /* 基本CSSの28px 24pxを上書き */
-        margin-bottom:0;          /* 基本CSSの16pxを上書き */
+        min-height:calc(100vh - 200px);
+        min-height:calc(100svh - 200px);
+        padding:14px 12px 10px;
+        margin-bottom:0;
         border-radius:16px;
-        min-height:0;
+        overflow-y:auto;
       }
-      .q-number{margin-bottom:8px}
-      .q-text{margin-bottom:10px}
-      /* 選択肢：残りを均等に分割 */
+      .q-number{flex-shrink:0;margin-bottom:8px}
+      .q-text{flex-shrink:0;margin-bottom:10px}
+
+      /* 選択肢が question-card の残り高さを埋める */
       .choices{
         flex:1;
         display:flex;
@@ -236,7 +224,7 @@
       .choice-btn{
         flex:1;
         min-height:60px;
-        padding:0 14px;           /* 基本CSSのclamp paddingを上書き */
+        padding:0 14px;
         display:flex;
         align-items:center;
       }
