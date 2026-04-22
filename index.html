@@ -705,6 +705,235 @@
       .subj-grid { grid-template-columns: repeat(2, 1fr); }
       .unit-grid { grid-template-columns: 1fr; }
     }
+
+    /* ===== スマホ最適化（チャッピー設計・完全版） ===== */
+
+    /* 1. ヘッダー */
+    @media (max-width: 768px) {
+      .header__inner {
+        padding: 10px 14px;
+        gap: 8px;
+      }
+      .header__nav,
+      .header__catalog-btn,
+      .header__shindan {
+        display: none;
+      }
+      .header__menu-btn {
+        display: grid !important;
+        margin-left: auto;
+        width: 40px;
+        height: 40px;
+        background: var(--ink-50);
+        border: 1px solid var(--border);
+      }
+      .logo__text { font-size: 20px; }
+      .logo__icon { width: 30px; height: 30px; }
+    }
+
+    /* 2. ヒーロー */
+    @media (max-width: 768px) {
+      .hero::after {
+        font-size: 88px;
+        right: 3%;
+        opacity: 0.04;
+      }
+      .hero__inner {
+        padding: 22px 16px 18px;
+      }
+      .hero__eyebrow {
+        font-size: 11px;
+        padding: 4px 10px;
+        margin-bottom: 14px;
+      }
+      .hero__title {
+        font-size: 28px;
+        line-height: 1.22;
+        margin-bottom: 10px;
+      }
+      .hero__sub {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+        max-width: none;
+      }
+      .hero__btns {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .btn--shindan,
+      .btn--yellow,
+      .btn--outline {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 18px;
+        font-size: 14px;
+      }
+      .btn--shindan {
+        box-shadow: 0 3px 14px rgba(124,58,237,.35), 0 0 0 2px rgba(255,255,255,.16);
+        animation: none;
+      }
+      .hero__inner > p[style*="font-size:12px"] {
+        font-size: 11px !important;
+        margin-top: 8px !important;
+        color: rgba(255,255,255,.52) !important;
+      }
+    }
+
+    /* 3. 診断セクション */
+    @media (max-width: 768px) {
+      .shindan-feature {
+        padding: 28px 16px 32px;
+      }
+      .shindan-feature__badge {
+        font-size: 11px;
+        padding: 5px 12px;
+        margin-bottom: 18px;
+      }
+      .shindan-feature__title {
+        font-size: 20px;
+        line-height: 1.4;
+        margin-bottom: 12px;
+      }
+      .shindan-feature__desc {
+        font-size: 13px;
+        line-height: 1.7;
+        margin-bottom: 18px;
+      }
+      .shindan-feature__chips {
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+      .fw-chip {
+        height: 24px;
+        padding: 0 10px;
+        font-size: 11px;
+      }
+      .shindan-feature__btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 15px;
+        padding: 13px 18px;
+        margin-bottom: 10px;
+        animation: none;
+        box-shadow: 0 4px 18px rgba(124,58,237,.35), 0 0 0 2px rgba(168,85,247,.16);
+      }
+      .shindan-feature__note {
+        font-size: 11px;
+      }
+    }
+
+    /* 4. カテゴリカード */
+    @media (max-width: 768px) {
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .cat-card {
+        padding: 14px 10px 12px;
+        gap: 4px;
+        border-radius: 18px;
+        min-height: 0;
+      }
+      .cat-card__blob {
+        width: 58px;
+        height: 58px;
+        top: -10px;
+        right: -10px;
+        opacity: 0.26;
+      }
+      .cat-card__icon {
+        width: 52px;
+        height: 52px;
+        font-size: 28px;
+      }
+      .cat-card__name {
+        font-size: 17px;
+        line-height: 1.2;
+      }
+      .cat-card__ruby {
+        font-size: 11px;
+        margin-top: -2px;
+      }
+      .cat-card__count {
+        font-size: 12px;
+        font-weight: 800;
+      }
+    }
+    @media (max-width: 480px) {
+      .cat-card {
+        padding: 13px 8px 11px;
+      }
+      .cat-card__icon {
+        width: 48px;
+        height: 48px;
+        font-size: 26px;
+      }
+      .cat-card__name { font-size: 16px; }
+      .cat-card__count { font-size: 11px; }
+    }
+
+    /* 5. 新着クイズカード */
+    @media (max-width: 768px) {
+      .quiz-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .quiz-card {
+        padding: 14px;
+        border-radius: 18px;
+        gap: 8px;
+      }
+      .quiz-card__tags { gap: 5px; }
+      .badge {
+        font-size: 10px;
+        height: 20px;
+        padding: 0 8px;
+      }
+      .quiz-card__title {
+        font-size: 15px;
+        line-height: 1.4;
+      }
+      .quiz-card__meta {
+        gap: 8px;
+        flex-wrap: wrap;
+        font-size: 11px;
+      }
+      .quiz-card__stars,
+      .quiz-card__plays {
+        display: none;
+      }
+      .quiz-card__footer {
+        padding-top: 8px;
+        justify-content: flex-end;
+      }
+      .quiz-card__link { font-size: 13px; }
+      .quiz-card__new {
+        top: 12px;
+        right: 12px;
+      }
+    }
+
+    /* 6. セクション余白 */
+    @media (max-width: 768px) {
+      .section { padding: 32px 16px; }
+      .section__label { margin-bottom: 6px; }
+      .section__title {
+        font-size: 20px;
+        margin-bottom: 18px;
+      }
+      .latest-header {
+        margin-bottom: 14px;
+        align-items: flex-end;
+      }
+      .latest-header__all { font-size: 12px; }
+    }
+
+    /* 7. 広告 */
+    @media (max-width: 768px) {
+      .header + .ad-wrap { display: none; }
+    }
   </style>
   <!-- ナビゲーション構造データ -->
   <script src="data/site-structure.js"></script>
@@ -779,40 +1008,14 @@
       読むだけじゃ身につかない。4択で答えてから覚える、あたらしい学習のかたち。年齢も学年も関係なし。
     </p>
     <div class="hero__btns">
-      <a href="shindan.html" class="btn btn--shindan">
-        🔍 学習スタイル診断 →
-      </a>
       <a href="#category" class="btn btn--yellow">
         クイズをやる →
       </a>
+      <a href="shindan.html" class="btn btn--shindan">
+        🔍 学習スタイル診断 →
+      </a>
     </div>
     <p style="font-size:12px;color:rgba(255,255,255,.65);margin-top:10px;">✨ NEW｜36問でわかる、あなただけの勉強法</p>
-  </div>
-</section>
-
-<!-- ===== SHINDAN FEATURE ===== -->
-<section class="shindan-feature">
-  <div class="shindan-feature__inner">
-    <div class="shindan-feature__badge">✨ NEW コンテンツ</div>
-    <div class="shindan-feature__body">
-      <div class="shindan-feature__text">
-        <h2 class="shindan-feature__title">あなたの学習スタイルは？<br><span>36問でわかる、まなクエ診断</span></h2>
-        <p class="shindan-feature__desc">さまざまな性格指標を組み合わせた独自診断。16タイプ×3動機で「あなただけの最強勉強法」を導きだす。結果はXでシェアできる！</p>
-        <div class="shindan-feature__chips">
-          <span class="fw-chip fw-mbti">16タイプ</span>
-          <span class="fw-chip fw-ennia">動機分析</span>
-          <span class="fw-chip fw-big5">プレッシャー耐性</span>
-          <span class="fw-chip fw-strength">強みタイプ</span>
-        </div>
-        <a href="shindan.html" class="shindan-feature__btn">🔍 無料で診断する →</a>
-        <p class="shindan-feature__note">36問・約5分・無料・登録不要</p>
-      </div>
-      <div class="shindan-feature__visual">
-        <img src="assets/img/characters/lumina/base.png" alt="ルミナ先生" class="shindan-chara">
-        <img src="assets/img/characters/ren/base.png" alt="レン先生" class="shindan-chara">
-      </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -993,6 +1196,32 @@
           <span class="quiz-card__link" style="color:#7c3aed;">はじめる →</span>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHINDAN FEATURE ===== -->
+<section class="shindan-feature">
+  <div class="shindan-feature__inner">
+    <div class="shindan-feature__badge">✨ NEW コンテンツ</div>
+    <div class="shindan-feature__body">
+      <div class="shindan-feature__text">
+        <h2 class="shindan-feature__title">あなたの学習スタイルは？<br><span>36問でわかる、まなクエ診断</span></h2>
+        <p class="shindan-feature__desc">さまざまな性格指標を組み合わせた独自診断。16タイプ×3動機で「あなただけの最強勉強法」を導きだす。結果はXでシェアできる！</p>
+        <div class="shindan-feature__chips">
+          <span class="fw-chip fw-mbti">16タイプ</span>
+          <span class="fw-chip fw-ennia">動機分析</span>
+          <span class="fw-chip fw-big5">プレッシャー耐性</span>
+          <span class="fw-chip fw-strength">強みタイプ</span>
+        </div>
+        <a href="shindan.html" class="shindan-feature__btn">🔍 無料で診断する →</a>
+        <p class="shindan-feature__note">36問・約5分・無料・登録不要</p>
+      </div>
+      <div class="shindan-feature__visual">
+        <img src="assets/img/characters/lumina/base.png" alt="ルミナ先生" class="shindan-chara">
+        <img src="assets/img/characters/ren/base.png" alt="レン先生" class="shindan-chara">
+      </div>
+      </div>
     </div>
   </div>
 </section>
