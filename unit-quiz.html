@@ -36,24 +36,7 @@
     .back-link:hover{border-color:#2E6DE5;color:#2E6DE5;}
 
     /* コンテンツ */
-    .container{max-width:min(800px,92vw);margin:0 auto;padding:24px 16px}
-    @media(min-width:769px){
-      .container{padding:28px 24px}
-      .q-text{font-size:clamp(18px,2.4vw,26px)}
-      .choice-btn{font-size:clamp(15px,1.9vw,20px);padding:16px 22px}
-      .choice-label{width:34px;height:34px;min-width:34px;font-size:14px}
-      .next-btn{font-size:clamp(15px,1.9vw,19px);padding:17px}
-      .score-num{font-size:clamp(64px,10vw,100px)}
-      .score-denom{font-size:clamp(18px,2.2vw,26px)}
-      .score-msg{font-size:clamp(16px,2vw,22px)}
-      .score-card{padding:44px 36px}
-      .score-emoji{font-size:clamp(48px,7vw,80px)}
-      .retry-btn{font-size:clamp(15px,1.9vw,20px);padding:16px 40px}
-      .review-q{font-size:clamp(13px,1.6vw,17px)}
-      .review-a{font-size:clamp(12px,1.4vw,15px)}
-      .feedback-text{font-size:clamp(13px,1.6vw,17px)}
-      .feedback-label{font-size:clamp(13px,1.6vw,17px)}
-    }
+    .container{max-width:min(900px,95vw);margin:0 auto;padding:clamp(16px,4vw,28px) clamp(12px,3.5vw,24px)}
     .page-header{text-align:center;margin-bottom:28px}
     .grade-tag{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:900;letter-spacing:.08em;padding:4px 14px;border-radius:999px;margin-bottom:10px}
     .page-header h1{font-size:clamp(15px,4.5vw,22px);font-weight:900;line-height:1.4;color:var(--text)}
@@ -66,15 +49,15 @@
 
     /* 問題カード */
     .question-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:28px 24px;margin-bottom:16px;box-shadow:var(--shadow)}
-    .q-number{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
-    .q-text{font-size:18px;font-weight:900;line-height:1.7;margin-bottom:22px;color:var(--text)}
-    .choices{display:flex;flex-direction:column;gap:10px}
-    .choice-btn{background:#F6F8FC;border:2px solid var(--border);color:var(--text);border-radius:14px;padding:14px 18px;font-size:15px;font-weight:700;cursor:pointer;text-align:left;transition:all .15s;display:flex;align-items:center;gap:12px;font-family:'M PLUS Rounded 1c',sans-serif}
+    .q-number{font-size:clamp(11px,2.5vw,13px);font-weight:800;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+    .q-text{font-size:clamp(20px,5.5vw,28px);font-weight:900;line-height:1.6;margin-bottom:22px;color:var(--text)}
+    .choices{display:flex;flex-direction:column;gap:clamp(10px,2.5vw,14px)}
+    .choice-btn{background:#F6F8FC;border:2px solid var(--border);color:var(--text);border-radius:14px;padding:clamp(16px,4vw,20px) clamp(14px,3.5vw,20px);font-size:clamp(17px,4.5vw,22px);font-weight:700;cursor:pointer;text-align:left;transition:all .15s;display:flex;align-items:center;gap:12px;font-family:'M PLUS Rounded 1c',sans-serif}
     .choice-btn:hover:not(:disabled){border-color:var(--accent);background:#EFF6FF;transform:translateX(2px)}
     .choice-btn.correct{border-color:var(--green);background:#F0FDF4;color:var(--green)}
     .choice-btn.wrong{border-color:var(--red);background:#FEF2F2;color:var(--red)}
     .choice-btn:disabled{cursor:default}
-    .choice-label{width:28px;height:28px;min-width:28px;background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:var(--muted)}
+    .choice-label{width:clamp(30px,7vw,38px);height:clamp(30px,7vw,38px);min-width:clamp(30px,7vw,38px);background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(13px,3vw,16px);font-weight:900;color:var(--muted)}
     .choice-btn:hover:not(:disabled) .choice-label{background:var(--accent);color:#fff}
     .choice-btn.correct .choice-label{background:var(--green);color:#fff}
     .choice-btn.wrong .choice-label{background:var(--red);color:#fff}
@@ -82,11 +65,11 @@
     .feedback.show{display:block}
     .feedback.correct-fb{background:#F0FDF4;border:1.5px solid #86efac}
     .feedback.wrong-fb{background:#FEF2F2;border:1.5px solid #fca5a5}
-    .feedback-label{font-size:13px;font-weight:900;margin-bottom:6px}
+    .feedback-label{font-size:clamp(14px,3.5vw,18px);font-weight:900;margin-bottom:6px}
     .feedback.correct-fb .feedback-label{color:var(--green)}
     .feedback.wrong-fb .feedback-label{color:var(--red)}
-    .feedback-text{font-size:13px;line-height:1.8;color:var(--text)}
-    .next-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:900;cursor:pointer;margin-top:14px;display:none;transition:all .15s;box-shadow:0 4px 0 color-mix(in srgb,var(--accent) 70%,#000);font-family:'M PLUS Rounded 1c',sans-serif}
+    .feedback-text{font-size:clamp(14px,3.5vw,18px);line-height:1.8;color:var(--text)}
+    .next-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:14px;padding:clamp(17px,4.5vw,22px);font-size:clamp(17px,4.5vw,22px);font-weight:900;cursor:pointer;margin-top:14px;display:none;transition:all .15s;box-shadow:0 4px 0 color-mix(in srgb,var(--accent) 70%,#000);font-family:'M PLUS Rounded 1c',sans-serif}
     .next-btn.show{display:block}
     .next-btn:hover{opacity:.9;transform:translateY(-1px)}
     .next-btn:active{transform:translateY(2px);box-shadow:none}
@@ -94,22 +77,22 @@
     /* スコア */
     .score-screen{display:none;text-align:center}
     .score-screen.show{display:block}
-    .score-card{background:var(--card);border:1.5px solid var(--border);border-radius:24px;padding:36px 24px;margin-bottom:20px;box-shadow:var(--shadow)}
-    .score-chara{width:120px;margin:0 auto 12px;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.1))}
-    .score-emoji{font-size:48px;margin-bottom:10px}
-    .score-num{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:2px}
-    .score-denom{font-size:18px;color:var(--muted);font-weight:600;margin-bottom:16px}
-    .score-msg{font-size:16px;font-weight:700;line-height:1.6;color:var(--text)}
+    .score-card{background:var(--card);border:1.5px solid var(--border);border-radius:24px;padding:clamp(28px,7vw,48px) clamp(20px,5vw,36px);margin-bottom:20px;box-shadow:var(--shadow)}
+    .score-chara{width:clamp(100px,22vw,140px);margin:0 auto 12px;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.1))}
+    .score-emoji{font-size:clamp(52px,13vw,80px);margin-bottom:10px}
+    .score-num{font-size:clamp(72px,18vw,110px);font-weight:900;color:var(--accent);line-height:1;margin-bottom:2px}
+    .score-denom{font-size:clamp(20px,5vw,28px);color:var(--muted);font-weight:600;margin-bottom:16px}
+    .score-msg{font-size:clamp(18px,4.5vw,24px);font-weight:700;line-height:1.6;color:var(--text)}
     .score-bar-wrap{margin:20px 0}
     .score-bar-bg{height:12px;background:var(--border);border-radius:6px;overflow:hidden}
     .score-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent),#60a5fa);transition:width 1s ease}
-    .retry-btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:14px;padding:13px 32px;font-size:15px;font-weight:900;cursor:pointer;transition:all .15s;margin-top:8px;box-shadow:0 4px 0 color-mix(in srgb,var(--accent) 70%,#000);font-family:'M PLUS Rounded 1c',sans-serif}
+    .retry-btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:14px;padding:clamp(15px,4vw,20px) clamp(28px,8vw,44px);font-size:clamp(17px,4.5vw,22px);font-weight:900;cursor:pointer;transition:all .15s;margin-top:8px;box-shadow:0 4px 0 color-mix(in srgb,var(--accent) 70%,#000);font-family:'M PLUS Rounded 1c',sans-serif}
     .retry-btn:hover{opacity:.9;transform:translateY(-1px)}
     .review-list{margin-top:24px}
     .review-item{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px;display:flex;gap:10px;align-items:flex-start;text-align:left;box-shadow:0 1px 4px rgba(30,50,110,.05)}
     .review-icon{font-size:16px;flex-shrink:0}
-    .review-q{font-size:13px;font-weight:700;margin-bottom:4px;color:var(--text)}
-    .review-a{font-size:12px;color:var(--muted)}
+    .review-q{font-size:clamp(15px,3.5vw,18px);font-weight:700;margin-bottom:4px;color:var(--text)}
+    .review-a{font-size:clamp(13px,3vw,16px);color:var(--muted)}
     .review-a span{color:var(--accent);font-weight:700}
 
     /* ===== クエ丸（スタート・スコア画面専用） ===== */
