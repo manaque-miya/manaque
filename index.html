@@ -83,11 +83,12 @@
     }
     .logo__text { font-size: 22px; font-weight: 900; color: var(--ink-900); }
     .logo__text span { color: var(--brand-600); }
-    .header__nav { display: flex; align-items: center; gap: 2px; }
+    .header__nav { display: flex; align-items: center; gap: 2px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .header__nav::-webkit-scrollbar { display: none; }
     .header__nav a {
       padding: 8px 14px; border-radius: var(--r-pill);
       text-decoration: none; font-size: 14px; font-weight: 700; color: var(--ink-700);
-      transition: background .15s, color .15s;
+      transition: background .15s, color .15s; white-space: nowrap; flex-shrink: 0;
     }
     .header__nav a:hover, .header__nav a.active {
       background: var(--brand-50); color: var(--brand-600);
@@ -116,7 +117,7 @@
       font-size: 9px; font-weight: 900; padding: 1px 5px;
       border-radius: 4px; line-height: 1.4; margin-left: 2px;
     }
-    @media (max-width: 900px) { .header__shindan { display: none; } }
+    @media (max-width: 1024px) { .header__shindan { display: none; } }
 
     /* ===== ADSENSE PLACEHOLDER ===== */
     .ad-banner {
@@ -314,7 +315,7 @@
       font-size: 13px; color: rgba(255,255,255,.45); font-weight: 600;
     }
     /* Visual: right side */
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
       .shindan-feature__body { flex-direction: column; gap: 0; }
       .shindan-feature__visual { display: none; }
       .shindan-feature__title { font-size: 22px; line-height: 1.4; }
@@ -546,15 +547,20 @@
       .footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
 
-    @media (max-width: 768px) {
-      .header__inner { padding: 12px 16px; }
+    @media (max-width: 1024px) {
+      .ad-banner--leaderboard { display: none; }
+      .ad-banner--mobile { display: flex; }
+    }
+    @media (max-width: 1024px) {
+      .header__inner { padding: 10px 16px; gap: 8px; }
       .header__nav { display: none; }
       .header__menu-btn { display: grid; }
+    }
+    @media (max-width: 768px) {
+      .header__inner { padding: 10px 16px; }
       .hero::after { font-size: 120px; opacity: .06; }
       .section { padding: 40px 16px; }
       .ad-wrap { padding: 12px 16px; }
-      .ad-banner--leaderboard { display: none; }
-      .ad-banner--mobile { display: flex; }
       .category-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .quiz-grid { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; gap: 24px; }
