@@ -372,11 +372,12 @@
       opacity: .35;
     }
     .cat-card__icon {
-      width: 44px; height: 44px; border-radius: var(--r-md);
+      width: 48px; height: 48px; border-radius: var(--r-md);
       display: grid; place-items: center; position: relative; z-index: 1;
+      font-size: 28px; line-height: 1; background: none;
     }
     .cat-card__name { font-size: 17px; font-weight: 900; color: var(--ink-900); }
-    .cat-card__ruby { font-size: 11px; color: var(--ink-500); font-weight: 600; margin-top: -6px; }
+    .cat-card__ruby { font-size: 12px; color: var(--ink-500); font-weight: 600; margin-top: -4px; }
     .cat-card__count {
       font-size: 13px; font-weight: 800; display: flex; align-items: center;
       justify-content: space-between;
@@ -550,6 +551,20 @@
       .category-grid { grid-template-columns: repeat(3, 1fr); }
       .quiz-grid { grid-template-columns: repeat(2, 1fr); }
       .footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+      /* カテゴリカード：中央揃え＋バランス調整 */
+      .cat-card { padding: 22px 12px 16px; align-items: center; text-align: center; gap: 6px; }
+      .cat-card__icon { width: 56px; height: 56px; font-size: 32px; }
+      .cat-card__name { font-size: 16px; }
+      .cat-card__ruby { font-size: 12px; margin-top: -2px; }
+      .cat-card__count { font-size: 13px; justify-content: center; width: 100%; }
+      .cat-card__blob { width: 64px; height: 64px; }
+    }
+    @media (max-width: 768px) {
+      .cat-card { padding: 16px 8px 12px; }
+      .cat-card__icon { width: 44px; height: 44px; font-size: 26px; }
+      .cat-card__name { font-size: 14px; }
+      .cat-card__ruby { font-size: 11px; }
+      .cat-card__count { font-size: 12px; }
     }
 
     @media (max-width: 1024px) {
@@ -1118,7 +1133,7 @@ function renderGrades() {
   g.innerHTML = SITE_STRUCTURE.map((grade, gi) => `
     <button class="cat-card ${grade.colorClass}" onclick="renderSubjects(${gi})">
       <div class="cat-card__blob"></div>
-      <div class="cat-card__icon" style="font-size:28px;line-height:1;background:none;box-shadow:none">${grade.emoji}</div>
+      <div class="cat-card__icon">${grade.emoji}</div>
       <div class="cat-card__name">${grade.label}</div>
       <div class="cat-card__ruby">${grade.ruby}</div>
       <div class="cat-card__count">${countTotalUnits(grade)}クイズ <span>›</span></div>
