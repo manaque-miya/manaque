@@ -1276,6 +1276,7 @@ function buildUnitCard(unit, subjLabel) {
   const isNanpure  = unit.quizId === 'nanpure';
   const isIgo      = unit.quizId === 'igo';
   const isShogi    = unit.quizId === 'shogi';
+  const isTsume3   = unit.quizId === 'tsume3';
 
   // ===== unit-quiz形式 =====
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
@@ -1336,10 +1337,10 @@ function buildUnitCard(unit, subjLabel) {
     </div>`;
   }
 
-  // ===== 囲碁・将棋 =====
-  if (isIgo || isShogi) {
-    const page = isIgo ? 'igo.html' : 'shogi.html';
-    const metaStr = isIgo ? '⚫ ルール解説＋問題3問' : '♟ ルール解説＋問題5問';
+  // ===== 囲碁・将棋・3手詰め =====
+  if (isIgo || isShogi || isTsume3) {
+    const page = isIgo ? 'igo.html' : isShogi ? 'shogi.html' : 'tsume3.html';
+    const metaStr = isIgo ? '⚫ ルール解説＋問題3問' : isShogi ? '♟ ルール解説＋問題5問' : '♟ 3手詰め10問';
     return `
     <div class="unit-card">
       <div class="unit-card__tags">${tagHtml}</div>

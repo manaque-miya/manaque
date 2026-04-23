@@ -560,6 +560,15 @@ const SITE_STRUCTURE = [
             difficulty: 2,
             gacha: false,
             tags: [{ text: '将棋', cls: 'badge--neutral' }, { text: 'パズル', cls: 'badge--neutral' }]
+          },
+          {
+            label: '3手詰め入門（10問）',
+            quizId: 'tsume3',
+            count: null,
+            time: '約15分',
+            difficulty: 3,
+            gacha: false,
+            tags: [{ text: '将棋', cls: 'badge--neutral' }, { text: 'パズル', cls: 'badge--neutral' }]
           }
         ]
       }

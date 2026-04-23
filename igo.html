@@ -3,14 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>囲碁入門クイズ｜ルールと基本問題｜無料学習｜まなクエ！</title>
-  <meta name="description" content="囲碁のルールを学びながら基本問題を解ける入門コンテンツ。初心者向け。ブラウザで直接遊べる まなクエ！">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="まなクエ！">
-  <meta property="og:title" content="囲碁入門クイズ｜ルールと基本問題｜無料学習｜まなクエ！">
-  <meta property="og:description" content="囲碁のルールを学びながら基本問題を解ける入門コンテンツ。初心者向け。ブラウザで直接遊べる まなクエ！">
-  <meta property="og:image" content="https://manaque.net/assets/ogp.png">
-  <meta name="twitter:card" content="summary_large_image">
+<title>囲碁入門</title>
 <style>
   :root {
     --bg: #0f0f13;
@@ -28,7 +21,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    font-family: 'M PLUS Rounded 1c', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
     min-height: 100vh;
     padding: 24px 16px 60px;
   }
@@ -81,12 +74,6 @@
     border: 3px solid var(--board-line);
     box-shadow: 0 4px 20px rgba(0,0,0,.4);
   }
-  /* グリッド線（SVGで描画） */
-  .board-svg {
-    position: absolute;
-    top: 0; left: 0;
-    pointer-events: none;
-  }
   /* 交点グリッド */
   .board-grid {
     display: grid;
@@ -94,7 +81,6 @@
     z-index: 1;
   }
   .board-5-grid { grid-template-columns: repeat(5, 48px); }
-  .board-7-grid { grid-template-columns: repeat(7, 44px); }
 
   .intersection {
     width: 48px; height: 48px;
@@ -102,8 +88,6 @@
     cursor: pointer;
     position: relative;
   }
-  .board-7-grid .intersection { width: 44px; height: 44px; }
-
   /* 交点のクロス線 */
   .intersection::before {
     content: '';
@@ -145,7 +129,7 @@
     transition: transform .1s;
     flex-shrink: 0;
   }
-  .board-7-grid .stone { width: 34px; height: 34px; }
+
 
   .stone.black {
     background: radial-gradient(circle at 35% 30%, #555, #111);
@@ -294,6 +278,10 @@
   .mini-stone.b { background: radial-gradient(circle at 35% 30%, #555, #111); }
   .mini-stone.w { background: radial-gradient(circle at 35% 30%, #fff, #ccc); border: 1px solid #aaa; }
   .mini-stone.lib { background: rgba(255,214,10,.5); border: 1.5px dashed var(--yellow); }
+  @media (max-width: 768px) {
+    body { min-height: unset; padding-bottom: 40px; }
+    .container { padding: 12px; }
+  }
 </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
        crossorigin="anonymous"></script>
