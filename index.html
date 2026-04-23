@@ -1156,7 +1156,6 @@ function renderLatest() {
   if (newUnits.length === 0) return;
   const show = newUnits.slice(0, 6);
   grid.innerHTML = show.map(({ unit }) => {
-    const stars = '★'.repeat(unit.difficulty) + '<span class="quiz-card__star empty">★</span>'.repeat(5 - unit.difficulty);
     const tagHtml = unit.tags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
     return `
       <a href="${getQuizUrl(unit.quizId, 5)}" class="quiz-card">
@@ -1271,8 +1270,6 @@ function buildUnitCard(unit, subjLabel) {
   const filteredTags = (unit.tags || []).filter(t => !GRADE_TAGS.has(t.text));
   const tagHtml = filteredTags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
   const gacha   = unit.gacha ? '<span class="badge badge--purple">🎰 ガチャあり</span>' : '';
-  const subjTag = ''; // セクションヘッダーに移動したため廃止
-
   const isMap      = unit.quizId === 'map';
   const isMapTap   = unit.quizId === 'map-tap';
   const isCapitals = unit.quizId === 'map-capitals';
@@ -1293,7 +1290,7 @@ function buildUnitCard(unit, subjLabel) {
     const bAll= `<a href="unit-quiz.html?id=${unit.quizId}&amp;count=${c}" class="count-btn${c < 10 ? ' count-btn--default' : ''}">全問<small style="font-size:10px;opacity:.7">(${c})</small></a>`;
     return `
     <div class="unit-card">
-      <div class="unit-card__tags">${subjTag}${tagHtml}</div>
+      <div class="unit-card__tags">${tagHtml}</div>
       <div class="unit-card__title">${unit.label}</div>
       <div class="unit-card__meta">
         <span>📘 全${c}問</span>
@@ -1313,7 +1310,7 @@ function buildUnitCard(unit, subjLabel) {
     const bAll= `<a href="math-quiz.html?id=${unit.quizId}&amp;count=${c}" class="count-btn${c < 10 ? ' count-btn--default' : ''}">全問<small style="font-size:10px;opacity:.7">(${c})</small></a>`;
     return `
     <div class="unit-card">
-      <div class="unit-card__tags">${subjTag}${tagHtml}</div>
+      <div class="unit-card__tags">${tagHtml}</div>
       <div class="unit-card__title">${unit.label}</div>
       <div class="unit-card__meta">
         <span>📘 全${c}問</span>
@@ -1328,7 +1325,7 @@ function buildUnitCard(unit, subjLabel) {
   if (isNanpure) {
     return `
     <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
-      <div class="unit-card__tags">${subjTag}${tagHtml}${gacha}</div>
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
       <div class="unit-card__title">${unit.label}</div>
       <div class="unit-card__meta">
         <span>🔢 かんたん〜むずかしい</span>
@@ -1345,7 +1342,7 @@ function buildUnitCard(unit, subjLabel) {
     const metaStr = isIgo ? '⚫ ルール解説＋問題3問' : '♟ ルール解説＋問題5問';
     return `
     <div class="unit-card">
-      <div class="unit-card__tags">${subjTag}${tagHtml}</div>
+      <div class="unit-card__tags">${tagHtml}</div>
       <div class="unit-card__title">${unit.label}</div>
       <div class="unit-card__meta">
         <span>${metaStr}</span>
@@ -1381,7 +1378,7 @@ function buildUnitCard(unit, subjLabel) {
   const btnAll= `<a href="${cntAllHref}" class="count-btn${(!unit.count||unit.count < 10)?' count-btn--default':''}">全問<small style="font-size:10px;opacity:.7">(${unit.count})</small></a>`;
   return `
     <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
-      <div class="unit-card__tags">${subjTag}${tagHtml}${gacha}</div>
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
       <div class="unit-card__title">${unit.label}</div>
       <div class="unit-card__meta">
         <span>📘 全${unit.count}問</span>
@@ -1390,20 +1387,6 @@ function buildUnitCard(unit, subjLabel) {
       </div>
       <div class="unit-card__counts">${btn3}${btn10}${btnAll}</div>
     </div>`;
-}
-
-// 後方互換（ブックマーク等からの直接アクセス用）
-function renderUnits(gi, si) {
-  _drillLevel = 1; _drillGrade = gi;
-  const grade = SITE_STRUCTURE[gi];
-  const subj  = grade.subjects[si];
-  document.getElementById('drill-nav').style.display = 'flex';
-  document.getElementById('drill-breadcrumb').textContent = `${grade.label} › ${subj.label}`;
-  document.getElementById('drill-label').textContent = subj.label;
-  document.getElementById('drill-title').textContent = 'クイズを選ぶ';
-  const g = document.getElementById('drill-grid');
-  g.className = 'unit-grid';
-  g.innerHTML = subj.units.map(u => buildUnitCard(u, '')).join('');
 }
 
 function drillBack() {
