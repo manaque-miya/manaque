@@ -3,14 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>詰将棋入門クイズ｜ルールと基本問題｜無料学習｜まなクエ！</title>
-  <meta name="description" content="将棋のルールを学びながら詰将棋に挑戦。初心者向け入門コンテンツ。ブラウザで直接遊べる まなクエ！">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="まなクエ！">
-  <meta property="og:title" content="詰将棋入門クイズ｜ルールと基本問題｜無料学習｜まなクエ！">
-  <meta property="og:description" content="将棋のルールを学びながら詰将棋に挑戦。初心者向け入門コンテンツ。ブラウザで直接遊べる まなクエ！">
-  <meta property="og:image" content="https://manaque.net/assets/ogp.png">
-  <meta name="twitter:card" content="summary_large_image">
+<title>詰将棋入門</title>
 <style>
   :root {
     --bg: #0f0f13;
@@ -19,15 +12,13 @@
     --text: #f0f0f5;
     --muted: #7a7a9a;
     --yellow: #FFD60A;
-    --red: #FF453A;
     --board: #DCB35C;
-    --board-dark: #C49A3C;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    font-family: 'M PLUS Rounded 1c', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
     min-height: 100vh;
     padding: 24px 16px 60px;
   }
@@ -114,7 +105,6 @@
   }
   /* 5x5用 */
   .board-5 { grid-template-columns: repeat(5, 52px); }
-  .board-9 { grid-template-columns: repeat(9, 44px); }
 
   .cell {
     background: var(--board);
@@ -128,8 +118,6 @@
     transition: background .15s;
     user-select: none;
   }
-  .board-9 .cell { width: 44px; height: 44px; font-size: 15px; }
-
   .cell:hover { background: #E8C472; }
   .cell.highlight-target { background: rgba(255,214,10,.35) !important; }
   .cell.highlight-move { background: rgba(255,214,10,.15) !important; cursor: default; }
@@ -142,7 +130,6 @@
     font-weight: 900;
     position: relative;
   }
-  .board-9 .piece { width: 36px; height: 36px; font-size: 14px; }
   .piece.sente { background: #f5f0e0; color: #1a0a00; border: 1.5px solid #c8a052; }
   .piece.gote { background: #2a1810; color: #f5d080; border: 1.5px solid #8B6914; transform: rotate(180deg); }
 
@@ -242,6 +229,10 @@
   }
   .rule-text { font-size: 13px; line-height: 1.7; }
   .rule-text strong { color: var(--yellow); }
+  @media (max-width: 768px) {
+    body { min-height: unset; padding-bottom: 40px; }
+    .container { padding: 12px; }
+  }
 </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
        crossorigin="anonymous"></script>
@@ -491,7 +482,6 @@ const PROBLEMS = [
 
 // ===== 状態 =====
 let currentProblem = 0;
-let answerShown = false;
 
 // ===== 描画 =====
 function renderNav() {
@@ -526,7 +516,6 @@ function renderBoard(board, highlight) {
 
 function loadProblem(idx) {
   currentProblem = idx;
-  answerShown = false;
   const p = PROBLEMS[idx];
   const area = document.getElementById('problemArea');
 
@@ -570,7 +559,6 @@ function showAnswer() {
   document.getElementById('answerWhy').textContent = p.answer.why;
   box.classList.add('show');
   btn.style.display = 'none';
-  answerShown = true;
 }
 
 // 初期表示
