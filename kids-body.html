@@ -144,7 +144,7 @@ body {
   </div>
 
   <div class="score-bar">
-    <span class="q-num" id="qNum">1 / 8もん</span>
+    <span class="q-num" id="qNum">1 / 5もん</span>
     <span class="pts" id="pts">⭐ 0</span>
   </div>
 
@@ -165,7 +165,7 @@ body {
   <div class="result" id="result">
     <div class="result-emoji" id="resultEmoji">🎉</div>
     <div class="result-title" id="resultTitle">ぜんぶできた！</div>
-    <div class="result-score"><span id="resultScore">0</span><span> / 8もん</span></div>
+    <div class="result-score"><span id="resultScore">0</span><span> / 5もん</span></div>
     <button class="retry-btn" onclick="startQuiz()">もういちど！</button>
     <a class="home-btn" href="index.html">← もどる</a>
   </div>
@@ -177,11 +177,8 @@ const PARTS = [
   { id: 'hand',  label: 'て',    img: 'assets/img/body-parts/hand.png'  },
   { id: 'foot',  label: 'あし',  img: 'assets/img/body-parts/foot.png'  },
   { id: 'eye',   label: 'め',    img: 'assets/img/body-parts/eye.png'   },
-  { id: 'ear',   label: 'みみ',  img: 'assets/img/body-parts/ear.png'   },
   { id: 'nose',  label: 'はな',  img: 'assets/img/body-parts/nose.png'  },
-  { id: 'mouth', label: 'くち',  img: 'assets/img/body-parts/mouth.png' },
-  { id: 'belly', label: 'おなか',img: 'assets/img/body-parts/belly.png' },
-  { id: 'head',  label: 'あたま',img: 'assets/img/body-parts/head.png'  },
+  { id: 'face',  label: 'かお',  img: 'assets/img/body-parts/face.png'  },
 ];
 
 let questions = [], current = 0, score = 0, answered = false;
