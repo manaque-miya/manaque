@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>まなクエ！パズル｜肝の一手で全消し！</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2563EB;--blue-light:#EAF2FE;--yellow:#F6C744;
+  --ink:#0F1830;--ink-mid:#5B6785;--white:#fff;
+  --border:#CBD5E1;--surface:#F1F5F9;
+  --c0:#EF4444;--c1:#2563EB;--c2:#22C55E;--c3:#F6C744;--c4:#A855F7;
+  --c0d:#B91C1C;--c1d:#1D4ED8;--c2d:#15803D;--c3d:#CA8A04;--c4d:#7E22CE;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;user-select:none;}
+html,body{height:100%;font-family:'M PLUS Rounded 1c',sans-serif;background:var(--blue-light);overflow-x:hidden;}
+
+/* ══ HEADER ══ */
+.header{display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;background:#fff;box-shadow:0 1px 8px rgba(37,99,235,.12);position:sticky;top:0;z-index:100;}
+.logo{font-size:16px;font-weight:900;color:var(--ink);}
+.logo span{color:var(--blue);}
+.logo small{font-size:11px;color:var(--ink-mid);display:block;font-weight:700;}
+.header-right{display:flex;gap:8px;align-items:center;}
+.hint-btn{background:var(--yellow);color:var(--ink);border:none;border-radius:20px;
+  padding:6px 14px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;}
+.hint-btn:disabled{opacity:.4;cursor:default;}
+
+/* ══ DIFF BAR ══ */
+.diff-bar{display:flex;gap:8px;padding:12px 16px 0;justify-content:center;}
+.diff-btn{padding:7px 20px;border:2px solid var(--border);border-radius:20px;
+  background:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;
+  color:var(--ink-mid);transition:.15s;}
+.diff-btn.active{border-color:var(--blue);background:var(--blue);color:#fff;}
+
+/* ══ STAGE INFO ══ */
+.stage-info{text-align:center;padding:10px 16px 6px;font-size:13px;font-weight:800;color:var(--ink-mid);}
+.stage-info .stage-num{color:var(--blue);font-size:15px;}
+
+/* ══ BOARD WRAP ══ */
+.board-wrap{display:flex;flex-direction:column;align-items:center;padding:12px 16px 20px;}
+.board-desc{font-size:12px;color:var(--ink-mid);text-align:center;margin-bottom:10px;font-weight:700;}
+
+/* ══ GRID ══ */
+.grid{position:relative;display:grid;gap:6px;padding:12px;background:#fff;
+  border-radius:20px;box-shadow:0 4px 24px rgba(37,99,235,.15);}
+
+/* ══ CELLS ══ */
+.cell{position:relative;border-radius:50%;cursor:pointer;
+  transition:transform .15s, box-shadow .15s;
+  display:flex;align-items:center;justify-content:center;}
+.cell::before{content:'';position:absolute;width:30%;height:25%;
+  background:rgba(255,255,255,.5);border-radius:50%;top:18%;left:18%;pointer-events:none;}
+.cell[data-color="0"]{background:var(--c0);box-shadow:0 3px 0 var(--c0d);}
+.cell[data-color="1"]{background:var(--c1);box-shadow:0 3px 0 var(--c1d);}
+.cell[data-color="2"]{background:var(--c2);box-shadow:0 3px 0 var(--c2d);}
+.cell[data-color="3"]{background:var(--c3);box-shadow:0 3px 0 var(--c3d);}
+.cell[data-color="4"]{background:var(--c4);box-shadow:0 3px 0 var(--c4d);}
+.cell.empty{background:transparent;box-shadow:none;cursor:default;}
+.cell.empty::before{display:none;}
+
+/* 選択中 */
+.cell.selected{transform:scale(1.15);}
+.cell[data-color="0"].selected{box-shadow:0 0 0 4px var(--yellow),0 4px 0 var(--c0d);}
+.cell[data-color="1"].selected{box-shadow:0 0 0 4px var(--yellow),0 4px 0 var(--c1d);}
+.cell[data-color="2"].selected{box-shadow:0 0 0 4px var(--yellow),0 4px 0 var(--c2d);}
+.cell[data-color="3"].selected{box-shadow:0 0 0 4px var(--yellow),0 4px 0 var(--c3d);}
+.cell[data-color="4"].selected{box-shadow:0 0 0 4px var(--yellow),0 4px 0 var(--c4d);}
+
+/* 消えるアニメ */
+.cell.clearing{animation:pop .35s ease-out forwards;}
+@keyframes pop{0%{transform:scale(1.2);opacity:1;}100%{transform:scale(0);opacity:0;}}
+
+/* 落下アニメ */
+.cell.falling{animation:fall .25s ease-in;}
+@keyframes fall{from{transform:translateY(-40px);opacity:.5;}to{transform:translateY(0);opacity:1;}}
+
+/* ヒント */
+.cell.hint-glow{animation:hintGlow 1s ease-in-out 3;}
+@keyframes hintGlow{0%,100%{transform:scale(1);}50%{transform:scale(1.2);box-shadow:0 0 20px 8px var(--yellow);}}
+
+/* ══ 方向矢印オーバーレイ ══ */
+#arrowsOverlay{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:20;}
+.dir-arrow{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  pointer-events:all;
+  background:var(--yellow);
+  border:none;border-radius:50%;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;color:var(--ink);
+  box-shadow:0 3px 8px rgba(0,0,0,.3);
+  transition:transform .1s,opacity .1s;
+  font-family:'M PLUS Rounded 1c',sans-serif;
+  line-height:1;
+}
+.dir-arrow:active{transform:translate(-50%,-50%) scale(.82);}
+
+/* ══ CHAIN BANNER ══ */
+.chain-banner{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:rgba(15,24,48,.92);color:#fff;border-radius:20px;
+  padding:18px 36px;text-align:center;z-index:200;pointer-events:none;
+  opacity:0;transition:opacity .2s;}
+.chain-banner.show{opacity:1;}
+.chain-banner .chain-num{font-size:48px;font-weight:900;color:var(--yellow);line-height:1;}
+.chain-banner .chain-label{font-size:20px;font-weight:800;margin-top:4px;}
+
+/* ══ WIN OVERLAY ══ */
+.overlay{position:fixed;inset:0;background:rgba(15,24,48,.88);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  z-index:300;padding:20px;}
+.overlay.show{display:flex;}
+.overlay-card{background:#fff;border-radius:24px;padding:32px 28px;
+  text-align:center;width:100%;max-width:340px;box-shadow:0 12px 40px rgba(37,99,235,.3);}
+.overlay-emoji{font-size:56px;display:block;margin-bottom:8px;}
+.overlay-title{font-size:26px;font-weight:900;color:var(--blue);margin-bottom:6px;}
+.overlay-sub{font-size:14px;color:var(--ink-mid);font-weight:700;margin-bottom:20px;}
+.overlay-chains{font-size:18px;font-weight:800;color:var(--ink);margin-bottom:20px;}
+.overlay-chains span{color:var(--yellow);font-size:28px;}
+.btn-row{display:flex;gap:10px;justify-content:center;}
+.btn-primary{background:var(--blue);color:#fff;border:none;border-radius:20px;
+  padding:12px 24px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;}
+.btn-secondary{background:var(--surface);color:var(--ink);border:2px solid var(--border);
+  border-radius:20px;padding:12px 20px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;}
+
+/* ══ MOVE COUNT ══ */
+.move-area{text-align:center;padding:4px 0 10px;font-size:13px;color:var(--ink-mid);font-weight:700;}
+.move-area b{color:var(--ink);font-size:15px;}
+
+/* ══ FAIL FLASH ══ */
+.fail-flash{animation:failFlash .4s;}
+@keyframes failFlash{0%,100%{background:#fff;}50%{background:#FEE2E2;}}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <span>まなクエ！</span>パズル
+    <small>肝の一手で全消し！</small>
+  </div>
+  <div class="header-right">
+    <button class="hint-btn" id="hintBtn" onclick="showHint()">💡ヒント</button>
+  </div>
+</div>
+
+<div class="diff-bar">
+  <button class="diff-btn active" onclick="selectDiff('easy')">初級</button>
+  <button class="diff-btn" onclick="selectDiff('medium')">中級</button>
+  <button class="diff-btn" onclick="selectDiff('hard')">上級</button>
+</div>
+
+<div class="stage-info">
+  <span class="stage-num" id="stageNum">ステージ 1</span> / <span id="stageTotal">10</span>
+</div>
+
+<div class="board-wrap">
+  <div class="board-desc">たった1手で全部消えるのはどこ？</div>
+  <div class="grid" id="grid">
+    <div id="arrowsOverlay"></div>
+  </div>
+  <div class="move-area">
+    手数：<b id="moveCnt">0</b> 手　｜
+    <span id="chainRecord">最大 <b id="maxChain">0</b> 連鎖</span>
+  </div>
+</div>
+
+<!-- 連鎖バナー -->
+<div class="chain-banner" id="chainBanner">
+  <div class="chain-num" id="chainNum">3</div>
+  <div class="chain-label">連鎖！</div>
+</div>
+
+<!-- ウィンオーバーレイ -->
+<div class="overlay" id="winOverlay">
+  <div class="overlay-card">
+    <span class="overlay-emoji">🎉</span>
+    <div class="overlay-title">全消し！</div>
+    <div class="overlay-sub">見事な一手でした！</div>
+    <div class="overlay-chains"><span id="winChain">0</span> 連鎖！</div>
+    <div class="btn-row">
+      <button class="btn-secondary" onclick="retryStage()">もう一度</button>
+      <button class="btn-primary" onclick="nextStage()">次のステージ →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════
+//  ステージデータ（自動生成）
+// ══════════════════════════════════════
+const STAGES = {"easy":[{"grid":[[1,0,1,2],[2,0,2,1],[0,2,2,0],[0,1,0,0],[2,0,2,2],[0,0,1,2],[1,2,2,0],[1,1,2,1]],"solution":[4,2,5,2],"chains":4,"rows":8,"cols":4,"colors":3},{"grid":[[0,1,0,0],[0,2,1,1],[1,1,2,1],[2,1,2,0],[2,0,1,1],[0,2,0,1],[2,1,0,0],[1,0,1,2]],"solution":[5,0,5,1],"chains":4,"rows":8,"cols":4,"colors":3},{"grid":[[0,0,1,2],[0,2,2,1],[2,0,0,1],[0,2,2,0],[2,1,2,1],[1,2,0,2],[1,0,1,0],[1,2,2,0]],"solution":[5,2,6,2],"chains":4,"rows":8,"cols":4,"colors":3},{"grid":[[2,1,0,0],[2,0,2,2],[2,1,0,0],[0,0,1,0],[0,2,0,2],[2,0,2,1],[1,1,2,1],[2,0,1,2]],"solution":[6,2,6,3],"chains":6,"rows":8,"cols":4,"colors":3},{"grid":[[2,2,2,1],[1,0,0,1],[1,2,2,1],[1,2,1,2],[2,0,0,2],[1,1,0,2],[0,0,1,1],[1,2,1,0]],"solution":[7,0,7,1],"chains":4,"rows":8,"cols":4,"colors":3},{"grid":[[0,2,1,1],[2,2,0,1],[0,0,2,2],[1,0,2,1],[0,1,0,2],[0,0,1,0],[1,1,2,0],[0,2,2,0]],"solution":[3,1,4,1],"chains":5,"rows":8,"cols":4,"colors":3},{"grid":[[2,2,1,2],[0,0,1,1],[2,2,0,0],[2,0,1,1],[1,1,2,0],[1,0,2,0],[2,1,0,2],[0,1,0,0]],"solution":[5,1,5,2],"chains":5,"rows":8,"cols":4,"colors":3},{"grid":[[0,2,1,2],[0,0,2,1],[2,1,2,1],[2,2,1,2],[0,1,2,1],[0,1,0,2],[1,0,1,1],[2,0,1,0]],"solution":[4,3,5,3],"chains":4,"rows":8,"cols":4,"colors":3},{"grid":[[1,2,1,1],[2,0,0,1],[2,0,2,0],[0,1,1,0],[0,0,1,0],[2,1,0,1],[1,2,2,1],[1,1,2,0]],"solution":[5,1,5,2],"chains":3,"rows":8,"cols":4,"colors":3},{"grid":[[0,1,0,2],[0,1,2,0],[2,0,1,2],[2,0,0,1],[0,2,1,1],[2,0,0,2],[1,2,1,0],[1,1,2,1]],"solution":[6,2,7,2],"chains":6,"rows":8,"cols":4,"colors":3}],"medium":[{"grid":[[0,3,3,0,0,0],[3,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[0,0,1,0],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,0,3,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[0,2,0,3],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,0,0,0,0],[0,0,3,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[0,2,1,2],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,3,0,0,0],[0,3,0,3,3,3],[3,0,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[1,1,2,1],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,3,0,0,0],[0,0,0,0,3,3],[3,3,3,3,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[1,3,2,3],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,3,0,0,0],[0,0,0,3,0,3],[3,3,3,0,3,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[1,4,2,4],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,3,0,0,0],[0,0,0,3,3,3],[3,0,3,0,0,0],[0,3,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[2,1,3,1],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,1,0,0],[0,0,0,0,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[2,3,3,3],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[2,0,0,1,1,1],[0,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[3,0,4,0],"chains":5,"rows":9,"cols":6,"colors":4},{"grid":[[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,2,0,1,1,1],[2,0,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0]],"solution":[3,1,4,1],"chains":5,"rows":9,"cols":6,"colors":4}],"hard":[{"grid":[[4,4,0,4,0,0],[0,0,0,4,4,4],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,4,4,4],[4,4,4,0,0,0]],"solution":[0,2,0,3],"chains":7,"rows":13,"cols":6,"colors":5},{"grid":[[4,4,0,0,0,0],[0,0,4,4,4,4],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,4,4,4],[4,4,4,0,0,0]],"solution":[0,2,1,2],"chains":7,"rows":13,"cols":6,"colors":5},{"grid":[[4,4,4,4,0,0],[0,0,0,0,4,4],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,4,4,4],[4,4,4,0,0,0]],"solution":[0,3,1,3],"chains":7,"rows":13,"cols":6,"colors":5},{"grid":[[4,4,4,0,4,0],[0,0,0,4,0,4],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,4,4,4],[4,4,4,0,0,0]],"solution":[0,4,1,4],"chains":7,"rows":13,"cols":6,"colors":5},{"grid":[[4,4,4,0,0,4],[0,0,0,4,4,0],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,4,4,4],[4,4,4,0,0,0]],"solution":[0,5,1,5],"chains":7,"rows":13,"cols":6,"colors":5},{"grid":[[4,4,4,0,0,0],[3,0,0,4,4,4],[0,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,4,4,4],[4,4,4,0,0,0]],"solution":[1,0,2,0],"chains":7,"rows":13,"cols":6,"colors":5},{"grid":[[4,4,4,0,0,0],[0,3,0,4,4,4],[3,0,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,4,4,4],[4,4,4,0,0,0]],"solution":[1,1,2,1],"chains":7,"rows":13,"cols":6,"colors":5},{"grid":[[4,4,4,0,0,0],[0,0,3,4,4,4],[3,3,0,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,1,1,1],[2,2,2,2,2,2],[0,0,0,1,1,1],[3,3,3,0,0,0],[0,0,0,3,3,3],[3,3,3,0,0,0],[0,0,0,4,4,4],[4,4,4,0,0,0]],"solution":[1,2,2,2],"chains":7,"rows":13,"cols":6,"colors":5}]};
+
+// ══════════════════════════════════════
+//  ゲーム状態
+// ══════════════════════════════════════
+let diff = 'easy';
+let stageIdx = 0;
+let grid = [];       // [row][col] = color(0-4) or null
+let originalGrid = []; // リセット用
+let rows = 0, cols = 0;
+let cellSize = 0;
+const GRID_GAP = 6, GRID_PAD = 12;
+let selectedCell = null;  // {r, c}
+let moveCount = 0;
+let maxChain = 0;
+let hintUsed = 0;
+let animating = false;
+let currentSolution = null;
+
+// ══════════════════════════════════════
+//  初期化
+// ══════════════════════════════════════
+function init() {
+  const stage = STAGES[diff][stageIdx];
+  rows = stage.rows; cols = stage.cols;
+  grid = stage.grid.map(r => [...r]);
+  originalGrid = stage.grid.map(r => [...r]);
+  currentSolution = stage.solution;
+  moveCount = 0; maxChain = 0; hintUsed = 0;
+  selectedCell = null; animating = false;
+  document.getElementById('moveCnt').textContent = '0';
+  document.getElementById('maxChain').textContent = '0';
+  document.getElementById('stageNum').textContent = `ステージ ${stageIdx+1}`;
+  document.getElementById('stageTotal').textContent = STAGES[diff].length;
+  document.getElementById('hintBtn').disabled = false;
+  document.getElementById('winOverlay').classList.remove('show');
+  renderGrid();
+}
+
+// ══════════════════════════════════════
+//  グリッド描画
+// ══════════════════════════════════════
+function renderGrid() {
+  const gridEl = document.getElementById('grid');
+
+  // 幅と高さの両方を考慮してセルサイズを決定
+  const vw = Math.min(window.innerWidth - 32, 420);
+  const vh = Math.min(window.innerHeight - 230, 560);
+  const cellByW = Math.floor((vw - GRID_PAD*2 - (cols-1)*GRID_GAP) / cols);
+  const cellByH = Math.floor((vh - GRID_PAD*2 - (rows-1)*GRID_GAP) / rows);
+  cellSize = Math.max(24, Math.min(cellByW, cellByH));
+
+  gridEl.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+  gridEl.style.gridTemplateRows = `repeat(${rows}, ${cellSize}px)`;
+  gridEl.innerHTML = '<div id="arrowsOverlay"></div>';
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.style.width = cellSize + 'px';
+      cell.style.height = cellSize + 'px';
+      const color = grid[r][c];
+      if (color === null) {
+        cell.classList.add('empty');
+      } else {
+        cell.dataset.color = color;
+      }
+      cell.dataset.r = r;
+      cell.dataset.c = c;
+      cell.addEventListener('click', () => handleTap(r, c));
+      gridEl.appendChild(cell);
+    }
+  }
+}
+
+function getCell(r, c) {
+  return document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
+}
+
+function updateCell(r, c) {
+  const el = getCell(r, c);
+  if (!el) return;
+  const color = grid[r][c];
+  el.className = 'cell';
+  if (color === null) {
+    el.classList.add('empty');
+    delete el.dataset.color;
+  } else {
+    el.dataset.color = color;
+  }
+}
+
+// ══════════════════════════════════════
+//  方向矢印表示
+// ══════════════════════════════════════
+function showArrows(r, c) {
+  const overlay = document.getElementById('arrowsOverlay');
+  overlay.innerHTML = '';
+
+  const arrowSize = Math.max(22, Math.min(34, Math.round(cellSize * 0.7)));
+  const reach = cellSize + GRID_GAP; // 選択セル中心から矢印中心までの距離
+
+  // セル中心座標（グリッド内のローカル座標）
+  const cx = GRID_PAD + c * (cellSize + GRID_GAP) + cellSize / 2;
+  const cy = GRID_PAD + r * (cellSize + GRID_GAP) + cellSize / 2;
+
+  const dirs = [
+    { dr: -1, dc:  0, icon: '▲', x: cx,          y: cy - reach },
+    { dr:  1, dc:  0, icon: '▼', x: cx,          y: cy + reach },
+    { dr:  0, dc: -1, icon: '◀', x: cx - reach,  y: cy         },
+    { dr:  0, dc:  1, icon: '▶', x: cx + reach,  y: cy         },
+  ];
+
+  dirs.forEach(({ dr, dc, icon, x, y }) => {
+    const nr = r + dr, nc = c + dc;
+    // 範囲外または同色はスキップ
+    if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) return;
+    if (grid[nr][nc] === grid[r][c]) return;
+
+    const btn = document.createElement('button');
+    btn.className = 'dir-arrow';
+    btn.textContent = icon;
+    btn.style.left = x + 'px';
+    btn.style.top = y + 'px';
+    btn.style.width = arrowSize + 'px';
+    btn.style.height = arrowSize + 'px';
+    btn.style.fontSize = Math.round(arrowSize * 0.42) + 'px';
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearSelection();
+      doSwap(r, c, nr, nc);
+    });
+    overlay.appendChild(btn);
+  });
+}
+
+// ══════════════════════════════════════
+//  タップ処理
+// ══════════════════════════════════════
+function handleTap(r, c) {
+  if (animating) return;
+  const color = grid[r][c];
+
+  // 同じセルをタップ → 選択解除
+  if (selectedCell && selectedCell.r === r && selectedCell.c === c) {
+    clearSelection();
+    return;
+  }
+
+  // 別のセルが選択中 → 隣接ならスワップ、そうでなければ再選択
+  if (selectedCell) {
+    const { r: sr, c: sc } = selectedCell;
+    const dr = Math.abs(r - sr), dc = Math.abs(c - sc);
+    if (dr + dc === 1 && grid[r][c] !== grid[sr][sc]) {
+      clearSelection();
+      doSwap(sr, sc, r, c);
+      return;
+    }
+    clearSelection();
+  }
+
+  // 空セルは選択不可
+  if (color === null) return;
+
+  // 選択 & 矢印表示
+  selectedCell = { r, c };
+  const el = getCell(r, c);
+  if (el) el.classList.add('selected');
+  showArrows(r, c);
+}
+
+function clearSelection() {
+  if (!selectedCell) return;
+  const { r, c } = selectedCell;
+  const el = getCell(r, c);
+  if (el) el.classList.remove('selected');
+  const overlay = document.getElementById('arrowsOverlay');
+  if (overlay) overlay.innerHTML = '';
+  selectedCell = null;
+}
+
+// ══════════════════════════════════════
+//  スワップ & チェーンシミュレーション
+// ══════════════════════════════════════
+function doSwap(r1, c1, r2, c2) {
+  animating = true;
+  moveCount++;
+  document.getElementById('moveCnt').textContent = moveCount;
+
+  [grid[r1][c1], grid[r2][c2]] = [grid[r2][c2], grid[r1][c1]];
+  updateCell(r1, c1);
+  updateCell(r2, c2);
+
+  setTimeout(() => runChain(0), 150);
+}
+
+function runChain(chainCount) {
+  const groups = findGroups();
+  if (groups.length === 0) {
+    if (chainCount > maxChain) {
+      maxChain = chainCount;
+      document.getElementById('maxChain').textContent = chainCount;
+    }
+    const isEmpty = grid.every(row => row.every(c => c === null));
+    if (!isEmpty) {
+      setTimeout(() => {
+        grid = originalGrid.map(r => [...r]);
+        selectedCell = null;
+        renderGrid();
+        showMissFlash();
+        animating = false;
+      }, chainCount > 0 ? 400 : 100);
+    } else {
+      animating = false;
+      checkWin();
+    }
+    return;
+  }
+
+  const toClear = new Set();
+  groups.forEach(g => g.forEach(([r, c]) => toClear.add(`${r},${c}`)));
+  toClear.forEach(key => {
+    const [r, c] = key.split(',').map(Number);
+    const el = getCell(r, c);
+    if (el) el.classList.add('clearing');
+  });
+
+  setTimeout(() => {
+    toClear.forEach(key => {
+      const [r, c] = key.split(',').map(Number);
+      grid[r][c] = null;
+      updateCell(r, c);
+    });
+
+    const newChain = chainCount + 1;
+    showChainBanner(newChain);
+
+    setTimeout(() => {
+      applyGravity();
+      renderGrid();
+      document.querySelectorAll('.cell:not(.empty)').forEach(el => el.classList.add('falling'));
+      setTimeout(() => runChain(newChain), 350);
+    }, 500);
+  }, 350);
+}
+
+// ══════════════════════════════════════
+//  グループ検索（4個以上連結）
+// ══════════════════════════════════════
+function findGroups() {
+  const visited = new Set();
+  const groups = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (grid[r][c] === null || visited.has(`${r},${c}`)) continue;
+      const color = grid[r][c];
+      const group = [];
+      const queue = [[r, c]];
+      while (queue.length) {
+        const [nr, nc] = queue.shift();
+        const key = `${nr},${nc}`;
+        if (visited.has(key)) continue;
+        if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) continue;
+        if (grid[nr][nc] !== color) continue;
+        visited.add(key);
+        group.push([nr, nc]);
+        queue.push([nr-1,nc],[nr+1,nc],[nr,nc-1],[nr,nc+1]);
+      }
+      if (group.length >= 4) groups.push(group);
+    }
+  }
+  return groups;
+}
+
+// ══════════════════════════════════════
+//  重力（下に落とす）
+// ══════════════════════════════════════
+function applyGravity() {
+  for (let c = 0; c < cols; c++) {
+    const vals = [];
+    for (let r = rows-1; r >= 0; r--) {
+      if (grid[r][c] !== null) vals.push(grid[r][c]);
+    }
+    for (let r = rows-1; r >= 0; r--) {
+      grid[r][c] = vals.length > 0 ? vals.shift() : null;
+    }
+  }
+}
+
+// ══════════════════════════════════════
+//  連鎖バナー
+// ══════════════════════════════════════
+let bannerTimer = null;
+function showChainBanner(n) {
+  const banner = document.getElementById('chainBanner');
+  document.getElementById('chainNum').textContent = n;
+  banner.classList.add('show');
+  if (bannerTimer) clearTimeout(bannerTimer);
+  bannerTimer = setTimeout(() => banner.classList.remove('show'), 700);
+}
+
+// ══════════════════════════════════════
+//  外れ手フラッシュ
+// ══════════════════════════════════════
+function showMissFlash() {
+  const el = document.getElementById('grid');
+  el.classList.add('fail-flash');
+  setTimeout(() => el.classList.remove('fail-flash'), 400);
+}
+
+// ══════════════════════════════════════
+//  勝利判定
+// ══════════════════════════════════════
+function checkWin() {
+  const isEmpty = grid.every(row => row.every(c => c === null));
+  if (isEmpty) {
+    setTimeout(() => {
+      document.getElementById('winChain').textContent = maxChain;
+      document.getElementById('winOverlay').classList.add('show');
+    }, 400);
+  }
+}
+
+// ══════════════════════════════════════
+//  ヒント
+// ══════════════════════════════════════
+function showHint() {
+  if (!currentSolution || animating) return;
+  const [r1, c1, r2, c2] = currentSolution;
+  const el1 = getCell(r1, c1), el2 = getCell(r2, c2);
+  clearSelection();
+  if (el1) { el1.classList.remove('hint-glow'); void el1.offsetWidth; el1.classList.add('hint-glow'); }
+  if (el2) { el2.classList.remove('hint-glow'); void el2.offsetWidth; el2.classList.add('hint-glow'); }
+  hintUsed++;
+  if (hintUsed >= 2) document.getElementById('hintBtn').disabled = true;
+}
+
+// ══════════════════════════════════════
+//  ナビ
+// ══════════════════════════════════════
+function selectDiff(d) {
+  diff = d;
+  stageIdx = 0;
+  document.querySelectorAll('.diff-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', ['easy','medium','hard'][i] === d);
+  });
+  init();
+}
+
+function nextStage() {
+  stageIdx = (stageIdx + 1) % STAGES[diff].length;
+  init();
+}
+
+function retryStage() { init(); }
+
+// ══════════════════════════════════════
+//  起動
+// ══════════════════════════════════════
+init();
+window.addEventListener('resize', () => renderGrid());
+</script>
+</body>
+</html>
