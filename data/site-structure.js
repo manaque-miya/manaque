@@ -20,6 +20,14 @@ const SITE_STRUCTURE = [
             tags: [{ text: 'なぞなぞ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
         ]
       },
+      {
+        id: 'body-kids', label: 'からだ',
+        emoji: '🧒',
+        units: [
+          { label: 'からだはどれ？（8もん）', quizId: 'kids-body', count: null, time: '約5分', difficulty: 1, gacha: false, isNew: true,
+            tags: [{ text: 'からだ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
+        ]
+      },
     ]
   },
 

@@ -1277,6 +1277,7 @@ function buildUnitCard(unit, subjLabel) {
   const isIgo      = unit.quizId === 'igo';
   const isShogi    = unit.quizId === 'shogi';
   const isTsume3   = unit.quizId === 'tsume3';
+  const isKidsBody = unit.quizId === 'kids-body';
 
   // ===== unit-quiz形式 =====
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
@@ -1334,6 +1335,21 @@ function buildUnitCard(unit, subjLabel) {
         <span class="unit-card__difficulty">${stars}</span>
       </div>
       <div class="count-btns"><a href="nanpure.html" class="count-btn count-btn--default">あそぶ</a></div>
+    </div>`;
+  }
+
+  // ===== こども・からだ =====
+  if (isKidsBody) {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>🧒 えをみてこたえよう</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="count-btns"><a href="kids-body.html" class="count-btn count-btn--default">はじめる</a></div>
     </div>`;
   }
 
