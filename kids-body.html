@@ -138,6 +138,31 @@ body {
   margin-top: 4px;
 }
 
+/* モード選択 */
+.mode-select {
+  background: #fff; border-radius: 20px;
+  padding: 28px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  text-align: center;
+}
+.mode-select h2 { font-size: 20px; font-weight: 900; color: #333; margin-bottom: 8px; }
+.mode-select p  { font-size: 13px; color: #aaa; margin-bottom: 24px; }
+.mode-btns { display: flex; flex-direction: column; gap: 12px; }
+.mode-btn {
+  padding: 18px; border: none; border-radius: 16px;
+  font-size: 20px; font-weight: 900; cursor: pointer;
+  font-family: inherit; transition: opacity .15s;
+}
+.mode-btn:hover { opacity: .85; }
+.mode-btn--3 { background: linear-gradient(135deg, #ff6b9d, #ff8fb1); color: #fff; }
+.mode-btn--5 { background: linear-gradient(135deg, #ffa726, #fb8c00); color: #fff; }
+
+.mode-again-btn {
+  width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 14px;
+  background: #fff; color: #888; font-size: 16px; font-weight: 700;
+  cursor: pointer; font-family: inherit; margin-bottom: 12px;
+}
+
 @media (max-width: 768px) {
   body { min-height: unset; padding-bottom: 40px; }
 }
@@ -153,31 +178,42 @@ body {
     <p>えをみて こたえよう！</p>
   </div>
 
-  <div class="score-bar">
-    <span class="q-num" id="qNum">1 / 5もん</span>
-    <span class="pts" id="pts">⭐ 0</span>
+  <!-- モード選択 -->
+  <div class="mode-select" id="modeSelect">
+    <h2>なんもんにする？</h2>
+    <p>すきなもんすうをえらんでね</p>
+    <div class="mode-btns">
+      <button class="mode-btn mode-btn--3" onclick="startQuiz(3)">🌱 ３もん</button>
+      <button class="mode-btn mode-btn--5" onclick="startQuiz(5)">🌟 ５もん</button>
+    </div>
   </div>
 
-  <!-- 問題エリア -->
-  <div id="quizArea">
-    <div class="question-box">
-      <div class="question-text" id="questionText">てはどれ？</div>
-      <div class="question-sub">ただしいえをえらんでね</div>
+  <!-- クイズエリア -->
+  <div id="quizWrap" style="display:none">
+    <div class="score-bar">
+      <span class="q-num" id="qNum">1 / 5もん</span>
+      <span class="pts" id="pts">⭐ 0</span>
     </div>
 
-    <div class="choices" id="choices"></div>
+    <div id="quizArea">
+      <div class="question-box">
+        <div class="question-text" id="questionText"></div>
+        <div class="question-sub">ただしいえをえらんでね</div>
+      </div>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">つぎへ →</button>
+    </div>
 
-    <div class="feedback" id="feedback"></div>
-    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">つぎへ →</button>
-  </div>
-
-  <!-- 結果エリア -->
-  <div class="result" id="result">
-    <div class="result-emoji" id="resultEmoji">🎉</div>
-    <div class="result-title" id="resultTitle">ぜんぶできた！</div>
-    <div class="result-score"><span id="resultScore">0</span><span> / 5もん</span></div>
-    <button class="retry-btn" onclick="startQuiz()">もういちど！</button>
-    <a class="home-btn" href="index.html">← もどる</a>
+    <!-- 結果エリア -->
+    <div class="result" id="result">
+      <div class="result-emoji" id="resultEmoji">🎉</div>
+      <div class="result-title" id="resultTitle">ぜんぶできた！</div>
+      <div class="result-score"><span id="resultScore">0</span><span id="resultTotal"> / 5もん</span></div>
+      <button class="retry-btn" id="retryBtn">もういちど！</button>
+      <button class="mode-again-btn" onclick="showModeSelect()">もんすうをかえる</button>
+      <a class="home-btn" href="index.html">← もどる</a>
+    </div>
   </div>
 
 </div>
@@ -194,7 +230,7 @@ const PARTS = [
   { id: 'face',  label: 'かお',  img: 'assets/img/body-parts/face.png'  },
 ];
 
-let questions = [], current = 0, score = 0, answered = false;
+let questions = [], current = 0, score = 0, answered = false, modeCount = 5;
 
 function shuffle(arr) {
   const a = [...arr];
@@ -205,11 +241,20 @@ function shuffle(arr) {
   return a;
 }
 
-function startQuiz() {
-  questions = shuffle(PARTS).slice(0, 5);
+function showModeSelect() {
+  document.getElementById('modeSelect').style.display = '';
+  document.getElementById('quizWrap').style.display = 'none';
+}
+
+function startQuiz(count) {
+  modeCount = count;
+  questions = shuffle(PARTS).slice(0, count);
   current = 0; score = 0; answered = false;
+  document.getElementById('modeSelect').style.display = 'none';
+  document.getElementById('quizWrap').style.display = '';
   document.getElementById('result').classList.remove('show');
   document.getElementById('quizArea').style.display = '';
+  document.getElementById('retryBtn').onclick = () => startQuiz(modeCount);
   showQuestion();
 }
 
@@ -276,14 +321,13 @@ function showResult() {
   const r = document.getElementById('result');
   r.classList.add('show');
   document.getElementById('resultScore').textContent = score;
+  document.getElementById('resultTotal').textContent = ` / ${questions.length}もん`;
   const pct = score / questions.length;
   document.getElementById('resultEmoji').textContent = pct === 1 ? '🎉' : pct >= 0.5 ? '😊' : '😢';
   document.getElementById('resultTitle').textContent =
     pct === 1 ? 'ぜんぶできた！すごい！' :
     pct >= 0.5 ? 'よくできました！' : 'もういちどやってみよう！';
 }
-
-startQuiz();
 </script>
 </body>
 </html>

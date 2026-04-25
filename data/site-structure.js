@@ -24,7 +24,7 @@ const SITE_STRUCTURE = [
         id: 'body-kids', label: 'からだ',
         emoji: '🧒',
         units: [
-          { label: 'からだはどれ？（5もん）', quizId: 'kids-body', count: null, time: '約3分', difficulty: 1, gacha: false, isNew: true,
+          { label: 'からだはどれ？（3/5もん）', quizId: 'kids-body', count: null, time: '約3分', difficulty: 1, gacha: false, isNew: true,
             tags: [{ text: 'からだ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
         ]
       },
