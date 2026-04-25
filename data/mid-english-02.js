@@ -24,7 +24,7 @@ const UNIT_QUIZ = {
       text: '「have」の過去形として正しいものは？',
       choices: [
         'haved',
-        'haved',
+        'having',
         'had',
         'has',
       ],
@@ -201,7 +201,7 @@ const UNIT_QUIZ = {
       choices: [
         'buyed',
         'bought',
-        'buyed',
+        'boughten',
         'buys',
       ],
       answer: 1,
