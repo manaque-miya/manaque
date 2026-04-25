@@ -188,9 +188,9 @@ html,body{height:100%;font-family:'M PLUS Rounded 1c',sans-serif;background:var(
 <body>
 
 <div class="header">
-  <a href="index.html" style="text-decoration:none;color:inherit;" class="logo">まな<span>クエ！</span>　ナンプレ</a>
+  <a href="../index.html" style="text-decoration:none;color:inherit;" class="logo">まな<span>クエ！</span>　ナンプレ</a>
   <div style="display:flex;gap:8px;align-items:center">
-    <a href="catalog.html" style="background:rgba(255,215,0,0.15);border:1.5px solid rgba(255,215,0,0.5);border-radius:20px;padding:7px 14px;font-size:13px;font-weight:800;color:#b8860b;text-decoration:none;">📖（<span id="catalogBtnCount">0</span>）</a>
+    <a href="../catalog.html" style="background:rgba(255,215,0,0.15);border:1.5px solid rgba(255,215,0,0.5);border-radius:20px;padding:7px 14px;font-size:13px;font-weight:800;color:#b8860b;text-decoration:none;">📖（<span id="catalogBtnCount">0</span>）</a>
     <button class="new-btn" onclick="newGame()">新しい問題</button>
   </div>
 </div>
@@ -259,7 +259,7 @@ html,body{height:100%;font-family:'M PLUS Rounded 1c',sans-serif;background:var(
 
 <div class="overlay" id="overlay">
   <div class="complete-card">
-    <img class="complete-chara" src="assets/img/characters/miru/base.png" alt="ミル">
+    <img class="complete-chara" src="../assets/img/characters/miru/base.png" alt="ミル">
     <div class="complete-icon">🎉</div>
     <div class="complete-title">完成！</div>
     <div class="complete-sub" id="c-diff"></div>
@@ -272,7 +272,7 @@ html,body{height:100%;font-family:'M PLUS Rounded 1c',sans-serif;background:var(
       <div style="font-size:13px;color:#5B6785;margin-bottom:8px;">🎰 ガチャ <strong id="c-gacha-pulls">1</strong>回分げっと！</div>
       <button class="complete-btn" style="background:linear-gradient(135deg,#7c3aed,#a855f7);margin-bottom:8px;" onclick="closeOverlay();startGachaFromResult()">🎰 ガチャを回す！</button>
     </div>
-    <a href="catalog.html" style="display:block;padding:12px;background:rgba(255,215,0,0.1);border:1.5px solid rgba(255,215,0,0.3);border-radius:12px;color:#b8860b;font-size:14px;font-weight:800;text-decoration:none;margin-bottom:12px;">📖 カード図鑑（<span id="catalogBtnCount2">0</span> / 20枚）</a>
+    <a href="../catalog.html" style="display:block;padding:12px;background:rgba(255,215,0,0.1);border:1.5px solid rgba(255,215,0,0.3);border-radius:12px;color:#b8860b;font-size:14px;font-weight:800;text-decoration:none;margin-bottom:12px;">📖 カード図鑑（<span id="catalogBtnCount2">0</span> / 20枚）</a>
     <button class="complete-btn" onclick="newGame();closeOverlay()">次の問題へ →</button>
   </div>
 </div>
@@ -610,7 +610,7 @@ initGacha();
     <button id="gachaCloseBtn" class="gacha-close-btn">✕ 閉じる</button>
   </div>
 </div>
-<script src="data/cards.js"></script>
-<script src="data/gacha.js"></script>
+<script src="../data/cards.js"></script>
+<script src="../data/gacha.js"></script>
 </body>
 </html>

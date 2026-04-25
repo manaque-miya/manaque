@@ -322,7 +322,7 @@ function initQuiz(meta, questions) {
 
   document.getElementById('app').innerHTML = `
     <div class="start-screen">
-      <img src="character/クエ丸/クエ丸.png" class="start-chara" alt="クエ丸">
+      <img src="assets/img/characters/que-maru/main.png" class="start-chara" alt="クエ丸">
       <div class="grade-tag">${meta.gradeTag}</div>
       <h1>${meta.title}</h1>
       <div class="start-meta">全 ${questions.length} 問収録</div>
@@ -361,7 +361,7 @@ function startQuiz(questions) {
     <div id="quizArea"></div>
     <div class="score-screen" id="scoreScreen">
       <div class="score-card">
-        <img src="character/クエ丸/クエ丸.png" class="chara-inline chara-inline--score" alt="クエ丸" id="scoreChara">
+        <img src="assets/img/characters/que-maru/main.png" class="chara-inline chara-inline--score" alt="クエ丸" id="scoreChara">
         <div class="score-emoji" id="scoreEmoji"></div>
         <div class="score-num" id="scoreNum"></div>
         <div class="score-denom">/ ${questions.length}問</div>
@@ -435,7 +435,7 @@ function showScore() {
   // スコアに応じてクエ丸の画像を切り替え
   const sc = document.getElementById('scoreChara');
   if (sc) {
-    sc.src = p >= 0.6 ? 'character/クエ丸/ガッツポーズ.png' : 'character/クエ丸/クエ丸.png';
+    sc.src = p >= 0.6 ? 'assets/img/characters/que-maru/guts.png' : 'assets/img/characters/que-maru/main.png';
     if (p >= 0.6) { sc.classList.add('chara-inline--bounce'); }
   }
   setTimeout(() => { document.getElementById('scoreBarFill').style.width = (p*100)+'%'; }, 100);
