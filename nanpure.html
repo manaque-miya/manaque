@@ -11,14 +11,7 @@
   </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>無料ナンプレ（数独）｜かんたん〜むずかしい｜まなクエ！</title>
-  <meta name="description" content="ブラウザで遊べる無料ナンプレ（数独）。かんたん・ふつう・むずかしいの難易度から選択。ポイントを貯めてガチャも引ける まなクエ！">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="まなクエ！">
-  <meta property="og:title" content="無料ナンプレ（数独）｜かんたん〜むずかしい｜まなクエ！">
-  <meta property="og:description" content="ブラウザで遊べる無料ナンプレ（数独）。かんたん・ふつう・むずかしいの難易度から選択。ポイントを貯めてガチャも引ける まなクエ！">
-  <meta property="og:image" content="https://manaque.net/assets/ogp.png">
-  <meta name="twitter:card" content="summary_large_image">
+<title>ナンプレ | まなクエ！</title>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -184,9 +177,6 @@ html,body{height:100%;font-family:'M PLUS Rounded 1c',sans-serif;background:var(
 .gacha-card{width:200px;border-radius:16px;overflow:hidden;animation:cardFlipIn 0.6s ease forwards;position:relative;}
 .gacha-card.sr{box-shadow:0 0 30px #ffd700,0 0 60px rgba(255,215,0,0.4);animation:cardFlipIn 0.6s ease forwards,srGlowPulse 2s ease-in-out 0.6s infinite;}
 .gacha-card.r{box-shadow:0 0 20px #a78bfa,0 0 40px rgba(167,139,250,0.35);}
-.gacha-pity-bar-wrap{width:200px;background:rgba(255,255,255,0.12);border-radius:10px;height:6px;margin-top:10px;}
-.gacha-pity-bar{height:100%;background:linear-gradient(90deg,#ffd700,#f59e0b);border-radius:10px;transition:width 0.4s;}
-.gacha-pity-text{font-size:10px;color:rgba(255,255,255,0.35);margin-top:4px;text-align:center;}
 .gacha-next-btn{padding:14px 40px;background:linear-gradient(135deg,#2E6DE5,#1A449E);border:none;border-radius:14px;color:#fff;font-size:16px;font-weight:900;cursor:pointer;margin-top:14px;box-shadow:0 4px 20px rgba(46,109,229,0.4);font-family:'M PLUS Rounded 1c',sans-serif;}
 .gacha-close-btn{padding:10px 28px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:12px;color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;cursor:pointer;margin-top:8px;font-family:'M PLUS Rounded 1c',sans-serif;}
 .gacha-trigger-btn{width:100%;padding:18px;background:linear-gradient(135deg,#7c3aed,#a855f7);border:none;border-radius:16px;color:#fff;font-size:18px;font-weight:900;cursor:pointer;margin-bottom:12px;box-shadow:0 4px 20px rgba(124,58,237,0.45);animation:gachaBtnPulse 1.6s ease-in-out infinite;font-family:'M PLUS Rounded 1c',sans-serif;}
@@ -586,9 +576,6 @@ function runGachaAnimation() {
           <div style="font-size:13px;font-weight:700;color:#ffd700;margin-top:4px">+${pts}pt ${isNew?'<span style="color:#34c38f">NEW!</span>':''}</div>
         </div>
       </div>`;
-    const pPct = Math.min(100, Math.round(gachaState.pityCount / gachaState.pityThreshold * 100));
-    document.getElementById('gachaPityBar').style.width = pPct + '%';
-    document.getElementById('gachaPityText').textContent = `天井まで あと${gachaState.pityThreshold - gachaState.pityCount}回`;
     const nextBtn = document.getElementById('gachaNextBtn');
     const closeBtn = document.getElementById('gachaCloseBtn');
     _pullIdx++;
@@ -619,8 +606,6 @@ initGacha();
   <div id="gachaCardPhase" style="display:none;flex-direction:column;align-items:center">
     <div id="gachaRarityAnnounce" class="gacha-rarity-announce"></div>
     <div id="gachaCardDisplay" style="position:relative"></div>
-    <div class="gacha-pity-bar-wrap"><div id="gachaPityBar" class="gacha-pity-bar" style="width:0%"></div></div>
-    <div id="gachaPityText" class="gacha-pity-text"></div>
     <button id="gachaNextBtn" class="gacha-next-btn">つぎへ →</button>
     <button id="gachaCloseBtn" class="gacha-close-btn">✕ 閉じる</button>
   </div>

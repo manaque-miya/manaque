@@ -177,11 +177,6 @@
     /* SR キラキラ */
     .sp-star { position: absolute; pointer-events: none; z-index: 5; animation: spTwinkle 1.8s ease-in-out infinite; }
 
-    /* ピティバー */
-    .gacha-pity-bar-wrap { width: 200px; background: rgba(255,255,255,0.12); border-radius: 10px; height: 6px; margin-top: 10px; }
-    .gacha-pity-bar { height: 100%; background: linear-gradient(90deg, #ffd700, #f59e0b); border-radius: 10px; transition: width 0.4s; }
-    .gacha-pity-text { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 4px; text-align: center; }
-
     /* ガチャ内ボタン */
     .gacha-next-btn { padding: 14px 40px; background: linear-gradient(135deg, #2E6DE5, #1A449E); border: none; border-radius: 14px; color: #fff; font-size: 16px; font-weight: 900; cursor: pointer; margin-top: 14px; box-shadow: 0 4px 20px rgba(46,109,229,0.4); font-family:"M PLUS Rounded 1c",sans-serif; }
     .gacha-next-btn:active { transform: scale(0.97); }
@@ -250,8 +245,6 @@
   <div id="gachaCardPhase" style="display:none;flex-direction:column;align-items:center">
     <div id="gachaRarityAnnounce" class="gacha-rarity-announce"></div>
     <div id="gachaCardDisplay" style="position:relative"></div>
-    <div class="gacha-pity-bar-wrap"><div id="gachaPityBar" class="gacha-pity-bar" style="width:0%"></div></div>
-    <div id="gachaPityText" class="gacha-pity-text"></div>
     <button id="gachaNextBtn" class="gacha-next-btn">つぎへ →</button>
     <button id="gachaCloseBtn" class="gacha-close-btn">✕ 閉じる</button>
   </div>
@@ -597,11 +590,6 @@ function runGachaAnimation(idx) {
           <span class="card-flavor ${card.rarity}">${card.flavor.replace(/\n/g,'<br>')}</span>
         </div>
       </div>`;
-
-    // ピティバー
-    const pPct = Math.min(100, Math.round(gachaState.pityCount / gachaState.pityThreshold * 100));
-    document.getElementById('gachaPityBar').style.width = pPct + '%';
-    document.getElementById('gachaPityText').textContent = `天井まで あと ${Math.max(0, gachaState.pityThreshold - gachaState.pityCount)} 回`;
 
     // ボタン設定
     const nb = document.getElementById('gachaNextBtn');
