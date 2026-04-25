@@ -15,6 +15,32 @@ const POINT_RANKS = [
   { min: 500,  label: 'ちゅうきゅう', emoji: '📚' },
   { min: 2000, label: 'じょうきゅう', emoji: '🎓' },
   { min: 5000, label: 'マスター',     emoji: '🏆' },
+
+  // ===== N（ノーマル）ガチャキャラ第1弾 =====
+  { id:'nc01', rarity:'n', name:'ポチョ',
+    img:'assets/img/characters/pocho/card_N.png',
+    flavor:'失敗した字も飲み込んで育つ\nインクだまり精霊' },
+  { id:'nc02', rarity:'n', name:'メモリィ',
+    img:'assets/img/characters/memorii/card_N.png',
+    flavor:'覚えたい言葉を体に貼って飛ぶ\n付せん妖精' },
+  { id:'nc03', rarity:'n', name:'コロン',
+    img:'assets/img/characters/koron/card_N.png',
+    flavor:'言葉の息継ぎを教えてくれる\n句読点スライム' },
+  { id:'nc04', rarity:'n', name:'パチル',
+    img:'assets/img/characters/pachiru/card_N.png',
+    flavor:'答えが出る直前にだけ現れる\nひらめき火花' },
+  { id:'nc05', rarity:'n', name:'トキン',
+    img:'assets/img/characters/tokin/card_N.png',
+    flavor:'遅刻しそうな時だけ本気で走る\n時計ねずみ' },
+  { id:'nc06', rarity:'n', name:'スヤン',
+    img:'assets/img/characters/suyan/card_N.png',
+    flavor:'寝不足の机で勝手に昼寝する\nまくら精' },
+  { id:'nc07', rarity:'n', name:'ピタゴ',
+    img:'assets/img/characters/pitago/card_N.png',
+    flavor:'崩れて学ぶ四角いやつ\n積み木生命体' },
+  { id:'nc08', rarity:'n', name:'ノオト',
+    img:'assets/img/characters/nooto/card_N.png',
+    flavor:'字が揃うと耳が伸びる\nノートうさぎ' },
 ];
 
 function getPointRank(pts) {
@@ -79,3 +105,14 @@ const CARD_DATA = [
   { id:'n05', rarity:'n', emoji:'🏺', name:'卑弥呼',
     flavor:'邪馬台国を治めた女王。\n魏に使いを送り「親魏倭王」の称号を得た。' },
 ];
+
+// ── カードアート描画ヘルパー（emoji / img 両対応）──
+function cardArt(card, opts) {
+  const {grayscale=false, revealed=true} = opts || {};
+  if (!revealed || !card) return '<span>❓</span>';
+  const gs = grayscale ? 'filter:grayscale(1);opacity:.4;' : '';
+  if (card.img) {
+    return `<img src="${card.img}" alt="${card.name}" style="width:100%;height:100%;object-fit:contain;${gs}">`;
+  }
+  return `<span style="${gs}">${card.emoji || '❓'}</span>`;
+}

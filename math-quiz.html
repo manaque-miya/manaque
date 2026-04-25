@@ -102,7 +102,7 @@
     .gacha-card-item.r{border-color:#60a5fa}
     .gacha-card-item.n{border-color:#444}
     @keyframes ssrPulse{0%,100%{box-shadow:0 0 16px rgba(255,215,0,.6),0 0 40px rgba(255,215,0,.3)}50%{box-shadow:0 0 24px rgba(255,215,0,.9),0 0 60px rgba(255,215,0,.5)}}
-    .gcitem-emoji{font-size:32px;padding:10px 0 4px}
+    .gcitem-emoji{font-size:32px;padding:10px 0 4px;overflow:hidden}
     .gcitem-rarity{font-size:10px;font-weight:900;letter-spacing:.06em;padding:2px 0}
     .gcitem-rarity.ssr{color:#ffd700}
     .gcitem-rarity.sr{color:#a78bfa}
@@ -370,7 +370,7 @@ function showGachaRewardOverlay(pulls, results, alreadyCleared) {
   const wrap = document.getElementById('gachaCardsWrap');
   wrap.innerHTML = results.map(r => `
     <div class="gacha-card-item ${r.card.rarity}">
-      <div class="gcitem-emoji">${r.card.emoji}</div>
+      <div class="gcitem-emoji">${cardArt(r.card)}</div>
       <div class="gcitem-rarity ${r.card.rarity}">${RARITY_CONFIG[r.card.rarity].label}</div>
       <div class="gcitem-name">${r.card.name}</div>
       ${r.isNew ? '<div class="gcitem-new">NEW!</div>' : ''}

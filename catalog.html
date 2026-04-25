@@ -379,7 +379,7 @@ function buildGrid(cards, gridId, counts, obtained) {
     if (cnt>0) return `
       <div class="card-mini ${c.rarity}" data-id="${c.id}" onclick="openModal('${c.id}')">
         ${cnt>1?`<div class="mini-count">×${cnt}</div>`:''}
-        <div class="mini-art ${c.rarity}"><span>${c.emoji}</span></div>
+        <div class="mini-art ${c.rarity}">${cardArt(c)}</div>
         <div class="mini-info ${c.rarity}">
           <span class="mini-rarity ${c.rarity}">${RARITY_CONFIG[c.rarity].label}</span>
           <span class="mini-name ${c.rarity}">${c.name}</span>
@@ -387,7 +387,7 @@ function buildGrid(cards, gridId, counts, obtained) {
       </div>`;
     if (was) return `
       <div class="card-mini sold" data-id="${c.id}" onclick="openModal('${c.id}')">
-        <div class="mini-art sold"><span style="filter:grayscale(1);opacity:.4">${c.emoji}</span></div>
+        <div class="mini-art sold">${cardArt(c,{grayscale:true})}</div>
         <div class="mini-info sold">
           <span class="mini-rarity sold">${RARITY_CONFIG[c.rarity].label}</span>
           <span class="mini-name sold">${c.name}</span>
@@ -434,7 +434,7 @@ function showGachaResult(results) {
 
   document.getElementById('gachaResultCards').innerHTML = results.map((r,i) => `
     <div class="gacha-result__card" style="animation-delay:${i*0.06}s">
-      <div class="gacha-result__art ${r.card.rarity}"><span>${r.card.emoji}</span></div>
+      <div class="gacha-result__art ${r.card.rarity}">${cardArt(r.card)}</div>
       <div class="gacha-result__info ${r.card.rarity}">
         <div class="gacha-result__rarity ${r.card.rarity}">${RARITY_CONFIG[r.card.rarity].label}</div>
         <div class="gacha-result__name ${r.card.rarity}">${r.card.name}</div>
@@ -461,7 +461,7 @@ function openModal(cardId) {
 
   const artEl = document.getElementById('modalArt');
   artEl.className = `modal-art-wrap ${(cnt>0||was)?card.rarity:'n'}`;
-  artEl.textContent = (cnt>0||was) ? card.emoji : '❓';
+  artEl.innerHTML = (cnt>0||was) ? cardArt(card,{grayscale:was&&cnt===0}) : '❓';
   artEl.style.filter = (was&&cnt===0) ? 'grayscale(1)' : '';
 
   document.getElementById('modalRarity').className = `modal-rarity-badge ${card.rarity}`;

@@ -542,7 +542,7 @@ function _gachaCardHTML(result) {
     `<div class="g-ring" style="top:${t}px"></div>`).join('');
   return `<div class="g-card-outer ${r}">${rings}<div class="g-card-paper">
     <div class="g-badge ${r}">${labels[r]||r.toUpperCase()}</div>
-    <div class="g-char-area"><div class="g-char-emoji">${c.emoji}</div></div>
+    <div class="g-char-area"><div class="g-char-emoji">${cardArt(c)}</div></div>
     <div class="g-name-area">
       <div class="g-char-name">${c.name}</div>
       ${result.isNew ? '<div class="g-char-new">NEW!</div>' : ''}

@@ -667,7 +667,7 @@ function runGachaAnimation(idx) {
     document.getElementById('gachaCardDisplay').innerHTML =
       '<div class="gacha-card ' + card.rarity + '" style="width:200px;border-radius:16px;overflow:hidden;position:relative">' +
         (isNew ? '<div class="card-new-badge">NEW!</div>' : '') +
-        '<div class="card-art ' + card.rarity + '"><span class="card-art-emoji">' + card.emoji + '</span></div>' +
+        '<div class="card-art ' + card.rarity + '">' + cardArt(card) + '</div>' +
         '<div class="card-info ' + card.rarity + '">' + sparkHTML +
           '<span class="card-rarity-badge badge-' + card.rarity + '">' + card.rarity.toUpperCase() + '</span>' +
           '<span class="card-name ' + card.rarity + '">' + card.name + '</span>' +
