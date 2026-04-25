@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>まなクエ ガチャ演出</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0f1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'M PLUS Rounded 1c', 'Hiragino Kaku Gothic ProN', sans-serif;
+    overflow: hidden;
+  }
+
+  /* ===== スタートボタン ===== */
+  #start-btn {
+    background: linear-gradient(135deg, #2563EB, #1e40af);
+    color: white;
+    border: 3px solid #F6C744;
+    border-radius: 50px;
+    padding: 20px 60px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(37,99,235,0.6), 0 0 60px rgba(246,199,68,0.2);
+    transition: transform 0.1s, box-shadow 0.2s;
+    letter-spacing: 2px;
+  }
+  #start-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(37,99,235,0.8), 0 0 80px rgba(246,199,68,0.4);
+  }
+  #start-btn:active { transform: scale(0.97); }
+
+  /* ===== オーバーレイ ===== */
+  #overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, #0d1a3a 0%, #050810 100%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  #overlay.active { display: flex; }
+
+  /* ===== 星フィールド ===== */
+  .star-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to   { opacity: 0.9; transform: scale(1.2); }
+  }
+
+  /* ===== ？マーク ===== */
+  #question-mark {
+    position: absolute;
+    font-size: 200px;
+    font-weight: 900;
+    color: #2563EB;
+    text-shadow:
+      0 0 20px #2563EB,
+      0 0 50px #2563EB,
+      0 0 100px #1d4ed8,
+      0 0 10px #F6C744;
+    opacity: 0;
+    transform: scale(0.3);
+    transition: none;
+    user-select: none;
+    z-index: 10;
+    line-height: 1;
+  }
+  #question-mark.appear {
+    animation: qAppear 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  }
+  @keyframes qAppear {
+    to { opacity: 1; transform: scale(1); }
+  }
+  #question-mark.pulse {
+    animation: qPulse 0.4s ease-in-out 3;
+  }
+  @keyframes qPulse {
+    0%   { transform: scale(1);    text-shadow: 0 0 20px #2563EB, 0 0 50px #2563EB, 0 0 100px #1d4ed8; }
+    50%  { transform: scale(1.15); text-shadow: 0 0 40px #F6C744, 0 0 80px #F6C744, 0 0 150px #2563EB; }
+    100% { transform: scale(1);    text-shadow: 0 0 20px #2563EB, 0 0 50px #2563EB, 0 0 100px #1d4ed8; }
+  }
+  #question-mark.explode {
+    animation: qExplode 0.3s ease-in forwards;
+  }
+  @keyframes qExplode {
+    0%   { opacity: 1; transform: scale(1); }
+    50%  { opacity: 1; transform: scale(1.4); filter: brightness(3); }
+    100% { opacity: 0; transform: scale(0); }
+  }
+
+  /* ===== フラッシュ ===== */
+  #flash {
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 50;
+  }
+  #flash.active {
+    animation: flashAnim 0.4s ease-out forwards;
+  }
+  @keyframes flashAnim {
+    0%   { opacity: 0.9; }
+    100% { opacity: 0; }
+  }
+
+  /* ===== パーティクル ===== */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 20;
+  }
+  .particle.star-shape {
+    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    border-radius: 0;
+  }
+
+  /* ===== カード ===== */
+  #card-wrap {
+    position: absolute;
+    width: 300px;
+    height: 430px;
+    perspective: 1000px;
+    opacity: 0;
+    z-index: 30;
+  }
+  #card-wrap.reveal {
+    animation: cardReveal 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  }
+  @keyframes cardReveal {
+    0%   { opacity:0; transform: translateY(60px) scale(0.7); }
+    100% { opacity:1; transform: translateY(0)   scale(1); }
+  }
+
+  #card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: cardFlip 0.7s ease-out forwards;
+    animation-play-state: paused;
+  }
+  #card-inner.flip {
+    animation-play-state: running;
+  }
+  @keyframes cardFlip {
+    0%   { transform: rotateY(180deg); }
+    100% { transform: rotateY(0deg); }
+  }
+
+  /* カード裏面 */
+  #card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #0d1a3a, #1a3a6e);
+    border-radius: 18px;
+    border: 3px solid #F6C744;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    box-shadow: 0 0 30px rgba(246,199,68,0.4);
+  }
+
+  /* カード表面（Nカード風） */
+  #card-front {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px rgba(37,99,235,0.3);
+  }
+
+  /* ノート風カードデザイン */
+  .card-outer {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #1a3a6e 0%, #0f2456 100%);
+    border-radius: 18px;
+    border: 3px solid #F6C744;
+    padding: 8px 8px 8px 22px;
+    position: relative;
+  }
+  /* スパイラルリング */
+  .ring {
+    position: absolute;
+    left: -4px;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #aaa, #eee, #aaa);
+    border-radius: 50%;
+    border: 2px solid #888;
+  }
+  .card-paper {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #fdf8ee, #f5edda);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* 罫線 */
+  .card-paper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 22px,
+      rgba(150,190,230,0.4) 22px,
+      rgba(150,190,230,0.4) 23px
+    );
+    top: 55px;
+  }
+  /* Nバッジ */
+  .n-badge {
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #1a3a8e, #0d2060);
+    border: 2px solid #F6C744;
+    border-radius: 0 0 14px 14px;
+    padding: 4px 18px 6px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #F6C744;
+    letter-spacing: 2px;
+    z-index: 2;
+    text-shadow: 0 0 8px rgba(246,199,68,0.5);
+  }
+  /* コーナー星 */
+  .corner-star {
+    position: absolute;
+    font-size: 14px;
+    color: #C8960C;
+  }
+  /* キャラエリア */
+  .char-area {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .char-area img {
+    max-width: 170px;
+    max-height: 180px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  }
+  .char-placeholder {
+    width: 140px;
+    height: 140px;
+    background: rgba(37,99,235,0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+  }
+  /* 名前エリア */
+  .name-area {
+    width: 85%;
+    margin: 8px auto 12px;
+    background: rgba(255,248,231,0.95);
+    border: 2px solid #C8960C;
+    border-radius: 20px;
+    padding: 6px 12px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .char-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a2855;
+    letter-spacing: 1px;
+  }
+  .char-label {
+    font-size: 10px;
+    color: #5a7ab0;
+    margin-top: 1px;
+  }
+
+  /* ===== レアリティ帯 ===== */
+  #rarity-banner {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, #1a3a6e, #F6C744, #1a3a6e, transparent);
+    color: white;
+    padding: 8px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.4s, bottom 0.4s;
+    text-shadow: 0 0 10px rgba(246,199,68,0.8);
+    z-index: 31;
+  }
+  #rarity-banner.show {
+    opacity: 1;
+    bottom: -50px;
+  }
+
+  /* ===== もう一度ボタン ===== */
+  #retry-btn {
+    position: absolute;
+    bottom: 30px;
+    background: rgba(37,99,235,0.2);
+    color: #F6C744;
+    border: 2px solid #F6C744;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: 40;
+    letter-spacing: 1px;
+  }
+  #retry-btn.show { opacity: 1; }
+  #retry-btn:hover { background: rgba(37,99,235,0.4); }
+</style>
+</head>
+<body>
+
+<button id="start-btn">✦ ガチャを引く ✦</button>
+
+<div id="overlay">
+  <div class="star-field" id="star-field"></div>
+  <div id="flash"></div>
+  <div id="question-mark">？</div>
+  <div id="particles"></div>
+
+  <div id="card-wrap">
+    <div id="card-inner">
+      <!-- 裏面 -->
+      <div id="card-back">？</div>
+      <!-- 表面 -->
+      <div id="card-front">
+        <div class="card-outer">
+          <!-- スパイラルリング -->
+          <div class="ring" style="top:30px"></div>
+          <div class="ring" style="top:72px"></div>
+          <div class="ring" style="top:114px"></div>
+          <div class="ring" style="top:156px"></div>
+          <div class="ring" style="top:198px"></div>
+          <div class="ring" style="top:240px"></div>
+          <div class="ring" style="top:282px"></div>
+          <div class="ring" style="top:324px"></div>
+          <div class="ring" style="top:366px"></div>
+
+          <div class="card-paper">
+            <div class="n-badge">N</div>
+            <span class="corner-star" style="top:16px;left:10px">★</span>
+            <span class="corner-star" style="top:16px;right:10px">✦</span>
+            <span class="corner-star" style="bottom:60px;left:10px">✦</span>
+            <span class="corner-star" style="bottom:60px;right:10px">★</span>
+
+            <div class="char-area">
+              <div class="char-placeholder">🖋</div>
+            </div>
+
+            <div class="name-area">
+              <div class="char-name">ポチョ</div>
+              <div class="char-label">インクだまり精霊</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="rarity-banner">✦ NORMAL ✦</div>
+  <button id="retry-btn" onclick="reset()">もう一度引く</button>
+</div>
+
+<script>
+// 星フィールド生成
+const sf = document.getElementById('star-field');
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 3 + 1;
+  s.style.cssText = `
+    width:${size}px; height:${size}px;
+    left:${Math.random()*100}%;
+    top:${Math.random()*100}%;
+    --d:${1+Math.random()*3}s;
+    animation-delay:${Math.random()*3}s;
+  `;
+  sf.appendChild(s);
+}
+
+// パーティクル爆発
+function spawnParticles() {
+  const container = document.getElementById('particles');
+  container.innerHTML = '';
+  const colors = ['#F6C744','#2563EB','#ffffff','#60a5fa','#fbbf24','#93c5fd'];
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 2;
+
+  for (let i = 0; i < 60; i++) {
+    const p = document.createElement('div');
+    const isStar = Math.random() > 0.5;
+    p.className = 'particle' + (isStar ? ' star-shape' : '');
+    const size = Math.random() * 16 + 6;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const angle = (Math.PI * 2 * i) / 60 + Math.random() * 0.3;
+    const dist = 150 + Math.random() * 300;
+    const tx = Math.cos(angle) * dist;
+    const ty = Math.sin(angle) * dist;
+    const duration = 600 + Math.random() * 600;
+    const delay = Math.random() * 100;
+
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${cx}px; top:${cy}px;
+      background:${color};
+      box-shadow: 0 0 ${size}px ${color};
+      transform: translate(-50%,-50%);
+    `;
+    container.appendChild(p);
+
+    p.animate([
+      { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+      { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0)`, opacity: 0 }
+    ], { duration, delay, easing: 'cubic-bezier(0,0,0.2,1)', fill: 'forwards' });
+  }
+}
+
+// メインアニメーション
+function startGacha() {
+  const overlay = document.getElementById('overlay');
+  const qm = document.getElementById('question-mark');
+  const flash = document.getElementById('flash');
+  const cardWrap = document.getElementById('card-wrap');
+  const cardInner = document.getElementById('card-inner');
+  const banner = document.getElementById('rarity-banner');
+  const retryBtn = document.getElementById('retry-btn');
+
+  overlay.classList.add('active');
+  document.getElementById('start-btn').style.display = 'none';
+
+  // Step1: ？出現
+  setTimeout(() => {
+    qm.classList.add('appear');
+  }, 400);
+
+  // Step2: ？脈動
+  setTimeout(() => {
+    qm.classList.remove('appear');
+    qm.style.opacity = '1';
+    qm.style.transform = 'scale(1)';
+    qm.classList.add('pulse');
+  }, 1100);
+
+  // Step3: 爆発
+  setTimeout(() => {
+    qm.classList.remove('pulse');
+    qm.classList.add('explode');
+    flash.classList.add('active');
+    spawnParticles();
+  }, 2350);
+
+  // Step4: カード登場
+  setTimeout(() => {
+    cardWrap.classList.add('reveal');
+    setTimeout(() => cardInner.classList.add('flip'), 100);
+  }, 2600);
+
+  // Step5: バナー
+  setTimeout(() => {
+    banner.classList.add('show');
+  }, 3400);
+
+  // Step6: もう一度ボタン
+  setTimeout(() => {
+    retryBtn.classList.add('show');
+  }, 3800);
+}
+
+function reset() {
+  const overlay = document.getElementById('overlay');
+  const qm = document.getElementById('question-mark');
+  const flash = document.getElementById('flash');
+  const cardWrap = document.getElementById('card-wrap');
+  const cardInner = document.getElementById('card-inner');
+  const banner = document.getElementById('rarity-banner');
+  const retryBtn = document.getElementById('retry-btn');
+
+  overlay.classList.remove('active');
+  qm.className = 'question-mark';
+  qm.style.opacity = '0';
+  qm.style.transform = 'scale(0.3)';
+  flash.classList.remove('active');
+  cardWrap.classList.remove('reveal');
+  cardWrap.style.opacity = '0';
+  cardInner.classList.remove('flip');
+  banner.classList.remove('show');
+  retryBtn.classList.remove('show');
+  document.getElementById('particles').innerHTML = '';
+  document.getElementById('start-btn').style.display = '';
+
+  // id再設定
+  qm.id = 'question-mark';
+}
+
+document.getElementById('start-btn').onclick = startGacha;
+</script>
+</body>
+</html>
