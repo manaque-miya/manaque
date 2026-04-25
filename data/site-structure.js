@@ -36,6 +36,14 @@ const SITE_STRUCTURE = [
             tags: [{ text: 'どうぶつ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
         ]
       },
+      {
+        id: 'vehicles-kids', label: 'のりもの',
+        emoji: '🚗',
+        units: [
+          { label: 'のりものはどれ？（3/5もん）', quizId: 'kids-vehicles', count: null, time: '約5分', difficulty: 1, gacha: false, isNew: true,
+            tags: [{ text: 'のりもの', cls: 'badge--sky' }, { text: 'こども', cls: 'badge--neutral' }] },
+        ]
+      },
     ]
   },
 

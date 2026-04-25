@@ -1277,8 +1277,9 @@ function buildUnitCard(unit, subjLabel) {
   const isIgo      = unit.quizId === 'igo';
   const isShogi    = unit.quizId === 'shogi';
   const isTsume3   = unit.quizId === 'tsume3';
-  const isKidsBody    = unit.quizId === 'kids-body';
-  const isKidsAnimals = unit.quizId === 'kids-animals';
+  const isKidsBody     = unit.quizId === 'kids-body';
+  const isKidsAnimals  = unit.quizId === 'kids-animals';
+  const isKidsVehicles = unit.quizId === 'kids-vehicles';
 
   // ===== unit-quiz形式 =====
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(unit.quizId) ||
@@ -1366,6 +1367,21 @@ function buildUnitCard(unit, subjLabel) {
         <span class="unit-card__difficulty">${stars}</span>
       </div>
       <div class="count-btns"><a href="kids-animals.html" class="count-btn count-btn--default">はじめる</a></div>
+    </div>`;
+  }
+
+  // ===== こども・のりもの =====
+  if (isKidsVehicles) {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>🚗 えをみてこたえよう</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="count-btns"><a href="kids-vehicles.html" class="count-btn count-btn--default">はじめる</a></div>
     </div>`;
   }
 

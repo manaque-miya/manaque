@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LDNLC7PWNM');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>のりものはどれ？ | まなクエ！</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'M PLUS Rounded 1c', 'Hiragino Kaku Gothic ProN', sans-serif;
+  background: linear-gradient(160deg, #e3f2fd 0%, #f0f9ff 100%);
+  min-height: 100vh;
+  padding: 16px 12px 60px;
+  color: #333;
+}
+.container { max-width: 480px; margin: 0 auto; }
+
+/* ヘッダー */
+.header { text-align: center; margin-bottom: 24px; }
+.header h1 { font-size: 26px; font-weight: 900; color: #1976d2; }
+.header p  { font-size: 13px; color: #aaa; margin-top: 4px; }
+
+/* モード選択 */
+.mode-select {
+  background: #fff; border-radius: 20px;
+  padding: 28px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  text-align: center;
+}
+.mode-select h2 { font-size: 20px; font-weight: 900; color: #333; margin-bottom: 8px; }
+.mode-select p  { font-size: 13px; color: #aaa; margin-bottom: 24px; }
+.mode-btns { display: flex; flex-direction: column; gap: 12px; }
+.mode-btn {
+  padding: 18px; border: none; border-radius: 16px;
+  font-size: 20px; font-weight: 900; cursor: pointer;
+  font-family: inherit; transition: opacity .15s;
+}
+.mode-btn:hover { opacity: .85; }
+.mode-btn--3 { background: linear-gradient(135deg, #42a5f5, #1976d2); color: #fff; }
+.mode-btn--5 { background: linear-gradient(135deg, #ffa726, #fb8c00); color: #fff; }
+
+/* スコアバー */
+.score-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 14px; padding: 10px 16px;
+  margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  font-size: 14px; font-weight: 700;
+}
+.score-bar .q-num { color: #aaa; }
+.score-bar .pts   { color: #1976d2; font-size: 18px; }
+
+/* 問題 */
+.question-box {
+  background: #fff; border-radius: 20px;
+  padding: 24px 20px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.question-text {
+  font-size: clamp(28px, 8vw, 40px);
+  font-weight: 900; color: #333; margin-bottom: 6px;
+}
+.question-sub { font-size: 14px; color: #aaa; }
+
+/* 選択肢グリッド */
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 20px;
+}
+.choice-btn {
+  background: #fff; border: 3px solid #e8e8e8;
+  border-radius: 16px; padding: 10px; cursor: pointer;
+  transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 1; overflow: hidden;
+}
+.choice-btn:hover { border-color: #1976d2; transform: scale(1.02); }
+.choice-btn img { width: 100%; height: 100%; object-fit: contain; }
+
+.choice-btn.correct {
+  border-color: #28c76f; background: #f0fff6;
+  animation: pop .3s ease-out;
+}
+.choice-btn.wrong {
+  border-color: #ff4a4a; background: #fff0f0;
+  animation: shake .3s;
+}
+@keyframes pop   { 0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)} }
+@keyframes shake { 0%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} 100%{transform:translateX(0)} }
+
+/* フィードバック */
+.feedback {
+  text-align: center; font-size: 22px; font-weight: 900;
+  min-height: 36px; margin-bottom: 16px; transition: opacity .2s;
+}
+.feedback.correct { color: #28c76f; }
+.feedback.wrong   { color: #ff4a4a; }
+
+/* 次へボタン */
+.next-btn {
+  display: none; width: 100%;
+  padding: 16px; border: none; border-radius: 14px;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: #fff; font-size: 18px; font-weight: 900;
+  cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 14px rgba(25,118,210,.35);
+  transition: opacity .15s;
+}
+.next-btn:hover { opacity: .9; }
+.next-btn.show  { display: block; }
+
+/* 結果画面 */
+.result {
+  display: none; text-align: center;
+  background: #fff; border-radius: 20px;
+  padding: 36px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+}
+.result.show { display: block; }
+.result-emoji { font-size: 64px; margin-bottom: 12px; }
+.result-title { font-size: 24px; font-weight: 900; margin-bottom: 8px; color: #1976d2; }
+.result-score { font-size: 48px; font-weight: 900; color: #333; margin-bottom: 20px; }
+.result-score span { font-size: 20px; color: #aaa; }
+.retry-btn {
+  width: 100%; padding: 16px; border: none; border-radius: 14px;
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: #fff; font-size: 18px; font-weight: 900;
+  cursor: pointer; font-family: inherit; margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(25,118,210,.35);
+}
+.mode-again-btn {
+  width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 14px;
+  background: #fff; color: #888; font-size: 16px; font-weight: 700;
+  cursor: pointer; font-family: inherit; margin-bottom: 12px;
+}
+.home-btn {
+  display: block; text-align: center; color: #aaa;
+  font-size: 14px; font-weight: 700; text-decoration: none; margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  body { min-height: unset; padding-bottom: 40px; }
+}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🚗 のりものはどれ？</h1>
+    <p>えをみて こたえよう！</p>
+  </div>
+
+  <!-- モード選択 -->
+  <div class="mode-select" id="modeSelect">
+    <h2>なんもんにする？</h2>
+    <p>すきなもんすうをえらんでね</p>
+    <div class="mode-btns">
+      <button class="mode-btn mode-btn--3" onclick="startQuiz(3)">🌱 ３もん</button>
+      <button class="mode-btn mode-btn--5" onclick="startQuiz(5)">🌟 ５もん</button>
+    </div>
+  </div>
+
+  <!-- クイズエリア -->
+  <div id="quizWrap" style="display:none">
+    <div class="score-bar">
+      <span class="q-num" id="qNum">1 / 5もん</span>
+      <span class="pts" id="pts">⭐ 0</span>
+      <button id="soundBtn" onclick="toggleSound()" style="background:none;border:none;font-size:20px;cursor:pointer;line-height:1;" title="音ON/OFF">🔊</button>
+    </div>
+
+    <div id="quizArea">
+      <div class="question-box">
+        <div class="question-text" id="questionText"></div>
+        <div class="question-sub">ただしいえをえらんでね</div>
+      </div>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback"></div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">つぎへ →</button>
+    </div>
+
+    <!-- 結果エリア -->
+    <div class="result" id="result">
+      <div class="result-emoji" id="resultEmoji">🎉</div>
+      <div class="result-title" id="resultTitle">ぜんぶできた！</div>
+      <div class="result-score"><span id="resultScore">0</span><span id="resultTotal"> / 5もん</span></div>
+      <button class="retry-btn" id="retryBtn">もういちど！</button>
+      <button class="mode-again-btn" onclick="showModeSelect()">もんすうをかえる</button>
+      <a class="home-btn" href="index.html">← もどる</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const VEHICLES = [
+  { id: 'car',        label: 'くるま',         img: 'assets/img/vehicles/car.png'        },
+  { id: 'bus',        label: 'バス',           img: 'assets/img/vehicles/bus.png'        },
+  { id: 'police',     label: 'パトカー',       img: 'assets/img/vehicles/police.png'     },
+  { id: 'firetruck',  label: 'しょうぼうしゃ', img: 'assets/img/vehicles/firetruck.png'  },
+  { id: 'ambulance',  label: 'きゅうきゅうしゃ', img: 'assets/img/vehicles/ambulance.png'},
+  { id: 'truck',      label: 'トラック',       img: 'assets/img/vehicles/truck.png'      },
+  { id: 'motorcycle', label: 'バイク',         img: 'assets/img/vehicles/motorcycle.png' },
+  { id: 'bicycle',    label: 'じてんしゃ',     img: 'assets/img/vehicles/bicycle.png'    },
+  { id: 'airplane',   label: 'ひこうき',       img: 'assets/img/vehicles/airplane.png'   },
+  { id: 'helicopter', label: 'ヘリコプター',   img: 'assets/img/vehicles/helicopter.png' },
+  { id: 'rocket',     label: 'ロケット',       img: 'assets/img/vehicles/rocket.png'     },
+  { id: 'ship',       label: 'ふね',           img: 'assets/img/vehicles/ship.png'       },
+  { id: 'submarine',  label: 'せんすいかん',   img: 'assets/img/vehicles/submarine.png'  },
+  { id: 'excavator',  label: 'ショベルカー',   img: 'assets/img/vehicles/excavator.png'  },
+  { id: 'bulldozer',  label: 'ブルドーザー',   img: 'assets/img/vehicles/bulldozer.png'  },
+  { id: 'dumptruck',  label: 'ダンプカー',     img: 'assets/img/vehicles/dumptruck.png'  },
+];
+
+let questions = [], current = 0, score = 0, answered = false, modeCount = 5;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function showModeSelect() {
+  document.getElementById('modeSelect').style.display = '';
+  document.getElementById('quizWrap').style.display = 'none';
+}
+
+function startQuiz(count) {
+  modeCount = count;
+  questions = shuffle(VEHICLES).slice(0, count);
+  current = 0; score = 0; answered = false;
+  document.getElementById('modeSelect').style.display = 'none';
+  document.getElementById('quizWrap').style.display = '';
+  document.getElementById('result').classList.remove('show');
+  document.getElementById('quizArea').style.display = '';
+  document.getElementById('retryBtn').onclick = () => startQuiz(modeCount);
+  showQuestion();
+}
+
+function showQuestion() {
+  answered = false;
+  const q = questions[current];
+  document.getElementById('qNum').textContent = `${current + 1} / ${questions.length}もん`;
+  document.getElementById('pts').textContent = `⭐ ${score}`;
+  document.getElementById('questionText').textContent = `「${q.label}」はどれ？`;
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('nextBtn').classList.remove('show');
+
+  const others = shuffle(VEHICLES.filter(v => v.id !== q.id)).slice(0, 3);
+  const choices = shuffle([q, ...others]);
+
+  const el = document.getElementById('choices');
+  el.innerHTML = choices.map(v => `
+    <button class="choice-btn" onclick="answer('${v.id}', '${q.id}', this)">
+      <img src="${v.img}" alt="${v.label}">
+    </button>
+  `).join('');
+}
+
+function answer(selected, correct, btn) {
+  if (answered) return;
+  answered = true;
+  const fb = document.getElementById('feedback');
+  const allBtns = document.querySelectorAll('.choice-btn');
+
+  if (selected === correct) {
+    btn.classList.add('correct'); SND.play('correct');
+    fb.textContent = '⭕ せいかい！';
+    fb.className = 'feedback correct';
+    score++;
+  } else {
+    btn.classList.add('wrong'); SND.play('wrong');
+    fb.textContent = '❌ ちがうよ！';
+    fb.className = 'feedback wrong';
+    allBtns.forEach(b => {
+      const img = b.querySelector('img');
+      if (img && img.src.includes(correct)) b.classList.add('correct');
+    });
+  }
+
+  allBtns.forEach(b => b.style.pointerEvents = 'none');
+  document.getElementById('pts').textContent = `⭐ ${score}`;
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function nextQuestion() {
+  current++;
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById('quizArea').style.display = 'none';
+  const r = document.getElementById('result');
+  r.classList.add('show');
+  document.getElementById('resultScore').textContent = score;
+  document.getElementById('resultTotal').textContent = ` / ${questions.length}もん`;
+  const pct = score / questions.length;
+  document.getElementById('resultEmoji').textContent = pct === 1 ? '🎉' : pct >= 0.5 ? '😊' : '😢';
+  document.getElementById('resultTitle').textContent =
+    pct === 1 ? 'ぜんぶできた！すごい！' :
+    pct >= 0.5 ? 'よくできました！' : 'もういちどやってみよう！';
+}
+
+// ── サウンド ──
+const SND = {
+  enabled: localStorage.getItem('sndEnabled') !== 'false',
+  correct: new Audio('assets/audio/correct.mp3'),
+  wrong:   new Audio('assets/audio/wrong.mp3'),
+  play(type) {
+    if (!this.enabled) return;
+    this[type].cloneNode().play().catch(()=>{});
+  }
+};
+function toggleSound() {
+  SND.enabled = !SND.enabled;
+  localStorage.setItem('sndEnabled', SND.enabled);
+  document.getElementById('soundBtn').textContent = SND.enabled ? '🔊' : '🔇';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const btn=document.getElementById('soundBtn');
+  if(btn) btn.textContent=SND.enabled?'🔊':'🔇';
+});
+</script>
+</body>
+</html>
