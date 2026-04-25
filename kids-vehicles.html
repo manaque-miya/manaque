@@ -14,6 +14,8 @@
 <title>のりものはどれ？ | まなクエ！</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script src="data/cards.js"></script>
+<script src="data/gacha.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -29,25 +31,6 @@ body {
 .header { text-align: center; margin-bottom: 24px; }
 .header h1 { font-size: 26px; font-weight: 900; color: #1976d2; }
 .header p  { font-size: 13px; color: #aaa; margin-top: 4px; }
-
-/* モード選択 */
-.mode-select {
-  background: #fff; border-radius: 20px;
-  padding: 28px 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,.08);
-  text-align: center;
-}
-.mode-select h2 { font-size: 20px; font-weight: 900; color: #333; margin-bottom: 8px; }
-.mode-select p  { font-size: 13px; color: #aaa; margin-bottom: 24px; }
-.mode-btns { display: flex; flex-direction: column; gap: 12px; }
-.mode-btn {
-  padding: 18px; border: none; border-radius: 16px;
-  font-size: 20px; font-weight: 900; cursor: pointer;
-  font-family: inherit; transition: opacity .15s;
-}
-.mode-btn:hover { opacity: .85; }
-.mode-btn--3 { background: linear-gradient(135deg, #42a5f5, #1976d2); color: #fff; }
-.mode-btn--5 { background: linear-gradient(135deg, #ffa726, #fb8c00); color: #fff; }
 
 /* スコアバー */
 .score-bar {
@@ -140,14 +123,34 @@ body {
   cursor: pointer; font-family: inherit; margin-bottom: 12px;
   box-shadow: 0 4px 14px rgba(25,118,210,.35);
 }
-.mode-again-btn {
-  width: 100%; padding: 14px; border: 2px solid #e0e0e0; border-radius: 14px;
-  background: #fff; color: #888; font-size: 16px; font-weight: 700;
-  cursor: pointer; font-family: inherit; margin-bottom: 12px;
-}
 .home-btn {
   display: block; text-align: center; color: #aaa;
   font-size: 14px; font-weight: 700; text-decoration: none; margin-top: 4px;
+}
+
+/* ガチャオーバーレイ */
+.gacha-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(30,0,60,.88); z-index: 100;
+  flex-direction: column; align-items: center; justify-content: center; padding: 24px;
+}
+.gacha-overlay.show { display: flex; }
+.gacha-card {
+  background: #fff; border-radius: 24px; padding: 32px 24px;
+  text-align: center; max-width: 320px; width: 100%;
+}
+.gacha-label { font-size: 14px; font-weight: 700; color: #9B7BE8; margin-bottom: 8px; }
+.gacha-art   { width: 100px; height: 100px; margin: 0 auto 12px; font-size: 60px;
+               display: flex; align-items: center; justify-content: center; }
+.gacha-art img { width: 100%; height: 100%; object-fit: contain; }
+.gacha-rarity { font-size: 13px; font-weight: 900; margin-bottom: 4px; }
+.gacha-name   { font-size: 22px; font-weight: 900; color: #333; margin-bottom: 8px; }
+.gacha-flavor { font-size: 12px; color: #aaa; margin-bottom: 20px; white-space: pre-line; }
+.gacha-close  {
+  width: 100%; padding: 14px; border: none; border-radius: 12px;
+  background: linear-gradient(135deg, #9B7BE8, #7C5CBF);
+  color: #fff; font-size: 16px; font-weight: 900;
+  cursor: pointer; font-family: inherit;
 }
 
 @media (max-width: 768px) {
@@ -165,18 +168,8 @@ body {
     <p>えをみて こたえよう！</p>
   </div>
 
-  <!-- モード選択 -->
-  <div class="mode-select" id="modeSelect">
-    <h2>なんもんにする？</h2>
-    <p>すきなもんすうをえらんでね</p>
-    <div class="mode-btns">
-      <button class="mode-btn mode-btn--3" onclick="startQuiz(3)">🌱 ３もん</button>
-      <button class="mode-btn mode-btn--5" onclick="startQuiz(5)">🌟 ５もん</button>
-    </div>
-  </div>
-
   <!-- クイズエリア -->
-  <div id="quizWrap" style="display:none">
+  <div id="quizWrap">
     <div class="score-bar">
       <span class="q-num" id="qNum">1 / 5もん</span>
       <span class="pts" id="pts">⭐ 0</span>
@@ -199,14 +192,27 @@ body {
       <div class="result-title" id="resultTitle">ぜんぶできた！</div>
       <div class="result-score"><span id="resultScore">0</span><span id="resultTotal"> / 5もん</span></div>
       <button class="retry-btn" id="retryBtn">もういちど！</button>
-      <button class="mode-again-btn" onclick="showModeSelect()">もんすうをかえる</button>
       <a class="home-btn" href="index.html">← もどる</a>
     </div>
   </div>
 
 </div>
 
+<!-- ガチャオーバーレイ -->
+<div class="gacha-overlay" id="gachaOverlay">
+  <div class="gacha-card">
+    <div class="gacha-label">🎰 ガチャ！ぜんもんせいかいで1かい！</div>
+    <div class="gacha-art" id="gachaCardArt"></div>
+    <div class="gacha-rarity" id="gachaCardRarity"></div>
+    <div class="gacha-name" id="gachaCardName"></div>
+    <div class="gacha-flavor" id="gachaCardFlavor"></div>
+    <button class="gacha-close" onclick="document.getElementById('gachaOverlay').classList.remove('show')">とじる</button>
+  </div>
+</div>
+
 <script>
+const QUIZ_ID = 'kids-vehicles';
+
 const VEHICLES = [
   { id: 'car',        label: 'くるま',         img: 'assets/img/vehicles/car.png'        },
   { id: 'bus',        label: 'バス',           img: 'assets/img/vehicles/bus.png'        },
@@ -237,17 +243,10 @@ function shuffle(arr) {
   return a;
 }
 
-function showModeSelect() {
-  document.getElementById('modeSelect').style.display = '';
-  document.getElementById('quizWrap').style.display = 'none';
-}
-
 function startQuiz(count) {
   modeCount = count;
   questions = shuffle(VEHICLES).slice(0, count);
   current = 0; score = 0; answered = false;
-  document.getElementById('modeSelect').style.display = 'none';
-  document.getElementById('quizWrap').style.display = '';
   document.getElementById('result').classList.remove('show');
   document.getElementById('quizArea').style.display = '';
   document.getElementById('retryBtn').onclick = () => startQuiz(modeCount);
@@ -321,6 +320,26 @@ function showResult() {
   document.getElementById('resultTitle').textContent =
     pct === 1 ? 'ぜんぶできた！すごい！' :
     pct >= 0.5 ? 'よくできました！' : 'もういちどやってみよう！';
+
+  // ガチャ連携（全問正解のみ1連）
+  if (typeof claimQuizGacha === 'function') {
+    const { pulls, results } = claimQuizGacha(QUIZ_ID, score, questions.length);
+    if (pulls > 0 && results && results.length > 0) {
+      setTimeout(() => showGachaCard(results[0]), 800);
+    }
+  }
+}
+
+function showGachaCard({ card, isNew, pts }) {
+  const artEl = document.getElementById('gachaCardArt');
+  artEl.innerHTML = (typeof cardArt === 'function') ? cardArt(card) : (card.emoji || '❓');
+  const rarityColors = { ssr: '#FFB800', sr: '#9B7BE8', r: '#2196F3', n: '#888' };
+  const rarityEl = document.getElementById('gachaCardRarity');
+  rarityEl.style.color = rarityColors[card.rarity] || '#888';
+  rarityEl.textContent = (card.rarity || '').toUpperCase() + (isNew ? ' ★NEW!' : '');
+  document.getElementById('gachaCardName').textContent = card.name;
+  document.getElementById('gachaCardFlavor').textContent = card.flavor || '';
+  document.getElementById('gachaOverlay').classList.add('show');
 }
 
 // ── サウンド ──
@@ -338,9 +357,14 @@ function toggleSound() {
   localStorage.setItem('sndEnabled', SND.enabled);
   document.getElementById('soundBtn').textContent = SND.enabled ? '🔊' : '🔇';
 }
-document.addEventListener('DOMContentLoaded',()=>{
-  const btn=document.getElementById('soundBtn');
-  if(btn) btn.textContent=SND.enabled?'🔊':'🔇';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('soundBtn');
+  if (btn) btn.textContent = SND.enabled ? '🔊' : '🔇';
+  // URLパラメータから問題数を取得して即スタート
+  const params = new URLSearchParams(location.search);
+  const count = parseInt(params.get('count')) || 5;
+  startQuiz(count);
 });
 </script>
 </body>

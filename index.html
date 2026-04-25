@@ -1344,14 +1344,17 @@ function buildUnitCard(unit, subjLabel) {
   if (isKidsBody) {
     return `
     <div class="unit-card">
-      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
       <div class="unit-card__title">${unit.label}</div>
       <div class="unit-card__meta">
         <span>🧒 えをみてこたえよう</span>
         <span>⏱ ${unit.time}</span>
         <span class="unit-card__difficulty">${stars}</span>
       </div>
-      <div class="count-btns"><a href="kids-body.html" class="count-btn count-btn--default">はじめる</a></div>
+      <div class="unit-card__counts">
+        <a href="kids-body.html?count=3" class="count-btn">３もん</a>
+        <a href="kids-body.html?count=5" class="count-btn count-btn--default">５もん</a>
+      </div>
     </div>`;
   }
 
@@ -1359,14 +1362,17 @@ function buildUnitCard(unit, subjLabel) {
   if (isKidsAnimals) {
     return `
     <div class="unit-card">
-      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
       <div class="unit-card__title">${unit.label}</div>
       <div class="unit-card__meta">
         <span>🐾 えをみてこたえよう</span>
         <span>⏱ ${unit.time}</span>
         <span class="unit-card__difficulty">${stars}</span>
       </div>
-      <div class="count-btns"><a href="kids-animals.html" class="count-btn count-btn--default">はじめる</a></div>
+      <div class="unit-card__counts">
+        <a href="kids-animals.html?count=3" class="count-btn">３もん</a>
+        <a href="kids-animals.html?count=5" class="count-btn count-btn--default">５もん</a>
+      </div>
     </div>`;
   }
 
@@ -1374,14 +1380,17 @@ function buildUnitCard(unit, subjLabel) {
   if (isKidsVehicles) {
     return `
     <div class="unit-card">
-      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
       <div class="unit-card__title">${unit.label}</div>
       <div class="unit-card__meta">
         <span>🚗 えをみてこたえよう</span>
         <span>⏱ ${unit.time}</span>
         <span class="unit-card__difficulty">${stars}</span>
       </div>
-      <div class="count-btns"><a href="kids-vehicles.html" class="count-btn count-btn--default">はじめる</a></div>
+      <div class="unit-card__counts">
+        <a href="kids-vehicles.html?count=3" class="count-btn">３もん</a>
+        <a href="kids-vehicles.html?count=5" class="count-btn count-btn--default">５もん</a>
+      </div>
     </div>`;
   }
 

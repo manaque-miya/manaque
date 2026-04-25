@@ -24,7 +24,7 @@ const SITE_STRUCTURE = [
         id: 'body-kids', label: 'からだ',
         emoji: '🧒',
         units: [
-          { label: 'からだはどれ？（3/5もん）', quizId: 'kids-body', count: null, time: '約3分', difficulty: 1, gacha: false, isNew: true,
+          { label: 'からだはどれ？（3/5もん）', quizId: 'kids-body', count: null, time: '約3分', difficulty: 1, gacha: true, isNew: true,
             tags: [{ text: 'からだ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
         ]
       },
@@ -32,7 +32,7 @@ const SITE_STRUCTURE = [
         id: 'animals-kids', label: 'どうぶつ',
         emoji: '🐾',
         units: [
-          { label: 'どうぶつはどれ？（3/5もん）', quizId: 'kids-animals', count: null, time: '約5分', difficulty: 1, gacha: false, isNew: true,
+          { label: 'どうぶつはどれ？（3/5もん）', quizId: 'kids-animals', count: null, time: '約5分', difficulty: 1, gacha: true, isNew: true,
             tags: [{ text: 'どうぶつ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
         ]
       },
@@ -40,7 +40,7 @@ const SITE_STRUCTURE = [
         id: 'vehicles-kids', label: 'のりもの',
         emoji: '🚗',
         units: [
-          { label: 'のりものはどれ？（3/5もん）', quizId: 'kids-vehicles', count: null, time: '約5分', difficulty: 1, gacha: false, isNew: true,
+          { label: 'のりものはどれ？（3/5もん）', quizId: 'kids-vehicles', count: null, time: '約5分', difficulty: 1, gacha: true, isNew: true,
             tags: [{ text: 'のりもの', cls: 'badge--sky' }, { text: 'こども', cls: 'badge--neutral' }] },
         ]
       },
