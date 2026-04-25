@@ -354,7 +354,7 @@ function startQuiz(questions) {
     <div class="progress-wrap">
       <div class="progress-label">
         <span id="progressText">問題 1 / ${questions.length}</span>
-        <span id="scoreText">正解 0問</span>
+        <span id="scoreText">正解 0問</span> <button id="soundBtn" onclick="toggleSound()" style="background:none;border:none;font-size:20px;cursor:pointer;line-height:1;" title="音ON/OFF">🔊</button>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
     </div>
@@ -404,6 +404,7 @@ function selectAnswer(sel) {
     else if (i === sel && !ok) b.classList.add('wrong');
   });
   const fb = document.getElementById('feedback');
+  SND.play(ok ? 'correct' : 'wrong');
   fb.className = `feedback show ${ok ? 'correct-fb' : 'wrong-fb'}`;
   document.getElementById('feedbackLabel').textContent = ok ? '✅ 正解！' : `❌ 不正解。正解は「${q.choices[q.answer]}」`;
   document.getElementById('feedbackText').textContent = q.exp;
@@ -671,6 +672,26 @@ function showGachaRewardOverlay(pulls, results, alreadyCleared) {
 
   setTimeout(() => _gachaShowCard(0, true), 300);
 }
+
+// ── サウンド ──
+const SND = {
+  enabled: localStorage.getItem('sndEnabled') !== 'false',
+  correct: new Audio('assets/audio/correct.mp3'),
+  wrong:   new Audio('assets/audio/wrong.mp3'),
+  play(type) {
+    if (!this.enabled) return;
+    this[type].cloneNode().play().catch(()=>{});
+  }
+};
+function toggleSound() {
+  SND.enabled = !SND.enabled;
+  localStorage.setItem('sndEnabled', SND.enabled);
+  document.getElementById('soundBtn').textContent = SND.enabled ? '🔊' : '🔇';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const btn=document.getElementById('soundBtn');
+  if(btn) btn.textContent=SND.enabled?'🔊':'🔇';
+});
 </script>
 
 <!-- ガチャ報酬オーバーレイ -->

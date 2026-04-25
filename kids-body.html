@@ -193,6 +193,7 @@ body {
     <div class="score-bar">
       <span class="q-num" id="qNum">1 / 5もん</span>
       <span class="pts" id="pts">⭐ 0</span>
+      <button id="soundBtn" onclick="toggleSound()" style="background:none;border:none;font-size:20px;cursor:pointer;line-height:1;" title="音ON/OFF">🔊</button>
     </div>
 
     <div id="quizArea">
@@ -287,12 +288,12 @@ function answer(selected, correct, btn) {
   const allBtns = document.querySelectorAll('.choice-btn');
 
   if (selected === correct) {
-    btn.classList.add('correct');
+    btn.classList.add('correct'); SND.play('correct');
     fb.textContent = '⭕ せいかい！';
     fb.className = 'feedback correct';
     score++;
   } else {
-    btn.classList.add('wrong');
+    btn.classList.add('wrong'); SND.play('wrong');
     fb.textContent = '❌ ちがうよ！';
     fb.className = 'feedback wrong';
     // 正解を光らせる
@@ -328,6 +329,26 @@ function showResult() {
     pct === 1 ? 'ぜんぶできた！すごい！' :
     pct >= 0.5 ? 'よくできました！' : 'もういちどやってみよう！';
 }
+
+// ── サウンド ──
+const SND = {
+  enabled: localStorage.getItem('sndEnabled') !== 'false',
+  correct: new Audio('assets/audio/correct.mp3'),
+  wrong:   new Audio('assets/audio/wrong.mp3'),
+  play(type) {
+    if (!this.enabled) return;
+    this[type].cloneNode().play().catch(()=>{});
+  }
+};
+function toggleSound() {
+  SND.enabled = !SND.enabled;
+  localStorage.setItem('sndEnabled', SND.enabled);
+  document.getElementById('soundBtn').textContent = SND.enabled ? '🔊' : '🔇';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const btn=document.getElementById('soundBtn');
+  if(btn) btn.textContent=SND.enabled?'🔊':'🔇';
+});
 </script>
 </body>
 </html>

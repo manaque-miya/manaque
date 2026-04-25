@@ -440,6 +440,7 @@
         <div class="quiz-counter" id="quiz-counter">1 / 47</div>
         <div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:2%"></div></div>
         <div class="score-badge" id="score-badge">⭐ 0</div>
+        <button id="soundBtn" onclick="toggleSound()" style="background:none;border:none;font-size:20px;cursor:pointer;line-height:1;" title="音ON/OFF">🔊</button>
       </div>
     </div>
     <div class="question-card">
@@ -556,8 +557,8 @@ function selectAnswer(i,ans,choices,key,exp){
   const btns=document.querySelectorAll('.choice-btn');
   btns.forEach(b=>b.disabled=true);
   const fb=document.getElementById('feedback');
-  if(i===ans){score++;btns[i].classList.add('correct');fb.className='feedback correct';fb.innerHTML=`✅ 正解！ ${exp}`;setHighlight(key,'is-correct');}
-  else{btns[i].classList.add('wrong');btns[ans].classList.add('correct');fb.className='feedback wrong';fb.innerHTML=`❌ 不正解… 正解は「${choices[ans]}」。${exp}`;setHighlight(key,'is-wrong');}
+  if(i===ans){score++;btns[i].classList.add('correct');SND.play('correct');fb.className='feedback correct';fb.innerHTML=`✅ 正解！ ${exp}`;setHighlight(key,'is-correct');}
+  else{btns[i].classList.add('wrong');btns[ans].classList.add('correct');SND.play('wrong');fb.className='feedback wrong';fb.innerHTML=`❌ 不正解… 正解は「${choices[ans]}」。${exp}`;setHighlight(key,'is-wrong');}
   document.getElementById('score-badge').textContent=`⭐ ${score}`;
   const nw=document.getElementById('next-wrap');nw.style.display='block';
   if(idx===questions.length-1)nw.querySelector('.mq-btn').textContent='結果を見る 🏁';
@@ -685,6 +686,26 @@ function runGachaAnimation(idx) {
   }, 1900);
 }
 
+
+// ── サウンド ──
+const SND = {
+  enabled: localStorage.getItem('sndEnabled') !== 'false',
+  correct: new Audio('assets/audio/correct.mp3'),
+  wrong:   new Audio('assets/audio/wrong.mp3'),
+  play(type) {
+    if (!this.enabled) return;
+    this[type].cloneNode().play().catch(()=>{});
+  }
+};
+function toggleSound() {
+  SND.enabled = !SND.enabled;
+  localStorage.setItem('sndEnabled', SND.enabled);
+  document.getElementById('soundBtn').textContent = SND.enabled ? '🔊' : '🔇';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const btn=document.getElementById('soundBtn');
+  if(btn) btn.textContent=SND.enabled?'🔊':'🔇';
+});
 </script>
 </body>
 </html>

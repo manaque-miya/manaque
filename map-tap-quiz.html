@@ -523,6 +523,7 @@ body{font-family:'M PLUS Rounded 1c',sans-serif;background:var(--bg);color:var(-
     <!-- question -->
     <div class="q-card">
       <div class="q-num" id="q-num">第1問</div>
+      <button id="soundBtn" onclick="toggleSound()" style="background:none;border:none;font-size:20px;cursor:pointer;line-height:1;" title="音ON/OFF">🔊</button>
       <div class="q-text" id="q-text"></div>
       <div class="q-sub" id="q-sub">← 地図からタップして選んでね</div>
     </div>
@@ -695,11 +696,11 @@ function handleClick(key){
   const fb = document.getElementById('feedback');
   const clickedName = PREFS.find(p=>p.key===key)?.name||'その場所';
   if(correct){
-    fb.className='feedback correct';
+    SND.play('correct');fb.className='feedback correct';
     document.getElementById('fb-title').textContent='✅ 正解！';
     document.getElementById('fb-exp').textContent=q.name+'を正しく見つけました！';
   } else {
-    fb.className='feedback wrong';
+    SND.play('wrong');fb.className='feedback wrong';
     document.getElementById('fb-title').textContent='❌ 不正解…';
     document.getElementById('fb-exp').textContent=
       'タップしたのは「'+clickedName+'」です。緑色が「'+q.name+'」の正しい場所です。';
@@ -858,6 +859,26 @@ function runGachaAnimation(idx) {
   }, 1900);
 }
 
+
+// ── サウンド ──
+const SND = {
+  enabled: localStorage.getItem('sndEnabled') !== 'false',
+  correct: new Audio('assets/audio/correct.mp3'),
+  wrong:   new Audio('assets/audio/wrong.mp3'),
+  play(type) {
+    if (!this.enabled) return;
+    this[type].cloneNode().play().catch(()=>{});
+  }
+};
+function toggleSound() {
+  SND.enabled = !SND.enabled;
+  localStorage.setItem('sndEnabled', SND.enabled);
+  document.getElementById('soundBtn').textContent = SND.enabled ? '🔊' : '🔇';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const btn=document.getElementById('soundBtn');
+  if(btn) btn.textContent=SND.enabled?'🔊':'🔇';
+});
 </script>
 </body>
 </html>
