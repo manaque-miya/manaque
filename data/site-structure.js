@@ -32,7 +32,7 @@ const SITE_STRUCTURE = [
         id: 'animals-kids', label: 'どうぶつ',
         emoji: '🐾',
         units: [
-          { label: 'どうぶつはどれ？（3/5/10もん）', quizId: 'kids-animals', count: null, time: '約5分', difficulty: 1, gacha: false, isNew: true,
+          { label: 'どうぶつはどれ？（3/5もん）', quizId: 'kids-animals', count: null, time: '約5分', difficulty: 1, gacha: false, isNew: true,
             tags: [{ text: 'どうぶつ', cls: 'badge--orange' }, { text: 'こども', cls: 'badge--neutral' }] },
         ]
       },
