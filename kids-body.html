@@ -177,7 +177,10 @@ const PARTS = [
   { id: 'hand',  label: 'て',    img: 'assets/img/body-parts/hand.png'  },
   { id: 'foot',  label: 'あし',  img: 'assets/img/body-parts/foot.png'  },
   { id: 'eye',   label: 'め',    img: 'assets/img/body-parts/eye.png'   },
+  { id: 'ear',   label: 'みみ',  img: 'assets/img/body-parts/ear.png'   },
   { id: 'nose',  label: 'はな',  img: 'assets/img/body-parts/nose.png'  },
+  { id: 'mouth', label: 'くち',  img: 'assets/img/body-parts/mouth.png' },
+  { id: 'belly', label: 'おなか',img: 'assets/img/body-parts/belly.png' },
   { id: 'face',  label: 'かお',  img: 'assets/img/body-parts/face.png'  },
 ];
 
@@ -193,7 +196,7 @@ function shuffle(arr) {
 }
 
 function startQuiz() {
-  questions = shuffle(PARTS);
+  questions = shuffle(PARTS).slice(0, 5);
   current = 0; score = 0; answered = false;
   document.getElementById('result').classList.remove('show');
   document.getElementById('quizArea').style.display = '';
