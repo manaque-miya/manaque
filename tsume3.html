@@ -366,92 +366,194 @@ const G = (n,p) => ({name:n,side:'gote',promoted:!!p});
 
 const PROBLEMS = [
   {
-    id:1, title:'問題1：飛車の横走り王手',
-    desc:'飛車を横に走らせて王手。後手がどこに逃げても金で詰める。',
-    hint:'飛を右端(1,4)に走らせてみよう。',
+    id:1, title:'問題1：角打ちで詰め',
+    desc:'盤上の金・飛と持ち駒の角を使って詰めよう。',
+    hint:'持ち駒の「角」を(2,2)に打つと王手になる',
     board:[
-      [N,  N,  N,  N,  G('王')],
-      [S('飛'),N, N,  N,  N],
-      [N,  N,  N,  S('金'),N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
+      [N, N, N, N, G('王')],
+      [S('飛'), N, N, N, N],
+      [N, N, N, N, N],
+      [N, S('金'), N, N, N],
+      [N, N, N, N, N]
     ],
-    sHand:[], gHand:[],
+    sHand:[{name:'角',side:'sente',promoted:false}], gHand:[],
     solution:[
-      {fr:1,fc:0,tr:1,tc:4,promote:false},  // 1手目
-      {fr:0,fc:4,tr:0,tc:3,promote:false},  // 後手応手
-      {fr:2,fc:3,tr:1,tc:3,promote:false},  // 3手目
+      {drop:'角',tr:2,tc:2},
+      {fr:0,fc:4,tr:0,tc:3,promote:false},
+      {fr:1,fc:0,tr:1,tc:3,promote:true},
     ],
-    goteResponses:[[0,4,0,3]], // [fr,fc,tr,tc]
+    goteResponses:[[0,4,0,3]],
   },
   {
-    id:2, title:'問題2：捨て駒の金',
-    desc:'1手目で金を捨てる——後手に取らせて、持ち駒の金で詰める「捨て駒」の手筋。',
-    hint:'金(1,2)を(0,3)に進めて王手。取らせた後、持ち駒の金を打とう。',
+    id:2, title:'問題2：金打ちで詰め',
+    desc:'盤上の金・飛と持ち駒の金・金を使って詰めよう。',
+    hint:'持ち駒の「金」を(0,3)に打つと王手になる',
     board:[
-      [N,  N,  N,  N,  G('王')],
-      [S('飛'),N, S('金'),N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
+      [N, N, S('金'), N, G('王')],
+      [N, N, N, N, N],
+      [S('飛'), N, N, N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, N]
+    ],
+    sHand:[{name:'金',side:'sente',promoted:false},{name:'金',side:'sente',promoted:false}], gHand:[],
+    solution:[
+      {drop:'金',tr:0,tc:3},
+      {fr:0,fc:4,tr:1,tc:4,promote:false},
+      {drop:'金',tr:0,tc:4},
+    ],
+    goteResponses:[[0,4,1,4]],
+  },
+  {
+    id:3, title:'問題3：飛車の横走り',
+    desc:'盤上の金・飛と持ち駒の金を使って詰めよう。',
+    hint:'(2,0)の駒を(2,4)へ動かすと王手',
+    board:[
+      [N, N, N, N, G('王')],
+      [N, S('金'), N, N, N],
+      [S('飛'), N, N, N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, N]
     ],
     sHand:[{name:'金',side:'sente',promoted:false}], gHand:[],
     solution:[
-      {fr:1,fc:2,tr:0,tc:3,promote:false},
-      {fr:0,fc:4,tr:0,tc:3,promote:false},  // 王が金を取る
-      {drop:'金',tr:1,tc:3},
-    ],
-    goteResponses:[[0,4,0,3]],
-  },
-  {
-    id:3, title:'問題3：角行の斜め王手',
-    desc:'角を(2,2)に動かすと斜め利きが王将に届く。その後金で追い詰める。',
-    hint:'角(0,0)→(2,2)で対角線上に王手。',
-    board:[
-      [S('角'),N,  N,  N,  G('王')],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  S('金'),N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-    ],
-    sHand:[], gHand:[],
-    solution:[
-      {fr:0,fc:0,tr:2,fc:2,tc:2,promote:false},
+      {fr:2,fc:0,tr:2,tc:4,promote:false},
       {fr:0,fc:4,tr:0,tc:3,promote:false},
-      {fr:2,fc:3,tr:1,tc:3,promote:false},
+      {drop:'金',tr:1,tc:2},
+    ],
+    goteResponses:[[0,4,0,3], [0,4,1,3]],
+    goteResponseMoves3:{
+    '0,4,0,3':{drop:'金',tr:1,tc:2},
+    '0,4,1,3':{drop:'金',tr:1,tc:4}
+    },
+  },
+  {
+    id:4, title:'問題4：銀打ちで詰め',
+    desc:'盤上の金・飛と持ち駒の銀を使って詰めよう。',
+    hint:'持ち駒の「銀」を(1,3)に打つと王手になる',
+    board:[
+      [N, N, N, N, G('王')],
+      [N, N, N, N, N],
+      [S('飛'), N, S('金'), N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, N]
+    ],
+    sHand:[{name:'銀',side:'sente',promoted:false}], gHand:[],
+    solution:[
+      {drop:'銀',tr:1,tc:3},
+      {fr:0,fc:4,tr:1,tc:4,promote:false},
+      {fr:2,fc:2,tr:2,tc:3,promote:false},
+    ],
+    goteResponses:[[0,4,1,4]],
+  },
+  {
+    id:5, title:'問題5：飛車を龍に',
+    desc:'盤上の金・飛と持ち駒の金を使って詰めよう。',
+    hint:'(2,2)の駒を(0,2)へ動かすと王手',
+    board:[
+      [N, N, N, N, G('王')],
+      [N, N, N, N, N],
+      [N, N, S('飛'), N, N],
+      [N, N, S('金'), N, N],
+      [N, N, N, N, N]
+    ],
+    sHand:[{name:'金',side:'sente',promoted:false}], gHand:[],
+    solution:[
+      {fr:2,fc:2,tr:0,tc:2,promote:true},
+      {fr:0,fc:4,tr:1,tc:4,promote:false},
+      {drop:'金',tr:2,tc:3},
+    ],
+    goteResponses:[[0,4,1,4]],
+  },
+  {
+    id:6, title:'問題6：飛打ちで詰め',
+    desc:'盤上の金・飛と持ち駒の飛を使って詰めよう。',
+    hint:'持ち駒の「飛」を(0,3)に打つと王手になる',
+    board:[
+      [N, N, S('金'), N, G('王')],
+      [N, N, N, N, N],
+      [N, N, N, N, N],
+      [S('飛'), N, N, N, N],
+      [N, N, N, N, N]
+    ],
+    sHand:[{name:'飛',side:'sente',promoted:false}], gHand:[],
+    solution:[
+      {drop:'飛',tr:0,tc:3},
+      {fr:0,fc:4,tr:1,tc:4,promote:false},
+      {fr:3,fc:0,tr:3,tc:4,promote:false},
+    ],
+    goteResponses:[[0,4,1,4]],
+  },
+  {
+    id:7, title:'問題7：金の前進王手',
+    desc:'盤上の金・飛と持ち駒の金を使って詰めよう。',
+    hint:'(3,4)の駒を(2,3)へ動かすと王手',
+    board:[
+      [N, N, N, N, G('王')],
+      [N, N, N, N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, S('金')],
+      [N, N, N, N, S('飛')]
+    ],
+    sHand:[{name:'金',side:'sente',promoted:false}], gHand:[],
+    solution:[
+      {fr:3,fc:4,tr:2,tc:3,promote:false},
+      {fr:0,fc:4,tr:0,tc:3,promote:false},
+      {drop:'金',tr:1,tc:2},
     ],
     goteResponses:[[0,4,0,3]],
   },
   {
-    id:4, title:'問題4：左右どちらに逃げても詰む',
-    desc:'飛車で縦王手。後手は左(0,2)か右(0,4)に逃げるが、どちらでも金が追いかける。',
-    hint:'飛(1,0)→(1,3)で縦に王手。左右両方の応手を読んでみよう。',
+    id:8, title:'問題8：角を馬に',
+    desc:'盤上の角・金と持ち駒の飛を使って詰めよう。',
+    hint:'(0,0)の駒を(2,2)へ動かすと王手',
     board:[
-      [N,  N,  N,  G('王'),N],
-      [S('飛'),N,  N,  N,  N],
-      [N,  N,  N,  S('金'),N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
+      [S('角'), S('金'), N, N, G('王')],
+      [N, N, N, N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, N]
+    ],
+    sHand:[{name:'飛',side:'sente',promoted:false}], gHand:[],
+    solution:[
+      {fr:0,fc:0,tr:2,tc:2,promote:true},
+      {fr:0,fc:4,tr:1,tc:4,promote:false},
+      {drop:'飛',tr:0,tc:4},
+    ],
+    goteResponses:[[0,4,1,4], [0,4,0,3]],
+    goteResponseMoves3:{
+    '0,4,1,4':{drop:'飛',tr:0,tc:4},
+    '0,4,0,3':{drop:'飛',tr:0,tc:4}
+    },
+  },
+  {
+    id:9, title:'問題9：角の斜め王手',
+    desc:'盤上の角・金を使って詰めよう。',
+    hint:'(2,0)の駒を(3,1)へ動かすと王手',
+    board:[
+      [N, N, N, N, G('王')],
+      [N, N, S('金'), N, N],
+      [S('角'), N, N, N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, N]
     ],
     sHand:[], gHand:[],
     solution:[
-      {fr:1,fc:0,tr:1,tc:3,promote:false},
-      {fr:0,fc:3,tr:0,tc:2,promote:false},  // 後手応手1（左逃げ）
-      {fr:2,fc:3,tr:1,tc:2,promote:false},
+      {fr:2,fc:0,tr:3,tc:1,promote:false},
+      {fr:0,fc:4,tr:1,tc:4,promote:false},
+      {fr:3,fc:1,tr:1,tc:3,promote:true},
     ],
-    goteResponses:[[0,3,0,2],[0,3,0,4]], // 左逃げ or 右逃げ
-    goteResponseMoves3:{ '0,3,0,2':{fr:2,fc:3,tr:1,tc:2,promote:false}, '0,3,0,4':{fr:2,fc:3,tr:1,tc:4,promote:false} },
+    goteResponses:[[0,4,1,4]],
   },
   {
-    id:5, title:'問題5：開き王手',
-    desc:'銀を動かして飛の横利きを通す「開き王手」。持ち駒の金で仕留める。',
-    hint:'銀(0,1)を(1,2)に動かすと飛の横利きが開く！',
+    id:10, title:'問題10：銀の斜め前進',
+    desc:'盤上の銀・飛と持ち駒の金を使って詰めよう。',
+    hint:'(0,1)の駒を(1,2)へ動かすと王手',
     board:[
-      [S('飛'),S('銀'),N,  N,  G('王')],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
+      [S('飛'), S('銀'), N, N, G('王')],
+      [N, N, N, N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, N],
+      [N, N, N, N, N]
     ],
     sHand:[{name:'金',side:'sente',promoted:false}], gHand:[],
     solution:[
@@ -459,110 +561,13 @@ const PROBLEMS = [
       {fr:0,fc:4,tr:1,tc:4,promote:false},
       {drop:'金',tr:2,tc:3},
     ],
-    goteResponses:[[0,4,1,4],[0,4,1,3]],
-    goteResponseMoves3:{ '0,4,1,4':{drop:'金',tr:2,tc:3}, '0,4,1,3':{drop:'金',tr:2,tc:3} },
-  },
-  {
-    id:6, title:'問題6：銀の斜め前進＋打金',
-    desc:'銀を(1,3)に進めて王手。逃げた先を持ち駒の金で詰める。',
-    hint:'銀(2,2)の右前(1,3)から王手。後手は(1,4)に逃げるしかない。',
-    board:[
-      [N,  N,  S('角'),N,  G('王')],
-      [N,  N,  N,  N,  N],
-      [N,  N,  S('銀'),N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-    ],
-    sHand:[{name:'金',side:'sente',promoted:false}], gHand:[],
-    solution:[
-      {fr:2,fc:2,tr:1,tc:3,promote:false},
-      {fr:0,fc:4,tr:1,tc:4,promote:false},
-      {drop:'金',tr:2,tc:4},
-    ],
-    goteResponses:[[0,4,1,4]],
-  },
-  {
-    id:7, title:'問題7：金引き王手＋打金追撃',
-    desc:'金(0,2)→(0,3)で横から王手。逃げた先を持ち駒で追う。',
-    hint:'金を右に1マス動かすだけ——銀との連携で後手の逃げ場をふさごう。',
-    board:[
-      [N,  N,  S('金'),N,  G('王')],
-      [N,  N,  S('銀'),N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-    ],
-    sHand:[{name:'金',side:'sente',promoted:false}], gHand:[],
-    solution:[
-      {fr:0,fc:2,tr:0,tc:3,promote:false},
-      {fr:0,fc:4,tr:1,tc:4,promote:false},
-      {drop:'金',tr:2,tc:3},
-    ],
-    goteResponses:[[0,4,1,4]],
-  },
-  {
-    id:8, title:'問題8：金動かして飛車引き詰め',
-    desc:'金を右に動かして王手。逃げた先を飛車で横から詰める豪快な一手。',
-    hint:'金(2,2)→(2,3)で王手後、飛を(0,0)に走らせて横の利きで詰む！',
-    board:[
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  G('王')],
-      [S('飛'),N,  S('金'),N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-    ],
-    sHand:[], gHand:[],
-    solution:[
-      {fr:2,fc:2,tr:2,tc:3,promote:false},
-      {fr:1,fc:4,tr:0,tc:4,promote:false},
-      {fr:2,fc:0,tr:0,tc:0,promote:false},
-    ],
-    goteResponses:[[1,4,0,4],[1,4,0,3]],
-    goteResponseMoves3:{ '1,4,0,4':{fr:2,fc:0,tr:0,tc:0,promote:false}, '1,4,0,3':{fr:2,fc:0,tr:0,tc:0,promote:false} },
-  },
-  {
-    id:9, title:'問題9：飛車捨てから打金',
-    desc:'飛車を後手の王将の前に「捨てる」——後手は取るしかない。そこへ金を打って詰み！',
-    hint:'飛(0,0)→(0,4)と横走り。後手が飛を取ったところに金を打とう。',
-    board:[
-      [S('飛'),N,  N,  N,  N],
-      [N,  N,  N,  N,  G('王')],
-      [N,  N,  S('金'),N,  N],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  N,  N],
-    ],
-    sHand:[{name:'金',side:'sente',promoted:false}], gHand:[],
-    solution:[
-      {fr:0,fc:0,tr:0,tc:4,promote:false},
-      {fr:1,fc:4,tr:0,tc:4,promote:false},  // 王が飛を取る
-      {drop:'金',tr:1,tc:3},
-    ],
-    goteResponses:[[1,4,0,4]],
-  },
-  {
-    id:10, title:'問題10：角と金の連携詰め',
-    desc:'金を(2,4)に進めて王手。後手の逃げ先を角と金で完全に封鎖する。',
-    hint:'金(3,3)→(2,4)で前(1,4)の王に王手。逃げた先を金で追うと詰む。',
-    board:[
-      [N,  N,  S('角'),N,  N],
-      [N,  N,  N,  N,  G('王')],
-      [N,  N,  N,  N,  N],
-      [N,  N,  N,  S('金'),N],
-      [N,  N,  N,  N,  N],
-    ],
-    sHand:[], gHand:[],
-    solution:[
-      {fr:3,fc:3,tr:2,tc:4,promote:false},
-      {fr:1,fc:4,tr:0,tc:4,promote:false},
-      {fr:2,fc:4,tr:1,tc:3,promote:false},
-    ],
-    goteResponses:[[1,4,0,4],[1,4,0,3]],
-    goteResponseMoves3:{ '1,4,0,4':{fr:2,fc:4,tr:1,tc:3,promote:false}, '1,4,0,3':{fr:2,fc:4,tr:1,tc:3,promote:false} },
+    goteResponses:[[0,4,1,4], [0,4,1,3]],
+    goteResponseMoves3:{
+    '0,4,1,4':{drop:'金',tr:2,tc:3},
+    '0,4,1,3':{drop:'金',tr:2,tc:3}
+    },
   },
 ];
-
-// fix fr→fc typo in problem3
-PROBLEMS[2].solution[0] = {fr:0,fc:0,tr:2,tc:2,promote:false};
 
 // ============================================================
 //  ゲーム状態
