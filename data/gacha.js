@@ -62,21 +62,7 @@ function calcGachaPulls(ok, total) {
 // クイズ初回クリア時のみガチャ報酬を付与
 // 戻り値: { pulls, results, alreadyCleared }
 function claimQuizGacha(quizId, ok, total) {
-  const s = loadGachaState();
-  if (!s.clearedQuizzes) s.clearedQuizzes = {};
-
-  // 既クリア済み → 報酬なし
-  if (s.clearedQuizzes[quizId] !== undefined) {
-    return { pulls: 0, results: [], alreadyCleared: true };
-  }
-
   const pulls = calcGachaPulls(ok, total);
-
-  // 報酬がある場合のみクリア済みとして記録（0pullsなら再チャレンジ可能）
-  if (pulls > 0) {
-    s.clearedQuizzes[quizId] = pulls;
-    saveGachaState(s);
-  }
 
   if (pulls === 0) return { pulls: 0, results: [], alreadyCleared: false };
 
