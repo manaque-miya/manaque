@@ -148,6 +148,16 @@ const SITE_STRUCTURE = [
         ]
       },
       {
+        id: 'japanese-elem',
+        label: '国語',
+        emoji: '📖',
+        badge: { text: '国語', cls: 'badge--orange' },
+        units: [
+          { label: '小学漢字クイズ①', quizId: 'elem-japanese-01', count: 10, time: '約5分', difficulty: 2, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '小学生', cls: 'badge--neutral' }] },
+          { label: 'ことわざ・慣用句クイズ', quizId: 'elem-japanese-02', count: 10, time: '約5分', difficulty: 2, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '小学生', cls: 'badge--neutral' }] },
+        ]
+      },
+      {
         id: 'history-elem',
         label: '歴史',
         emoji: '📜',
@@ -279,6 +289,16 @@ const SITE_STRUCTURE = [
             gacha: false,
             tags: [{ text: '歴史', cls: 'badge--orange' }, { text: '中学生', cls: 'badge--neutral' }]
           }
+        ]
+      },
+      {
+        id: 'japanese-mid',
+        label: '国語',
+        emoji: '📖',
+        badge: { text: '国語', cls: 'badge--orange' },
+        units: [
+          { label: '中学漢字・語彙クイズ', quizId: 'mid-japanese-01', count: 10, time: '約5分', difficulty: 3, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '中学生', cls: 'badge--neutral' }] },
+          { label: '古文入門クイズ',       quizId: 'mid-japanese-02', count: 10, time: '約5分', difficulty: 3, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '中学生', cls: 'badge--neutral' }] },
         ]
       }
     ]
