@@ -31,15 +31,9 @@
   .page-header h1 span { color: var(--yellow); }
   .page-header p { color: var(--muted); font-size: 13px; margin-top: 6px; }
 
-  /* ナビ */
-  .problem-nav { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
-  .nav-btn {
-    background: var(--card); border: 1.5px solid var(--border);
-    color: var(--muted); border-radius: 8px; padding: 5px 11px;
-    font-size: 12px; font-weight: 700; cursor: pointer; transition: all .15s;
-  }
-  .nav-btn.active  { border-color: var(--yellow); color: var(--yellow); }
-  .nav-btn.cleared { border-color: var(--green);  color: var(--green); }
+  /* ナビ（非表示） */
+  .problem-nav { display: none; }
+  .nav-btn { display: none; }
 
   /* カード */
   .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
@@ -178,7 +172,7 @@
     <span><span class="leg leg-s"></span>先手（あなた）</span>
     <span><span class="leg leg-g"></span>後手（相手）</span>
   </div>
-  <div id="problemNav" class="problem-nav"></div>
+  <div id="probCounter" style="text-align:center;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px;letter-spacing:1px;"></div>
   <div id="gameArea"></div>
 </div>
 
@@ -594,13 +588,13 @@ function initProblem(idx) {
 //  描画
 // ============================================================
 function renderNav() {
-  document.getElementById('problemNav').innerHTML =
-    PROBLEMS.map((p,i) => {
-      let cls = 'nav-btn';
-      if (i === PROBLEMS.indexOf(prob)) cls += ' active';
-      if (clearedSet.has(i)) cls += ' cleared';
-      return `<button class="${cls}" onclick="loadProb(${i})">問${i+1}</button>`;
-    }).join('');
+  const idx = PROBLEMS.indexOf(prob);
+  const el = document.getElementById('probCounter');
+  if (el) {
+    const cleared = clearedSet.size;
+    el.innerHTML = `問 <span style="color:var(--yellow);font-size:16px;">${idx+1}</span> / ${PROBLEMS.length}` +
+      (cleared>0 ? `　✓ ${cleared}問クリア済み` : '');
+  }
 }
 
 function renderGame() {
@@ -629,6 +623,7 @@ function renderGame() {
       <div class="btn-row">
         <button class="btn btn-yellow" id="hintBtn" onclick="showHint()">ヒントを見る</button>
         <button class="btn btn-muted" onclick="resetProb()">最初から</button>
+        <button id="nextProbBtn" class="btn btn-yellow" onclick="nextProb()" style="display:none;">次の問題へ →</button>
       </div>
       <div id="hintText" style="display:none;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.65;padding:10px;background:var(--bg);border-radius:8px;"></div>
     </div>
@@ -642,6 +637,7 @@ function renderGame() {
 function updateStatus() {
   const el = document.getElementById('statusBar');
   if (!el) return;
+  renderNav();
   if (phase==='move1') {
     el.className='status-bar'; el.textContent='先手番（1手目）——先手の駒を選んで動かそう';
   } else if (phase==='gote') {
@@ -650,8 +646,10 @@ function updateStatus() {
     el.className='status-bar'; el.textContent='先手番（3手目）——詰みに持ち込もう！';
   } else if (phase==='clear') {
     el.className='status-bar ok celebrating'; el.textContent='🎉 詰み！正解！おめでとうございます！';
+    const nb = document.getElementById('nextProbBtn');
+    if (nb) nb.style.display = 'inline-block';
   } else if (phase==='fail') {
-    el.className='status-bar ng'; el.textContent='✕ その手では詰みません。もう一度！';
+    el.className='status-bar ng'; el.textContent='✕ 詰みませんでした。もう一度！';
   }
 }
 
@@ -714,11 +712,10 @@ function renderHands() {
         return `<div class="hand-koma${active?' selected':''} ${disabled}" onclick="clickHandKoma('${h.name}')">${h.name}</div>`;
       }).join('');
   }
-  // 後手持ち駒
+  // 後手持ち駒（無限前提）
   const gh = document.getElementById('goteHand');
   if (gh) {
-    gh.innerHTML = gHand.length===0 ? '<span style="font-size:11px;color:var(--muted);">なし</span>' :
-      gHand.map(h=>`<div class="piece gote" style="width:34px;height:34px;font-size:13px;">${h.name}</div>`).join('');
+    gh.innerHTML = '<span style="font-size:11px;color:var(--muted);">∞ 全駒あり</span>';
   }
 }
 
@@ -785,21 +782,7 @@ function confirmPromote(yes) {
 function executeSenteMove(move) {
   selected=null; selectedHandKoma=null;
 
-  // 正解チェック: phaseによって1手目か3手目かで正解手を検証
-  const correctMove = phase==='move1' ? prob.solution[0] : getCorrectMove3();
-
-  const isCorrect = checkMoveMatch(move, correctMove);
-  if (!isCorrect) {
-    // 間違い
-    const {board:nb} = applyMove(board, sHand, move, 'sente');
-    if (!isCheckmate(nb, sHand, 'gote')) {
-      phase='fail'; updateStatus();
-      setTimeout(()=>{ if(phase==='fail'){ phase=phase==='clear'?'clear':( moveCount===0?'move1':'move3'); updateStatus(); renderBoard(); }},1500);
-      return;
-    }
-  }
-
-  // 実際に移動
+  // バリデーションなし：自由にプレイ
   const {board:nb, hand:nh} = applyMove(board, sHand, move, 'sente');
   board=nb; sHand=nh;
   lastFrom = move.drop ? null : [move.fr,move.fc];
@@ -807,44 +790,54 @@ function executeSenteMove(move) {
   moveCount++;
 
   if (phase==='move1') {
-    // 詰みチェック（万一1手詰みだった場合も対応）
-    if (isCheckmate(board, [], 'gote')) { phase='clear'; clearedSet.add(PROBLEMS.indexOf(prob)); renderBoard(); renderHands(); updateStatus(); return; }
+    if (isCheckmate(board, [], 'gote')) {
+      phase='clear'; clearedSet.add(PROBLEMS.indexOf(prob));
+      renderBoard(); renderHands(); updateStatus(); return;
+    }
     phase='gote'; renderBoard(); renderHands(); updateStatus();
     setTimeout(executeGote, 700);
   } else {
-    // 3手目
+    // 3手目：詰みなら正解
     if (isCheckmate(board, [], 'gote')) {
       phase='clear'; clearedSet.add(PROBLEMS.indexOf(prob));
     } else {
-      phase='fail'; setTimeout(()=>{ phase='move3'; updateStatus(); renderBoard(); }, 1500);
+      phase='fail';
+      setTimeout(()=>{ phase='move3'; updateStatus(); renderBoard(); }, 1800);
     }
     renderBoard(); renderHands(); updateStatus();
   }
 }
 
-function getCorrectMove3() {
-  // 後手の応手に応じた3手目を返す
-  if (prob.goteResponseMoves3 && lastFrom) {
-    const key = `${lastFrom[0]},${lastFrom[1]},${lastTo[0]},${lastTo[1]}`;
-    if (prob.goteResponseMoves3[key]) return prob.goteResponseMoves3[key];
-  }
-  return prob.solution[2];
-}
 
-function checkMoveMatch(a, b) {
-  if (!b) return true; // 解答データなし→全部OK
-  if (b.drop) return a.drop===b.drop && a.tr===b.tr && a.tc===b.tc;
-  return !a.drop && a.fr===b.fr && a.fc===b.fc && a.tr===b.tr && a.tc===b.tc;
-}
+// 後手の持ち駒（詰将棋の慣例：全駒無限）
+const GOTE_INF_HAND = ['金','銀','飛','角','桂','香'].map(n=>({name:n,side:'gote',promoted:false}));
 
 function executeGote() {
-  // 後手の応手を選ぶ（goteResponsesの最初 or ランダム）
-  const resps = prob.goteResponses || [prob.solution[1]].map(m=>[m.fr,m.fc,m.tr,m.tc]);
-  const resp = resps[Math.floor(Math.random()*resps.length)];
-  const gMove = {fr:resp[0],fc:resp[1],tr:resp[2],tc:resp[3],promote:false};
-  const {board:nb, hand:nh} = applyMove(board, gHand, gMove, 'gote');
-  board=nb; gHand=nh;
-  lastFrom=[gMove.fr,gMove.fc]; lastTo=[gMove.tr,gMove.tc];
+  const gh = GOTE_INF_HAND.map(h=>({...h}));
+  const allMoves = getLegalMoves(board, gh, 'gote');
+
+  if (allMoves.length === 0) {
+    // 後手が動けない = 詰み
+    phase='clear'; clearedSet.add(PROBLEMS.indexOf(prob));
+    renderBoard(); renderHands(); updateStatus(); return;
+  }
+
+  // 先手に即詰みされない手を優先（なければ全手からランダム）
+  const hardMoves = allMoves.filter(m => {
+    const {board:nb} = applyMove(board, gh, m, 'gote');
+    return !getLegalMoves(nb, sHand, 'sente').some(sm => {
+      const {board:nb2} = applyMove(nb, sHand, sm, 'sente');
+      return isCheckmate(nb2, [], 'gote');
+    });
+  });
+
+  const pool = hardMoves.length > 0 ? hardMoves : allMoves;
+  const best = pool[Math.floor(Math.random() * pool.length)];
+
+  const {board:nb} = applyMove(board, gh, best, 'gote');
+  board = nb;
+  lastFrom = best.drop ? null : [best.fr, best.fc];
+  lastTo = [best.tr, best.tc];
   phase='move3'; renderBoard(); renderHands(); updateStatus();
 }
 
@@ -863,6 +856,24 @@ function showHint() {
 
 function resetProb() {
   initProblem(PROBLEMS.indexOf(prob));
+}
+
+function nextProb() {
+  const idx = PROBLEMS.indexOf(prob);
+  if (idx < PROBLEMS.length - 1) {
+    initProblem(idx + 1);
+  } else {
+    // 全問クリア
+    document.getElementById('gameArea').innerHTML = `
+      <div class="card" style="text-align:center;padding:40px 20px;">
+        <div style="font-size:48px;margin-bottom:16px;">🏆</div>
+        <h2 style="font-size:22px;font-weight:900;color:var(--yellow);margin-bottom:12px;">全問クリア！</h2>
+        <p style="color:var(--muted);font-size:14px;margin-bottom:24px;">10問すべての3手詰めを解きました！<br>将棋の読み、着実に上がってます。</p>
+        <button class="btn btn-yellow" onclick="initProblem(0)">最初からやり直す</button>
+      </div>
+    `;
+    renderNav();
+  }
 }
 
 function loadProb(idx) {
