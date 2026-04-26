@@ -296,7 +296,7 @@ function getQuizChara(qid) {
              ok:['正解！わしも鼻が高いぞ！','歴史はな、勝った者だけの話じゃないんじゃ！'],
              ng:['はははっ！まだまだじゃのう！','次じゃ！次！'] };
   // Bug2修正：sport追加
-  if (/social|sport/.test(qid))
+  if (/social|sport|baseball|soccer|basketball|tennis|golf/.test(qid))
     return { img:'assets/img/characters/ren/base.png',    name:'レン先生',
              greet:'まあ…教えてやらないこともない。',
              ok:['正解。思ったより筋がいいじゃないか。','へぇ、なかなかやるな。'],
