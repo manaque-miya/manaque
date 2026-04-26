@@ -644,6 +644,14 @@
       font-size: 14px; font-weight: 800; color: var(--ink-700);
     }
     .subj-header__emoji { font-size: 18px; }
+    .subj-chara-icon {
+      width: 52px; height: 52px; object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.18));
+      flex-shrink: 0; margin-right: 2px;
+      transition: transform .2s;
+    }
+    .subj-header:hover .subj-chara-icon { transform: translateY(-3px); }
+    @media (max-width: 480px) { .subj-chara-icon { width: 40px; height: 40px; } }
 
     /* ===== MOBILE CLEAN ===== */
     @media (max-width: 768px) {
@@ -1196,6 +1204,41 @@ function renderGrades() {
 // 学年タグ（文脈上不要なもの）
 const GRADE_TAGS = new Set(['大人向け','小学生','中学生','高校生','大学生','こども','大学生向け','高校生向け','スピリチュアル']);
 
+// ===== 担任キャラ マッピング =====
+const SUBJ_CHARA = {
+  // 算数・数学 → ゼータ
+  'math':         { img: 'assets/img/characters/zeta/base.png',  name: 'ゼータ' },
+  'math-mid':     { img: 'assets/img/characters/zeta/base.png',  name: 'ゼータ' },
+  'math-high':    { img: 'assets/img/characters/zeta/base.png',  name: 'ゼータ' },
+  'spi-math':     { img: 'assets/img/characters/zeta/base.png',  name: 'ゼータ' },
+  // 理科 → クウ
+  'science':      { img: 'assets/img/characters/kuu/base.png',   name: 'クウ' },
+  'science-mid':  { img: 'assets/img/characters/kuu/base.png',   name: 'クウ' },
+  'science-high': { img: 'assets/img/characters/kuu/base.png',   name: 'クウ' },
+  // 英語 → ラーク
+  'english':      { img: 'assets/img/characters/lark/base.png',  name: 'ラーク' },
+  'english-high': { img: 'assets/img/characters/lark/base.png',  name: 'ラーク' },
+  'toeic-adult':  { img: 'assets/img/characters/lark/base.png',  name: 'ラーク' },
+  // 社会・地理 → レン先生
+  'social':       { img: 'assets/img/characters/ren/base.png',   name: 'レン先生' },
+  'social-mid':   { img: 'assets/img/characters/ren/base.png',   name: 'レン先生' },
+  'social-high':  { img: 'assets/img/characters/ren/base.png',   name: 'レン先生' },
+  // 歴史 → 貫士
+  'history-elem': { img: 'assets/img/characters/kanji/base.png', name: '貫士' },
+  'history-mid':  { img: 'assets/img/characters/kanji/base.png', name: '貫士' },
+  // パズル・なぞなぞ → ミル
+  'logic':        { img: 'assets/img/characters/miru/base.png',  name: 'ミル' },
+  'nazo-kids':    { img: 'assets/img/characters/miru/base.png',  name: 'ミル' },
+  // 資格・教養・雑学 → ルミナ先生
+  'exam-adult':   { img: 'assets/img/characters/lumina/base.png', name: 'ルミナ先生' },
+  'kyoyo-adult':  { img: 'assets/img/characters/lumina/base.png', name: 'ルミナ先生' },
+  'trivia-adult': { img: 'assets/img/characters/lumina/base.png', name: 'ルミナ先生' },
+  // SPI言語 → ルミナ先生
+  'spi-lang':     { img: 'assets/img/characters/lumina/base.png', name: 'ルミナ先生' },
+  // スポーツ → レン先生
+  'sport-adult':  { img: 'assets/img/characters/ren/base.png',   name: 'レン先生' },
+};
+
 function renderSubjects(gi) {
   _drillLevel = 1; _drillGrade = gi;
   const grade = SITE_STRUCTURE[gi];
@@ -1231,8 +1274,12 @@ function renderSubjects(gi) {
   // 科目セクションHTML
   const multiSubj = grade.subjects.length > 1;
   let sectionsHtml = grade.subjects.map(subj => {
+    const chara = SUBJ_CHARA[subj.id];
+    const charaHtml = chara
+      ? `<img src="${chara.img}" alt="${chara.name}" class="subj-chara-icon" loading="lazy">`
+      : '';
     const header = multiSubj
-      ? `<div class="subj-header"><span class="subj-header__emoji">${subj.emoji || '📚'}</span><span>${subj.label}</span></div>`
+      ? `<div class="subj-header">${charaHtml}<span class="subj-header__emoji">${subj.emoji || '📚'}</span><span>${subj.label}</span></div>`
       : '';
     const cards = subj.units.map(unit => buildUnitCard(unit, null)).join('');
     return `<div class="subj-section">${header}<div class="unit-grid">${cards}</div></div>`;
@@ -1414,66 +1461,4 @@ function buildUnitCard(unit, subjLabel) {
   // ===== 地図・その他専用ページ =====
   const base = isMap      ? `map-quiz-new.html?autostart=1`
              : isMapTap   ? `map-tap-quiz.html?autostart=1`
-             : isCapitals ? `map-capitals.html?autostart=1`
-             : `quiz.html?id=${unit.quizId}&amp;autostart=1`;
-  const defaultCount = (unit.count && unit.count >= 10) ? 10 : unit.count;
-  const cnt3Href  = isMap      ? `map-quiz-new.html?count=5&amp;autostart=1`
-                  : isMapTap   ? `map-tap-quiz.html?count=5&amp;autostart=1`
-                  : isCapitals ? `map-capitals.html?count=5&amp;autostart=1`
-                  : `${base}&amp;count=3`;
-  const cnt10Href = isMap      ? `map-quiz-new.html?count=10&amp;autostart=1`
-                  : isMapTap   ? `map-tap-quiz.html?count=10&amp;autostart=1`
-                  : isCapitals ? `map-capitals.html?count=10&amp;autostart=1`
-                  : `${base}&amp;count=10`;
-  const cntAllHref= isMap      ? `map-quiz-new.html?count=47&amp;autostart=1`
-                  : isMapTap   ? `map-tap-quiz.html?count=47&amp;autostart=1`
-                  : isCapitals ? `map-capitals.html?count=47&amp;autostart=1`
-                  : `${base}&amp;count=all`;
-  const btn3  = (unit.count && unit.count >= 3)
-    ? `<a href="${cnt3Href}" class="count-btn${defaultCount===3?' count-btn--default':''}">${(isMap||isMapTap||isCapitals)?'5問':'3問'}</a>` : '';
-  const btn10 = (unit.count && unit.count >= 10)
-    ? `<a href="${cnt10Href}" class="count-btn count-btn--default">10問</a>` : '';
-  const btnAll= `<a href="${cntAllHref}" class="count-btn${(!unit.count||unit.count < 10)?' count-btn--default':''}">全問<small style="font-size:10px;opacity:.7">(${unit.count})</small></a>`;
-  return `
-    <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
-      <div class="unit-card__tags">${tagHtml}${gacha}</div>
-      <div class="unit-card__title">${unit.label}</div>
-      <div class="unit-card__meta">
-        <span>📘 全${unit.count}問</span>
-        <span>⏱ ${unit.time}</span>
-        <span class="unit-card__difficulty">${stars}</span>
-      </div>
-      <div class="unit-card__counts">${btn3}${btn10}${btnAll}</div>
-    </div>`;
-}
-
-function drillBack() {
-  if (_drillLevel >= 1) renderGrades();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderGrades();
-  // 図鑑ボタンにポイント表示
-  try {
-    const s = loadGachaState();
-    const btn = document.getElementById('indexCatalogBtn');
-    if (btn && s.points > 0) btn.textContent = `📖 図鑑 💎${s.points.toLocaleString()}pt`;
-  } catch(e) {}
-
-});
-</script>
-
-<!-- ハンバーガーメニュー：#categoryへスムーズスクロール -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const menuBtn = document.querySelector('.header__menu-btn');
-  const category = document.querySelector('#category');
-  if (menuBtn && category) {
-    menuBtn.addEventListener('click', () => {
-      category.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-});
-</script>
-</body>
-</html>
+             : isCapitals ? `
