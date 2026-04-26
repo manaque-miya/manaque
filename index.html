@@ -1461,4 +1461,66 @@ function buildUnitCard(unit, subjLabel) {
   // ===== 地図・その他専用ページ =====
   const base = isMap      ? `map-quiz-new.html?autostart=1`
              : isMapTap   ? `map-tap-quiz.html?autostart=1`
-             : isCapitals ? `
+             : isCapitals ? `map-capitals.html?autostart=1`
+             : `quiz.html?id=${unit.quizId}&amp;autostart=1`;
+  const defaultCount = (unit.count && unit.count >= 10) ? 10 : unit.count;
+  const cnt3Href  = isMap      ? `map-quiz-new.html?count=5&amp;autostart=1`
+                  : isMapTap   ? `map-tap-quiz.html?count=5&amp;autostart=1`
+                  : isCapitals ? `map-capitals.html?count=5&amp;autostart=1`
+                  : `${base}&amp;count=3`;
+  const cnt10Href = isMap      ? `map-quiz-new.html?count=10&amp;autostart=1`
+                  : isMapTap   ? `map-tap-quiz.html?count=10&amp;autostart=1`
+                  : isCapitals ? `map-capitals.html?count=10&amp;autostart=1`
+                  : `${base}&amp;count=10`;
+  const cntAllHref= isMap      ? `map-quiz-new.html?count=47&amp;autostart=1`
+                  : isMapTap   ? `map-tap-quiz.html?count=47&amp;autostart=1`
+                  : isCapitals ? `map-capitals.html?count=47&amp;autostart=1`
+                  : `${base}&amp;count=all`;
+  const btn3  = (unit.count && unit.count >= 3)
+    ? `<a href="${cnt3Href}" class="count-btn${defaultCount===3?' count-btn--default':''}">${(isMap||isMapTap||isCapitals)?'5問':'3問'}</a>` : '';
+  const btn10 = (unit.count && unit.count >= 10)
+    ? `<a href="${cnt10Href}" class="count-btn count-btn--default">10問</a>` : '';
+  const btnAll= `<a href="${cntAllHref}" class="count-btn${(!unit.count||unit.count < 10)?' count-btn--default':''}">全問<small style="font-size:10px;opacity:.7">(${unit.count})</small></a>`;
+  return `
+    <div class="unit-card${unit.gacha ? ' unit-card--gacha' : ''}">
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>📘 全${unit.count}問</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts">${btn3}${btn10}${btnAll}</div>
+    </div>`;
+}
+
+function drillBack() {
+  if (_drillLevel >= 1) renderGrades();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderGrades();
+  // 図鑑ボタンにポイント表示
+  try {
+    const s = loadGachaState();
+    const btn = document.getElementById('indexCatalogBtn');
+    if (btn && s.points > 0) btn.textContent = `📖 図鑑 💎${s.points.toLocaleString()}pt`;
+  } catch(e) {}
+
+});
+</script>
+
+<!-- ハンバーガーメニュー：#categoryへスムーズスクロール -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuBtn = document.querySelector('.header__menu-btn');
+  const category = document.querySelector('#category');
+  if (menuBtn && category) {
+    menuBtn.addEventListener('click', () => {
+      category.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+});
+</script>
+</body>
+</html>
