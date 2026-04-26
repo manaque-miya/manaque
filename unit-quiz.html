@@ -275,31 +275,39 @@
 // ===== 担任キャラ取得 =====
 function getQuizChara(qid) {
   if (/math/.test(qid))
-    return { img:'assets/img/characters/zeta/base.png',  name:'ゼータ',
+    return { img:'assets/img/characters/zeta/base.png',   name:'ゼータ',
              greet:'計算モード、起動します！',
              ok:['計算完了！正解！','データ更新！正解！'],
              ng:['エラー！でも、リトライするよ！','もう一回！'] };
   if (/science/.test(qid))
-    return { img:'assets/img/characters/kuu/base.png',   name:'クウ',
+    return { img:'assets/img/characters/kuu/base.png',    name:'クウ',
              greet:'なんで？がいっぱい出てくるよ！',
              ok:['正解！やっぱりそうだったんだ！','なんで！？がわかった！'],
              ng:['実験失敗！でもデータが取れた！','一緒に考えよ！'] };
   if (/english|toeic/.test(qid))
-    return { img:'assets/img/characters/lark/base.png',  name:'ラーク',
+    return { img:'assets/img/characters/lark/base.png',   name:'ラーク',
              greet:'言葉って面白いね！',
              ok:['正解！その言葉、世界中で通じるよ！','Great！'],
              ng:['言葉は何度でも練習だよ！','もう一度！'] };
-  if (/social|history/.test(qid))
-    return { img:'assets/img/characters/ren/base.png',   name:'レン先生',
+  // Bug1修正：historyを先にチェック（social|historyだとhistory-elemがsocialにマッチしてしまう）
+  if (/history/.test(qid))
+    return { img:'assets/img/characters/kanji/base.png',  name:'貫士',
+             greet:'歴史はな、面白いぞ！',
+             ok:['正解！わしも鼻が高いぞ！','歴史はな、勝った者だけの話じゃないんじゃ！'],
+             ng:['はははっ！まだまだじゃのう！','次じゃ！次！'] };
+  // Bug2修正：sport追加
+  if (/social|sport/.test(qid))
+    return { img:'assets/img/characters/ren/base.png',    name:'レン先生',
              greet:'まあ…教えてやらないこともない。',
              ok:['正解。思ったより筋がいいじゃないか。','へぇ、なかなかやるな。'],
              ng:['そんなことも知らないのか。次はできるだろ。','まあ、次だ。'] };
   if (/logic|nazo/.test(qid))
-    return { img:'assets/img/characters/miru/base.png',  name:'ミル',
+    return { img:'assets/img/characters/miru/base.png',   name:'ミル',
              greet:'なぞなぞ、すき？',
              ok:['うーん……正解。よく気がついたね。','わかった？よかった。'],
              ng:['…もう少し考えてみて。','また来てくれたんだね。'] };
-  if (/exam/.test(qid))
+  // Bug3修正：exam＋kyoyo・trivia・spi系を全てルミナ先生に統合
+  if (/exam|kyoyo|trivia|spi|japanese|kanji|kotowaza|nihongo|chimei|gogen|katakana|psych|econ|law|manner|brand|food|body|animal|bousai/.test(qid))
     return { img:'assets/img/characters/lumina/base.png', name:'ルミナ先生',
              greet:'よく聞きなさい。問題の本質はここよ。',
              ok:['……正解。よくできました。','その調子よ。'],
@@ -643,23 +651,4 @@ function _gachaShowCard(idx, fullAnim) {
   document.getElementById('gachaCounter').textContent = total > 1 ? `${idx+1} / ${total}枚` : '';
   document.getElementById('gachaCardFront').innerHTML = _gachaCardHTML(result);
 
-  const banner = document.getElementById('gachaRarityBanner');
-  const bCfg = _gachaBanner(rarity);
-  banner.className = bCfg.cls;
-  banner.textContent = bCfg.text;
-
-  const cw = document.getElementById('gachaCardWrap');
-  const ci = document.getElementById('gachaCardInner');
-  const nextBtn = document.getElementById('gachaNextBtn');
-  const closeBtn = document.getElementById('gachaCloseBtn');
-
-  if (fullAnim) {
-    // ===== 1枚目：フル演出 =====
-    const qm = document.getElementById('gachaQmark');
-    const flash = document.getElementById('gachaFlash');
-    qm.className = ''; qm.style.cssText = '';
-
-    setTimeout(() => qm.classList.add('appear'), 400);
-    setTimeout(() => {
-      qm.classList.remove('appear');
-      qm.style.opacity = '1'; qm.style.tra
+  const banner = document.getElementById('gachaRar
