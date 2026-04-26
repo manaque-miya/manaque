@@ -537,6 +537,23 @@ const SITE_STRUCTURE = [
             tags: [{ text: '雑学', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
         ]
       },
+      {
+        id: 'sport-adult', label: 'スポーツ',
+        emoji: '⚽',
+        badge: { text: 'スポーツ', cls: 'badge--blue' },
+        units: [
+          { label: '野球雑学クイズ', quizId: 'adult-baseball-01', count: 20, time: '約10分', difficulty: 2, gacha: true, isNew: true,
+            tags: [{ text: 'スポーツ', cls: 'badge--blue' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'サッカー雑学クイズ', quizId: 'adult-soccer-01', count: 20, time: '約10分', difficulty: 2, gacha: true, isNew: true,
+            tags: [{ text: 'スポーツ', cls: 'badge--blue' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'バスケットボール雑学クイズ', quizId: 'adult-basketball-01', count: 20, time: '約10分', difficulty: 2, gacha: true, isNew: true,
+            tags: [{ text: 'スポーツ', cls: 'badge--blue' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'テニス雑学クイズ', quizId: 'adult-tennis-01', count: 20, time: '約10分', difficulty: 2, gacha: true, isNew: true,
+            tags: [{ text: 'スポーツ', cls: 'badge--blue' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'ゴルフ雑学クイズ', quizId: 'adult-golf-01', count: 20, time: '約10分', difficulty: 2, gacha: true, isNew: true,
+            tags: [{ text: 'スポーツ', cls: 'badge--blue' }, { text: '大人向け', cls: 'badge--neutral' }] },
+        ]
+      },
     ]
   },
 
@@ -570,52 +587,4 @@ const SITE_STRUCTURE = [
         emoji: '🔢',
         badge: { text: 'ナンプレ', cls: 'badge--yellow' },
         units: [
-          {
-            label: 'ナンプレ（数独）',
-            quizId: 'nanpure',
-            count: null,
-            time: '自由',
-            difficulty: 2,
-            gacha: true,
-            tags: [{ text: '思考', cls: 'badge--yellow' }, { text: 'パズル', cls: 'badge--neutral' }]
-          }
-        ]
-      },
-      {
-        id: 'boardgames',
-        label: '囲碁・将棋',
-        emoji: '♟',
-        badge: { text: '思考', cls: 'badge--purple' },
-        units: [
-          {
-            label: '囲碁入門（生き死に問題3問）',
-            quizId: 'igo',
-            count: null,
-            time: '約10分',
-            difficulty: 2,
-            gacha: false,
-            tags: [{ text: '囲碁', cls: 'badge--neutral' }, { text: 'パズル', cls: 'badge--neutral' }]
-          },
-          {
-            label: '詰将棋入門（1手詰め5問）',
-            quizId: 'shogi',
-            count: null,
-            time: '約10分',
-            difficulty: 2,
-            gacha: false,
-            tags: [{ text: '将棋', cls: 'badge--neutral' }, { text: 'パズル', cls: 'badge--neutral' }]
-          },
-          {
-            label: '3手詰め入門（10問）',
-            quizId: 'tsume3',
-            count: null,
-            time: '約15分',
-            difficulty: 3,
-            gacha: false,
-            tags: [{ text: '将棋', cls: 'badge--neutral' }, { text: 'パズル', cls: 'badge--neutral' }]
-          }
-        ]
-      }
-    ]
-  }
-];
+      
