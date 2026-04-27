@@ -751,4 +751,27 @@ function triggerGachaReward() {
     document.body.appendChild(el);
   }
 
-  const { pulls, results } = claimQuizGacha(quizId, scor
+  const { pulls, results } = claimQuizGacha(quizId, score, QUESTIONS.length);
+eTotal);
+
+  const ov = document.getElementById('gachaRewardOverlay');
+  ov.classList.add('show');
+  _gachaInitStars();
+
+  if (pulls === 0 || results.length === 0) {
+    document.getElementById('gachaNorewardPhase').classList.add('show');
+    const cb = document.getElementById('gachaCloseBtn');
+    cb.textContent = 'とじる';
+    cb.classList.add('show');
+    cb.onclick = gachaClose;
+    return;
+  }
+
+  _gachaResults = results;
+  _gachaIdx = 0;
+  _gachaReset();
+  _gachaShowCard(0, true);
+}
+</script>
+</body>
+</html>
