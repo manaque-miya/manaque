@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>親子コミュニケーション診断｜まなクエ！</title>
+<title>うちの子に合う声かけ診断｜まなクエ！</title>
 <link rel="icon" href="assets/img/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -11,7 +11,6 @@
   --brand: #f97316; --brand-d: #c2410c; --brand-l: #fff7ed;
   --ink: #1e293b; --muted: #64748b; --border: #e2e8f0;
   --bg: #fffbf5; --white: #fff;
-  --ok: #16a34a; --ng: #dc2626;
   --r: 14px; --r-lg: 20px;
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
@@ -28,7 +27,6 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 .site-header__logo { font-size: 18px; font-weight: 900; color: var(--brand); text-decoration: none; }
 .site-header__back { font-size: 13px; color: var(--muted); text-decoration: none; margin-left: auto; }
 
-/* SCREEN */
 .screen { display: none; max-width: 680px; margin: 0 auto; padding: 24px 16px 60px; }
 .screen.active { display: block; }
 
@@ -40,22 +38,21 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
 .intro-badge { display: inline-block; background: var(--brand); color: #fff;
   font-size: 11px; font-weight: 800; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
-.intro-title { font-size: 28px; font-weight: 900; line-height: 1.3; margin-bottom: 8px; }
-.intro-sub { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
-.intro-meta { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; }
+.intro-title { font-size: 26px; font-weight: 900; line-height: 1.35; margin-bottom: 8px; }
+.intro-title em { color: var(--brand); font-style: normal; }
+.intro-sub { font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+.intro-meta { display: flex; gap: 10px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; }
 .meta-pill { background: #fff; border: 1.5px solid var(--border); border-radius: 30px;
   padding: 6px 16px; font-size: 12px; font-weight: 700; color: var(--muted); }
-.intro-notice { background: #fff; border: 1px solid var(--border); border-radius: var(--r);
-  padding: 14px 16px; font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 24px;
-  border-left: 4px solid var(--brand); }
-
+.intro-notice { background: #fff; border-left: 4px solid var(--brand); border-radius: var(--r);
+  padding: 14px 16px; font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 24px; }
 .btn-start { width: 100%; padding: 18px; background: var(--brand);
   border: none; border-radius: var(--r-lg); color: #fff;
   font-size: 18px; font-weight: 900; cursor: pointer; font-family: inherit;
   box-shadow: 0 4px 0 var(--brand-d); transition: all .12s; }
 .btn-start:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--brand-d); }
 
-/* ===== QUESTION SCREEN ===== */
+/* ===== QUESTION ===== */
 .q-progress-wrap { margin-bottom: 20px; }
 .q-progress-bar { height: 10px; background: var(--border); border-radius: 5px; overflow: hidden; margin-bottom: 6px; }
 .q-progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand), #fbbf24);
@@ -64,36 +61,32 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 
 .q-axis-label { display: inline-block; font-size: 11px; font-weight: 800; padding: 3px 10px;
   border-radius: 20px; color: #fff; margin-bottom: 14px; }
-.ax-a { background: #f97316; }
-.ax-b { background: #8b5cf6; }
-.ax-c { background: #0891b2; }
-.ax-d { background: #16a34a; }
-.ax-s { background: #64748b; }
+.ax-a { background: #f97316; } .ax-b { background: #8b5cf6; }
+.ax-c { background: #0891b2; } .ax-d { background: #16a34a; } .ax-s { background: #64748b; }
 
 .q-card { background: #fff; border-radius: var(--r-lg); padding: 24px 20px;
   box-shadow: 0 2px 16px rgba(0,0,0,.06); margin-bottom: 20px;
   animation: fadeUp .3s ease both; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
 .q-num { font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
-.q-text { font-size: 17px; font-weight: 800; line-height: 1.6; color: var(--ink); }
+.q-text { font-size: 17px; font-weight: 800; line-height: 1.6; }
 
 .q-opts { display: grid; gap: 12px; }
 .q-opt { background: #fff; border: 2px solid var(--border); border-radius: var(--r-lg);
-  padding: 16px 18px; cursor: pointer; text-align: left; transition: all .15s;
-  font-family: inherit; }
+  padding: 16px 18px; cursor: pointer; text-align: left; transition: all .15s; font-family: inherit; }
 .q-opt:hover { border-color: var(--brand); background: var(--brand-l); }
 .q-opt.selected { border-color: var(--brand); background: var(--brand-l); }
-.q-opt__letter { display: inline-block; width: 26px; height: 26px; background: var(--border);
-  border-radius: 50%; text-align: center; line-height: 26px; font-size: 12px;
-  font-weight: 900; margin-right: 10px; color: var(--ink); flex-shrink: 0; }
+.q-opt-inner { display: flex; align-items: flex-start; gap: 10px; }
+.q-opt__letter { display: flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; background: var(--border);
+  border-radius: 50%; font-size: 12px; font-weight: 900; color: var(--ink); flex-shrink: 0; }
 .q-opt.selected .q-opt__letter { background: var(--brand); color: #fff; }
-.q-opt__text { font-size: 14px; font-weight: 700; line-height: 1.5; color: var(--ink); }
-.q-opt-inner { display: flex; align-items: flex-start; gap: 4px; }
+.q-opt__text { font-size: 14px; font-weight: 700; line-height: 1.5; padding-top: 3px; }
 
 .btn-next { width: 100%; padding: 15px; background: var(--brand);
-  border: none; border-radius: var(--r-lg); color: #fff;
+  border: none; border-radius: var(--r-lg); color: #fff; margin-top: 16px;
   font-size: 16px; font-weight: 900; cursor: pointer; font-family: inherit;
-  box-shadow: 0 3px 0 var(--brand-d); transition: all .12s; opacity: .35; pointer-events: none; }
+  box-shadow: 0 3px 0 var(--brand-d); transition: all .12s; opacity: .3; pointer-events: none; }
 .btn-next.ready { opacity: 1; pointer-events: auto; }
 .btn-next:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--brand-d); }
 
@@ -102,32 +95,40 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 .loading-dots { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
 .loading-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--brand);
   animation: dotBounce 1.2s ease-in-out infinite; }
-.loading-dot:nth-child(2) { animation-delay: .2s; }
-.loading-dot:nth-child(3) { animation-delay: .4s; }
-@keyframes dotBounce { 0%,80%,100%{transform:scale(0.6);opacity:.4} 40%{transform:scale(1.1);opacity:1} }
+.loading-dot:nth-child(2){animation-delay:.2s} .loading-dot:nth-child(3){animation-delay:.4s}
+@keyframes dotBounce{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1.1);opacity:1}}
 .loading-text { font-size: 16px; font-weight: 800; color: var(--muted); }
 
 /* ===== RESULT ===== */
-.result-hero { text-align: center; margin-bottom: 24px; }
-.result-type-badge { display: inline-block; font-size: 13px; font-weight: 900; padding: 6px 18px;
-  border-radius: 30px; color: #fff; margin-bottom: 12px; letter-spacing: .1em; }
-.result-chara { width: 110px; margin: 0 auto 12px; display: block;
+.result-hero { text-align: center; margin-bottom: 20px; }
+.result-type-badge { display: inline-block; font-size: 12px; font-weight: 900; padding: 5px 16px;
+  border-radius: 30px; color: #fff; margin-bottom: 10px; letter-spacing: .08em; }
+.result-chara { width: 100px; margin: 0 auto 10px; display: block;
   filter: drop-shadow(0 6px 20px rgba(249,115,22,.18));
   animation: float 3.5s ease-in-out infinite; }
-.result-emoji { font-size: 52px; margin-bottom: 8px; display: block; }
-.result-name { font-size: 24px; font-weight: 900; margin-bottom: 6px; }
-.result-catch { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+.result-emoji { font-size: 48px; display: block; margin-bottom: 8px; }
+.result-name { font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+.result-catch { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-/* Axes bars */
+/* narrative */
+.result-narrative { background: #fff; border-radius: var(--r-lg); padding: 22px 20px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.06); margin-bottom: 16px;
+  border-left: 5px solid var(--brand-c, #f97316); }
+.result-narrative p { font-size: 15px; line-height: 1.9; color: var(--ink); }
+
+/* axes */
 .axes-section { background: #fff; border-radius: var(--r-lg); padding: 20px;
   box-shadow: 0 2px 12px rgba(0,0,0,.05); margin-bottom: 16px; }
 .axes-title { font-size: 13px; font-weight: 800; color: var(--muted); margin-bottom: 14px;
   text-transform: uppercase; letter-spacing: .05em; }
-.axis-row { margin-bottom: 12px; }
+.axis-row { margin-bottom: 14px; }
 .axis-labels { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700;
   color: var(--muted); margin-bottom: 4px; }
-.axis-bar-wrap { height: 10px; background: var(--border); border-radius: 5px; overflow: hidden; }
+.axis-mid-note { font-size: 10px; color: #f97316; font-weight: 800; margin-top: 3px; text-align: center; }
+.axis-bar-wrap { position: relative; height: 10px; background: var(--border); border-radius: 5px; overflow: visible; }
 .axis-bar-fill { height: 100%; border-radius: 5px; transition: width .6s cubic-bezier(.4,0,.2,1); }
+.axis-mid-line { position: absolute; left: 50%; top: -3px; width: 2px; height: 16px;
+  background: #f97316; border-radius: 1px; }
 
 .result-card { background: #fff; border-radius: var(--r-lg); padding: 20px;
   box-shadow: 0 2px 12px rgba(0,0,0,.05); margin-bottom: 16px; }
@@ -139,7 +140,7 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 .strength-list li:last-child { border-bottom: none; }
 .strength-list li::before { content: "✦"; color: var(--brand); margin-right: 8px; }
 
-.wall-text { font-size: 14px; line-height: 1.8; color: var(--ink); }
+.wall-text { font-size: 14px; line-height: 1.8; }
 .tip-list { list-style: none; }
 .tip-list li { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border);
   font-size: 14px; line-height: 1.5; }
@@ -149,23 +150,20 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
   color: #fff; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
 
 .recovery-section { background: linear-gradient(135deg,#fff7ed,#fffbf5);
-  border: 1.5px solid #fed7aa; border-radius: var(--r-lg); padding: 18px;
-  margin-bottom: 16px; }
+  border: 1.5px solid #fed7aa; border-radius: var(--r-lg); padding: 18px; margin-bottom: 16px; }
 .recovery-section__title { font-size: 13px; font-weight: 800; color: #ea580c; margin-bottom: 8px; }
 .recovery-badge { display: inline-block; padding: 4px 12px; border-radius: 20px;
   background: #ea580c; color: #fff; font-size: 12px; font-weight: 900; margin-bottom: 8px; }
-.recovery-text { font-size: 13px; line-height: 1.7; color: var(--ink); }
+.recovery-text { font-size: 13px; line-height: 1.7; }
 
 .retake-notice { text-align: center; background: #f8faff; border: 1px dashed #93c5fd;
   border-radius: var(--r); padding: 16px; margin-bottom: 20px; }
 .retake-notice p { font-size: 13px; color: #3b82f6; font-weight: 700; line-height: 1.7; }
-
 .btn-retake { width: 100%; padding: 15px; background: #fff;
   border: 2px solid var(--border); border-radius: var(--r-lg); color: var(--ink);
   font-size: 15px; font-weight: 800; cursor: pointer; font-family: inherit; margin-bottom: 12px;
   transition: all .12s; }
 .btn-retake:hover { border-color: var(--brand); color: var(--brand); }
-
 .disclaimer-text { font-size: 11px; color: var(--muted); text-align: center; line-height: 1.7; margin-top: 8px; }
 </style>
 </head>
@@ -176,26 +174,26 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
   <a href="index.html" class="site-header__back">← トップへ</a>
 </header>
 
-<!-- ===== INTRO SCREEN ===== -->
+<!-- INTRO -->
 <div id="screenIntro" class="screen active">
   <div class="intro-hero">
-    <img src="assets/img/characters/ren/base.png" alt="レン先生" class="intro-chara">
-    <div class="intro-badge">💬 子育てタイプ診断</div>
-    <h1 class="intro-title">親子コミュニケーション<br>診断</h1>
-    <p class="intro-sub">お子さんへの声かけや接し方で「なんでわかってくれないの？」と感じたことはありませんか？<br>18の質問に答えるだけで、お子さんの気質タイプと、ぴったりな関わり方が見えてきます。</p>
+    <img src="assets/img/characters/miru/base.png" alt="みる先生" class="intro-chara">
+    <div class="intro-badge">🌱 子育てタイプ診断</div>
+    <h1 class="intro-title">うちの子に合う<br><em>声かけ診断</em></h1>
+    <p class="intro-sub">「なんでわかってくれないの？」そう感じたことはありませんか？<br>18の質問で子どもの気質タイプを分析し、ぴったりな声かけのコツをお伝えします。</p>
     <div class="intro-meta">
       <span class="meta-pill">📋 18問</span>
       <span class="meta-pill">⏱ 約3〜5分</span>
-      <span class="meta-pill">🔒 データは端末内のみ</span>
+      <span class="meta-pill">🔒 端末内保存のみ</span>
     </div>
   </div>
   <div class="intro-notice">
-    ⚠️ この診断は子どもの気質傾向を理解するヒントを提供するものです。性格の優劣や発達障害の有無を判断するものではありません。年齢や環境によっても変化するため、定期的な再診断をおすすめします。
+    ⚠️ この診断はお子さんとの関わり方のヒントを提供するものです。性格の優劣や発達障害の有無を判断するものではありません。成長・環境とともに変化するため、定期的な再診断をおすすめします。
   </div>
   <button class="btn-start" onclick="startDiag()">診断スタート ▶</button>
 </div>
 
-<!-- ===== QUESTION SCREEN ===== -->
+<!-- QUESTION -->
 <div id="screenQ" class="screen">
   <div class="q-progress-wrap">
     <div class="q-progress-bar"><div class="q-progress-fill" id="qProgressFill" style="width:0%"></div></div>
@@ -204,52 +202,55 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
   <div id="qAxisLabel" class="q-axis-label ax-a">軸A：社会エネルギー</div>
   <div class="q-card" id="qCard">
     <div class="q-num" id="qNum">Q1</div>
-    <div class="q-text" id="qText">質問テキスト</div>
+    <div class="q-text" id="qText"></div>
   </div>
   <div class="q-opts" id="qOpts"></div>
-  <div style="height:16px"></div>
   <button class="btn-next" id="btnNext" onclick="nextQ()">次へ →</button>
 </div>
 
-<!-- ===== LOADING ===== -->
+<!-- LOADING -->
 <div id="screenLoading" class="screen">
   <div class="loading-wrap">
-    <img src="assets/img/characters/ren/base.png" alt="" style="width:90px;margin:0 auto 20px;display:block;animation:float 2s ease-in-out infinite;">
-    <div class="loading-dots">
-      <div class="loading-dot"></div>
-      <div class="loading-dot"></div>
-      <div class="loading-dot"></div>
-    </div>
+    <img src="assets/img/characters/miru/base.png" alt="" style="width:90px;margin:0 auto 20px;display:block;animation:float 2s ease-in-out infinite;">
+    <div class="loading-dots"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div>
     <div class="loading-text">お子さんのタイプを分析中…</div>
   </div>
 </div>
 
-<!-- ===== RESULT SCREEN ===== -->
+<!-- RESULT -->
 <div id="screenResult" class="screen">
   <div class="result-hero">
     <div class="result-type-badge" id="resultTypeBadge">EHTG</div>
     <span class="result-emoji" id="resultEmoji">👑</span>
     <div class="result-name" id="resultName">タイプ名</div>
-    <div class="result-catch" id="resultCatch">キャッチコピー</div>
+    <div class="result-catch" id="resultCatch"></div>
+  </div>
+
+  <div class="result-narrative" id="resultNarrative">
+    <p id="resultNarrativeText"></p>
   </div>
 
   <div class="axes-section">
     <div class="axes-title">気質の4軸バランス</div>
     <div class="axis-row">
-      <div class="axis-labels"><span>外刺激型（E）</span><span>内充電型（I）</span></div>
-      <div class="axis-bar-wrap"><div class="axis-bar-fill" id="barA" style="width:50%;background:#f97316"></div></div>
+      <div class="axis-labels"><span>外刺激型</span><span>内充電型</span></div>
+      <div class="axis-bar-wrap" id="barWrapA"><div class="axis-bar-fill" id="barA" style="width:50%;background:#f97316"></div></div>
+      <div class="axis-mid-note" id="midNoteA" style="display:none">◀ どちらの傾向もあります ▶</div>
     </div>
     <div class="axis-row">
-      <div class="axis-labels"><span>広域探索型（H）</span><span>深掘集中型（D）</span></div>
-      <div class="axis-bar-wrap"><div class="axis-bar-fill" id="barB" style="width:50%;background:#8b5cf6"></div></div>
+      <div class="axis-labels"><span>広域探索型</span><span>深掘集中型</span></div>
+      <div class="axis-bar-wrap" id="barWrapB"><div class="axis-bar-fill" id="barB" style="width:50%;background:#8b5cf6"></div></div>
+      <div class="axis-mid-note" id="midNoteB" style="display:none">◀ どちらの傾向もあります ▶</div>
     </div>
     <div class="axis-row">
-      <div class="axis-labels"><span>貫徹型（T）</span><span>協調調整型（C）</span></div>
-      <div class="axis-bar-wrap"><div class="axis-bar-fill" id="barC" style="width:50%;background:#0891b2"></div></div>
+      <div class="axis-labels"><span>貫徹型</span><span>協調調整型</span></div>
+      <div class="axis-bar-wrap" id="barWrapC"><div class="axis-bar-fill" id="barC" style="width:50%;background:#0891b2"></div></div>
+      <div class="axis-mid-note" id="midNoteC" style="display:none">◀ どちらの傾向もあります ▶</div>
     </div>
     <div class="axis-row">
-      <div class="axis-labels"><span>即成果型（G）</span><span>意味探求型（M）</span></div>
-      <div class="axis-bar-wrap"><div class="axis-bar-fill" id="barD" style="width:50%;background:#16a34a"></div></div>
+      <div class="axis-labels"><span>即成果型</span><span>意味探求型</span></div>
+      <div class="axis-bar-wrap" id="barWrapD"><div class="axis-bar-fill" id="barD" style="width:50%;background:#16a34a"></div></div>
+      <div class="axis-mid-note" id="midNoteD" style="display:none">◀ どちらの傾向もあります ▶</div>
     </div>
   </div>
 
@@ -257,18 +258,16 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
     <div class="result-card__title">✦ このタイプの強み</div>
     <ul class="strength-list" id="resultStrengths"></ul>
   </div>
-
   <div class="result-card">
     <div class="result-card__title">⚠ ぶつかりやすい壁</div>
     <p class="wall-text" id="resultWall"></p>
   </div>
-
   <div class="result-card">
-    <div class="result-card__title">💡 接し方のコツ（3つ）</div>
+    <div class="result-card__title">💡 声かけ・接し方のコツ（3つ）</div>
     <ul class="tip-list" id="resultTips"></ul>
   </div>
 
-  <div class="recovery-section" id="recoverySection">
+  <div class="recovery-section">
     <div class="recovery-section__title">📊 感情回復のパターン</div>
     <div class="recovery-badge" id="recoveryBadge">速回復型</div>
     <p class="recovery-text" id="recoveryText"></p>
@@ -277,338 +276,326 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
   <div class="retake-notice">
     <p>🔄 子どもの気質は成長・環境とともに変化します。<br><strong>3〜6ヶ月ごとの再診断</strong>がおすすめです。</p>
   </div>
-
   <button class="btn-retake" onclick="retake()">もう一度診断する</button>
-  <p class="disclaimer-text">この診断はThomas & Chessの気質理論を参考にした<br>まなクエ独自のコンテンツです。科学的診断ではありません。</p>
+  <p class="disclaimer-text">Thomas &amp; Chess の気質理論を参考にしたまなクエ独自のコンテンツです。科学的診断ではありません。</p>
 </div>
 
 <script>
-// ===== QUESTIONS =====
 const QUESTIONS = [
-  // 軸A: 社会エネルギー (E外/I内)  q0-q3 → scoreA += A選択で+1
-  { axis:'A', axLabel:'軸A：社会エネルギー', axClass:'ax-a',
-    q:'放課後や休日、お子さんはどんな過ごし方を好みますか？',
-    a:'友だちを誘ったり、外で賑やかに過ごしたがる',
-    b:'自分の部屋で静かに好きなことをして過ごす' },
-  { axis:'A', axLabel:'軸A：社会エネルギー', axClass:'ax-a',
-    q:'お子さんが「元気になる」のはどんなときですか？',
-    a:'人と関わって何かをしたとき',
-    b:'一人でじっくり好きなことをしたとき' },
-  { axis:'A', axLabel:'軸A：社会エネルギー', axClass:'ax-a',
-    q:'初めての場所や初対面の人に対して、子どもはどうしますか？',
-    a:'積極的に話しかけたり、すぐに打ち解けようとする',
-    b:'最初は様子を見て、慣れてから少しずつ関わる' },
-  { axis:'A', axLabel:'軸A：社会エネルギー', axClass:'ax-a',
-    q:'疲れているとき、お子さんが回復するのは？',
-    a:'誰かとおしゃべりしたり、一緒に遊ぶと元気になる',
-    b:'一人でゆっくり過ごすと落ち着いてくる' },
+  {axis:'A',axLabel:'軸A：社会エネルギー',axClass:'ax-a',
+   q:'放課後や休日、お子さんはどんな過ごし方を好みますか？',
+   a:'友だちを誘ったり、外で賑やかに過ごしたがる',
+   b:'自分の部屋で静かに好きなことをして過ごす'},
+  {axis:'A',axLabel:'軸A：社会エネルギー',axClass:'ax-a',
+   q:'お子さんが「元気になる」のはどんなときですか？',
+   a:'人と関わって何かをしたとき',
+   b:'一人でじっくり好きなことをしたとき'},
+  {axis:'A',axLabel:'軸A：社会エネルギー',axClass:'ax-a',
+   q:'初めての場所や人に対して、子どもはどうしますか？',
+   a:'積極的に話しかけたり、すぐ打ち解けようとする',
+   b:'最初は様子を見て、慣れてから少しずつ関わる'},
+  {axis:'A',axLabel:'軸A：社会エネルギー',axClass:'ax-a',
+   q:'疲れているとき、回復のパターンは？',
+   a:'誰かとおしゃべりしたり一緒に遊ぶと元気になる',
+   b:'一人でゆっくり過ごすと落ち着いてくる'},
 
-  // 軸B: 注意スタイル (H広域/D深掘)  q4-q7 → scoreB += A選択で+1
-  { axis:'B', axLabel:'軸B：注意スタイル', axClass:'ax-b',
-    q:'子どもの興味の持ち方はどちらに近いですか？',
-    a:'色々なことに次々と興味が移る（広く浅く）',
-    b:'一つのことをとことん掘り下げる（狭く深く）' },
-  { axis:'B', axLabel:'軸B：注意スタイル', axClass:'ax-b',
-    q:'遊びや活動のとき、子どもはどんな様子ですか？',
-    a:'複数のことを同時に楽しもうとする',
-    b:'一つに集中して長時間続けられる' },
-  { axis:'B', axLabel:'軸B：注意スタイル', axClass:'ax-b',
-    q:'何かを学ぶとき、子どもはどんな傾向がありますか？',
-    a:'全体像をざっくりつかんでから先に進む',
-    b:'細かいところまで理解してから次に進む' },
-  { axis:'B', axLabel:'軸B：注意スタイル', axClass:'ax-b',
-    q:'子どもが飽きてしまうのはどんなときですか？',
-    a:'同じことが繰り返されると飽きやすい',
-    b:'興味がないことは最初から集中できない' },
+  {axis:'B',axLabel:'軸B：注意スタイル',axClass:'ax-b',
+   q:'子どもの興味の持ち方はどちらに近いですか？',
+   a:'色々なことに次々と興味が移る（広く浅く）',
+   b:'一つのことをとことん掘り下げる（狭く深く）'},
+  {axis:'B',axLabel:'軸B：注意スタイル',axClass:'ax-b',
+   q:'遊びや活動のとき、子どもはどんな様子ですか？',
+   a:'複数のことを同時に楽しもうとする',
+   b:'一つに集中して長時間続けられる'},
+  {axis:'B',axLabel:'軸B：注意スタイル',axClass:'ax-b',
+   q:'何かを学ぶとき、子どもはどんな傾向がありますか？',
+   a:'全体像をざっくりつかんでから先に進む',
+   b:'細かいところまで理解してから次に進む'},
+  {axis:'B',axLabel:'軸B：注意スタイル',axClass:'ax-b',
+   q:'子どもが飽きてしまうのはどんなときですか？',
+   a:'同じことが繰り返されると飽きやすい',
+   b:'興味がないことは最初から集中できない'},
 
-  // 軸C: 意思スタイル (T貫徹/C協調)  q8-q11 → scoreC += A選択で+1
-  { axis:'C', axLabel:'軸C：意思スタイル', axClass:'ax-c',
-    q:'お子さんが意見を通そうとするのはどんなときですか？',
-    a:'「自分がこうしたい」という強い意志があるとき',
-    b:'「これでみんなが喜んでくれる」と思うとき' },
-  { axis:'C', axLabel:'軸C：意思スタイル', axClass:'ax-c',
-    q:'友だちとのトラブルで、子どもはどう動きますか？',
-    a:'自分の主張を変えずに交渉しようとする',
-    b:'相手の気持ちを考えて折り合いをつけようとする' },
-  { axis:'C', axLabel:'軸C：意思スタイル', axClass:'ax-c',
-    q:'ルールや約束について、子どもはどう感じているようですか？',
-    a:'「なぜそのルールがあるのか」気にする',
-    b:'みんなのためのルールなら守ろうとする' },
-  { axis:'C', axLabel:'軸C：意思スタイル', axClass:'ax-c',
-    q:'お子さんがストレスを感じやすいのはどんなとき？',
-    a:'理不尽なことや納得できないことを強制されたとき',
-    b:'仲間外れにされたり、関係がぎくしゃくしたとき' },
+  {axis:'C',axLabel:'軸C：意思スタイル',axClass:'ax-c',
+   q:'お子さんが意見を通そうとするのはどんなときですか？',
+   a:'「自分がこうしたい」という強い意志があるとき',
+   b:'「これでみんなが喜んでくれる」と思うとき'},
+  {axis:'C',axLabel:'軸C：意思スタイル',axClass:'ax-c',
+   q:'友だちとのトラブルで、子どもはどう動きますか？',
+   a:'自分の主張を変えずに交渉しようとする',
+   b:'相手の気持ちを考えて折り合いをつけようとする'},
+  {axis:'C',axLabel:'軸C：意思スタイル',axClass:'ax-c',
+   q:'ルールや約束について、子どもはどう感じているようですか？',
+   a:'「なぜそのルールがあるのか」を気にする',
+   b:'みんなのためのルールなら守ろうとする'},
+  {axis:'C',axLabel:'軸C：意思スタイル',axClass:'ax-c',
+   q:'お子さんがストレスを感じやすいのはどんなとき？',
+   a:'理不尽なことや納得できないことを強制されたとき',
+   b:'仲間外れにされたり、関係がぎくしゃくしたとき'},
 
-  // 軸D: 動機スタイル (G即成果/M意味)  q12-q15 → scoreD += A選択で+1
-  { axis:'D', axLabel:'軸D：動機スタイル', axClass:'ax-d',
-    q:'宿題や作業に取り組むとき、子どもはどうしますか？',
-    a:'早く終わらせてスッキリしたい',
-    b:'自分なりに納得できる形にしたい' },
-  { axis:'D', axLabel:'軸D：動機スタイル', axClass:'ax-d',
-    q:'予定が急に変わったとき、子どもはどうですか？',
-    a:'計画通りにいかないと不満を感じやすい',
-    b:'状況に応じて柔軟に切り替えられる' },
-  { axis:'D', axLabel:'軸D：動機スタイル', axClass:'ax-d',
-    q:'子どもがやる気を出すのはどんなとき？',
-    a:'「できた！」「終わった！」という達成感があるとき',
-    b:'「なんで？」「面白い！」と感じたとき' },
-  { axis:'D', axLabel:'軸D：動機スタイル', axClass:'ax-d',
-    q:'子どもにとって「がんばった」と感じる瞬間は？',
-    a:'目標を達成したり、結果が出たとき',
-    b:'深く理解できたり、自分らしくできたとき' },
+  {axis:'D',axLabel:'軸D：動機スタイル',axClass:'ax-d',
+   q:'宿題や作業に取り組むとき、子どもはどうしますか？',
+   a:'早く終わらせてスッキリしたい',
+   b:'自分なりに納得できる形にしたい'},
+  {axis:'D',axLabel:'軸D：動機スタイル',axClass:'ax-d',
+   q:'予定が急に変わったとき、子どもはどうですか？',
+   a:'計画通りにいかないと不満を感じやすい',
+   b:'状況に応じて柔軟に切り替えられる'},
+  {axis:'D',axLabel:'軸D：動機スタイル',axClass:'ax-d',
+   q:'子どもがやる気を出すのはどんなとき？',
+   a:'「できた！」「終わった！」という達成感があるとき',
+   b:'「なんで？」「面白い！」と感じたとき'},
+  {axis:'D',axLabel:'軸D：動機スタイル',axClass:'ax-d',
+   q:'子どもにとって「がんばった」と感じる瞬間は？',
+   a:'目標を達成したり、結果が出たとき',
+   b:'深く理解できたり、自分らしくできたとき'},
 
-  // 補足: 感情回復速度 (速/深)  q16-q17
-  { axis:'S', axLabel:'補足：感情回復', axClass:'ax-s',
-    q:'子どもが怒ったり泣いたりしたとき、どれくらいで切り替えますか？',
-    a:'比較的早く切り替えられる（30分以内が多い）',
-    b:'しばらく引きずることが多い（数時間〜翌日も）' },
-  { axis:'S', axLabel:'補足：感情回復', axClass:'ax-s',
-    q:'注意されたとき、子どもはどんな反応をしますか？',
-    a:'「わかった」と言ってすぐ切り替えられる',
-    b:'その言葉をしばらく心に抱えているようだ' }
+  {axis:'S',axLabel:'補足：感情回復',axClass:'ax-s',
+   q:'子どもが怒ったり泣いたりしたとき、どれくらいで切り替えますか？',
+   a:'比較的早く切り替えられる（30分以内が多い）',
+   b:'しばらく引きずることが多い（数時間〜翌日も）'},
+  {axis:'S',axLabel:'補足：感情回復',axClass:'ax-s',
+   q:'注意されたとき、子どもはどんな反応をしますか？',
+   a:'「わかった」と言ってすぐ切り替えられる',
+   b:'その言葉をしばらく心に抱えているようだ'}
 ];
 
-// ===== TYPE DATA =====
 const TYPES = {
-  EHTG: { name:'エネルギッシュ実行家型', emoji:'👑', color:'#f97316',
+  EHTG:{name:'エネルギッシュ実行家型',emoji:'👑',color:'#f97316',
     catch:'行動力と責任感で周りを引っ張る、頼れるキャプテン',
+    narrative:'このタイプのお子さんは、生まれながらのリーダー気質を持っています。エネルギーに満ちあふれ、仲間と一緒に動くことで力を発揮します。「やると決めたら最後までやり遂げる」という強い責任感があり、周りからの信頼も厚い反面、物事が計画通りに進まないときや、自分のペースを乱されたときに強いフラストレーションを感じやすい面があります。声かけのポイントは「なぜ？」より「どうする？」。結果へのルートを一緒に考える姿勢が、このタイプの子どもを大きく動かします。',
     strengths:['計画を立ててテキパキ実行する力がある','約束・目標への責任感が強い','多くの人と関わりながら活動できる'],
-    wall:'思い通りにならないときや、計画が崩れたときにフラストレーションをためやすい傾向があります。「なぜ思った通りに動いてくれないの？」と感じる場面が増えることも。',
-    tips:['「なぜ？」より「どうする？」で話す。結果へのルートを一緒に考えると動きやすい','小さな決定権（どちらにする？）を渡すとモチベーションが上がる','達成の瞬間を大げさなくらい一緒に喜ぶ'] },
+    wall:'思い通りにならないときや計画が崩れたときにフラストレーションをためやすく、「なぜみんな動いてくれないの？」と感じる場面が増えることも。',
+    tips:['「なぜ？」より「どうする？」で話す——結果へのルートを一緒に考える','小さな決定権（どちらにする？）を渡してモチベーションを引き出す','達成の瞬間を大げさなくらい一緒に喜ぶ']},
 
-  EHTM: { name:'自由奔放チャレンジャー型', emoji:'⚡', color:'#ea580c',
+  EHTM:{name:'自由奔放チャレンジャー型',emoji:'⚡',color:'#ea580c',
     catch:'今この瞬間を全力で楽しむ、エネルギー全開の冒険者',
-    strengths:['瞬発力と行動力が高い','状況の変化に素早く対応できる','場を盛り上げる明るさがある'],
-    wall:'長期的な目標に向けて地道に努力することや、繰り返しの作業が苦手です。「なんでこんな退屈なことしなきゃいけないの？」という気持ちになりやすい。',
-    tips:['ルールや課題の「理由」をわかりやすく説明する','体験・実感から学ぶ機会を多くつくる','小刻みな短期目標の設定が効果的'] },
+    narrative:'このタイプのお子さんは、今この瞬間を全力で生きることが得意です。変化に強く、新しいことにどんどん挑戦できる瞬発力の高さが最大の武器。その反面、長期的な目標に向けて地道に努力したり、繰り返しの作業を続けたりすることには強い抵抗を感じます。「なんでこんな退屈なことをしなきゃいけないの？」という気持ちが起きやすいです。この子への声かけは、ルールや課題に「理由」と「体験」をセットにすることが効果的です。',
+    strengths:['瞬発力と行動力が高い','状況の変化に素早く対応できる','場を明るく盛り上げる力がある'],
+    wall:'長期目標に向けた地道な努力や繰り返し作業が苦手。「なんでこんな退屈なことをするの？」という気持ちになりやすい。',
+    tips:['ルールや課題の「理由」をわかりやすく説明する','体験・実感から学べる機会を多くつくる','小刻みな短期目標の設定が効果的']},
 
-  EHCG: { name:'みんな大好きムードメーカー型', emoji:'🌟', color:'#fb923c',
+  EHCG:{name:'みんな大好きムードメーカー型',emoji:'🌟',color:'#fb923c',
     catch:'場の空気を読んで盛り上げる、チームの太陽',
-    strengths:['周りを楽しい雰囲気にする力がある','協調性が高く人間関係を大切にする','やると決めたことはしっかりやり遂げる'],
-    wall:'人に嫌われることや仲間外れを極端に怖がります。「みんなに好かれたい」という気持ちが強すぎて、自分を抑えすぎてしまうことがある。',
-    tips:['「みんなに好かれなくていい」を繰り返し伝える','頑張りをこまめに承認する（結果だけでなく過程も）','叱るときは人前を避け、一対一でやさしく'] },
+    narrative:'このタイプのお子さんは、人が集まる場所で輝くソーシャルな力を持っています。周りをなごませる空気感があり、協調性も高くチームをまとめる力があります。一方で、「人に嫌われること」「仲間外れになること」を極端に怖がる面も。「みんなに好かれたい」という気持ちが強すぎると、自分を抑えすぎてストレスをためてしまうことがあります。この子への声かけは「あなたの気持ち」を引き出すことを意識して。',
+    strengths:['周りを楽しい雰囲気にする力がある','協調性が高く人間関係を大切にする','決めたことをやり遂げる粘り強さがある'],
+    wall:'人に嫌われることや仲間外れを強く怖がる。「みんなに好かれたい」気持ちが強すぎて、自分を抑えすぎてしまうことがある。',
+    tips:['「みんなに好かれなくていい」を繰り返し言葉で伝える','頑張りをこまめに承認する（結果だけでなく過程も）','叱るときは人前を避け、一対一でやさしく話す']},
 
-  EHCM: { name:'陽気な自由探検家型', emoji:'🌈', color:'#f59e0b',
+  EHCM:{name:'陽気な自由探検家型',emoji:'🌈',color:'#f59e0b',
     catch:'好奇心と共感力で世界をカラフルに彩るムードメーカー',
-    strengths:['好奇心が旺盛で、何にでも楽しく取り組める','相手の気持ちを察する共感力が高い','自分なりのペースで自由に表現できる'],
-    wall:'締め切りや「こうしなければならない」という状況に窮屈さを感じやすい。やりたいことが多すぎて散漫になることも。',
-    tips:['自由な発想や試みをまず肯定する','締め切りは「理由」とセットで伝える','選択肢の中から選ばせることで自律性を育てる'] },
+    narrative:'このタイプのお子さんは、好奇心と共感力という2つの強みを同時に持つ稀有なタイプです。何にでも楽しく取り組めるオープンな姿勢があり、人の気持ちに自然と寄り添えます。ただ、「こうしなければならない」という縛りや締め切りには窮屈さを感じやすく、やりたいことが多すぎて散漫になることも。この子への声かけは「まず肯定」が基本。自由な発想を活かしながら、選択肢を絞る手助けをしてあげると動きやすくなります。',
+    strengths:['好奇心が旺盛で何にでも楽しく取り組める','相手の気持ちを察する共感力が高い','自分なりのペースで自由に表現できる'],
+    wall:'締め切りや「こうしなければ」という状況に窮屈さを感じやすい。やりたいことが多すぎて散漫になることも。',
+    tips:['自由な発想や試みをまず肯定する','締め切りは「理由」とセットで伝える','選択肢の中から選ばせることで自律性を育てる']},
 
-  EDTG: { name:'ビジョン型リーダー', emoji:'🚀', color:'#8b5cf6',
+  EDTG:{name:'ビジョン型リーダー',emoji:'🚀',color:'#8b5cf6',
     catch:'大きな目標を描き、自分の力で実現しようとする戦略家',
-    strengths:['長期的な視野で物事を考えられる','ひとつのことを深く追求する集中力がある','論理的に物事を整理・判断できる'],
-    wall:'自分のビジョンへのこだわりが強く、他の意見を受け入れにくいことがある。「どうせ誰もわかってくれない」と孤立感を感じることも。',
-    tips:['子どもの「なぜ？」を否定せず一緒に考える','決断の機会を与え、責任感を育てる','完璧主義からくる失敗恐怖に寄り添う'] },
+    narrative:'このタイプのお子さんは、長期的な視野と深い集中力を持つ少数派です。「大きな目標」を自分の中に描き、そこへ向かって戦略的に動こうとします。自分のビジョンへのこだわりが強く、説明なしに「こうしなさい」と言われると強い反発が起きます。一方で「なぜそうするか」が腑に落ちると、驚くほどの集中力と行動力を発揮します。この子への最大のNG行動は「頭ごなし」。理由を伝えながら問いかける姿勢が信頼関係の土台になります。',
+    strengths:['長期的な視野で物事を考えられる','一つのことを深く追求する集中力がある','論理的に整理・判断できる'],
+    wall:'自分のビジョンへのこだわりが強く、他の意見を受け入れにくい。「どうせ誰もわかってくれない」と孤立感を感じることも。',
+    tips:['「なぜ？」を否定せず一緒に考える','決断の機会を与え責任感を育てる','完璧主義からくる失敗恐怖に寄り添う']},
 
-  EDTM: { name:'アイデア爆発型', emoji:'💡', color:'#7c3aed',
+  EDTM:{name:'アイデア爆発型',emoji:'💡',color:'#7c3aed',
     catch:'次々とアイデアが湧き出る、発想力豊かな思考の探求者',
-    strengths:['独創的なアイデアを生み出す力がある','深く考えることを苦と思わない','議論や議論で思考が研ぎ澄まされる'],
-    wall:'アイデアはあふれるが、実行フェーズで飽きてしまうことが多い。人から反論されると過剰に反応してしまうこともある。',
-    tips:['アイデアをまず「面白い！」と受け取る','実行に移すための最初の小さな一歩を一緒に決める','議論好きを活かして「どう思う？」と意見を聞く'] },
+    narrative:'このタイプのお子さんは、頭の中にアイデアが次々と湧き出てくる、非常にクリエイティブなタイプです。議論や議論が大好きで、考えること自体を楽しめます。ただ、アイデアはあふれる一方で実行フェーズで飽きてしまうことが多く、「またすぐ飽きた」と言われて傷つくこともあります。反論されると過剰に反応する繊細さも持ち合わせています。この子への声かけは「面白い！」という肯定から始め、最初の小さな一歩を一緒に決めることが鍵です。',
+    strengths:['独創的なアイデアを生み出す力がある','深く考えることを苦と思わない','議論を通じて思考が研ぎ澄まされる'],
+    wall:'アイデアはあふれるが実行フェーズで飽きてしまうことが多い。反論されると過剰に反応してしまうこともある。',
+    tips:['アイデアをまず「面白い！」と受け取る','実行に移す最初の小さな一歩を一緒に決める','議論好きを活かして「どう思う？」と意見を聞く']},
 
-  EDCG: { name:'熱血インスパイア型', emoji:'🔥', color:'#ec4899',
+  EDCG:{name:'熱血インスパイア型',emoji:'🔥',color:'#ec4899',
     catch:'情熱と共感力で周りを動かす、天性のリーダー気質',
+    narrative:'このタイプのお子さんは、情熱と共感力という強力な組み合わせを持っています。人を巻き込む熱意があり、目標に向かってエネルギッシュに動けます。深い共感力で人の心に寄り添える一方、感情移入しすぎて自分が疲弊することも。「こうあるべき」という信念が強く、それに反する行動に強い違和感を覚えることもあります。この子への声かけは感情を言語化する手助けを意識して。「今どんな気持ち？」という問いかけが長期的なメンタル安定につながります。',
     strengths:['人を巻き込む熱意と発信力がある','深い共感力で人の心に寄り添える','目標に向かってエネルギッシュに動ける'],
-    wall:'感情移入しすぎて自分が疲弊することがある。また、「こうすべき」という信念が強く、それに反する行動に強い違和感を覚えることも。',
-    tips:['気持ちを言語化する習慣をつける（感情コーチング）','「休むことも大事」と積極的に伝える','信念を大切にしつつ、他者の視点も学ぶ機会をつくる'] },
+    wall:'感情移入しすぎて自分が疲弊することがある。信念に反する行動に強い違和感を覚えることも。',
+    tips:['気持ちを言語化する習慣をつける（感情コーチング）','「休むことも大事」と積極的に伝える','信念を大切にしながら他者の視点も学ぶ機会をつくる']},
 
-  EDCM: { name:'夢見る共感者型', emoji:'🌙', color:'#a855f7',
-    catch:'豊かな想像力と深い共感力で、独自の世界観を持つ理想主義者',
-    strengths:['独特の感受性と豊かな想像力がある','人の気持ちに深く共感できる','長所を活かして深いところで人と繋がれる'],
-    wall:'理想と現実のギャップに傷つきやすい。繊細すぎて傷つくことも多く、批判を個人攻撃として受け取ってしまうことがある。',
-    tips:['感情を否定せず「そう感じるんだね」と受け止める','失敗を「経験値」としてリフレームする言葉かけ','創造的な表現（絵・文章・音楽）の機会を豊富に'] },
+  EDCM:{name:'夢見る共感者型',emoji:'🌙',color:'#a855f7',
+    catch:'豊かな想像力と深い共感力で、独自の世界観を育てる理想主義者',
+    narrative:'このタイプのお子さんは、心の中に豊かな世界を持つ繊細なタイプです。想像力と共感力に恵まれ、人の痛みや喜びを深いところで感じ取ります。理想が高いため、現実とのギャップに傷つきやすく、批判を個人攻撃として受け取ってしまうことがあります。この子への声かけでもっとも大切なのは「気持ちの否定をしないこと」。「そう感じるんだね」という共感の言葉が、この子の心を開く鍵になります。',
+    strengths:['独特の感受性と豊かな想像力がある','人の気持ちに深く共感できる','深いところで人と繋がれる'],
+    wall:'理想と現実のギャップに傷つきやすい。批判を個人攻撃として受け取ってしまうことがある。',
+    tips:['感情を否定せず「そう感じるんだね」と受け止める','失敗を「経験値」としてリフレームする言葉かけ','創造的な表現（絵・文章・音楽）の機会を豊富に']},
 
-  IHTG: { name:'堅実な職人型', emoji:'🔨', color:'#0891b2',
+  IHTG:{name:'堅実な職人型',emoji:'🔨',color:'#0891b2',
     catch:'コツコツと着実に積み上げる、信頼感抜群の堅実派',
-    strengths:['ルールや約束を忠実に守る誠実さがある','着実にコツコツと努力を積み重ねられる','責任感が強く、任せられた仕事を全うする'],
-    wall:'変化や突発的な出来事への対応が苦手。「いつもと違う」状況にストレスを感じやすく、新しいことへの挑戦に慎重になりすぎることも。',
-    tips:['変化があるときは事前に予告して心の準備を促す','「失敗しても大丈夫」を具体的な言葉で伝える','小さな挑戦をこまめにほめ、自信をつけさせる'] },
+    narrative:'このタイプのお子さんは、誠実さと責任感を生まれながらに持つ頼もしいタイプです。ルールや約束をきちんと守り、着実にコツコツと積み上げる力があります。その安定感は大きな強みですが、変化や突発的な出来事への対応が苦手。「いつもと違う」状況にストレスを感じやすく、新しいことへの挑戦には慎重になりすぎることも。この子への声かけは「事前の予告」がとても重要。変化がある前に知らせることで、心の準備ができて安心感が生まれます。',
+    strengths:['ルールや約束を忠実に守る誠実さがある','着実にコツコツと努力を積み重ねられる','責任感が強く任せられた仕事を全うする'],
+    wall:'変化や突発的な出来事への対応が苦手。「いつもと違う」状況にストレスを感じやすく、新しい挑戦に慎重になりすぎることも。',
+    tips:['変化があるときは事前に予告して心の準備を促す','「失敗しても大丈夫」を具体的な言葉で伝える','小さな挑戦をこまめにほめ自信をつけさせる']},
 
-  IHTM: { name:'マイペース分析型', emoji:'🔭', color:'#06b6d4',
+  IHTM:{name:'マイペース分析型',emoji:'🔭',color:'#06b6d4',
     catch:'自分のペースで丁寧に物事を観察・分析する冷静な思考家',
+    narrative:'このタイプのお子さんは、冷静に物事を観察・分析する力を持つ内省的なタイプです。自分のペースを大切にし、論理的な思考と几帳面さを兼ね備えています。一方で、自分のリズムを乱されることへの抵抗が強く、「なぜ急かされるの？」「なんで変えるの？」という気持ちになりやすいです。この子への声かけで最も効果的なのは「待つこと」。「いつできそう？」と聞くことで自律性を引き出し、考えるための時間を確保してあげましょう。',
     strengths:['冷静に物事を観察・分析できる','自分のペースを守りながら深く考えられる','論理的な思考と几帳面さを持つ'],
-    wall:'自分のペースを乱されることへの抵抗が強い。「なぜ急かされるの？」「なんで変えるの？」という気持ちになりやすい。',
-    tips:['急かさずに待つ。「いつできそう？」と聞くことで自律性を引き出す','考える時間・一人の時間を確保する','「なぜ？」という疑問を大切にし、一緒に調べる'] },
+    wall:'自分のペースを乱されることへの抵抗が強い。「なぜ急かされるの？」という気持ちになりやすい。',
+    tips:['急かさずに待つ。「いつできそう？」と自律性を引き出す','考える時間・一人の時間を確保する','「なぜ？」という疑問を大切にし一緒に調べる']},
 
-  IHCG: { name:'穏やかな守り手型', emoji:'🌿', color:'#10b981',
+  IHCG:{name:'穏やかな守り手型',emoji:'🌿',color:'#10b981',
     catch:'周りへの配慮と責任感でそっと場を守る、優しき番人',
-    strengths:['周りへの気配りと思いやりが深い','安定感があり、チームのまとめ役になれる','決めたことを最後までやり遂げる粘り強さがある'],
+    narrative:'このタイプのお子さんは、周りへの深い気配りと思いやりを持つ、静かで頼もしいタイプです。安定感があり、チームのまとめ役になれる力を持っています。決めたことを最後までやり遂げる粘り強さも大きな武器です。ただ、自分の意見を飲み込んでしまうことが多く、ストレスが表面に出にくいため見逃されがちです。この子への声かけでは「あなたはどう思う？」と定期的に意見を聞き、自分の気持ちを表現できる安全な場をつくってあげることが大切です。',
+    strengths:['周りへの気配りと思いやりが深い','安定感があり場をまとめる力がある','決めたことを最後まで粘り強くやり遂げる'],
     wall:'自分の意見を言えずに溜め込むことがある。「言っても無駄」「空気を壊したくない」と思いがちで、ストレスが表面に出にくい。',
-    tips:['「あなたはどう思う？」と定期的に意見を聞く','感情を出しやすい「安全な場」をつくる','結果よりも「一緒に頑張ったこと」を認める'] },
+    tips:['「あなたはどう思う？」と定期的に意見を聞く','感情を出しやすい「安全な場」をつくる','結果よりも「一緒に頑張ったこと」を認める']},
 
-  IHCM: { name:'感受性豊かな芸術家型', emoji:'🎨', color:'#34d399',
+  IHCM:{name:'感受性豊かな芸術家型',emoji:'🎨',color:'#34d399',
     catch:'繊細な感性と豊かな表現力で世界を彩る、内なる芸術家',
+    narrative:'このタイプのお子さんは、芸術的・感覚的な感受性が豊かで、自分だけの世界観を持つ繊細なタイプです。ゆっくりと、自分のペースで深く創造できる環境で最大限に輝きます。その分、批判や強い言葉に長く影響を受けやすく、「自分はダメなんだ」という思考に陥りやすい繊細さも持っています。この子への声かけは言葉の選び方がとても重要です。「あなたのここが好き」という具体的な肯定の言葉が、この子の自信の土台になります。',
     strengths:['芸術的・感覚的な感受性が豊か','自分のペースで深く創造できる','繊細な気配りと優しさを持つ'],
-    wall:'傷つきやすく、批判や強い言葉に長く影響を受ける。「自分はダメなんだ」という思考に陥りやすい繊細さを持つ。',
-    tips:['叱り方に最大限配慮する（言葉・声のトーン）','感情を安心して表現できる手段（絵・音楽・日記）を提供','「あなたのここが好き」という具体的な言葉を意識的に'] },
+    wall:'批判や強い言葉に長く影響を受ける。「自分はダメなんだ」という思考に陥りやすい繊細さを持つ。',
+    tips:['叱り方に配慮する（言葉・声のトーン・場所）','感情を安心して表現できる手段（絵・音楽・日記）を提供','「あなたのここが好き」という具体的な言葉を意識的に']},
 
-  IDTG: { name:'孤高の戦略家型', emoji:'♟', color:'#3b82f6',
+  IDTG:{name:'孤高の戦略家型',emoji:'♟',color:'#3b82f6',
     catch:'深い思考と長期的視野で最適解を追い求める、静かな天才肌',
-    strengths:['深い集中力と論理的思考力がある','長期的な計画を立てて実行できる','少数の関係を深め、強い信頼関係を築ける'],
-    wall:'コミュニケーションが少なく、「何を考えているかわからない」と思われやすい。自分の世界に入りすぎて孤立することも。',
-    tips:['「報告しなくていい、でも困ったら頼って」と伝える','結論だけでなく、思考の過程も聞いてみる','社交が苦手なことを責めず、深い関係性を一緒に育てる'] },
+    narrative:'このタイプのお子さんは、深い集中力と論理的思考力を持ち、一見無口に見えても頭の中では常に何かを考え続けています。長期的な計画を立てて実行できる力があり、少数の深い人間関係を大切にします。ただ、「何を考えているかわからない」と思われやすく、自分の世界に入りすぎて孤立することも。この子への声かけは「結論を聞くだけでなく、思考の過程も教えてほしい」という姿勢が重要です。困ったときに頼れる関係を、普段からゆっくり積み上げてください。',
+    strengths:['深い集中力と論理的思考力がある','長期的な計画を立てて実行できる','少数の関係を深め強い信頼関係を築ける'],
+    wall:'コミュニケーションが少なく「何を考えているかわからない」と思われやすい。自分の世界に入りすぎて孤立することも。',
+    tips:['「報告しなくていい、でも困ったら頼って」と伝える','結論だけでなく思考の過程も聞いてみる','社交が苦手なことを責めず、深い関係性を一緒に育てる']},
 
-  IDTM: { name:'深い思索者型', emoji:'🌊', color:'#6366f1',
+  IDTM:{name:'深い思索者型',emoji:'🌊',color:'#6366f1',
     catch:'内なる世界で深く考え続ける、静かで豊かな知性の持ち主',
+    narrative:'このタイプのお子さんは、物事の本質を深く追求することに喜びを見出す、哲学的なタイプです。独自の理論や視点を発展させる力があり、「なぜ？」という問いを大切にします。一方で、「なぜこれをやるのか」が腑に落ちないと動けない頑固さもあります。頭の中が豊かすぎて、うまく言語化・行動化できないことも。この子への声かけでは、課題の「意味と目的」を丁寧に説明することが、驚くほど効果的です。',
     strengths:['物事の本質を深く追求する思考力がある','独自の理論や視点を発展させられる','強いこだわりと一貫した価値観を持つ'],
-    wall:'「なぜこれをやるのか」が腑に落ちないと動けない。また、頭の中が豊かすぎて、うまく言語化・行動化できないことがある。',
-    tips:['課題の「意味・目的」を丁寧に説明する','考えるための一人の時間を十分に与える','「答えが出なくてもいい」試行錯誤を認める'] },
+    wall:'「なぜこれをやるのか」が腑に落ちないと動けない。頭の中が豊かすぎてうまく言語化・行動化できないことがある。',
+    tips:['課題の「意味・目的」を丁寧に説明する','考えるための一人の時間を十分に与える','「答えが出なくてもいい」試行錯誤を認める']},
 
-  IDCG: { name:'静かな共感者型', emoji:'🌸', color:'#ec4899',
+  IDCG:{name:'静かな共感者型',emoji:'🌸',color:'#ec4899',
     catch:'内に深い共感力を持ち、大切な人のそばでそっと支える守護者',
-    strengths:['深い共感力と繊細な気配りがある','少数の深い人間関係を大切にする','物静かだが、必要なときに力を発揮できる'],
-    wall:'自分より他人を優先しすぎて疲弊することがある。また、感情を言葉にするのが苦手で、心の中に溜め込みやすい。',
-    tips:['「あなたのことが心配」と直接伝える','感情を言葉にする練習を日常的に（「今日どんな気分？」）','一人の静かな時間を尊重し、無理に参加させない'] },
+    narrative:'このタイプのお子さんは、物静かですが内側に深い共感力を持つ稀有なタイプです。少数の深い人間関係を大切にし、必要なときに静かに力を発揮します。自分より他人を優先しすぎて疲弊することがあり、感情を言葉にするのが苦手で心に溜め込みやすい面もあります。この子への声かけで最も大切なのは「あなたのことが心配だよ」という直接の言葉。感情を言葉にする練習を日常の会話に取り入れてあげましょう。',
+    strengths:['深い共感力と繊細な気配りがある','少数の深い人間関係を大切にする','物静かだが必要なときに力を発揮できる'],
+    wall:'自分より他人を優先しすぎて疲弊することがある。感情を言葉にするのが苦手で心の中に溜め込みやすい。',
+    tips:['「あなたのことが心配」と直接伝える','感情を言葉にする練習を日常的に（「今日どんな気分？」）','一人の静かな時間を尊重し無理に参加させない']},
 
-  IDCM: { name:'内なる理想主義者型', emoji:'⭐', color:'#8b5cf6',
+  IDCM:{name:'内なる理想主義者型',emoji:'⭐',color:'#8b5cf6',
     catch:'豊かな内面世界と深い価値観で、自分だけの理想を静かに育てる',
+    narrative:'このタイプのお子さんは、外見は静かですが内側に揺るぎない価値観と豊かな感性を持つ、最も個性的なタイプのひとつです。深い共感力と独自の表現力で、人の心に静かに響く力があります。理想が高いため、自分にも他者にも厳しくなりがちで、「こんなはずじゃなかった」と繰り返し傷つくことがあります。この子への声かけで最も大切なのは「価値観を否定しないこと」。完璧主義には「70%でもOK」という言葉を繰り返し届けてください。',
     strengths:['強い内面の価値観と信念を持つ','深い共感力で人の心を理解できる','独自の感性で豊かに表現できる'],
-    wall:'理想が高く、自分も他者も傷つけてしまうことがある。繊細さゆえに、ちょっとした言葉を深く受け取りすぎてしまうことも。',
-    tips:['価値観を否定せず、「そう思うんだね」と受け止める','完璧主義には「70%でもOK」を繰り返し伝える','信頼できる1〜2人の深い関係を大切に育てる'] }
+    wall:'理想が高く自分も他者も傷つけてしまうことがある。ちょっとした言葉を深く受け取りすぎてしまうことも。',
+    tips:['価値観を否定せず「そう思うんだね」と受け止める','完璧主義には「70%でもOK」を繰り返し伝える','信頼できる1〜2人の深い関係を大切に育てる']}
 };
 
-const RECOVERY_DATA = {
-  fast: { label:'速回復型', text:'気持ちの切り替えが比較的早いタイプです。叱った後はすぐに普通の話題に切り替えてあげると関係が安定します。ただし「もう大丈夫でしょ」と早合点せず、様子を確認する一言を忘れずに。' },
-  slow: { label:'深処理型', text:'感情を深く処理するタイプで、怒られた言葉が長く心に残ります。叱るときは言葉選びを慎重に。「あなたのことが好きだから言う」という愛情を言葉にすることが大切です。怒りが収まるまで少し時間を置いてあげましょう。' },
-  balanced: { label:'バランス型', text:'状況によって回復の速さが変わるタイプです。子どもの様子をよく観察して、その日のコンディションに合わせた関わり方を選ぶと良いでしょう。' }
+const RECOVERY = {
+  fast:{label:'速回復型',text:'気持ちの切り替えが比較的早いタイプです。叱った後はすぐに普通の話題に切り替えてあげると関係が安定します。ただし「もう大丈夫でしょ」と早合点せず、様子を確認する一言を忘れずに。'},
+  slow:{label:'深処理型',text:'感情を深く処理するタイプで、叱られた言葉が長く心に残ります。叱るときは言葉選びを最大限に慎重に。「あなたのことが好きだから言う」という愛情を言葉にすることが大切です。'},
+  balanced:{label:'バランス型',text:'状況によって回復の速さが変わるタイプです。その日のコンディションに合わせた関わり方を選ぶと良いでしょう。'}
 };
 
-// ===== STATE =====
+// STATE
 let qIdx = 0;
-let answers = new Array(18).fill(null); // null, 'A', 'B'
-let scoreA=0, scoreB=0, scoreC=0, scoreD=0;
+let answers = Array(18).fill(null);
+let sA=0,sB=0,sC=0,sD=0;
+// mid flags
+let midA=false,midB=false,midC=false,midD=false;
 
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
 }
-
-function startDiag() {
-  qIdx = 0;
-  answers = new Array(18).fill(null);
-  showScreen('screenQ');
-  renderQ();
+function startDiag(){
+  qIdx=0; answers=Array(18).fill(null);
+  showScreen('screenQ'); renderQ();
 }
-
-function renderQ() {
-  const q = QUESTIONS[qIdx];
-  const pct = (qIdx / 18) * 100;
-  document.getElementById('qProgressFill').style.width = pct + '%';
-  document.getElementById('qCounter').textContent = (qIdx + 1) + ' / 18';
-  const axEl = document.getElementById('qAxisLabel');
-  axEl.textContent = q.axLabel;
-  axEl.className = 'q-axis-label ' + q.axClass;
-  document.getElementById('qNum').textContent = 'Q' + (qIdx + 1);
-  document.getElementById('qText').textContent = q.q;
-
-  const optsEl = document.getElementById('qOpts');
-  optsEl.innerHTML = '';
-  ['A','B'].forEach(letter => {
-    const btn = document.createElement('button');
-    btn.className = 'q-opt' + (answers[qIdx] === letter ? ' selected' : '');
-    btn.innerHTML = '<div class="q-opt-inner"><span class="q-opt__letter">' + letter + '</span><span class="q-opt__text">' + (letter === 'A' ? q.a : q.b) + '</span></div>';
-    btn.onclick = () => selectOpt(letter);
-    optsEl.appendChild(btn);
+function renderQ(){
+  const q=QUESTIONS[qIdx];
+  document.getElementById('qProgressFill').style.width=(qIdx/18*100)+'%';
+  document.getElementById('qCounter').textContent=(qIdx+1)+' / 18';
+  const axEl=document.getElementById('qAxisLabel');
+  axEl.textContent=q.axLabel; axEl.className='q-axis-label '+q.axClass;
+  document.getElementById('qNum').textContent='Q'+(qIdx+1);
+  document.getElementById('qText').textContent=q.q;
+  const el=document.getElementById('qOpts'); el.innerHTML='';
+  ['A','B'].forEach(letter=>{
+    const btn=document.createElement('button');
+    btn.className='q-opt'+(answers[qIdx]===letter?' selected':'');
+    btn.innerHTML='<div class="q-opt-inner"><span class="q-opt__letter">'+letter+'</span><span class="q-opt__text">'+(letter==='A'?q.a:q.b)+'</span></div>';
+    btn.onclick=()=>selectOpt(letter);
+    el.appendChild(btn);
   });
-
-  const btnNext = document.getElementById('btnNext');
-  btnNext.classList.toggle('ready', answers[qIdx] !== null);
-  btnNext.textContent = qIdx === 17 ? '結果を見る ✦' : '次へ →';
-
-  // Animate card
-  const card = document.getElementById('qCard');
-  card.style.animation = 'none';
-  card.offsetHeight; // reflow
-  card.style.animation = '';
+  const bn=document.getElementById('btnNext');
+  bn.classList.toggle('ready',answers[qIdx]!==null);
+  bn.textContent=qIdx===17?'結果を見る ✦':'次へ →';
+  const card=document.getElementById('qCard');
+  card.style.animation='none'; card.offsetHeight; card.style.animation='';
 }
-
-function selectOpt(letter) {
-  answers[qIdx] = letter;
-  document.querySelectorAll('.q-opt').forEach(btn => btn.classList.remove('selected'));
-  document.querySelectorAll('.q-opt')[letter === 'A' ? 0 : 1].classList.add('selected');
+function selectOpt(letter){
+  answers[qIdx]=letter;
+  document.querySelectorAll('.q-opt').forEach((b,i)=>b.classList.toggle('selected',i===(letter==='A'?0:1)));
   document.getElementById('btnNext').classList.add('ready');
 }
-
-function nextQ() {
-  if (answers[qIdx] === null) return;
-  if (qIdx < 17) {
-    qIdx++;
-    renderQ();
-  } else {
-    calcResult();
-  }
+function nextQ(){
+  if(!answers[qIdx])return;
+  if(qIdx<17){qIdx++;renderQ();}
+  else calcResult();
 }
-
-function calcResult() {
+function calcResult(){
   showScreen('screenLoading');
-  setTimeout(() => {
-    // Score axes
-    scoreA = 0; scoreB = 0; scoreC = 0; scoreD = 0;
-    let scoreS = 0;
-    for (let i = 0; i < 18; i++) {
-      const isA = answers[i] === 'A';
-      if (i < 4) { if (isA) scoreA++; }
-      else if (i < 8) { if (isA) scoreB++; }
-      else if (i < 12) { if (isA) scoreC++; }
-      else if (i < 16) { if (isA) scoreD++; }
-      else { if (isA) scoreS++; }
+  setTimeout(()=>{
+    sA=0;sB=0;sC=0;sD=0;let sS=0;
+    for(let i=0;i<18;i++){
+      const isA=answers[i]==='A';
+      if(i<4){if(isA)sA++;}
+      else if(i<8){if(isA)sB++;}
+      else if(i<12){if(isA)sC++;}
+      else if(i<16){if(isA)sD++;}
+      else{if(isA)sS++;}
     }
-
-    const e = scoreA >= 2 ? 'E' : 'I';
-    const h = scoreB >= 2 ? 'H' : 'D';
-    const t = scoreC >= 2 ? 'T' : 'C';
-    const g = scoreD >= 2 ? 'G' : 'M';
-    const typeCode = e + h + t + g;
-
-    const recovery = scoreS >= 2 ? 'fast' : scoreS === 0 ? 'slow' : 'balanced';
-
-    showResult(typeCode, recovery);
-  }, 1800);
+    // Tie detection
+    midA=(sA===2); midB=(sB===2); midC=(sC===2); midD=(sD===2);
+    const e=sA>=2?'E':'I';
+    const h=sB>=2?'H':'D';
+    const t=sC>=2?'T':'C';
+    const g=sD>=2?'G':'M';
+    const recovery=sS>=2?'fast':sS===0?'slow':'balanced';
+    showResult(e+h+t+g, recovery);
+  },1800);
 }
+function showResult(code, recovery){
+  const td=TYPES[code]||TYPES['EHTG'];
+  const rd=RECOVERY[recovery];
+  const badge=document.getElementById('resultTypeBadge');
+  badge.textContent=code; badge.style.background=td.color;
+  document.getElementById('resultNarrative').style.borderLeftColor=td.color;
+  document.getElementById('resultEmoji').textContent=td.emoji;
+  document.getElementById('resultName').textContent=td.name;
+  document.getElementById('resultCatch').textContent=td.catch;
+  document.getElementById('resultNarrativeText').textContent=td.narrative;
 
-function showResult(typeCode, recovery) {
-  const td = TYPES[typeCode] || TYPES['EHTG'];
-  const rd = RECOVERY_DATA[recovery];
+  // Axis bars + mid notes
+  const axes=[
+    {bar:'barA',wrap:'barWrapA',note:'midNoteA',score:sA,color:'#f97316',mid:midA},
+    {bar:'barB',wrap:'barWrapB',note:'midNoteB',score:sB,color:'#8b5cf6',mid:midB},
+    {bar:'barC',wrap:'barWrapC',note:'midNoteC',score:sC,color:'#0891b2',mid:midC},
+    {bar:'barD',wrap:'barWrapD',note:'midNoteD',score:sD,color:'#16a34a',mid:midD},
+  ];
+  axes.forEach(ax=>{
+    const fill=document.getElementById(ax.bar);
+    fill.style.width=(ax.score/4*100)+'%';
+    fill.style.background=ax.color;
+    const wrap=document.getElementById(ax.wrap);
+    const noteEl=document.getElementById(ax.note);
+    if(ax.mid){
+      // show midline indicator
+      if(!wrap.querySelector('.axis-mid-line')){
+        const line=document.createElement('div');
+        line.className='axis-mid-line'; wrap.appendChild(line);
+      }
+      noteEl.style.display='block';
+    } else {
+      const line=wrap.querySelector('.axis-mid-line');
+      if(line)line.remove();
+      noteEl.style.display='none';
+    }
+  });
 
-  // Badge
-  const badge = document.getElementById('resultTypeBadge');
-  badge.textContent = typeCode;
-  badge.style.background = td.color;
-
-  document.getElementById('resultEmoji').textContent = td.emoji;
-  document.getElementById('resultName').textContent = td.name;
-  document.getElementById('resultCatch').textContent = td.catch;
-
-  // Axis bars (percentage: 0-4 → 0-100%)
-  document.getElementById('barA').style.width = (scoreA / 4 * 100) + '%';
-  document.getElementById('barB').style.width = (scoreB / 4 * 100) + '%';
-  document.getElementById('barC').style.width = (scoreC / 4 * 100) + '%';
-  document.getElementById('barD').style.width = (scoreD / 4 * 100) + '%';
-
-  // Strengths
-  const sl = document.getElementById('resultStrengths');
-  sl.innerHTML = td.strengths.map(s => '<li>' + s + '</li>').join('');
-
-  // Wall
-  document.getElementById('resultWall').textContent = td.wall;
-
-  // Tips
-  const tl = document.getElementById('resultTips');
-  tl.innerHTML = td.tips.map((t, i) =>
-    '<li><span class="tip-num">' + (i+1) + '</span><span>' + t + '</span></li>'
-  ).join('');
-
-  // Recovery
-  document.getElementById('recoveryBadge').textContent = rd.label;
-  document.getElementById('recoveryText').textContent = rd.text;
-
+  document.getElementById('resultStrengths').innerHTML=td.strengths.map(s=>'<li>'+s+'</li>').join('');
+  document.getElementById('resultWall').textContent=td.wall;
+  document.getElementById('resultTips').innerHTML=td.tips.map((t,i)=>'<li><span class="tip-num">'+(i+1)+'</span><span>'+t+'</span></li>').join('');
+  document.getElementById('recoveryBadge').textContent=rd.label;
+  document.getElementById('recoveryText').textContent=rd.text;
   showScreen('screenResult');
 }
-
-function retake() {
-  showScreen('screenIntro');
-}
+function retake(){showScreen('screenIntro');}
 </script>
 </body>
 </html>
