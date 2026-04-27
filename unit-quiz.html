@@ -651,4 +651,107 @@ function _gachaShowCard(idx, fullAnim) {
   document.getElementById('gachaCounter').textContent = total > 1 ? `${idx+1} / ${total}枚` : '';
   document.getElementById('gachaCardFront').innerHTML = _gachaCardHTML(result);
 
-  const banner = document.getElementById('gachaRar
+  const banner = document.getElementById('gachaRarityBanner');
+  const bannerCfg = _gachaBanner(rarity);
+  const ov = document.getElementById('gachaRewardOverlay');
+  const qm = document.getElementById('gachaQmark');
+  const cw = document.getElementById('gachaCardWrap');
+  const ci = document.getElementById('gachaCardInner');
+
+  const revealCard = () => {
+    qm.classList.add('explode');
+    document.getElementById('gachaFlash').classList.add('active');
+    setTimeout(() => {
+      qm.style.opacity = '0';
+      cw.style.opacity = '1';
+      cw.classList.add('reveal');
+      ci.classList.add('flip');
+      _gachaParticles(rarity);
+      setTimeout(() => {
+        banner.className = bannerCfg.cls;
+        banner.textContent = bannerCfg.text;
+        banner.classList.add('show');
+        const isLast = idx === _gachaResults.length - 1;
+        if (!isLast) {
+          const nb = document.getElementById('gachaNextBtn');
+          nb.textContent = '次のカード →';
+          nb.classList.add('show');
+          nb.onclick = () => { nb.classList.remove('show'); _gachaReset(); _gachaShowCard(idx + 1, true); };
+        } else {
+          const cb = document.getElementById('gachaCloseBtn');
+          cb.textContent = _gachaResults.length > 1 ? '全部見た！とじる' : 'とじる';
+          cb.classList.add('show');
+          cb.onclick = gachaClose;
+        }
+      }, 600);
+    }, 250);
+  };
+
+  if (fullAnim) {
+    qm.classList.add('appear');
+    setTimeout(() => {
+      qm.classList.add('pulse');
+      const tapHandler = (e) => {
+        if (e.target.closest && (e.target.closest('#gachaNextBtn') || e.target.closest('#gachaCloseBtn'))) return;
+        ov.removeEventListener('click', tapHandler);
+        revealCard();
+      };
+      ov.addEventListener('click', tapHandler);
+    }, 700);
+  } else {
+    revealCard();
+  }
+}
+
+function triggerGachaReward() {
+  const btn = document.getElementById('gachaBtnScore');
+  if (btn) btn.style.display = 'none';
+
+  // オーバーレイを動的生成（初回のみ）
+  if (!document.getElementById('gachaRewardOverlay')) {
+    const el = document.createElement('div');
+    el.className = 'gacha-reward-overlay';
+    el.id = 'gachaRewardOverlay';
+    el.innerHTML = `
+      <div id="gachaFlash"></div>
+      <div id="gachaStarField"></div>
+      <div id="gachaQmark">？</div>
+      <div id="gachaParticles"></div>
+      <div id="gachaCounter"></div>
+      <div id="gachaCardWrap">
+        <div id="gachaCardInner">
+          <div id="gachaCardFront"></div>
+        </div>
+      </div>
+      <div id="gachaRarityBanner"></div>
+      <button id="gachaNextBtn"></button>
+      <button id="gachaCloseBtn">とじる</button>
+      <div id="gachaNorewardPhase">
+        <div style="font-size:48px">😢</div>
+        <div style="color:rgba(255,255,255,.8);font-size:16px;font-weight:700">今回は報酬なし</div>
+        <div style="color:rgba(255,255,255,.6);font-size:13px">全問正解でガチャが引けるよ！</div>
+      </div>`;
+    document.body.appendChild(el);
+  }
+
+  const { pulls, results } = claimQuizGacha(quizId, score, QUESTIONS.length);
+  const ov = document.getElementById('gachaRewardOverlay');
+  ov.classList.add('show');
+  _gachaInitStars();
+
+  if (!pulls || !results || results.length === 0) {
+    document.getElementById('gachaNorewardPhase').classList.add('show');
+    const cb = document.getElementById('gachaCloseBtn');
+    cb.textContent = 'とじる';
+    cb.classList.add('show');
+    cb.onclick = gachaClose;
+    return;
+  }
+
+  _gachaResults = results;
+  _gachaIdx = 0;
+  _gachaShowCard(0, true);
+}
+</script>
+</body>
+</html>
