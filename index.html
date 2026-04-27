@@ -405,9 +405,6 @@
     .cat--puzzle .cat-card__blob { background: var(--accent-yellow); }
     .cat--puzzle .cat-card__icon { background: var(--accent-yellow-bg, #FEF5D6); }
     .cat--puzzle .cat-card__count { color: #946500; }
-    .cat--shikaku .cat-card__blob { background: #2563EB; }
-    .cat--shikaku .cat-card__icon { background: #EFF6FF; }
-    .cat--shikaku .cat-card__count { color: #1A449E; }
 
     /* ===== LATEST QUIZ ===== */
     .latest-header {
@@ -857,6 +854,21 @@
         <img src="assets/img/characters/lumina/base.png" alt="ルミナ先生" class="shindan-chara">
         <img src="assets/img/characters/ren/base.png" alt="レン先生" class="shindan-chara">
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== KOSODATE FEATURE ===== -->
+<section style="background:linear-gradient(135deg,#fff7ed 0%,#fffbf5 100%);border-top:1px solid #fed7aa;border-bottom:1px solid #fed7aa;padding:32px 16px;">
+  <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+    <img src="assets/img/characters/ren/base.png" alt="レン先生" style="width:90px;flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(249,115,22,.2));">
+    <div style="flex:1;min-width:200px;">
+      <div style="display:inline-block;background:#f97316;color:#fff;font-size:11px;font-weight:900;padding:3px 10px;border-radius:20px;margin-bottom:8px;">🌱 NEW 子育て診断</div>
+      <h2 style="font-size:20px;font-weight:900;color:#1e293b;margin-bottom:6px;line-height:1.4;">うちの子、どんなタイプ？<br><span style="color:#f97316;">親子コミュニケーション診断</span></h2>
+      <p style="font-size:13px;color:#64748b;margin-bottom:12px;line-height:1.6;">18問で子どもの気質タイプを分析。16タイプのうちどれかがわかり、ぴったりの声かけ・接し方のコツが見えてくる。</p>
+      <a href="kosodate-shindan.html" style="display:inline-block;background:#f97316;color:#fff;font-size:14px;font-weight:900;padding:12px 24px;border-radius:30px;text-decoration:none;box-shadow:0 3px 0 #c2410c;">🌱 無料で診断する →</a>
+      <p style="font-size:12px;color:#9ca3af;margin-top:8px;">18問・約3〜5分・無料・登録不要</p>
     </div>
   </div>
 </section>
@@ -1325,7 +1337,6 @@ function buildUnitCard(unit, subjLabel) {
   const isMapTap   = unit.quizId === 'map-tap';
   const isCapitals = unit.quizId === 'map-capitals';
   const isNanpure  = unit.quizId === 'nanpure';
-  const isExamItp  = unit.quizId === 'exam-itp';
   const isIgo      = unit.quizId === 'igo';
   const isShogi    = unit.quizId === 'shogi';
   const isTsume3   = unit.quizId === 'tsume3';
@@ -1376,24 +1387,6 @@ function buildUnitCard(unit, subjLabel) {
         <span class="unit-card__difficulty">${stars}</span>
       </div>
       <div class="unit-card__counts">${b3}${b5}${b10}${bAll}</div>
-    </div>`;
-  }
-
-  // ===== ITパスポート本気対策 =====
-  if (isExamItp) {
-    return `
-    <div class="unit-card unit-card--gacha">
-      <div class="unit-card__tags">${tagHtml}</div>
-      <div class="unit-card__title">${unit.label}</div>
-      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
-      <div class="unit-card__meta">
-        <span>📘 全600問</span>
-        <span>⏱ 自由</span>
-        <span class="unit-card__difficulty">${stars}</span>
-      </div>
-      <div class="unit-card__counts">
-        <a href="exam-quiz.html" class="count-btn count-btn--default" style="background:#2563EB;border-color:#2563EB">本気で対策する →</a>
-      </div>
     </div>`;
   }
 
