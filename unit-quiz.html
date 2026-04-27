@@ -465,6 +465,23 @@ function renderQuestion(idx) {
   document.getElementById('progressText').textContent = `問題 ${idx+1} / ${QUESTIONS.length}`;
 }
 
+// ===== サウンド =====
+const SND = {
+  enabled: localStorage.getItem('sndEnabled') !== 'false',
+  correct: new Audio('assets/audio/correct.mp3'),
+  wrong:   new Audio('assets/audio/wrong.mp3'),
+  play(type) {
+    if (!this.enabled) return;
+    this[type].cloneNode().play().catch(() => {});
+  }
+};
+function toggleSound() {
+  SND.enabled = !SND.enabled;
+  localStorage.setItem('sndEnabled', SND.enabled);
+  const btn = document.getElementById('soundBtn');
+  if (btn) btn.textContent = SND.enabled ? '🔊' : '🔇';
+}
+
 function selectAnswer(sel) {
   const q = QUESTIONS[current];
   const ok = sel === q.answer;
@@ -734,24 +751,4 @@ function triggerGachaReward() {
     document.body.appendChild(el);
   }
 
-  const { pulls, results } = claimQuizGacha(quizId, score, QUESTIONS.length);
-  const ov = document.getElementById('gachaRewardOverlay');
-  ov.classList.add('show');
-  _gachaInitStars();
-
-  if (!pulls || !results || results.length === 0) {
-    document.getElementById('gachaNorewardPhase').classList.add('show');
-    const cb = document.getElementById('gachaCloseBtn');
-    cb.textContent = 'とじる';
-    cb.classList.add('show');
-    cb.onclick = gachaClose;
-    return;
-  }
-
-  _gachaResults = results;
-  _gachaIdx = 0;
-  _gachaShowCard(0, true);
-}
-</script>
-</body>
-</html>
+  const { pulls, results } = claimQuizGacha(quizId, scor
