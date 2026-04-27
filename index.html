@@ -597,6 +597,7 @@
     .unit-card__title { font-size: 18px; font-weight: 800; color: var(--ink-900); line-height: 1.4; }
     .unit-card__meta { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--ink-500); font-weight: 600; }
     .unit-card__difficulty { color: var(--accent-yellow-dark); letter-spacing: 1px; }
+    .unit-card__desc { font-size: 12px; color: var(--ink-500); line-height: 1.6; margin-top: 2px; }
     .unit-card__footer { display: flex; justify-content: flex-end; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--border); }
     .unit-card__link { font-size: 13px; font-weight: 700; color: var(--brand-600); }
     .unit-card--gacha .unit-card__link { color: #7c3aed; }
@@ -1343,6 +1344,7 @@ function buildUnitCard(unit, subjLabel) {
     <div class="unit-card">
       <div class="unit-card__tags">${tagHtml}</div>
       <div class="unit-card__title">${unit.label}</div>
+      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
       <div class="unit-card__meta">
         <span>📘 全${c}問</span>
         <span>⏱ ${unit.time}</span>
@@ -1363,6 +1365,7 @@ function buildUnitCard(unit, subjLabel) {
     <div class="unit-card">
       <div class="unit-card__tags">${tagHtml}</div>
       <div class="unit-card__title">${unit.label}</div>
+      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
       <div class="unit-card__meta">
         <span>📘 全${c}問</span>
         <span>⏱ ${unit.time}</span>
