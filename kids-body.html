@@ -161,6 +161,18 @@ body {
      crossorigin="anonymous"></script>
 </head>
 <body>
+<header class="site-header">
+  <a class="site-logo" href="index.html">
+    <span class="site-logo__icon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    まな<span>クエ！</span>
+  </a>
+  <a class="back-link" href="index.html">← TOPにもどる</a>
+</header>
 <div class="container">
 
   <div class="header">
@@ -191,6 +203,7 @@ body {
       <div class="result-emoji" id="resultEmoji">🎉</div>
       <div class="result-title" id="resultTitle">ぜんぶできた！</div>
       <div class="result-score"><span id="resultScore">0</span><span id="resultTotal"> / 5もん</span></div>
+      <button id="gachaBtnResult" onclick="openGacha()" style="display:none;width:100%;padding:14px;margin-bottom:10px;background:linear-gradient(135deg,#a855f7,#7c3aed);border:none;border-radius:14px;color:#fff;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 4px 16px rgba(168,85,247,.45);">🎰 ガチャを引く！</button>
       <button class="retry-btn" id="retryBtn">もういちど！</button>
       <a class="home-btn" href="index.html">← もどる</a>
     </div>
@@ -317,11 +330,21 @@ function showResult() {
   if (typeof claimQuizGacha === 'function') {
     const { pulls, results } = claimQuizGacha(QUIZ_ID, score, questions.length);
     if (pulls > 0 && results && results.length > 0) {
-      setTimeout(() => showGachaCard(results[0]), 800);
+      _pendingGacha = results[0];
+      setTimeout(() => {
+        const btn = document.getElementById('gachaBtnResult');
+        if (btn) btn.style.display = 'block';
+      }, 600);
     }
   }
 }
 
+let _pendingGacha = null;
+function openGacha() {
+  const btn = document.getElementById('gachaBtnResult');
+  if (btn) btn.style.display = 'none';
+  if (_pendingGacha) showGachaCard(_pendingGacha);
+}
 function showGachaCard({ card, isNew, pts }) {
   const artEl = document.getElementById('gachaCardArt');
   artEl.innerHTML = (typeof cardArt === 'function') ? cardArt(card) : (card.emoji || '❓');
