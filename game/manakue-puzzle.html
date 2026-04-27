@@ -558,4 +558,29 @@ function showHint() {
   if (hintUsed >= 2) document.getElementById('hintBtn').disabled = true;
 }
 
-// ════════════════════
+// ════════════════════//  ナビ
+// ══════════════════════════════════════
+function selectDiff(d) {
+  diff = d;
+  stageIdx = 0;
+  document.querySelectorAll('.diff-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', ['easy','medium','hard'][i] === d);
+  });
+  init();
+}
+
+function nextStage() {
+  stageIdx = (stageIdx + 1) % STAGES[diff].length;
+  init();
+}
+
+function retryStage() { init(); }
+
+// ══════════════════════════════════════
+//  起動
+// ══════════════════════════════════════
+init();
+window.addEventListener('resize', () => renderGrid());
+</script>
+</body>
+</html>
