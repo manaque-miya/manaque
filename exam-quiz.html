@@ -188,13 +188,88 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
   animation: pulse .9s ease-in-out infinite; }
 @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
 
-@media (max-width:600px){
-  .start-title{font-size:20px}
-  .mode-grid{grid-template-columns:1fr}
-  .stats-row{grid-template-columns:1fr 1fr}
-  .sub-grid{gap:6px}
-  .start-go{font-size:16px;padding:15px}
+
+/* ===== HERO BANNER ===== */
+.hero-banner {
+  background: linear-gradient(135deg, #1a4fd6 0%, #0d2470 55%, #1a3fa0 100%);
+  margin: -20px -16px 24px; padding: 28px 20px 24px;
+  position: relative; overflow: hidden;
 }
+.hero-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(255,255,255,.06) 0%, transparent 60%);
+}
+.hero-banner__stars {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle 2px at 15% 20%, rgba(255,255,255,.6) 0%, transparent 100%),
+    radial-gradient(circle 1.5px at 82% 15%, rgba(255,255,255,.5) 0%, transparent 100%),
+    radial-gradient(circle 2px at 90% 70%, rgba(255,255,255,.4) 0%, transparent 100%),
+    radial-gradient(circle 1px at 5% 80%, rgba(255,255,255,.6) 0%, transparent 100%),
+    radial-gradient(circle 1.5px at 50% 8%, rgba(255,255,255,.5) 0%, transparent 100%);
+}
+.hero-inner { display: flex; align-items: center; gap: 0; position: relative; }
+.hero-text { flex: 1; }
+.hero-badge {
+  display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.35);
+  color: rgba(255,255,255,.95); font-size: 11px; font-weight: 800;
+  padding: 3px 12px; border-radius: 20px; margin-bottom: 10px; letter-spacing: .05em;
+}
+.hero-title {
+  font-size: 15px; font-weight: 900; color: rgba(255,255,255,.9);
+  margin-bottom: 4px; line-height: 1.3;
+}
+.hero-big {
+  font-size: 46px; font-weight: 900; color: #fff;
+  line-height: 1.05; margin-bottom: 6px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+.hero-big em { color: #fbbf24; font-style: normal; }
+.hero-sub {
+  font-size: 12px; color: rgba(255,255,255,.75); line-height: 1.6; margin-bottom: 0;
+}
+.hero-chara {
+  width: 110px; flex-shrink: 0;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ===== FEATURE BADGES ===== */
+.feature-row {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 8px;
+  margin-bottom: 24px;
+}
+.feature-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--r);
+  padding: 12px 8px; text-align: center;
+}
+.feature-card__icon { font-size: 22px; display: block; margin-bottom: 4px; }
+.feature-card__label { font-size: 11px; font-weight: 800; color: var(--brand); display: block; margin-bottom: 2px; }
+.feature-card__desc { font-size: 10px; color: var(--muted); line-height: 1.4; }
+
+/* ===== IMPROVED CTA ===== */
+.start-go-wrap { position: relative; margin-top: 8px; }
+.start-go-new {
+  width: 100%; padding: 18px;
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
+  border: none; border-radius: var(--r-lg); color: #fff;
+  font-size: 18px; font-weight: 900; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 0 #9f1239, 0 8px 24px rgba(244,63,94,.35);
+  transition: all .12s; letter-spacing: .03em;
+}
+.start-go-new:active { transform: translateY(3px); box-shadow: 0 1px 0 #9f1239; }
+.start-go-new:hover { filter: brightness(1.05); }
+
+@media (max-width:600px){
+  .hero-big { font-size: 36px; }
+  .hero-chara { width: 85px; }
+  .feature-row { grid-template-columns: repeat(2,1fr); }
+  .hero-banner { padding: 22px 16px 20px; }
+  .start-title{font-size:20px}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .start-go-new{font-size:16px;padding:15px}
+}
+
 </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
@@ -216,11 +291,41 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 
 <!-- ===== START ===== -->
 <div id="screenStart" class="screen active">
-  <div class="start-hero">
-    <img src="assets/img/characters/lumina/base.png" class="start-chara" alt="ルミナ先生">
-    <div class="start-bubble">「さあ、本気でやるわよ。」</div>
-    <div class="start-title">ITパスポート 本気対策</div>
-    <div class="start-sub">600問・3分野・解説付き｜ルミナ先生と一緒に合格を目指そう</div>
+  <div class="hero-banner">
+    <div class="hero-banner__stars"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">🏆 国家資格 対策</div>
+        <div class="hero-title">スキマ時間で合格力をつける！</div>
+        <div class="hero-title" style="font-size:13px;margin-bottom:8px;color:rgba(255,255,255,.8)">ITパスポート試験対策</div>
+        <div class="hero-big"><em>600問</em><br>無料公開！</div>
+        <div class="hero-sub">クイズで学んで、未来をひらく</div>
+      </div>
+      <img src="assets/img/characters/lumina/base.png" class="hero-chara" alt="ルミナ先生">
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-card">
+      <span class="feature-card__icon">📚</span>
+      <span class="feature-card__label">600問収録</span>
+      <span class="feature-card__desc">豊富な問題数で徹底演習</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-card__icon">📂</span>
+      <span class="feature-card__label">カテゴリ別</span>
+      <span class="feature-card__desc">分野ごとに効率よく</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-card__icon">💡</span>
+      <span class="feature-card__label">解説つき</span>
+      <span class="feature-card__desc">丁寧な解説で理解が深まる</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-card__icon">⏱</span>
+      <span class="feature-card__label">スキマ時間OK</span>
+      <span class="feature-card__desc">スマホでサクッといつでも</span>
+    </div>
   </div>
 
   <div class="stats-row">
@@ -297,7 +402,9 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
     まだ間違えた問題がありません。<br>まずランダムモードで問題を解いてみよう！
   </div>
 
-  <button class="start-go" onclick="startQuiz()">はじめる →</button>
+  <div class="start-go-wrap">
+    <button class="start-go-new" onclick="startQuiz()">今すぐチェック！ ▶</button>
+  </div>
 </div>
 
 <!-- ===== QUIZ ===== -->
