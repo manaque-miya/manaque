@@ -66,11 +66,23 @@ function claimQuizGacha(quizId, ok, total) {
 
   if (pulls === 0) return { pulls: 0, results: [], alreadyCleared: false };
 
+  // 初回クリアのみ報酬付与（2回目以降はスキップ）
+  const state = loadGachaState();
+  if (state.clearedQuizzes[quizId]) {
+    return { pulls: 0, results: [], alreadyCleared: true };
+  }
+
   const results = [];
   for (let i = 0; i < pulls; i++) {
     const freshState = loadGachaState();
     results.push(drawSingleCard(freshState));
   }
+
+  // クリア記録を保存
+  const finalState = loadGachaState();
+  finalState.clearedQuizzes[quizId] = pulls;
+  saveGachaState(finalState);
+
   return { pulls, results, alreadyCleared: false };
 }
 
@@ -134,18 +146,4 @@ function buyGacha(count) {
 function sellCard(cardId) {
   const s = loadGachaState();
   const idx = s.collected.indexOf(cardId);
-  if (idx === -1) return null;
-
-  const card = CARD_DATA.find(c => c.id === cardId);
-  if (!card) return null;
-
-  const pts = RARITY_CONFIG[card.rarity].pts;
-
-  s.collected.splice(idx, 1);
-  s.points      += pts;
-  s.totalEarned += pts;
-  s.pointsLog.push({ cardId, pts, isNew: false, type: 'sell', ts: Date.now() });
-
-  saveGachaState(s);
-  return { card, pts };
-}
+  if (idx 
