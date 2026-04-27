@@ -405,6 +405,9 @@
     .cat--puzzle .cat-card__blob { background: var(--accent-yellow); }
     .cat--puzzle .cat-card__icon { background: var(--accent-yellow-bg, #FEF5D6); }
     .cat--puzzle .cat-card__count { color: #946500; }
+    .cat--shikaku .cat-card__blob { background: #2563EB; }
+    .cat--shikaku .cat-card__icon { background: #EFF6FF; }
+    .cat--shikaku .cat-card__count { color: #1A449E; }
 
     /* ===== LATEST QUIZ ===== */
     .latest-header {
@@ -1322,6 +1325,7 @@ function buildUnitCard(unit, subjLabel) {
   const isMapTap   = unit.quizId === 'map-tap';
   const isCapitals = unit.quizId === 'map-capitals';
   const isNanpure  = unit.quizId === 'nanpure';
+  const isExamItp  = unit.quizId === 'exam-itp';
   const isIgo      = unit.quizId === 'igo';
   const isShogi    = unit.quizId === 'shogi';
   const isTsume3   = unit.quizId === 'tsume3';
@@ -1372,6 +1376,24 @@ function buildUnitCard(unit, subjLabel) {
         <span class="unit-card__difficulty">${stars}</span>
       </div>
       <div class="unit-card__counts">${b3}${b5}${b10}${bAll}</div>
+    </div>`;
+  }
+
+  // ===== ITパスポート本気対策 =====
+  if (isExamItp) {
+    return `
+    <div class="unit-card unit-card--gacha">
+      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
+      <div class="unit-card__meta">
+        <span>📘 全600問</span>
+        <span>⏱ 自由</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts">
+        <a href="exam-quiz.html" class="count-btn count-btn--default" style="background:#2563EB;border-color:#2563EB">本気で対策する →</a>
+      </div>
     </div>`;
   }
 
