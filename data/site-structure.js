@@ -573,26 +573,6 @@ const SITE_STRUCTURE = [
   },
 
   {
-    id: 'shikaku',
-    label: '資格・検定',
-    ruby: 'しかく',
-    emoji: '📋',
-    colorClass: 'cat--shikaku',
-    subjects: [
-      {
-        id: 'exam-itp',
-        label: 'ITパスポート',
-        emoji: '💻',
-        badge: { text: '資格', cls: 'badge--purple' },
-        units: [
-          { label: 'ITパスポート 本気対策', quizId: 'exam-itp', count: 600, time: '自由', difficulty: 3, gacha: true,
-            desc: 'IT・経営・法律の基礎を問う国家資格。600問・解説付き・分野別で本番対策。',
-            tags: [{ text: '資格', cls: 'badge--purple' }] }
-        ]
-      }
-    ]
-  },
-  {
     id: 'puzzle',
     label: 'パズル',
     ruby: 'ぱずる',
@@ -670,4 +650,26 @@ const SITE_STRUCTURE = [
       }
     ]
   }
+,
+  {
+    id: 'shikaku', label: '資格・検定', ruby: 'しかく', emoji: '📋',
+    colorClass: 'cat--shikaku',
+    subjects: [
+      {
+        id: 'exam-itp', label: 'ITパスポート', emoji: '💻',
+        units: [
+          {
+            label: 'ITパスポート 本気対策',
+            quizId: 'exam-itp',
+            count: 600,
+            time: '自由',
+            difficulty: 3,
+            gacha: true,
+            desc: 'IT・経営・法律の基礎を問う国家資格。600問・解説付き・分野別で本番対策。',
+            tags: [{ text: '資格', cls: 'badge--purple' }]
+          }
+        ]
+      }
+    ]
+  },
 ];
