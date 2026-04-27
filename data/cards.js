@@ -15,8 +15,17 @@ const POINT_RANKS = [
   { min: 500,  label: 'ちゅうきゅう', emoji: '📚' },
   { min: 2000, label: 'じょうきゅう', emoji: '🎓' },
   { min: 5000, label: 'マスター',     emoji: '🏆' },
+];
 
-  // ===== N（ノーマル）ガチャキャラ第1弾 =====
+function getPointRank(pts) {
+  for (let i = POINT_RANKS.length - 1; i >= 0; i--) {
+    if (pts >= POINT_RANKS[i].min) return POINT_RANKS[i];
+  }
+  return POINT_RANKS[0];
+}
+
+const CARD_DATA = [
+  // ===== N（ノーマル）オリジナルキャラ =====
   { id:'nc01', rarity:'n', name:'ポチョ',
     img:'assets/img/characters/pocho/card_N.png',
     flavor:'失敗した字も飲み込んで育つ\nインクだまり精霊' },
@@ -41,16 +50,6 @@ const POINT_RANKS = [
   { id:'nc08', rarity:'n', name:'ノオト',
     img:'assets/img/characters/nooto/card_N.png',
     flavor:'字が揃うと耳が伸びる\nノートうさぎ' },
-];
-
-function getPointRank(pts) {
-  for (let i = POINT_RANKS.length - 1; i >= 0; i--) {
-    if (pts >= POINT_RANKS[i].min) return POINT_RANKS[i];
-  }
-  return POINT_RANKS[0];
-}
-
-const CARD_DATA = [
   // ===== SSR（スーパースーパーレア・1%）=====
   { id:'ssr01', rarity:'ssr', emoji:'👑', name:'源頼朝',
     flavor:'武士の世を開いた鎌倉幕府の初代将軍。\n義経を追い、天下を手中に収めた冷徹な策士。' },
