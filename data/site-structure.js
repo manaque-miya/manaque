@@ -669,6 +669,17 @@ const SITE_STRUCTURE = [
             tags: [{ text: '資格', cls: 'badge--purple' }]
           }
         ]
+      },
+      {
+        id: 'fp3', label: 'FP3級', emoji: '💴',
+        units: [
+          { label: 'FP3級 学科類題', quizId: 'fp3-gakka-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            desc: '日本FP協会FP3級学科試験の類題442問。ライフプランニング・保険・金融・税金・不動産・相続の6分野を網羅。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 実技類題', quizId: 'fp3-jitsugi-01', count: 20, time: '約10分', difficulty: 3, gacha: false, isNew: true,
+            desc: '日本FP協会FP3級実技試験の類題80問。キャッシュフロー表・生命保険・相続税など実践的な計算問題を含む。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] }
+        ]
       }
     ]
   },
