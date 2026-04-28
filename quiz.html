@@ -222,12 +222,6 @@
   <script src="data/cards.js"></script>
   <script src="data/gacha.js"></script>
   <!-- クイズ問題データ -->
-  <script src="data/geography.js"></script>
-  <script src="data/body.js"></script>
-  <script src="data/fraction.js"></script>
-  <script src="data/meiji.js"></script>
-  <script src="data/english.js"></script>
-  <script src="data/logic.js"></script>
   <script src="data/history.js"></script>
   <script src="data/prefecture.js"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
@@ -319,12 +313,6 @@
 <script>
 // ===== 全クイズデータ（各 data/*.js から読み込み済み） =====
 const allQuizzes = {
-  geography: QUIZ_GEOGRAPHY,
-  body:      QUIZ_BODY,
-  fraction:  QUIZ_FRACTION,
-  meiji:     QUIZ_MEIJI,
-  english:   QUIZ_ENGLISH,
-  logic:     QUIZ_LOGIC,
   history:    QUIZ_HISTORY,
   prefecture: QUIZ_PREFECTURE,
 };
@@ -371,19 +359,19 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 // ===== クイズエンジン =====
-let quizId = 'geography';
+let quizId = 'history';
 let questions = [];
 let currentQ = 0, score = 0, answered = false;
 const LABELS = ['A','B','C','D'];
 
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
-  quizId = params.get('id') || 'geography';
+  quizId = params.get('id') || 'history';
   if (!params.get('autostart')) {
     window.location.replace('index.html');
     return;
   }
-  const allQ      = allQuizzes[quizId]?.questions || allQuizzes.geography.questions;
+  const allQ      = allQuizzes[quizId]?.questions || allQuizzes.history.questions;
   const countRaw  = params.get('count') || '10';
   const countNum  = countRaw === 'all' ? allQ.length : Math.min(parseInt(countRaw, 10) || 10, allQ.length);
   questions = prepareQuestions(allQ).slice(0, countNum);
