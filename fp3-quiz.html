@@ -103,6 +103,13 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 .count-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
 
 .wrong-empty { text-align: center; color: var(--muted); font-size: 14px; padding: 20px; display: none; }
+.sub-options { margin-top: 12px; display: none; }
+.sub-options.show { display: block; }
+.sub-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sub-btn { background: #fff; border: 1.5px solid var(--border); border-radius: 30px; padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all .15s; color: var(--ink); }
+.sub-btn:hover { border-color: var(--brand); color: var(--brand); }
+.sub-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+.cat-badge { font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 20px; white-space: nowrap; background: #d1fae5; color: #065f46; }
 
 .start-go-wrap { position: relative; margin-top: 8px; }
 .start-go-new { width: 100%; padding: 18px; background: linear-gradient(135deg,#f43f5e,#e11d48); border: none; border-radius: var(--r-lg); color: #fff; font-size: 18px; font-weight: 900; cursor: pointer; font-family: inherit; box-shadow: 0 4px 0 #9f1239,0 8px 24px rgba(244,63,94,.35); transition: all .12s; letter-spacing: .03em; }
@@ -249,12 +256,44 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
         <span class="mode-btn__title">ランダム</span>
         <span class="mode-btn__desc">全522問からランダム出題</span>
       </button>
+      <button class="mode-btn" data-mode="category" onclick="selectMode('category')">
+        <span class="mode-btn__icon">📂</span>
+        <span class="mode-btn__title">分野別</span>
+        <span class="mode-btn__desc">6分野から選んで集中学習</span>
+      </button>
+      <button class="mode-btn" data-mode="difficulty" onclick="selectMode('difficulty')">
+        <span class="mode-btn__icon">📊</span>
+        <span class="mode-btn__title">難易度別</span>
+        <span class="mode-btn__desc">かんたん / ふつう / むずかしい</span>
+      </button>
       <button class="mode-btn" data-mode="wrong" onclick="selectMode('wrong')">
         <span class="mode-btn__icon">🔁</span>
         <span class="mode-btn__title">間違い復習</span>
         <span class="mode-btn__desc">苦手な問題だけ集中特訓</span>
       </button>
     </div>
+
+    <div id="subCategory" class="sub-options">
+      <div class="mode-title" style="margin-top:12px">分野を選ぶ</div>
+      <div class="sub-grid">
+        <button class="sub-btn selected" data-sub="ライフプランニングと資金計画" onclick="selectSub(this)">🏠 ライフプランニング</button>
+        <button class="sub-btn" data-sub="リスク管理" onclick="selectSub(this)">🛡️ リスク管理</button>
+        <button class="sub-btn" data-sub="金融資産運用" onclick="selectSub(this)">📈 金融資産運用</button>
+        <button class="sub-btn" data-sub="タックスプランニング" onclick="selectSub(this)">🧾 タックスプランニング</button>
+        <button class="sub-btn" data-sub="不動産" onclick="selectSub(this)">🏢 不動産</button>
+        <button class="sub-btn" data-sub="相続・事業承継" onclick="selectSub(this)">⚖️ 相続・事業承継</button>
+      </div>
+    </div>
+
+    <div id="subDifficulty" class="sub-options">
+      <div class="mode-title" style="margin-top:12px">難易度を選ぶ</div>
+      <div class="sub-grid">
+        <button class="sub-btn selected" data-sub="easy" onclick="selectSub(this)">🟢 かんたん</button>
+        <button class="sub-btn" data-sub="mid" onclick="selectSub(this)">🟡 ふつう</button>
+        <button class="sub-btn" data-sub="hard" onclick="selectSub(this)">🔴 むずかしい</button>
+      </div>
+    </div>
+
     <div id="wrongEmpty" class="wrong-empty">
       まだ間違えた問題がありません。<br>まずランダムモードで問題を解いてみよう！
     </div>
@@ -285,6 +324,7 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
       </div>
     </div>
     <div class="quiz-counter" id="quizCounter">1 / 30</div>
+    <span class="cat-badge" id="catBadge" style="display:none"></span>
   </div>
 
   <div class="question-card">
@@ -331,7 +371,7 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 <script src="data/fp3-all.js?v=1"></script>
 <script>
 const STORAGE_KEY = 'fp3_history';
-let _mode = 'random', _count = 30;
+let _mode = 'random', _sub = 'ライフプランニングと資金計画', _count = 30;
 let _pool = [], _idx = 0, _score = 0, _answered = [];
 
 function loadHistory() {
@@ -358,11 +398,20 @@ function updateStats() {
 function selectMode(mode) {
   _mode = mode;
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('selected', b.dataset.mode === mode));
+  document.getElementById('subCategory').classList.toggle('show', mode === 'category');
+  document.getElementById('subDifficulty').classList.toggle('show', mode === 'difficulty');
   document.getElementById('wrongEmpty').style.display = 'none';
   if (mode === 'wrong') {
     const ids = getWrongIds();
     if (ids.length === 0) document.getElementById('wrongEmpty').style.display = 'block';
   }
+}
+
+function selectSub(btn) {
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  _sub = btn.dataset.sub;
 }
 
 function selectCount(btn) {
@@ -373,7 +422,9 @@ function selectCount(btn) {
 
 function buildPool() {
   let pool = FP3_QUESTIONS.map((q, i) => Object.assign({ _idx: i }, q));
-  if (_mode === 'wrong') {
+  if (_mode === 'category') pool = pool.filter(q => q.cat === _sub);
+  else if (_mode === 'difficulty') pool = pool.filter(q => q.diff === _sub);
+  else if (_mode === 'wrong') {
     const ids = new Set(getWrongIds());
     pool = pool.filter(q => ids.has(q._idx));
   }
@@ -397,6 +448,9 @@ function renderQuestion() {
   const total = _pool.length;
   document.getElementById('progressFill').style.width = (_idx / total * 100) + '%';
   document.getElementById('quizCounter').textContent = `${_idx + 1} / ${total}`;
+  const badge = document.getElementById('catBadge');
+  if (q.cat) { badge.textContent = q.cat; badge.style.display = 'inline-block'; }
+  else { badge.style.display = 'none'; }
 
   const labels = ['ア', 'イ', 'ウ', 'エ'];
   // innerHTML使用（実技の図表HTMLを展開するため）
