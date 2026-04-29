@@ -2,10 +2,10 @@
 // ガチャ・図鑑・ポイントシステムすべてがここを参照する
 
 const RARITY_CONFIG = {
-  ssr: { label: 'SSR', pts: 500, dupPts: 150 },
-  sr:  { label: 'SR',  pts: 200, dupPts: 80  },
-  r:   { label: 'R',   pts: 50,  dupPts: 20  },
-  n:   { label: 'N',   pts: 10,  dupPts: 3   },
+  ssr: { label: 'SSR', pts: 500, dupPts: 200 },
+  sr:  { label: 'SR',  pts: 200, dupPts: 100 },
+  r:   { label: 'R',   pts: 50,  dupPts: 30  },
+  n:   { label: 'N',   pts: 10,  dupPts: 5   },
 };
 
 // ポイントランク定義（catalog.htmlで使用）

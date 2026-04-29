@@ -5,7 +5,7 @@ const GACHA_STATE_KEY = 'manaQuiz_gachaState';
 
 // ===== 確率設定 =====
 const GACHA_RATES = { ssr: 1, sr: 4, r: 25, n: 70 }; // %
-const PITY_THRESHOLD = 30;   // 天井：30回でSSR/SR確定
+const PITY_THRESHOLD = 50;   // 天井：30回でSSR/SR確定
 const GACHA_COST_1  = 100;   // 1回あたりのpt
 const GACHA_COST_10 = 900;   // 10連割引
 
@@ -42,20 +42,30 @@ function saveGachaState(s) {
 // 10問以上: 全問→3連 / 80%以上→2連 / 60%以上→1連 / それ以下→0
 // 5問以上:  全問→1連 / それ以下→0
 // 5問未満:  全問→1連 / それ以下→0
+// クイズ正解数 → ガチャ回数（クイズ報酬）
+// 30問以上: 全問→5連 / 80%以上→3連 / 60%以上→2連 / 60%未満→0連
+// 10〜29問: 全問→3連 / 80%以上→2連 / 60%以上→1連 / 60%未満→0連
+// 5〜9問:   全問→1連 / 80%以上→1連 / それ以下→0連
+// 1〜4問:   全問→1連 / それ以外→0連
 function calcGachaPulls(ok, total) {
   if (total >= 30) {
-    if (ok === total)              return 10;
-    if (ok >= Math.floor(total * 0.8)) return 5;
-    if (ok >= Math.floor(total * 0.6)) return 3;
-    return 1;
-  }
-  if (total >= 10) {
-    if (ok === total)              return 3;
-    if (ok >= Math.floor(total * 0.8)) return 2;
-    if (ok >= Math.floor(total * 0.6)) return 1;
+    if (ok === total)                    return 5;
+    if (ok >= Math.floor(total * 0.8))   return 3;
+    if (ok >= Math.floor(total * 0.6))   return 2;
     return 0;
   }
-  // 5問以下（または5問未満）
+  if (total >= 10) {
+    if (ok === total)                    return 3;
+    if (ok >= Math.floor(total * 0.8))   return 2;
+    if (ok >= Math.floor(total * 0.6))   return 1;
+    return 0;
+  }
+  if (total >= 5) {
+    if (ok === total)                    return 1;
+    if (ok >= Math.floor(total * 0.8))   return 1;
+    return 0;
+  }
+  // 1〜4問
   return ok === total ? 1 : 0;
 }
 
