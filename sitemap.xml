@@ -2,841 +2,853 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://manaque.net/</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://manaque.net/exam-quiz.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://manaque.net/fp3-quiz.html</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://manaque.net/shindan.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://manaque.net/catalog.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/about.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://manaque.net/contact.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://manaque.net/privacy.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://manaque.net/terms.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://manaque.net/disclaimer.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://manaque.net/map-quiz-new.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/map-tap-quiz.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/map-capitals.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/nanpure.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://manaque.net/igo.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://manaque.net/shogi.html</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://manaque.net/quiz.html?id=prefecture</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://manaque.net/quiz.html?id=history</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=kids-nazo-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=kids-nazo-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=geography</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=body</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=fraction</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=english</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=meiji</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=logic</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-05</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-06</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-07</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-08</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-09</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-science-10</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-05</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-06</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-07</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-08</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-09</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=elem-social-10</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-05</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-06</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-07</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-08</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-09</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-english-10</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-05</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-06</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-07</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-08</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-09</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-science-10</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-05</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-06</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-07</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-08</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-09</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=mid-social-10</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-english-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-english-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-japanese-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-japanese-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-science-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-science-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-science-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-science-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-social-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=high-social-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=uni-spi-lang-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=uni-spi-lang-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=uni-spi-lang-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=uni-spi-lang-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=uni-spi-math-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=uni-spi-math-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=uni-spi-math-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=uni-spi-math-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-exam-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-exam-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-exam-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-exam-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-exam-05</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-toeic-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-toeic-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-toeic-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-toeic-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-kanji-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-kotowaza-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-nihongo-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-chimei-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-gogen-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-trivia-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-trivia-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-animal-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-brand-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-body-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-econ-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-food-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-psych-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-bousai-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-law-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-manner-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/unit-quiz.html?id=adult-katakana-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-05</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-06</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-07</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-08</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-09</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=elem-math-10</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-03</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-04</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-05</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-06</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-07</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-08</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-09</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=mid-math-10</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=high-math-01</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://manaque.net/math-quiz.html?id=high-math-02</loc>
-    <lastmod>2026-04-21</lastmod>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
