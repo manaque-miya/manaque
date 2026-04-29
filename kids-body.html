@@ -450,7 +450,7 @@ function triggerGachaReward() {
   if (!document.getElementById('gachaRewardOverlay')) {
     const el = document.createElement('div');
     el.className = 'gacha-reward-overlay'; el.id = 'gachaRewardOverlay';
-    el.innerHTML = `<div id="gachaFlash"></div><div id="gachaStarField"></div><div id="gachaQmark">？</div><div id="gachaParticles"></div><div id="gachaCounter"></div><div id="gachaCardWrap"><div id="gachaCardInner"><div id="gachaCardFront"></div></div></div><div id="gachaRarityBanner"></div><button id="gachaNextBtn"></button><button id="gachaCloseBtn">とじる</button><div id="gachaNorewardPhase"><div style="font-size:48px">😢</div><div style="color:rgba(255,255,255,.8);font-size:16px;font-weight:700">今回は報酬なし</div><div style="color:rgba(255,255,255,.6);font-size:13px">全問正解でガチャが引けるよ！</div></div>`;
+    el.innerHTML = `<div id="gachaFlash"></div><div id="gachaStarField"></div><div id="gachaQmark">？</div><div id="gachaParticles"></div><div id="gachaCounter"></div><div id="gachaCardWrap"><div id="gachaCardInner"><div id="gachaCardFront"></div></div></div><div id="gachaRarityBanner"></div><button id="gachaNextBtn"></button><button id="gachaCloseBtn">とじる</button><div id="gachaNorewardPhase"><div style="font-size:48px">😢</div><div style="color:rgba(255,255,255,.8);font-size:16px;font-weight:700">今回は報酬なし</div><div style="color:rgba(255,255,255,.6);font-size:13px">80%以上の正解でガチャが引けるよ！</div></div>`;
     document.body.appendChild(el);
   }
   const { pulls, results } = claimQuizGacha(QUIZ_ID, score, questions.length);
