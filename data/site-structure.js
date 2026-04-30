@@ -677,6 +677,14 @@ const SITE_STRUCTURE = [
             desc: '日本FP協会FP3級の類題522問（学科442＋実技80）。6分野を網羅した解説付きクイズで合格力を高めよう。',
             tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] }
         ]
+      },
+      {
+        id: 'takken', label: '宅建士', emoji: '🏠',
+        units: [
+          { label: '宅建士 本気対策', quizId: 'takken', count: 550, time: '自由', difficulty: 3, gacha: false, isNew: true,
+            desc: '宅建士試験の類題550問。宅建業法・権利関係・法令上の制限・税その他の4分野を解説付きで学習。',
+            tags: [{ text: '宅建士', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] }
+        ]
       }
     ]
   },

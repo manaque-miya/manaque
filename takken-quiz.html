@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="宅建士試験対策。宅建業法・権利関係・法令上の制限・税その他の4分野から550問を無料で学習。解説付き・間違い復習対応。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="まなクエ！">
+<meta property="og:title" content="宅建士 本気対策 550問｜まなクエ！">
+<meta property="og:description" content="宅建士試験対策。550問・解説付き・間違い復習モード対応。スキマ時間で合格力をつけよう。">
+<meta property="og:url" content="https://manaque.net/takken-quiz.html">
+<meta property="og:image" content="https://manaque.net/assets/ogp.png">
+<link rel="canonical" href="https://manaque.net/takken-quiz.html">
+<title>宅建士 本気対策｜まなクエ！</title>
+<link rel="icon" href="assets/img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand: #16a34a; --brand-d: #15803d; --brand-l: #f0fdf4;
+  --ink: #1e293b; --muted: #64748b; --border: #e2e8f0;
+  --bg: #f6fdf8; --white: #fff;
+  --correct: #16a34a; --wrong: #dc2626;
+  --r: 14px; --r-lg: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1.5px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; box-shadow: 0 2px 8px rgba(22,163,74,.07);
+}
+.site-header__logo { font-size: 18px; font-weight: 900; color: var(--brand); text-decoration: none; }
+.site-header__back { font-size: 13px; color: var(--muted); text-decoration: none; margin-left: auto; }
+
+.screen { display: none; max-width: 680px; margin: 0 auto; padding: 20px 16px 40px; }
+.screen.active { display: block; }
+
+/* HERO */
+.hero-banner {
+  background: linear-gradient(135deg, #15803d 0%, #064e1d 55%, #166534 100%);
+  margin: -20px -16px 24px; padding: 28px 20px 24px;
+  position: relative; overflow: hidden;
+}
+.hero-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(255,255,255,.06) 0%, transparent 60%);
+}
+.hero-banner__stars {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle 2px at 15% 20%, rgba(255,255,255,.6) 0%, transparent 100%),
+    radial-gradient(circle 1.5px at 82% 15%, rgba(255,255,255,.5) 0%, transparent 100%),
+    radial-gradient(circle 2px at 90% 70%, rgba(255,255,255,.4) 0%, transparent 100%),
+    radial-gradient(circle 1px at 5% 80%, rgba(255,255,255,.6) 0%, transparent 100%),
+    radial-gradient(circle 1.5px at 50% 8%, rgba(255,255,255,.5) 0%, transparent 100%);
+}
+.hero-inner { display: flex; align-items: center; gap: 0; position: relative; }
+.hero-text { flex: 1; }
+.hero-badge {
+  display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.35);
+  color: rgba(255,255,255,.95); font-size: 11px; font-weight: 800;
+  padding: 3px 12px; border-radius: 20px; margin-bottom: 10px; letter-spacing: .05em;
+}
+.hero-title { font-size: 15px; font-weight: 900; color: rgba(255,255,255,.9); margin-bottom: 4px; line-height: 1.3; }
+.hero-big { font-size: 46px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,.3); }
+.hero-big em { color: #86efac; font-style: normal; }
+.hero-sub { font-size: 12px; color: rgba(255,255,255,.75); line-height: 1.6; }
+.hero-chara { width: 110px; flex-shrink: 0; filter: drop-shadow(0 4px 16px rgba(0,0,0,.3)); animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+/* FEATURES */
+.feature-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 24px; }
+.feature-card { background: #fff; border: 1px solid var(--border); border-radius: var(--r); padding: 12px 8px; text-align: center; }
+.feature-card__icon { font-size: 22px; display: block; margin-bottom: 4px; }
+.feature-card__label { font-size: 11px; font-weight: 800; color: var(--brand); display: block; margin-bottom: 2px; }
+.feature-card__desc { font-size: 10px; color: var(--muted); line-height: 1.4; }
+
+/* STATS */
+.stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 24px; }
+.stat-card { background: #fff; border: 1px solid var(--border); border-radius: var(--r); padding: 12px; text-align: center; }
+.stat-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.stat-val { font-size: 20px; font-weight: 900; color: var(--brand); }
+
+/* MODE */
+.mode-section { margin-bottom: 20px; }
+.mode-title { font-size: 14px; font-weight: 800; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .05em; }
+.mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mode-btn { background: #fff; border: 1.5px solid var(--border); border-radius: var(--r-lg); padding: 14px 12px; cursor: pointer; text-align: left; transition: all .15s; font-family: inherit; }
+.mode-btn:hover { border-color: var(--brand); background: var(--brand-l); }
+.mode-btn.selected { border-color: var(--brand); background: var(--brand-l); box-shadow: 0 0 0 2px rgba(22,163,74,.15); }
+.mode-btn__icon { font-size: 22px; display: block; margin-bottom: 6px; }
+.mode-btn__title { font-size: 14px; font-weight: 800; color: var(--ink); display: block; }
+.mode-btn__desc { font-size: 11px; color: var(--muted); display: block; margin-top: 2px; }
+
+/* COUNT */
+.count-section { margin-bottom: 20px; }
+.count-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+.count-btn { background: #fff; border: 1.5px solid var(--border); border-radius: 30px; padding: 8px 20px; font-size: 14px; font-weight: 800; cursor: pointer; font-family: inherit; transition: all .15s; color: var(--ink); }
+.count-btn:hover { border-color: var(--brand); color: var(--brand); }
+.count-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+.wrong-empty { text-align: center; color: var(--muted); font-size: 14px; padding: 20px; display: none; }
+.sub-options { margin-top: 12px; display: none; }
+.sub-options.show { display: block; }
+.sub-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.sub-btn { background: #fff; border: 1.5px solid var(--border); border-radius: 30px; padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all .15s; color: var(--ink); }
+.sub-btn:hover { border-color: var(--brand); color: var(--brand); }
+.sub-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+.cat-badge { font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 20px; white-space: nowrap; background: #d1fae5; color: #065f46; }
+
+.start-go-wrap { position: relative; margin-top: 8px; }
+.start-go-new { width: 100%; padding: 18px; background: linear-gradient(135deg,#f43f5e,#e11d48); border: none; border-radius: var(--r-lg); color: #fff; font-size: 18px; font-weight: 900; cursor: pointer; font-family: inherit; box-shadow: 0 4px 0 #9f1239,0 8px 24px rgba(244,63,94,.35); transition: all .12s; letter-spacing: .03em; }
+.start-go-new:active { transform: translateY(3px); box-shadow: 0 1px 0 #9f1239; }
+
+/* QUIZ */
+.quiz-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.quiz-progress-wrap { flex: 1; }
+.quiz-progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.quiz-progress-fill { height: 100%; background: var(--brand); border-radius: 4px; transition: width .3s; }
+.quiz-counter { font-size: 13px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+
+.question-card { background: #fff; border-radius: var(--r-lg); padding: 20px; border: 1px solid var(--border); margin-bottom: 16px; }
+.question-text { font-size: 16px; font-weight: 700; line-height: 1.7; color: var(--ink); }
+/* FP3図表テーブル */
+.fp3-table{border-collapse:collapse;width:100%;font-size:clamp(11px,2.8vw,14px);font-weight:600;margin:10px 0}
+.fp3-table th,.fp3-table td{border:1px solid #c0c8d8;padding:5px 7px;text-align:center}
+.fp3-table th{background:#d1fae5;color:#065f46}
+.fp3-table tr:nth-child(even) td{background:#f0fdf4}
+
+.options-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.option-btn { background: #fff; border: 1.5px solid var(--border); border-radius: var(--r); padding: 14px 16px; font-size: 15px; font-weight: 700; text-align: left; cursor: pointer; font-family: inherit; color: var(--ink); transition: all .12s; display: flex; align-items: center; gap: 10px; line-height: 1.5; }
+.option-btn:hover:not(:disabled) { border-color: var(--brand); background: var(--brand-l); }
+.option-btn:disabled { cursor: default; }
+.option-btn.correct { border-color: var(--correct); background: #f0fdf4; color: var(--correct); }
+.option-btn.wrong { border-color: var(--wrong); background: #fef2f2; color: var(--wrong); }
+.option-label { font-size: 12px; font-weight: 900; width: 22px; height: 22px; border-radius: 50%; background: var(--border); color: var(--muted); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.option-btn.correct .option-label { background: var(--correct); color: #fff; }
+.option-btn.wrong .option-label { background: var(--wrong); color: #fff; }
+
+/* EXP */
+.exp-card { display: none; background: #fff; border-radius: var(--r-lg); border: 1px solid var(--border); overflow: hidden; margin-bottom: 14px; }
+.exp-card.show { display: block; }
+.exp-result-bar { padding: 12px 16px; font-size: 15px; font-weight: 900; }
+.exp-result-bar.correct { background: #f0fdf4; color: var(--correct); }
+.exp-result-bar.wrong { background: #fef2f2; color: var(--wrong); }
+.exp-sensei { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.exp-sensei img { width: 56px; flex-shrink: 0; }
+.exp-bubble { background: var(--bg); border-radius: 2px 12px 12px 12px; padding: 10px 14px; font-size: 13px; line-height: 1.7; color: var(--ink); flex: 1; }
+.exp-text { padding: 14px 16px; font-size: 13px; line-height: 1.8; color: var(--ink); border-top: 1px solid var(--border); }
+.exp-label { font-size: 11px; font-weight: 800; color: var(--muted); margin-bottom: 6px; }
+
+.next-btn { width: 100%; padding: 16px; background: var(--brand); border: none; border-radius: var(--r-lg); color: #fff; font-size: 16px; font-weight: 900; cursor: pointer; font-family: inherit; box-shadow: 0 3px 0 var(--brand-d); transition: all .12s; display: none; }
+.next-btn.show { display: block; }
+.next-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--brand-d); }
+
+/* RESULT */
+.result-hero { text-align: center; margin-bottom: 24px; }
+.result-chara { width: 110px; margin: 0 auto 10px; display: block; }
+.result-score-big { font-size: 52px; font-weight: 900; color: var(--brand); line-height: 1; }
+.result-score-label { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.result-msg { font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 12px; }
+.result-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.result-btn { padding: 14px; border-radius: var(--r-lg); font-size: 14px; font-weight: 800; cursor: pointer; font-family: inherit; border: none; transition: all .12s; }
+.result-btn--retry { background: var(--brand); color: #fff; box-shadow: 0 3px 0 var(--brand-d); }
+.result-btn--wrong { background: #fff; border: 1.5px solid var(--wrong); color: var(--wrong); }
+.result-btn--home { background: #fff; border: 1.5px solid var(--border); color: var(--muted); }
+.gacha-btn { width: 100%; padding: 16px; margin-top: 12px; background: linear-gradient(135deg,#a855f7,#7c3aed); border: none; border-radius: var(--r-lg); color: #fff; font-size: 17px; font-weight: 900; cursor: pointer; font-family: inherit; box-shadow: 0 4px 16px rgba(124,58,237,.4); display: none; animation: pulse .9s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
+
+@media (max-width:600px){
+  .hero-big { font-size: 36px; }
+  .hero-chara { width: 85px; }
+  .feature-row { grid-template-columns: repeat(2,1fr); }
+  .hero-banner { padding: 22px 16px 20px; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .start-go-new { font-size: 16px; padding: 15px; }
+}
+    /* ===== ガチャアニメーション ===== */
+    .gacha-reward-overlay{display:none;position:fixed;inset:0;background:radial-gradient(ellipse at center,#0d1a3a 0%,#050810 100%);z-index:1000;align-items:center;justify-content:center;overflow:hidden}
+    .gacha-reward-overlay.show{display:flex}
+    .g-star{position:absolute;background:white;border-radius:50%;animation:gTwinkle var(--d) ease-in-out infinite alternate}
+    @keyframes gTwinkle{from{opacity:.1;transform:scale(.8)}to{opacity:.9;transform:scale(1.2)}}
+    #gachaFlash{position:absolute;inset:0;background:white;opacity:0;pointer-events:none;z-index:50}
+    #gachaFlash.active{animation:gFlash .4s ease-out forwards}
+    @keyframes gFlash{0%{opacity:.9}100%{opacity:0}}
+    #gachaQmark{position:absolute;font-size:clamp(140px,25vw,220px);font-weight:900;color:#2563EB;text-shadow:0 0 20px #2563EB,0 0 50px #2563EB,0 0 100px #1d4ed8,0 0 10px #F6C744;opacity:0;transform:scale(.3);user-select:none;z-index:10;line-height:1}
+    #gachaQmark.appear{animation:gQappear .6s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes gQappear{to{opacity:1;transform:scale(1)}}
+    #gachaQmark.pulse{animation:gQpulse .4s ease-in-out 3}
+    @keyframes gQpulse{0%{transform:scale(1);text-shadow:0 0 20px #2563EB,0 0 50px #2563EB}50%{transform:scale(1.15);text-shadow:0 0 40px #F6C744,0 0 80px #F6C744}100%{transform:scale(1);text-shadow:0 0 20px #2563EB,0 0 50px #2563EB}}
+    #gachaQmark.explode{animation:gQexplode .3s ease-in forwards}
+    @keyframes gQexplode{0%{opacity:1;transform:scale(1)}50%{opacity:1;transform:scale(1.4);filter:brightness(3)}100%{opacity:0;transform:scale(0)}}
+    .g-particle{position:absolute;border-radius:50%;pointer-events:none;z-index:20}
+    .g-particle.star-shape{clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);border-radius:0}
+    #gachaCardWrap{position:absolute;width:min(320px,68vw);height:min(460px,72vh);perspective:1000px;opacity:0;z-index:30}
+    #gachaCardWrap.reveal{animation:gCardReveal .5s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes gCardReveal{0%{opacity:0;transform:translateY(60px) scale(.7)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    #gachaCardInner{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:gCardFlip .7s ease-out forwards;animation-play-state:paused}
+    #gachaCardInner.flip{animation-play-state:running}
+    @keyframes gCardFlip{0%{transform:rotateY(180deg)}100%{transform:rotateY(0)}}
+    .g-card-outer{width:100%;height:100%;border-radius:18px;border:3px solid #F6C744;padding:8px 8px 8px 22px;position:relative;background:linear-gradient(180deg,#1a3a6e,#0f2456)}
+    .g-card-outer.r{border-color:#60a5fa}
+    .g-card-outer.sr{border-color:#a78bfa;background:linear-gradient(180deg,#2d1b69,#1a0f45)}
+    .g-card-outer.ssr{border-color:#ffd700;background:linear-gradient(180deg,#5a2800,#2a1200);box-shadow:0 0 20px rgba(255,215,0,.4)}
+    .g-ring{position:absolute;left:-4px;width:16px;height:16px;background:linear-gradient(135deg,#aaa,#eee,#aaa);border-radius:50%;border:2px solid #888}
+    .g-card-paper{width:100%;height:100%;background:linear-gradient(180deg,#fdf8ee,#f5edda);border-radius:10px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center}
+    .g-card-paper::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent,transparent 22px,rgba(150,190,230,.4) 22px,rgba(150,190,230,.4) 23px);top:55px}
+    .g-badge{position:absolute;top:-3px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,#1a3a8e,#0d2060);border:2px solid #F6C744;border-radius:0 0 14px 14px;padding:4px 14px 6px;font-size:clamp(14px,3.5vw,18px);font-weight:900;color:#F6C744;letter-spacing:2px;z-index:2}
+    .g-badge.r{border-color:#60a5fa;color:#60a5fa;background:linear-gradient(180deg,#1a3060,#0d2050)}
+    .g-badge.sr{border-color:#a78bfa;color:#a78bfa;background:linear-gradient(180deg,#2d1b69,#1a0f45)}
+    .g-badge.ssr{border-color:#ffd700;color:#ffd700;background:linear-gradient(180deg,#5a2800,#2a1200);animation:gSsrPulse 1s ease-in-out infinite}
+    @keyframes gSsrPulse{0%,100%{box-shadow:0 0 8px rgba(255,215,0,.5)}50%{box-shadow:0 0 20px rgba(255,215,0,.9)}}
+    .g-char-area{width:100%;flex:1;display:flex;align-items:center;justify-content:center;padding:50px 10px 0;position:relative;z-index:1}
+    .g-char-emoji{font-size:clamp(60px,14vw,90px);filter:drop-shadow(0 4px 8px rgba(0,0,0,.2))}
+    .g-name-area{width:85%;margin:8px auto 10px;background:rgba(255,248,231,.95);border:2px solid #C8960C;border-radius:20px;padding:5px 10px;text-align:center;position:relative;z-index:1}
+    .g-char-name{font-size:clamp(13px,3vw,17px);font-weight:bold;color:#1a2855}
+    .g-char-new{font-size:9px;background:#ef4444;color:#fff;border-radius:4px;padding:1px 5px;font-weight:900;display:inline-block;margin-top:2px}
+    #gachaRarityBanner{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);padding:8px 40px;font-size:15px;font-weight:bold;letter-spacing:4px;white-space:nowrap;opacity:0;transition:opacity .4s,bottom .4s;text-shadow:0 0 10px rgba(246,199,68,.8);z-index:31;color:white;background:linear-gradient(90deg,transparent,#1a3a6e,#F6C744,#1a3a6e,transparent)}
+    #gachaRarityBanner.sr-banner{background:linear-gradient(90deg,transparent,#2d1b69,#a78bfa,#2d1b69,transparent);text-shadow:0 0 10px rgba(167,139,250,.8)}
+    #gachaRarityBanner.ssr-banner{background:linear-gradient(90deg,transparent,#5a2800,#ffd700,#5a2800,transparent);text-shadow:0 0 10px rgba(255,215,0,.9)}
+    #gachaRarityBanner.show{opacity:1;bottom:-50px}
+    #gachaCounter{position:absolute;top:20px;right:20px;color:rgba(255,255,255,.6);font-size:14px;font-weight:700;z-index:40}
+    #gachaNextBtn,#gachaCloseBtn{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);padding:14px 40px;border:none;border-radius:12px;font-size:clamp(15px,2vw,19px);font-weight:900;cursor:pointer;z-index:40;display:none;white-space:nowrap;font-family:inherit}
+    #gachaNextBtn{background:rgba(37,99,235,.25);color:#F6C744;border:2px solid #F6C744;letter-spacing:.05em}
+    #gachaNextBtn:hover{background:rgba(37,99,235,.45)}
+    #gachaCloseBtn{background:linear-gradient(135deg,#2E6DE5,#1A449E);color:#fff;box-shadow:0 4px 20px rgba(46,109,229,.4)}
+    #gachaNextBtn.show,#gachaCloseBtn.show{display:block}
+    #gachaNorewardPhase{display:none;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:20px}
+    #gachaNorewardPhase.show{display:flex}
+    @keyframes orbPulse{0%,100%{box-shadow:0 0 40px rgba(168,85,247,.8),0 0 80px rgba(168,85,247,.4)}50%{box-shadow:0 0 60px rgba(168,85,247,1),0 0 120px rgba(168,85,247,.6)}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date()); gtag('config', 'G-LDNLC7PWNM');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="site-header__logo">まなクエ！</a>
+  <a href="index.html" class="site-header__back">← TOPにもどる</a>
+</header>
+
+<!-- ===== START ===== -->
+<div id="screenStart" class="screen active">
+  <div class="hero-banner">
+    <div class="hero-banner__stars"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">🏠 国家資格 対策</div>
+        <div class="hero-title">スキマ時間で合格力をつける！</div>
+        <div class="hero-title" style="font-size:13px;margin-bottom:8px;color:rgba(255,255,255,.8)">宅建士試験対策（4分野・全範囲）</div>
+        <div class="hero-big"><em>550問</em><br>無料公開！</div>
+        <div class="hero-sub">クイズで学んで、合格をつかもう</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-card">
+      <span class="feature-card__icon">📚</span>
+      <span class="feature-card__label">550問収録</span>
+      <span class="feature-card__desc">宅建業法・権利関係・法令上の制限・税その他</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-card__icon">💡</span>
+      <span class="feature-card__label">解説つき</span>
+      <span class="feature-card__desc">丁寧な解説で理解が深まる</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-card__icon">🔁</span>
+      <span class="feature-card__label">間違い復習</span>
+      <span class="feature-card__desc">苦手問題を集中特訓</span>
+    </div>
+    <div class="feature-card">
+      <span class="feature-card__icon">⏱</span>
+      <span class="feature-card__label">スキマ時間OK</span>
+      <span class="feature-card__desc">スマホでいつでもどこでも</span>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">総問題数</div>
+      <div class="stat-val">522</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">解いた問題</div>
+      <div class="stat-val" id="statSolved">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">正答率</div>
+      <div class="stat-val" id="statAccuracy">-</div>
+    </div>
+  </div>
+
+  <div class="mode-section">
+    <div class="mode-title">出題モードを選ぶ</div>
+    <div class="mode-grid">
+      <button class="mode-btn selected" data-mode="random" onclick="selectMode('random')">
+        <span class="mode-btn__icon">🎲</span>
+        <span class="mode-btn__title">ランダム</span>
+        <span class="mode-btn__desc">全522問からランダム出題</span>
+      </button>
+      <button class="mode-btn" data-mode="category" onclick="selectMode('category')">
+        <span class="mode-btn__icon">📂</span>
+        <span class="mode-btn__title">分野別</span>
+        <span class="mode-btn__desc">6分野から選んで集中学習</span>
+      </button>
+      <button class="mode-btn" data-mode="difficulty" onclick="selectMode('difficulty')">
+        <span class="mode-btn__icon">📊</span>
+        <span class="mode-btn__title">難易度別</span>
+        <span class="mode-btn__desc">かんたん / ふつう / むずかしい</span>
+      </button>
+      <button class="mode-btn" data-mode="wrong" onclick="selectMode('wrong')">
+        <span class="mode-btn__icon">🔁</span>
+        <span class="mode-btn__title">間違い復習</span>
+        <span class="mode-btn__desc">苦手な問題だけ集中特訓</span>
+      </button>
+    </div>
+
+    <div id="subCategory" class="sub-options">
+      <div class="mode-title" style="margin-top:12px">分野を選ぶ</div>
+      <div class="sub-grid">
+        <button class="sub-btn selected" data-sub="宅建業法" onclick="selectSub(this)">📜 宅建業法</button>
+        <button class="sub-btn" data-sub="権利関係" onclick="selectSub(this)">⚖️ 権利関係</button>
+        <button class="sub-btn" data-sub="法令上の制限" onclick="selectSub(this)">🏗️ 法令上の制限</button>
+        <button class="sub-btn" data-sub="税・その他" onclick="selectSub(this)">💰 税・その他</button>
+      </div>
+    </div>
+
+    <div id="subDifficulty" class="sub-options">
+      <div class="mode-title" style="margin-top:12px">難易度を選ぶ</div>
+      <div class="sub-grid">
+        <button class="sub-btn selected" data-sub="easy" onclick="selectSub(this)">🟢 かんたん</button>
+        <button class="sub-btn" data-sub="mid" onclick="selectSub(this)">🟡 ふつう</button>
+        <button class="sub-btn" data-sub="hard" onclick="selectSub(this)">🔴 むずかしい</button>
+      </div>
+    </div>
+
+    <div id="wrongEmpty" class="wrong-empty">
+      まだ間違えた問題がありません。<br>まずランダムモードで問題を解いてみよう！
+    </div>
+  </div>
+
+  <div class="count-section">
+    <div class="mode-title">問題数を選ぶ</div>
+    <div class="count-grid">
+      <button class="count-btn" onclick="selectCount(this)" data-n="10">10問</button>
+      <button class="count-btn selected" onclick="selectCount(this)" data-n="30">30問</button>
+      <button class="count-btn" onclick="selectCount(this)" data-n="50">50問</button>
+      <button class="count-btn" onclick="selectCount(this)" data-n="100">100問</button>
+      <button class="count-btn" onclick="selectCount(this)" data-n="0">全問</button>
+    </div>
+  </div>
+
+  <div class="start-go-wrap">
+    <button class="start-go-new" onclick="startQuiz()">演習スタート！ ▶</button>
+  </div>
+</div>
+
+<!-- ===== QUIZ ===== -->
+<div id="screenQuiz" class="screen">
+  <div class="quiz-header">
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="quiz-counter" id="quizCounter">1 / 30</div>
+    <span class="cat-badge" id="catBadge" style="display:none"></span>
+  </div>
+
+  <div class="question-card">
+    <div class="question-text" id="questionText"></div>
+  </div>
+
+  <div class="options-list" id="optionsList"></div>
+
+  <div class="exp-card" id="expCard">
+    <div class="exp-result-bar" id="expResultBar"></div>
+    <div class="exp-sensei">
+      
+      <div class="exp-bubble" id="expBubble"></div>
+    </div>
+    <div class="exp-text">
+      <div class="exp-label">解説</div>
+      <div id="expText"></div>
+    </div>
+  </div>
+
+  <button class="next-btn" id="nextBtn" onclick="nextQuestion()">次の問題 →</button>
+</div>
+
+<!-- ===== RESULT ===== -->
+<div id="screenResult" class="screen">
+  <div class="result-hero">
+    
+    <div class="result-score-big" id="resultScore">0</div>
+    <div class="result-score-label" id="resultScoreLabel">/ 30問正解</div>
+    <div class="result-msg" id="resultMsg"></div>
+  </div>
+
+  <div class="result-btns">
+    <button class="result-btn result-btn--retry" onclick="retryQuiz()">もう一度</button>
+    <button class="result-btn result-btn--wrong" onclick="reviewWrong()">間違いを復習</button>
+  </div>
+  <button class="result-btn result-btn--home" style="width:100%;margin-top:10px" onclick="goHome()">モード選択に戻る</button>
+  <button class="gacha-btn" id="gachaBtnResult" onclick="triggerGachaReward()">🎰 ガチャを引く！</button>
+</div>
+
+<script src="data/site-structure.js?v=3"></script>
+<script src="data/cards.js?v=2"></script>
+<script src="data/gacha.js?v=3"></script>
+<script src="data/takken-all.js?v=1"></script>
+<script>
+const STORAGE_KEY = 'takken_history';
+let _mode = 'random', _sub = '宅建業法', _count = 30;
+let _pool = [], _idx = 0, _score = 0, _answered = [];
+
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveHistory(h) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(h)); } catch(e) {}
+}
+function getWrongIds() {
+  const h = loadHistory();
+  return Object.keys(h).filter(id => (h[id].wrong || 0) > (h[id].correct || 0)).map(Number);
+}
+
+function updateStats() {
+  const h = loadHistory();
+  const ids = Object.keys(h);
+  const solved = ids.length;
+  const correct = ids.reduce((s,id) => s + (h[id].correct||0), 0);
+  const total = ids.reduce((s,id) => s + (h[id].correct||0) + (h[id].wrong||0), 0);
+  document.getElementById('statSolved').textContent = solved;
+  document.getElementById('statAccuracy').textContent = total > 0 ? Math.round(correct/total*100) + '%' : '-';
+}
+
+function selectMode(mode) {
+  _mode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('selected', b.dataset.mode === mode));
+  document.getElementById('subCategory').classList.toggle('show', mode === 'category');
+  document.getElementById('subDifficulty').classList.toggle('show', mode === 'difficulty');
+  document.getElementById('wrongEmpty').style.display = 'none';
+  if (mode === 'wrong') {
+    const ids = getWrongIds();
+    if (ids.length === 0) document.getElementById('wrongEmpty').style.display = 'block';
+  }
+}
+
+function selectSub(btn) {
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  _sub = btn.dataset.sub;
+}
+
+function selectCount(btn) {
+  document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  _count = parseInt(btn.dataset.n);
+}
+
+function buildPool() {
+  let pool = TAKKEN_QUESTIONS.map((q, i) => Object.assign({ _idx: i }, q));
+  if (_mode === 'category') pool = pool.filter(q => q.cat === _sub);
+  else if (_mode === 'difficulty') pool = pool.filter(q => q.diff === _sub);
+  else if (_mode === 'wrong') {
+    const ids = new Set(getWrongIds());
+    pool = pool.filter(q => ids.has(q._idx));
+  }
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return _count > 0 ? pool.slice(0, _count) : pool;
+}
+
+function startQuiz() {
+  _pool = buildPool();
+  if (_pool.length === 0) { alert('該当する問題がありません'); return; }
+  _idx = 0; _score = 0; _answered = [];
+  showScreen('screenQuiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = _pool[_idx];
+  const total = _pool.length;
+  document.getElementById('progressFill').style.width = (_idx / total * 100) + '%';
+  document.getElementById('quizCounter').textContent = `${_idx + 1} / ${total}`;
+  const badge = document.getElementById('catBadge');
+  if (q.cat) { badge.textContent = q.cat; badge.style.display = 'inline-block'; }
+  else { badge.style.display = 'none'; }
+
+  const labels = ['ア', 'イ', 'ウ', 'エ'];
+  // innerHTML使用（実技の図表HTMLを展開するため）
+  document.getElementById('questionText').innerHTML = q.text;
+
+  const list = document.getElementById('optionsList');
+  list.innerHTML = q.choices.map((opt, i) => `
+    <button class="option-btn" onclick="selectAnswer(${i})">
+      <span class="option-label">${labels[i]}</span>
+      <span>${opt}</span>
+    </button>`).join('');
+
+  document.getElementById('expCard').classList.remove('show');
+  document.getElementById('nextBtn').classList.remove('show');
+}
+
+const MSG_OK = ['……正解。よくできました。','その調子よ。基礎は大事にしなさい。','正解！問題の本質を見抜いたわね。','できるじゃない。この問題は重要よ。'];
+const MSG_NG = ['まったく……基礎から見直しなさい。','惜しいわね。解説をよく読んで。','次は気をつけて。これは頻出問題よ。','ここで間違える人が多いの。しっかり覚えて。'];
+
+function selectAnswer(idx) {
+  const q = _pool[_idx];
+  const isCorrect = idx === q.answer;
+  if (isCorrect) _score++;
+
+  const h = loadHistory();
+  const key = q._idx;
+  if (!h[key]) h[key] = { correct: 0, wrong: 0 };
+  isCorrect ? h[key].correct++ : h[key].wrong++;
+  saveHistory(h);
+
+  _answered.push({ q, chosen: idx, correct: isCorrect });
+
+  document.querySelectorAll('.option-btn').forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.answer) btn.classList.add('correct');
+    else if (i === idx && !isCorrect) btn.classList.add('wrong');
+  });
+
+  const exp = document.getElementById('expCard');
+  exp.classList.add('show');
+  const bar = document.getElementById('expResultBar');
+  bar.className = `exp-result-bar ${isCorrect ? 'correct' : 'wrong'}`;
+  bar.textContent = isCorrect ? '⭕ 正解！' : '✕ 不正解';
+  const msgs = isCorrect ? MSG_OK : MSG_NG;
+  document.getElementById('expBubble').textContent = msgs[Math.floor(Math.random() * msgs.length)];
+  document.getElementById('expText').textContent = q.exp;
+
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('nextBtn').textContent = _idx + 1 < _pool.length ? '次の問題 →' : '結果を見る →';
+}
+
+function nextQuestion() {
+  _idx++;
+  if (_idx >= _pool.length) { showResult(); return; }
+  renderQuestion();
+}
+
+function showResult() {
+  showScreen('screenResult');
+  const total = _pool.length;
+  const pct = Math.round(_score / total * 100);
+  document.getElementById('resultScore').textContent = _score;
+  document.getElementById('resultScoreLabel').textContent = `/ ${total}問正解（${pct}%）`;
+  const msgs = pct >= 80 ? ['……合格圏ね。この調子で。','悪くないわ。本番でも実力を出しなさい。']
+              : pct >= 60 ? ['まあまあね。あと少しで合格圏よ。','惜しい。間違えた問題を復習しなさい。']
+              : ['基礎が抜けているわ。解説を読み直して。','まだまだね。諦めずに続けなさい。'];
+  document.getElementById('resultMsg').textContent = msgs[Math.floor(Math.random() * msgs.length)];
+
+  if (typeof calcGachaPulls === 'function') {
+    const pulls = calcGachaPulls(_score, total);
+    const btn = document.getElementById('gachaBtnResult');
+    if (btn && pulls > 0) { btn.style.display = 'block'; btn.textContent = `🎰 ガチャを引く！（${pulls}回）`; }
+  }
+  updateStats();
+}
+
+function retryQuiz() { startQuiz(); }
+function reviewWrong() { selectMode('wrong'); showScreen('screenStart'); }
+function goHome() { showScreen('screenStart'); updateStats(); }
+// ===== ガチャアニメーション =====
+let _gachaResults = [], _gachaIdx = 0, _gachaStarsReady = false;
+
+function gachaClose() {
+  const ov = document.getElementById('gachaRewardOverlay');
+  ov.style.transition = 'opacity .4s ease';
+  ov.style.opacity = '0';
+  setTimeout(() => {
+    ov.classList.remove('show');
+    ov.style.opacity = '';
+    _gachaReset();
+  }, 400);
+}
+
+function _gachaReset() {
+  const qm = document.getElementById('gachaQmark');
+  const cw = document.getElementById('gachaCardWrap');
+  const ci = document.getElementById('gachaCardInner');
+  const banner = document.getElementById('gachaRarityBanner');
+  qm.className = ''; qm.style.cssText = '';
+  document.getElementById('gachaFlash').classList.remove('active');
+  cw.classList.remove('reveal'); cw.style.opacity = '0';
+  ci.className = '';
+  banner.className = ''; banner.classList.remove('show'); banner.textContent = '';
+  document.getElementById('gachaNextBtn').classList.remove('show');
+  document.getElementById('gachaCloseBtn').classList.remove('show');
+  document.getElementById('gachaNorewardPhase').classList.remove('show');
+  document.getElementById('gachaParticles').innerHTML = '';
+  document.getElementById('gachaCounter').textContent = '';
+}
+
+function _gachaInitStars() {
+  if (_gachaStarsReady) return;
+  const sf = document.getElementById('gachaStarField');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    const sz = Math.random() * 3 + 1;
+    s.className = 'g-star';
+    s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${1+Math.random()*3}s;animation-delay:${Math.random()*3}s`;
+    sf.appendChild(s);
+  }
+  _gachaStarsReady = true;
+}
+
+function _gachaParticles(rarity) {
+  const con = document.getElementById('gachaParticles');
+  con.innerHTML = '';
+  const palettes = {
+    n:   ['#F6C744','#2563EB','#ffffff','#60a5fa','#93c5fd'],
+    r:   ['#60a5fa','#2563EB','#ffffff','#93c5fd','#bfdbfe'],
+    sr:  ['#a78bfa','#7c3aed','#F6C744','#ffffff','#c4b5fd'],
+    ssr: ['#ffd700','#ff6b35','#ff1493','#00bfff','#ffffff','#a78bfa']
+  };
+  const colors = palettes[rarity] || palettes.n;
+  const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+  for (let i = 0; i < 60; i++) {
+    const p = document.createElement('div');
+    const isStar = Math.random() > 0.5;
+    p.className = 'g-particle' + (isStar ? ' star-shape' : '');
+    const sz = Math.random() * 16 + 6;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const angle = (Math.PI * 2 * i) / 60 + Math.random() * 0.3;
+    const dist = 150 + Math.random() * 300;
+    const tx = Math.cos(angle) * dist, ty = Math.sin(angle) * dist;
+    const dur = 600 + Math.random() * 600, delay = Math.random() * 100;
+    p.style.cssText = `width:${sz}px;height:${sz}px;left:${cx}px;top:${cy}px;background:${color};box-shadow:0 0 ${sz}px ${color};transform:translate(-50%,-50%)`;
+    con.appendChild(p);
+    p.animate([
+      {transform:'translate(-50%,-50%) scale(1)',opacity:1},
+      {transform:`translate(calc(-50% + ${tx}px),calc(-50% + ${ty}px)) scale(0)`,opacity:0}
+    ], {duration:dur, delay, easing:'cubic-bezier(0,0,0.2,1)', fill:'forwards'});
+  }
+}
+
+function _gachaCardHTML(result) {
+  const c = result.card, r = c.rarity;
+  const labels = {n:'N',r:'R',sr:'SR',ssr:'SSR'};
+  const rings = [30,72,114,156,198,240,282,324,366].map(t =>
+    `<div class="g-ring" style="top:${t}px"></div>`).join('');
+  return `<div class="g-card-outer ${r}">${rings}<div class="g-card-paper">
+    <div class="g-badge ${r}">${labels[r]||r.toUpperCase()}</div>
+    <div class="g-char-area"><div class="g-char-emoji">${cardArt(c)}</div></div>
+    <div class="g-name-area">
+      <div class="g-char-name">${c.name}</div>
+      ${result.isNew ? '<div class="g-char-new">NEW!</div>' : ''}
+    </div>
+  </div></div>`;
+}
+
+function _gachaBanner(rarity) {
+  const cfg = {
+    n:   {cls:'',          text:'✦ NORMAL ✦'},
+    r:   {cls:'',          text:'✦ RARE ✦'},
+    sr:  {cls:'sr-banner', text:'✦ SUPER RARE ✦'},
+    ssr: {cls:'ssr-banner',text:'🌈 SUPER SUPER RARE 🌈'}
+  };
+  return cfg[rarity] || cfg.n;
+}
+
+function _gachaShowCard(idx, fullAnim) {
+  const result = _gachaResults[idx];
+  const rarity = result.card.rarity;
+  document.getElementById('gachaCounter').textContent = _gachaResults.length > 1 ? `${idx+1} / ${_gachaResults.length}枚` : '';
+  document.getElementById('gachaCardFront').innerHTML = _gachaCardHTML(result);
+  const banner = document.getElementById('gachaRarityBanner');
+  const bannerCfg = _gachaBanner(rarity);
+  const ov = document.getElementById('gachaRewardOverlay');
+  const qm = document.getElementById('gachaQmark');
+  const cw = document.getElementById('gachaCardWrap');
+  const ci = document.getElementById('gachaCardInner');
+  const revealCard = () => {
+    qm.classList.add('explode');
+    document.getElementById('gachaFlash').classList.add('active');
+    setTimeout(() => {
+      qm.style.opacity = '0';
+      cw.style.opacity = '1';
+      cw.classList.add('reveal');
+      ci.classList.add('flip');
+      _gachaParticles(rarity);
+      setTimeout(() => {
+        banner.className = bannerCfg.cls;
+        banner.textContent = bannerCfg.text;
+        banner.classList.add('show');
+        if (idx < _gachaResults.length - 1) {
+          const nb = document.getElementById('gachaNextBtn');
+          nb.textContent = '次のカード →';
+          nb.classList.add('show');
+          nb.onclick = () => { nb.classList.remove('show'); _gachaReset(); _gachaShowCard(idx + 1, true); };
+        } else {
+          const cb = document.getElementById('gachaCloseBtn');
+          cb.textContent = _gachaResults.length > 1 ? '全部見た！とじる' : 'とじる';
+          cb.classList.add('show');
+          cb.onclick = gachaClose;
+        }
+      }, 600);
+    }, 250);
+  };
+  if (fullAnim) {
+    qm.classList.add('appear');
+    setTimeout(() => {
+      qm.classList.add('pulse');
+      const tapHandler = (e) => {
+        if (e.target.closest && (e.target.closest('#gachaNextBtn') || e.target.closest('#gachaCloseBtn'))) return;
+        ov.removeEventListener('click', tapHandler);
+        revealCard();
+      };
+      ov.addEventListener('click', tapHandler);
+    }, 700);
+  } else {
+    revealCard();
+  }
+}
+
+function triggerGachaReward() {
+  const btn = document.getElementById('gachaBtnResult');
+  if (btn) btn.style.display = 'none';
+  if (typeof claimQuizGacha !== 'function') return;
+  if (!document.getElementById('gachaRewardOverlay')) {
+    const el = document.createElement('div');
+    el.className = 'gacha-reward-overlay';
+    el.id = 'gachaRewardOverlay';
+    el.innerHTML = `<div id="gachaFlash"></div><div id="gachaStarField"></div><div id="gachaQmark">？</div><div id="gachaParticles"></div><div id="gachaCounter"></div><div id="gachaCardWrap"><div id="gachaCardInner"><div id="gachaCardFront"></div></div></div><div id="gachaRarityBanner"></div><button id="gachaNextBtn"></button><button id="gachaCloseBtn">とじる</button><div id="gachaNorewardPhase"><div style="font-size:48px">😢</div><div style="color:rgba(255,255,255,.8);font-size:16px;font-weight:700">今回は報酬なし</div><div style="color:rgba(255,255,255,.6);font-size:13px">60%以上の正解率でガチャが引けるよ！</div></div>`;
+    document.body.appendChild(el);
+  }
+  const { pulls, results } = claimQuizGacha('takken', _score, _pool.length);
+  const ov = document.getElementById('gachaRewardOverlay');
+  ov.classList.add('show');
+  _gachaInitStars();
+  if (pulls === 0 || results.length === 0) {
+    document.getElementById('gachaNorewardPhase').classList.add('show');
+    const cb = document.getElementById('gachaCloseBtn');
+    cb.textContent = 'とじる';
+    cb.classList.add('show');
+    cb.onclick = gachaClose;
+    return;
+  }
+  _gachaResults = results;
+  _gachaIdx = 0;
+  _gachaReset();
+  _gachaShowCard(0, true);
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateStats();
+  selectMode('random');
+});
+</script>
+</body>
+</html>

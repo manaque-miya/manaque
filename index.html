@@ -1183,6 +1183,7 @@ function getQuizUrl(quizId, count) {
   const c = count ? `&count=${count}` : '';
   if (quizId === 'exam-itp') return 'exam-quiz.html';
   if (quizId === 'fp3') return 'fp3-quiz.html';
+    if (quizId === 'takken') return 'takken-quiz.html';
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(quizId) ||
       /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner|toeic|katakana|baseball|soccer|basketball|tennis|golf)-\d+$/.test(quizId) ||
       /^uni-spi-(lang|math)-\d+$/.test(quizId) ||
@@ -1384,6 +1385,24 @@ function buildUnitCard(unit, subjLabel) {
       </div>
       <div class="unit-card__counts">
         <a href="exam-quiz.html" class="count-btn count-btn--default" style="grid-column:1/-1">本気対策モードで学習する →</a>
+      </div>
+    </div>`;
+  }
+
+  // ===== 宅建士専用ページ =====
+  if (unit.quizId === 'takken') {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
+      <div class="unit-card__meta">
+        <span>📘 全550問</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts">
+        <a href="takken-quiz.html" class="count-btn count-btn--default" style="grid-column:1/-1">本気対策モードで学習する →</a>
       </div>
     </div>`;
   }
