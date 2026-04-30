@@ -191,234 +191,407 @@ const UNITS = [
     id:'security', title:'情報セキュリティ', emoji:'🔒', tag:'毎年必出',
     scenarios:[
       {
-        scene:'A社の田中さんは、パスワードを忘れないよう付箋に書いてPCのモニターに貼っています。同僚からも「便利だよね」と言われています。',
-        question:'この行動、問題ある？',
-        choices:[{text:'⚠️ 問題あり',correct:true},{text:'✅ 問題なし',correct:false}],
-        correct_msg:'正解！これは情報セキュリティの基本違反です。',
-        wrong_msg:'実はこれ、かなり危険な行為です！',
-        explanation:'パスワードは「本人だけが知っている情報（知識認証）」であることが前提です。見える場所に貼ると、誰でもなりすましログインができてしまいます。試験では「パスワードの管理方法」として頻出です。',
-        point:'🔑 パスワードは「見えない・教えない・使い回さない」が鉄則',
+        scene:'田中さんに「あなたのAmazonアカウントが不正利用されました。こちらから確認を→ http://amaz0n-check.com」というメールが届いた。リンクをクリックすると本物そっくりのサイトが表示され、IDとパスワードを入力してしまった。翌日、身に覚えのない注文がされていた。',
+        question:'田中さんが引っかかった攻撃、なんて呼ぶ？',
+        choices:[
+          {text:'🎣 フィッシング詐欺',correct:true},
+          {text:'💣 ランサムウェア',correct:false},
+          {text:'🌊 DoS攻撃',correct:false},
+          {text:'🕵️ スパイウェア',correct:false}
+        ],
+        correct_msg:'フィッシング詐欺！偽サイトに誘導してID・パスワードを盗む手口。',
+        wrong_msg:'惜しい！偽サイトに誘導してログイン情報を盗む手口を「フィッシング詐欺」という。',
+        explanation:'フィッシング詐欺（Phishing）＝本物そっくりの偽サイト・偽メールで、パスワードやクレカ情報を騙し取る攻撃。URLをよく見ると微妙に違う（amaz0n など）のが特徴。',
+        point:'🧠 覚え方：魚釣り（fishing）みたいにユーザーを「釣る」からフィッシング',
         flowchart:[
-          {type:'start',text:'パスワードを付箋に書いてモニターに貼った'},
-          {type:'bad',text:'誰でも見られる状態 → 知識認証が無効化'},
-          {type:'bad',text:'第三者によるなりすましログインのリスク'},
-          {type:'action',text:'対策：パスワードマネージャー or 暗記。紙に書くなら金庫保管'}
+          {type:'start',text:'怪しいメールが届く'},
+          {type:'check',text:'URLが本物と少し違う（amaz0n / goog1e など）'},
+          {type:'bad',text:'気づかずログイン → ID・パスワード盗まれる'},
+          {type:'good',text:'正規サイトをブックマークから開く・公式アプリを使う'},
+          {type:'action',text:'これがフィッシング詐欺の典型パターン'}
         ]
       },
       {
-        scene:'「あなたのアカウントが不正利用されました。今すぐこちらをクリックしてパスワードを変更してください」というメールが届きました。送信元は公式っぽいアドレスです。',
-        question:'このメールのリンク、クリックしていい？',
-        choices:[{text:'⚠️ クリックしない',correct:true},{text:'✅ クリックして確認する',correct:false}],
-        correct_msg:'正解！これはフィッシング詐欺の典型的な手口です。',
-        wrong_msg:'危険です！これはフィッシング詐欺の可能性が高いです。',
-        explanation:'「緊急」「今すぐ」「アカウント停止」などの言葉で焦らせるのがフィッシング詐欺の特徴です。送信元アドレスは偽装できます。公式サービスのパスワード変更は、メールのリンクではなく公式サイトに直接アクセスして行いましょう。',
-        point:'🎣 フィッシング詐欺：焦らせる・偽サイトに誘導・情報を盗む。メールのリンクは踏まない！',
+        scene:'営業の佐藤さんが取引先からのメールに添付されたファイルを開いたら、PC内の全ファイルが暗号化された。「ファイルを元に戻したければ3日以内にビットコイン10万円分を送金せよ」というメッセージが表示された。',
+        question:'このウイルス、なんて呼ぶ？',
+        choices:[
+          {text:'🔐 ランサムウェア',correct:true},
+          {text:'🎣 フィッシング詐欺',correct:false},
+          {text:'🔑 キーロガー',correct:false},
+          {text:'🚪 バックドア',correct:false}
+        ],
+        correct_msg:'ランサムウェア！データを人質にして身代金（Ransom）を要求するウイルス。',
+        wrong_msg:'これはランサムウェア。ファイルを暗号化して身代金を要求するのが特徴。',
+        explanation:'ランサムウェア（Ransomware）＝Ransom（身代金）＋ware（ソフト）。ファイルを暗号化してお金を要求する。支払っても復元される保証はなく、支払い非推奨。定期バックアップが最大の対策。',
+        point:'🧠 覚え方：Ransom（身代金）を要求するware（ソフトウェア）＝ランサムウェア',
         flowchart:[
-          {type:'start',text:'緊急性を煽るメールが届いた'},
-          {type:'check',text:'送信元は本当に公式？URLを確認'},
-          {type:'bad',text:'偽ドメイン・HTTPSなし → フィッシング疑い'},
-          {type:'action',text:'リンクは踏まず、公式サイトに直接アクセス'},
-          {type:'good',text:'公式サイトでログイン → 本当に問題があるか確認'}
+          {type:'start',text:'不審なメール添付ファイルを開く'},
+          {type:'bad',text:'ウイルスが起動しファイルを暗号化'},
+          {type:'bad',text:'「身代金を払え」メッセージ表示'},
+          {type:'action',text:'対策：定期バックアップ＋添付ファイルを不用意に開かない'},
+          {type:'good',text:'バックアップがあれば身代金を払わず復元可能'}
         ]
       },
       {
-        scene:'B社の鈴木さんは「バックアップなんて面倒くさい。どうせ壊れないでしょ」と言って、重要なファイルをPCに1か所だけ保存しています。',
-        question:'このデータ管理、リスクはある？',
-        choices:[{text:'⚠️ リスクあり',correct:true},{text:'✅ 問題ない',correct:false}],
-        correct_msg:'正解！1か所だけの保存は危険です。',
-        wrong_msg:'実はリスクがあります！PCは突然壊れることがあります。',
-        explanation:'重要データは「3-2-1ルール」が推奨されます。3つのコピー、2種類のメディア、1つはオフサイト（別の場所）に保存します。ランサムウェア（身代金型マルウェア）対策としても、オフラインバックアップが有効です。',
-        point:'💾 バックアップの鉄則：複数・複数の場所・定期的に。障害時の復旧を「可用性」という',
+        scene:'IT管理部を名乗る人物から電話がかかってきた。「緊急メンテナンスが必要なのでパスワードを教えてください」と丁寧な口調で言われた。鈴木さんはIT部門の人だと思い、パスワードを教えてしまった。',
+        question:'この攻撃手法、なんて呼ぶ？',
+        choices:[
+          {text:'🧠 ソーシャルエンジニアリング',correct:true},
+          {text:'💻 ブルートフォース攻撃',correct:false},
+          {text:'🐛 マルウェア感染',correct:false},
+          {text:'🌐 中間者攻撃',correct:false}
+        ],
+        correct_msg:'ソーシャルエンジニアリング！技術ではなく「人間の心理」を利用して情報を盗む。',
+        wrong_msg:'これはソーシャルエンジニアリング。ハッキングではなく人を騙して情報を得る手口。',
+        explanation:'ソーシャルエンジニアリング＝技術を使わず、人間の「親切心・権威への服従・焦り」を利用してパスワードなどを聞き出す攻撃。電話・なりすましメール・ショルダーハック（画面を覗く）なども含む。',
+        point:'🧠 覚え方：ソーシャル（社会的・人間的）な手法でエンジニアリング（情報取得）する攻撃',
         flowchart:[
-          {type:'start',text:'データがPC1台にしかない'},
-          {type:'bad',text:'PC故障・ランサムウェア → データ消失'},
-          {type:'action',text:'3-2-1ルール：3コピー・2メディア・1オフサイト'},
-          {type:'good',text:'障害発生 → バックアップから復元できる'}
+          {type:'start',text:'攻撃者が信頼できる人物（IT部門・上司）を名乗る'},
+          {type:'check',text:'「緊急」「今すぐ」など焦りを煽る'},
+          {type:'bad',text:'心理的に騙されてパスワードを教えてしまう'},
+          {type:'good',text:'対策：電話でパスワードを聞かれても絶対に教えない'},
+          {type:'action',text:'折り返し公式番号に電話して本人確認する'}
         ]
       }
     ]
   },
   {
-    id:'copyright', title:'著作権・知的財産', emoji:'©️', tag:'法律系',
+    id:'chizai', title:'著作権・知的財産', emoji:'©️', tag:'毎年2〜3問',
     scenarios:[
       {
-        scene:'プレゼン資料を作っていた山田さんは、Googleで検索して出てきたきれいな写真を「フリー素材サイトじゃないけどまあいいか」とそのまま資料に貼り付けました。',
-        question:'この写真の使い方、問題ある？',
-        choices:[{text:'⚠️ 問題あり',correct:true},{text:'✅ 問題ない',correct:false}],
-        correct_msg:'正解！ネット上の画像には著作権があります。',
-        wrong_msg:'実は問題あり！ネット上の画像は無断使用禁止が原則です。',
-        explanation:'インターネット上の写真・イラスト・文章はすべて著作権で保護されています。「フリー素材サイト」以外の画像を無断使用すると著作権侵害になります。ライセンス（CC0・CCなど）を確認するか、有料素材サイトを利用しましょう。',
-        point:'📷 ネット上の画像はすべて著作権あり。「フリー素材」と明記されたもの以外は使用不可！',
+        scene:'エンジニアの中村さんは、会社の業務時間中に会社のPCを使って、業務として顧客管理システムのプログラムを開発した。このプログラムの著作権は誰のもの？',
+        question:'著作権の持ち主は？',
+        choices:[
+          {text:'🏢 会社（法人）',correct:true},
+          {text:'👤 中村さん個人',correct:false},
+          {text:'🤝 会社と中村さんで共有',correct:false},
+          {text:'📋 著作権は発生しない',correct:false}
+        ],
+        correct_msg:'会社！業務として作ったプログラムの著作権は原則として会社（法人）のもの。',
+        wrong_msg:'業務として作った著作物の権利は会社のもの。これを「職務著作（法人著作）」という。',
+        explanation:'職務著作（法人著作）＝法人の発意に基づき、従業員が職務上作成した著作物は、法人名義で公表される場合、著作者は法人。プログラムはこのルールが適用されやすい。例外：契約で別途定めた場合。',
+        point:'🧠 覚え方：業務でつくったもの＝会社のもの。副業や個人プロジェクトは自分のもの。',
         flowchart:[
-          {type:'start',text:'ネットで画像を見つけた'},
-          {type:'check',text:'「フリー素材」「CC0」など使用許可の明記はある？'},
-          {type:'bad',text:'明記なし → 著作権あり → 無断使用NG'},
-          {type:'good',text:'明記あり → ライセンスの範囲内で使用OK'},
-          {type:'action',text:'不明な場合は権利者に許可を取る or 別の素材を使う'}
+          {type:'start',text:'プログラムを作った'},
+          {type:'check',text:'業務として・会社のPCで・勤務時間中に作った？'},
+          {type:'good',text:'YES → 著作権は会社（法人著作・職務著作）'},
+          {type:'bad',text:'NO（個人で作った）→ 著作権は個発者本人'},
+          {type:'action',text:'契約書に別途定めがある場合はそちらが優先'}
         ]
       },
       {
-        scene:'C社のエンジニア・佐藤さんは、業務時間中に会社のPCを使って新しいアプリを開発しました。このアプリの著作権は誰のもの？',
-        question:'著作権は誰にある？',
-        choices:[{text:'👔 会社',correct:true},{text:'👤 佐藤さん本人',correct:false}],
-        correct_msg:'正解！業務中に作ったプログラムの著作権は原則として会社にあります。',
-        wrong_msg:'実は会社にあります！業務で作ったものは原則会社帰属です。',
-        explanation:'「職務著作（法人著作）」というルールがあります。従業員が職務上作成したプログラムや文章などは、契約や就業規則に特別な定めがなければ、著作権は会社（法人）に帰属します。副業で自分の時間・自分のPCで作った場合は個人のものになります。',
-        point:'💼 職務著作：業務中・会社のPCで作ったもの → 著作権は会社。副業・私物PCで作ったもの → 個人',
+        scene:'ブログを書いている田中さんが、ベストセラー小説の印象的な一節（約200文字）を自分のブログに掲載した。「出典：〇〇著『△△』」と書いたが、著者への許可は取っていない。ブログ全体の分量の60%を占めている。',
+        question:'この使い方の問題点は？',
+        choices:[
+          {text:'📏 引用の要件を満たしておらず著作権侵害',correct:true},
+          {text:'✅ 出典を明示すれば許可不要',correct:false},
+          {text:'✅ 非商用なので問題ない',correct:false},
+          {text:'✅ 200文字以下なら自由に使える',correct:false}
+        ],
+        correct_msg:'引用のルール違反！引用は「従」、自分のコンテンツが「主」でないといけない。',
+        wrong_msg:'引用には厳密なルールがある。出典を書けばOKではない。',
+        explanation:'著作権法上の「引用」が認められる条件：①自分の著作物が「主」、引用が「従」の関係②出所を明示③必要最小限の量④改変しない。この場合、引用が全体の60%＝引用が「主」になっており要件を満たさない。',
+        point:'🧠 覚え方：引用は「ちょっと借りる」もの。自分の文章が主役で、引用は脇役。',
         flowchart:[
-          {type:'start',text:'従業員がプログラム・コンテンツを作成'},
-          {type:'check',text:'業務時間内・会社の指示・会社設備を使用？'},
-          {type:'good',text:'Yes → 職務著作 → 著作権は会社'},
-          {type:'bad',text:'No（私的時間・私物PC） → 著作権は個人'},
-          {type:'action',text:'就業規則・契約書に特別な定めがある場合はそれに従う'}
+          {type:'start',text:'他人の著作物を使いたい'},
+          {type:'check',text:'自分のコンテンツが主役で、引用は脇役？'},
+          {type:'check',text:'出所明示している？必要最小限の量？'},
+          {type:'good',text:'両方YES → 適法な引用'},
+          {type:'bad',text:'どちらかNO → 著作権侵害のリスク'}
+        ]
+      },
+      {
+        scene:'起業家の山本さんが自社ブランドのロゴを作り、商品に使い始めた。3年後、別の会社が同じロゴをパクって使い始めた。山本さんが登録していたのは「商標権」だ。',
+        question:'商標権の保護期間（更新しない場合）は？',
+        choices:[
+          {text:'📅 10年（更新で延長可）',correct:true},
+          {text:'📅 20年（更新不可）',correct:false},
+          {text:'📅 著作者の死後70年',correct:false},
+          {text:'📅 出願から25年',correct:false}
+        ],
+        correct_msg:'10年！商標権は10年ごとに更新でき、半永久的に保護できる。',
+        wrong_msg:'商標権の存続期間は登録から10年。ただし更新を繰り返せば永続的に使える。',
+        explanation:'知的財産権の保護期間まとめ：著作権＝著作者の死後70年 / 特許権＝出願から20年 / 商標権＝登録から10年（更新可） / 実用新案権＝出願から10年。試験頻出！',
+        point:'🧠 覚え方：商標は「10年更新」、特許は「20年で終わり」、著作は「死後70年」',
+        flowchart:[
+          {type:'start',text:'知的財産権の種類を確認'},
+          {type:'action',text:'著作権：死後70年（自動発生）'},
+          {type:'action',text:'特許権：出願から20年（登録必要）'},
+          {type:'action',text:'商標権：登録から10年（更新で永続）'},
+          {type:'good',text:'商標は更新し続ければロゴ・ブランドを守り続けられる'}
         ]
       }
     ]
   },
   {
-    id:'network', title:'ネットワーク基礎', emoji:'🌐', tag:'テクノロジ系',
+    id:'network', title:'ネットワーク基礎', emoji:'🌐', tag:'テクノロジ系頻出',
     scenarios:[
       {
-        scene:'D社のWebサイトのURLが「http://」で始まっています。セキュリティ担当の山本さんから「早急に対応が必要」と言われました。何が問題なの？',
-        question:'「http://」の何が問題？',
-        choices:[{text:'🔓 通信が暗号化されていない',correct:true},{text:'✅ 特に問題ない',correct:false},{text:'📛 URLが長すぎる',correct:false}],
-        correct_msg:'正解！httpは暗号化なしの通信プロトコルです。',
-        wrong_msg:'実は大きな問題があります！通信内容が丸見えの状態です。',
-        explanation:'HTTPは通信内容が暗号化されず、第三者に盗み見られる（盗聴・改ざん）リスクがあります。HTTPSは「HTTP + SSL/TLS暗号化」で、通信が暗号化されます。特にログイン画面や決済ページは必ずHTTPSが必要です。',
-        point:'🔒 HTTP＝暗号化なし（危険）　HTTPS＝SSL/TLSで暗号化（安全）。URLの鍵マークで確認！',
+        scene:'カフェのフリーWi-Fiを使ってオンラインバンキングにアクセスしようとした田中さん。URLバーに「http://」と表示されていた。隣に座った見知らぬ人が何かを操作している。',
+        question:'「http」で通信する際の最大のリスクは？',
+        choices:[
+          {text:'📡 通信内容が暗号化されず盗み見られる',correct:true},
+          {text:'🐢 通信速度が遅くなる',correct:false},
+          {text:'💰 通信料金が高くなる',correct:false},
+          {text:'🔋 バッテリー消費が増える',correct:false}
+        ],
+        correct_msg:'暗号化なし！httpは平文通信なので、同じWi-Fi上の人に盗み見られる可能性がある。',
+        wrong_msg:'httpの問題は速度やコストではなく「暗号化されていない」こと。',
+        explanation:'http（HyperText Transfer Protocol）は暗号化なし。https（Secure）はSSL/TLSで暗号化。特にカフェなど公共Wi-Fiではパケットキャプチャで通信を盗聴できる。金融・個人情報サービスは必ずhttpsを確認すること。',
+        point:'🧠 覚え方：httpsのsはSecure（安全）のs。鍵マーク🔒があればOK',
         flowchart:[
-          {type:'start',text:'Webサイトにアクセス'},
-          {type:'check',text:'URLが「https://」で始まる？'},
-          {type:'good',text:'Yes → SSL/TLS暗号化 → 通信は安全'},
-          {type:'bad',text:'No（http://）→ 通信が平文 → 盗聴・改ざんリスク'},
-          {type:'action',text:'対策：SSL証明書を取得してhttpsに移行'}
+          {type:'start',text:'URLを確認する'},
+          {type:'check',text:'http:// か https:// か？'},
+          {type:'bad',text:'http → 暗号化なし（パスワード・個人情報が危険）'},
+          {type:'good',text:'https → SSL/TLS暗号化（安全）'},
+          {type:'action',text:'公共Wi-Fiでhttpのサービスは使わない'}
         ]
       },
       {
-        scene:'E社の在宅勤務社員・田中さんは自宅から会社のシステムにアクセスします。「VPNを使ってアクセスしてください」と言われました。VPNって何のため？',
-        question:'VPNを使う主な目的は？',
-        choices:[{text:'🔒 通信を暗号化して安全に社内へアクセス',correct:true},{text:'⚡ インターネットを高速化する',correct:false},{text:'💰 通信コストを下げる',correct:false}],
-        correct_msg:'正解！VPNは仮想の暗号化トンネルを作ります。',
-        wrong_msg:'VPNの主な目的は速度向上ではなく、セキュリティです。',
-        explanation:'VPN（Virtual Private Network）は、インターネット上に仮想の専用回線（トンネル）を作り、通信を暗号化する技術です。自宅から会社の内部ネットワークに安全にアクセスするために使われます。外部からは通信内容を見られません。',
-        point:'🔐 VPN＝仮想の暗号化トンネル。在宅勤務・出張先から社内へ安全につなぐためのもの',
+        scene:'コロナ禍でテレワークになった佐藤さん。会社から「自宅から社内システムにアクセスするには〇〇を使ってください」と言われた。〇〇を使うと、まるで会社のLANに直接つながっているように安全に作業できる。',
+        question:'〇〇に入るのは？',
+        choices:[
+          {text:'🔒 VPN',correct:true},
+          {text:'📶 Wi-Fi',correct:false},
+          {text:'🔵 Bluetooth',correct:false},
+          {text:'📲 テザリング',correct:false}
+        ],
+        correct_msg:'VPN！仮想の暗号化トンネルを作って、外部から安全に社内ネットワークにアクセスする技術。',
+        wrong_msg:'これはVPN（Virtual Private Network）。セキュアなトンネルを作る技術。',
+        explanation:'VPN（Virtual Private Network）＝仮想専用線。インターネット上に暗号化されたトンネルを作り、あたかも社内LANに直接つながっているように通信できる。テレワーク・外出先からの安全な接続に必須。',
+        point:'🧠 覚え方：V=Virtual（仮想）P=Private（専用）N=Network。仮想の専用回線を作る技術',
         flowchart:[
-          {type:'start',text:'在宅から社内システムにアクセスしたい'},
-          {type:'check',text:'VPNなしで直接アクセス → 通信が外部から見える'},
-          {type:'bad',text:'盗聴・不正アクセスのリスク'},
-          {type:'action',text:'VPNクライアントを起動 → 暗号化トンネルを確立'},
-          {type:'good',text:'社内LANと同等の安全な接続が完了'}
+          {type:'start',text:'自宅から社内システムにアクセスしたい'},
+          {type:'action',text:'VPNクライアントを起動して接続'},
+          {type:'good',text:'暗号化されたトンネルが確立'},
+          {type:'good',text:'インターネット経由でも社内LANと同じ環境'},
+          {type:'action',text:'通信内容はすべて暗号化されて安全'}
+        ]
+      },
+      {
+        scene:'情報システム部の鈴木さんが「DNSサーバーに問題が発生しました」と報告してきた。「それって何が困るの？」と上司に聞かれた。',
+        question:'DNSが止まると何が起きる？',
+        choices:[
+          {text:'🌐 URLからIPアドレスへの変換ができずサイトにアクセスできない',correct:true},
+          {text:'📧 メールが届かなくなる',correct:false},
+          {text:'🔐 パスワードが盗まれる',correct:false},
+          {text:'💾 データが消える',correct:false}
+        ],
+        correct_msg:'DNSはドメイン名→IPアドレスへの変換担当。止まるとURLでのアクセスが全部できなくなる。',
+        wrong_msg:'DNSはドメイン名とIPアドレスを紐付ける「インターネットの電話帳」。',
+        explanation:'DNS（Domain Name System）＝「www.amazon.co.jp」のようなドメイン名を「54.239.28.85」のようなIPアドレスに変換する仕組み。電話帳のようなもの。DNSが止まると名前→IPの変換ができず、URLでのアクセスが不可能になる。',
+        point:'🧠 覚え方：DNSはインターネットの「電話帳」。名前からIPアドレスを調べてくれる',
+        flowchart:[
+          {type:'start',text:'ブラウザにURLを入力'},
+          {type:'action',text:'DNSサーバーに「このドメインのIPアドレスは？」と問い合わせ'},
+          {type:'check',text:'DNSが正常？'},
+          {type:'good',text:'YES → IPアドレスを取得してサイトに接続'},
+          {type:'bad',text:'NO（DNS障害）→ IPアドレス不明 → サイトに接続できない'}
         ]
       }
     ]
   },
   {
-    id:'computer', title:'コンピュータ基礎', emoji:'💻', tag:'テクノロジ系',
+    id:'computer', title:'コンピュータ基礎', emoji:'💻', tag:'計算問題も出る',
     scenarios:[
       {
-        scene:'新入社員のAさんが「PCの動作が遅い。メモリを増やせば早くなると聞いたけど、メモリって何？」と質問してきました。',
-        question:'メモリ（RAM）の役割は？',
-        choices:[{text:'📋 作業中のデータを一時的に置く場所',correct:true},{text:'💾 データを長期保存する場所',correct:false},{text:'⚙️ 計算をする部品',correct:false}],
-        correct_msg:'正解！メモリは「作業台」のようなものです。',
-        wrong_msg:'それはストレージ（HDD/SSD）の役割です。',
-        explanation:'メモリ（RAM）は電源を切ると消えてしまう「一時記憶」です。作業中のプログラムやデータを置く場所で、広いほど多くの作業を同時にできます。長期保存はHDD/SSDの役割。計算はCPUの役割です。この3つの違いはITP頻出！',
-        point:'🧠 CPU＝計算する脳　RAM＝作業台（一時記憶）　HDD/SSD＝本棚（長期保存）',
+        scene:'田中さんのPCは、ExcelとWordとブラウザを同時に開いていると動作が遅くなる。IT部門に相談したら「〇〇が不足しています。増設すると改善されます」と言われた。',
+        question:'〇〇に入るのは？（作業中データの置き場）',
+        choices:[
+          {text:'🎯 メモリ（RAM）',correct:true},
+          {text:'💾 ストレージ（HDD/SSD）',correct:false},
+          {text:'⚙️ CPU',correct:false},
+          {text:'🎮 GPU',correct:false}
+        ],
+        correct_msg:'メモリ（RAM）！複数アプリを同時に動かす「作業台」の広さがメモリ。',
+        wrong_msg:'複数アプリの同時起動が遅い原因はメモリ（RAM）不足。',
+        explanation:'メモリ（RAM）＝作業台。アプリを開くときデータをメモリに読み込んで作業する。メモリが小さいと作業台が狭く、アプリを切り替えるたびに遅くなる。ストレージ（HDD/SSD）は長期保存用の棚。CPUは計算担当。',
+        point:'🧠 覚え方：メモリ＝作業台（広いほど複数作業OK）、ストレージ＝棚（大きいほどたくさん保存）',
         flowchart:[
-          {type:'start',text:'プログラムを起動する'},
-          {type:'action',text:'HDD/SSDからプログラムをRAMに読み込む'},
-          {type:'good',text:'CPUがRAM上のデータを処理（計算）'},
-          {type:'action',text:'結果をRAMに書き込み → 画面に表示'},
-          {type:'check',text:'電源を切る → RAMのデータは消える。HDD/SSDは残る'}
+          {type:'start',text:'PCのパーツの役割を整理'},
+          {type:'action',text:'CPU＝頭脳（計算・処理）'},
+          {type:'action',text:'メモリ（RAM）＝作業台（一時的な作業領域）'},
+          {type:'action',text:'ストレージ（HDD/SSD）＝棚（長期保存）'},
+          {type:'good',text:'複数アプリが遅い → メモリ増設が有効'}
         ]
       },
       {
-        scene:'「2進数で「1010」は10進数でいくつ？」という問題が出ました。2進数って普段使わないし、なんで覚えるの？',
-        question:'2進数で「1010」は10進数でいくつ？',
-        choices:[{text:'10',correct:true},{text:'5',correct:false},{text:'12',correct:false},{text:'8',correct:false}],
-        correct_msg:'正解！1010₂ ＝ 8+0+2+0 ＝ 10 です！',
-        wrong_msg:'計算してみましょう。各桁は右から2⁰・2¹・2²・2³です。',
-        explanation:'コンピュータは電気信号のON/OFFしか理解できないため、すべての情報を0と1だけで表す「2進数」を使います。1010₂は「8の位が1、4の位が0、2の位が1、1の位が0」なので8+2＝10です。ITPでは2進数・16進数の変換が出題されます。',
-        point:'🔢 2進数の計算：右から2⁰(1)・2¹(2)・2²(4)・2³(8)・・・。1がある桁を足すだけ！',
+        scene:'コンピュータは内部で全データを2進数（0と1）で表している。10進数の「13」を2進数で表すと？',
+        question:'10進数の13を2進数にすると？',
+        choices:[
+          {text:'1101',correct:true},
+          {text:'1011',correct:false},
+          {text:'1110',correct:false},
+          {text:'1001',correct:false}
+        ],
+        correct_msg:'1101！8+4+0+1＝13。2進数は右から1・2・4・8…の桁。',
+        wrong_msg:'13を2進数に変換すると1101。8+4+1＝13。',
+        explanation:'2進数変換：13÷2=6余り1 → 6÷2=3余り0 → 3÷2=1余り1 → 1÷2=0余り1。余りを逆から読むと1101。確認：1×8 + 1×4 + 0×2 + 1×1 ＝ 8+4+0+1＝13 ✅',
+        point:'🧠 覚え方：2で割り続けて余りを下から読む。桁の重みは右から1・2・4・8・16…',
         flowchart:[
-          {type:'start',text:'2進数 1010 を10進数に変換'},
-          {type:'action',text:'右から数える：1の位・2の位・4の位・8の位'},
-          {type:'check',text:'8の位：1→8、4の位：0→0、2の位：1→2、1の位：0→0'},
-          {type:'good',text:'8+0+2+0 = 10（十進数）'}
+          {type:'start',text:'10進数→2進数の変換方法'},
+          {type:'action',text:'13 ÷ 2 = 6 余り 1'},
+          {type:'action',text:'6 ÷ 2 = 3 余り 0'},
+          {type:'action',text:'3 ÷ 2 = 1 余り 1'},
+          {type:'action',text:'1 ÷ 2 = 0 余り 1'},
+          {type:'good',text:'余りを逆から読む → 1101（答え）'}
+        ]
+      },
+      {
+        scene:'Webサービスを作った開発チームが「DBの〇〇が遅い」と話している。「特定の列を〇〇しておけばSELECT文が速くなる」という。',
+        question:'DBの検索を高速化する仕組みはなに？',
+        choices:[
+          {text:'🔍 インデックス（索引）',correct:true},
+          {text:'🔑 主キー（Primary Key）',correct:false},
+          {text:'📊 正規化',correct:false},
+          {text:'💾 キャッシュ',correct:false}
+        ],
+        correct_msg:'インデックス！本の索引のように、特定の列を事前に整理して検索を超高速化する。',
+        wrong_msg:'DBの検索高速化はインデックス（索引）。本の目次・索引のような仕組み。',
+        explanation:'インデックス（索引）＝データベースの特定の列に索引を作ることで検索を高速化する仕組み。本の索引と同じ原理。欠点は更新・挿入が少し遅くなること。試験ではSELECT高速化＝インデックスと覚える。',
+        point:'🧠 覚え方：インデックス＝本の索引。「あ行」の索引があれば全ページを探さなくていい',
+        flowchart:[
+          {type:'start',text:'データベースの検索が遅い'},
+          {type:'action',text:'よく検索する列にインデックスを作成'},
+          {type:'good',text:'索引があるのでフルスキャン不要 → 高速'},
+          {type:'check',text:'デメリット：更新・挿入時に索引も更新するため少し遅くなる'},
+          {type:'action',text:'頻繁に検索する列・WHERE句で使う列にインデックスが有効'}
         ]
       }
     ]
   },
   {
-    id:'strategy', title:'経営戦略', emoji:'📊', tag:'ストラテジ系',
+    id:'strategy', title:'経営戦略', emoji:'📊', tag:'ストラテジ系の核心',
     scenarios:[
       {
-        scene:'新商品の開発会議でリーダーが「まずSWOT分析をやりましょう」と言いました。メンバーの一人が「SWOTって何？」と聞いています。',
-        question:'SWOTのSは何の略？',
-        choices:[{text:'💪 Strength（強み）',correct:true},{text:'📦 Stock（在庫）',correct:false},{text:'💰 Sales（売上）',correct:false}],
-        correct_msg:'正解！SWOTはStrength・Weakness・Opportunity・Threatの略です。',
-        wrong_msg:'SはStrength（強み）です。',
-        explanation:'SWOT分析は経営戦略の基本ツールです。S（強み）・W（弱み）は内部環境、O（機会）・T（脅威）は外部環境を分析します。「自社の強みを活かして外部の機会をつかむ」といった戦略立案に使います。ITパスポートではストラテジ系として頻出です。',
-        point:'📋 SWOT＝S強み・W弱み（内部）　O機会・T脅威（外部）。4つの組み合わせで戦略を考える！',
+        scene:'新商品の戦略会議で部長が「うちの技術力は競合に負けない（強み）、でも資金力は少ない（弱み）、海外市場が拡大している（機会）、でもライバルが増えてきた（脅威）」と整理し始めた。',
+        question:'部長が使っているフレームワーク、なんて呼ぶ？',
+        choices:[
+          {text:'📋 SWOT分析',correct:true},
+          {text:'🔄 PDCA',correct:false},
+          {text:'⚔️ 5フォース分析',correct:false},
+          {text:'🎯 3C分析',correct:false}
+        ],
+        correct_msg:'SWOT分析！Strength（強み）・Weakness（弱み）・Opportunity（機会）・Threat（脅威）の4つで整理。',
+        wrong_msg:'強み・弱み・機会・脅威を整理するのはSWOT分析。',
+        explanation:'SWOT分析：S=Strength（強み）、W=Weakness（弱み）、O=Opportunity（機会）、T=Threat（脅威）。内部環境（S・W）と外部環境（O・T）を整理して戦略を立てる。ITパスポートで必ず出る！',
+        point:'🧠 覚え方：スウォット＝SW（強み・弱み）は内部、OT（機会・脅威）は外部',
         flowchart:[
-          {type:'start',text:'SWOT分析を実施'},
-          {type:'check',text:'内部環境：S（強み）/ W（弱み）'},
-          {type:'check',text:'外部環境：O（機会）/ T（脅威）'},
-          {type:'action',text:'SO戦略：強みで機会を活かす（攻め）'},
-          {type:'action',text:'WT戦略：弱みと脅威を回避（守り）'},
-          {type:'good',text:'4つの組み合わせで戦略の方向性を決定'}
+          {type:'start',text:'SWOT分析の4象限'},
+          {type:'action',text:'内部環境：S（強み）・W（弱み）'},
+          {type:'action',text:'外部環境：O（機会）・T（脅威）'},
+          {type:'good',text:'強み×機会 → 攻めの戦略'},
+          {type:'action',text:'弱み×脅威 → 撤退・回避の戦略'}
         ]
       },
       {
-        scene:'F社がPDCAを回しています。「計画を立てた（P）、実行した（D）、確認した（C）、次は何？（A）」と上司に聞かれました。',
-        question:'PDCAのA（Action）でやることは？',
-        choices:[{text:'🔄 改善策を実施して次のサイクルへ',correct:true},{text:'📊 もう一度確認する',correct:false},{text:'📝 最初から計画を立て直す',correct:false}],
-        correct_msg:'正解！Actionは「改善して次のPDCAサイクルにつなげる」ことです。',
-        wrong_msg:'ActionはもうConfirmation（確認）ではなく、改善の実施です。',
-        explanation:'PDCA（Plan-Do-Check-Act）は継続的改善のサイクルです。P：目標と計画、D：実行、C：結果の確認・分析、A：改善策の実施です。Aで改善したら次のPに戻り、ぐるぐる回し続けることで品質が向上します。「スパイラルアップ」とも言います。',
-        point:'🔄 PDCA＝計画→実行→確認→改善のサイクル。A（改善）が次のP（計画）につながる！',
+        scene:'工場の生産ラインを改善している山田マネージャー。①月次目標を立てて（Plan）、②実際に生産して（Do）、③結果を分析して（Check）、④次月の改善策を実施する（Action）。このサイクルを毎月繰り返している。',
+        question:'このサイクルはなんて呼ぶ？',
+        choices:[
+          {text:'🔄 PDCAサイクル',correct:true},
+          {text:'🎯 OKR',correct:false},
+          {text:'📊 KPI管理',correct:false},
+          {text:'🏃 アジャイル',correct:false}
+        ],
+        correct_msg:'PDCAサイクル！Plan→Do→Check→Actionを繰り返して継続的に改善する手法。',
+        wrong_msg:'計画→実行→確認→改善のサイクルはPDCA。',
+        explanation:'PDCAサイクル：Plan（計画）→Do（実行）→Check（評価・確認）→Action（改善）→（次のPlanへ）。継続的改善のための基本フレームワーク。デミング・サイクルとも呼ぶ。',
+        point:'🧠 覚え方：P計画→D実行→C確認→A改善。「ピーダーカー」と音で覚える人も。',
         flowchart:[
-          {type:'start',text:'P：目標・計画を立てる'},
-          {type:'action',text:'D：計画に沿って実行する'},
-          {type:'check',text:'C：結果を計画と比較・分析する'},
-          {type:'action',text:'A：ずれの原因を特定し改善策を実施'},
-          {type:'good',text:'次のP（計画）へ → サイクルを繰り返す（スパイラルアップ）'}
+          {type:'start',text:'P：Plan（計画を立てる）'},
+          {type:'action',text:'D：Do（計画を実行する）'},
+          {type:'action',text:'C：Check（結果を評価・確認する）'},
+          {type:'action',text:'A：Action（改善策を実施する）'},
+          {type:'good',text:'次のPlan（計画）へ → サイクルを繰り返す'}
+        ]
+      },
+      {
+        scene:'スタートアップのCEOが「うちのサービスはまだ市場シェアは小さいけど、この市場は年30%成長している。今が投資のチャンス」と投資家に説明した。BCGマトリクスで分類すると？',
+        question:'このサービスはBCGマトリクスのどこ？',
+        choices:[
+          {text:'❓ 問題児（市場成長率↑・シェア↓）',correct:true},
+          {text:'⭐ スター（市場成長率↑・シェア↑）',correct:false},
+          {text:'🐄 金のなる木（市場成長率↓・シェア↑）',correct:false},
+          {text:'🐕 負け犬（市場成長率↓・シェア↓）',correct:false}
+        ],
+        correct_msg:'問題児！成長市場でシェアが低い＝投資次第でスターになれる可能性がある状態。',
+        wrong_msg:'市場成長率が高くシェアが低い＝「問題児」。投資するかどうか判断が必要。',
+        explanation:'BCGマトリクス（PPM）：縦軸＝市場成長率、横軸＝市場シェア。スター（↑↑）・問題児（↑↓）・金のなる木（↓↑）・負け犬（↓↓）の4分類。問題児はシェアを上げればスターになれるが、投資が必要。',
+        point:'🧠 覚え方：縦＝市場成長率、横＝シェア。問題児＝伸びてる市場で負けてる状態',
+        flowchart:[
+          {type:'start',text:'BCGマトリクスの4分類'},
+          {type:'action',text:'スター：成長率↑×シェア↑ → 花形（投資継続）'},
+          {type:'action',text:'問題児：成長率↑×シェア↓ → 要投資判断'},
+          {type:'action',text:'金のなる木：成長率↓×シェア↑ → 利益の源泉'},
+          {type:'bad',text:'負け犬：成長率↓×シェア↓ → 撤退検討'}
         ]
       }
     ]
   },
   {
-    id:'system', title:'システム開発', emoji:'⚙️', tag:'マネジメント系',
+    id:'sysdev', title:'システム開発', emoji:'⚙️', tag:'マネジメント系の核心',
     scenarios:[
       {
-        scene:'新システムを開発することになりました。上司から「ウォーターフォールとアジャイル、どっちで進める？」と聞かれました。どう違うの？',
-        question:'変更が多い可能性があるプロジェクト、どちらが向いている？',
-        choices:[{text:'🔄 アジャイル',correct:true},{text:'📋 ウォーターフォール',correct:false}],
-        correct_msg:'正解！アジャイルは変更に強い開発手法です。',
-        wrong_msg:'ウォーターフォールは要件が固まっているプロジェクト向きです。',
-        explanation:'ウォーターフォールは要件定義→設計→実装→テストを順番に進める手法で、要件が明確な大規模プロジェクトに向いています。アジャイルは短い期間（スプリント）で開発・フィードバック・改善を繰り返し、変更に柔軟に対応できます。スマホアプリ開発などに多く使われます。',
-        point:'🌊 ウォーターフォール＝順番通り・変更しにくい　🔄 アジャイル＝繰り返し・変更OK。スプリント・スクラムがキーワード',
+        scene:'スタートアップABC社はユーザーの反応を見ながら2週間ごとに機能を少しずつ追加・変更するアプリ開発をしている。「まずリリースして、使ってもらいながら改善する」が合言葉。',
+        question:'この開発手法、なんて呼ぶ？',
+        choices:[
+          {text:'🏃 アジャイル開発',correct:true},
+          {text:'🏗️ ウォーターフォール開発',correct:false},
+          {text:'🌀 スパイラル開発',correct:false},
+          {text:'📋 プロトタイプ開発',correct:false}
+        ],
+        correct_msg:'アジャイル開発！短いサイクルで開発・リリースを繰り返し、変化に柔軟に対応する手法。',
+        wrong_msg:'短期間で繰り返し開発・改善するのはアジャイル開発。',
+        explanation:'アジャイル開発＝短い反復（スプリント：1〜4週間）で開発→テスト→リリースを繰り返す。変更・追加に強い。ウォーターフォールは要件→設計→開発→テストを順番にやる従来型。変更に弱いが大規模・要件確定済みのプロジェクトに向く。',
+        point:'🧠 覚え方：アジャイル＝俊敏（Agile）。小さく作って素早くリリース・修正を繰り返す',
         flowchart:[
-          {type:'start',text:'開発手法を選択'},
-          {type:'check',text:'要件は最初から明確？変更は少ない？'},
-          {type:'good',text:'Yes → ウォーターフォール（要件定義→設計→実装→テスト）'},
-          {type:'bad',text:'No（変更多い・不明確）→ アジャイル'},
-          {type:'action',text:'アジャイル：短いスプリントを繰り返す → フィードバックして改善'}
+          {type:'start',text:'開発手法を選ぶ'},
+          {type:'check',text:'要件が途中で変わりそう？小規模？'},
+          {type:'good',text:'YES → アジャイル（短サイクルで繰り返し開発）'},
+          {type:'action',text:'NO（要件確定・大規模）→ ウォーターフォール'},
+          {type:'action',text:'アジャイルの代表：スクラム、XP（エクストリームプログラミング）'}
         ]
       },
       {
-        scene:'システムのテストで「単体テスト」「結合テスト」「システムテスト」という言葉が出てきました。どの順番でやるの？',
-        question:'テストの正しい順番は？',
-        choices:[{text:'単体→結合→システム',correct:true},{text:'システム→結合→単体',correct:false},{text:'全部同時',correct:false}],
-        correct_msg:'正解！小さな単位から大きな単位へテストします。',
-        wrong_msg:'テストは小さい単位から順番に行います。',
-        explanation:'テストは小さい単位から大きい単位へ段階的に行います。単体テスト：個々の部品（モジュール）が正しく動くか。結合テスト：複数の部品を組み合わせたときの動作確認。システムテスト：システム全体として要件を満たすか。最後に「受入テスト（ユーザーが確認）」を行う場合もあります。',
-        point:'🧪 テストの順：単体（部品）→ 結合（組み合わせ）→ システム（全体）→ 受入（ユーザー確認）',
+        scene:'新しい基幹システムの開発が終わり、テスト工程に入った。「まず各プログラム単体で、次にプログラム間の連携を、最後にシステム全体で要件を満たしているか確認しよう」とPMが言った。',
+        question:'正しいテストの順番は？',
+        choices:[
+          {text:'🔬 単体→結合→システムテスト',correct:true},
+          {text:'🏢 システム→結合→単体テスト',correct:false},
+          {text:'🔗 結合→単体→システムテスト',correct:false},
+          {text:'⚡ 全部同時に実施',correct:false}
+        ],
+        correct_msg:'単体→結合→システムテスト！小さい部品から順に、大きな単位でテストしていく。',
+        wrong_msg:'テストは小さい単位から大きい単位へ。単体→結合→システムの順。',
+        explanation:'テストの順序：①単体テスト（ユニットテスト）＝個々の関数・モジュール単位 → ②結合テスト（インテグレーションテスト）＝モジュール間の連携 → ③システムテスト（総合テスト）＝システム全体の動作 → ④受入テスト＝ユーザーが確認。',
+        point:'🧠 覚え方：「単（体）結（合）シス（テム）受（入）」。小さい部品→つなぐ→全体→お客さんに見せる',
         flowchart:[
-          {type:'start',text:'開発完了後、テスト開始'},
-          {type:'action',text:'単体テスト：各モジュール単独で動作確認'},
-          {type:'action',text:'結合テスト：モジュールを組み合わせてインターフェース確認'},
-          {type:'action',text:'システムテスト：全体として要件を満たすか確認'},
-          {type:'good',text:'受入テスト：ユーザーが確認してOKならリリース'}
+          {type:'start',text:'①単体テスト：関数・モジュール単体で動くか'},
+          {type:'action',text:'②結合テスト：複数モジュールをつなげて連携するか'},
+          {type:'action',text:'③システムテスト：システム全体として要件を満たすか'},
+          {type:'action',text:'④受入テスト：ユーザー（発注者）が確認してOKか'},
+          {type:'good',text:'受入テスト合格 → リリース'}
+        ]
+      },
+      {
+        scene:'プロジェクトマネージャーの鈴木さんが「このプロジェクト、工期は絶対に延ばせない。どのタスクが遅れたら全体に影響するか把握したい」と言っている。',
+        question:'全体の完了日に影響するタスクのつながりをなんて呼ぶ？',
+        choices:[
+          {text:'🔴 クリティカルパス',correct:true},
+          {text:'📊 ガントチャート',correct:false},
+          {text:'📋 WBS（作業分解構造）',correct:false},
+          {text:'⚖️ EVM（アーンドバリュー）',correct:false}
+        ],
+        correct_msg:'クリティカルパス！これが1日遅れると全体が1日遅れる、余裕ゼロのタスクのルート。',
+        wrong_msg:'プロジェクト全体の完了に直結するタスクのつながりはクリティカルパス。',
+        explanation:'クリティカルパス＝プロジェクト内で余裕（フロート）がゼロのタスクを結んだ経路。このルート上のタスクが1日遅れると全体が1日遅れる。PM試験・ITパスポートの定番問題。ガントチャートはタスクの時系列表示。',
+        point:'🧠 覚え方：Critical（致命的）Path（道）＝遅らせたら致命的になる道筋',
+        flowchart:[
+          {type:'start',text:'プロジェクトのタスクを洗い出す'},
+          {type:'action',text:'各タスクの所要時間と依存関係を整理'},
+          {type:'check',text:'余裕（フロート）がゼロのタスクを特定'},
+          {type:'bad',text:'フロート＝0 → クリティカルパス上のタスク（遅れ厳禁！）'},
+          {type:'good',text:'フロート＞0 → 多少遅れても全体に影響しない'}
         ]
       }
     ]
@@ -446,7 +619,7 @@ function renderHome() {
 }
 
 function goHome() {
-  document.getElementById('screenHome').style.display = '';
+  document.getElementById('screenHome').style.display = 'block';
   document.getElementById('screenLearn').style.display = 'none';
   document.getElementById('screenComplete').style.display = 'none';
   renderHome();
@@ -458,7 +631,7 @@ function startUnit(id) {
   currentUnit = UNITS.find(u => u.id === id);
   currentScenarioIdx = 0;
   document.getElementById('screenHome').style.display = 'none';
-  document.getElementById('screenLearn').style.display = '';
+  document.getElementById('screenLearn').style.display = 'block';
   document.getElementById('screenComplete').style.display = 'none';
   document.getElementById('learnTitle').textContent = currentUnit.emoji + ' ' + currentUnit.title;
   renderScenario();
