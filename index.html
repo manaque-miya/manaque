@@ -881,16 +881,28 @@
     <span style="font-size:17px;font-weight:900;color:#1e293b;">資格対策 本気モード</span>
     <span style="font-size:12px;color:#64748b;font-weight:600;">クイズで学んで、合格をつかもう</span>
   </div>
-  <div style="max-width:1480px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+  <div id="exam-banner-grid" style="max-width:1480px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
     <a href="exam-quiz.html" style="display:block;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(26,79,214,.18);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(26,79,214,.28)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(26,79,214,.18)'">
       <img src="assets/img/exam-itp-banner.png" alt="ITパスポート試験対策 600問無料公開｜まなクエ！" style="width:100%;height:auto;display:block;">
     </a>
     <a href="fp3-quiz.html" style="display:block;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(22,163,74,.18);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(22,163,74,.28)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(22,163,74,.18)'">
       <img src="assets/img/fp3-banner.png" alt="FP3級対策 522問無料公開｜まなクエ！" style="width:100%;height:auto;display:block;">
     </a>
+    <a href="takken-quiz.html" style="display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(180,120,30,.25);transition:transform .2s,box-shadow .2s;background:linear-gradient(135deg,#7c4a03 0%,#b45309 40%,#d97706 100%);min-height:200px;text-decoration:none;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(180,120,30,.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(180,120,30,.25)'">
+      <div style="text-align:center;padding:32px 24px;">
+        <div style="font-size:48px;margin-bottom:12px;">🏠</div>
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.1em;margin-bottom:8px;">国家資格 対策</div>
+        <div style="font-size:28px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:8px;">宅建士<br>試験対策</div>
+        <div style="font-size:22px;font-weight:900;color:#fde68a;margin-bottom:16px;">550問 無料公開！</div>
+        <div style="display:inline-block;background:#fff;color:#b45309;font-size:14px;font-weight:900;padding:10px 28px;border-radius:30px;">今すぐ学習する ▶</div>
+      </div>
+    </a>
   </div>
   <style>
-  @media(max-width:640px){
+  @media(max-width:900px){
+    #exam-banner-grid{grid-template-columns:1fr 1fr !important;}
+  }
+  @media(max-width:600px){
     #exam-banner-grid{grid-template-columns:1fr !important;}
   }
   </style>
