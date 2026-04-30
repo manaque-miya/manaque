@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ITパスポート試験を「場面」で学ぶ。シナリオ→直感選択→解説→フローチャートで、読むより先に体感できる無料学習ガイド。">
+  <title>ITパスポート 場面で学ぶ｜まなクエ！</title>
+  <link rel="icon" href="assets/img/favicon.png">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --brand:#1e40af;--brand-light:#dbeafe;--brand-mid:#3b82f6;
+      --correct:#16a34a;--correct-light:#dcfce7;
+      --wrong:#dc2626;--wrong-light:#fee2e2;
+      --ink:#1e293b;--muted:#64748b;--bg:#f8fafc;--card:#fff;
+      --radius:16px;--shadow:0 4px 24px rgba(0,0,0,.09);
+    }
+    body{font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+    .site-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#fff;border-bottom:2px solid var(--brand-light);position:sticky;top:0;z-index:100}
+    .site-header__logo{font-size:18px;font-weight:900;color:var(--brand);text-decoration:none}
+    .site-header__back{font-size:13px;color:var(--muted);text-decoration:none;font-weight:600}
+    .site-header__back:hover{color:var(--brand)}
+
+    /* ===== HOME ===== */
+    .hero{background:linear-gradient(135deg,#1e3a8a 0%,#1e40af 50%,#2563eb 100%);padding:40px 20px 32px;text-align:center;color:#fff}
+    .hero__eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;color:#93c5fd;margin-bottom:10px}
+    .hero__title{font-size:clamp(22px,5vw,32px);font-weight:900;line-height:1.3;margin-bottom:10px}
+    .hero__title em{color:#fde68a;font-style:normal}
+    .hero__sub{font-size:14px;color:#bfdbfe;line-height:1.6;max-width:480px;margin:0 auto 20px}
+    .hero__flow{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+    .hero__step{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:700;color:#fff}
+    .hero__arrow{color:#93c5fd;font-size:12px}
+
+    .section-title{font-size:15px;font-weight:900;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;padding:24px 20px 12px;border-bottom:2px solid var(--brand-light);margin-bottom:0}
+    .unit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:20px}
+    @media(min-width:600px){.unit-grid{grid-template-columns:repeat(3,1fr)}}
+    .unit-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 16px;cursor:pointer;transition:.2s;border:2px solid transparent;position:relative;overflow:hidden}
+    .unit-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.13)}
+    .unit-card.done{border-color:var(--correct);background:#f0fdf4}
+    .unit-card__emoji{font-size:32px;margin-bottom:8px;display:block}
+    .unit-card__title{font-size:14px;font-weight:900;color:var(--ink);margin-bottom:4px}
+    .unit-card__tag{font-size:10px;font-weight:700;background:var(--brand-light);color:var(--brand);border-radius:6px;padding:2px 7px;display:inline-block}
+    .unit-card.done::after{content:"✓ クリア";position:absolute;top:10px;right:10px;font-size:10px;font-weight:900;color:var(--correct);background:#dcfce7;border-radius:6px;padding:2px 7px}
+    .unit-card__count{font-size:11px;color:var(--muted);margin-top:6px}
+
+    /* ===== LEARN ===== */
+    #screenLearn{display:none;min-height:100vh;background:var(--bg)}
+    .learn-header{display:flex;align-items:center;gap:12px;padding:16px 20px;background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:50}
+    .learn-header__back{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);padding:0 8px 0 0}
+    .learn-header__title{font-size:15px;font-weight:900;flex:1}
+    .learn-header__prog{font-size:12px;color:var(--muted);font-weight:700}
+    .prog-bar{height:4px;background:#e2e8f0}
+    .prog-bar__fill{height:100%;background:linear-gradient(90deg,var(--brand-mid),var(--brand));transition:.4s;border-radius:2px}
+
+    .scenario-wrap{max-width:600px;margin:0 auto;padding:20px}
+
+    /* シナリオカード */
+    .scene-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:16px;border-left:5px solid var(--brand)}
+    .scene-card__label{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.1em;margin-bottom:10px}
+    .scene-card__text{font-size:15px;line-height:1.8;color:var(--ink)}
+    .scene-card__question{margin-top:16px;padding:14px;background:var(--brand-light);border-radius:10px;font-size:15px;font-weight:700;color:var(--brand);text-align:center}
+
+    /* 選択肢 */
+    .choices{display:grid;gap:10px;margin-bottom:16px}
+    .choice-btn{padding:16px;border:2px solid #e2e8f0;border-radius:12px;background:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:.15s;text-align:left;color:var(--ink);font-family:inherit}
+    .choice-btn:hover:not(:disabled){border-color:var(--brand);background:var(--brand-light);transform:translateX(4px)}
+    .choice-btn.correct{border-color:var(--correct);background:var(--correct-light);color:var(--correct)}
+    .choice-btn.wrong{border-color:var(--wrong);background:var(--wrong-light);color:var(--wrong)}
+    .choice-btn:disabled{cursor:default}
+
+    /* 解説パネル */
+    .explain-panel{display:none;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:16px}
+    .explain-panel.show{display:block;animation:slideIn .3s ease}
+    @keyframes slideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .explain-result{padding:16px 20px;font-size:16px;font-weight:900;display:flex;align-items:center;gap:8px}
+    .explain-result.correct{background:var(--correct-light);color:var(--correct)}
+    .explain-result.wrong{background:var(--wrong-light);color:var(--wrong)}
+    .explain-body{padding:16px 20px;font-size:14px;line-height:1.8;color:var(--ink)}
+    .explain-point{margin:12px 20px 20px;padding:12px 16px;background:var(--brand-light);border-radius:10px;font-size:13px;font-weight:700;color:var(--brand)}
+
+    /* フローチャート */
+    .flowchart{display:none;padding:0 20px 20px;margin-bottom:16px}
+    .flowchart.show{display:block}
+    .flowchart__title{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;text-align:center}
+    .flow-nodes{display:flex;flex-direction:column;align-items:center;gap:0}
+    .flow-node{width:100%;max-width:340px;padding:12px 16px;border-radius:10px;font-size:13px;font-weight:700;text-align:center;line-height:1.4}
+    .flow-node.start{background:var(--brand);color:#fff}
+    .flow-node.check{background:#fef3c7;color:#92400e;border:2px solid #fcd34d}
+    .flow-node.bad{background:var(--wrong-light);color:var(--wrong);border:2px solid #fca5a5}
+    .flow-node.good{background:var(--correct-light);color:var(--correct);border:2px solid #86efac}
+    .flow-node.action{background:#f1f5f9;color:var(--ink);border:2px solid #cbd5e1}
+    .flow-arrow{color:var(--muted);font-size:20px;line-height:1;margin:2px 0}
+    .flow-branch{display:flex;gap:10px;width:100%;max-width:340px}
+    .flow-branch-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+    .flow-branch-label{font-size:10px;font-weight:700;color:var(--muted)}
+
+    /* ボタン */
+    .btn-next{display:none;width:100%;padding:16px;background:linear-gradient(135deg,var(--brand),var(--brand-mid));color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:900;cursor:pointer;font-family:inherit;margin-bottom:10px}
+    .btn-next.show{display:block}
+    .btn-quiz{display:none;width:100%;padding:16px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;margin-bottom:10px}
+    .btn-quiz.show{display:block}
+
+    /* ===== COMPLETE ===== */
+    #screenComplete{display:none;min-height:100vh;background:var(--bg)}
+    .complete-wrap{max-width:480px;margin:0 auto;padding:40px 20px;text-align:center}
+    .complete-emoji{font-size:72px;margin-bottom:20px}
+    .complete-title{font-size:24px;font-weight:900;color:var(--ink);margin-bottom:8px}
+    .complete-sub{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:32px}
+    .complete-btn{display:block;padding:18px;border-radius:14px;font-size:16px;font-weight:900;cursor:pointer;border:none;font-family:inherit;margin-bottom:12px;width:100%;text-align:center;text-decoration:none}
+    .complete-btn--quiz{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff}
+    .complete-btn--home{background:#f1f5f9;color:var(--ink)}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="site-header__logo">まなクエ！</a>
+  <a href="exam-quiz.html" class="site-header__back">問題を解く →</a>
+</header>
+
+<!-- ===== HOME ===== -->
+<div id="screenHome">
+  <div class="hero">
+    <div class="hero__eyebrow">📋 ITパスポート 合格ガイド</div>
+    <div class="hero__title">読むより先に、<em>体感する</em>。</div>
+    <div class="hero__sub">場面を見て直感で選ぶ。それだけで、ルールが自然に身につく。テキストは読んだ後に。</div>
+    <div class="hero__flow">
+      <span class="hero__step">📖 場面</span>
+      <span class="hero__arrow">→</span>
+      <span class="hero__step">🤔 直感で選択</span>
+      <span class="hero__arrow">→</span>
+      <span class="hero__step">💡 解説</span>
+      <span class="hero__arrow">→</span>
+      <span class="hero__step">🗺 フロー</span>
+      <span class="hero__arrow">→</span>
+      <span class="hero__step">✏️ 類題</span>
+    </div>
+  </div>
+
+  <div class="section-title">テーマを選ぶ</div>
+  <div class="unit-grid" id="unitGrid"></div>
+</div>
+
+<!-- ===== LEARN ===== -->
+<div id="screenLearn">
+  <div class="learn-header">
+    <button class="learn-header__back" onclick="goHome()">←</button>
+    <span class="learn-header__title" id="learnTitle"></span>
+    <span class="learn-header__prog" id="learnProg"></span>
+  </div>
+  <div class="prog-bar"><div class="prog-bar__fill" id="progFill" style="width:0%"></div></div>
+  <div class="scenario-wrap">
+    <div class="scene-card">
+      <div class="scene-card__label">📍 こんな場面</div>
+      <div class="scene-card__text" id="sceneText"></div>
+      <div class="scene-card__question" id="sceneQuestion"></div>
+    </div>
+    <div class="choices" id="choicesWrap"></div>
+    <div class="explain-panel" id="explainPanel">
+      <div class="explain-result" id="explainResult"></div>
+      <div class="explain-body" id="explainBody"></div>
+      <div class="explain-point" id="explainPoint"></div>
+    </div>
+    <div class="flowchart" id="flowchart">
+      <div class="flowchart__title">📊 判断のフロー</div>
+      <div class="flow-nodes" id="flowNodes"></div>
+    </div>
+    <button class="btn-next" id="btnNext" onclick="nextScenario()">次の場面へ →</button>
+    <button class="btn-quiz" id="btnQuiz" onclick="goQuiz()">✏️ この分野の問題を解く！</button>
+  </div>
+</div>
+
+<!-- ===== COMPLETE ===== -->
+<div id="screenComplete">
+  <div class="learn-header">
+    <button class="learn-header__back" onclick="goHome()">←</button>
+    <span class="learn-header__title" id="completeUnitTitle"></span>
+  </div>
+  <div class="complete-wrap">
+    <div class="complete-emoji">🎉</div>
+    <div class="complete-title" id="completeTitle"></div>
+    <div class="complete-sub" id="completeSub"></div>
+    <a href="exam-quiz.html" class="complete-btn complete-btn--quiz">✏️ ITパスポートの問題を解く！</a>
+    <button class="complete-btn complete-btn--home" onclick="goHome()">← テーマ選択に戻る</button>
+  </div>
+</div>
+
+<script>
+const UNITS = [
+  {
+    id:'security', title:'情報セキュリティ', emoji:'🔒', tag:'毎年必出',
+    scenarios:[
+      {
+        scene:'A社の田中さんは、パスワードを忘れないよう付箋に書いてPCのモニターに貼っています。同僚からも「便利だよね」と言われています。',
+        question:'この行動、問題ある？',
+        choices:[{text:'⚠️ 問題あり',correct:true},{text:'✅ 問題なし',correct:false}],
+        correct_msg:'正解！これは情報セキュリティの基本違反です。',
+        wrong_msg:'実はこれ、かなり危険な行為です！',
+        explanation:'パスワードは「本人だけが知っている情報（知識認証）」であることが前提です。見える場所に貼ると、誰でもなりすましログインができてしまいます。試験では「パスワードの管理方法」として頻出です。',
+        point:'🔑 パスワードは「見えない・教えない・使い回さない」が鉄則',
+        flowchart:[
+          {type:'start',text:'パスワードを付箋に書いてモニターに貼った'},
+          {type:'bad',text:'誰でも見られる状態 → 知識認証が無効化'},
+          {type:'bad',text:'第三者によるなりすましログインのリスク'},
+          {type:'action',text:'対策：パスワードマネージャー or 暗記。紙に書くなら金庫保管'}
+        ]
+      },
+      {
+        scene:'「あなたのアカウントが不正利用されました。今すぐこちらをクリックしてパスワードを変更してください」というメールが届きました。送信元は公式っぽいアドレスです。',
+        question:'このメールのリンク、クリックしていい？',
+        choices:[{text:'⚠️ クリックしない',correct:true},{text:'✅ クリックして確認する',correct:false}],
+        correct_msg:'正解！これはフィッシング詐欺の典型的な手口です。',
+        wrong_msg:'危険です！これはフィッシング詐欺の可能性が高いです。',
+        explanation:'「緊急」「今すぐ」「アカウント停止」などの言葉で焦らせるのがフィッシング詐欺の特徴です。送信元アドレスは偽装できます。公式サービスのパスワード変更は、メールのリンクではなく公式サイトに直接アクセスして行いましょう。',
+        point:'🎣 フィッシング詐欺：焦らせる・偽サイトに誘導・情報を盗む。メールのリンクは踏まない！',
+        flowchart:[
+          {type:'start',text:'緊急性を煽るメールが届いた'},
+          {type:'check',text:'送信元は本当に公式？URLを確認'},
+          {type:'bad',text:'偽ドメイン・HTTPSなし → フィッシング疑い'},
+          {type:'action',text:'リンクは踏まず、公式サイトに直接アクセス'},
+          {type:'good',text:'公式サイトでログイン → 本当に問題があるか確認'}
+        ]
+      },
+      {
+        scene:'B社の鈴木さんは「バックアップなんて面倒くさい。どうせ壊れないでしょ」と言って、重要なファイルをPCに1か所だけ保存しています。',
+        question:'このデータ管理、リスクはある？',
+        choices:[{text:'⚠️ リスクあり',correct:true},{text:'✅ 問題ない',correct:false}],
+        correct_msg:'正解！1か所だけの保存は危険です。',
+        wrong_msg:'実はリスクがあります！PCは突然壊れることがあります。',
+        explanation:'重要データは「3-2-1ルール」が推奨されます。3つのコピー、2種類のメディア、1つはオフサイト（別の場所）に保存します。ランサムウェア（身代金型マルウェア）対策としても、オフラインバックアップが有効です。',
+        point:'💾 バックアップの鉄則：複数・複数の場所・定期的に。障害時の復旧を「可用性」という',
+        flowchart:[
+          {type:'start',text:'データがPC1台にしかない'},
+          {type:'bad',text:'PC故障・ランサムウェア → データ消失'},
+          {type:'action',text:'3-2-1ルール：3コピー・2メディア・1オフサイト'},
+          {type:'good',text:'障害発生 → バックアップから復元できる'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'copyright', title:'著作権・知的財産', emoji:'©️', tag:'法律系',
+    scenarios:[
+      {
+        scene:'プレゼン資料を作っていた山田さんは、Googleで検索して出てきたきれいな写真を「フリー素材サイトじゃないけどまあいいか」とそのまま資料に貼り付けました。',
+        question:'この写真の使い方、問題ある？',
+        choices:[{text:'⚠️ 問題あり',correct:true},{text:'✅ 問題ない',correct:false}],
+        correct_msg:'正解！ネット上の画像には著作権があります。',
+        wrong_msg:'実は問題あり！ネット上の画像は無断使用禁止が原則です。',
+        explanation:'インターネット上の写真・イラスト・文章はすべて著作権で保護されています。「フリー素材サイト」以外の画像を無断使用すると著作権侵害になります。ライセンス（CC0・CCなど）を確認するか、有料素材サイトを利用しましょう。',
+        point:'📷 ネット上の画像はすべて著作権あり。「フリー素材」と明記されたもの以外は使用不可！',
+        flowchart:[
+          {type:'start',text:'ネットで画像を見つけた'},
+          {type:'check',text:'「フリー素材」「CC0」など使用許可の明記はある？'},
+          {type:'bad',text:'明記なし → 著作権あり → 無断使用NG'},
+          {type:'good',text:'明記あり → ライセンスの範囲内で使用OK'},
+          {type:'action',text:'不明な場合は権利者に許可を取る or 別の素材を使う'}
+        ]
+      },
+      {
+        scene:'C社のエンジニア・佐藤さんは、業務時間中に会社のPCを使って新しいアプリを開発しました。このアプリの著作権は誰のもの？',
+        question:'著作権は誰にある？',
+        choices:[{text:'👔 会社',correct:true},{text:'👤 佐藤さん本人',correct:false}],
+        correct_msg:'正解！業務中に作ったプログラムの著作権は原則として会社にあります。',
+        wrong_msg:'実は会社にあります！業務で作ったものは原則会社帰属です。',
+        explanation:'「職務著作（法人著作）」というルールがあります。従業員が職務上作成したプログラムや文章などは、契約や就業規則に特別な定めがなければ、著作権は会社（法人）に帰属します。副業で自分の時間・自分のPCで作った場合は個人のものになります。',
+        point:'💼 職務著作：業務中・会社のPCで作ったもの → 著作権は会社。副業・私物PCで作ったもの → 個人',
+        flowchart:[
+          {type:'start',text:'従業員がプログラム・コンテンツを作成'},
+          {type:'check',text:'業務時間内・会社の指示・会社設備を使用？'},
+          {type:'good',text:'Yes → 職務著作 → 著作権は会社'},
+          {type:'bad',text:'No（私的時間・私物PC） → 著作権は個人'},
+          {type:'action',text:'就業規則・契約書に特別な定めがある場合はそれに従う'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'network', title:'ネットワーク基礎', emoji:'🌐', tag:'テクノロジ系',
+    scenarios:[
+      {
+        scene:'D社のWebサイトのURLが「http://」で始まっています。セキュリティ担当の山本さんから「早急に対応が必要」と言われました。何が問題なの？',
+        question:'「http://」の何が問題？',
+        choices:[{text:'🔓 通信が暗号化されていない',correct:true},{text:'✅ 特に問題ない',correct:false},{text:'📛 URLが長すぎる',correct:false}],
+        correct_msg:'正解！httpは暗号化なしの通信プロトコルです。',
+        wrong_msg:'実は大きな問題があります！通信内容が丸見えの状態です。',
+        explanation:'HTTPは通信内容が暗号化されず、第三者に盗み見られる（盗聴・改ざん）リスクがあります。HTTPSは「HTTP + SSL/TLS暗号化」で、通信が暗号化されます。特にログイン画面や決済ページは必ずHTTPSが必要です。',
+        point:'🔒 HTTP＝暗号化なし（危険）　HTTPS＝SSL/TLSで暗号化（安全）。URLの鍵マークで確認！',
+        flowchart:[
+          {type:'start',text:'Webサイトにアクセス'},
+          {type:'check',text:'URLが「https://」で始まる？'},
+          {type:'good',text:'Yes → SSL/TLS暗号化 → 通信は安全'},
+          {type:'bad',text:'No（http://）→ 通信が平文 → 盗聴・改ざんリスク'},
+          {type:'action',text:'対策：SSL証明書を取得してhttpsに移行'}
+        ]
+      },
+      {
+        scene:'E社の在宅勤務社員・田中さんは自宅から会社のシステムにアクセスします。「VPNを使ってアクセスしてください」と言われました。VPNって何のため？',
+        question:'VPNを使う主な目的は？',
+        choices:[{text:'🔒 通信を暗号化して安全に社内へアクセス',correct:true},{text:'⚡ インターネットを高速化する',correct:false},{text:'💰 通信コストを下げる',correct:false}],
+        correct_msg:'正解！VPNは仮想の暗号化トンネルを作ります。',
+        wrong_msg:'VPNの主な目的は速度向上ではなく、セキュリティです。',
+        explanation:'VPN（Virtual Private Network）は、インターネット上に仮想の専用回線（トンネル）を作り、通信を暗号化する技術です。自宅から会社の内部ネットワークに安全にアクセスするために使われます。外部からは通信内容を見られません。',
+        point:'🔐 VPN＝仮想の暗号化トンネル。在宅勤務・出張先から社内へ安全につなぐためのもの',
+        flowchart:[
+          {type:'start',text:'在宅から社内システムにアクセスしたい'},
+          {type:'check',text:'VPNなしで直接アクセス → 通信が外部から見える'},
+          {type:'bad',text:'盗聴・不正アクセスのリスク'},
+          {type:'action',text:'VPNクライアントを起動 → 暗号化トンネルを確立'},
+          {type:'good',text:'社内LANと同等の安全な接続が完了'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'computer', title:'コンピュータ基礎', emoji:'💻', tag:'テクノロジ系',
+    scenarios:[
+      {
+        scene:'新入社員のAさんが「PCの動作が遅い。メモリを増やせば早くなると聞いたけど、メモリって何？」と質問してきました。',
+        question:'メモリ（RAM）の役割は？',
+        choices:[{text:'📋 作業中のデータを一時的に置く場所',correct:true},{text:'💾 データを長期保存する場所',correct:false},{text:'⚙️ 計算をする部品',correct:false}],
+        correct_msg:'正解！メモリは「作業台」のようなものです。',
+        wrong_msg:'それはストレージ（HDD/SSD）の役割です。',
+        explanation:'メモリ（RAM）は電源を切ると消えてしまう「一時記憶」です。作業中のプログラムやデータを置く場所で、広いほど多くの作業を同時にできます。長期保存はHDD/SSDの役割。計算はCPUの役割です。この3つの違いはITP頻出！',
+        point:'🧠 CPU＝計算する脳　RAM＝作業台（一時記憶）　HDD/SSD＝本棚（長期保存）',
+        flowchart:[
+          {type:'start',text:'プログラムを起動する'},
+          {type:'action',text:'HDD/SSDからプログラムをRAMに読み込む'},
+          {type:'good',text:'CPUがRAM上のデータを処理（計算）'},
+          {type:'action',text:'結果をRAMに書き込み → 画面に表示'},
+          {type:'check',text:'電源を切る → RAMのデータは消える。HDD/SSDは残る'}
+        ]
+      },
+      {
+        scene:'「2進数で「1010」は10進数でいくつ？」という問題が出ました。2進数って普段使わないし、なんで覚えるの？',
+        question:'2進数で「1010」は10進数でいくつ？',
+        choices:[{text:'10',correct:true},{text:'5',correct:false},{text:'12',correct:false},{text:'8',correct:false}],
+        correct_msg:'正解！1010₂ ＝ 8+0+2+0 ＝ 10 です！',
+        wrong_msg:'計算してみましょう。各桁は右から2⁰・2¹・2²・2³です。',
+        explanation:'コンピュータは電気信号のON/OFFしか理解できないため、すべての情報を0と1だけで表す「2進数」を使います。1010₂は「8の位が1、4の位が0、2の位が1、1の位が0」なので8+2＝10です。ITPでは2進数・16進数の変換が出題されます。',
+        point:'🔢 2進数の計算：右から2⁰(1)・2¹(2)・2²(4)・2³(8)・・・。1がある桁を足すだけ！',
+        flowchart:[
+          {type:'start',text:'2進数 1010 を10進数に変換'},
+          {type:'action',text:'右から数える：1の位・2の位・4の位・8の位'},
+          {type:'check',text:'8の位：1→8、4の位：0→0、2の位：1→2、1の位：0→0'},
+          {type:'good',text:'8+0+2+0 = 10（十進数）'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'strategy', title:'経営戦略', emoji:'📊', tag:'ストラテジ系',
+    scenarios:[
+      {
+        scene:'新商品の開発会議でリーダーが「まずSWOT分析をやりましょう」と言いました。メンバーの一人が「SWOTって何？」と聞いています。',
+        question:'SWOTのSは何の略？',
+        choices:[{text:'💪 Strength（強み）',correct:true},{text:'📦 Stock（在庫）',correct:false},{text:'💰 Sales（売上）',correct:false}],
+        correct_msg:'正解！SWOTはStrength・Weakness・Opportunity・Threatの略です。',
+        wrong_msg:'SはStrength（強み）です。',
+        explanation:'SWOT分析は経営戦略の基本ツールです。S（強み）・W（弱み）は内部環境、O（機会）・T（脅威）は外部環境を分析します。「自社の強みを活かして外部の機会をつかむ」といった戦略立案に使います。ITパスポートではストラテジ系として頻出です。',
+        point:'📋 SWOT＝S強み・W弱み（内部）　O機会・T脅威（外部）。4つの組み合わせで戦略を考える！',
+        flowchart:[
+          {type:'start',text:'SWOT分析を実施'},
+          {type:'check',text:'内部環境：S（強み）/ W（弱み）'},
+          {type:'check',text:'外部環境：O（機会）/ T（脅威）'},
+          {type:'action',text:'SO戦略：強みで機会を活かす（攻め）'},
+          {type:'action',text:'WT戦略：弱みと脅威を回避（守り）'},
+          {type:'good',text:'4つの組み合わせで戦略の方向性を決定'}
+        ]
+      },
+      {
+        scene:'F社がPDCAを回しています。「計画を立てた（P）、実行した（D）、確認した（C）、次は何？（A）」と上司に聞かれました。',
+        question:'PDCAのA（Action）でやることは？',
+        choices:[{text:'🔄 改善策を実施して次のサイクルへ',correct:true},{text:'📊 もう一度確認する',correct:false},{text:'📝 最初から計画を立て直す',correct:false}],
+        correct_msg:'正解！Actionは「改善して次のPDCAサイクルにつなげる」ことです。',
+        wrong_msg:'ActionはもうConfirmation（確認）ではなく、改善の実施です。',
+        explanation:'PDCA（Plan-Do-Check-Act）は継続的改善のサイクルです。P：目標と計画、D：実行、C：結果の確認・分析、A：改善策の実施です。Aで改善したら次のPに戻り、ぐるぐる回し続けることで品質が向上します。「スパイラルアップ」とも言います。',
+        point:'🔄 PDCA＝計画→実行→確認→改善のサイクル。A（改善）が次のP（計画）につながる！',
+        flowchart:[
+          {type:'start',text:'P：目標・計画を立てる'},
+          {type:'action',text:'D：計画に沿って実行する'},
+          {type:'check',text:'C：結果を計画と比較・分析する'},
+          {type:'action',text:'A：ずれの原因を特定し改善策を実施'},
+          {type:'good',text:'次のP（計画）へ → サイクルを繰り返す（スパイラルアップ）'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'system', title:'システム開発', emoji:'⚙️', tag:'マネジメント系',
+    scenarios:[
+      {
+        scene:'新システムを開発することになりました。上司から「ウォーターフォールとアジャイル、どっちで進める？」と聞かれました。どう違うの？',
+        question:'変更が多い可能性があるプロジェクト、どちらが向いている？',
+        choices:[{text:'🔄 アジャイル',correct:true},{text:'📋 ウォーターフォール',correct:false}],
+        correct_msg:'正解！アジャイルは変更に強い開発手法です。',
+        wrong_msg:'ウォーターフォールは要件が固まっているプロジェクト向きです。',
+        explanation:'ウォーターフォールは要件定義→設計→実装→テストを順番に進める手法で、要件が明確な大規模プロジェクトに向いています。アジャイルは短い期間（スプリント）で開発・フィードバック・改善を繰り返し、変更に柔軟に対応できます。スマホアプリ開発などに多く使われます。',
+        point:'🌊 ウォーターフォール＝順番通り・変更しにくい　🔄 アジャイル＝繰り返し・変更OK。スプリント・スクラムがキーワード',
+        flowchart:[
+          {type:'start',text:'開発手法を選択'},
+          {type:'check',text:'要件は最初から明確？変更は少ない？'},
+          {type:'good',text:'Yes → ウォーターフォール（要件定義→設計→実装→テスト）'},
+          {type:'bad',text:'No（変更多い・不明確）→ アジャイル'},
+          {type:'action',text:'アジャイル：短いスプリントを繰り返す → フィードバックして改善'}
+        ]
+      },
+      {
+        scene:'システムのテストで「単体テスト」「結合テスト」「システムテスト」という言葉が出てきました。どの順番でやるの？',
+        question:'テストの正しい順番は？',
+        choices:[{text:'単体→結合→システム',correct:true},{text:'システム→結合→単体',correct:false},{text:'全部同時',correct:false}],
+        correct_msg:'正解！小さな単位から大きな単位へテストします。',
+        wrong_msg:'テストは小さい単位から順番に行います。',
+        explanation:'テストは小さい単位から大きい単位へ段階的に行います。単体テスト：個々の部品（モジュール）が正しく動くか。結合テスト：複数の部品を組み合わせたときの動作確認。システムテスト：システム全体として要件を満たすか。最後に「受入テスト（ユーザーが確認）」を行う場合もあります。',
+        point:'🧪 テストの順：単体（部品）→ 結合（組み合わせ）→ システム（全体）→ 受入（ユーザー確認）',
+        flowchart:[
+          {type:'start',text:'開発完了後、テスト開始'},
+          {type:'action',text:'単体テスト：各モジュール単独で動作確認'},
+          {type:'action',text:'結合テスト：モジュールを組み合わせてインターフェース確認'},
+          {type:'action',text:'システムテスト：全体として要件を満たすか確認'},
+          {type:'good',text:'受入テスト：ユーザーが確認してOKならリリース'}
+        ]
+      }
+    ]
+  }
+];
+
+// ===== STATE =====
+let currentUnit = null;
+let currentScenarioIdx = 0;
+let clearedUnits = JSON.parse(localStorage.getItem('itp_guide_clear') || '[]');
+
+// ===== HOME =====
+function renderHome() {
+  const grid = document.getElementById('unitGrid');
+  grid.innerHTML = UNITS.map(u => {
+    const done = clearedUnits.includes(u.id);
+    const total = u.scenarios.length;
+    return `<div class="unit-card${done?' done':''}" onclick="startUnit('${u.id}')">
+      <span class="unit-card__emoji">${u.emoji}</span>
+      <div class="unit-card__title">${u.title}</div>
+      <span class="unit-card__tag">${u.tag}</span>
+      <div class="unit-card__count">${total}場面</div>
+    </div>`;
+  }).join('');
+}
+
+function goHome() {
+  document.getElementById('screenHome').style.display = '';
+  document.getElementById('screenLearn').style.display = 'none';
+  document.getElementById('screenComplete').style.display = 'none';
+  renderHome();
+  window.scrollTo(0,0);
+}
+
+// ===== LEARN =====
+function startUnit(id) {
+  currentUnit = UNITS.find(u => u.id === id);
+  currentScenarioIdx = 0;
+  document.getElementById('screenHome').style.display = 'none';
+  document.getElementById('screenLearn').style.display = '';
+  document.getElementById('screenComplete').style.display = 'none';
+  document.getElementById('learnTitle').textContent = currentUnit.emoji + ' ' + currentUnit.title;
+  renderScenario();
+  window.scrollTo(0,0);
+}
+
+function renderScenario() {
+  const s = currentUnit.scenarios[currentScenarioIdx];
+  const total = currentUnit.scenarios.length;
+  document.getElementById('learnProg').textContent = (currentScenarioIdx+1) + ' / ' + total;
+  document.getElementById('progFill').style.width = ((currentScenarioIdx+1)/total*100) + '%';
+  document.getElementById('sceneText').textContent = s.scene;
+  document.getElementById('sceneQuestion').textContent = s.question;
+
+  // 選択肢
+  const cw = document.getElementById('choicesWrap');
+  cw.innerHTML = s.choices.map((c,i) =>
+    `<button class="choice-btn" onclick="selectChoice(${i})">${c.text}</button>`
+  ).join('');
+
+  // リセット
+  const ep = document.getElementById('explainPanel');
+  const fc = document.getElementById('flowchart');
+  ep.classList.remove('show','correct','wrong');
+  fc.classList.remove('show');
+  document.getElementById('btnNext').classList.remove('show');
+  document.getElementById('btnQuiz').classList.remove('show');
+}
+
+function selectChoice(idx) {
+  const s = currentUnit.scenarios[currentScenarioIdx];
+  const chosen = s.choices[idx];
+  const buttons = document.querySelectorAll('.choice-btn');
+  buttons.forEach((b,i) => {
+    b.disabled = true;
+    if(s.choices[i].correct) b.classList.add('correct');
+    else if(i===idx && !chosen.correct) b.classList.add('wrong');
+  });
+
+  // 解説
+  const ep = document.getElementById('explainPanel');
+  const er = document.getElementById('explainResult');
+  if(chosen.correct) {
+    er.className = 'explain-result correct';
+    er.textContent = '✅ ' + s.correct_msg;
+  } else {
+    er.className = 'explain-result wrong';
+    er.textContent = '❌ ' + s.wrong_msg;
+  }
+  document.getElementById('explainBody').textContent = s.explanation;
+  document.getElementById('explainPoint').textContent = s.point;
+  ep.classList.add('show');
+
+  // フローチャート
+  renderFlowchart(s.flowchart);
+  document.getElementById('flowchart').classList.add('show');
+
+  // ボタン
+  const isLast = currentScenarioIdx === currentUnit.scenarios.length - 1;
+  if(!isLast) {
+    document.getElementById('btnNext').classList.add('show');
+  } else {
+    document.getElementById('btnQuiz').classList.add('show');
+    // クリア記録
+    if(!clearedUnits.includes(currentUnit.id)) {
+      clearedUnits.push(currentUnit.id);
+      localStorage.setItem('itp_guide_clear', JSON.stringify(clearedUnits));
+    }
+  }
+
+  // スクロール
+  setTimeout(() => ep.scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
+}
+
+function renderFlowchart(nodes) {
+  const fn = document.getElementById('flowNodes');
+  fn.innerHTML = '';
+  nodes.forEach((n,i) => {
+    if(i > 0) fn.insertAdjacentHTML('beforeend', '<div class="flow-arrow">↓</div>');
+    fn.insertAdjacentHTML('beforeend', `<div class="flow-node ${n.type}">${n.text}</div>`);
+  });
+}
+
+function nextScenario() {
+  currentScenarioIdx++;
+  renderScenario();
+  window.scrollTo(0,0);
+}
+
+function goQuiz() {
+  window.location.href = 'exam-quiz.html';
+}
+
+// ===== INIT =====
+renderHome();
+</script>
+</body>
+</html>
