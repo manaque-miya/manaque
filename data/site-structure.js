@@ -409,6 +409,10 @@ const SITE_STRUCTURE = [
             tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
           { label: 'SPI言語：長文読解・文章理解',         quizId: 'uni-spi-lang-04', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true,
             tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI言語：熟語・四字熟語・ことわざ・慣用句', quizId: 'uni-spi-lang-05', count: 20, time: '約10分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI言語：文章整序・並び替え',     quizId: 'uni-spi-lang-06', count: 20, time: '約15分', difficulty: 4, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
         ]
       },
       {
@@ -422,6 +426,10 @@ const SITE_STRUCTURE = [
           { label: 'SPI非言語：場合の数・確率',       quizId: 'uni-spi-math-03', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true,
             tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
           { label: 'SPI非言語：推論・集合・論理',     quizId: 'uni-spi-math-04', count: 30, time: '約15分', difficulty: 4, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI非言語：損益算・仕事算・植木算', quizId: 'uni-spi-math-05', count: 20, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
+          { label: 'SPI非言語：表の読み取り・資料解釈', quizId: 'uni-spi-math-06', count: 20, time: '約10分', difficulty: 3, gacha: false, isNew: true,
             tags: [{ text: 'SPI', cls: 'badge--sky' }, { text: '大学生', cls: 'badge--neutral' }] },
         ]
       },
@@ -445,6 +453,30 @@ const SITE_STRUCTURE = [
           { label: 'FP3級・お金の基礎知識', quizId: 'adult-exam-02', count: 30, time: '約15分', difficulty: 3, gacha: false,
             desc: 'お金・保険・税金・年金の基礎を学ぶ国家資格の入門レベル。社会人なら知っておきたい知識が満載。',
             tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 学科類題', quizId: 'fp3-gakka-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            desc: '日本FP協会FP3級学科試験の類題442問。ライフプランニング・保険・金融・税金・不動産・相続の6分野を網羅。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 実技類題', quizId: 'fp3-jitsugi-01', count: 20, time: '約10分', difficulty: 3, gacha: false, isNew: true,
+            desc: '日本FP協会FP3級実技試験の類題80問。キャッシュフロー表・生命保険・相続税など実践的な計算問題を含む。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 ライフプランニング', quizId: 'fp3-life-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            desc: '年金・社会保険・住宅ローン・係数計算など、FP3級ライフプランニング分野の類題108問。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 リスク管理', quizId: 'fp3-risk-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            desc: '生命保険・損害保険・第三分野保険など、FP3級リスク管理分野の類題93問。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 金融資産運用', quizId: 'fp3-finance-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            desc: '株式・債券・投資信託・NISA・外貨など、FP3級金融資産運用分野の類題85問。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 タックスプランニング', quizId: 'fp3-tax-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            desc: '所得税・給与所得控除・確定申告など、FP3級タックスプランニング分野の類題83問。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 不動産', quizId: 'fp3-fudosan-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            desc: '不動産登記・借地借家法・住宅ローン控除など、FP3級不動産分野の類題72問。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: 'FP3級 相続・事業承継', quizId: 'fp3-sozoku-01', count: 30, time: '約15分', difficulty: 3, gacha: false, isNew: true,
+            desc: '相続税・遺言・贈与税・法定相続分など、FP3級相続・事業承継分野の類題81問。',
+            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: '英検2級レベル 英語', quizId: 'adult-exam-03', count: 30, time: '約15分', difficulty: 3, gacha: false,
             desc: '高校卒業相当の英語力を測る日本最大規模の英語検定。語彙・文法・読解をバランスよく出題。',
             tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
@@ -668,22 +700,6 @@ const SITE_STRUCTURE = [
             desc: 'IT・経営・法律の基礎を問う国家資格。600問・解説付き・分野別で本番対策。',
             tags: [{ text: '資格', cls: 'badge--purple' }]
           }
-        ]
-      },
-      {
-        id: 'fp3', label: 'FP3級', emoji: '💴',
-        units: [
-          { label: 'FP3級 本気対策', quizId: 'fp3', count: 522, time: '自由', difficulty: 3, gacha: false, isNew: true,
-            desc: '日本FP協会FP3級の類題522問（学科442＋実技80）。6分野を網羅した解説付きクイズで合格力を高めよう。',
-            tags: [{ text: 'FP3級', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] }
-        ]
-      },
-      {
-        id: 'takken', label: '宅建士', emoji: '🏠',
-        units: [
-          { label: '宅建士 本気対策', quizId: 'takken', count: 550, time: '自由', difficulty: 3, gacha: false, isNew: true,
-            desc: '宅建士試験の類題550問。宅建業法・権利関係・法令上の制限・税その他の4分野を解説付きで学習。',
-            tags: [{ text: '宅建士', cls: 'badge--green' }, { text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] }
         ]
       }
     ]
