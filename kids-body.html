@@ -156,7 +156,76 @@ body {
 @media (max-width: 768px) {
   body { min-height: unset; padding-bottom: 40px; }
 }
-</style>
+    .gacha-reward-overlay{display:none;position:fixed;inset:0;background:radial-gradient(ellipse at center,#0d1a3a 0%,#050810 100%);z-index:1000;align-items:center;justify-content:center;overflow:hidden}
+    .gacha-reward-overlay.show{display:flex}
+    /* 星フィールド */
+    .g-star{position:absolute;background:white;border-radius:50%;animation:gTwinkle var(--d) ease-in-out infinite alternate}
+    @keyframes gTwinkle{from{opacity:.1;transform:scale(.8)}to{opacity:.9;transform:scale(1.2)}}
+    /* フラッシュ */
+    #gachaFlash{position:absolute;inset:0;background:white;opacity:0;pointer-events:none;z-index:50}
+    #gachaFlash.active{animation:gFlash .4s ease-out forwards}
+    @keyframes gFlash{0%{opacity:.9}100%{opacity:0}}
+    /* ？マーク */
+    #gachaQmark{position:absolute;font-size:clamp(140px,25vw,220px);font-weight:900;color:#2563EB;text-shadow:0 0 20px #2563EB,0 0 50px #2563EB,0 0 100px #1d4ed8,0 0 10px #F6C744;opacity:0;transform:scale(.3);user-select:none;z-index:10;line-height:1}
+    #gachaQmark.appear{animation:gQappear .6s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes gQappear{to{opacity:1;transform:scale(1)}}
+    #gachaQmark.pulse{animation:gQpulse .4s ease-in-out 3}
+    @keyframes gQpulse{0%{transform:scale(1);text-shadow:0 0 20px #2563EB,0 0 50px #2563EB}50%{transform:scale(1.15);text-shadow:0 0 40px #F6C744,0 0 80px #F6C744}100%{transform:scale(1);text-shadow:0 0 20px #2563EB,0 0 50px #2563EB}}
+    #gachaQmark.explode{animation:gQexplode .3s ease-in forwards}
+    @keyframes gQexplode{0%{opacity:1;transform:scale(1)}50%{opacity:1;transform:scale(1.4);filter:brightness(3)}100%{opacity:0;transform:scale(0)}}
+    /* パーティクル */
+    .g-particle{position:absolute;border-radius:50%;pointer-events:none;z-index:20}
+    .g-particle.star-shape{clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);border-radius:0}
+    /* カードラッパー */
+    #gachaCardWrap{position:absolute;width:min(320px,68vw);height:min(460px,72vh);perspective:1000px;opacity:0;z-index:30}
+    #gachaCardWrap.reveal{animation:gCardReveal .5s cubic-bezier(.34,1.56,.64,1) forwards}
+    @keyframes gCardReveal{0%{opacity:0;transform:translateY(60px) scale(.7)}100%{opacity:1;transform:translateY(0) scale(1)}}
+    #gachaCardInner{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:gCardFlip .7s ease-out forwards;animation-play-state:paused}
+    #gachaCardInner.flip{animation-play-state:running}
+    @keyframes gCardFlip{0%{transform:rotateY(180deg)}100%{transform:rotateY(0)}}
+    .g-card-back{position:absolute;inset:0;backface-visibility:hidden;transform:rotateY(180deg);background:linear-gradient(135deg,#0d1a3a,#1a3a6e);border-radius:18px;border:3px solid #F6C744;display:flex;align-items:center;justify-content:center;font-size:80px;box-shadow:0 0 30px rgba(246,199,68,.4)}
+    .g-card-front{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;overflow:hidden}
+    /* ノート風カードデザイン */
+    .g-card-outer{width:100%;height:100%;border-radius:18px;border:3px solid #F6C744;padding:8px 8px 8px 22px;position:relative;background:linear-gradient(180deg,#1a3a6e,#0f2456)}
+    .g-card-outer.r{border-color:#60a5fa}
+    .g-card-outer.sr{border-color:#a78bfa;background:linear-gradient(180deg,#2d1b69,#1a0f45)}
+    .g-card-outer.ssr{border-color:#ffd700;background:linear-gradient(180deg,#5a2800,#2a1200);box-shadow:0 0 20px rgba(255,215,0,.4)}
+    .g-ring{position:absolute;left:-4px;width:16px;height:16px;background:linear-gradient(135deg,#aaa,#eee,#aaa);border-radius:50%;border:2px solid #888}
+    .g-card-paper{width:100%;height:100%;background:linear-gradient(180deg,#fdf8ee,#f5edda);border-radius:10px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center}
+    .g-card-paper::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent,transparent 22px,rgba(150,190,230,.4) 22px,rgba(150,190,230,.4) 23px);top:55px}
+    .g-badge{position:absolute;top:-3px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,#1a3a8e,#0d2060);border:2px solid #F6C744;border-radius:0 0 14px 14px;padding:4px 14px 6px;font-size:clamp(14px,3.5vw,18px);font-weight:900;color:#F6C744;letter-spacing:2px;z-index:2}
+    .g-badge.r{border-color:#60a5fa;color:#60a5fa;background:linear-gradient(180deg,#1a3060,#0d2050)}
+    .g-badge.sr{border-color:#a78bfa;color:#a78bfa;background:linear-gradient(180deg,#2d1b69,#1a0f45)}
+    .g-badge.ssr{border-color:#ffd700;color:#ffd700;background:linear-gradient(180deg,#5a2800,#2a1200);animation:gSsrPulse 1s ease-in-out infinite}
+    @keyframes gSsrPulse{0%,100%{box-shadow:0 0 8px rgba(255,215,0,.5)}50%{box-shadow:0 0 20px rgba(255,215,0,.9)}}
+    .g-char-area{width:100%;flex:1;display:flex;align-items:center;justify-content:center;padding:50px 10px 0;position:relative;z-index:1}
+    .g-char-emoji{font-size:clamp(60px,14vw,90px);filter:drop-shadow(0 4px 8px rgba(0,0,0,.2))}
+    .g-name-area{width:85%;margin:8px auto 10px;background:rgba(255,248,231,.95);border:2px solid #C8960C;border-radius:20px;padding:5px 10px;text-align:center;position:relative;z-index:1}
+    .g-char-name{font-size:clamp(13px,3vw,17px);font-weight:bold;color:#1a2855}
+    .g-char-new{font-size:9px;background:#ef4444;color:#fff;border-radius:4px;padding:1px 5px;font-weight:900;display:inline-block;margin-top:2px}
+    /* レアリティバナー */
+    #gachaRarityBanner{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);padding:8px 40px;font-size:15px;font-weight:bold;letter-spacing:4px;white-space:nowrap;opacity:0;transition:opacity .4s,bottom .4s;text-shadow:0 0 10px rgba(246,199,68,.8);z-index:31;color:white;background:linear-gradient(90deg,transparent,#1a3a6e,#F6C744,#1a3a6e,transparent)}
+    #gachaRarityBanner.sr-banner{background:linear-gradient(90deg,transparent,#2d1b69,#a78bfa,#2d1b69,transparent);text-shadow:0 0 10px rgba(167,139,250,.8)}
+    #gachaRarityBanner.ssr-banner{background:linear-gradient(90deg,transparent,#5a2800,#ffd700,#5a2800,transparent);text-shadow:0 0 10px rgba(255,215,0,.9)}
+    #gachaRarityBanner.show{opacity:1;bottom:-50px}
+    /* カウンター */
+    #gachaCounter{position:absolute;top:20px;right:20px;color:rgba(255,255,255,.6);font-size:14px;font-weight:700;z-index:40}
+    /* 次へ / 閉じる ボタン */
+    #gachaNextBtn,#gachaCloseBtn{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);padding:14px 40px;border:none;border-radius:12px;font-size:clamp(15px,2vw,19px);font-weight:900;cursor:pointer;z-index:40;display:none;white-space:nowrap;font-family:inherit}
+    #gachaNextBtn{background:rgba(37,99,235,.25);color:#F6C744;border:2px solid #F6C744;letter-spacing:.05em}
+    #gachaNextBtn:hover{background:rgba(37,99,235,.45)}
+    #gachaCloseBtn{background:linear-gradient(135deg,#2E6DE5,#1A449E);color:#fff;box-shadow:0 4px 20px rgba(46,109,229,.4)}
+    #gachaNextBtn.show,#gachaCloseBtn.show{display:block}
+    /* 報酬なし / クリア済み */
+    #gachaNorewardPhase{display:none;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:20px}
+    #gachaNorewardPhase.show{display:flex}
+    .g-noreward-title{font-size:22px;font-weight:900;color:#fff}
+    .g-noreward-sub{font-size:14px;color:rgba(255,255,255,.55);max-width:280px;line-height:1.6}
+    .g-noreward-close{padding:12px 36px;background:linear-gradient(135deg,#2E6DE5,#1A449E);border:none;border-radius:12px;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit}
+    /* ガチャボタン用（スコア画面） */
+    @keyframes orbPulse{0%,100%{box-shadow:0 0 40px rgba(168,85,247,.8),0 0 80px rgba(168,85,247,.4)}50%{box-shadow:0 0 60px rgba(168,85,247,1),0 0 120px rgba(168,85,247,.6)}}
+
+  </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
      crossorigin="anonymous"></script>
 </head>
