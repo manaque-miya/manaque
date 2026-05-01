@@ -319,6 +319,8 @@ function startQuiz(count) {
   current = 0; score = 0; answered = false;
   document.getElementById('result').classList.remove('show');
   document.getElementById('quizArea').style.display = '';
+  const gb = document.getElementById('gachaBtnResult'); if (gb) gb.style.display = 'none';
+  _pendingGacha = null;
   document.getElementById('retryBtn').onclick = () => startQuiz(modeCount);
   showQuestion();
 }
