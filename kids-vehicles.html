@@ -497,14 +497,22 @@ function _gachaShowCard(idx, fullAnim) {
     qm.classList.add('appear');
     setTimeout(() => {
       qm.classList.add('pulse');
-      const tapHandler = (e) => {
-        if (e.target.closest && (e.target.closest('#gachaNextBtn') || e.target.closest('#gachaCloseBtn'))) return;
+      let _revealed = false;
+      const doReveal = () => {
+        if (_revealed) return;
+        _revealed = true;
         ov.removeEventListener('click', tapHandler);
         ov.removeEventListener('touchend', tapHandler);
         revealCard();
       };
+      const tapHandler = (e) => {
+        if (e.target.closest && (e.target.closest('#gachaNextBtn') || e.target.closest('#gachaCloseBtn'))) return;
+        clearTimeout(autoTimer);
+        doReveal();
+      };
       ov.addEventListener('click', tapHandler);
       ov.addEventListener('touchend', tapHandler);
+      const autoTimer = setTimeout(doReveal, 1200);
     }, 700);
   } else { revealCard(); }
 }
@@ -548,12 +556,4 @@ function toggleSound() {
 
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('soundBtn');
-  if (btn) btn.textContent = SND.enabled ? '🔊' : '🔇';
-  // URLパラメータから問題数を取得して即スタート
-  const params = new URLSearchParams(location.search);
-  const count = parseInt(params.get('count')) || 5;
-  startQuiz(count);
-});
-</script>
-</body>
-</html>
+  if (btn) btn.textContent = SND.enabled ? '🔊' : '�
