@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ランサムウェアとは？仕組み・被害事例・企業の対策を徹底解説｜まなクエ！</title>
+<meta name="description" content="ランサムウェアはデータを暗号化して身代金を要求するマルウェアです。感染の仕組み、国内外の被害事例、ITパスポート試験で問われる対策を詳しく解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+
+  <div class="ah">
+    <div class="al">ITパスポート｜セキュリティ</div>
+    <h1 class="at">ランサムウェアとは？仕組み・被害事例・企業の対策を徹底解説</h1>
+    <div class="am">ITパスポート対策 / 読了：約4分</div>
+    <div class="tags"><span class="tag">ランサムウェア</span> <span class="tag">セキュリティ</span> <span class="tag">ITパスポート</span> <span class="tag">バックアップ</span></div>
+  </div>
+<div class="card">
+<h2>ランサムウェアとは何か</h2>
+<p>ランサムウェア（Ransomware）は「Ransom（身代金）」と「Software（ソフトウェア）」を合わせた言葉で、感染したコンピュータ内のファイルを暗号化して使用不能にし、復号の代わりに金銭（多くは暗号資産）を要求するマルウェアです。</p>
+<div class="hl"><p>ポイント：ランサムウェアは「破壊」ではなく「暗号化」が目的。復号鍵を持つのは攻撃者だけです。</p></div>
+<h3>攻撃の流れ</h3>
+<ol>
+<li>フィッシングメールの添付ファイルやVPNの脆弱性から侵入</li>
+<li>ネットワーク内を横展開（ラテラルムーブメント）して広がる</li>
+<li>バックアップも含めて重要ファイルを暗号化</li>
+<li>「◯◯ビットコインを送れば復号する」という要求画面を表示</li>
+<li>支払っても復号されないケースも多い</li>
+</ol>
+</div>
+<div class="card">
+<h2>国内外の主な被害事例</h2>
+<h3>大阪急性期・総合医療センター（2022年）</h3>
+<p>給食委託業者のVPN機器を経由してランサムウェアが侵入。電子カルテシステムが使用不能になり、通常診療の再開まで約2ヶ月かかりました。被害総額は数十億円とも言われています。</p>
+<h3>カシオ計算機（2024年）</h3>
+<p>不正アクセスを受け、従業員・取引先・求職者を含む約8,500人分の個人情報が漏洩しました。</p>
+<h3>名古屋港統一ターミナルシステム（2023年）</h3>
+<p>コンテナの搬出入管理システムがランサムウェアに感染し、約3日間、港のコンテナ作業が停止しました。</p>
+</div>
+<div class="card">
+<h2>対策：バックアップが最重要</h2>
+<p>ランサムウェア対策で最も重要なのはバックアップです。ただし、バックアップの方法を誤ると意味がなくなります。</p>
+<h3>3-2-1バックアップルール</h3>
+<ul>
+<li><strong>3</strong>：データのコピーを3つ持つ（元データ＋バックアップ2つ）</li>
+<li><strong>2</strong>：2種類の異なるメディアに保存（HDD＋クラウドなど）</li>
+<li><strong>1</strong>：1つはオフサイト（別の場所）に保管</li>
+</ul>
+<div class="hl"><p>重要：バックアップをネットワーク接続したまま保管すると、ランサムウェアがバックアップも暗号化します。オフライン・エアギャップバックアップが有効です。</p></div>
+<h3>その他の対策</h3>
+<ul>
+<li>VPN機器・OSのパッチを常に最新に保つ</li>
+<li>多要素認証を導入してアカウント乗っ取りを防ぐ</li>
+<li>EDR（Endpoint Detection and Response）ツールで異常動作を検知する</li>
+<li>最小権限の原則：必要最低限の権限しか与えない</li>
+</ul>
+</div>
+<div class="card">
+<h2>身代金は支払うべきか</h2>
+<p>政府機関や多くのセキュリティ専門家は「支払わないこと」を推奨しています。理由は以下の通りです。</p>
+<ul>
+<li>支払っても復号されるとは限らない（支払い後に無視されるケースも）</li>
+<li>支払うことで攻撃者に資金を提供し、さらなる攻撃を助長する</li>
+<li>「支払う組織」として再び狙われる可能性がある</li>
+<li>テロ組織への資金提供となり、法的問題が生じる場合もある</li>
+</ul>
+</div>
+<div class="card">
+<h2>よくある間違いとひっかけ</h2>
+<div class="mb"><p>❌ 「クラウドにバックアップすれば安全」は誤り</p></div>
+<p>クラウドストレージが常時同期されている場合、ランサムウェアが暗号化したファイルもそのまま同期されてしまいます。バージョン管理機能の活用や、接続を切った状態でのバックアップが必要です。</p>
+<div class="mb"><p>❌ ランサムウェアはデータを完全に削除する</p></div>
+<p>ランサムウェアはデータを削除するのではなく「暗号化」します。攻撃者が復号鍵を持っているため、理論上は支払えば復元できるという状況を作ります。</p>
+</div>
+<div class="card"><h2>まとめ</h2>
+<ul>
+<li>ランサムウェアはファイルを暗号化して身代金を要求するマルウェア</li>
+<li>国内でも医療機関・港湾・製造業で深刻な被害が発生している</li>
+<li>3-2-1ルールに基づくオフラインバックアップが最重要対策</li>
+<li>身代金は支払わないことが原則</li>
+<li>クラウド同期だけではランサムウェア対策として不十分</li>
+</ul><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

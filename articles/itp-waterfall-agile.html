@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ウォーターフォール開発とアジャイル開発の違いとは？メリット・デメリットを解説｜まなクエ！</title>
+<meta name="description" content="ウォーターフォール開発とアジャイル開発の特徴、スクラム・スプリントの意味、どちらを選ぶべきかの判断基準をITパスポート試験向けに解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜システム開発</div>
+    <h1 class="at">ウォーターフォール開発とアジャイル開発の違いとは？メリット・デメリットを解説</h1>
+    <div class="am">読了：約4〜5分</div>
+    <div class="tags"><span class="tag">ウォーターフォール</span> <span class="tag">アジャイル</span> <span class="tag">システム開発</span> <span class="tag">スクラム</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card">
+<h2>ウォーターフォール開発とは</h2>
+<p>ウォーターフォール（Waterfall）開発とは、要件定義→設計→開発→テスト→リリースという工程を、滝が流れるように順番に進める開発手法です。前の工程が完了してから次に進みます。</p>
+<h3>各工程の内容</h3>
+<ul>
+<li><strong>要件定義</strong>：「何を作るか」を明確にする。顧客要望の整理</li>
+<li><strong>基本設計（外部設計）</strong>：システムの全体像・画面・機能を設計</li>
+<li><strong>詳細設計（内部設計）</strong>：内部のアルゴリズム・データ構造を設計</li>
+<li><strong>プログラミング（実装）</strong>：コードを書く</li>
+<li><strong>テスト</strong>：単体テスト→結合テスト→システムテスト→受入テストの順</li>
+<li><strong>リリース・保守</strong>：本番稼働・運用</li>
+</ul>
+<div class="hl"><p>ポイント：ウォーターフォールは工程が明確で管理しやすいため、要件が最初から明確な大規模プロジェクトに向いています。</p></div>
+</div>
+<div class="card">
+<h2>アジャイル開発とは</h2>
+<p>アジャイル（Agile）開発とは「素早い・機動的な」という意味の、短い開発サイクル（イテレーション）を繰り返す手法です。仕様変更に柔軟に対応できます。</p>
+<h3>アジャイルの主な特徴</h3>
+<ul>
+<li>1〜4週間程度の短いサイクル（スプリント）で動くソフトウェアを届ける</li>
+<li>顧客との継続的なコミュニケーションと要件の変更を受け入れる</li>
+<li>少人数の自己組織化チームで開発する</li>
+<li>振り返り（レトロスペクティブ）で継続的に改善する</li>
+</ul>
+<h3>スクラム（Scrum）</h3>
+<p>アジャイル開発の代表的なフレームワークです。プロダクトオーナー・スクラムマスター・開発チームの3役割と、スプリント・デイリースクラム・スプリントレビューなどのイベントで構成されます。</p>
+</div>
+<div class="card">
+<h2>比較：どちらを選ぶべきか</h2>
+<h3>ウォーターフォールが向く場面</h3>
+<ul>
+<li>要件が最初から明確に決まっている</li>
+<li>大規模で関係者が多いプロジェクト</li>
+<li>官公庁・金融系など変更管理が厳格な環境</li>
+<li>開発後の保守・運用まで長期的に計画できる</li>
+</ul>
+<h3>アジャイルが向く場面</h3>
+<ul>
+<li>要件が変化しやすい・不確実性が高い</li>
+<li>新しいサービス・スタートアップの開発</li>
+<li>ユーザーの反応を見ながら改善したい</li>
+<li>少人数・スピード重視の開発</li>
+</ul>
+</div>
+<div class="card">
+<h2>よくある間違いとひっかけ</h2>
+<div class="mb"><p>❌ ウォーターフォールは「古くて悪い開発手法」</p></div>
+<p>要件が明確なプロジェクトではウォーターフォールが適しています。どちらが「良い・悪い」ではなく、プロジェクトの性質に応じて選ぶべきです。</p>
+<div class="mb"><p>❌ アジャイルは「計画なしで開発する」</p></div>
+<p>アジャイルも計画は立てます。ただし、長期の詳細計画を最初に固定するのではなく、短いサイクルで計画→実行→見直しを繰り返します。</p>
+</div>
+<div class="card"><h2>まとめ</h2>
+<ul>
+<li>ウォーターフォールは工程を順番に進める手法。要件が明確な大規模プロジェクト向け</li>
+<li>アジャイルは短いサイクルで繰り返す手法。変化への対応・スピード重視向け</li>
+<li>スクラムはアジャイルの代表的なフレームワーク</li>
+<li>テスト工程は単体→結合→システム→受入の順に進む</li>
+<li>どちらが優れているかではなく、プロジェクト特性で使い分ける</li>
+</ul>
+<div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

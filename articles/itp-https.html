@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTTPSとHTTPの違いとは？SSL/TLS・暗号化・証明書の仕組みを解説｜まなクエ！</title>
+<meta name="description" content="HTTPとHTTPSの違い、SSL/TLSによる暗号化の仕組み、デジタル証明書の役割、ITパスポート試験での出題ポイントをわかりやすく解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+
+  <div class="ah">
+    <div class="al">ITパスポート｜ネットワーク</div>
+    <h1 class="at">HTTPSとHTTPの違いとは？SSL/TLS・暗号化・証明書の仕組みを解説</h1>
+    <div class="am">ITパスポート対策 / 読了：約4分</div>
+    <div class="tags"><span class="tag">HTTPS</span> <span class="tag">HTTP</span> <span class="tag">SSL</span> <span class="tag">TLS</span> <span class="tag">暗号化</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card">
+<h2>HTTPとHTTPSの違い</h2>
+<p>HTTP（HyperText Transfer Protocol）はWebブラウザとWebサーバーの間でデータをやり取りするためのプロトコル（通信規則）です。HTTPSの「S」はSecure（安全）を意味し、通信が暗号化されています。</p>
+<div class="hl"><p>ポイント：HTTPは通信が暗号化されていないため、途中で盗み見られる（盗聴）と内容がそのままわかります。HTTPSは暗号化されているため、盗聴されても解読できません。</p></div>
+<h3>ブラウザでの確認方法</h3>
+<p>アドレスバーの「🔒（鍵マーク）」はHTTPSで通信していることを示します。HTTPのサイトでは「保護されていない通信」と表示されることがあります。</p>
+</div>
+<div class="card">
+<h2>SSL/TLSとは</h2>
+<p>SSL（Secure Sockets Layer）とTLS（Transport Layer Security）は、通信を暗号化するためのプロトコルです。現在はSSLの後継であるTLSが使われていますが、慣習的に「SSL」と呼ばれることが多いです。</p>
+<h3>TLSハンドシェイクの流れ（概略）</h3>
+<ol>
+<li>クライアント（ブラウザ）がサーバーに接続要求を送る</li>
+<li>サーバーがデジタル証明書を送る</li>
+<li>クライアントが証明書を検証し、公開鍵を取得する</li>
+<li>共通鍵を作成し、公開鍵で暗号化してサーバーに送る</li>
+<li>以降、共通鍵で通信を暗号化する</li>
+</ol>
+</div>
+<div class="card">
+<h2>デジタル証明書とは</h2>
+<p>デジタル証明書（SSL/TLS証明書）は、そのWebサイトが本物であることを証明するものです。認証局（CA：Certificate Authority）と呼ばれる信頼できる第三者機関が発行します。</p>
+<h3>証明書の種類</h3>
+<ul>
+<li><strong>DV証明書</strong>：ドメインの所有確認のみ。個人・小規模サイト向け</li>
+<li><strong>OV証明書</strong>：ドメイン所有＋組織実在確認。一般企業向け</li>
+<li><strong>EV証明書</strong>：最も厳格な審査。銀行・大企業向け</li>
+</ul>
+<h3>公開鍵暗号と共通鍵暗号</h3>
+<ul>
+<li><strong>公開鍵暗号</strong>：暗号化と復号に異なる鍵を使う。鍵の配布が安全だが処理が重い</li>
+<li><strong>共通鍵暗号</strong>：同じ鍵で暗号化・復号。処理が速いが鍵の配布が難しい</li>
+<li><strong>TLSの実際</strong>：最初の鍵交換に公開鍵暗号を使い、以降は共通鍵暗号で通信する（ハイブリッド方式）</li>
+</ul>
+</div>
+<div class="card">
+<h2>よくある間違いとひっかけ</h2>
+<div class="mb"><p>❌ 「HTTPSなら必ず安全なサイト」は誤り</p></div>
+<p>HTTPSは「通信が暗号化されている」ことを保証しますが、「サイトの内容が安全・正当」であることを保証しません。フィッシングサイトでもHTTPS証明書を取得できます。</p>
+<div class="mb"><p>❌ 「SSLとTLSは別物」はITパスポートの文脈では注意が必要</p></div>
+<p>正確にはSSLは旧バージョンで現在は使用されておらず、TLSが後継です。しかし試験や業界では慣習的に「SSL」という言葉が使われ続けています。「SSL/TLS」と表記されることが多いです。</p>
+</div>
+<div class="card"><h2>まとめ</h2>
+<ul>
+<li>HTTPは暗号化なし、HTTPSはSSL/TLSで暗号化されている</li>
+<li>TLSは公開鍵と共通鍵を組み合わせたハイブリッド暗号化</li>
+<li>デジタル証明書は認証局が発行するサイトの「身分証」</li>
+<li>HTTPSでもフィッシングサイトである可能性は排除できない</li>
+<li>現在はSSLではなくTLSが実際に使われているが「SSL」と呼ばれる</li>
+</ul><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

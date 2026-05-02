@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IPアドレスとは？IPv4・IPv6・グローバル・プライベートの違いをわかりやすく解説｜まなクエ！</title>
+<meta name="description" content="IPアドレスの仕組み、IPv4とIPv6の違い、グローバルIPとプライベートIPの使い分け、サブネットマスクの意味をITパスポート試験対策として解説します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+
+  <div class="ah">
+    <div class="al">ITパスポート｜ネットワーク</div>
+    <h1 class="at">IPアドレスとは？IPv4・IPv6・グローバル・プライベートの違いをわかりやすく解説</h1>
+    <div class="am">ITパスポート対策 / 読了：約4分</div>
+    <div class="tags"><span class="tag">IPアドレス</span> <span class="tag">ネットワーク</span> <span class="tag">IPv4</span> <span class="tag">IPv6</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card">
+<h2>IPアドレスとは何か</h2>
+<p>IPアドレス（Internet Protocol Address）は、ネットワーク上の機器を識別するための「住所」です。手紙を送るときに住所が必要なように、データをネットワーク上で正しい相手に届けるためにIPアドレスが必要です。</p>
+<div class="hl"><p>ポイント：IPアドレスはネットワーク上の「住所」、MACアドレスは機器固有の「名前（製造番号）」。IPアドレスは変更できますが、MACアドレスは原則変更できません。</p></div>
+</div>
+<div class="card">
+<h2>IPv4とIPv6の違い</h2>
+<h3>IPv4</h3>
+<p>現在最も広く使われているバージョンです。32ビットで表現され、「192.168.0.1」のように4つの数字（0〜255）をドットで区切った形式です。</p>
+<ul>
+<li>表現できるアドレス数：約43億個（2の32乗）</li>
+<li>問題点：インターネットの爆発的普及でアドレスが枯渇しつつある</li>
+</ul>
+<h3>IPv6</h3>
+<p>IPv4の枯渇問題を解決するために開発された新しいバージョンです。128ビットで表現され、「2001:0db8:85a3:0000:0000:8a2e:0370:7334」のような形式です。</p>
+<ul>
+<li>表現できるアドレス数：約340澗（かん）個（2の128乗）≒事実上無制限</li>
+<li>セキュリティ機能（IPsec）が標準装備</li>
+</ul>
+</div>
+<div class="card">
+<h2>グローバルIPとプライベートIPの違い</h2>
+<h3>グローバルIPアドレス</h3>
+<p>インターネット上で一意に識別できるアドレスです。世界中で重複しません。インターネット接続に使われます。ISP（インターネットサービスプロバイダ）から割り当てられます。</p>
+<h3>プライベートIPアドレス</h3>
+<p>社内ネットワークや家庭内LANなど、限定された範囲内で使うアドレスです。同じアドレスを別のネットワークで使い回せます。</p>
+<p>プライベートIPアドレスの範囲（IPv4）：</p>
+<ul>
+<li>10.0.0.0 〜 10.255.255.255（クラスA）</li>
+<li>172.16.0.0 〜 172.31.255.255（クラスB）</li>
+<li>192.168.0.0 〜 192.168.255.255（クラスC）※家庭内ルーターで最も一般的</li>
+</ul>
+<div class="hl"><p>ポイント：家庭のWi-Fiに接続したスマホのIPアドレスが「192.168.1.XXX」になっているのはプライベートIPアドレスだからです。</p></div>
+<h3>NAT（ネットワークアドレス変換）</h3>
+<p>プライベートIPとグローバルIPを変換する技術。1つのグローバルIPを複数の機器で共有できます。家庭のルーターはこの機能を使っています。</p>
+</div>
+<div class="card">
+<h2>よくある間違いとひっかけ</h2>
+<div class="mb"><p>❌ 「IPアドレスが変われば同じ機器か判別できない」は誤り</p></div>
+<p>MACアドレスは機器固有のため、IPが変わっても機器の識別は可能です。ただしMACアドレスも偽装（スプーフィング）できるため、セキュリティの唯一の手段にはなりません。</p>
+<div class="mb"><p>❌ 「192.168.1.1はグローバルIPアドレス」は誤り</p></div>
+<p>192.168.x.xはプライベートIPアドレスの範囲です。インターネット上では使用できません。</p>
+</div>
+<div class="card"><h2>まとめ</h2>
+<ul>
+<li>IPアドレスはネットワーク上の機器の住所</li>
+<li>IPv4は32ビット（約43億個）、IPv6は128ビット（事実上無制限）</li>
+<li>グローバルIPはインターネット上で一意、プライベートIPは社内・家庭内で使用</li>
+<li>192.168.x.xはプライベートIPアドレスの代表例</li>
+<li>NATでプライベートIPとグローバルIPを変換する</li>
+</ul><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>
