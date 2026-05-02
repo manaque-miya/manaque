@@ -556,4 +556,12 @@ function toggleSound() {
 
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('soundBtn');
-  if (btn) btn.textContent = SND.enabled ? '🔊' : '�
+  if (btn) btn.textContent = SND.enabled ? '🔊' : '🔇';
+  // URLパラメータから問題数を取得して即スタート
+  const params = new URLSearchParams(location.search);
+  const count = parseInt(params.get('count')) || 5;
+  startQuiz(count);
+});
+</script>
+</body>
+</html>

@@ -555,4 +555,12 @@ function toggleSound() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById
+  const btn = document.getElementById('soundBtn');
+  if (btn) btn.textContent = SND.enabled ? '🔊' : '🔇';
+  const params = new URLSearchParams(location.search);
+  const count = parseInt(params.get('count')) || 5;
+  startQuiz(count);
+});
+</script>
+</body>
+</html>
