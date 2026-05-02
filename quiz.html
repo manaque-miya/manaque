@@ -222,6 +222,12 @@
   <script src="data/cards.js"></script>
   <script src="data/gacha.js"></script>
   <!-- クイズ問題データ -->
+  <script src="data/geography.js"></script>
+  <script src="data/body.js"></script>
+  <script src="data/fraction.js"></script>
+  <script src="data/meiji.js"></script>
+  <script src="data/english.js"></script>
+  <script src="data/logic.js"></script>
   <script src="data/history.js"></script>
   <script src="data/prefecture.js"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
@@ -313,6 +319,12 @@
 <script>
 // ===== 全クイズデータ（各 data/*.js から読み込み済み） =====
 const allQuizzes = {
+  geography: QUIZ_GEOGRAPHY,
+  body:      QUIZ_BODY,
+  fraction:  QUIZ_FRACTION,
+  meiji:     QUIZ_MEIJI,
+  english:   QUIZ_ENGLISH,
+  logic:     QUIZ_LOGIC,
   history:    QUIZ_HISTORY,
   prefecture: QUIZ_PREFECTURE,
 };
@@ -359,19 +371,19 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 // ===== クイズエンジン =====
-let quizId = 'history';
+let quizId = 'geography';
 let questions = [];
 let currentQ = 0, score = 0, answered = false;
 const LABELS = ['A','B','C','D'];
 
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
-  quizId = params.get('id') || 'history';
+  quizId = params.get('id') || 'geography';
   if (!params.get('autostart')) {
     window.location.replace('index.html');
     return;
   }
-  const allQ      = allQuizzes[quizId]?.questions || allQuizzes.history.questions;
+  const allQ      = allQuizzes[quizId]?.questions || allQuizzes.geography.questions;
   const countRaw  = params.get('count') || '10';
   const countNum  = countRaw === 'all' ? allQ.length : Math.min(parseInt(countRaw, 10) || 10, allQ.length);
   questions = prepareQuestions(allQ).slice(0, countNum);
@@ -590,5 +602,19 @@ function updateCatalogBtn() {
   if (h) h.textContent = n;
 }
 </script>
+
+<!-- ===== PAGE INFO（SEO） ===== -->
+<section style="background:#f4f7fb;border-top:1px solid #dde4f0;padding:28px 20px 32px;margin-top:40px;">
+  <div style="max-width:560px;margin:0 auto;">
+    <h2 style="font-size:15px;font-weight:800;color:#1a2a4a;margin-bottom:10px;font-family:'M PLUS Rounded 1c',sans-serif;">日本史・歴史クイズ</h2>
+    <p style="font-size:13px;line-height:1.85;color:#4a5568;margin-bottom:14px;font-family:'M PLUS Rounded 1c',sans-serif;">縄文時代から現代まで、日本の歴史を網羅した学習クイズです。源頼朝・織田信長・坂本龍馬など有名な歴史上の人物から、幕府・条約・戦争まで、中学・高校の歴史テストに役立つ問題を収録しています。</p>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;">
+      <span style="font-size:11px;background:#e8eef8;color:#1f56c6;border-radius:20px;padding:3px 10px;font-weight:700;font-family:'M PLUS Rounded 1c',sans-serif;">日本史 クイズ</span>
+      <span style="font-size:11px;background:#e8eef8;color:#1f56c6;border-radius:20px;padding:3px 10px;font-weight:700;font-family:'M PLUS Rounded 1c',sans-serif;">歴史 学習</span>
+      <span style="font-size:11px;background:#e8eef8;color:#1f56c6;border-radius:20px;padding:3px 10px;font-weight:700;font-family:'M PLUS Rounded 1c',sans-serif;">中学生 高校生</span>
+      <span style="font-size:11px;background:#e8eef8;color:#1f56c6;border-radius:20px;padding:3px 10px;font-weight:700;font-family:'M PLUS Rounded 1c',sans-serif;">無料 歴史</span>
+    </div>
+  </div>
+</section>
 </body>
 </html>

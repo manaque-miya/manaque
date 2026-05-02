@@ -463,6 +463,42 @@
       position: absolute; top: 14px; right: 14px;
     }
 
+
+    /* ===== ABOUT SITE ===== */
+    .about-site { background: var(--white); border-top: 1px solid var(--border); }
+    .about-site__lead {
+      font-size: 15px; line-height: 1.85; color: var(--ink-500);
+      max-width: 640px; margin-bottom: 40px;
+    }
+    .about-site__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .about-site__card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 20px 16px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .about-site__card:hover { border-color: var(--brand-500); box-shadow: var(--shadow-md); }
+    .about-site__card-icon { font-size: 28px; margin-bottom: 10px; }
+    .about-site__card-title { font-size: 14px; font-weight: 900; color: var(--ink-900); margin-bottom: 6px; }
+    .about-site__card-desc { font-size: 12px; color: var(--ink-500); line-height: 1.6; }
+    .about-site__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .about-site__chip {
+      font-size: 12px; font-weight: 700;
+      background: var(--brand-50); color: var(--brand-600);
+      border-radius: var(--r-pill); padding: 5px 14px;
+    }
+    @media (max-width: 768px) {
+      .about-site__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .about-site__grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    }
+
     /* ===== FEATURES ===== */
     .features { background: var(--brand-500); }
     .features .section__label { color: rgba(255,255,255,.6); }
@@ -1094,6 +1130,66 @@
           <div class="feature-item__desc">PDFで保存して、プリント学習にも使えます。</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT SITE ===== -->
+<section class="section about-site" id="about-site">
+  <div class="section__inner">
+    <p class="section__label">まなクエ！について</p>
+    <h2 class="section__title">全学年対応・完全無料の<br>学習クイズプラットフォーム</h2>
+    <p class="about-site__lead">都道府県・歴史・理科・算数・英語・社会・資格対策まで、幅広いジャンルのクイズを無料で提供しています。幼児から大人まで、ブラウザだけで今すぐ遊べます。アプリのインストール・会員登録は一切不要です。</p>
+    <div class="about-site__grid">
+      <div class="about-site__card">
+        <div class="about-site__card-icon">🗾</div>
+        <div class="about-site__card-title">地理・都道府県</div>
+        <div class="about-site__card-desc">47都道府県の位置・県庁所在地・名産品を地図クイズで学習</div>
+      </div>
+      <div class="about-site__card">
+        <div class="about-site__card-icon">📜</div>
+        <div class="about-site__card-title">歴史・人物</div>
+        <div class="about-site__card-desc">縄文〜現代まで。歴史上の人物や出来事をガチャカードで収集しながら学習</div>
+      </div>
+      <div class="about-site__card">
+        <div class="about-site__card-icon">🔬</div>
+        <div class="about-site__card-title">理科・からだのしくみ</div>
+        <div class="about-site__card-desc">人体・動物・植物・天気など、理科の基礎知識をクイズで習得</div>
+      </div>
+      <div class="about-site__card">
+        <div class="about-site__card-icon">🔢</div>
+        <div class="about-site__card-title">算数・数学</div>
+        <div class="about-site__card-desc">計算・単位・図形・割合など、学年別に選べる算数ドリル</div>
+      </div>
+      <div class="about-site__card">
+        <div class="about-site__card-icon">🏆</div>
+        <div class="about-site__card-title">資格・検定対策</div>
+        <div class="about-site__card-desc">ITパスポート・漢検・英検・FP・宅建などの試験対策クイズ</div>
+      </div>
+      <div class="about-site__card">
+        <div class="about-site__card-icon">🐣</div>
+        <div class="about-site__card-title">幼児・こども向け</div>
+        <div class="about-site__card-desc">ひらがな・のりもの・どうぶつ・からだなど、未就学児が楽しめるクイズ</div>
+      </div>
+      <div class="about-site__card">
+        <div class="about-site__card-icon">🎰</div>
+        <div class="about-site__card-title">ガチャ・コレクション</div>
+        <div class="about-site__card-desc">クイズに正解するとガチャが引ける。歴史カードを集めてコレクション完成を目指そう</div>
+      </div>
+      <div class="about-site__card">
+        <div class="about-site__card-icon">🖨️</div>
+        <div class="about-site__card-title">プリント・印刷対応</div>
+        <div class="about-site__card-desc">問題をPDF保存して紙のドリルとしても活用できます</div>
+      </div>
+    </div>
+    <div class="about-site__chips">
+      <span class="about-site__chip">無料・登録不要</span>
+      <span class="about-site__chip">スマホ対応</span>
+      <span class="about-site__chip">幼児〜大人まで</span>
+      <span class="about-site__chip">全教科対応</span>
+      <span class="about-site__chip">印刷OK</span>
+      <span class="about-site__chip">ガチャ・コレクション機能あり</span>
+      <span class="about-site__chip">1問15秒で完結</span>
     </div>
   </div>
 </section>
