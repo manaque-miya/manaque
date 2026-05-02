@@ -2,10 +2,10 @@
 // ガチャ・図鑑・ポイントシステムすべてがここを参照する
 
 const RARITY_CONFIG = {
-  ssr: { label: 'SSR', pts: 500, dupPts: 200 },
-  sr:  { label: 'SR',  pts: 200, dupPts: 100 },
-  r:   { label: 'R',   pts: 50,  dupPts: 30  },
-  n:   { label: 'N',   pts: 10,  dupPts: 5   },
+  ssr: { label: 'SSR', pts: 500, dupPts: 150 },
+  sr:  { label: 'SR',  pts: 200, dupPts: 80  },
+  r:   { label: 'R',   pts: 50,  dupPts: 20  },
+  n:   { label: 'N',   pts: 10,  dupPts: 3   },
 };
 
 // ポイントランク定義（catalog.htmlで使用）
@@ -25,54 +25,6 @@ function getPointRank(pts) {
 }
 
 const CARD_DATA = [
-  // ===== N（ノーマル）オリジナルキャラ =====
-  { id:'nc01', rarity:'n', name:'ポチョ',
-    img:'assets/img/characters/pocho/card_N.png',
-    flavor:'失敗した字も飲み込んで育つ\nインクだまり精霊' },
-  { id:'nc02', rarity:'n', name:'メモリィ',
-    img:'assets/img/characters/memorii/card_N.png',
-    flavor:'覚えたい言葉を体に貼って飛ぶ\n付せん妖精' },
-  { id:'nc03', rarity:'n', name:'コロン',
-    img:'assets/img/characters/koron/card_N.png',
-    flavor:'言葉の息継ぎを教えてくれる\n句読点スライム' },
-  { id:'nc04', rarity:'n', name:'パチル',
-    img:'assets/img/characters/pachiru/card_N.png',
-    flavor:'答えが出る直前にだけ現れる\nひらめき火花' },
-  { id:'nc05', rarity:'n', name:'トキン',
-    img:'assets/img/characters/tokin/card_N.png',
-    flavor:'遅刻しそうな時だけ本気で走る\n時計ねずみ' },
-  { id:'nc06', rarity:'n', name:'スヤン',
-    img:'assets/img/characters/suyan/card_N.png',
-    flavor:'寝不足の机で勝手に昼寝する\nまくら精' },
-  { id:'nc07', rarity:'n', name:'ピタゴ',
-    img:'assets/img/characters/pitago/card_N.png',
-    flavor:'崩れて学ぶ四角いやつ\n積み木生命体' },
-  { id:'nc08', rarity:'n', name:'ノオト',
-    img:'assets/img/characters/nooto/card_N.png',
-    flavor:'字が揃うと耳が伸びる\nノートうさぎ' },
-  // ===== N第1弾 追加分 =====
-  { id:'nc09', rarity:'n', name:'カサネ',
-    img:'assets/img/characters/kasane/base.png',
-    flavor:'読み終えたページに小さな名を刻む\nしおり姫' },
-  { id:'nc10', rarity:'n', name:'モグラフ',
-    img:'assets/img/characters/mogurafu/base.png',
-    flavor:'地中に潜って数字を積み上げる\n地中グラフ屋' },
-  // ===== N第2弾 =====
-  { id:'nc11', rarity:'n', name:'カチリ',
-    img:'assets/img/characters/kachiri/base.png',
-    flavor:'答えが噛み合う瞬間だけ\n歯車がひとつ増える' },
-  { id:'nc12', rarity:'n', name:'チョクシン',
-    img:'assets/img/characters/chokusin/base.png',
-    flavor:'迷わず一直線に書き進む\nえんぴつの騎士' },
-  { id:'nc13', rarity:'n', name:'ツナグ',
-    img:'assets/img/characters/tsunagu/base.png',
-    flavor:'わかったこととわからないことを\n赤い糸でそっとつなぐ' },
-  { id:'nc14', rarity:'n', name:'フワリ',
-    img:'assets/img/characters/fuwari/base.png',
-    flavor:'頭の中が整理されたとき\n一緒にふわりと浮かぶ' },
-  { id:'nc15', rarity:'n', name:'ペララ',
-    img:'assets/img/characters/perara/base.png',
-    flavor:'ページをめくるたびに\nすこしずつ大きくなる' },
   // ===== SSR（スーパースーパーレア・1%）=====
   { id:'ssr01', rarity:'ssr', emoji:'👑', name:'源頼朝',
     flavor:'武士の世を開いた鎌倉幕府の初代将軍。\n義経を追い、天下を手中に収めた冷徹な策士。' },
@@ -115,7 +67,33 @@ const CARD_DATA = [
   { id:'r10', rarity:'r', emoji:'🌠', name:'明智光秀',
     flavor:'本能寺の変で信長を討った謀反\n人。なぜ裏切ったかは今も謎。' },
 
-  // ===== N（ノーマル）=====
+  // ===== N（ノーマル）：オリジナルキャラ =====
+  { id:'nc01', rarity:'n', name:'ポチョ',
+    img:'assets/img/characters/pocho/card_N.png',
+    flavor:'失敗した字も飲み込んで育つ\nインクだまり精霊' },
+  { id:'nc02', rarity:'n', name:'メモリィ',
+    img:'assets/img/characters/memorii/card_N.png',
+    flavor:'覚えたい言葉を体に貼って飛ぶ\n付せん妖精' },
+  { id:'nc03', rarity:'n', name:'コロン',
+    img:'assets/img/characters/koron/card_N.png',
+    flavor:'言葉の息継ぎを教えてくれる\n句読点スライム' },
+  { id:'nc04', rarity:'n', name:'パチル',
+    img:'assets/img/characters/pachiru/card_N.png',
+    flavor:'答えが出る直前にだけ現れる\nひらめき火花' },
+  { id:'nc05', rarity:'n', name:'トキン',
+    img:'assets/img/characters/tokin/card_N.png',
+    flavor:'遅刻しそうな時だけ本気で走る\n時計ねずみ' },
+  { id:'nc06', rarity:'n', name:'スヤン',
+    img:'assets/img/characters/suyan/card_N.png',
+    flavor:'寝不足の机で勝手に昼寝する\nまくら精' },
+  { id:'nc07', rarity:'n', name:'ピタゴ',
+    img:'assets/img/characters/pitago/card_N.png',
+    flavor:'崩れて学ぶ四角いやつ\n積み木生命体' },
+  { id:'nc08', rarity:'n', name:'ノオト',
+    img:'assets/img/characters/nooto/card_N.png',
+    flavor:'字が揃うと耳が伸びる\nノートうさぎ' },
+
+  // ===== N（ノーマル）：歴史上の人物 =====
   { id:'n01', rarity:'n', emoji:'🖌️', name:'葛飾北斎',
     flavor:'「富嶽三十六景」で世界を驚かせた\n江戸の天才浮世絵師。90歳まで描いた。' },
   { id:'n02', rarity:'n', emoji:'📝', name:'紫式部',
@@ -136,5 +114,4 @@ function cardArt(card, opts) {
   if (card.img) {
     return `<img src="${card.img}" alt="${card.name}" style="width:100%;height:100%;object-fit:contain;${gs}">`;
   }
-  return `<span style="${gs}">${card.emoji || '❓'}</span>`;
-}
+  return `<span style="${gs}">${card.emo
