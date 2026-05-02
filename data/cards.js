@@ -114,4 +114,5 @@ function cardArt(card, opts) {
   if (card.img) {
     return `<img src="${card.img}" alt="${card.name}" style="width:100%;height:100%;object-fit:contain;${gs}">`;
   }
-  return `<span style="${gs}">${card.emo
+  return `<span style="${gs}">${card.emoji || '❓'}</span>`;
+}
