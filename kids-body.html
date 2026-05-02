@@ -159,7 +159,7 @@ body {
     /* ガチャアニメーション演出 */
     .gacha-reward-overlay{display:none;position:fixed;inset:0;background:radial-gradient(ellipse at center,#0d1a3a 0%,#050810 100%);z-index:1000;align-items:center;justify-content:center;overflow:hidden;cursor:pointer}
     .gacha-reward-overlay.show{display:flex}
-    .g-star{position:absolute;background:white;border-radius:50%;animation:gTwinkle var(--d) ease-in-out infinite alternate}
+    .g-star{position:absolute;background:white;border-radius:50%;animation:gTwinkle var(--d) ease-in-out infinite alternate;pointer-events:none}
     @keyframes gTwinkle{from{opacity:.1;transform:scale(.8)}to{opacity:.9;transform:scale(1.2)}}
     #gachaFlash{position:absolute;inset:0;background:white;opacity:0;pointer-events:none;z-index:50}
     #gachaFlash.active{animation:gFlash .4s ease-out forwards}
@@ -491,9 +491,12 @@ function _gachaShowCard(idx, fullAnim) {
       qm.classList.add('pulse');
       const tapHandler = (e) => {
         if (e.target.closest && (e.target.closest('#gachaNextBtn') || e.target.closest('#gachaCloseBtn'))) return;
-        ov.removeEventListener('click', tapHandler); revealCard();
+        ov.removeEventListener('click', tapHandler);
+        ov.removeEventListener('touchend', tapHandler);
+        revealCard();
       };
       ov.addEventListener('click', tapHandler);
+      ov.addEventListener('touchend', tapHandler);
     }, 700);
   } else { revealCard(); }
 }
