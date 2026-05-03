@@ -92,6 +92,17 @@ tr:nth-child(even) td{background:#F7F9FE;}
 </ul>
 </div>
 
+<!-- EXPANDED_ITP -->
+<div class="card"><h2>ファイアウォールの種類</h2>
+<table><tr><th>種類</th><th>検査内容</th><th>特徴</th></tr>
+<tr><td>パケットフィルタリング</td><td>IPアドレス・ポート番号</td><td>高速・設定シンプル・状態追跡なし</td></tr>
+<tr><td>ステートフルインスペクション</td><td>セッション状態も考慮</td><td>より高度な判断が可能</td></tr>
+<tr><td>アプリケーションゲートウェイ</td><td>L7（アプリ層）のプロトコル</td><td>HTTP・FTPなどの内容を解析</td></tr>
+<tr><td>WAF</td><td>Webアプリの通信内容</td><td>SQLi・XSSなどWebの脆弱性対策</td></tr>
+<tr><td>次世代FW（NGFW）</td><td>アプリ識別・ユーザーID・IPS</td><td>複数機能を統合</td></tr>
+</table></div>
+<div class="card"><h2>DMZとネットワーク設計</h2>
+<p>DMZ（非武装地帯）：インターネットと社内ネットワークの間に設けた中間ゾーン。WebサーバーやメールサーバーをDMZに置き、社内LANを守る。UTM（Unified Threat Management：統合脅威管理）：ファイアウォール・IDS/IPS・アンチウイルス・URLフィルタリングを1台に統合したアプライアンス。中小企業向けに普及。ゼロトラストセキュリティ：「内側だから安全」という前提を捨て、全通信を検証する設計思想。</p></div>
 <div class="cta"><h2>実力を試してみよう！</h2>
 <p>この知識を使って実際の問題を解いてみましょう。</p>
 <a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>

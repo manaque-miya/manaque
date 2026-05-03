@@ -98,6 +98,17 @@ tr:nth-child(even) td{background:#F7F9FE;}
 </ul>
 </div>
 
+<!-- EXPANDED_ITP -->
+<div class="card"><h2>APIの種類と設計方式</h2>
+<table><tr><th>方式</th><th>概要</th><th>特徴</th></tr>
+<tr><td>REST API</td><td>HTTPを使うシンプルなAPI設計</td><td>GET/POST/PUT/DELETEメソッド、JSON形式が主流</td></tr>
+<tr><td>GraphQL</td><td>必要なデータだけを1回のリクエストで取得</td><td>過不足なくデータ取得。Facebookが開発</td></tr>
+<tr><td>gRPC</td><td>Googleが開発した高速RPC</td><td>Protocol Buffersで高効率、マイクロサービスで活用</td></tr>
+<tr><td>SOAP</td><td>XMLベースの厳格なAPI</td><td>金融・エンタープライズ系で継続利用</td></tr>
+</table></div>
+<div class="card"><h2>APIエコノミーとセキュリティ</h2>
+<p>APIエコノミー：外部にAPIを公開することでエコシステムを形成するビジネスモデル。地図API（Google Maps）・決済API（Stripe）・SNS API（Twitter/X）が代表例。APIセキュリティ：認証（APIキー・OAuth2.0・JWT）・レート制限（過剰アクセス防止）・入力値検証（インジェクション攻撃対策）・HTTPS通信。APIゲートウェイ：複数APIへのリクエストを一元管理・認証・ルーティング・ログ収集する仕組み。</p></div>
+<div class="card"><h2>🎯 試験対策：APIの重要ポイント</h2><p>APIの本質は「決められた形式で情報をやり取りするための窓口」です。ITパスポート試験では、APIの概念と代表的な活用例を理解することが求められます。</p><p>REST APIは現代のWebサービスで最も広く使われる形式で、URLで操作対象を指定し、HTTPメソッド（GET/POST/PUT/DELETE）で操作内容を表します。例えばGET /users/123は「ユーザーID123の情報を取得」を意味します。このシンプルな設計思想が普及の理由です。</p><p>試験で覚えるべき重要事項は「APIキー」の概念です。APIキーはAPIを利用する権限を証明する文字列で、不正利用防止のために管理が必要です。公開されたAPIキーは悪用される危険があるため、セキュリティ上の注意が必要です。</p></div>
 <div class="cta"><h2>実力を試してみよう！</h2>
 <p>この知識を使って実際の問題を解いてみましょう。</p>
 <a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>

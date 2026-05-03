@@ -97,6 +97,16 @@ tr:nth-child(even) td{background:#F7F9FE;}
 </ul>
 </div>
 
+<!-- EXPANDED_ITP -->
+<div class="card"><h2>データベース設計の正規化</h2>
+<table><tr><th>正規形</th><th>条件</th></tr>
+<tr><td>第1正規形（1NF）</td><td>繰り返しグループをなくす・1セルに1値</td></tr>
+<tr><td>第2正規形（2NF）</td><td>部分関数従属を解消（主キー全体に依存）</td></tr>
+<tr><td>第3正規形（3NF）</td><td>推移関数従属を解消（非キー→非キーの依存をなくす）</td></tr>
+</table>
+<p>正規化でデータの冗長性・更新異常・挿入異常・削除異常を防ぐ。一方で結合が増え処理が重くなるトレードオフがある。</p></div>
+<div class="card"><h2>ACID特性とNoSQL</h2>
+<p>トランザクションのACID特性：A（原子性）・C（一貫性）・I（独立性）・D（永続性）。デッドロック：2つのトランザクションが互いに相手のロック解除を待つ状態。NoSQL：RDB以外のDB。種類：キーバリュー型（Redis）・ドキュメント型（MongoDB）・グラフ型（Neo4j）・カラム型（Cassandra）。大量データ・スケールアウト・柔軟スキーマが強み。BASE特性：Basically Available・Soft state・Eventual consistency。</p></div>
 <div class="cta"><h2>実力を試してみよう！</h2>
 <p>この知識を使って実際の問題を解いてみましょう。</p>
 <a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>

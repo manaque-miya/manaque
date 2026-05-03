@@ -95,7 +95,17 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 <li>DNSキャッシュポイズニングは偽情報を書き込む攻撃</li>
 <li>ファーミングはDNS改ざんで正規URLでも偽サイトに誘導する攻撃</li>
 <li>正引き（ドメイン→IP）と逆引き（IP→ドメイン）の両方が可能</li>
-</ul><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</ul><!-- EXPANDED_ITP -->
+<div class="card"><h2>DNS解決の仕組み（再帰的解決）</h2>
+<ol>
+<li>クライアントが「www.example.com」のIPアドレスをDNSリゾルバに問合せ</li>
+<li>リゾルバがルートDNSサーバーに問合せ→「.comのTLDサーバーへ」と回答</li>
+<li>リゾルバが.comのTLDサーバーに問合せ→「example.comの権威DNSへ」と回答</li>
+<li>リゾルバがexample.comの権威DNSに問合せ→IPアドレス返答</li>
+<li>リゾルバがクライアントにIPアドレスを返す（一定期間キャッシュ）</li>
+</ol>
+<p>TTL（Time to Live）：DNSレコードのキャッシュ有効期間。短いほどリアルタイム更新が反映されるが、サーバー負荷が増加。主なDNSレコード：A（IPv4アドレス）・AAAA（IPv6）・MX（メールサーバー）・CNAME（別名）・TXT（ドメイン認証・SPF）。</p></div>
+<div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

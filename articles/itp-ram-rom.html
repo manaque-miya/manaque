@@ -95,6 +95,16 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 <li>現代のROMはフラッシュメモリが主流で、書き換え可能</li>
 <li>RAMとストレージ（HDD/SSD）は別物</li>
 </ul>
+<!-- EXPANDED_ITP -->
+<div class="card"><h2>メモリの種類と特性</h2>
+<table><tr><th>種類</th><th>揮発性</th><th>特徴</th></tr>
+<tr><td>DRAM（主記憶）</td><td>揮発性</td><td>安価・大容量。定期リフレッシュが必要</td></tr>
+<tr><td>SRAM（キャッシュ）</td><td>揮発性</td><td>高速・高価。L1/L2/L3キャッシュに使用</td></tr>
+<tr><td>ROM（BIOS/UEFI）</td><td>不揮発性</td><td>電源オフでも保持。読み取り専用（原則）</td></tr>
+<tr><td>フラッシュメモリ</td><td>不揮発性</td><td>電気的に書き換え可能。SSD・USBメモリ</td></tr>
+<tr><td>レジスタ</td><td>揮発性</td><td>CPU内の最高速記憶。演算中の一時保存</td></tr>
+</table>
+<p>記憶階層：レジスタ（最速・最小）→L1/L2/L3キャッシュ→主記憶（DRAM）→補助記憶（SSD/HDD）→外部記憶（クラウド）の順に低速・大容量・低コストになる。仮想メモリ：RAMが不足した場合にHDD/SSDをRAMの代わりに使う仕組み（ページファイル）。処理が遅くなるためRAM増設が有効。</p></div>
 <div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>

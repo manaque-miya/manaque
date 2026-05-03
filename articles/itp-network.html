@@ -105,6 +105,17 @@ tr:nth-child(even) td{background:#F7F9FE;}
 <li>TCP：信頼性あり（届いたか確認）／UDP：速度優先（確認なし）</li>
 </ul>
 </div>
+<!-- EXPANDED_ITP -->
+<div class="card"><h2>TCP/IPモデルの4層</h2>
+<table><tr><th>層</th><th>役割</th><th>代表プロトコル</th></tr>
+<tr><td>アプリケーション層</td><td>ユーザー向けサービスの通信</td><td>HTTP・SMTP・FTP・DNS</td></tr>
+<tr><td>トランスポート層</td><td>端末間の信頼性ある通信</td><td>TCP・UDP</td></tr>
+<tr><td>インターネット層</td><td>論理アドレス（IP）でのルーティング</td><td>IP・ICMP・ARP</td></tr>
+<tr><td>ネットワークインターフェース層</td><td>物理的なデータ送受信</td><td>イーサネット・Wi-Fi</td></tr>
+</table></div>
+<div class="card"><h2>TCPとUDPの使い分け</h2>
+<p>TCP（Transmission Control Protocol）：コネクション型・信頼性あり。3ウェイハンドシェイク（SYN→SYN-ACK→ACK）で接続確立。順序制御・再送制御・フロー制御・輻輳制御を行う。Webブラウジング・メール・ファイル転送に使用。UDP（User Datagram Protocol）：コネクションレス型・信頼性なし。高速・低遅延。DNS・動画ストリーミング・VoIP・ゲームに使用。再送不要で速度優先の場合はUDP。</p></div>
+<div class="card"><h2>🎯 試験対策：ネットワークの重要ポイント</h2><p>ネットワーク分野はITパスポートの中でも出題範囲が広く、プロトコル・アドレス・セキュリティの基礎知識が必要です。特にOSI参照モデルとTCP/IPの対応関係は必須知識です。</p><p>OSI参照モデルの7層と対応するプロトコルを整理します。第7層（アプリケーション）：HTTP/SMTP/DNS、第4層（トランスポート）：TCP/UDP、第3層（ネットワーク）：IP、第2層（データリンク）：Ethernet/MAC、第1層（物理）：ケーブル・信号。試験では「IPアドレスは何層？」という問い方がされます。</p><p>IPアドレスの基礎として、IPv4は32ビット（0〜255の数値4つ）で約43億のアドレス、IPv6は128ビットで事実上無限のアドレスを提供します。プライベートIPアドレス（192.168.x.x、10.x.x.x等）とグローバルIPアドレスの違い、NATによるアドレス変換の仕組みも理解が必要です。</p></div>
 <div class="cta"><h2>実力を試してみよう！</h2>
 <p>この知識を使って実際の問題を解いてみましょう。</p>
 <a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
