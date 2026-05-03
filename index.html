@@ -496,6 +496,14 @@
     .feature-item__title { font-size: 16px; font-weight: 900; color: var(--white); margin-bottom: 4px; }
     .feature-item__desc { font-size: 13px; color: rgba(255,255,255,.72); line-height: 1.6; }
 
+    /* ===== ABOUT-FEATURES（統合） ===== */
+    .about-features { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:20px 0 28px; }
+    .about-features__item { display:flex; align-items:flex-start; gap:14px; background:#EAF2FE; border-radius:14px; padding:14px 18px; }
+    .about-features__icon { font-size:22px; flex-shrink:0; }
+    .about-features__title { font-size:14px; font-weight:900; color:#1F56C6; margin-bottom:3px; }
+    .about-features__desc { font-size:12px; color:#5B6785; line-height:1.6; }
+    @media(max-width:600px){ .about-features { grid-template-columns:1fr; } }
+
     /* ===== FOOTER ===== */
     .footer { background: var(--footer-bg); padding: 48px 32px 32px; }
     .footer__inner {
@@ -1111,44 +1119,28 @@
 </section>
 
 
-<!-- ===== FEATURES ===== -->
-<section class="section features">
-  <div class="section__inner">
-    <div class="features-grid">
-      <div class="feature-item">
-        <div class="feature-item__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9H4.5a2.5 2.5 0 000 5H6"/><path d="M18 9h1.5a2.5 2.5 0 010 5H18"/>
-            <path d="M8 9h8"/><path d="M8 15h8"/><path d="M12 9v6"/>
-          </svg>
-        </div>
-        <div>
-          <div class="feature-item__title">無料・登録不要</div>
-          <div class="feature-item__desc">すぐに遊べる。成績はこの端末に自動保存。</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-item__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9V4a1 1 0 011-1h10a1 1 0 011 1v5"/><path d="M3 9h18v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/>
-            <path d="M12 14v3"/><path d="M9 17h6"/>
-          </svg>
-        </div>
-        <div>
-          <div class="feature-item__title">印刷にも対応</div>
-          <div class="feature-item__desc">PDFで保存して、プリント学習にも使えます。</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== ABOUT SITE ===== -->
 <section class="section about-site" id="about-site">
   <div class="section__inner">
     <p class="section__label">まなクエ！について</p>
     <h2 class="section__title">全学年対応・完全無料の<br>学習クイズプラットフォーム</h2>
     <p class="about-site__lead">都道府県・歴史・理科・算数・英語・社会・資格対策まで、幅広いジャンルのクイズを無料で提供しています。幼児から大人まで、ブラウザだけで今すぐ遊べます。アプリのインストール・会員登録は一切不要です。</p>
+    <div class="about-features">
+      <div class="about-features__item">
+        <span class="about-features__icon">🔓</span>
+        <div>
+          <div class="about-features__title">無料・登録不要</div>
+          <div class="about-features__desc">すぐに遊べる。成績はこの端末に自動保存。</div>
+        </div>
+      </div>
+      <div class="about-features__item">
+        <span class="about-features__icon">🖨️</span>
+        <div>
+          <div class="about-features__title">印刷にも対応</div>
+          <div class="about-features__desc">PDFで保存して、プリント学習にも使えます。</div>
+        </div>
+      </div>
+    </div>
     <div class="about-site__grid">
       <div class="about-site__card">
         <div class="about-site__card-icon">🗾</div>
@@ -1192,11 +1184,9 @@
       </div>
     </div>
     <div class="about-site__chips">
-      <span class="about-site__chip">無料・登録不要</span>
       <span class="about-site__chip">スマホ対応</span>
       <span class="about-site__chip">幼児〜大人まで</span>
       <span class="about-site__chip">全教科対応</span>
-      <span class="about-site__chip">印刷OK</span>
       <span class="about-site__chip">ガチャ・コレクション機能あり</span>
       <span class="about-site__chip">1問15秒で完結</span>
     </div>
@@ -1748,4 +1738,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+</html>
