@@ -617,4 +617,12 @@ function showResult(code, recovery){
 
   document.getElementById('resultStrengths').innerHTML=td.strengths.map(s=>'<li>'+s+'</li>').join('');
   document.getElementById('resultWall').textContent=td.wall;
-  document.getElementById('resultTips').innerHTML=td.tips.map((t,i)=>'<li><span class="tip-num">'+(i+1)+'</span><span>'+t+'</span></li>'
+  document.getElementById('resultTips').innerHTML=td.tips.map((t,i)=>'<li><span class="tip-num">'+(i+1)+'</span><span>'+t+'</span></li>').join('');
+  document.getElementById('recoveryBadge').textContent=rd.label;
+  document.getElementById('recoveryText').textContent=rd.text;
+  showScreen('screenResult');
+}
+function retake(){showScreen('screenIntro');}
+</script>
+</body>
+</html>
