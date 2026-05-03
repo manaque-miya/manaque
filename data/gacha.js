@@ -17,7 +17,6 @@ function loadGachaState() {
       if (s.totalEarned === undefined) s.totalEarned = s.points; // 旧データ補完
       if (!Array.isArray(s.pointsLog)) s.pointsLog   = [];
       if (!Array.isArray(s.obtained))  s.obtained    = [...new Set(s.collected)];
-      if (!s.clearedQuizzes || typeof s.clearedQuizzes !== 'object') s.clearedQuizzes = {};
       return s;
     }
   } catch(e) {}
@@ -29,7 +28,6 @@ function loadGachaState() {
     points:         0,    // 現在の保有ポイント（消費で減る）
     totalEarned:    0,    // 累計獲得ポイント（ランク表示用・減らない）
     pointsLog:      [],
-    clearedQuizzes: {},   // { quizId: pullsGiven } 初回クリア記録
   };
 }
 
@@ -95,6 +93,7 @@ function drawSingleCard(gachaState) {
                  : roll < GACHA_RATES.ssr + GACHA_RATES.sr ? 'sr'
                  : roll < GACHA_RATES.ssr + GACHA_RATES.sr + GACHA_RATES.r ? 'r'
                  : 'n';
+    if (rarity === 'ssr' || rarity === 'sr') s.pityCount = 0;  // SSR/SR排出時は天井リセット
     const pool = CARD_DATA.filter(c => c.rarity === rarity);
     card = pool[Math.floor(Math.random() * pool.length)];
   }
