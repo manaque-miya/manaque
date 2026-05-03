@@ -462,6 +462,7 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 <script src="data/site-structure.js?v=3"></script>
 <script src="data/cards.js?v=2"></script>
 <script src="data/gacha.js?v=3"></script>
+<script src="data/gacha-animation.js?v=1"></script>
 <script src="data/adult-exam-itp.js?v=1"></script>
 <script>
 // ===== 状態 =====
@@ -679,8 +680,11 @@ function triggerGachaReward() {
   if (btn) btn.style.display = 'none';
   if (typeof claimQuizGacha !== 'function') return;
   const { pulls, results } = claimQuizGacha('adult-exam-itp', _score, _pool.length);
-  if (!pulls || !results.length) return;
-  alert(`🎰 ガチャ${pulls}回！\n${results.map(r => `${r.isNew?'★NEW★':''} ${r.card.name}（${r.card.rarity.toUpperCase()}）`).join('\n')}`);
+  if (!pulls || !results.length) {
+    showGachaNoReward('全問正解でガチャが引けるよ！');
+    return;
+  }
+  openGachaAnimation(results);
 }
 
 // ===== 初期化 =====
