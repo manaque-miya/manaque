@@ -304,7 +304,7 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
     <p>🔄 子どもの気質は成長・環境とともに変化します。<br><strong>3〜6ヶ月ごとの再診断</strong>がおすすめです。</p>
   </div>
   <button class="btn-retake" onclick="retake()">もう一度診断する</button>
-  <p class="disclaimer-text">Thomas &amp; Chess の気質理論を参考にしたまなクエ独自のコンテンツです。科学的診断ではありません。</p>
+  <p class="disclaimer-text">Thomas &amp; Chess の気質理論を参考にしたまなクエ独自のコンテンツです。科学的診断ではありません。本診断は娯楽・自己理解の補助を目的としており、医学的診断・専門的評価の代替となるものではありません。お子様の発達・行動に心配がある場合は専門機関にご相談ください。</p>
 </div>
 
 <script>
@@ -617,12 +617,4 @@ function showResult(code, recovery){
 
   document.getElementById('resultStrengths').innerHTML=td.strengths.map(s=>'<li>'+s+'</li>').join('');
   document.getElementById('resultWall').textContent=td.wall;
-  document.getElementById('resultTips').innerHTML=td.tips.map((t,i)=>'<li><span class="tip-num">'+(i+1)+'</span><span>'+t+'</span></li>').join('');
-  document.getElementById('recoveryBadge').textContent=rd.label;
-  document.getElementById('recoveryText').textContent=rd.text;
-  showScreen('screenResult');
-}
-function retake(){showScreen('screenIntro');}
-</script>
-</body>
-</html>
+  document.getElementById('resultTips').innerHTML=td.tips.map((t,i)=>'<li><span class="tip-num">'+(i+1)+'</span><span>'+t+'</span></li>'
