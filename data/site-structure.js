@@ -692,7 +692,7 @@ const SITE_STRUCTURE = [
         units: [
           {
             label: 'ITパスポート 本気対策',
-            quizId: 'adult-exam-itp',
+            quizId: 'exam-itp',
             count: 600,
             time: '自由',
             difficulty: 3,
