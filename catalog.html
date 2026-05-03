@@ -160,13 +160,19 @@
     .modal-close-btn{width:100%;padding:12px;background:var(--ink-100);color:var(--ink-700);border:none;border-radius:var(--r-pill);font-size:14px;font-weight:700;cursor:pointer;margin-top:16px;}
 
     /* GACHA RESULT MODAL */
+    
+    .gacha-qphase{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
+    .gacha-qball{width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#b388ff,#6200ea);display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:900;color:#fff;box-shadow:0 0 40px #7c4dff;animation:qballPop .5s ease,qballPulse 0.8s ease 0.5s infinite alternate;}
+    .gacha-qphase-label{color:rgba(255,255,255,.7);font-size:14px;font-family:'M PLUS Rounded 1c',sans-serif;}
+    @keyframes qballPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+    @keyframes qballPulse{from{transform:scale(1);box-shadow:0 0 30px #7c4dff}to{transform:scale(1.08);box-shadow:0 0 60px #b388ff}}
     .gacha-result-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
     .gacha-result-overlay.active{opacity:1;pointer-events:all;}
     .gacha-result__title{font-size:20px;font-weight:900;color:#fff;margin-bottom:20px;text-align:center;}
     .gacha-result__cards{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:500px;margin-bottom:24px;}
-    .gacha-result__card{width:80px;border-radius:10px;overflow:hidden;animation:popIn .3s ease backwards;}
+    .gacha-result__card{width:120px;border-radius:12px;overflow:hidden;animation:popIn .3s ease backwards;}
     @keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-    .gacha-result__art{height:80px;display:flex;align-items:center;justify-content:center;font-size:32px;}
+    .gacha-result__art{height:120px;display:flex;align-items:center;justify-content:center;font-size:48px;}
     .gacha-result__art.ssr{background:linear-gradient(135deg,#1a0000,#8b0000,#ff6b6b,#ffd700);background-size:300% 300%;animation:ssrShimmer 2s ease infinite,popIn .3s ease backwards;}
     .gacha-result__art.sr{background:linear-gradient(135deg,#7c2d00,#d97706,#fbbf24);background-size:300% 300%;animation:shimmer 3s ease infinite,popIn .3s ease backwards;}
     .gacha-result__art.r{background:linear-gradient(160deg,#1e0040,#7c3aed);}
@@ -321,8 +327,14 @@
 
 <!-- ガチャ結果モーダル -->
 <div class="gacha-result-overlay" id="gachaResultModal">
-  <div class="gacha-result__title" id="gachaResultTitle"></div>
-  <div class="gacha-result__cards" id="gachaResultCards"></div>
+  <div class="gacha-qphase" id="gachaQphase" style="display:none">
+    <div class="gacha-qball">？</div>
+    <div class="gacha-qphase-label">ガチャ中…</div>
+  </div>
+  <div id="gachaResultMain" style="display:none;flex-direction:column;align-items:center;gap:16px;width:100%;">
+    <div class="gacha-result__title" id="gachaResultTitle"></div>
+    <div class="gacha-result__cards" id="gachaResultCards"></div>
+  </div>
   <button class="gacha-result__close" onclick="closeGachaResult()">OK！</button>
 </div>
 
@@ -426,24 +438,38 @@ function doGacha(count) {
 }
 
 function showGachaResult(results) {
-  const hasSSR = results.some(r=>r.card.rarity==='ssr');
-  const hasSR  = results.some(r=>r.card.rarity==='sr');
-  document.getElementById('gachaResultTitle').textContent =
-    hasSSR ? '🌈🌈 SSR確定！！おめでとう！！ 🌈🌈' :
-    hasSR  ? '⭐ SR出た！おめでとう！ ⭐' :
-    `${results.length}枚ゲット！`;
+  const modal = document.getElementById('gachaResultModal');
+  const qphase = document.getElementById('gachaQphase');
+  const main   = document.getElementById('gachaResultMain');
 
-  document.getElementById('gachaResultCards').innerHTML = results.map((r,i) => `
-    <div class="gacha-result__card" style="animation-delay:${i*0.06}s">
-      <div class="gacha-result__art ${r.card.rarity}">${cardArt(r.card)}</div>
-      <div class="gacha-result__info ${r.card.rarity}">
-        <div class="gacha-result__rarity ${r.card.rarity}">${RARITY_CONFIG[r.card.rarity].label}</div>
-        <div class="gacha-result__name ${r.card.rarity}">${r.card.name}</div>
-        ${r.isNew?'<div class="gacha-result__new">NEW</div>':''}
-      </div>
-    </div>`).join('');
+  // 初期化
+  qphase.style.display = 'flex';
+  main.style.display   = 'none';
+  modal.classList.add('active');
 
-  document.getElementById('gachaResultModal').classList.add('active');
+  // 1.3秒後にカードを表示
+  setTimeout(() => {
+    qphase.style.display = 'none';
+
+    const hasSSR = results.some(r=>r.card.rarity==='ssr');
+    const hasSR  = results.some(r=>r.card.rarity==='sr');
+    document.getElementById('gachaResultTitle').textContent =
+      hasSSR ? '🌈🌈 SSR確定！！おめでとう！！ 🌈🌈' :
+      hasSR  ? '⭐ SR出た！おめでとう！ ⭐' :
+      `${results.length}枚ゲット！`;
+
+    document.getElementById('gachaResultCards').innerHTML = results.map((r,i) => `
+      <div class="gacha-result__card" style="animation-delay:${i*0.06}s">
+        <div class="gacha-result__art ${r.card.rarity}">${cardArt(r.card)}</div>
+        <div class="gacha-result__info ${r.card.rarity}">
+          <div class="gacha-result__rarity ${r.card.rarity}">${RARITY_CONFIG[r.card.rarity].label}</div>
+          <div class="gacha-result__name ${r.card.rarity}">${r.card.name}</div>
+          ${r.isNew?'<div class="gacha-result__new">NEW</div>':''}
+        </div>
+      </div>`).join('');
+
+    main.style.display = 'flex';
+  }, 1300);
 }
 
 function closeGachaResult() {
