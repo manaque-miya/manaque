@@ -930,8 +930,8 @@
   <div class="section__inner">
     <div class="latest-header">
       <div>
-        <div class="section__label">LATEST</div>
-        <h2 class="section__title" style="margin-bottom:0">あたらしいクイズ</h2>
+        <div class="section__label">PICK UP</div>
+        <h2 class="section__title" style="margin-bottom:0">今日のクイズ</h2>
       </div>
       <a href="#category" class="latest-header__all">すべて見る ›</a>
     </div>
@@ -1198,7 +1198,7 @@ function goToCategory(idx) {
   }, 50);
 }
 
-// ===== LATEST自動生成（isNew: trueのunitを最大6件表示）=====
+// ===== LATEST自動生成（全ユニットからランダム6件表示）=====
 function getQuizUrl(quizId, count) {
   const c = count ? `&count=${count}` : '';
   if (quizId === 'exam-itp')    return 'exam-quiz.html';
@@ -1217,25 +1217,34 @@ function getQuizUrl(quizId, count) {
 function renderLatest() {
   const grid = document.getElementById('latest-grid');
   if (!grid || typeof SITE_STRUCTURE === 'undefined') return;
-  const newUnits = [];
+  // 全ユニットを収集
+  const allUnits = [];
   SITE_STRUCTURE.forEach(grade => {
     grade.subjects.forEach(subj => {
       subj.units.forEach(unit => {
-        if (unit.isNew) newUnits.push({ unit, grade, subj });
+        allUnits.push({ unit, grade, subj });
       });
     });
   });
-  if (newUnits.length === 0) return;
-  const show = newUnits.slice(0, 6);
+  if (allUnits.length === 0) return;
+  // Fisher-Yatesシャッフルで6件ランダム選出
+  const shuffled = allUnits.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  const show = shuffled.slice(0, 6);
   grid.innerHTML = show.map(({ unit }) => {
-    const tagHtml = unit.tags.map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
+    const tagHtml = (unit.tags || []).map(t => `<span class="badge ${t.cls}">${t.text}</span>`).join('');
+    const countText = unit.count ? `${unit.count}問` : 'チャレンジ';
+    const newBadge = unit.isNew ? '<span class="quiz-card__new"><span class="badge badge--new">NEW</span></span>' : '';
     return `
       <a href="${getQuizUrl(unit.quizId, 5)}" class="quiz-card">
-        <span class="quiz-card__new"><span class="badge badge--new">NEW</span></span>
+        ${newBadge}
         <div class="quiz-card__tags">${tagHtml}</div>
         <h3 class="quiz-card__title">${unit.label}</h3>
         <div class="quiz-card__meta">
-          <span>📘 ${unit.count}問</span><span>⏱ ${unit.time}</span>
+          <span>📘 ${countText}</span><span>⏱ ${unit.time}</span>
           <div class="quiz-card__stars">${unit.difficulty ? '★'.repeat(unit.difficulty) + '<span class="quiz-card__star empty">★</span>'.repeat(5-unit.difficulty) : ''}</div>
         </div>
         <div class="quiz-card__footer">
