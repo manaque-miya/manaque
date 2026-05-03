@@ -892,13 +892,13 @@
   </div>
   <div id="exam-banner-grid" style="max-width:1480px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
     <a href="exam-quiz.html" style="display:block;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(26,79,214,.18);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 8px 28px rgba(26,79,214,.28)\'" onmouseout="this.style.transform=\'\';this.style.boxShadow=\'0 4px 20px rgba(26,79,214,.18)\'">
-      <img src="assets/img/exam-itp-banner.png" alt="ITパスポート試験対策 600問無料公開｜まなクエ！" style="width:100%;height:320px;display:block;object-fit:cover;object-position:center top;">
+      <img src="assets/img/exam-itp-banner.png" alt="ITパスポート試験対策 600問無料公開｜まなクエ！" style="width:100%;height:auto;display:block;">
     </a>
     <a href="fp3-quiz.html" style="display:block;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(22,163,74,.18);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 8px 28px rgba(22,163,74,.28)\'" onmouseout="this.style.transform=\'\';this.style.boxShadow=\'0 4px 20px rgba(22,163,74,.18)\'">
-      <img src="assets/img/fp3-banner.png" alt="FP3級対策 522問無料公開｜まなクエ！" style="width:100%;height:320px;display:block;object-fit:cover;object-position:center top;">
+      <img src="assets/img/fp3-banner.png" alt="FP3級対策 522問無料公開｜まなクエ！" style="width:100%;height:auto;display:block;">
     </a>
     <a href="takken-quiz.html" style="display:block;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(120,70,10,.3);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(120,70,10,.45)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(120,70,10,.3)'">
-      <img src="assets/img/takken-banner.png" alt="宅建士試験対策 550問無料公開｜まなクエ！" style="width:100%;height:320px;display:block;object-fit:cover;object-position:center top;">
+      <img src="assets/img/takken-banner.png" alt="宅建士試験対策 550問無料公開｜まなクエ！" style="width:100%;height:auto;display:block;">
     </a>
   </div>
   <style>
@@ -1201,7 +1201,9 @@ function goToCategory(idx) {
 // ===== LATEST自動生成（isNew: trueのunitを最大6件表示）=====
 function getQuizUrl(quizId, count) {
   const c = count ? `&count=${count}` : '';
-  if (quizId === 'exam-itp') return 'exam-quiz.html';
+  if (quizId === 'exam-itp')    return 'exam-quiz.html';
+  if (quizId === 'exam-fp3')    return 'fp3-quiz.html';
+  if (quizId === 'exam-takken') return 'takken-quiz.html';
   if (/^(elem|mid|high)-(science|social|english|japanese)-\d+$/.test(quizId) ||
       /^adult-(exam|kanji|kotowaza|nihongo|chimei|trivia|animal|brand|body|econ|food|psych|gogen|bousai|law|manner|toeic|katakana|baseball|soccer|basketball|tennis|golf)-\d+$/.test(quizId) ||
       /^uni-spi-(lang|math)-\d+$/.test(quizId) ||
@@ -1390,7 +1392,7 @@ function buildUnitCard(unit, subjLabel) {
   const isKidsAnimals  = unit.quizId === 'kids-animals';
   const isKidsVehicles = unit.quizId === 'kids-vehicles';
 
-  // ===== exam-itp 専用 =====
+  // ===== 資格専用エンジン（ITP / FP3 / 宅建） =====
   if (unit.quizId === 'exam-itp') {
     return `
     <div class="unit-card">
@@ -1403,6 +1405,34 @@ function buildUnitCard(unit, subjLabel) {
         <span class="unit-card__difficulty">${stars}</span>
       </div>
       <div class="unit-card__counts"><a href="exam-quiz.html" class="count-btn count-btn--default">本気対策モード →</a></div>
+    </div>`;
+  }
+  if (unit.quizId === 'exam-fp3') {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
+      <div class="unit-card__meta">
+        <span>📘 522問</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts"><a href="fp3-quiz.html" class="count-btn count-btn--default">本気対策モード →</a></div>
+    </div>`;
+  }
+  if (unit.quizId === 'exam-takken') {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
+      <div class="unit-card__meta">
+        <span>📘 550問</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts"><a href="takken-quiz.html" class="count-btn count-btn--default">本気対策モード →</a></div>
     </div>`;
   }
 

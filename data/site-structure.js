@@ -701,6 +701,36 @@ const SITE_STRUCTURE = [
             tags: [{ text: '資格', cls: 'badge--purple' }]
           }
         ]
+      },
+      {
+        id: 'exam-fp3', label: 'FP3級', emoji: '💰',
+        units: [
+          {
+            label: 'FP3級 本気対策',
+            quizId: 'exam-fp3',
+            count: 522,
+            time: '自由',
+            difficulty: 3,
+            gacha: false,
+            desc: 'お金・保険・税金・年金の実践知識。522問・6分野全網羅で本番対策。',
+            tags: [{ text: '資格', cls: 'badge--purple' }]
+          }
+        ]
+      },
+      {
+        id: 'exam-takken', label: '宅建士', emoji: '🏠',
+        units: [
+          {
+            label: '宅建士 本気対策',
+            quizId: 'exam-takken',
+            count: 550,
+            time: '自由',
+            difficulty: 4,
+            gacha: false,
+            desc: '不動産・法律・権利関係の専門知識。550問超・本番頻出テーマ完全対策。',
+            tags: [{ text: '資格', cls: 'badge--purple' }]
+          }
+        ]
       }
     ]
   },
