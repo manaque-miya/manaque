@@ -1344,6 +1344,7 @@ function getQuizUrl(quizId, count) {
       /^fp3-(gakka|jitsugi|life|risk|finance|tax|fudosan|sozoku)-\d+$/.test(quizId) ||
       /^(geography|body|fraction|english|meiji|logic)$/.test(quizId)) return `unit-quiz.html?id=${quizId}${c}`;
   if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}${c}`;
+  if (/^kids-(body|animals|vehicles)$/.test(quizId)) return `${quizId}.html`;
   return `quiz.html?id=${quizId}&autostart=1`;
 }
 function renderLatest() {
