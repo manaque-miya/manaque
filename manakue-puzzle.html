@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>まなクエ！パズル｜肝の一手で全消し！</title>
 <meta name="description" content="まなクエ！のパズルゲーム。肝の一手を見つけて全消しを目指せ！頭を使うブロックパズルで遊ぼう。登録不要・無料。">
-<link rel="canonical" href="https://manaque.net/game/manakue-puzzle.html">
+<link rel="canonical" href="https://manaque.net/manakue-puzzle.html">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -136,48 +136,11 @@ html,body{height:100%;font-family:'M PLUS Rounded 1c',sans-serif;background:var(
 /* ══ FAIL FLASH ══ */
 .fail-flash{animation:failFlash .4s;}
 @keyframes failFlash{0%,100%{background:#fff;}50%{background:#FEE2E2;}}
-
-/* ══ RESPONSIVE ══ */
-@media(min-width:640px){
-  .board-wrap{padding:16px 24px 28px;}
-  .diff-bar{padding:14px 24px 0;}
-  .diff-btn{padding:8px 24px;font-size:14px;}
-  .hint-btn{font-size:13px;padding:7px 18px;}
-  .overlay-card{padding:40px 36px;}
-}
-@media(max-width:480px){
-  .header{padding:8px 12px;}
-  .logo{font-size:14px;}
-  .hint-btn{padding:5px 10px;font-size:11px;}
-  .diff-bar{padding:8px 8px 0;gap:6px;}
-  .diff-btn{padding:6px 14px;font-size:12px;}
-  .stage-info{padding:8px 10px 4px;font-size:12px;}
-  .board-wrap{padding:8px 8px 16px;}
-  .board-desc{font-size:11px;}
-  .move-area{font-size:12px;}
-  .chain-banner .chain-num{font-size:36px;}
-  .chain-banner .chain-label{font-size:16px;}
-  .overlay-card{padding:24px 16px;}
-  .overlay-title{font-size:22px;}
-  .btn-primary,.btn-secondary{padding:10px 16px;font-size:14px;}
-}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021"
      crossorigin="anonymous"></script>
 </head>
 <body>
-<header class="site-header">
-  <a class="site-logo" href="index.html">
-    <span class="site-logo__icon">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-      </svg>
-    </span>
-    まな<span>クエ！</span>
-  </a>
-  <a class="back-link" href="index.html">← TOPにもどる</a>
-</header>
 
 <div class="header">
   <div class="logo">
@@ -572,7 +535,8 @@ function showHint() {
   if (hintUsed >= 2) document.getElementById('hintBtn').disabled = true;
 }
 
-// ════════════════════//  ナビ
+// ══════════════════════════════════════
+//  ナビ
 // ══════════════════════════════════════
 function selectDiff(d) {
   diff = d;
