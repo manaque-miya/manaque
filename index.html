@@ -1450,7 +1450,8 @@ function buildUnitCard(unit, subjLabel) {
   const isKidsBody     = unit.quizId === 'kids-body';
   const isKidsAnimals  = unit.quizId === 'kids-animals';
   const isKidsVehicles = unit.quizId === 'kids-vehicles';
-  const isBabyColors   = unit.quizId === 'baby-colors';
+  const isBabyColors     = unit.quizId === 'baby-colors';
+  const isBabyDinosaurs = unit.quizId === 'baby-dinosaurs';
 
   // ===== 資格専用エンジン（ITP / FP3 / 宅建） =====
   if (unit.quizId === 'exam-itp') {
@@ -1640,6 +1641,24 @@ function buildUnitCard(unit, subjLabel) {
       <div class="unit-card__counts">
         <a href="baby-colors.html?count=3" class="count-btn">３もん</a>
         <a href="baby-colors.html?count=5" class="count-btn count-btn--default">５もん</a>
+      </div>
+    </div>`;
+  }
+
+  // ===== あかちゃん・きょうりゅうクイズ =====
+  if (isBabyDinosaurs) {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>🦕 えをみてこたえよう</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts">
+        <a href="baby-dinosaurs.html?count=3" class="count-btn">３もん</a>
+        <a href="baby-dinosaurs.html?count=5" class="count-btn count-btn--default">５もん</a>
       </div>
     </div>`;
   }
