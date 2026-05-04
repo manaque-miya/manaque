@@ -1317,4 +1317,16 @@ function shareLine() {
   const type = TYPES[_lastCode];
   const msg  = `【まなクエ！診断】${_lastCode}：${type.name}（${_motive}）"${MOTIVE_PREFIX[_motive]}${type.name}" #まなクエ診断 ${location.href}`;
   window.open(
-    `https://social-plugins.line.me/lineit/share?url=${enco
+    `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(msg)}`,
+    '_blank'
+  );
+}
+
+function resetQuiz() {
+  document.getElementById('resultScreen').style.display = 'none';
+  document.getElementById('startScreen').style.display  = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
