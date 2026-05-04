@@ -868,7 +868,7 @@ const SND = {
   wrong:   new Audio('assets/audio/wrong.mp3'),
   play(type) {
     if (!this.enabled) return;
-    this[type].cloneNode().play().catch(()=>{});
+    const a = this[type]; a.currentTime = 0; a.play().catch(()=>{});
   }
 };
 function toggleSound() {
