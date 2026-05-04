@@ -32,6 +32,8 @@ const SITE_STRUCTURE = [
             tags: [{ text: 'あかちゃん', cls: 'badge--pink' }, { text: '0〜2さい', cls: 'badge--neutral' }] },
           { label: 'いろはどれ？', quizId: 'baby-colors', count: null, time: '約3分', difficulty: 1, gacha: true, isNew: true,
             tags: [{ text: 'あかちゃん', cls: 'badge--pink' }, { text: '0〜2さい', cls: 'badge--neutral' }] },
+          { label: 'きょうりゅうはどれ？', quizId: 'baby-dinosaurs', count: null, time: '約5分', difficulty: 1, gacha: true, isNew: true,
+            tags: [{ text: 'あかちゃん', cls: 'badge--pink' }, { text: '0〜3さい', cls: 'badge--neutral' }] },
         ]
       },
     ]
