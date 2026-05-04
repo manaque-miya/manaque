@@ -330,7 +330,8 @@ if (!quizId) {
 } else {
   // 動的にデータファイルを読み込む
   const s = document.createElement('script');
-  s.src = `data/${quizId}.js`;
+  const dataDir = (quizId.startsWith('kids-') || quizId.startsWith('baby-')) ? 'data/kids/' : 'data/';
+  s.src = `${dataDir}${quizId}.js`;
   s.onerror = () => {
     document.getElementById('app').innerHTML = '<div class="loading">データの読み込みに失敗しました。<br><a href="index.html" style="color:#60a5fa">TOPにもどる</a></div>';
   };
