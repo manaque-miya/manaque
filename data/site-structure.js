@@ -341,8 +341,16 @@ const SITE_STRUCTURE = [
         emoji: '📖',
         badge: { text: '国語', cls: 'badge--orange' },
         units: [
-          { label: '現代文（語彙・読解・文学史）', quizId: 'high-japanese-01', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
-          { label: '古文・漢文基礎',               quizId: 'high-japanese-02', count: 30, time: '約15分', difficulty: 4, gacha: false, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] }
+          { label: '古文単語01：感情・評価語 基本①', quizId: 'high-japanese-01', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語02：感情・評価語 基本②', quizId: 'high-japanese-02', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語03：重要動詞①', quizId: 'high-japanese-03', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語04：副詞・接続詞', quizId: 'high-japanese-04', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語05：重要動詞②・形容詞', quizId: 'high-japanese-05', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語06：代名詞・名詞・重要語①', quizId: 'high-japanese-06', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語07：形容詞・動詞・副詞②', quizId: 'high-japanese-07', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語08：名詞・副詞・接続詞', quizId: 'high-japanese-08', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語09：枕詞・地名・和歌語彙', quizId: 'high-japanese-09', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] },
+          { label: '古文単語10：感情語コア・逆転語', quizId: 'high-japanese-10', count: 25, time: '約12分', difficulty: 4, gacha: false, isNew: true, tags: [{ text: '国語', cls: 'badge--orange' }, { text: '高校生', cls: 'badge--neutral' }] }
         ]
       },
       {

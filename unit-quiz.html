@@ -503,7 +503,16 @@ function selectAnswer(sel) {
   SND.play(ok ? 'correct' : 'wrong');
   fb.className = `feedback show ${ok ? 'correct-fb' : 'wrong-fb'}`;
   document.getElementById('feedbackLabel').textContent = ok ? '✅ 正解！' : `❌ 不正解。正解は「${q.choices[q.answer]}」`;
-  document.getElementById('feedbackText').textContent = q.exp;
+  const shortEl = document.createElement('div');
+  shortEl.style.cssText = 'font-size:1.1em;font-weight:800;margin-bottom:8px;';
+  shortEl.textContent = q.short_exp || q.exp || '';
+  const longEl = document.createElement('div');
+  longEl.style.cssText = 'font-size:0.9em;color:#5B6785;margin-top:6px;line-height:1.8;';
+  longEl.textContent = q.long_exp || '';
+  const feedbackText = document.getElementById('feedbackText');
+  feedbackText.textContent = '';
+  feedbackText.appendChild(shortEl);
+  if (q.long_exp) feedbackText.appendChild(longEl);
   document.getElementById('nextBtn').classList.add('show');
   document.getElementById('scoreText').textContent = `正解 ${score}問`;
 }
