@@ -44,6 +44,14 @@ const SITE_STRUCTURE = [
             tags: [{ text: 'のりもの', cls: 'badge--sky' }, { text: 'こども', cls: 'badge--neutral' }] },
         ]
       },
+      {
+        id: 'baby-colors', label: 'いろ',
+        emoji: '🎨',
+        units: [
+          { label: 'いろはどれ？（3/5もん）', quizId: 'baby-colors', count: null, time: '約3分', difficulty: 1, gacha: true, isNew: true,
+            tags: [{ text: 'あかちゃん', cls: 'badge--pink' }, { text: '0〜2さい', cls: 'badge--neutral' }] },
+        ]
+      },
     ]
   },
 

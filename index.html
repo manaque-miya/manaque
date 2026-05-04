@@ -1212,6 +1212,7 @@ function getQuizUrl(quizId, count) {
       /^(geography|body|fraction|english|meiji|logic)$/.test(quizId)) return `unit-quiz.html?id=${quizId}${c}`;
   if (/^(elem|mid|high)-math-\d+$/.test(quizId)) return `math-quiz.html?id=${quizId}${c}`;
   if (/^kids-(body|animals|vehicles)$/.test(quizId)) return `${quizId}.html`;
+  if (/^baby-/.test(quizId)) return `${quizId}.html`;
   return `quiz.html?id=${quizId}&autostart=1`;
 }
 function renderLatest() {
@@ -1400,6 +1401,7 @@ function buildUnitCard(unit, subjLabel) {
   const isKidsBody     = unit.quizId === 'kids-body';
   const isKidsAnimals  = unit.quizId === 'kids-animals';
   const isKidsVehicles = unit.quizId === 'kids-vehicles';
+  const isBabyColors   = unit.quizId === 'baby-colors';
 
   // ===== 資格専用エンジン（ITP / FP3 / 宅建） =====
   if (unit.quizId === 'exam-itp') {
@@ -1559,6 +1561,24 @@ function buildUnitCard(unit, subjLabel) {
         <a href="kids-vehicles.html?count=5" class="count-btn count-btn--default">５もん</a>
       </div>
     </div>`;
+  }
+
+  // ===== あかちゃん・いろクイズ =====
+  if (isBabyColors) {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}${gacha}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      <div class="unit-card__meta">
+        <span>🎨 えをみてこたえよう</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts">
+        <a href="baby-colors.html?count=3" class="count-btn">３もん</a>
+        <a href="baby-colors.html?count=5" class="count-btn count-btn--default">５もん</a>
+      </div>
+    </div>\`;
   }
 
   // ===== 囲碁・将棋・3手詰め =====
