@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ITP 用語2択カード | まなクエ！</title>
+<meta name="description" content="ITパスポート頻出用語を2択クイズで直感的に体験。読んで学べる解説記事・本番問題へのリンクつき。">
+<link rel="canonical" href="https://manakue.com/itp-vocab.html">
+<link rel="icon" href="assets/favicon.ico">
+<style>
+:root {
+  --brand:#2563eb;--brand-l:#eff6ff;--brand-d:#1d4ed8;
+  --ok:#16a34a;--ok-l:#f0fdf4;--ng:#dc2626;--ng-l:#fef2f2;
+  --ink:#111827;--muted:#6b7280;--bg:#f9fafb;--card:#fff;
+  --radius:16px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --strat:#7c3aed;--mgmt:#0891b2;--tech:#2563eb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hiragino Sans','Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+
+/* ヘッダー */
+.header{background:var(--card);border-bottom:1px solid #e5e7eb;padding:12px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
+.header__logo{font-size:18px;font-weight:900;color:var(--brand);text-decoration:none}
+.header__title{font-size:14px;font-weight:700;color:var(--muted)}
+
+/* 進捗バー */
+.prog-wrap{padding:16px 20px 0;max-width:600px;margin:0 auto}
+.prog-bar{background:#e5e7eb;border-radius:999px;height:8px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-d));border-radius:999px;transition:width .4s}
+.prog-text{font-size:12px;color:var(--muted);margin-top:6px;text-align:right}
+
+/* カード */
+.stage{padding:20px;max-width:600px;margin:0 auto}
+
+/* ─ 問題フェーズ ─ */
+.vocab-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 24px;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.cat-badge{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:3px 10px;margin-bottom:12px;color:#fff}
+.cat-badge.テクノロジ{background:var(--tech)}
+.cat-badge.ストラテジ{background:var(--strat)}
+.cat-badge.マネジメント{background:var(--mgmt)}
+
+.term{font-size:22px;font-weight:900;margin-bottom:8px}
+.scenario{font-size:15px;line-height:1.7;color:#374151;margin-bottom:16px;background:#f3f4f6;border-radius:10px;padding:14px}
+.q-label{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px}
+
+.choices{display:flex;flex-direction:column;gap:10px}
+.choice-btn{border:2px solid #e5e7eb;border-radius:12px;background:var(--card);padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;text-align:left;transition:.15s;color:var(--ink)}
+.choice-btn:hover{border-color:var(--brand);background:var(--brand-l);transform:translateY(-1px)}
+.choice-btn.correct{border-color:var(--ok);background:var(--ok-l);color:var(--ok)}
+.choice-btn.wrong{border-color:var(--ng);background:var(--ng-l);color:var(--ng)}
+
+/* ─ 解説フェーズ ─ */
+.result-badge{font-size:28px;margin-bottom:8px}
+.result-msg{font-size:18px;font-weight:900;margin-bottom:16px}
+.result-msg.ok{color:var(--ok)}
+.result-msg.ng{color:var(--ng)}
+.exp-box{background:#f3f4f6;border-radius:10px;padding:14px;font-size:14px;line-height:1.75;color:#374151;margin-bottom:20px}
+.exp-term{font-weight:900;color:var(--ink)}
+
+.action-btns{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.btn{border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;transition:.15s;text-decoration:none;display:block;text-align:center}
+.btn-next{background:var(--brand);color:#fff}
+.btn-next:hover{background:var(--brand-d);transform:translateY(-1px)}
+.btn-article{background:var(--card);border:2px solid #e5e7eb;color:var(--ink)}
+.btn-article:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-l)}
+.btn-quiz{background:var(--card);border:2px solid #e5e7eb;color:var(--ink)}
+.btn-quiz:hover{border-color:var(--strat);color:var(--strat);background:#f5f3ff}
+
+/* ─ 完了画面 ─ */
+.complete{text-align:center;padding:40px 20px}
+.complete__emoji{font-size:64px;margin-bottom:16px}
+.complete__title{font-size:24px;font-weight:900;margin-bottom:8px}
+.complete__sub{font-size:15px;color:var(--muted);margin-bottom:32px}
+.btn-restart{background:var(--brand);color:#fff;border:none;border-radius:12px;padding:16px 32px;font-size:16px;font-weight:700;cursor:pointer}
+.btn-restart:hover{background:var(--brand-d)}
+
+/* フィルター */
+.filter-wrap{max-width:600px;margin:12px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{border:2px solid #e5e7eb;border-radius:999px;background:var(--card);padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;color:var(--muted);transition:.15s}
+.filter-btn.active{border-color:var(--brand);background:var(--brand-l);color:var(--brand)}
+.filter-btn.active.テクノロジ{border-color:var(--tech);background:#eff6ff;color:var(--tech)}
+.filter-btn.active.ストラテジ{border-color:var(--strat);background:#f5f3ff;color:var(--strat)}
+.filter-btn.active.マネジメント{border-color:var(--mgmt);background:#ecfeff;color:var(--mgmt)}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="header__logo">まなクエ！</a>
+  <span class="header__title">📝 ITP 用語2択カード</span>
+</header>
+
+<div class="filter-wrap" id="filterWrap">
+  <button class="filter-btn active" data-cat="all" onclick="setFilter('all',this)">すべて</button>
+  <button class="filter-btn テクノロジ" data-cat="テクノロジ" onclick="setFilter('テクノロジ',this)">💻 テクノロジ</button>
+  <button class="filter-btn ストラテジ" data-cat="ストラテジ" onclick="setFilter('ストラテジ',this)">📋 ストラテジ</button>
+  <button class="filter-btn マネジメント" data-cat="マネジメント" onclick="setFilter('マネジメント',this)">⚙️ マネジメント</button>
+</div>
+
+<div class="prog-wrap">
+  <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-text" id="progText">0 / 0</div>
+</div>
+
+<div class="stage" id="stage"></div>
+
+<script src="data/itp-vocab.js"></script>
+<script>
+let pool = [], idx = 0, correct = 0, answered = false;
+let currentCat = 'all';
+
+function setFilter(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  pool = currentCat === 'all' ? shuffle([...ITP_VOCAB]) : shuffle(ITP_VOCAB.filter(v => v.cat === cat));
+  idx = 0; correct = 0;
+  updateProg();
+  renderQuestion();
+}
+
+function shuffle(arr) {
+  for(let i=arr.length-1;i>0;i--){const j=Math.random()*i|0;[arr[i],arr[j]]=[arr[j],arr[i]];}
+  return arr;
+}
+
+function updateProg() {
+  const pct = pool.length ? (idx / pool.length) * 100 : 0;
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progText').textContent = idx + ' / ' + pool.length;
+}
+
+function renderQuestion() {
+  if (idx >= pool.length) { renderComplete(); return; }
+  const v = pool[idx];
+  const choices = shuffle([...v.choices]);
+  document.getElementById('stage').innerHTML = `
+    <div class="vocab-card">
+      <span class="cat-badge ${v.cat}">${v.cat}</span>
+      <div class="term">📌 ${v.term}</div>
+      <div class="scenario">${v.scenario}</div>
+      <div class="q-label">👇 ${v.q}</div>
+      <div class="choices">
+        ${choices.map(c => `<button class="choice-btn" onclick="answer(this,${c.correct})">${c.text}</button>`).join('')}
+      </div>
+    </div>`;
+  answered = false;
+}
+
+function answer(btn, isCorrect) {
+  if (answered) return;
+  answered = true;
+  if (isCorrect) correct++;
+  document.querySelectorAll('.choice-btn').forEach(b => {
+    const isThisCorrect = b.textContent === pool[idx].choices.find(c=>c.correct).text;
+    b.classList.add(isThisCorrect ? 'correct' : 'wrong');
+    b.style.pointerEvents = 'none';
+  });
+  // 解説を下に追加
+  const v = pool[idx];
+  const card = document.querySelector('.vocab-card');
+  const expDiv = document.createElement('div');
+  expDiv.style.marginTop = '20px';
+
+  const articleBtn = v.articleId
+    ? `<a href="articles/${v.articleId}.html" target="_blank" class="btn btn-article">📖 詳細を読む →</a>`
+    : '';
+  const catParam = encodeURIComponent(v.cat);
+  expDiv.innerHTML = `
+    <div class="${isCorrect?'result-badge':'result-badge'}">
+      ${isCorrect ? '⭕' : '❌'}
+    </div>
+    <div class="result-msg ${isCorrect?'ok':'ng'}">${isCorrect ? '正解！' : '不正解…'}</div>
+    <div class="exp-box">
+      <span class="exp-term">【${v.term}】</span><br>${v.exp}
+    </div>
+    <div class="action-btns">
+      ${articleBtn}
+      <a href="exam-quiz.html?cat=${catParam}" class="btn btn-quiz">🧩 ${v.cat}の問題を解く →</a>
+      <button class="btn btn-next" onclick="next()">➡ 次の用語へ</button>
+    </div>`;
+  card.appendChild(expDiv);
+}
+
+function next() {
+  idx++;
+  updateProg();
+  renderQuestion();
+}
+
+function renderComplete() {
+  document.getElementById('stage').innerHTML = `
+    <div class="complete">
+      <div class="complete__emoji">🎉</div>
+      <div class="complete__title">全${pool.length}問 完了！</div>
+      <div class="complete__sub">正解率 ${Math.round(correct/pool.length*100)}%（${correct}/${pool.length}）</div>
+      <button class="btn-restart" onclick="setFilter(currentCat, document.querySelector('.filter-btn.active'))">もう一度</button>
+    </div>`;
+  updateProg();
+}
+
+// 初期化
+setFilter('all', document.querySelector('.filter-btn[data-cat="all"]'));
+</script>
+
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+</body>
+</html>

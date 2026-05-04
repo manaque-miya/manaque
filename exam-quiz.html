@@ -689,6 +689,14 @@ function triggerGachaReward() {
 
 // ===== 初期化 =====
 document.addEventListener('DOMContentLoaded', () => {
+  // URLパラメータ ?cat= で直接カテゴリ指定
+  const _params = new URLSearchParams(location.search);
+  const _catParam = _params.get('cat');
+  if (_catParam && ['ストラテジ','マネジメント','テクノロジ'].includes(_catParam)) {
+    selectMode('category');
+    const catBtn = document.querySelector(`.sub-btn[data-sub="${_catParam}"]`);
+    if (catBtn) selectSub(catBtn);
+  }
   updateStats();
   selectMode('random');
 });
