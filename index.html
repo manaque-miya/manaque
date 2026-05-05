@@ -71,7 +71,7 @@
     .header__inner {
       max-width: 1200px; margin: 0 auto;
       padding: 14px 32px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
     }
     .logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
     .logo__icon {
@@ -83,17 +83,17 @@
     }
     .logo__text { font-size: 22px; font-weight: 900; color: var(--ink-900); }
     .logo__text span { color: var(--brand-600); }
-    .header__nav { display: flex; align-items: center; gap: 2px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+    .header__nav { display: flex; align-items: center; gap: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
     .header__nav::-webkit-scrollbar { display: none; }
     .header__nav a {
-      padding: 8px 14px; border-radius: var(--r-pill);
-      text-decoration: none; font-size: 14px; font-weight: 700; color: var(--ink-700);
+      padding: 6px 9px; border-radius: var(--r-pill);
+      text-decoration: none; font-size: 13px; font-weight: 700; color: var(--ink-700);
       transition: background .15s, color .15s; white-space: nowrap; flex-shrink: 0;
     }
     .header__nav a:hover, .header__nav a.active {
       background: var(--brand-50); color: var(--brand-600);
     }
-    .header__catalog-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:rgba(255,215,0,.1);border:1.5px solid rgba(255,215,0,.35);border-radius:var(--r-pill);font-size:13px;font-weight:700;color:#7a5c00;text-decoration:none;transition:all .15s;white-space:nowrap;}
+    .header__catalog-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 10px;background:rgba(255,215,0,.1);border:1.5px solid rgba(255,215,0,.35);border-radius:var(--r-pill);font-size:13px;font-weight:700;color:#7a5c00;text-decoration:none;transition:all .15s;white-space:nowrap;}
     .header__catalog-btn:hover{background:rgba(255,215,0,.22);}
     .header__menu-btn {
       display: none; width: 38px; height: 38px; border: none;
@@ -117,7 +117,7 @@
       font-size: 9px; font-weight: 900; padding: 1px 5px;
       border-radius: 4px; line-height: 1.4; margin-left: 2px;
     }
-    @media (max-width: 1280px) { .header__shindan { display: none; } }
+    @media (max-width: 1024px) { .header__shindan { display: none; } }
 
 
     /* ===== HERO ===== */
