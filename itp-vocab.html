@@ -56,8 +56,17 @@ body{font-family:'Hiragino Sans','Noto Sans JP',sans-serif;background:var(--bg);
 .result-msg{font-size:18px;font-weight:900;margin-bottom:16px}
 .result-msg.ok{color:var(--ok)}
 .result-msg.ng{color:var(--ng)}
-.exp-box{background:#f3f4f6;border-radius:10px;padding:14px;font-size:14px;line-height:1.75;color:#374151;margin-bottom:20px}
+.exp-box{background:#f3f4f6;border-radius:10px;padding:14px;font-size:14px;line-height:1.75;color:#374151;margin-bottom:8px}
+.exp-box.exp1{background:#eff6ff;border-left:4px solid var(--brand)}
+.exp-box.exp2{background:#fefce8;border-left:4px solid #ca8a04}
+.exp-box.exp3{background:#fef2f2;border-left:4px solid var(--ng)}
+.exp-label{font-size:11px;font-weight:800;letter-spacing:.04em;margin-bottom:4px}
+.exp-label.l1{color:var(--brand)}
+.exp-label.l2{color:#ca8a04}
+.exp-label.l3{color:var(--ng)}
 .exp-term{font-weight:900;color:var(--ink)}
+.freq-badge{display:inline-block;font-size:10px;font-weight:800;background:#fbbf24;color:#78350f;border-radius:6px;padding:1px 6px;vertical-align:middle;margin-left:6px}
+.kw-badge{display:inline-block;font-size:10px;font-weight:700;background:#e0e7ff;color:#3730a3;border-radius:6px;padding:1px 7px;vertical-align:middle;margin-left:6px}
 
 .action-btns{display:flex;flex-direction:column;gap:10px;margin-top:4px}
 .btn{border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;transition:.15s;text-decoration:none;display:block;text-align:center}
@@ -139,7 +148,7 @@ function renderQuestion() {
   document.getElementById('stage').innerHTML = `
     <div class="vocab-card">
       <span class="cat-badge ${v.cat}">${v.cat}</span>
-      <div class="term">📌 ${v.term}</div>
+      <div class="term">📌 ${v.term}${v.freq==='high'?'<span class=\'freq-badge\'>⭐頻出</span>':''}${v.keyword?`<span class='kw-badge'>${v.keyword}</span>`:''}</div>
       <div class="scenario">${v.scenario}</div>
       <div class="q-label">👇 ${v.q}</div>
       <div class="choices">
@@ -173,9 +182,15 @@ function answer(btn, isCorrect) {
       ${isCorrect ? '⭕' : '❌'}
     </div>
     <div class="result-msg ${isCorrect?'ok':'ng'}">${isCorrect ? '正解！' : '不正解…'}</div>
-    <div class="exp-box">
-      <span class="exp-term">【${v.term}】</span><br>${v.exp}
+    <div class="exp-box exp1">
+      <div class="exp-label l1">📘 一言で理解</div>
+      <span class="exp-term">【${v.term}】</span>　${v.exp1}
     </div>
+    <div class="exp-box exp2">
+      <div class="exp-label l2">📝 試験ポイント</div>
+      ${v.exp2}
+    </div>
+    ${v.exp3 ? `<div class="exp-box exp3"><div class="exp-label l3">⚠ 引っかけ注意</div>${v.exp3}</div>` : ''}
     <div class="action-btns">
       ${articleBtn}
       <a href="exam-quiz.html?cat=${catParam}" class="btn btn-quiz">🧩 ${v.cat}の問題を解く →</a>
