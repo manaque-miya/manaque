@@ -95,7 +95,7 @@ tr:nth-child(even) td{background:#F7F9FE;}
 <li><strong>ブラックホールルーティング</strong>：攻撃トラフィックを破棄</li>
 </ul>
 </div>
-<div class="card"><h2>試験対策ポイント</h2>
+<div class="card"><h2>試験で出るポイント</h2>
 <div class="hl">✅ 試験では<strong>「DoS＝1台、DDoS＝多数（分散）」</strong>という区別が最重要です。</div>
 <ul>
 <li>DoS = 1台からの大量リクエストによるサービス妨害</li>
@@ -117,8 +117,8 @@ tr:nth-child(even) td{background:#F7F9FE;}
 <div class="card"><h2>DDoS対策の仕組み</h2>
 <p>IP制限・レート制限：単一IPからの大量リクエストをブロック。CDN（コンテンツデリバリーネットワーク）：CloudflareなどのCDNがDDoSトラフィックを吸収・フィルタリング。Anycastルーティング：攻撃トラフィックを複数のサーバーに分散。WAF（WebアプリケーションFirewall）：レイヤー7（アプリ層）の攻撃を検知・遮断。ISP（プロバイダー）レベルの対策：Blackhole Routing（攻撃トラフィックを廃棄）。</p></div>
 <div class="card"><h2>🎯 試験対策：DoS・DDoS攻撃の重要ポイント</h2><p>DoS攻撃とDDoS攻撃はどちらもサービス妨害を目的とした攻撃ですが、規模と対策難易度が大きく異なります。ITパスポートでは両者の違いと代表的な対策を理解することが求められます。</p><p>DoS攻撃（Denial of Service）は単一の攻撃元からの攻撃であるため、送信元IPアドレスをブロックすることで比較的対処しやすいです。一方DDoS攻撃（Distributed DoS）は世界中の多数のコンピュータ（多くはマルウェア感染したボットネット）から同時に攻撃するため、ブロックが困難です。</p><p>代表的な対策として、CDNやDDoS緩和サービスによるトラフィック分散、WAF（Webアプリケーションファイアウォール）による不正リクエスト遮断、レートリミット（一定時間内のリクエスト数制限）があります。完全な防御は難しいため、攻撃を受けた際の事業継続計画（BCP）も重要です。</p></div>
-<div class="cta"><h2>実力を試してみよう！</h2>
-<p>この知識を使って実際の問題を解いてみましょう。</p>
+<div class="cta"><h2>問題を解いて仕上げよう！</h2>
+<p>読んだだけより、解いた方が記憶に残る。</p>
 <a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
 </main>
 <footer class="ft">
