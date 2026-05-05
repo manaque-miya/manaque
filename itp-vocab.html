@@ -2,225 +2,612 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ITP 用語2択カード | まなクエ！</title>
-<meta name="description" content="ITパスポート頻出用語を2択クイズで直感的に体験。読んで学べる解説記事・本番問題へのリンクつき。">
-<link rel="canonical" href="https://manakue.com/itp-vocab.html">
-<link rel="icon" href="assets/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ITパスポート頻出用語504語を2択カードで直感学習。シナリオ形式で問題を出題し、正解後にexp1〜exp3の3層解説。演習600問への橋渡し。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="まなクエ！">
+<meta property="og:title" content="ITパスポート 用語2択チャレンジ 504語｜まなクエ！">
+<meta property="og:description" content="参考書の代わりに2択で直感体験。正解後に引っかけポイントと試験対策まで解説。">
+<meta property="og:url" content="https://manaque.net/itp-vocab.html">
+<meta property="og:image" content="https://manaque.net/assets/ogp.png">
+<link rel="canonical" href="https://manaque.net/itp-vocab.html">
+<title>ITパスポート 用語2択チャレンジ｜まなクエ！</title>
+<link rel="icon" href="assets/img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --brand:#2563eb;--brand-l:#eff6ff;--brand-d:#1d4ed8;
-  --ok:#16a34a;--ok-l:#f0fdf4;--ng:#dc2626;--ng-l:#fef2f2;
-  --ink:#111827;--muted:#6b7280;--bg:#f9fafb;--card:#fff;
-  --radius:16px;--shadow:0 2px 12px rgba(0,0,0,.08);
-  --strat:#7c3aed;--mgmt:#0891b2;--tech:#2563eb;
+  --brand: #2563EB; --brand-d: #1A449E; --brand-l: #EFF6FF;
+  --ink: #1e293b; --muted: #64748b; --border: #e2e8f0;
+  --bg: #f0f4ff; --white: #fff;
+  --correct: #16a34a; --correct-l: #f0fdf4;
+  --wrong: #dc2626; --wrong-l: #fef2f2;
+  --strat: #7c3aed; --mgmt: #0891b2; --tech: #ea580c;
+  --r: 14px; --r-lg: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Hiragino Sans','Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 
-/* ヘッダー */
-.header{background:var(--card);border-bottom:1px solid #e5e7eb;padding:12px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
-.header__logo{font-size:18px;font-weight:900;color:var(--brand);text-decoration:none}
-.header__title{font-size:14px;font-weight:700;color:var(--muted)}
+/* ===== HEADER ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1.5px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; box-shadow: 0 2px 8px rgba(37,99,235,.07);
+}
+.site-header__logo { font-size: 18px; font-weight: 900; color: var(--brand); text-decoration: none; }
+.site-header__back { font-size: 13px; color: var(--muted); text-decoration: none; margin-left: auto; }
 
-/* 進捗バー */
-.prog-wrap{padding:16px 20px 0;max-width:600px;margin:0 auto}
-.prog-bar{background:#e5e7eb;border-radius:999px;height:8px;overflow:hidden}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-d));border-radius:999px;transition:width .4s}
-.prog-text{font-size:12px;color:var(--muted);margin-top:6px;text-align:right}
+/* ===== SCREENS ===== */
+.screen { display: none; max-width: 640px; margin: 0 auto; padding: 20px 16px 60px; }
+.screen.active { display: block; }
+
+/* ===== START SCREEN ===== */
+.start-hero { text-align: center; margin-bottom: 24px; padding-top: 10px; }
+.start-chara {
+  width: 160px; margin: 0 auto 12px; display: block;
+  filter: drop-shadow(0 6px 16px rgba(37,99,235,.18));
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.start-bubble {
+  background: var(--brand); color: #fff; border-radius: 12px 12px 12px 2px;
+  padding: 10px 16px; font-size: 14px; font-weight: 700;
+  display: inline-block; margin-bottom: 16px;
+}
+.start-title { font-size: 26px; font-weight: 900; color: var(--ink); margin-bottom: 4px; }
+.start-badge {
+  display: inline-block; font-size: 12px; font-weight: 800;
+  background: var(--brand); color: #fff; border-radius: 8px;
+  padding: 2px 10px; vertical-align: middle; margin-left: 6px;
+}
+.start-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; margin-top: 6px; }
+
+.stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 24px; }
+.stat-card { background: #fff; border: 1px solid var(--border); border-radius: var(--r); padding: 12px; text-align: center; }
+.stat-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.stat-val { font-size: 20px; font-weight: 900; color: var(--brand); }
+
+.section-title { font-size: 13px; font-weight: 800; color: var(--muted); margin-bottom: 10px; letter-spacing: .05em; text-transform: uppercase; }
+
+.filter-section { margin-bottom: 20px; }
+.filter-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-btn {
+  background: #fff; border: 1.5px solid var(--border); border-radius: 30px;
+  padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: all .15s; color: var(--ink);
+}
+.filter-btn:hover { border-color: var(--brand); color: var(--brand); }
+.filter-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+.filter-btn.cat-tech.selected { background: var(--tech); border-color: var(--tech); }
+.filter-btn.cat-strat.selected { background: var(--strat); border-color: var(--strat); }
+.filter-btn.cat-mgmt.selected { background: var(--mgmt); border-color: var(--mgmt); }
+
+.count-section { margin-bottom: 24px; }
+.count-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+.count-btn {
+  background: #fff; border: 1.5px solid var(--border); border-radius: 30px;
+  padding: 8px 20px; font-size: 14px; font-weight: 800; cursor: pointer;
+  font-family: inherit; transition: all .15s; color: var(--ink);
+}
+.count-btn:hover { border-color: var(--brand); }
+.count-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+.start-go {
+  width: 100%; padding: 18px; background: var(--brand);
+  border: none; border-radius: var(--r-lg); color: #fff;
+  font-size: 18px; font-weight: 900; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 0 var(--brand-d); transition: all .12s;
+}
+.start-go:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--brand-d); }
+
+/* ===== QUIZ SCREEN ===== */
+.quiz-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.quiz-progress-text { font-size: 13px; font-weight: 800; color: var(--muted); }
+.quiz-score-badge {
+  margin-left: auto; font-size: 13px; font-weight: 900;
+  background: var(--brand-l); color: var(--brand);
+  border-radius: 20px; padding: 4px 12px;
+}
+
+.progress-bar-wrap {
+  height: 6px; background: var(--border); border-radius: 4px; margin-bottom: 20px; overflow: hidden;
+}
+.progress-bar { height: 100%; background: var(--brand); border-radius: 4px; transition: width .4s ease; }
 
 /* カード */
-.stage{padding:20px;max-width:600px;margin:0 auto}
+.vocab-card {
+  background: #fff; border-radius: var(--r-lg);
+  box-shadow: 0 4px 20px rgba(37,99,235,.1);
+  padding: 24px 20px; margin-bottom: 16px;
+}
+.card-cat-badge {
+  display: inline-block; font-size: 11px; font-weight: 800;
+  border-radius: 6px; padding: 2px 10px; margin-bottom: 12px; color: #fff;
+}
+.cat-テクノロジ { background: var(--tech); }
+.cat-ストラテジ { background: var(--strat); }
+.cat-マネジメント { background: var(--mgmt); }
 
-/* ─ 問題フェーズ ─ */
-.vocab-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 24px;animation:fadeUp .3s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.freq-badge {
+  display: inline-block; font-size: 10px; font-weight: 800;
+  border-radius: 6px; padding: 2px 8px; margin-left: 6px;
+  background: #fef3c7; color: #92400e;
+}
+.freq-badge.mid { background: #f1f5f9; color: var(--muted); }
 
-.cat-badge{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:3px 10px;margin-bottom:12px;color:#fff}
-.cat-badge.テクノロジ{background:var(--tech)}
-.cat-badge.ストラテジ{background:var(--strat)}
-.cat-badge.マネジメント{background:var(--mgmt)}
+.card-scenario {
+  font-size: 14px; color: var(--muted); line-height: 1.7;
+  background: var(--bg); border-radius: 10px; padding: 12px 14px;
+  margin-bottom: 16px; border-left: 3px solid var(--border);
+}
+.card-term-kw {
+  font-size: 12px; color: var(--muted); margin-bottom: 8px;
+  font-weight: 700; letter-spacing: .04em;
+}
+.card-question { font-size: 17px; font-weight: 900; color: var(--ink); margin-bottom: 20px; }
 
-.term{font-size:22px;font-weight:900;margin-bottom:8px}
-.scenario{font-size:15px;line-height:1.7;color:#374151;margin-bottom:16px;background:#f3f4f6;border-radius:10px;padding:14px}
-.q-label{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px}
+/* 2択ボタン */
+.choices { display: flex; flex-direction: column; gap: 10px; }
+.choice-btn {
+  width: 100%; padding: 16px 18px; border-radius: var(--r);
+  border: 2px solid var(--border); background: #fff;
+  font-size: 15px; font-weight: 800; font-family: inherit;
+  cursor: pointer; text-align: left; color: var(--ink);
+  transition: all .15s; display: flex; align-items: center; gap: 10px;
+}
+.choice-btn:hover:not(:disabled) {
+  border-color: var(--brand); background: var(--brand-l);
+}
+.choice-btn .choice-icon { font-size: 20px; flex-shrink: 0; }
+.choice-btn.correct {
+  border-color: var(--correct); background: var(--correct-l); color: var(--correct);
+}
+.choice-btn.wrong {
+  border-color: var(--wrong); background: var(--wrong-l); color: var(--wrong);
+}
+.choice-btn:disabled { cursor: default; }
 
-.choices{display:flex;flex-direction:column;gap:10px}
-.choice-btn{border:2px solid #e5e7eb;border-radius:12px;background:var(--card);padding:14px 18px;font-size:15px;font-weight:600;cursor:pointer;text-align:left;transition:.15s;color:var(--ink)}
-.choice-btn:hover{border-color:var(--brand);background:var(--brand-l);transform:translateY(-1px)}
-.choice-btn.correct{border-color:var(--ok);background:var(--ok-l);color:var(--ok)}
-.choice-btn.wrong{border-color:var(--ng);background:var(--ng-l);color:var(--ng)}
+/* 解説パネル */
+.exp-panel {
+  display: none; margin-top: 16px;
+  border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+}
+.exp-panel.show { display: block; }
+.exp-row {
+  padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,.15);
+  font-size: 13px; line-height: 1.75; color: var(--ink);
+}
+.exp-row:last-child { border-bottom: none; }
+.exp-row.exp1 { background: #fff7ed; }
+.exp-row.exp2 { background: #eff6ff; }
+.exp-row.exp3 { background: #fff1f2; }
+.exp-label {
+  font-size: 11px; font-weight: 900; margin-bottom: 5px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.exp1 .exp-label { color: #ea580c; }
+.exp2 .exp-label { color: var(--brand); }
+.exp3 .exp-label { color: var(--wrong); }
 
-/* ─ 解説フェーズ ─ */
-.result-badge{font-size:28px;margin-bottom:8px}
-.result-msg{font-size:18px;font-weight:900;margin-bottom:16px}
-.result-msg.ok{color:var(--ok)}
-.result-msg.ng{color:var(--ng)}
-.exp-box{background:#f3f4f6;border-radius:10px;padding:14px;font-size:14px;line-height:1.75;color:#374151;margin-bottom:8px}
-.exp-box.exp1{background:#eff6ff;border-left:4px solid var(--brand)}
-.exp-box.exp2{background:#fefce8;border-left:4px solid #ca8a04}
-.exp-box.exp3{background:#fef2f2;border-left:4px solid var(--ng)}
-.exp-label{font-size:11px;font-weight:800;letter-spacing:.04em;margin-bottom:4px}
-.exp-label.l1{color:var(--brand)}
-.exp-label.l2{color:#ca8a04}
-.exp-label.l3{color:var(--ng)}
-.exp-term{font-weight:900;color:var(--ink)}
-.freq-badge{display:inline-block;font-size:10px;font-weight:800;background:#fbbf24;color:#78350f;border-radius:6px;padding:1px 6px;vertical-align:middle;margin-left:6px}
-.kw-badge{display:inline-block;font-size:10px;font-weight:700;background:#e0e7ff;color:#3730a3;border-radius:6px;padding:1px 7px;vertical-align:middle;margin-left:6px}
+/* 次へボタン */
+.next-btn {
+  width: 100%; padding: 16px; margin-top: 16px;
+  background: var(--brand); border: none; border-radius: var(--r-lg);
+  color: #fff; font-size: 16px; font-weight: 900;
+  cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 0 var(--brand-d); transition: all .12s;
+  display: none;
+}
+.next-btn.show { display: block; }
+.next-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--brand-d); }
 
-.action-btns{display:flex;flex-direction:column;gap:10px;margin-top:4px}
-.btn{border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;transition:.15s;text-decoration:none;display:block;text-align:center}
-.btn-next{background:var(--brand);color:#fff}
-.btn-next:hover{background:var(--brand-d);transform:translateY(-1px)}
-.btn-article{background:var(--card);border:2px solid #e5e7eb;color:var(--ink)}
-.btn-article:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-l)}
-.btn-quiz{background:var(--card);border:2px solid #e5e7eb;color:var(--ink)}
-.btn-quiz:hover{border-color:var(--strat);color:var(--strat);background:#f5f3ff}
+/* ===== RESULT SCREEN ===== */
+.result-hero { text-align: center; margin-bottom: 28px; padding-top: 20px; }
+.result-chara { width: 140px; margin: 0 auto 12px; display: block; filter: drop-shadow(0 4px 12px rgba(37,99,235,.2)); }
+.result-title { font-size: 28px; font-weight: 900; color: var(--ink); margin-bottom: 6px; }
+.result-score-big { font-size: 48px; font-weight: 900; color: var(--brand); line-height: 1; }
+.result-score-denom { font-size: 18px; color: var(--muted); font-weight: 800; }
+.result-msg { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
-/* ─ 完了画面 ─ */
-.complete{text-align:center;padding:40px 20px}
-.complete__emoji{font-size:64px;margin-bottom:16px}
-.complete__title{font-size:24px;font-weight:900;margin-bottom:8px}
-.complete__sub{font-size:15px;color:var(--muted);margin-bottom:32px}
-.btn-restart{background:var(--brand);color:#fff;border:none;border-radius:12px;padding:16px 32px;font-size:16px;font-weight:700;cursor:pointer}
-.btn-restart:hover{background:var(--brand-d)}
+.result-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+.result-stat { background: #fff; border-radius: var(--r); padding: 16px; text-align: center; border: 1px solid var(--border); }
+.result-stat-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; font-weight: 700; }
+.result-stat-val { font-size: 22px; font-weight: 900; color: var(--ink); }
+.result-stat-val.green { color: var(--correct); }
+.result-stat-val.red { color: var(--wrong); }
 
-/* フィルター */
-.filter-wrap{max-width:600px;margin:12px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap}
-.filter-btn{border:2px solid #e5e7eb;border-radius:999px;background:var(--card);padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;color:var(--muted);transition:.15s}
-.filter-btn.active{border-color:var(--brand);background:var(--brand-l);color:var(--brand)}
-.filter-btn.active.テクノロジ{border-color:var(--tech);background:#eff6ff;color:var(--tech)}
-.filter-btn.active.ストラテジ{border-color:var(--strat);background:#f5f3ff;color:var(--strat)}
-.filter-btn.active.マネジメント{border-color:var(--mgmt);background:#ecfeff;color:var(--mgmt)}
+.result-actions { display: flex; flex-direction: column; gap: 12px; }
+.result-btn {
+  width: 100%; padding: 16px; border-radius: var(--r-lg);
+  font-size: 16px; font-weight: 900; font-family: inherit;
+  cursor: pointer; border: none; transition: all .12s;
+}
+.result-btn.primary { background: var(--brand); color: #fff; box-shadow: 0 4px 0 var(--brand-d); }
+.result-btn.primary:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--brand-d); }
+.result-btn.secondary {
+  background: #fff; color: var(--brand);
+  border: 2px solid var(--brand);
+}
+.result-btn.exam-link { background: #7c3aed; color: #fff; box-shadow: 0 4px 0 #5b21b6; }
+.result-btn.exam-link:active { transform: translateY(2px); box-shadow: 0 2px 0 #5b21b6; }
+
+/* ===== アニメ ===== */
+@keyframes popIn {
+  0% { transform: scale(.8); opacity: 0; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.pop { animation: popIn .25s ease forwards; }
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 400px) {
+  .start-chara { width: 120px; }
+  .card-question { font-size: 15px; }
+  .choice-btn { font-size: 13px; padding: 13px 14px; }
+}
 </style>
 </head>
 <body>
 
-<header class="header">
-  <a href="index.html" class="header__logo">まなクエ！</a>
-  <span class="header__title">📝 ITP 用語2択カード</span>
+<header class="site-header">
+  <a href="index.html" class="site-header__logo">まなクエ！</a>
+  <a href="index.html" class="site-header__back">← トップへ</a>
 </header>
 
-<div class="filter-wrap" id="filterWrap">
-  <button class="filter-btn active" data-cat="all" onclick="setFilter('all',this)">すべて</button>
-  <button class="filter-btn テクノロジ" data-cat="テクノロジ" onclick="setFilter('テクノロジ',this)">💻 テクノロジ</button>
-  <button class="filter-btn ストラテジ" data-cat="ストラテジ" onclick="setFilter('ストラテジ',this)">📋 ストラテジ</button>
-  <button class="filter-btn マネジメント" data-cat="マネジメント" onclick="setFilter('マネジメント',this)">⚙️ マネジメント</button>
+<!-- ===== START SCREEN ===== -->
+<div class="screen active" id="startScreen">
+  <div class="start-hero">
+    <img src="assets/img/characters/ren/base.png" class="start-chara" alt="レン先生">
+    <div class="start-bubble">📖 2択で用語を直感体験してみよう！</div>
+    <div class="start-title">用語2択チャレンジ<span class="start-badge">504語</span></div>
+    <div class="start-sub">シナリオで問題→2択→3層解説の流れで ITパスポートの用語を体に染み込ませよう</div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">総問題数</div>
+      <div class="stat-val" id="statTotal">504</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">学習済み</div>
+      <div class="stat-val" id="statDone">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">正答率</div>
+      <div class="stat-val" id="statAcc">-</div>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="section-title">📂 分野フィルター</div>
+    <div class="filter-grid">
+      <button class="filter-btn selected" data-cat="all">すべて</button>
+      <button class="filter-btn cat-tech" data-cat="テクノロジ">🖥 テクノロジ</button>
+      <button class="filter-btn cat-strat" data-cat="ストラテジ">📊 ストラテジ</button>
+      <button class="filter-btn cat-mgmt" data-cat="マネジメント">📋 マネジメント</button>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="section-title">⭐ 頻度フィルター</div>
+    <div class="filter-grid">
+      <button class="filter-btn selected" data-freq="all">すべて</button>
+      <button class="filter-btn" data-freq="high">🔥 高頻度のみ</button>
+    </div>
+  </div>
+
+  <div class="count-section">
+    <div class="section-title">📝 出題数</div>
+    <div class="count-grid">
+      <button class="count-btn selected" data-count="20">20問</button>
+      <button class="count-btn" data-count="50">50問</button>
+      <button class="count-btn" data-count="100">100問</button>
+      <button class="count-btn" data-count="all">全部</button>
+    </div>
+  </div>
+
+  <button class="start-go" id="startBtn">はじめる →</button>
 </div>
 
-<div class="prog-wrap">
-  <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
-  <div class="prog-text" id="progText">0 / 0</div>
-</div>
+<!-- ===== QUIZ SCREEN ===== -->
+<div class="screen" id="quizScreen">
+  <div class="quiz-header">
+    <span class="quiz-progress-text" id="progressText">1 / 20</span>
+    <span class="quiz-score-badge" id="scoreBadge">✅ 0 / ❌ 0</span>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar" style="width:0%"></div>
+  </div>
 
-<div class="stage" id="stage"></div>
+  <div class="vocab-card" id="vocabCard">
+    <div>
+      <span class="card-cat-badge" id="cardCat">テクノロジ</span>
+      <span class="freq-badge" id="cardFreq">高頻度</span>
+    </div>
+    <div class="card-scenario" id="cardScenario">シナリオテキスト</div>
+    <div class="card-term-kw" id="cardKw">🔑 キーワード</div>
+    <div class="card-question" id="cardQ">問題文</div>
+    <div class="choices" id="choicesArea"></div>
 
-<script src="data/itp-vocab.js"></script>
-<script>
-let pool = [], idx = 0, correct = 0, answered = false;
-let currentCat = 'all';
-
-function setFilter(cat, btn) {
-  currentCat = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  pool = currentCat === 'all' ? shuffle([...ITP_VOCAB]) : shuffle(ITP_VOCAB.filter(v => v.cat === cat));
-  idx = 0; correct = 0;
-  updateProg();
-  renderQuestion();
-}
-
-function shuffle(arr) {
-  for(let i=arr.length-1;i>0;i--){const j=Math.random()*i|0;[arr[i],arr[j]]=[arr[j],arr[i]];}
-  return arr;
-}
-
-function updateProg() {
-  const pct = pool.length ? (idx / pool.length) * 100 : 0;
-  document.getElementById('progFill').style.width = pct + '%';
-  document.getElementById('progText').textContent = idx + ' / ' + pool.length;
-}
-
-function renderQuestion() {
-  if (idx >= pool.length) { renderComplete(); return; }
-  const v = pool[idx];
-  const choices = shuffle([...v.choices]);
-  document.getElementById('stage').innerHTML = `
-    <div class="vocab-card">
-      <span class="cat-badge ${v.cat}">${v.cat}</span>
-      <div class="term">📌 ${v.term}${v.freq==='high'?'<span class=\'freq-badge\'>⭐頻出</span>':''}${v.keyword?`<span class='kw-badge'>${v.keyword}</span>`:''}</div>
-      <div class="scenario">${v.scenario}</div>
-      <div class="q-label">👇 ${v.q}</div>
-      <div class="choices">
-        ${choices.map(c => `<button class="choice-btn" onclick="answer(this,${c.correct})">${c.text}</button>`).join('')}
+    <div class="exp-panel" id="expPanel">
+      <div class="exp-row exp1">
+        <div class="exp-label">📘 基本解説</div>
+        <div id="exp1Text"></div>
       </div>
-    </div>`;
-  answered = false;
+      <div class="exp-row exp2">
+        <div class="exp-label">🎯 試験対策ポイント</div>
+        <div id="exp2Text"></div>
+      </div>
+      <div class="exp-row exp3">
+        <div class="exp-label">⚠️ 混同注意</div>
+        <div id="exp3Text"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="next-btn" id="nextBtn">次の問題へ →</button>
+</div>
+
+<!-- ===== RESULT SCREEN ===== -->
+<div class="screen" id="resultScreen">
+  <div class="result-hero">
+    <img src="assets/img/characters/ren/base.png" class="result-chara" alt="レン先生">
+    <div class="result-title" id="resultTitle">お疲れさま！</div>
+    <div>
+      <span class="result-score-big" id="resultScore">0</span>
+      <span class="result-score-denom" id="resultDenom">/ 20 問正解</span>
+    </div>
+    <div class="result-msg" id="resultMsg"></div>
+  </div>
+
+  <div class="result-stats">
+    <div class="result-stat">
+      <div class="result-stat-label">✅ 正解</div>
+      <div class="result-stat-val green" id="resultCorrect">0</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-stat-label">❌ 不正解</div>
+      <div class="result-stat-val red" id="resultWrong">0</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-stat-label">🎯 正答率</div>
+      <div class="result-stat-val" id="resultAcc">0%</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-stat-label">📚 累計学習</div>
+      <div class="result-stat-val" id="resultTotal">0</div>
+    </div>
+  </div>
+
+  <div class="result-actions">
+    <button class="result-btn primary" id="retryBtn">🔄 もう一度チャレンジ</button>
+    <button class="result-btn secondary" id="wrongOnlyBtn">❌ 間違えた問題だけ</button>
+    <button class="result-btn exam-link" onclick="location.href='exam-quiz.html'">📝 演習600問へ進む →</button>
+    <button class="result-btn secondary" onclick="location.href='index.html'">🏠 トップへ戻る</button>
+  </div>
+</div>
+
+<script src="data/itp-vocab.js?v=1"></script>
+<script>
+// ===== STATE =====
+let pool = [];
+let queue = [];
+let current = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let answered = false;
+let wrongIds = [];
+
+// フィルター設定
+let selCat = 'all';
+let selFreq = 'all';
+let selCount = 20;
+
+// 累計学習記録（sessionStorage）
+let totalDone = parseInt(sessionStorage.getItem('itp_vocab_done') || '0');
+let totalCorrect = parseInt(sessionStorage.getItem('itp_vocab_correct') || '0');
+
+// ===== INIT =====
+function updateStats() {
+  document.getElementById('statDone').textContent = totalDone;
+  const acc = totalDone > 0 ? Math.round(totalCorrect / totalDone * 100) + '%' : '-';
+  document.getElementById('statAcc').textContent = acc;
+}
+updateStats();
+
+// フィルターボタン
+document.querySelectorAll('.filter-btn[data-cat]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn[data-cat]').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selCat = btn.dataset.cat;
+  });
+});
+document.querySelectorAll('.filter-btn[data-freq]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn[data-freq]').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selFreq = btn.dataset.freq;
+  });
+});
+document.querySelectorAll('.count-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selCount = btn.dataset.count === 'all' ? 9999 : parseInt(btn.dataset.count);
+  });
+});
+
+document.getElementById('startBtn').addEventListener('click', () => startQuiz(false));
+document.getElementById('retryBtn').addEventListener('click', () => startQuiz(false));
+document.getElementById('wrongOnlyBtn').addEventListener('click', () => startQuiz(true));
+document.getElementById('nextBtn').addEventListener('click', nextCard);
+
+// ===== QUIZ LOGIC =====
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
-function answer(btn, isCorrect) {
+function startQuiz(wrongOnly) {
+  // フィルタリング
+  let filtered = ITP_VOCAB;
+  if (wrongOnly && wrongIds.length > 0) {
+    filtered = ITP_VOCAB.filter(c => wrongIds.includes(c.id));
+  } else {
+    if (selCat !== 'all') filtered = filtered.filter(c => c.cat === selCat);
+    if (selFreq === 'high') filtered = filtered.filter(c => c.freq === 'high');
+  }
+
+  if (filtered.length === 0) {
+    alert('条件に合う問題がありません。フィルターを変えてみてください。');
+    return;
+  }
+
+  pool = shuffle(filtered).slice(0, Math.min(selCount, filtered.length));
+  queue = [...pool];
+  current = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  wrongIds = [];
+
+  showScreen('quizScreen');
+  renderCard();
+}
+
+function renderCard() {
+  if (current >= queue.length) {
+    showResult();
+    return;
+  }
+
+  answered = false;
+  const card = queue[current];
+  const total = queue.length;
+
+  // ヘッダー更新
+  document.getElementById('progressText').textContent = `${current + 1} / ${total}`;
+  document.getElementById('scoreBadge').textContent = `✅ ${correctCount} / ❌ ${wrongCount}`;
+  document.getElementById('progressBar').style.width = `${(current / total) * 100}%`;
+
+  // カード内容
+  const catEl = document.getElementById('cardCat');
+  catEl.textContent = card.cat;
+  catEl.className = 'card-cat-badge cat-' + card.cat;
+
+  const freqEl = document.getElementById('cardFreq');
+  freqEl.textContent = card.freq === 'high' ? '🔥 高頻度' : '';
+  freqEl.className = 'freq-badge' + (card.freq === 'mid' ? ' mid' : '');
+
+  document.getElementById('cardScenario').textContent = card.scenario || '';
+  document.getElementById('cardKw').textContent = '🔑 ' + (card.keyword || '');
+  document.getElementById('cardQ').textContent = card.q;
+
+  // 解説リセット
+  document.getElementById('expPanel').classList.remove('show');
+  document.getElementById('exp1Text').textContent = card.exp1 || '';
+  document.getElementById('exp2Text').textContent = card.exp2 || '';
+  const exp3Row = document.querySelector('.exp-row.exp3');
+  if (card.exp3) {
+    document.getElementById('exp3Text').textContent = card.exp3;
+    exp3Row.style.display = '';
+  } else {
+    exp3Row.style.display = 'none';
+  }
+
+  // 選択肢
+  const area = document.getElementById('choicesArea');
+  area.innerHTML = '';
+  const choices = shuffle(card.choices);
+  choices.forEach((ch, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="choice-icon">${i === 0 ? 'Ⓐ' : 'Ⓑ'}</span><span>${ch.text}</span>`;
+    btn.addEventListener('click', () => selectAnswer(btn, ch.correct, card));
+    area.appendChild(btn);
+  });
+
+  document.getElementById('nextBtn').classList.remove('show');
+  // ポップインアニメ
+  document.getElementById('vocabCard').classList.remove('pop');
+  void document.getElementById('vocabCard').offsetWidth;
+  document.getElementById('vocabCard').classList.add('pop');
+}
+
+function selectAnswer(btn, isCorrect, card) {
   if (answered) return;
   answered = true;
-  if (isCorrect) correct++;
-  document.querySelectorAll('.choice-btn').forEach(b => {
-    const isThisCorrect = b.textContent === pool[idx].choices.find(c=>c.correct).text;
-    b.classList.add(isThisCorrect ? 'correct' : 'wrong');
-    b.style.pointerEvents = 'none';
+
+  const allBtns = document.querySelectorAll('.choice-btn');
+  allBtns.forEach(b => {
+    b.disabled = true;
+    // 正解ボタンを緑に
+    const text = b.querySelector('span:last-child').textContent;
+    const isThisCorrect = card.choices.some(c => c.text === text && c.correct);
+    if (isThisCorrect) b.classList.add('correct');
   });
-  // 解説を下に追加
-  const v = pool[idx];
-  const card = document.querySelector('.vocab-card');
-  const expDiv = document.createElement('div');
-  expDiv.style.marginTop = '20px';
 
-  const articleBtn = v.articleId
-    ? `<a href="articles/${v.articleId}.html" target="_blank" class="btn btn-article">📖 詳細を読む →</a>`
-    : '';
-  const catParam = encodeURIComponent(v.cat);
-  expDiv.innerHTML = `
-    <div class="${isCorrect?'result-badge':'result-badge'}">
-      ${isCorrect ? '⭕' : '❌'}
-    </div>
-    <div class="result-msg ${isCorrect?'ok':'ng'}">${isCorrect ? '正解！' : '不正解…'}</div>
-    <div class="exp-box exp1">
-      <div class="exp-label l1">📘 一言で理解</div>
-      <span class="exp-term">【${v.term}】</span>　${v.exp1}
-    </div>
-    <div class="exp-box exp2">
-      <div class="exp-label l2">📝 試験ポイント</div>
-      ${v.exp2}
-    </div>
-    ${v.exp3 ? `<div class="exp-box exp3"><div class="exp-label l3">⚠ 引っかけ注意</div>${v.exp3}</div>` : ''}
-    <div class="action-btns">
-      ${articleBtn}
-      <a href="exam-quiz.html?cat=${catParam}" class="btn btn-quiz">🧩 ${v.cat}の問題を解く →</a>
-      <button class="btn btn-next" onclick="next()">➡ 次の用語へ</button>
-    </div>`;
-  card.appendChild(expDiv);
+  if (isCorrect) {
+    btn.classList.add('correct');
+    correctCount++;
+    totalCorrect++;
+  } else {
+    btn.classList.add('wrong');
+    wrongCount++;
+    wrongIds.push(card.id);
+  }
+  totalDone++;
+  sessionStorage.setItem('itp_vocab_done', totalDone);
+  sessionStorage.setItem('itp_vocab_correct', totalCorrect);
+  updateStats();
+
+  // 解説表示
+  document.getElementById('expPanel').classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('nextBtn').textContent = current + 1 >= queue.length ? '結果を見る 🎉' : '次の問題へ →';
 }
 
-function next() {
-  idx++;
-  updateProg();
-  renderQuestion();
+function nextCard() {
+  current++;
+  renderCard();
 }
 
-function renderComplete() {
-  document.getElementById('stage').innerHTML = `
-    <div class="complete">
-      <div class="complete__emoji">🎉</div>
-      <div class="complete__title">全${pool.length}問 完了！</div>
-      <div class="complete__sub">正解率 ${Math.round(correct/pool.length*100)}%（${correct}/${pool.length}）</div>
-      <button class="btn-restart" onclick="setFilter(currentCat, document.querySelector('.filter-btn.active'))">もう一度</button>
-    </div>`;
-  updateProg();
+function showResult() {
+  showScreen('resultScreen');
+  const total = queue.length;
+  const acc = Math.round(correctCount / total * 100);
+
+  document.getElementById('resultScore').textContent = correctCount;
+  document.getElementById('resultDenom').textContent = `/ ${total} 問正解`;
+  document.getElementById('resultCorrect').textContent = correctCount;
+  document.getElementById('resultWrong').textContent = wrongCount;
+  document.getElementById('resultAcc').textContent = acc + '%';
+  document.getElementById('resultTotal').textContent = totalDone + '問';
+
+  let title, msg;
+  if (acc >= 90) { title = '🏆 完璧！'; msg = 'ほぼ完璧！演習600問にも自信を持って挑もう。'; }
+  else if (acc >= 70) { title = '👍 いい感じ！'; msg = '基本はOK。間違えた問題をもう一度やって完成させよう。'; }
+  else if (acc >= 50) { title = '📖 もう少し！'; msg = '半分以上は理解できてる。苦手な用語を集中的に復習しよう。'; }
+  else { title = '💪 まだまだこれから！'; msg = 'シナリオをじっくり読んで、用語のイメージをつかんでいこう。'; }
+
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultMsg').textContent = msg;
+
+  const wrongBtn = document.getElementById('wrongOnlyBtn');
+  wrongBtn.style.display = wrongIds.length > 0 ? 'block' : 'none';
 }
 
-// 初期化
-setFilter('all', document.querySelector('.filter-btn[data-cat="all"]'));
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
 </script>
-
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 </body>
 </html>
