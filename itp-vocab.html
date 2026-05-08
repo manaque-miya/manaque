@@ -609,12 +609,12 @@ function selectAnswer(btn, isCorrect, card) {
   // 解説表示
   document.getElementById('expPanel').classList.add('show');
   const slug = ARTICLE_MAP[card.id];
-  const btn = document.getElementById('articleBtn');
+  const artBtn = document.getElementById('articleBtn');
   if (slug) {
-    btn.href = '/articles/' + slug + '.html';
-    btn.style.display = '';
+    artBtn.href = '/articles/' + slug + '.html';
+    artBtn.style.display = '';
   } else {
-    btn.style.display = 'none';
+    artBtn.style.display = 'none';
   }
   document.getElementById('nextBtn').classList.add('show');
   document.getElementById('nextBtn').textContent = current + 1 >= queue.length ? '結果を見る 🎉' : '次の問題へ →';
