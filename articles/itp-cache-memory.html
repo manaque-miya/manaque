@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>キャッシュメモリ（L1・L2・L3）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="キャッシュメモリ（L1・L2・L3）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-cache-memory.html">
+  <meta property="og:title" content="キャッシュメモリ（L1・L2・L3）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="キャッシュメモリ（L1・L2・L3）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-cache-memory.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">キャッシュメモリ（L1・L2・L3）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">キャッシュメモリ（L1・L2・L3）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>キャッシュメモリ（L1・L2・L3）とは何か</h2>
+<p>キャッシュメモリとは、CPU（処理速度が高速）とメインメモリ（処理速度が低速）の速度差を埋めるために設置された、CPUに近い高速な小容量メモリだ。L1・L2・L3の階層（レベル）に分かれており、L1が最も高速・小容量でCPUコアに最も近く、L3が最も低速・大容量でCPU全体で共有されることが多い。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: キャッシュメモリは「CPUが頻繁に使うデータを手元に置いておく」仕組みであり、毎回遠いメインメモリへアクセスする無駄を省いてパフォーマンスを大幅に向上させる。</p></div>
+</div>
+<div class="card"><h2>メモリ階層の比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">アクセス速度</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">容量</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">コスト</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">L1キャッシュ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最速（0.5ns程度）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最小（32〜512KB）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最高</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コアごとに専用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">L2キャッシュ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">速い（数ns）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">小（256KB〜8MB）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コアごとまたは共有</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">L3キャッシュ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中程度（数十ns）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中（8〜64MB）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中程度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全コアで共有</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メインメモリ（RAM）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">遅い（100ns程度）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大（GB単位）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行中プログラム格納</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SSD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">さらに遅い（μs）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">さらに大（TB単位）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">さらに低い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">永続ストレージ</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: キャッシュメモリとCPUレジスタは異なる。レジスタはCPU内部の演算用一時記憶（最速・極小）で、キャッシュはレジスタとメインメモリの間に位置する。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ L1＝最速・最小容量・コア専用</li>
+<li style="padding:4px 0;font-size:14px;">✅ L3＝最低速（キャッシュ内）・最大容量・全コア共有</li>
+<li style="padding:4px 0;font-size:14px;">✅ ヒット率が高いほどキャッシュ効果が大きい</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">キャッシュメモリ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CPUとRAMの速度差を埋める高速小容量メモリ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「L1/L2/L3・CPUの近く」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メインメモリ（RAM）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プログラム実行中のデータを格納</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「揮発性・電源OFFで消える・GB単位」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ディスクキャッシュ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HDD/SSDのデータをRAMにキャッシュ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「ファイルI/Oの高速化」ならこれ</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：キャッシュメモリ（L1・L2・L3）の重要ポイント</h2>
+<p>キャッシュメモリの問題で差がつくのは「階層ごとの速度・容量の大小関係」だ。速度：L1>L2>L3>RAM>ストレージ、容量：L1<L2<L3<RAM<ストレージという逆の関係を覚えること。「最もアクセス速度が速いのはどれか」→L1キャッシュが正答だ。</p>
+<p>ヒット率（キャッシュヒット率）の概念も重要だ。CPUがアクセスしたいデータがキャッシュに存在する割合がヒット率で、高いほどメインメモリへのアクセスが減り性能が向上する。「キャッシュメモリを増やすとシステム性能が向上する理由はどれか」→ヒット率が上がってメインメモリアクセスが減るからが正答だ。</p>
+<p>局所性（ローカリティ）の原理も覚えること。「時間的局所性（最近アクセスしたデータは再びアクセスされやすい）」と「空間的局所性（アクセスしたデータの近くにあるデータもアクセスされやすい）」がキャッシュが高いヒット率を実現できる根拠だ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-cpu].html" style="color:#1F56C6;">[itp-cpu]</a>, <a href="[itp-memory].html" style="color:#1F56C6;">[itp-memory]</a>, <a href="[itp-hardware].html" style="color:#1F56C6;">[itp-hardware]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

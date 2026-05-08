@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CMDB（構成管理データベース）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="CMDB（構成管理データベース）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-cmdb.html">
+  <meta property="og:title" content="CMDB（構成管理データベース）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="CMDB（構成管理データベース）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-cmdb.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜マネジメント</div>
+    <h1 class="at">CMDB（構成管理データベース）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">CMDB（構成管理データベース）</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>CMDB（構成管理データベース）とは何か</h2>
+<p>CMDB（Configuration Management Database）はITILの構成管理プロセスで使用するデータベースで、IT環境を構成する全ての構成アイテム（CI：Configuration Item）とそれらの関係・属性・変更履歴を管理する。サーバー・ネットワーク機器・ソフトウェア・サービスなど全IT資産の「関係性マップ」として機能する。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: CMDBはIT環境の「住民台帳」であり、「どの機器が・何に接続され・どのサービスを支えているか」を把握することで、変更や障害の影響範囲を事前に把握できる。</p></div>
+</div>
+<div class="card"><h2>CMDBの主な管理情報と活用</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">構成アイテム（CI）例</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">管理属性</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">活用場面</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CPU/メモリ/OS/設置場所/担当者</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更管理・障害影響分析</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ソフトウェア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バージョン/ライセンス数/依存関係</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ライセンス管理・脆弱性対応</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ネットワーク機器</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IP/VLAN/接続関係</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インシデント原因特定</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サービス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">構成CIとの関係・SLA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サービス影響分析（SIA）</td></tr></table></div><p>CMDBを活用する代表的なプロセスは変更管理（変更前の影響範囲分析）・インシデント管理（障害影響の素早い特定）・資産管理（ライセンス・更新管理）だ。CMDBが正確でなければ変更管理が形骸化するため、自動ディスカバリーツール（Ansible・ServiceNow Discovery等）と組み合わせてCI情報を自動収集・最新維持することが実践的に重要だ。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: CMDBを「単なる資産管理台帳」と混同する誤りがある。資産管理は所有・コストに着目するが、CMDBはCI同士の「関係性・依存関係」が核心であり、影響分析に使えることが差別化点だ。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ CMDB＝構成アイテム（CI）と関係性を管理するデータベース</li>
+<li style="padding:4px 0;font-size:14px;">✅ 変更管理・インシデント管理・資産管理の基盤として活用</li>
+<li style="padding:4px 0;font-size:14px;">✅ CIは「サービスを構成する全要素（ハード・ソフト・人・文書も含む）」</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CMDB</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CI間の関係性・依存関係を管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">関係マップ・影響分析がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">資産管理台帳</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">所有機器の一覧・コスト管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">所有・コスト・棚卸がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更の計画・承認・実施・記録プロセス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CAB・変更要求・影響評価がキーワード</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：CMDB（構成管理データベース）の重要ポイント</h2>
+<p>CMDBを答えるポイントは「ITILの構成管理プロセスで使うCI（構成アイテム）とその関係性を管理するデータベース」という定義を正確に答えることだ。</p>
+<p>試験では「CMDBに登録する情報として適切でないものはどれか」という問いで、CIに該当しない「社員の個人評価」などが誤りの選択肢になる。また「変更管理においてCMDBを使う目的はどれか」という問いでは「変更対象CIの関係性を把握して影響範囲を事前に分析するため」が正解だ。ITILのプロセスとの関連でサービスデスク・変更管理・インシデント管理とセットで出題される。</p>
+<p>覚え方は「CMDB＝Configuration Map Database（関係性のマップ）＝IT環境の住民台帳」。混同注意は「CMDBと資産管理」で、CMDBは「つながり（関係性）が主役」、資産管理は「モノ（所有）が主役」だ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-itil].html" style="color:#1F56C6;">[itp-itil]</a>, <a href="[itp-service-desk].html" style="color:#1F56C6;">[itp-service-desk]</a>, <a href="[itp-change-management].html" style="color:#1F56C6;">[itp-change-management]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

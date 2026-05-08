@@ -1,138 +1,83 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>バックアップ（差分・増分）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="バックアップ（差分・増分）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-backup.html">
-  <meta property="og:title" content="バックアップの種類とは？フル・差分・増分バックアップをわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="フルバックアップ・差分バックアップ・増分バックアップの違いと特徴をITパスポート試験対策向けに解説します。">
+  <meta property="og:title" content="バックアップ（差分・増分）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="バックアップ（差分・増分）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-backup.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>バックアップの種類とは？フル・差分・増分バックアップをわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="フルバックアップ・差分バックアップ・増分バックアップの違いと特徴をITパスポート試験対策向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">💻 システム管理</div>
-<h1>バックアップの種類とは？フル・差分・増分バックアップをわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">バックアップ</span><span class="tag">フルバックアップ</span><span class="tag">差分バックアップ</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">バックアップ（差分・増分）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">バックアップ（差分・増分）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>バックアップ（差分・増分）とは何か</h2>
+<p>試験では「差分バックアップと増分バックアップの違いとして正しいものはどれか」という形で出題される。バックアップの基本はフルバックアップ（全データを丸ごと保存）だが、毎日フルバックアップを取ると時間もストレージも膨大になる。そこで前回から変化した部分だけを保存する差分・増分バックアップが使われる。この2種類は「何を基点にするか」と「復元にかかる手間」が決定的に違う。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 差分は「前回フルバックアップからの全変更」、増分は「前回どのバックアップからの変更」——基点の違いで復元速度とデータ量が変わる。</p></div>
 </div>
-
-<div class="card"><h2>バックアップとは</h2>
-<p>バックアップとは、<strong>データの喪失に備えてデータのコピーを別の場所に保存する作業</strong>です。ハードウェア障害・ランサムウェア・誤操作など様々なリスクに対応するための重要な対策です。</p>
-<div class="hl">💡 バックアップは「いざという時のための保険」です。取っていれば復旧できますが、取っていなければ取り返しがつきません。</div>
-</div>
-<div class="card"><h2>バックアップの3種類</h2>
-<h3>① フルバックアップ</h3>
-<p><strong>すべてのデータを毎回バックアップ</strong>する方式です。</p>
-<ul>
-<li>✅ 復旧が簡単（1回分のバックアップを戻すだけ）</li>
-<li>❌ 時間・容量が最も多くかかる</li>
-</ul>
-<h3>② 差分バックアップ</h3>
-<p><strong>前回のフルバックアップ以降に変更されたデータ</strong>をバックアップする方式です。</p>
-<ul>
-<li>✅ フルより時間・容量が少ない</li>
-<li>✅ 復旧は「フル＋最新の差分」の2回分でできる</li>
-<li>❌ 日がたつほど差分のサイズが大きくなる</li>
-</ul>
-<h3>③ 増分バックアップ</h3>
-<p><strong>前回のバックアップ（フルまたは増分）以降に変更されたデータのみ</strong>をバックアップする方式です。</p>
-<ul>
-<li>✅ バックアップ時間・容量が最も少ない</li>
-<li>❌ 復旧には「フル＋すべての増分」が必要で時間がかかる</li>
-</ul>
-<table>
-<tr><th>種類</th><th>対象</th><th>バックアップ時間</th><th>復旧時間</th></tr>
-<tr><td>フル</td><td>全データ</td><td>最長</td><td>最短（1回分）</td></tr>
-<tr><td>差分</td><td>前回フル以降の変更</td><td>中間（増加）</td><td>短い（フル+最新差分）</td></tr>
-<tr><td>増分</td><td>前回バックアップ以降の変更</td><td>最短</td><td>最長（フル+全増分）</td></tr>
-</table>
-<div class="mb">❌ 差分と増分の違い：差分は「フルバックアップ基準」、増分は「前回バックアップ基準」です。混同しやすいので注意。</div>
-</div>
-<div class="card"><h2>3-2-1ルール</h2>
-<p>バックアップのベストプラクティスとして「3-2-1ルール」が知られています。</p>
-<ul>
-<li><strong>3</strong>：データのコピーを3つ保持する</li>
-<li><strong>2</strong>：2種類の異なるメディアに保存する</li>
-<li><strong>1</strong>：1つはオフサイト（別の場所）に保管する</li>
-</ul>
+<div class="card"><h2>差分・増分・フルバックアップの比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">保存する内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">容量</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">復元の速さ</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フルバックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全データを毎回まるごと</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ 大きい</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 速い（1回で完結）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">差分バックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前回フル以降の全変更を累積保存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ まあまあ速い（フル＋差分の2回）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">増分バックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前回バックアップ以降の変更のみ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 小さい</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ 遅い（フル＋全増分を順に読む）</td></tr></table></div><p>増分バックアップの復元例：月曜フル→火曜増分→水曜増分→木曜増分。木曜のデータを復元するには月曜のフル＋火曜の増分＋水曜の増分＋木曜の増分、の4段階が必要になる。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「差分は前回差分から」「増分は前回フルから」と逆に覚えているケースが多い——差分は<strong>常に前回フルが基点</strong>、増分は<strong>直前のどのバックアップでも基点になる</strong>が正しい。</p></div>
 </div>
 <div class="card"><h2>ここが試験のキモ</h2>
-<div class="hl">✅ 3種類の比較表を覚えましょう。「差分 = フル基準」「増分 = 前回バックアップ基準」の違いが頻出です。</div>
-<ul>
-<li>フル：全データ → 復旧簡単・容量大</li>
-<li>差分：フル以降の変更 → 中間的</li>
-<li>増分：前回以降の変更 → バックアップ速・復旧遅</li>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 差分バックアップは「前回のフルバックアップから現在までの変更をすべて保存」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 増分バックアップは「前回のバックアップ（フルでも増分でも）から現在までの変更のみ保存」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 復元速度：差分＞増分（増分は複数回読み込みが必要）</li>
+<li style="padding:4px 0;font-size:14px;">✅ データ量：増分＜差分（増分は最小限の変更のみ）</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>バックアップの種類と特徴</h2>
-<table><tr><th>種類</th><th>内容</th><th>時間</th><th>容量</th></tr>
-<tr><td>フルバックアップ</td><td>全データをバックアップ</td><td>長い</td><td>大</td></tr>
-<tr><td>差分バックアップ</td><td>前回フルバックアップ以降の変更</td><td>中</td><td>中</td></tr>
-<tr><td>増分バックアップ</td><td>前回バックアップ以降の変更のみ</td><td>短い</td><td>小</td></tr>
-</table>
-<p>復元時間：フルが最速、増分は全世代分を適用するため最長。3-2-1ルール：3つのコピー・2種類の異なるメディア・1つはオフサイト保管。</p></div>
-<div class="card"><h2>バックアップのRTO・RPO</h2>
-<p>RTO（Recovery Time Objective：目標復旧時間）：障害発生からシステム復旧までの目標時間。RPO（Recovery Point Objective：目標復旧地点）：どの時点のデータまで復旧できるか（最大許容データ損失量）。BCP（事業継続計画）でRTO・RPOを定め、それに合わせたバックアップ戦略を選ぶ。ランサムウェア対策として、インターネット非接続のオフライン・オフサイトバックアップが重要。</p></div>
-<div class="card"><h2>🎯 試験対策：バックアップの重要ポイント</h2><p>バックアップはデータ消失に備えた最重要のリスク対策です。ITパスポート試験では、3種類のバックアップ方式とその特徴の違いが頻出です。</p><p>完全バックアップはすべてのデータを毎回保存するため、復元が最も簡単ですが時間とストレージを消費します。差分バックアップは前回の完全バックアップからの変更分のみを保存。増分バックアップは前回のバックアップ（完全・差分・増分を問わず）からの変更分のみを保存するため最も効率的ですが、復元時に複数のバックアップを組み合わせる必要があります。</p><p>「3-2-1ルール」も重要です。3つのコピーを、2種類の異なるメディアに保存し、1つはオフサイト（別の場所）に置くという原則です。これにより火災・盗難・機器故障などのリスクを分散できます。</p></div>
-<div class="cta"><h2>学んだことを確かめよう！</h2>
-<p>理解を確かめてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">基点</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">保存量の増え方</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">復元ステップ</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">差分バックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前回フルから</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時間とともに増える</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フル＋最新差分の2回</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">増分バックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前回バックアップから</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">毎回少量で一定</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フル＋全増分を順番に</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：バックアップ（差分・増分）の重要ポイント</h2>
+<p>バックアップで得点するには「差分と増分の基点の違い」と「復元速度のトレードオフ」を理解することだ。差分バックアップは前回フルバックアップを基点に「フル以降の全変更」を保存するため、復元はフル＋差分の2回で済む。増分バックアップは毎回の差分を最小限に抑えるが、復元にはフルから全増分をすべて積み上げる必要がある。</p>
+<p>試験の選択肢では「復元が速いのはどちらか」「容量が小さいのはどちらか」という対比問題が多い。「速い復元→差分バックアップ」「小さい容量→増分バックアップ」という対応を覚えておけば、複数の比較問題に対応できる。ランサムウェア対策としてバックアップの重要性が問われる文脈でも、「定期的なバックアップ（できればオフライン）」が最善策であることを押さえておこう。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-ransomware.html" style="color:#1F56C6;">itp-ransomware</a>, <a href="itp-cloud.html" style="color:#1F56C6;">itp-cloud</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

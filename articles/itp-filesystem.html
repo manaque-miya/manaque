@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ファイルシステム（NTFS/ext4）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="ファイルシステム（NTFS/ext4）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-filesystem.html">
+  <meta property="og:title" content="ファイルシステム（NTFS/ext4）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="ファイルシステム（NTFS/ext4）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-filesystem.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">ファイルシステム（NTFS/ext4）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">ファイルシステム（NTFS/ext4）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>ファイルシステム（NTFS/ext4）とは何か</h2>
+<p>ファイルシステムはOSがストレージデバイス（HDD・SSD）上のデータをファイル・ディレクトリとして管理するための構造と規則を定める仕組みだ。NTFS（New Technology File System）はWindowsの標準ファイルシステム、ext4（Fourth Extended Filesystem）はLinuxの標準ファイルシステムで、それぞれのOSに最適化された特性を持つ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: ファイルシステムはデータの「整理棚の設計図」であり、どんな棚（NTFS・ext4）を使うかによって最大ファイルサイズ・アクセス制御・信頼性が変わる。</p></div>
+</div>
+<div class="card"><h2>主要ファイルシステムの比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ファイルシステム</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">OS</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">最大ファイルサイズ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">NTFS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Windows</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">16TB（理論値16EB）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ACL・ジャーナリング・暗号化（EFS）・圧縮</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ext4</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Linux</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">16TB</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ジャーナリング・遅延アロケーション・extents</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">FAT32</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">汎用（USB等）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">4GB</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">互換性高・機能制限あり（4GB超ファイル不可）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">exFAT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">汎用（大容量フラッシュ）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">128PB（理論値）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">FAT32の後継・大容量ファイル対応</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">APFS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">macOS/iOS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">8EB</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スナップショット・クローン・SSD最適化</td></tr></table></div><p>ジャーナリング（journaling）はファイルシステムの変更操作をジャーナル（ログ）に記録しておくことで、クラッシュ後の整合性回復を高速化する仕組みだ。NTFSのACL（Access Control List）はWindowsの詳細なアクセス権管理（ユーザー・グループ別の読み取り/書き込み/実行権限設定）を可能にする機能だ。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「FAT32は現代でも大容量ファイルを扱える」という誤りがある。FAT32は単一ファイルの最大サイズが4GB（2³²バイト-1）の制限があり、4GB超のファイルは保存できない。大容量USBにexFATを使う理由がここにある。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ NTFS＝Windows標準・ACL・ジャーナリング・EFS暗号化</li>
+<li style="padding:4px 0;font-size:14px;">✅ ext4＝Linux標準・ジャーナリング・高性能</li>
+<li style="padding:4px 0;font-size:14px;">✅ FAT32の4GB上限・exFATはFAT32の後継で大容量対応</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">NTFS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Windows・ACL・暗号化・4GB超OK</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Windows・詳細ACL・EFSがキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ext4</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Linux・ジャーナリング・高性能</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Linux・オープンソースがキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">FAT32</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">汎用・4GB制限・互換性重視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">USB・互換・4GB制限がキーワード</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：ファイルシステム（NTFS/ext4）の重要ポイント</h2>
+<p>試験では[ファイルシステム]を「OSとストレージのインターフェースの仕組み」として問う。</p>
+<p>「WindowsのNTFSと比較してFAT32の制限として正しいものはどれか」という問いでは「単一ファイルの最大サイズが4GBに制限されている」が正解だ。ジャーナリングについては「電源断やクラッシュ後のファイルシステムの一貫性を素早く回復できる仕組み」として問われる。NTFSのACLについては「ファイル・フォルダごとにユーザーやグループのアクセス権を細かく設定できる機能」と答えると正確だ。</p>
+<p>覚え方は「NTFS＝Nマイクロソフト頂点（Windows標準）・ACL・ジャーナル」「ext4＝eXtended Linux第4世代」「FAT32＝4GB制限のレガシー」。混同注意は「exFATとFAT32」で、exFATはFAT32の後継であり4GB制限がない点が最大の違いだ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-storage-types].html" style="color:#1F56C6;">[itp-storage-types]</a>, <a href="[itp-hypervisor].html" style="color:#1F56C6;">[itp-hypervisor]</a>, <a href="[itp-data-compression].html" style="color:#1F56C6;">[itp-data-compression]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

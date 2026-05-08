@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>文字コード（ASCII・Unicode・UTF-8）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="文字コード（ASCII・Unicode・UTF-8）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-character-code.html">
+  <meta property="og:title" content="文字コード（ASCII・Unicode・UTF-8）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="文字コード（ASCII・Unicode・UTF-8）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-character-code.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">文字コード（ASCII・Unicode・UTF-8）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">文字コード（ASCII・Unicode・UTF-8）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>文字コード（ASCII・Unicode・UTF-8）とは何か</h2>
+<p>文字コードとは、文字（アルファベット・数字・記号・漢字など）をコンピュータで扱うために数値に対応付けた規則だ。ASCII（アスキー）は英語圏の基本文字を7ビット128種類で定義した最初の標準規格であり、Unicode（ユニコード）はあらゆる言語・記号を統一的に扱うために策定された国際規格だ。UTF-8はUnicodeを可変長バイト列でエンコードする方式の一つだ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 文字化けの原因の9割は「送り手と受け手の文字コードの不一致」—同じバイト列でもShift-JISとUTF-8では異なる文字として解釈されるため、コードの統一が文字化け防止の根本対策だ。</p></div>
+</div>
+<div class="card"><h2>主要文字コードの比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">文字コード</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ビット数/バイト</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対応文字</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ASCII</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">7ビット（128文字）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">英数字・記号・制御文字</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最も基本的な規格。日本語非対応</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Shift-JIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1〜2バイト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">日本語（JIS漢字）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">日本のWindowsで長年使用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EUC-JP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2〜3バイト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">日本語</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主にLinux/Unixで使用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Unicode</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">21ビット（110万文字超）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">世界中の文字</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">国際標準。文字コードの統一を目指す</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">UTF-8</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1〜4バイト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Unicode全文字</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ASCII互換で最もWebで普及。HTMLデフォルト</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">UTF-16</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2〜4バイト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Unicode全文字</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Java・Windowsの内部表現で使用</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「UnicodeとUTF-8は同じ」は誤りだ。Unicodeは「文字と数値の対応表」（文字セット）であり、UTF-8はその数値をバイト列で表現する「エンコード方式」だ。Unicodeという文字セットを表現するエンコード方式にはUTF-8・UTF-16・UTF-32がある。</p></div>
+</div>
+<div class="card"><h2>BOMと文字コードの自動判定</h2>
+<p>UTF-8ファイルの先頭に付加される「BOM（Byte Order Mark：EF BB BF）」は、ファイルがUTF-8エンコードであることを示す目印だ。BOMありUTF-8をWindowsは扱いやすいが、LinuxのシェルスクリプトではBOMが誤動作の原因になることがある。現代のWeb開発ではBOMなしUTF-8が推奨されている。</p>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ ASCIIは7ビット128文字。英数字・記号のみで日本語非対応</li>
+<li style="padding:4px 0;font-size:14px;">✅ UnicodeはWorldwideの文字を統一管理する国際文字コード規格</li>
+<li style="padding:4px 0;font-size:14px;">✅ UTF-8はUnicodeのエンコード方式。ASCII互換で1〜4バイト可変長</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Unicode</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">文字と番号の対応表（文字セット）。エンコード方式ではない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">UTF-8</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Unicodeのエンコード方式。可変長（1〜4バイト）。最もWebで普及</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Shift-JIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">日本語対応の文字コード。ASCII非互換の2バイト部分がある</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ASCII</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">7ビット128文字。英語基本文字の基盤。UTF-8はASCIIと完全上位互換</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：文字コード（ASCII・Unicode・UTF-8）の重要ポイント</h2>
+<p>試験では「文字化けの原因」「ASCIIのビット数・文字数」「UTF-8とUnicodeの関係」が頻出だ。「ASCII＝7ビット＝128文字（2の7乗）」という数値の組み合わせを確実に暗記する。</p>
+<p>「国際化対応のシステムではどの文字コードを使うべきか」という問いにはUnicode（UTF-8）が正解になる。Shift-JISやEUC-JPは日本語専用であり、多言語環境では文字化けが発生しやすいため推奨されない。「Webサイトを国際化する際の文字コード設定」として<code><meta charset="UTF-8"></code>が標準化されている背景も理解しておく。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-binary-hex].html" style="color:#1F56C6;">[itp-binary-hex]</a>, <a href="[itp-algorithm].html" style="color:#1F56C6;">[itp-algorithm]</a>, <a href="[itp-os].html" style="color:#1F56C6;">[itp-os]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

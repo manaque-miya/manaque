@@ -1,123 +1,89 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SQLとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="SQLの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-sql.html">
-  <meta property="og:title" content="SQLとは？SELECT・INSERT・UPDATE・DELETEをわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="SQLの基本構文（SELECT・FROM・WHERE・INSERT・UPDATE・DELETE）をITパスポート試験向けにわかりやすく解説します。">
+  <meta property="og:title" content="SQLとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="SQLの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-sql.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>SQLとは？SELECT・INSERT・UPDATE・DELETEをわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="SQLの基本構文（SELECT・FROM・WHERE・INSERT・UPDATE・DELETE）をITパスポート試験向けにわかりやすく解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">💻 データベース</div>
-<h1>SQLとは？SELECT・INSERT・UPDATE・DELETEをわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">SQL</span><span class="tag">データベース</span><span class="tag">SELECT</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">SQLとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">SQL</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>SQLとは何か</h2>
+<p>なぜデータベースを操作するために専用の言語が必要なのか。それはデータベースに格納された大量のデータを効率よく検索・更新・管理するためには、専用の「命令文の書き方」が必要だからだ。SQL（Structured Query Language：構造化照会言語）はリレーショナルデータベースを操作するための標準的な言語で、「○○の条件に合うデータを取り出せ」「このデータを更新せよ」といった命令を記述する。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: SQLはDBMSを操作する「言語」——DBMSはSQLを受け取って実行する「システム（基盤）」という道具と道具箱の関係。</p></div>
 </div>
-
-<div class="card"><h2>SQLとは</h2>
-<p>SQL（Structured Query Language）とは、<strong>関係データベース（RDB）を操作するための専用言語</strong>です。データの検索・追加・更新・削除など、データベースへのすべての操作をSQL文で記述します。</p>
-<div class="hl">💡 SQLは「問い合わせ言語（Query Language）」です。「このデータを取ってきて」と問い合わせるイメージです。</div>
+<div class="card"><h2>SQLの基本コマンド</h2>
+<p>SQLの主要コマンド（CRUD操作）：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>SELECT</strong>: データを検索・取得する。「SELECT 氏名 FROM 顧客 WHERE 年齢 &gt; 30」</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>INSERT</strong>: 新しいデータを追加する</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>UPDATE</strong>: 既存のデータを更新・変更する</li>
+<li style="padding:4px 0;font-size:14px;">④ <strong>DELETE</strong>: データを削除する</li>
+</ul>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">コマンド</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">操作</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SELECT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検索・取得</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SELECT * FROM 顧客 WHERE 住所 = '東京'</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">INSERT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">追加</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">INSERT INTO 顧客 VALUES ('田中', '東京')</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">UPDATE</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">更新</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">UPDATE 顧客 SET 住所 = '大阪' WHERE 氏名 = '田中'</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DELETE</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">削除</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DELETE FROM 顧客 WHERE 氏名 = '田中'</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: SQLインジェクション（攻撃手法）とSQL（言語そのもの）を混同しやすい——SQLは正当なDB操作言語で、それを悪用した攻撃手法がSQLインジェクション。SQLは道具、SQLインジェクションはその悪用だ。</p></div>
 </div>
-<div class="card"><h2>主なSQL文の種類</h2>
-<h3>① SELECT（データの検索）</h3>
-<p>テーブルからデータを取得する最も基本的な命令です。</p>
-<div class="hl">SELECT 列名 FROM テーブル名 WHERE 条件;<br><br>例：SELECT * FROM 社員 WHERE 部署='営業部';<br>→「社員」テーブルから部署が「営業部」の全データを取得</div>
-<h3>② INSERT（データの追加）</h3>
-<div class="hl">INSERT INTO テーブル名 (列1, 列2) VALUES (値1, 値2);<br><br>例：INSERT INTO 社員 (名前, 部署) VALUES ('田中', '営業部');</div>
-<h3>③ UPDATE（データの更新）</h3>
-<div class="hl">UPDATE テーブル名 SET 列名=新しい値 WHERE 条件;<br><br>例：UPDATE 社員 SET 部署='開発部' WHERE 名前='田中';</div>
-<h3>④ DELETE（データの削除）</h3>
-<div class="hl">DELETE FROM テーブル名 WHERE 条件;<br><br>例：DELETE FROM 社員 WHERE 名前='田中';</div>
-<div class="mb">❌ 注意：WHERE句を忘れるとテーブル内の全データが対象になります。DELETE FROM 社員; → 全データ削除！</div>
-</div>
-<div class="card"><h2>よく使うSELECT句</h2>
-<table>
-<tr><th>句</th><th>機能</th><th>例</th></tr>
-<tr><td>WHERE</td><td>条件で絞り込み</td><td>WHERE 年齢 >= 30</td></tr>
-<tr><td>ORDER BY</td><td>並び替え</td><td>ORDER BY 年齢 DESC（降順）</td></tr>
-<tr><td>GROUP BY</td><td>グループ化</td><td>GROUP BY 部署</td></tr>
-<tr><td>JOIN</td><td>複数テーブルの結合</td><td>JOIN 部署 ON 社員.部署ID=部署.ID</td></tr>
-</table>
-</div>
-<div class="card"><h2>得点につながるポイント</h2>
-<div class="hl">✅ SELECT・INSERT・UPDATE・DELETEの基本構文と、WHERE句の使い方が頻出です。</div>
-<ul>
-<li>SELECT：データ検索（FROM・WHERE と組み合わせる）</li>
-<li>INSERT：データ追加</li>
-<li>UPDATE：データ更新（WHERE必須）</li>
-<li>DELETE：データ削除（WHERE必須！全削除に注意）</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ SQLはリレーショナルDBを操作する言語——SELECT・INSERT・UPDATE・DELETEの4コマンドが基本</li>
+<li style="padding:4px 0;font-size:14px;">✅ SQL≠DBMS——SQLは言語、DBMSはシステム（関係を混同しない）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「SELECT〜FROM〜WHERE」という構文で条件付き検索が頻出</li>
+<li style="padding:4px 0;font-size:14px;">✅ SQLインジェクションとの混同に注意——SQLは技術、SQLインジェクションは攻撃</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>SQLの主要コマンド</h2>
-<table><tr><th>カテゴリ</th><th>コマンド</th><th>用途</th></tr>
-<tr><td>DML（データ操作）</td><td>SELECT・INSERT・UPDATE・DELETE</td><td>データの読み書き</td></tr>
-<tr><td>DDL（データ定義）</td><td>CREATE・ALTER・DROP・TRUNCATE</td><td>テーブル構造の定義</td></tr>
-<tr><td>DCL（データ制御）</td><td>GRANT・REVOKE</td><td>権限の付与・取り消し</td></tr>
-<tr><td>TCL（トランザクション）</td><td>COMMIT・ROLLBACK・SAVEPOINT</td><td>トランザクション管理</td></tr>
-</table></div>
-<div class="card"><h2>SQLの結合とサブクエリ</h2>
-<p>INNER JOIN：両テーブルに一致するレコードのみ返す。LEFT JOIN：左テーブルの全行＋右テーブルの一致行（一致なしはNULL）。RIGHT JOIN：右テーブルの全行。GROUP BY：特定列でグループ化。HAVING：GROUP BY後の条件。サブクエリ：SELECT文の中にSELECT文を入れ子にしたもの。EXISTS・IN・ALLなどと組み合わせて使う。インデックス：検索を高速化するデータベースの仕組み。WHERE句で頻繁に使う列に設定。</p></div>
-<div class="cta"><h2>実際に手を動かそう！</h2>
-<p>知識は使ってこそ身につく。問題を解いてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種別</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">役割</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SQL</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">言語</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DBMSへの操作命令を記述する</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DBMS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SQLを受け取って実行する基盤</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SQLインジェクション</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃手法</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SQLを悪用したWebアプリへの攻撃</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：SQLの重要ポイント</h2>
+<p>SQLで確実に点を取るには、「SELECT〜FROM〜WHERE」という基本構文と、DBMSとの役割の違いだ。「テーブルのデータを条件付きで取得する命令は何か」→SELECT文。「リレーショナルデータベースを操作する言語は何か」→SQL。「SQLを受け取って実行するシステムは何か」→DBMS（DBMSはシステム、SQLは言語）。</p>
+<p>SQLの4大コマンドはCRUD（Create・Read・Update・Delete）の概念と対応させて覚えよう。CREATE（新規作成）→INSERT、READ（読み取り）→SELECT、UPDATE（更新）→UPDATE、DELETE（削除）→DELETE。「データを取り出すだけで変更しない安全な操作は」→SELECT（参照操作）、「既存データを書き換える操作は」→UPDATEという区別も覚えておこう。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-dbms].html" style="color:#1F56C6;">[itp-dbms]</a>, <a href="[itp-sql-injection].html" style="color:#1F56C6;">[itp-sql-injection]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

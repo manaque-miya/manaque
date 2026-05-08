@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IDS・IPSとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="IDS・IPSの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-ids-ips.html">
+  <meta property="og:title" content="IDS・IPSとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="IDS・IPSの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-ids-ips.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">IDS・IPSとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">IDS・IPS</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>IDS・IPSとは何か</h2>
+<p>IDS（Intrusion Detection System：侵入検知システム）は、ネットワークやホストへの不正アクセス・攻撃を検知して管理者に通知するシステムだ。IPS（Intrusion Prevention System：侵入防止システム）はIDSに「遮断」機能を加えたもので、攻撃を検知すると自動的に通信をブロックする。2003年にSQLスラマーワームが世界中のSQLサーバーを無差別攻撃した事例がIDS/IPS導入を加速させた。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: IDSは「警報だけ鳴らす」、IPSは「警報を鳴らしながら自動で扉も閉める」—検知だけか遮断まで行うかの違いだ。</p></div>
+</div>
+<div class="card"><h2>IDS・IPSの比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">IDS</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">IPS</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主機能</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検知・アラート通知</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検知・自動遮断</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">配置</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ネットワークの「外側」で監視（ミラーポート）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">通信経路の「インライン」に設置</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">誤検知リスク</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低（通信に影響なし）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高（正常通信も遮断の可能性）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対応速度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人が対応（遅延あり）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">自動対応（即時）</td></tr></table></div><p>検知方式：シグネチャ型（既知攻撃のパターン照合）とアノマリー型（正常な通信との差異検知）の2種類。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: IPSはインライン配置（通信経路上）が必須。IDSはミラーポート（コピーを監視するだけ）でよい。この配置の違いが試験に出る。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ IDS=検知のみ、IPS=検知＋自動遮断</li>
+<li style="padding:4px 0;font-size:14px;">✅ IPSはインライン（通信経路上）に設置—誤検知で正常通信を止めるリスクあり</li>
+<li style="padding:4px 0;font-size:14px;">✅ シグネチャ型（既知攻撃）とアノマリー型（異常行動）の2検知方式</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IDS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃を検知して通知（遮断しない）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IPS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃を検知して自動遮断</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WAF</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Webアプリケーション層の攻撃に特化したIPSの一種</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：IDS・IPSの重要ポイント</h2>
+<p>試験では「IDSとIPSの違い」と「どちらを使う場面か」の判断問題が頻出だ。「誤検知があると困る重要システム」にはIDS（人が判断）、「即時遮断が必要な公開サービス」にはIPSが向く、という使い分けを覚える。</p>
+<p>ネットワーク型（NIDS/NIPS）とホスト型（HIDS/HIPS）の区別も出題される。NIDSはネットワーク全体を監視（スイッチのミラーポートに接続）、HIDSはサーバー個体に導入してOSのログやプロセスを監視する。</p>
+<p>SOC（Security Operation Center）との関係も整理しておく。SOCはIDSからのアラートを分析・対応する組織であり、IDS/IPSはSOCの「センサー」的役割を担う。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-dmz].html" style="color:#1F56C6;">[itp-dmz]</a>, <a href="[itp-waf].html" style="color:#1F56C6;">[itp-waf]</a>, <a href="[itp-csirt-soc].html" style="color:#1F56C6;">[itp-csirt-soc]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

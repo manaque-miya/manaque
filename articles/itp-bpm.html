@@ -1,128 +1,89 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BPMとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="BPMの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-bpm.html">
-  <meta property="og:title" content="BPMとは？業務プロセス改善の基本をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="BPM（ビジネスプロセス管理）とBPRの違い、PDCAとの関係をITパスポート試験向けに解説します。">
+  <meta property="og:title" content="BPMとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="BPMの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-bpm.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>BPMとは？業務プロセス改善の基本をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="BPM（ビジネスプロセス管理）とBPRの違い、PDCAとの関係をITパスポート試験向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">📊 経営・マネジメント</div>
-<h1>BPMとは？業務プロセス改善の基本をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">BPM</span><span class="tag">業務改善</span><span class="tag">BPR</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜マネジメント</div>
+    <h1 class="at">BPMとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">BPM</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>BPMとは何か</h2>
+<p>業務の非効率を「担当者がもっと頑張れば解決する」と思っていないか？実はそれがそもそも間違いだ。BPM（Business Process Management：業務プロセス管理）は、「申請書が誰かのデスクで止まっている」「作業手順が担当者によってバラバラ」といった問題を個人の努力で乗り越えるのではなく、プロセス自体の設計を見直して仕組みで解決するマネジメント手法だ。業務フロー全体を可視化・分析・改善・自動化し、継続的に最適化し続ける点が最大の特徴だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: BPMは「業務プロセス全体の可視化→分析→改善→自動化→監視のサイクル」——個人の努力ではなくプロセスの仕組みを変える点がPDCAとの違い。</p></div>
 </div>
-
-<div class="card"><h2>BPMとは</h2>
-<p>BPM（Business Process Management：ビジネスプロセス管理）とは、<strong>業務プロセスを継続的に把握・分析・改善するための管理手法</strong>です。一度きりの改善ではなく、継続的なサイクルで業務を最適化し続けます。</p>
-<div class="hl">💡 BPMは「業務プロセスのPDCA」です。現状把握→分析→改善→再評価を繰り返します。</div>
-</div>
-<div class="card"><h2>BPMのサイクル</h2>
-<ul>
-<li><strong>① 設計（Design）</strong>：業務プロセスをモデル化（BPMN図などで可視化）</li>
-<li><strong>② 実行（Execute）</strong>：設計したプロセスを実際に運用する</li>
-<li><strong>③ 監視（Monitor）</strong>：KPIでプロセスのパフォーマンスを測定</li>
-<li><strong>④ 最適化（Optimize）</strong>：分析結果を基にプロセスを改善する</li>
+<div class="card"><h2>BPMのサイクルと特徴</h2>
+<p>BPMの進め方：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>モデリング（可視化）</strong>: 現在の業務プロセスをフロー図で可視化してボトルネックを特定する</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>分析</strong>: 処理時間・コスト・エラー率などを測定してどこを改善すべきかを判断する</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>改善・自動化</strong>: プロセスを再設計し、ルーティン作業をRPA等で自動化する</li>
+<li style="padding:4px 0;font-size:14px;">④ <strong>監視・継続改善</strong>: 改善後も定期的にモニタリングして継続的に最適化し続ける</li>
 </ul>
-<p>この4段階を繰り返すことで、継続的な業務改善を実現します。</p>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">違い</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">BPM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">業務プロセス全体の継続的最適化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロセス設計・自動化まで含む</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PDCA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">計画→実行→評価→改善の繰り返し</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">より汎用的な改善サイクル</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">BPR</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">業務プロセスの抜本的再設計（一度きり）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">継続的ではなく改革的・一発勝負</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: BPRとBPMを混同しやすいが、BPR（Business Process Reengineering）は「抜本的に業務プロセスを作り直す一度きりの改革」。BPMは「継続的に改善し続けるサイクル」——一発勝負か継続かが違う。</p></div>
 </div>
-<div class="card"><h2>BPMとBPRの違い</h2>
-<table>
-<tr><th></th><th>BPM</th><th>BPR（Business Process Re-engineering）</th></tr>
-<tr><td>アプローチ</td><td>継続的・段階的な改善</td><td>抜本的・ゼロベースの再設計</td></tr>
-<tr><td>規模</td><td>小〜中規模の改善</td><td>大規模な業務変革</td></tr>
-<tr><td>リスク</td><td>低い</td><td>高い（大きな変化）</td></tr>
-<tr><td>目的</td><td>既存プロセスの継続的最適化</td><td>業務全体の根本的な見直し</td></tr>
-</table>
-<div class="mb">❌ BPMとBPRは似ていますが異なります。BPMは継続改善、BPRは抜本的再設計です。試験で問われることがあります。</div>
-</div>
-<div class="card"><h2>出題されやすい論点</h2>
-<div class="hl">✅ BPM = 業務プロセスの継続的管理・改善サイクル。BPRとの違い（継続 vs 抜本）を押さえましょう。</div>
-<ul>
-<li>BPM：業務プロセスを継続的に改善するサイクル</li>
-<li>BPR：業務プロセスをゼロから根本的に再設計</li>
-<li>BPMサイクル：設計→実行→監視→最適化</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ BPMは「業務プロセス全体を可視化・分析・改善・自動化する継続的サイクル」</li>
+<li style="padding:4px 0;font-size:14px;">✅ PDCAより広く「プロセス設計・自動化」まで含む</li>
+<li style="padding:4px 0;font-size:14px;">✅ BPRとの違い：BPMは継続的改善、BPRは一度きりの抜本的改革</li>
+<li style="padding:4px 0;font-size:14px;">✅ RPA（Robotic Process Automation）とセットで「自動化」の文脈で出題される</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>BPMとプロセス改善手法</h2>
-<p>BPM（Business Process Management）はビジネスプロセスを継続的に分析・改善するマネジメント手法。PDCAサイクルを業務プロセスに適用する。</p>
-<ul>
-<li><strong>As-Is（現状）分析</strong>：現在の業務フローを可視化して問題点を特定</li>
-<li><strong>To-Be（目標）設計</strong>：理想的な業務フローを設計</li>
-<li><strong>BPMNツール</strong>：業務フローを標準記法（BPMN）で図示するソフトウェア</li>
-<li><strong>RPA連携</strong>：ロボティック・プロセス・オートメーションで反復業務を自動化</li>
-</ul></div>
-<div class="card"><h2>業務プロセス改善の指標</h2>
-<table><tr><th>指標</th><th>内容</th></tr>
-<tr><td>リードタイム</td><td>業務開始から完了までの総時間</td></tr>
-<tr><td>サイクルタイム</td><td>1単位の処理にかかる時間</td></tr>
-<tr><td>スループット</td><td>単位時間あたりの処理件数</td></tr>
-<tr><td>稼働率</td><td>実稼働時間÷総時間</td></tr>
-</table>
-<p>ボトルネックとは処理全体の速度を制限する最も遅い工程のこと。TOC（制約理論）ではボトルネックを特定し集中改善することで全体最適化を図る。</p></div>
-<div class="card"><h2>🎯 試験対策：BPMの重要ポイント</h2><p>BPM（ビジネスプロセス管理）は業務の流れを可視化・最適化・継続的改善するためのマネジメント手法です。ITパスポートでは、BPMの目的と関連する図記法の理解が重要です。</p><p>BPMの中核にある「ビジネスプロセス」とは、目標達成のために行われる一連の業務活動です。例えば「受注→在庫確認→出荷→請求」という一連の流れがビジネスプロセスです。BPMではこの流れをBPMN（ビジネスプロセスモデリング記法）などで図示し、問題点を発見します。</p><p>BPMサイクルは「設計→実行→監視→最適化」の4段階です。デジタル化によりプロセスの実行データを自動収集し、ボトルネックをリアルタイムで把握できるようになりました。RPA（ロボティックプロセスオートメーション）との組み合わせで、定型業務を自動化する企業が増えています。</p></div>
-<div class="cta"><h2>理解度をチェックしよう！</h2>
-<p>ここで一度、手を動かしてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">継続性</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">改善の範囲</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">BPM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">継続的（サイクル）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロセスの可視化・分析・改善・自動化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">BPR</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一度きり</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">業務プロセスの抜本的な再設計</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PDCA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">継続的（サイクル）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">汎用的な改善サイクル</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：BPMの重要ポイント</h2>
+<p>BPMの問題で差がつくのは「業務プロセス全体の継続的最適化」という定義と、BPRとの区別だ。問題文に「業務の流れを可視化して非効率な部分を継続的に改善していく手法」という記述があればBPM。「業務プロセスを抜本的に見直して全面的に再設計した」という記述はBPR（Business Process Reengineering）を選ぶ。</p>
+<p>RPAとの関連も覚えておこう。BPMで業務プロセスを分析した結果、「ここは人間でなくても自動化できる」と判断された定型作業を自動化するツールがRPA（Robotic Process Automation）だ。「BPMで分析→RPAで自動化」という組み合わせが実務でも試験でも出てくる文脈になっている。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-pdca].html" style="color:#1F56C6;">[itp-pdca]</a>, <a href="[itp-sdlc].html" style="color:#1F56C6;">[itp-sdlc]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

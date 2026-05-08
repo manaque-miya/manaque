@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>標準偏差と相関係数とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="標準偏差と相関係数の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-statistics-basics.html">
+  <meta property="og:title" content="標準偏差と相関係数とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="標準偏差と相関係数の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-statistics-basics.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">標準偏差と相関係数とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">標準偏差と相関係数</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>標準偏差と相関係数とは何か</h2>
+<p>標準偏差とは、データのばらつきの大きさを表す統計指標で、各データ値と平均値の差の二乗平均の平方根で求める。相関係数とは、2変数間の線形関係の強さと方向を-1〜+1の値で表す指標で、+1に近いほど正の相関（一方が増えれば他方も増える）、-1に近いほど負の相関（一方が増えれば他方が減る）、0に近いほど無相関を意味する。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 標準偏差は「データが平均からどれだけ散らばっているか」、相関係数は「2つのデータの変化が連動しているか・方向はどちらか」を数値で示す。</p></div>
+</div>
+<div class="card"><h2>主要統計指標の比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">指標</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">範囲</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">意味</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">活用例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">平均値</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">任意</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データの中心傾向</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">試験の平均点</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">分散</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0以上</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ばらつきの大きさ（二乗）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">品質管理</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標準偏差</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0以上</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ばらつきの大きさ（元の単位）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">偏差値の計算</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">相関係数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">-1〜+1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2変数の線形関係の強さと方向</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">気温と売上の関係</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">決定係数(R²)</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0〜1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">回帰モデルの当てはまり度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">予測精度評価</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 相関係数が高くても「因果関係がある」とは言えない。「アイスクリームの売上と溺死者数に相関がある」のは両方が「気温」という第三変数の影響を受けているためだ（疑似相関）。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 標準偏差＝ばらつきの指標・大きいほど散らばっている</li>
+<li style="padding:4px 0;font-size:14px;">✅ 相関係数が+1に近い＝強い正の相関、-1に近い＝強い負の相関</li>
+<li style="padding:4px 0;font-size:14px;">✅ 相関≠因果関係（疑似相関に注意）</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標準偏差</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データのばらつき度合い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「散らばり・ばらつきを表す指標」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">相関係数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2変数の線形的な連動関係</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「2つの変数の関係の強さ・方向」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">回帰分析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変数間の数式的な関係を推定</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「Xが変化するとYがどう変化するか予測」ならこれ</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：標準偏差と相関係数の重要ポイント</h2>
+<p>標準偏差と相関係数の問題で問われるのは「それぞれの定義」と「相関係数の値の解釈」だ。「相関係数が-0.85のとき、2変数の関係として適切なものはどれか」→「強い負の相関（一方が増えるともう一方が減る傾向）」が正答だ。数値の絶対値が大きいほど相関が強く、符号が方向を示すという解釈ルールを覚えること。</p>
+<p>疑似相関の概念は試験頻出だ。相関係数が高くても因果関係があるとは限らず、「第三の変数が両方に影響している」という疑似相関のケースがある。「統計的な相関について正しい記述はどれか」という問いで「相関がある＝因果関係がある」という選択肢は誤りだ。</p>
+<p>偏差値との関係も覚えること。偏差値は「(得点-平均点)÷標準偏差×10+50」で計算し、標準偏差を使った相対的な位置付けの指標だ。「標準偏差を使って集団内での相対的な位置を示す指標はどれか」→偏差値が正答になる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-data-analytics].html" style="color:#1F56C6;">[itp-data-analytics]</a>, <a href="[itp-ml-types].html" style="color:#1F56C6;">[itp-ml-types]</a>, <a href="[itp-regression].html" style="color:#1F56C6;">[itp-regression]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

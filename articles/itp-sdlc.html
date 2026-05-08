@@ -1,126 +1,92 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SDLCとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="SDLCの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-sdlc.html">
-  <meta property="og:title" content="SDLC（システム開発ライフサイクル）とは？開発工程をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="SDLCの各フェーズ（要件定義・設計・実装・テスト・運用）と開発手法との関係をITパスポート試験向けに解説します。">
+  <meta property="og:title" content="SDLCとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="SDLCの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-sdlc.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>SDLC（システム開発ライフサイクル）とは？開発工程をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="SDLCの各フェーズ（要件定義・設計・実装・テスト・運用）と開発手法との関係をITパスポート試験向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">💻 ソフトウェア開発</div>
-<h1>SDLC（システム開発ライフサイクル）とは？開発工程をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">SDLC</span><span class="tag">システム開発</span><span class="tag">要件定義</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜マネジメント</div>
+    <h1 class="at">SDLCとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">SDLC</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>SDLCとは何か</h2>
+<p>SDLCという概念が生まれた背景には、「場当たり的なシステム開発の失敗」への反省がある。要件が不明確なまま開発を始め、テストも不十分なままリリースして大規模な障害が発生する——こうした問題を防ぐため、システム開発の全工程を体系的に管理するフレームワークとして確立されたのがSDLC（Software Development Life Cycle：システム開発ライフサイクル）だ。計画から廃棄までのシステムの「一生」を体系化した考え方で、ウォーターフォールやアジャイルはSDLCの「実装方式」の一つに位置づけられる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: SDLCは「システムの計画から廃棄まで全工程の体系」——ウォーターフォール・アジャイルはSDLCを実現する手法の一つ。</p></div>
 </div>
-
-<div class="card"><h2>SDLCとは</h2>
-<p>SDLC（Software/System Development Life Cycle：システム開発ライフサイクル）とは、<strong>システムの企画から廃棄までの全ライフサイクルにおける工程の流れ</strong>のことです。</p>
-<div class="hl">💡 「ライフサイクル」という名の通り、システムの誕生（企画）から死（廃棄）までの全期間を表します。</div>
-</div>
-<div class="card"><h2>SDLCの主要フェーズ</h2>
-<table>
-<tr><th>フェーズ</th><th>内容</th><th>成果物</th></tr>
-<tr><td>① 企画</td><td>システム化の目的・範囲・費用対効果を検討</td><td>企画書・提案書</td></tr>
-<tr><td>② 要件定義</td><td>ユーザーのニーズを整理し「何を作るか」を決める</td><td>要件定義書</td></tr>
-<tr><td>③ 設計</td><td>「どう作るか」を設計（基本設計→詳細設計）</td><td>設計書・仕様書</td></tr>
-<tr><td>④ 実装（プログラミング）</td><td>設計書を基にコードを書く</td><td>ソースコード</td></tr>
-<tr><td>⑤ テスト</td><td>単体・結合・システム・受入テストで品質確認</td><td>テスト報告書</td></tr>
-<tr><td>⑥ 導入（リリース）</td><td>本番環境へのシステム移行</td><td>本番稼働</td></tr>
-<tr><td>⑦ 運用・保守</td><td>システムの監視・障害対応・機能追加</td><td>保守記録</td></tr>
-<tr><td>⑧ 廃棄</td><td>システムの利用停止・データ移行</td><td>廃棄計画</td></tr>
-</table>
-</div>
-<div class="card"><h2>上流工程と下流工程</h2>
-<p>システム開発の工程は「上流」「下流」と表現されることがあります。</p>
-<ul>
-<li><strong>上流工程</strong>：企画・要件定義・設計（「何を・どう作るか」を決める段階）</li>
-<li><strong>下流工程</strong>：実装・テスト・導入（実際に作り・確認する段階）</li>
+<div class="card"><h2>SDLCの工程</h2>
+<p>SDLCの一般的な工程：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>計画（Planning）</strong>: プロジェクトの目的・スコープ・予算・期間を定義する</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>要件定義（Requirements）</strong>: ユーザーニーズを収集してシステムが満たすべき機能・要件を定める</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>設計（Design）</strong>: アーキテクチャ・データベース・画面などのシステム設計を行う</li>
+<li style="padding:4px 0;font-size:14px;">④ <strong>開発（Development）</strong>: 設計に基づいてプログラムを実装する</li>
+<li style="padding:4px 0;font-size:14px;">⑤ <strong>テスト（Testing）</strong>: 品質検証・バグ修正・性能テストを行う</li>
+<li style="padding:4px 0;font-size:14px;">⑥ <strong>運用・保守（Operations/Maintenance）</strong>: 本番環境での稼働・障害対応・機能追加</li>
+<li style="padding:4px 0;font-size:14px;">⑦ <strong>廃棄（Disposal）</strong>: システムの廃止・データ移行・機器の廃棄</li>
 </ul>
-<p>上流工程でのミスは下流で修正するほどコストが大きくなります（品質の根本は上流で決まる）。</p>
-<div class="mb">❌ 「プログラミング（実装）が一番大事」は誤解です。要件定義・設計の上流工程の品質こそがシステム全体の品質を左右します。</div>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">段階</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">英語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な成果物</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">計画</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Planning</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロジェクト計画書</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">要件定義</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Requirements</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">要件定義書</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">設計</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Design</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">設計書</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Development</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プログラム・ソースコード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Testing</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テスト結果報告書</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">運用</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Operations</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">運用マニュアル・障害記録</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「ウォーターフォール開発＝SDLC」と混同しやすいが、SDLCは開発全工程の概念的なフレームワーク。ウォーターフォール・アジャイルはそれを実現する手法の一つにすぎない。</p></div>
 </div>
-<div class="card"><h2>試験対策まとめ</h2>
-<div class="hl">✅ SDLCの各フェーズの順序と役割を押さえましょう。「要件定義 = 何を作るか」「設計 = どう作るか」という区別が重要です。</div>
-<ul>
-<li>SDLC：企画→要件定義→設計→実装→テスト→運用→廃棄</li>
-<li>上流工程（企画・要件定義・設計）が品質の鍵</li>
-<li>早期の問題発見がコスト削減につながる</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ SDLCはシステムの「計画から廃棄まで」の全工程を体系化した概念</li>
+<li style="padding:4px 0;font-size:14px;">✅ ウォーターフォール・アジャイルはSDLCの実現手法——SDLCはより上位の概念</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「廃棄」フェーズまで含むのがSDLCの特徴</li>
+<li style="padding:4px 0;font-size:14px;">✅ 各フェーズで作成される成果物（要件定義書・設計書等）も出題対象</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>SDLCの各フェーズ詳細</h2>
-<table><tr><th>フェーズ</th><th>主な作業</th><th>成果物</th></tr>
-<tr><td>要件定義</td><td>ユーザーのニーズ収集・整理</td><td>要件定義書・ユースケース図</td></tr>
-<tr><td>基本設計</td><td>システム全体の設計</td><td>基本設計書・画面設計・DB設計</td></tr>
-<tr><td>詳細設計</td><td>モジュール単位の詳細設計</td><td>詳細設計書・プログラム仕様書</td></tr>
-<tr><td>実装（コーディング）</td><td>プログラムの開発</td><td>ソースコード</td></tr>
-<tr><td>テスト</td><td>単体・結合・システム・UAT</td><td>テスト仕様書・バグ報告</td></tr>
-<tr><td>運用・保守</td><td>本番稼働・障害対応・機能追加</td><td>運用マニュアル・変更管理記録</td></tr>
-</table></div>
-<div class="card"><h2>テストの種類</h2>
-<p>単体テスト（UT）：モジュール単位のテスト。結合テスト（IT）：複数モジュールを組み合わせたテスト。システムテスト（ST）：システム全体の要件充足確認。受け入れテスト（UAT）：ユーザーが要件通りに動作するか確認。リグレッションテスト：修正によって既存機能が壊れていないかの確認テスト。ブラックボックステスト：内部構造を知らずに入出力で検証。ホワイトボックステスト：コードの内部構造を見ながら検証。</p></div>
-<div class="card"><h2>🎯 試験対策：SDLCの重要ポイント</h2><p>SDLC（Software Development Life Cycle：ソフトウェア開発ライフサイクル）はシステム開発の全工程を表す概念です。ITパスポートでは各フェーズの内容と代表的な開発モデルの特徴を問う問題が出ます。</p><p>SDLCの基本フェーズは「要件定義→設計（基本設計・詳細設計）→実装（プログラミング）→テスト（単体・結合・システム）→リリース・運用→保守」です。各フェーズで成果物（ドキュメント・コード・テスト結果）を作成し、次フェーズへ引き渡します。</p><p>代表的な開発モデルの比較が試験頻出です。ウォーターフォールは各フェーズを順番に進める方式で管理しやすいが変更に弱い。スパイラルはプロトタイプを繰り返し作りリスクを早期発見。アジャイルは短い反復（スプリント）で機能を段階的にリリース、要件変更に強い。現代のソフトウェア開発ではアジャイル手法（スクラム・カンバン）が主流となっています。</p></div>
-<div class="cta"><h2>最後に確認問題にチャレンジ！</h2>
-<p>インプットの次はアウトプット。実際に解いてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">抽象度</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SDLC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い（概念）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発全工程の体系・フレームワーク</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ウォーターフォール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い（手法）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SDLCを順次工程で実現する具体的手法</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アジャイル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い（手法）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SDLCを反復で実現する具体的手法</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：SDLCの重要ポイント</h2>
+<p>SDLCで得点するには「システムの計画から廃棄までの全工程を体系化した概念」という定義と、「ウォーターフォール・アジャイルの上位概念である」という位置づけだ。「システム開発の全体プロセスを計画から廃棄まで体系的に管理する枠組みをSDLCという」という記述がそのまま問題と解答になる。</p>
+<p>「廃棄フェーズ」が含まれる点も覚えておこう。ウォーターフォールの文脈では「リリース」がゴールのように見えるが、SDLCではシステムの廃棄・データ移行まで含めた「システムの一生」を管理対象にする。「SDLCに含まれないフェーズはどれか」という問いで「廃棄」を除いた選択肢が誤りとして出ることがある。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-waterfall].html" style="color:#1F56C6;">[itp-waterfall]</a>, <a href="[itp-agile].html" style="color:#1F56C6;">[itp-agile]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

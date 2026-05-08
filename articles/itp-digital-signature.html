@@ -1,125 +1,88 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>デジタル署名とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="デジタル署名の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-digital-signature.html">
-  <meta property="og:title" content="デジタル署名とは？仕組みと電子証明書をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="デジタル署名の仕組み、なりすまし・改ざん防止の原理、PKIと電子証明書をITパスポート向けに解説します。">
+  <meta property="og:title" content="デジタル署名とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="デジタル署名の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-digital-signature.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>デジタル署名とは？仕組みと電子証明書をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="デジタル署名の仕組み、なりすまし・改ざん防止の原理、PKIと電子証明書をITパスポート向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">🔐 セキュリティ</div>
-<h1>デジタル署名とは？仕組みと電子証明書をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">デジタル署名</span><span class="tag">電子証明書</span><span class="tag">PKI</span><span class="tag">ITパスポート</span></div>
-</div>
-
-<div class="card"><h2>デジタル署名とは</h2>
-<p>デジタル署名とは、<strong>電子文書の「本人確認」と「改ざん検知」を行う技術</strong>です。紙の書類に押す「印鑑」に相当する電子的な仕組みです。</p>
-<div class="hl">💡 デジタル署名で証明できること：① 誰が送ったか（本人確認）② 内容が改ざんされていないか（完全性確認）</div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">デジタル署名とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">デジタル署名</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>デジタル署名とは何か</h2>
+<p>デジタル署名と電子証明書の違いを一言で言うなら、「手紙に押す本人の印鑑」と「その印鑑が本物だと保証する役所の証明書」の違いだ。デジタル署名は送信者の秘密鍵でデータを署名し、受信者が公開鍵で検証することで「この文書は確かに本人が送ったもので、改ざんされていない」を証明する技術だ。なりすまし防止（本人確認）と改ざん検知の2つを同時に実現できる点がデジタル署名の本質的な価値だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: デジタル署名は「なりすまし防止＋改ざん検知の2つを同時実現」——この2点セットが試験で問われる核心。</p></div>
 </div>
 <div class="card"><h2>デジタル署名の仕組み</h2>
-<p>公開鍵暗号を「逆向き」に使います。</p>
-<h3>署名する側（送信者）</h3>
-<ul>
-<li>① 送信データのハッシュ値（指紋）を計算する</li>
-<li>② ハッシュ値を<strong>自分の秘密鍵</strong>で暗号化する → これが「デジタル署名」</li>
-<li>③ データと署名を一緒に送る</li>
+<p>デジタル署名の動作：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>署名作成（送信側）</strong>: 文書のハッシュ値を計算し、自分の秘密鍵で暗号化する（これが「署名」）</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>送信</strong>: 文書＋署名を一緒に受信者に送る</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>検証（受信側）</strong>: 送信者の公開鍵で署名を復号してハッシュ値Aを取得。文書からも独自にハッシュ値Bを計算。AとBが一致すれば本物だと確認できる</li>
 </ul>
-<h3>検証する側（受信者）</h3>
-<ul>
-<li>① 受信データのハッシュ値を計算する</li>
-<li>② デジタル署名を送信者の<strong>公開鍵</strong>で復号してハッシュ値を取り出す</li>
-<li>③ 両方のハッシュ値が一致すれば「本物・改ざんなし」と確認できる</li>
-</ul>
-<div class="mb">❌ 注意：暗号化とは逆の使い方です。「秘密鍵で暗号化→公開鍵で復号」がデジタル署名の流れです。</div>
-</div>
-<div class="card"><h2>電子証明書とPKI</h2>
-<p>「この公開鍵は本当にその人のものか？」を証明するために<strong>電子証明書（デジタル証明書）</strong>が使われます。</p>
-<p>電子証明書は<strong>認証局（CA：Certificate Authority）</strong>が発行します。CAが「この公開鍵はAさんのものです」と電子的に保証します。</p>
-<p><strong>PKI（Public Key Infrastructure：公開鍵基盤）</strong>とは、この電子証明書の発行・管理・失効の仕組み全体を指します。HTTPSもPKIを基盤としています。</p>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">確認内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">実現方法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">実現できること</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なりすまし防止</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">秘密鍵は本人しか持たない</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信者が本人であることの証明</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">改ざん検知</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハッシュ値の一致を確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信後に内容が変更されていないことの確認</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 電子証明書とデジタル署名を混同しやすいが、電子証明書は「公開鍵が本物かを第三者機関が証明するもの」で、デジタル署名は「文書の改ざん検知と本人確認を行う技術」——目的が違う。</p></div>
 </div>
 <div class="card"><h2>ここが試験のキモ</h2>
-<div class="hl">✅ デジタル署名は「秘密鍵で署名・公開鍵で検証」。暗号化（公開鍵で暗号化・秘密鍵で復号）と逆であることを押さえましょう。</div>
-<ul>
-<li>デジタル署名 = 本人確認 + 改ざん検知</li>
-<li>署名：秘密鍵で暗号化 → 検証：公開鍵で復号</li>
-<li>電子証明書：公開鍵の正当性を認証局が保証</li>
-<li>PKI：電子証明書を管理する基盤全体</li>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ デジタル署名は「秘密鍵で署名・公開鍵で検証」——暗号化とは鍵の使い方が逆</li>
+<li style="padding:4px 0;font-size:14px;">✅ なりすまし防止（本人確認）と改ざん検知の2つを同時に実現</li>
+<li style="padding:4px 0;font-size:14px;">✅ 署名に使うのは「秘密鍵（送信者が保有）」——公開鍵で誰でも検証できる</li>
+<li style="padding:4px 0;font-size:14px;">✅ 電子証明書（CA発行）との組み合わせでPKI（公開鍵基盤）が成立する</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>電子署名の仕組み（PKI）</h2>
-<p>デジタル署名（電子署名）は公開鍵暗号方式を使って「本人確認」と「改ざん検知」を実現する技術。</p>
-<ol>
-<li>送信者がメッセージのハッシュ値を計算</li>
-<li>ハッシュ値を送信者の「秘密鍵」で暗号化→これが署名</li>
-<li>受信者が送信者の「公開鍵」で署名を復号→ハッシュ値を取得</li>
-<li>受信したメッセージのハッシュ値を計算して照合→一致すれば改ざんなし・本人証明</li>
-</ol></div>
-<div class="card"><h2>認証局（CA）と証明書</h2>
-<p>認証局（CA：Certificate Authority）は公開鍵が本物であることを証明する第三者機関。CA が発行するデジタル証明書（X.509）には公開鍵・所有者情報・有効期限・CAの署名が含まれる。信頼の連鎖（Chain of Trust）：ルートCA→中間CA→エンドエンティティ証明書の階層。証明書の失効はCRL（証明書失効リスト）またはOCSP（オンライン証明書状態プロトコル）で確認できる。SSL/TLS通信のHTTPSはサーバー証明書による認証と暗号化を組み合わせる。</p></div>
-<div class="card"><h2>🎯 試験対策：デジタル署名の重要ポイント</h2><p>デジタル署名は電子文書の「なりすまし防止」と「改ざん検知」を実現する技術です。ITパスポートでは公開鍵暗号との関係と、署名の仕組みを問う問題が頻出です。</p><p>署名の手順を整理します。送信者は文書のハッシュ値を計算し、自分の「秘密鍵」で暗号化します（これが署名）。受信者は送信者の「公開鍵」で署名を復号してハッシュ値を取り出し、受信した文書のハッシュ値と比較します。一致すれば「本人が送り、改ざんされていない」と確認できます。</p><p>重要な点は「秘密鍵で暗号化・公開鍵で復号」という通常の暗号化とは逆の使い方です。通常の暗号化は「公開鍵で暗号化・秘密鍵で復号」です。デジタル署名は秘密鍵を持つ本人しか署名できないという性質を利用しています。電子証明書（公開鍵証明書）と組み合わせることで、公開鍵の正当性も保証されます。</p></div>
-<div class="cta"><h2>学んだことを確かめよう！</h2>
-<p>理解を確かめてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">役割</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">実現すること</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">デジタル署名</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">文書に署名して検証できる状態にする</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">本人確認＋改ざん検知</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">電子証明書</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">公開鍵の正当性を第三者が保証</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「この公開鍵は本物」の証明</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：デジタル署名の重要ポイント</h2>
+<p>デジタル署名の問題で差がつくのは「秘密鍵で署名、公開鍵で検証」という鍵の使い方と、「なりすまし防止と改ざん検知の両立」の2点を理解しているかだ。通常の暗号化では「公開鍵で暗号化、秘密鍵で復号」だが、デジタル署名では逆に「秘密鍵で署名（暗号化）、公開鍵で検証（復号）」になる点に注意しよう。</p>
+<p>電子証明書（PKI）との組み合わせも重要だ。デジタル署名だけでは「その公開鍵が本当に送信者のものか」を保証できない。そこで認証局（CA）が電子証明書を発行して「この公開鍵は確かに○○のものです」と保証する仕組みがPKIだ。デジタル署名は「署名の技術」、電子証明書は「その技術を支える信頼の基盤」と役割を整理すると混同しにくくなる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-encryption.html" style="color:#1F56C6;">itp-encryption</a>, <a href="itp-pki.html" style="color:#1F56C6;">itp-pki</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

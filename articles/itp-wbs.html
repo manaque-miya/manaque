@@ -1,132 +1,88 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WBSとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="WBSの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-wbs.html">
-  <meta property="og:title" content="WBSとは？作り方と活用方法をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="WBS（Work Breakdown Structure）の作り方、成果物ベースと作業ベースの違い、ガントチャートとの関係をITパスポート向けに解説します。">
+  <meta property="og:title" content="WBSとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="WBSの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-wbs.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>WBSとは？作り方と活用方法をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="WBS（Work Breakdown Structure）の作り方、成果物ベースと作業ベースの違い、ガントチャートとの関係をITパスポート向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">📋 プロジェクト管理</div>
-<h1>WBSとは？作り方と活用方法をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">WBS</span><span class="tag">プロジェクト管理</span><span class="tag">工程管理</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜マネジメント</div>
+    <h1 class="at">WBSとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">WBS</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>WBSとは何か</h2>
+<p>なぜ「大きなプロジェクトを管理するにはまず作業を分解する必要がある」のか。それは大きすぎるタスクは担当者・期間・コストを具体的に割り当てられず、進捗の把握も難しいからだ。WBS（Work Breakdown Structure：作業分解構成図）はプロジェクトのすべての作業を、管理可能な小さな単位（ワークパッケージ）に階層的に分解する手法だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: WBSは「何をやるかの作業分解」——「いつやるか」の時系列管理はガントチャートが担う。WBSを作ってからガントチャートに展開する順番が大事。</p></div>
 </div>
-
-<div class="card"><h2>WBSとは</h2>
-<p>WBS（Work Breakdown Structure：作業分解構造）とは、<strong>プロジェクトの作業を階層的に細分化して整理したもの</strong>です。大きなプロジェクトを管理可能な小さなタスクに分解することで、全体像を把握し、進捗管理を容易にします。</p>
-<div class="hl">💡 「Work Breakdown（作業の分解）」の名の通り、プロジェクト全体の仕事を細かく切り分ける技法です。</div>
-</div>
-<div class="card"><h2>WBSの構造</h2>
-<p>WBSはツリー（階層）構造で表現されます。</p>
-<ul>
-<li>レベル1：プロジェクト全体</li>
-<li>レベル2：主要な成果物・フェーズ</li>
-<li>レベル3：各成果物に必要な作業</li>
-<li>レベル4：さらに細分化した作業（ワークパッケージ）</li>
+<div class="card"><h2>WBSの構造と作成</h2>
+<p>WBSの階層構造の例（システム開発プロジェクト）：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>レベル1（プロジェクト全体）</strong>: 「新システム開発」</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>レベル2（フェーズ）</strong>: 「要件定義」「設計」「開発」「テスト」「移行」</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>レベル3（作業）</strong>: 「要件定義」→「現状調査」「ヒアリング」「要件書作成」「レビュー」</li>
 </ul>
-<h3>WBS作成例：Webサイト構築プロジェクト</h3>
-<table>
-<tr><th>レベル1</th><th>レベル2</th><th>レベル3</th></tr>
-<tr><td rowspan="6">Webサイト構築</td><td rowspan="2">要件定義</td><td>ヒアリング</td></tr>
-<tr><td>要件書作成</td></tr>
-<tr><td rowspan="2">設計</td><td>基本設計</td></tr>
-<tr><td>詳細設計</td></tr>
-<tr><td rowspan="2">開発</td><td>フロントエンド開発</td></tr>
-<tr><td>バックエンド開発</td></tr>
-</table>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">成果物</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">答える問い</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WBS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業の階層的な分解構造</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「何をやるか（What）」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ガントチャート</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業の時系列スケジュール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「いつやるか（When）」</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「WBSで時間を管理する」のが誤り——WBSは作業の分解・整理のためのもの。時間軸での管理はガントチャートが担う。「WBSを作ってからガントチャートに展開する」順番を逆にしないこと。</p></div>
 </div>
-<div class="card"><h2>WBSとガントチャートの違い</h2>
-<table>
-<tr><th>ツール</th><th>目的</th><th>表現方法</th></tr>
-<tr><td>WBS</td><td>作業の全体構造を明確化する</td><td>ツリー図・階層リスト</td></tr>
-<tr><td>ガントチャート</td><td>スケジュール（時間軸）で進捗を管理する</td><td>横棒グラフ</td></tr>
-</table>
-<p>WBSで作業を分解した後、各タスクをガントチャートに落とし込んでスケジュール管理するのが一般的な流れです。</p>
-<div class="mb">❌ WBSはスケジュール表ではありません。「何をやるか」を整理するものです。「いつやるか」はガントチャートで管理します。</div>
-</div>
-<div class="card"><h2>試験対策まとめ</h2>
-<div class="hl">✅ WBS = 「プロジェクトの作業を階層的に分解した構造」です。ガントチャートとの違い（What vs When）を押さえましょう。</div>
-<ul>
-<li>WBS = 作業の階層的な分解・整理</li>
-<li>最小単位 = ワークパッケージ</li>
-<li>WBS（何をやるか） → ガントチャート（いつやるか）の流れ</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ WBSは「プロジェクトの作業を階層的に分解する手法」——Whatを整理する</li>
+<li style="padding:4px 0;font-size:14px;">✅ ガントチャートはWBSをもとに時系列（When）で表現したもの</li>
+<li style="padding:4px 0;font-size:14px;">✅ WBS→ガントチャートの順番で作成する——逆は論理的に成立しない</li>
+<li style="padding:4px 0;font-size:14px;">✅ 最小の作業単位を「ワークパッケージ」という</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>WBSの作成手順と要素</h2>
-<p>WBS（Work Breakdown Structure：作業分解構成図）はプロジェクトの全作業を階層的に分解した図。スコープ管理の基本ツール。</p>
-<ul>
-<li><strong>レベル1</strong>：プロジェクト全体</li>
-<li><strong>レベル2</strong>：主要成果物・フェーズ</li>
-<li><strong>レベル3</strong>：作業パッケージ（WorkPackage）</li>
-<li><strong>ワークパッケージ</strong>：担当者・コスト・期間を割り当てられる最小作業単位</li>
-</ul>
-<p>100%ルール：WBSはプロジェクトの全作業を漏れなくカバーする必要がある。WBSから作業スケジュール（ガントチャート）・コスト計画・リソース計画が派生する。</p></div>
-<div class="card"><h2>WBSとガントチャートの連携</h2>
-<p>WBSを作成したら各作業パッケージに所要時間・担当者・依存関係を設定してガントチャートに展開する。クリティカルパス（最長の作業ルート）を特定し、遅延が許されない作業を管理することがスケジュール管理の要。マイルストーンは進捗確認のための中間目標点（期日）。</p></div>
-<div class="card"><h2>🎯 試験対策：WBSの重要ポイント</h2><p>WBS（Work Breakdown Structure：作業分解構造）はプロジェクトの全作業を階層的に分解し、漏れなく洗い出すための手法です。ITパスポートではWBSの目的・作成方法・ガントチャートとの関係が問われます。</p><p>WBSの作成ポイントは「成果物ベースの分解」と「100%ルール」です。成果物ベースとは「何をするか」ではなく「何を作るか（成果物）」で分解する考え方です。100%ルールとはWBSに含まれる作業の合計が、プロジェクト全体の作業を100%網羅している必要があるという原則です。漏れがあると見積もりや計画に穴が開きます。</p><p>WBSの最小単位は「ワークパッケージ」と呼ばれ、ここに担当者・期間・コストを割り当てます。ワークパッケージの積み上げがプロジェクト全体の見積もりとなります。WBSをインプットにガントチャートを作成し、クリティカルパスを特定することでプロジェクト計画が完成します。</p></div>
-<div class="cta"><h2>最後に確認問題にチャレンジ！</h2>
-<p>インプットの次はアウトプット。実際に解いてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ツール</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">視覚的な形</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WBS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業を階層的に分解して整理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ツリー構造・一覧表</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ガントチャート</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業を時系列で可視化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">横棒グラフ（時間軸）</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：WBSの重要ポイント</h2>
+<p>WBSの問題で問われるのは「作業分解（What）」という役割と、「ガントチャートとの順番（WBS→ガントチャート）」だ。「プロジェクトの全作業を洗い出して担当可能な大きさに分解する手法」という記述があればWBS。「各作業の開始・終了日を横棒グラフで表現する」という記述はガントチャートだ。</p>
+<p>WBSの粒度（どこまで細かく分解するか）も重要だ。大きすぎると管理できず、細かすぎると管理コストがかかりすぎる。「1〜2週間で完了できる大きさ」が一般的なワークパッケージの目安とされる。試験では「WBSの特徴として正しいものはどれか」という問いに対し、「作業を細かく分解して担当者・期間・コストを明確にできる」が正解になる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-gantt].html" style="color:#1F56C6;">[itp-gantt]</a>, <a href="[itp-pdca].html" style="color:#1F56C6;">[itp-pdca]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Webアクセシビリティ（WCAG・JIS X 8341）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="Webアクセシビリティ（WCAG・JIS X 8341）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-accessibility.html">
+  <meta property="og:title" content="Webアクセシビリティ（WCAG・JIS X 8341）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="Webアクセシビリティ（WCAG・JIS X 8341）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-accessibility.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">Webアクセシビリティ（WCAG・JIS X 8341）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">Webアクセシビリティ（WCAG・JIS X 8341）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>Webアクセシビリティ（WCAG・JIS X 8341）とは何か</h2>
+<p>Webアクセシビリティとは、障害者・高齢者を含む全ての人がWebサイトやWebアプリケーションを利用できるようにするための設計原則と技術基準だ。国際標準はW3Cが策定したWCAG（Web Content Accessibility Guidelines）で、日本ではJIS X 8341（高齢者・障害者等配慮設計指針）として標準化されている。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: アクセシビリティは「技術的に動く」だけでなく「全ての人が使える」を保証するものであり、WCAGは達成レベルをA・AA・AAAの3段階で定義している。</p></div>
+</div>
+<div class="card"><h2>WCAGの4原則と達成レベル</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">4原則</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">知覚可能（Perceivable）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報を知覚できる形で提供</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画像にalt属性・字幕提供</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">操作可能（Operable）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">UI操作が可能</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">キーボードのみで全機能操作可</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">理解可能（Understandable）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報・操作が理解できる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">入力エラーの説明・一貫したナビゲーション</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">堅牢（Robust）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">多様な技術（支援技術含む）で解釈可</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スクリーンリーダー対応</td></tr></table></div><div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">達成レベル</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での問われ方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レベルA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最低限の要件・満たさないとアクセス不可</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「最低限クリアすべき水準」として問われる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レベルAA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">推奨水準・多くの公共機関・企業が目標</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「行政・企業サイトの標準目標」として最頻出</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レベルAAA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最高水準・全てのコンテンツで達成は困難</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「全コンテンツでの達成は現実的でない」として問われる</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: アクセシビリティは「視覚障害者向け」だけでなく、聴覚障害・運動障害・認知障害・高齢者・一時的な障害（骨折等）も対象に含む広い概念だ。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ WCAGの4原則：知覚可能・操作可能・理解可能・堅牢</li>
+<li style="padding:4px 0;font-size:14px;">✅ 達成レベル：A（最低）・AA（推奨）・AAA（最高）</li>
+<li style="padding:4px 0;font-size:14px;">✅ JIS X 8341はWCAGの日本版国家規格</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Webアクセシビリティ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全ての人が利用できるWeb設計基準</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「障害者・高齢者も使えるか」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザビリティ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">使いやすさ（有効さ・効率・満足度）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「使いやすいか・目標達成しやすいか」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レスポンシブデザイン</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画面サイズに応じた表示最適化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「スマホ・PC両対応のレイアウト」ならこれ</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：Webアクセシビリティ（WCAG・JIS X 8341）の重要ポイント</h2>
+<p>Webアクセシビリティの問題で確実に点を取るには、WCAGの4原則（知覚可能・操作可能・理解可能・堅牢）の英語と日本語を対応させて覚えることだ。「キーボードのみで全ての操作が可能であることはWCAGのどの原則に対応するか」→「操作可能（Operable）」が正答だ。</p>
+<p>具体的な実装例を覚えることが効果的だ。知覚可能：画像のalt属性（スクリーンリーダーが読み上げ）・動画の字幕。操作可能：キーボードナビゲーション・フォーカス表示。理解可能：フォームのエラーメッセージ・一貫したナビゲーション。堅牢：HTMLの適切なセマンティクス・ARIAラベル。</p>
+<p>法的規制とも関連して出題される。日本では障害者差別解消法により、公共機関のWebサイトはJIS X 8341レベルAAの準拠が義務化された（2024年）。「公共機関のWebサイトが遵守すべき規格はどれか」→JIS X 8341が正答になる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-usability].html" style="color:#1F56C6;">[itp-usability]</a>, <a href="[itp-ux-ui].html" style="color:#1F56C6;">[itp-ux-ui]</a>, <a href="[itp-disability-employment].html" style="color:#1F56C6;">[itp-disability-employment]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

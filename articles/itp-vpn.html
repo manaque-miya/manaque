@@ -4,8 +4,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VPNとは？仕組み・用途・テレワークでの活用をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="VPN（仮想プライベートネットワーク）の仕組み、トンネリング・暗号化の概念、テレワークでの活用場面、ITパスポート試験での出題ポイントを解説します。">
+<title>VPNとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="VPNの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,9 +37,10 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-vpn.html">
-  <meta property="og:title" content="VPNとは？仕組み・用途・テレワークでの活用をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="VPN（仮想プライベートネットワーク）の仕組み、トンネリング・暗号化の概念、テレワークでの活用場面、ITパスポート試験での出題ポイントを解説します。">
+  <meta property="og:title" content="VPNとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="VPNの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-vpn.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
@@ -47,65 +48,41 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-
   <div class="ah">
-    <div class="al">ITパスポート｜ネットワーク</div>
-    <h1 class="at">VPNとは？仕組み・用途・テレワークでの活用をわかりやすく解説</h1>
-    <div class="am">ITパスポート対策 / 読了：約4分</div>
-    <div class="tags"><span class="tag">VPN</span> <span class="tag">テレワーク</span> <span class="tag">ネットワーク</span> <span class="tag">ITパスポート</span> <span class="tag">セキュリティ</span></div>
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">VPNとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">VPN</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
   </div>
-<div class="card">
-<h2>VPNとは何か</h2>
-<p>VPN（Virtual Private Network：仮想プライベートネットワーク）は、インターネットなどの公衆ネットワーク上に、暗号化された専用のトンネルを作り出す技術です。あたかも専用線でつながっているかのように、安全に通信できます。</p>
-<div class="hl"><p>ポイント：VPNの「Virtual（仮想）」とは、物理的な専用回線ではなく、ソフトウェアで仮想的な専用線を作ることを意味します。</p></div>
-<h3>VPNが必要な理由</h3>
-<p>インターネットは誰でも使える公衆ネットワークです。このままデータを送ると盗聴される恐れがあります。VPNを使うと通信が暗号化され、たとえ傍受されても内容を読めません。</p>
+<div class="card"><h2>VPNとは何か</h2>
+<p>VPNを一言で表すなら、インターネットという公共の道路の上に「透明な専用トンネル」を掘るようなものだ。誰でも通れる公道を使いながら、外からは中が見えない暗号化されたトンネルの中を通ることで、まるで専用線（プライベートネットワーク）を使っているかのような安全な通信が実現できる。VPN（Virtual Private Network：仮想専用ネットワーク）はテレワーク環境での社内NW接続に特に広く使われている。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: VPNは「公共のネットワーク上に暗号化された仮想専用線を構築する技術」——テレワーク＋社内NW接続がVPNの典型シナリオ。</p></div>
 </div>
-<div class="card">
-<h2>VPNの仕組み：トンネリングと暗号化</h2>
-<h3>トンネリング</h3>
-<p>データをカプセル化（別のパケットに包む）して送ることで、外部から見えない「トンネル」を作ります。トンネルの出入口でカプセル化・解除が行われます。</p>
-<h3>主なVPNプロトコル</h3>
-<ul>
-<li><strong>IPsec</strong>：ネットワーク層で暗号化。企業間VPNで広く使われる</li>
-<li><strong>SSL/TLS VPN</strong>：Webブラウザ経由でアクセスできる。リモートアクセスに適している</li>
-<li><strong>L2TP/IPsec</strong>：モバイルデバイスのVPN接続でよく使われる</li>
-<li><strong>OpenVPN</strong>：オープンソースのVPN。柔軟性が高い</li>
+<div class="card"><h2>VPNの仕組みと種類</h2>
+<p>VPNの動作の核心：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>トンネリング</strong>: 送信データをカプセル化して専用プロトコルで包み込む</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>暗号化</strong>: トンネル内の通信を暗号化して第三者が盗聴しても読めないようにする</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>認証</strong>: VPN接続時に正規のユーザーであることを確認する</li>
+</ul>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">VPNの種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">接続形態</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な用途</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リモートアクセスVPN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">自宅PC↔会社NW</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テレワーク</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サイト間VPN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">拠点A NW↔拠点B NW</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">拠点間接続・専用線の代替</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: プロキシサーバーもVPNも「経由して接続する」点で似ているが、プロキシは主に代理アクセスとキャッシュが目的。VPNは全通信を暗号化して仮想的に社内にいる状態を作ることが目的で、用途が根本的に違う。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ VPNは「公共NW上に暗号化された仮想専用線を作る技術」</li>
+<li style="padding:4px 0;font-size:14px;">✅ テレワークで「外から社内NWに安全につなぐ」用途が試験の典型シナリオ</li>
+<li style="padding:4px 0;font-size:14px;">✅ プロキシとVPNの違いは「目的：代理アクセス vs 暗号化専用線」</li>
+<li style="padding:4px 0;font-size:14px;">✅ IPsec・SSL/TLS・L2TPがVPNで使われる代表的なプロトコル</li>
 </ul>
 </div>
-<div class="card">
-<h2>VPNの主な用途</h2>
-<h3>テレワーク・リモートアクセス</h3>
-<p>自宅から会社のサーバーに安全にアクセスするために使います。コロナ禍以降、企業でのVPN利用が急増しました。</p>
-<h3>拠点間接続</h3>
-<p>本社と支社を安全につなぐためにVPNを使います。物理的な専用線より大幅に安価です。</p>
-<h3>プライバシー保護</h3>
-<p>カフェや空港の公共Wi-Fiを使う際にVPNを使うと、通信内容の盗聴を防げます。また、接続元のIPアドレスをVPNサーバーのIPに変えることができます。</p>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な目的</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">暗号化</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な用途</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">VPN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化された仮想専用線の構築</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 全通信を暗号化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テレワーク・拠点間接続</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロキシサーバー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代理アクセス・キャッシュ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一部のみ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アクセス管理・フィルタリング</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：VPNの重要ポイント</h2>
+<p>試験ではVPNを「テレワークで社内NWに安全に接続する仕組み」という文脈で問う。問題文に「在宅勤務中に自宅から会社のサーバーへ安全にアクセスする方法」という記述があればVPN。「仮想専用線」「暗号化トンネル」「テレワーク」のいずれかが含まれていればVPNと判断できる。</p>
+<p>プロキシサーバーとの区別は頻出問題だ。プロキシは「代理でアクセスしてキャッシュを返す」サーバーで、主に組織から外部Webサイトへのアクセス管理（ログ取得・フィルタリング）に使う。VPNは「外部から社内NWへのアクセスを安全に実現する」仕組みで、用途の方向が逆だ。「外→内（社内へのアクセス）→VPN」「内→外（インターネットへのアクセス管理）→プロキシ」と方向性で覚えると分かりやすい。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-encryption.html" style="color:#1F56C6;">itp-encryption</a>, <a href="itp-firewall.html" style="color:#1F56C6;">itp-firewall</a></p>
 </div>
-<div class="card">
-<h2>よくある間違いとひっかけ</h2>
-<div class="mb"><p>❌ 「VPNを使えば完全に匿名になれる」は誤り</p></div>
-<p>VPNはIPアドレスを変えることができますが、VPNサービス提供者にはアクセスログが残ります。また、Webサイトでのログインやクッキーによる追跡は別の話です。完全な匿名性は保証されません。</p>
-<div class="mb"><p>❌ VPNは「暗号化」だけの技術である</p></div>
-<p>VPNはトンネリング（カプセル化）と暗号化の組み合わせです。暗号化だけでなく、専用ネットワークのように使えることがVPNの特徴です。</p>
-</div>
-<div class="card"><h2>まとめ</h2>
-<ul>
-<li>VPNはインターネット上に暗号化された仮想専用線を作る技術</li>
-<li>トンネリングでデータをカプセル化し、暗号化で保護する</li>
-<li>テレワーク・拠点間接続・公共Wi-Fiでの通信保護に活用</li>
-<li>IPsec・SSL VPN・L2TPなど複数のプロトコルがある</li>
-<li>VPNで完全な匿名性は保証されない</li>
-</ul><!-- EXPANDED_ITP -->
-<div class="card"><h2>VPNの種類とプロトコル</h2>
-<ul>
-<li><strong>IPsec VPN</strong>：ネットワーク層でトンネリング。企業拠点間接続に使用。トンネルモード・トランスポートモード</li>
-<li><strong>SSL/TLS VPN</strong>：ブラウザから利用可能。リモートアクセスVPNに使用</li>
-<li><strong>WireGuard</strong>：軽量・高速・シンプルな最新VPNプロトコル</li>
-<li><strong>L2TP/IPsec</strong>：L2TP（L2）にIPsec（暗号化）を組み合わせた方式</li>
-</ul>
-<p>SD-WAN（Software-Defined WAN）：クラウドと拠点間の通信を最適化するネットワーク仮想化技術。従来の専用線・MPLS回線をインターネットVPNで代替できるコスト削減効果がある。ゼロトラストとVPN：テレワーク普及でリモートアクセスVPNが急増したが、ゼロトラストアーキテクチャ（ZTNA）への移行が進んでいる。</p></div>
-<div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

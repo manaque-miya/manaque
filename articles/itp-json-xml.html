@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JSON・XMLとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="JSON・XMLの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-json-xml.html">
+  <meta property="og:title" content="JSON・XMLとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="JSON・XMLの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-json-xml.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">JSON・XMLとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">JSON・XML</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>JSON・XMLとは何か</h2>
+<p>JSON（JavaScript Object Notation）とXML（Extensible Markup Language）は、異なるシステム・言語間でデータを交換するための標準的なテキスト形式だ。JSONは2001年頃から普及したシンプルな形式で、現在のREST APIの標準データ形式。XMLは1998年にW3Cが策定した拡張性の高い形式で、企業の基幹システム連携・設定ファイルに広く使われる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: JSON は「軽量・人間が読みやすい」、XML は「構造が厳密・拡張性が高い」—モダンなWebはJSON、レガシー企業システムはXMLが多い傾向だ。</p></div>
+</div>
+<div class="card"><h2>JSONとXMLの比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">JSON</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">XML</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">可読性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い・シンプル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">冗長・タグが多い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データサイズ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">小さい</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大きい（開始・終了タグ）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主な用途</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">REST API・設定ファイル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">企業システム連携・SOAP・HTML</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対応言語</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ほぼ全言語ネイティブ対応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ほぼ全言語対応（パーサー必要）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スキーマ定義</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">JSON Schema（非標準的）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XML Schema（XSD）で厳密定義可</td></tr></table></div><p>JSONの構造例：<code>{"name":"田中","age":30,"city":"Tokyo"}</code>（キーと値のペア）</p>
+<p>XMLの同等例：<code><user><name>田中</name><age>30</age><city>Tokyo</city></user></code></p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: HTMLはXMLの一種ではない（HTMLは独自規格、XMLベースはXHTML）。ただし「HTMLはXMLに似た構造を持つマークアップ言語」というレベルでは正しい。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ JSONはREST APIの標準データ形式・軽量・シンプル</li>
+<li style="padding:4px 0;font-size:14px;">✅ XMLは拡張性・厳密さが強み・SOAP/EDIなど企業システムに多い</li>
+<li style="padding:4px 0;font-size:14px;">✅ CSV（カンマ区切り）もデータ交換形式の一つ（表形式データ向け）</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">JSON</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">軽量データ交換形式（REST APIに使われる）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XML</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">拡張性の高いマークアップ形式（企業連携・設定に使われる）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSV</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">カンマ区切りのシンプルな表形式（スプレッドシートデータ向け）</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：JSON・XMLの重要ポイント</h2>
+<p>試験では「REST APIが使うデータ形式はどれか」→JSON、「EDIや企業間データ交換に使われる厳密な形式は」→XMLという対応問題が出る。また「JSONをパースして特定の値を取り出す」問題も出題されることがある。</p>
+<p>マークアップ言語との関係では、HTML・XML・JSONの階層整理が問われる。「HTMLはWebページの構造を表すマークアップ言語、XMLはデータを表現する汎用マークアップ言語、JSONはオブジェクト表現を用いたデータ交換形式」という位置づけを理解する。</p>
+<p>クラウドの設定ファイルとしてJSON・YAML（JSONの上位互換として普及）・TOMLが使われる点も近年の出題傾向だ。Dockerのcompose.yml、Kubernetesのマニフェストなどインフラコード化（IaC）との関連でデータ形式が問われることがある。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-rest-api].html" style="color:#1F56C6;">[itp-rest-api]</a>, <a href="[itp-oop].html" style="color:#1F56C6;">[itp-oop]</a>, <a href="[itp-data-warehouse].html" style="color:#1F56C6;">[itp-data-warehouse]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

@@ -1,125 +1,88 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ゼロデイ攻撃とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="ゼロデイ攻撃の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-zero-day.html">
-  <meta property="og:title" content="ゼロデイ攻撃とは？脆弱性と対策をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="ゼロデイ攻撃とは何か、なぜ危険なのか、どう対策するかをITパスポート試験対策向けに解説します。">
+  <meta property="og:title" content="ゼロデイ攻撃とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="ゼロデイ攻撃の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-zero-day.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>ゼロデイ攻撃とは？脆弱性と対策をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="ゼロデイ攻撃とは何か、なぜ危険なのか、どう対策するかをITパスポート試験対策向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">🔐 セキュリティ</div>
-<h1>ゼロデイ攻撃とは？脆弱性と対策をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">ゼロデイ攻撃</span><span class="tag">脆弱性</span><span class="tag">セキュリティ</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">ゼロデイ攻撃とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">ゼロデイ攻撃</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>ゼロデイ攻撃とは何か</h2>
+<p>試験では「ソフトウェアの脆弱性に対して、修正プログラムが存在しない状態で行われる攻撃として正しいものはどれか」という形でゼロデイ攻撃が出題される。ゼロデイとは「パッチが公開された日から0日（ゼロ日）」という意味で、修正プログラム（パッチ）がまだ提供されていない脆弱性を突いた攻撃を指す。パッチが出ていないため、従来のウイルス対策ソフトや更新を徹底する通常の対策が効かないのが最大の特徴だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: ゼロデイ攻撃は「パッチ未公開の脆弱性を突く」——防御側はパッチがない状態で攻撃を受けるため、事前防御が非常に困難。</p></div>
 </div>
-
-<div class="card"><h2>ゼロデイ攻撃とは</h2>
-<p>ゼロデイ攻撃とは、<strong>ソフトウェアの脆弱性（セキュリティの穴）が発見されてから、修正パッチが公開される前に行われる攻撃</strong>です。対策ができていない「0日目」に攻撃が行われることからこの名前がついています。</p>
-<div class="hl">💡 「ゼロデイ」= 脆弱性が公表されてから対策までの日数が「0日」= 即座に攻撃される</div>
+<div class="card"><h2>ゼロデイ攻撃の特徴と対策</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃タイミング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">脆弱性発見〜パッチ公開の「ゼロ日目」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対策の難しさ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチが存在しないため適用できない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃者の優位性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">防御側より攻撃者が脆弱性を先に知っている状態</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主な対策</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">侵入検知（IDS/IPS）・最小権限の原則・セグメント分離</td></tr></table></div><p>ゼロデイ攻撃への現実的な対策：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>侵入後の被害最小化</strong>: ネットワークセグメント分離・最小権限設定で被害範囲を限定する</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>早期検知</strong>: IDS/IPS・振る舞い検知型セキュリティで異常な動作を検知する</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>パッチ管理の徹底</strong>: ゼロデイ対策そのものではないが、既知の脆弱性を放置しない</li>
+</ul>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: パッチを適用すればゼロデイ攻撃を防げると思いがちだが、パッチがまだ「存在しない」のがゼロデイ攻撃——パッチ適用は既知の脆弱性への対策であり、ゼロデイには効かない。</p></div>
 </div>
-<div class="card"><h2>なぜ危険なのか</h2>
-<p>通常のサイバー攻撃は、既知の脆弱性を悪用するため、パッチを適用することで防げます。しかしゼロデイ攻撃は<strong>パッチが存在しない段階で攻撃が行われる</strong>ため、従来の対策が通用しません。</p>
-<h3>ゼロデイ攻撃のタイムライン</h3>
-<table>
-<tr><th>時期</th><th>状況</th></tr>
-<tr><td>脆弱性発見（攻撃者のみ）</td><td>開発者・ユーザーは知らない</td></tr>
-<tr><td>攻撃開始</td><td>パッチなし＝完全に無防備</td></tr>
-<tr><td>脆弱性が公表される</td><td>ようやく多くの人が知る</td></tr>
-<tr><td>パッチ開発・公開</td><td>数日〜数週間かかることも</td></tr>
-<tr><td>ユーザーがパッチを適用</td><td>やっと安全になる</td></tr>
-</table>
-<div class="mb">❌ 「パッチを当てていれば安全」はゼロデイ攻撃には通用しません。パッチが存在しないからです。</div>
-</div>
-<div class="card"><h2>対策方法</h2>
-<ul>
-<li><strong>脆弱性情報の収集</strong>：IPA・CERTなどの情報を常にチェック</li>
-<li><strong>WAF（Webアプリケーションファイアウォール）</strong>：未知の攻撃パターンも検知</li>
-<li><strong>IPS（侵入防止システム）</strong>：異常な通信を検知・遮断</li>
-<li><strong>最小権限の原則</strong>：被害を最小化する設計</li>
-<li><strong>ネットワーク分離</strong>：攻撃が広がりにくい構造にする</li>
-<li><strong>パッチ公開後は即座に適用</strong>：パッチが出たら迅速に対応</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 「パッチが存在しない（提供前）の脆弱性を突く攻撃」がゼロデイ攻撃の定義</li>
+<li style="padding:4px 0;font-size:14px;">✅ パッチ適用では防げない——これがゼロデイ攻撃の本質的な問題点</li>
+<li style="padding:4px 0;font-size:14px;">✅ 脆弱性を発見してから修正プログラム公開までの期間が攻撃者にとっての「チャンス」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 標的型攻撃とゼロデイ攻撃を組み合わせた高度攻撃も出題される</li>
 </ul>
 </div>
-<div class="card"><h2>試験直前チェック</h2>
-<div class="hl">✅ <strong>ゼロデイ攻撃の定義</strong>：「脆弱性の修正パッチが提供される前に行われる攻撃」がキーワードです。</div>
-<ul>
-<li>ゼロデイ = パッチ公開前の脆弱性を突く攻撃</li>
-<li>通常のパッチ適用では防げない点が最大の特徴</li>
-<li>対策：WAF・IPS・脆弱性情報の継続的な収集</li>
-</ul>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">脆弱性のパッチ状態</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対策の可否</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ゼロデイ攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチ未公開（存在しない）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">通常の更新では防げない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">既知脆弱性への攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチ公開済み</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">適用すれば防げる</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：ゼロデイ攻撃の重要ポイント</h2>
+<p>ゼロデイ攻撃で得点するには「パッチが存在しない状態での攻撃」という定義を正確に覚えることだ。問題文に「修正プログラムが公開されていない脆弱性を悪用した」「パッチが提供される前に発見され攻撃された」という記述があればゼロデイ攻撃で確定する。逆に「既に修正プログラムが公開されていたにもかかわらず適用していなかった」という場合はゼロデイ攻撃ではない。</p>
+<p>ゼロデイ攻撃の対策問題では「IDS（侵入検知システム）」や「ネットワーク分離」が正解になることが多い。パッチ適用は既知脆弱性への対策なので、ゼロデイ攻撃の「対策として正しいもの」の選択肢には適さない点を覚えておこう。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-firewall.html" style="color:#1F56C6;">itp-firewall</a>, <a href="itp-targeted-attack.html" style="color:#1F56C6;">itp-targeted-attack</a></p>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>ゼロデイ攻撃の仕組みと対策</h2>
-<p>ゼロデイ攻撃（Zero-Day Attack）はソフトウェアのセキュリティ脆弱性がベンダーに発見・修正される前（0日目）に行われる攻撃。パッチが存在しないため完全な防御が困難。</p>
-<ul>
-<li><strong>攻撃の流れ</strong>：脆弱性の発見→攻撃コード（エクスプロイト）の開発→攻撃実行→ベンダーが脆弱性を認識→パッチリリース</li>
-<li><strong>ゼロデイ脆弱性の市場</strong>：政府機関や犯罪組織が高額で売買するアンダーグラウンド市場が存在</li>
-<li><strong>対策</strong>：WAF（Webアプリケーションファイアウォール）・IPS（侵入防止システム）・最小権限の原則・ネットワーク分離</li>
-</ul></div>
-<div class="card"><h2>脆弱性管理のプロセス</h2>
-<p>CVE（Common Vulnerabilities and Exposures）：脆弱性の共通識別番号。CVSSスコア（0〜10）で深刻度を評価する。CVSS 9.0以上はクリティカル。JVN（Japan Vulnerability Notes）は日本の脆弱性情報データベース。脆弱性管理：資産の洗い出し→脆弱性スキャン→優先度付け→パッチ適用→再確認のサイクルを回す。</p></div>
-<div class="card"><h2>🎯 試験対策：ゼロデイ攻撃の重要ポイント</h2><p>ゼロデイ攻撃は脆弱性が公表される前、あるいは修正パッチが提供される前に行われる攻撃です。ITパスポートではゼロデイの定義と対策の限界・対応方針を問う問題が出ます。</p><p>「ゼロデイ（zero-day）」という名前の由来は「パッチ提供0日目（つまりパッチが存在しない状態）」に行われる攻撃であることからきています。ゼロデイ脆弱性は攻撃者が先に発見し、ベンダーが修正パッチをリリースするまでの期間が攻撃ウィンドウとなります。この期間は数日から数ヶ月にわたることもあります。</p><p>ゼロデイへの対策としてパッチ適用では防げないため、多層防御が必須です。WAF・IDS/IPSによる異常通信の検知、エンドポイントでの振る舞い検知（EDR）、最小権限の原則によるダメージ限定、定期的な脆弱性スキャン、インシデント対応計画の整備などが組み合わせられます。完全な防御は不可能という認識のもと、被害を最小化するレジリエンス（回復力）の構築が現代のセキュリティ対策の基本思想です。</p></div>
-<div class="cta"><h2>問題で腕試し！</h2>
-<p>頭に入ったか試してみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

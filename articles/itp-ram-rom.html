@@ -4,8 +4,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>RAMとROMの違いとは？揮発性・不揮発性・キャッシュメモリをわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="RAMとROMの違い、揮発性と不揮発性の意味、キャッシュメモリの役割、フラッシュメモリとの関係をITパスポート試験対策としてわかりやすく解説します。">
+<title>RAM・ROMとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="RAM・ROMの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,9 +37,10 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-ram-rom.html">
-  <meta property="og:title" content="RAMとROMの違いとは？揮発性・不揮発性・キャッシュメモリをわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="RAMとROMの違い、揮発性と不揮発性の意味、キャッシュメモリの役割、フラッシュメモリとの関係をITパスポート試験対策としてわかりやすく解説します。">
+  <meta property="og:title" content="RAM・ROMとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="RAM・ROMの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-ram-rom.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
@@ -48,71 +49,36 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
   <div class="ah">
-    <div class="al">ITパスポート｜ハードウェア</div>
-    <h1 class="at">RAMとROMの違いとは？揮発性・不揮発性・キャッシュメモリをわかりやすく解説</h1>
-    <div class="am">読了：約4〜5分</div>
-    <div class="tags"><span class="tag">RAM</span> <span class="tag">ROM</span> <span class="tag">メモリ</span> <span class="tag">ハードウェア</span> <span class="tag">ITパスポート</span></div>
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">RAM・ROMとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">RAM・ROM</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
   </div>
-<div class="card">
-<h2>RAMとROMの根本的な違い</h2>
-<p>コンピュータのメモリには大きく分けてRAMとROMの2種類があります。最大の違いは「電源を切ったときにデータが消えるかどうか」です。</p>
-<ul>
-<li><strong>RAM（Random Access Memory）</strong>：電源を切るとデータが消える（揮発性）。読み書き自由。</li>
-<li><strong>ROM（Read Only Memory）</strong>：電源を切ってもデータが残る（不揮発性）。基本的に読み取り専用。</li>
-</ul>
-<div class="hl"><p>ポイント：RAMは「作業机」、ROMは「本棚」のイメージ。作業机の上のものは帰宅（電源OFF）したら消える。本棚の本は残る。</p></div>
+<div class="card"><h2>RAM・ROMとは何か</h2>
+<p>RAMとROMの違いを一言で言うなら、電源を切ったときに内容が消えるかどうかだ。RAM（Random Access Memory）は電源オフで内容が消える揮発性メモリで、コンピュータが処理中のデータを一時的に置く作業領域として使う。ROM（Read Only Memory）は電源オフでも消えない不揮発性メモリで、BIOSや組み込み機器の固定プログラムを格納するために使う。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 「作業机（消える）＝RAM」「印刷物（消えない）＝ROM」と覚えると混同しなくなる。</p></div>
 </div>
-<div class="card">
-<h2>RAMの種類と役割</h2>
-<h3>主記憶装置（メインメモリ）としてのRAM</h3>
-<p>CPUが処理するデータを一時的に保存する場所です。容量が大きいほど、多くのアプリを同時に快適に動かせます。一般的なPCでは8GB〜32GBが主流です。</p>
-<h3>DRAM（Dynamic RAM）</h3>
-<p>定期的にデータを再書き込み（リフレッシュ）する必要があります。安価で容量が大きいため、主記憶装置に使われます。</p>
-<h3>SRAM（Static RAM）</h3>
-<p>リフレッシュが不要で高速ですが、高価で消費電力も大きいです。CPUのキャッシュメモリに使われます。</p>
-<h3>キャッシュメモリ</h3>
-<p>CPUと主記憶装置の速度差を埋めるための高速メモリです。L1キャッシュ（最速・最小）→L2キャッシュ→L3キャッシュの階層構造になっています。</p>
+<div class="card"><h2>揮発性と不揮発性の違い</h2>
+<p>「揮発性か不揮発性か」がRAMとROMを分ける決定的な基準だ。</p>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">RAM</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ROM</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">電源オフで消えるか</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 消える（揮発性）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ 消えない（不揮発性）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み書き</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み書き両方</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">基本的に読み取り専用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">用途</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業領域・プログラム実行</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">BIOS・ファームウェア保存</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">容量の呼び方</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「メモリ〇GB」はRAMのこと</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">容量はRAMより小さい</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「電源を切ったら消えた＝揮発性＝RAM」「消えない＝不揮発性＝ROM」——パソコンの「メモリ容量8GB」という表現はRAMの容量を指している。ROMは容量を意識する場面が少ない。</p></div>
 </div>
-<div class="card">
-<h2>ROMの種類と現代での使われ方</h2>
-<h3>従来のROM</h3>
-<p>製造時にデータが書き込まれ、以後変更できないメモリです。BIOSやファームウェアの格納に使われてきました。</p>
-<h3>フラッシュメモリ（現代のROM）</h3>
-<p>電気的に書き換え可能な不揮発性メモリです。現代ではROMの大部分がフラッシュメモリに置き換えられています。</p>
-<ul>
-<li><strong>SSD（Solid State Drive）</strong>：フラッシュメモリを使った記憶装置</li>
-<li><strong>USBメモリ</strong>：フラッシュメモリ製品の代表例</li>
-<li><strong>SDカード・microSD</strong>：カメラやスマートフォンで使用</li>
-<li><strong>スマートフォンのストレージ</strong>：内部ストレージもフラッシュメモリ</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ RAMは揮発性（電源オフで消える）・作業領域として使う</li>
+<li style="padding:4px 0;font-size:14px;">✅ ROMは不揮発性（電源オフでも消えない）・BIOSや組み込みプログラムを保存</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「メモリ容量〇GB」という表現は一般的にRAMを指す</li>
+<li style="padding:4px 0;font-size:14px;">✅ 電源オフで「消えるか消えないか」がRAM/ROMの判断軸</li>
 </ul>
 </div>
-<div class="card">
-<h2>よくある間違いとひっかけ</h2>
-<div class="mb"><p>❌ 「ROMは読み取り専用なので絶対に書き換えできない」は現代では不正確</p></div>
-<p>フラッシュメモリは電気的に書き換え可能なROMです。ファームウェアのアップデートが可能なのはこのためです。「ROM＝絶対読み取り専用」は従来型ROMの話です。</p>
-<div class="mb"><p>❌ RAMの容量とストレージの容量を混同する</p></div>
-<p>RAMは作業領域（一時記憶）、HDDやSSDはデータを長期保存する補助記憶装置です。「メモリ8GB、ストレージ256GB」という表現で、RAMとストレージは別物です。</p>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">揮発性・読み書き可能・作業領域</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ROM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不揮発性・読み取り専用・固定プログラム保存</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SSD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">補助記憶装置・不揮発性・大容量ファイル保存</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：RAM・ROMの重要ポイント</h2>
+<p>試験でRAMとROMが問われるときは、ほぼ必ず「揮発性・不揮発性」という軸だ。「電源を切ったらデータが消えた」→揮発性→RAM。「電源オフでも保持される固定プログラム」→不揮発性→ROM。このシナリオを見た瞬間に反応できれば解ける。</p>
+<p>もう一つ押さえておきたいのは「メモリ容量」という日常語の意味だ。「このパソコンはメモリが16GB」と言うとき、それはRAMの容量を指している。購入時のスペック表で「メモリ：16GB」と書いてあれば、それはRAM。SSDやHDDはストレージとして別項目になる。</p>
+<p>RAMとSSDの混同にも注意が必要だ。どちらも不揮発性ではないか？——違う。SSDは不揮発性（電源オフでも消えない）だが、RAMは揮発性（消える）。OSが起動するとストレージ（SSD/HDD）からRAMにプログラムが読み込まれ、CPUがRAMで作業し、結果をストレージに保存する——という流れを頭に入れると、三者の役割関係がクリアになる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-cpu.html" style="color:#1F56C6;">itp-cpu</a>, <a href="itp-ssd-hdd.html" style="color:#1F56C6;">itp-ssd-hdd</a></p>
 </div>
-<div class="card"><h2>まとめ</h2>
-<ul>
-<li>RAMは揮発性（電源OFF→消える）、ROMは不揮発性（電源OFF→残る）</li>
-<li>RAMは作業用、ROMはデータ保持用</li>
-<li>DRAMは主記憶装置、SRAMはキャッシュメモリに使用</li>
-<li>現代のROMはフラッシュメモリが主流で、書き換え可能</li>
-<li>RAMとストレージ（HDD/SSD）は別物</li>
-</ul>
-</div>
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>メモリの種類と特性</h2>
-<table><tr><th>種類</th><th>揮発性</th><th>特徴</th></tr>
-<tr><td>DRAM（主記憶）</td><td>揮発性</td><td>安価・大容量。定期リフレッシュが必要</td></tr>
-<tr><td>SRAM（キャッシュ）</td><td>揮発性</td><td>高速・高価。L1/L2/L3キャッシュに使用</td></tr>
-<tr><td>ROM（BIOS/UEFI）</td><td>不揮発性</td><td>電源オフでも保持。読み取り専用（原則）</td></tr>
-<tr><td>フラッシュメモリ</td><td>不揮発性</td><td>電気的に書き換え可能。SSD・USBメモリ</td></tr>
-<tr><td>レジスタ</td><td>揮発性</td><td>CPU内の最高速記憶。演算中の一時保存</td></tr>
-</table>
-<p>記憶階層：レジスタ（最速・最小）→L1/L2/L3キャッシュ→主記憶（DRAM）→補助記憶（SSD/HDD）→外部記憶（クラウド）の順に低速・大容量・低コストになる。仮想メモリ：RAMが不足した場合にHDD/SSDをRAMの代わりに使う仕組み（ページファイル）。処理が遅くなるためRAM増設が有効。</p></div>
-<div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

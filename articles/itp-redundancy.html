@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>冗長化・フェイルオーバーとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="冗長化・フェイルオーバーの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-redundancy.html">
+  <meta property="og:title" content="冗長化・フェイルオーバーとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="冗長化・フェイルオーバーの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-redundancy.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">冗長化・フェイルオーバーとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">冗長化・フェイルオーバー</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>冗長化・フェイルオーバーとは何か</h2>
+<p>冗長化とは、システムの重要コンポーネント（サーバー・ネットワーク・電源など）を複数台用意して単一障害点をなくす設計だ。フェイルオーバーとは、障害が発生した瞬間に自動的に予備系（スタンバイ機）に切り替える仕組みだ。この2つを組み合わせることで「止まらないシステム」を実現する。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 冗長化は「予備を用意する設計思想」、フェイルオーバーは「障害時に自動切替する動作」——セットで「可用性を高める」ための基本戦略だ。</p></div>
+</div>
+<div class="card"><h2>可用性向上手法の比較</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>アクティブ-スタンバイ</strong>: 主系が稼働し予備系が待機——障害検知後に切替（低コスト・切替に数秒かかる）</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>アクティブ-アクティブ</strong>: 両系が同時稼働して負荷分散——切替時間ほぼゼロ（高コスト・常時稼働必要）</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>クラスタリング</strong>: 複数サーバーを1台のように束ね、障害時に自動でノードが引き継ぐ高可用性構成</li>
+</ul>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">仕組み</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">切替時間</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">コスト</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アクティブ-スタンバイ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主系が動き、予備系は待機</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">数秒〜数分（障害検知後に切替）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">比較的低い（予備系は待機のみ）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アクティブ-アクティブ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">両系が同時稼働・負荷分散</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ほぼゼロ（既に稼働中）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い（両系を常時稼働）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バックアップ・復旧</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データを別場所に保存して後から復元</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">数時間〜（手動または自動）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い（ストレージのみ）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラスタリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">複数サーバーを1台のように扱う</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ほぼゼロ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「バックアップがあれば冗長化と同じ」という誤解が多い。バックアップはデータを別場所に保存して後から復元する手法で、復旧まで時間がかかりシステムはその間停止する。冗長化・フェイルオーバーは障害の瞬間に自動切替し、ユーザーは停止を体験しない点が根本的に違う。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 冗長化＝単一障害点をなくすために予備を用意する設計</li>
+<li style="padding:4px 0;font-size:14px;">✅ フェイルオーバー＝障害検知後に自動的に予備系へ切り替える仕組み</li>
+<li style="padding:4px 0;font-size:14px;">✅ アクティブ-アクティブは切替時間ゼロだがコスト高、スタンバイは低コストだが切替に数秒かかる</li>
+<li style="padding:4px 0;font-size:14px;">✅ 可用性（Availability）＝稼働時間÷（稼働時間＋停止時間）——99.9%以上が高可用性の目安</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">冗長化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">予備コンポーネントを用意して単一障害点をなくす設計</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「予備コンポーネント設計」=可用性向上の設計思想</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フェイルオーバー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">障害発生時に自動的に予備系に切り替える動作</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「障害時の自動切り替え動作」=冗長化の実現手段</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バックアップ・復旧</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データを別場所に保存して後から手動または自動で復元</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「別場所コピー・後から復元」でフェイルオーバーとの違いを問われる</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：冗長化・フェイルオーバーの重要ポイント</h2>
+<p>試験では「可用性（Availability）を高めるための手段はどれか」という形で出題される。答えとして冗長化・フェイルオーバー・RAID・クラスタリングが候補に並ぶことが多い。SLA（Service Level Agreement）で「99.9%の可用性を保証する」といった場合、その実現手段として冗長化が問われる。</p>
+<p>アクティブ-アクティブとアクティブ-スタンバイの使い分けも出題ポイントだ。銀行や医療システムのような「1秒も止められないシステム」ではアクティブ-アクティブを選ぶ。コストと停止許容時間のトレードオフとして整理しておく。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-raid].html" style="color:#1F56C6;">[itp-raid]</a>, <a href="[itp-sla].html" style="color:#1F56C6;">[itp-sla]</a>, <a href="[itp-bcm].html" style="color:#1F56C6;">[itp-bcm]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

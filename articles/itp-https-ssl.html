@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HTTPS・SSL/TLSとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="HTTPS・SSL/TLSの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-https-ssl.html">
+  <meta property="og:title" content="HTTPS・SSL/TLSとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="HTTPS・SSL/TLSの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-https-ssl.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">HTTPS・SSL/TLSとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">HTTPS・SSL/TLS</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>HTTPS・SSL/TLSとは何か</h2>
+<p>Webエンジニアの鈴木さんは新しいECサイトを立ち上げた。決済ページでクレジットカード番号を入力させるため、セキュリティ設定を確認したところ「HTTP」のままだった。これは深刻な問題だ——HTTPはデータを平文で送受信するため、通信経路で盗聴すればカード番号が丸見えになる。HTTPS（HTTP over SSL/TLS）はWebサーバーとブラウザ間の通信をSSL/TLS暗号化することで、盗聴・改ざん・なりすましの3つを防ぐプロトコルだ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: HTTPSは「HTTP＋暗号化（SSL/TLS）」——ブラウザの鍵マーク・https://で始まるURLがHTTPS通信を示す。</p></div>
+</div>
+<div class="card"><h2>HTTPS・SSL/TLSの役割</h2>
+<p>HTTPS通信が実現する3つの保護：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>盗聴防止</strong>: 通信内容を暗号化するため、途中で傍受されても読めない</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>改ざん検知</strong>: メッセージ認証コードにより、通信中のデータ改ざんを検知できる</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>なりすまし防止</strong>: サーバー証明書（電子証明書）で接続先が本物のサーバーかを確認できる</li>
+</ul>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">プロトコル</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">暗号化</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">デフォルトポート</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な用途</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ なし（平文）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">80</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化不要な公開情報</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTPS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ SSL/TLS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">443</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">個人情報・決済・ログイン</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: SSL/TLSのポート番号は443、HTTPは80——「HTTPSのポートが80」と答えるのが典型的な誤り。セットで覚えること。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ HTTPS＝HTTP＋SSL/TLS暗号化。ポート番号はHTTPS:443、HTTP:80</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「鍵マーク・https://」がHTTPS通信の目視確認方法</li>
+<li style="padding:4px 0;font-size:14px;">✅ SSL/TLSは盗聴防止・改ざん検知・なりすまし防止の3つを実現</li>
+<li style="padding:4px 0;font-size:14px;">✅ 個人情報・ログイン・決済ページは必ずHTTPSが必要——これを怠るのがセキュリティリスク</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">暗号化</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">セキュリティレベル</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なし</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">盗聴・改ざんされる可能性あり</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTPS（SSL/TLS）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">あり</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">盗聴・改ざん・なりすましを防止</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：HTTPS・SSL/TLSの重要ポイント</h2>
+<p>試験ではHTTPS・SSL/TLSを「HTTPとHTTPSの違い」と「ポート番号」の2点で問う。個人情報・パスワード・決済情報の送受信には必ずHTTPSが必要で、HTTPでは通信を傍受した第三者に内容が読まれてしまう。「なぜECサイトのURLはhttps://から始まるのか」という問いに「通信を暗号化するため」と答えられれば十分だ。</p>
+<p>ポート番号の対応は確実に覚えておこう。HTTP:80、HTTPS:443。「ファイアウォールでHTTPを遮断してHTTPSだけ許可する」という設定の話でも、80番を遮断して443番を許可するという理解が必要になる。また「SSL/TLS＝暗号化プロトコル」「HTTPS＝SSL/TLSを使ったHTTP」という構造的な理解も試験では問われる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-encryption.html" style="color:#1F56C6;">itp-encryption</a>, <a href="itp-port-number.html" style="color:#1F56C6;">itp-port-number</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

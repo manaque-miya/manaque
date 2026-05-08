@@ -1,132 +1,91 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>アルゴリズムとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="アルゴリズムの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-algorithm.html">
-  <meta property="og:title" content="アルゴリズムとプログラミングの基礎｜ITパスポート対策｜まなクエ！">
-  <meta property="og:description" content="アルゴリズム・フローチャート・ソートの種類・計算量をITパスポート試験向けにわかりやすく解説します。">
+  <meta property="og:title" content="アルゴリズムとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="アルゴリズムの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-algorithm.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>アルゴリズムとプログラミングの基礎｜ITパスポート対策｜まなクエ！</title>
-<meta name="description" content="アルゴリズム・フローチャート・ソートの種類・計算量をITパスポート試験向けにわかりやすく解説します。">
-</head><body><header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">💻 アルゴリズム</div>
-<h1>アルゴリズムとプログラミングの基礎｜ITパスポート対策</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">アルゴリズム</span><span class="tag">フローチャート</span><span class="tag">プログラミング</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">アルゴリズムとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">アルゴリズム</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>アルゴリズムとは何か</h2>
+<p>「アルゴリズムはプログラムのことだ」と勘違いしている人が多いが、実は違う。アルゴリズムは「問題を解くための手順・方法の集合」であり、プログラム言語を使う前の段階の概念だ。同じ問題でも複数のアルゴリズムが存在し、効率（速さ・使うメモリ量）が異なる。どのアルゴリズムを選ぶかがプログラムの性能を左右する。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: アルゴリズムは「料理のレシピ」——同じ料理でも手順が違えば完成までの時間も出来栄えも変わる。プログラムはそのレシピを特定の言語で書いたもの。</p></div>
 </div>
-
-<div class="card"><h2>アルゴリズムとは</h2>
-<p>問題を解くための手順・手法のことです。同じ問題でも、アルゴリズムが違うと速さや使うメモリが大きく変わります。</p>
-<div class="hl">💡 「レシピ」のようなもの。同じ料理でも手順が効率的かどうかで時間が変わるのと同じです。</div>
+<div class="card"><h2>基本アルゴリズムの種類</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>探索アルゴリズム</strong>：データの中から目的の値を見つける手順。線形探索（順番に調べる）と二分探索（半分に絞り込む）が基本。</li>
+</ul>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">② <strong>整列（ソート）アルゴリズム</strong>：データを順番に並べ替える手順。バブルソート・選択ソート・クイックソートなどがある。</li>
+</ul>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">③ <strong>再帰アルゴリズム</strong>：問題を同じ形の小さな問題に分割して、自分自身を呼び出す方式。階乗計算・フィボナッチ数列の計算に使われる。</li>
+</ul>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">代表例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">探索</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">目的の値を見つける</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">線形探索・二分探索</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">整列</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データを順番に並べる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バブルソート・クイックソート</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">再帰</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">問題を小さく分割して解く</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">階乗・フィボナッチ</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: データ構造（配列・スタック・キュー・木構造）とアルゴリズムは別概念。アルゴリズムは「処理の手順」、データ構造は「データの格納形式」。試験では両者をセットで問う問題がある——「どのデータ構造をどのアルゴリズムで処理するか」という形で出ることがある。</p></div>
 </div>
-
-<div class="card"><h2>フローチャートの基本記号</h2>
-<table>
-<tr><th>記号</th><th>名称</th><th>意味</th></tr>
-<tr><td>楕円形</td><td>端子</td><td>開始・終了</td></tr>
-<tr><td>長方形</td><td>処理</td><td>計算や代入などの処理</td></tr>
-<tr><td>ひし形</td><td>判断</td><td>条件分岐（Yes/No）</td></tr>
-<tr><td>平行四辺形</td><td>入出力</td><td>データの入力・出力</td></tr>
-</table>
-</div>
-
-<div class="card"><h2>代表的なソートアルゴリズム</h2>
-<h3>バブルソート</h3>
-<p>隣り合う要素を比べて並び替えを繰り返す。単純だが遅い。データ数がnのとき比較回数はn²に比例。</p>
-<h3>選択ソート</h3>
-<p>未整列部分から最小値を選んで先頭と交換する方法。同じくO(n²)。</p>
-<h3>二分探索</h3>
-<p>ソート済みのデータを半分ずつに絞り込んで探索する。O(log n)と高速。</p>
-<div class="hl">💡 ITパスポートでは「バブルソートの比較回数」「二分探索の効率」がよく出ます。</div>
-</div>
-
-<div class="card"><h2>プログラムの基本構造</h2>
-<table>
-<tr><th>構造</th><th>内容</th><th>例</th></tr>
-<tr><td>順次処理</td><td>上から順番に実行</td><td>A→B→Cの順に処理</td></tr>
-<tr><td>条件分岐</td><td>条件によって処理を分ける</td><td>if文、switch文</td></tr>
-<tr><td>繰り返し</td><td>条件が満たされる間繰り返す</td><td>for文、while文</td></tr>
-</table>
-</div>
-
-<div class="card"><h2>試験対策まとめ</h2>
-<div class="hl">✅ フローチャートの記号（ひし形＝判断）、バブルソートの仕組み、二分探索の効率が頻出です。</div>
-<ul>
-<li>フローチャート：ひし形＝条件分岐、楕円＝開始・終了</li>
-<li>バブルソート：隣同士を比較して交換を繰り返す</li>
-<li>二分探索：半分ずつ絞り込む高速探索（ソート済みが前提）</li>
-<li>プログラムの3構造：順次・条件分岐・繰り返し</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ アルゴリズムは「問題を解くための手順・方法」——プログラム言語に依存しない概念</li>
+<li style="padding:4px 0;font-size:14px;">✅ 同じ問題でも複数のアルゴリズムが存在し、効率（速さ・メモリ）が異なる</li>
+<li style="padding:4px 0;font-size:14px;">✅ 探索・整列・再帰が3つの基本カテゴリ</li>
+<li style="padding:4px 0;font-size:14px;">✅ アルゴリズムの良し悪しは「計算量（時間・空間）」で評価する</li>
 </ul>
 </div>
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>代表的なアルゴリズムの種類</h2>
-<table><tr><th>アルゴリズム</th><th>概要</th><th>計算量</th></tr>
-<tr><td>線形探索</td><td>先頭から順番に検索</td><td>O(n)</td></tr>
-<tr><td>2分探索</td><td>ソート済みデータを半分ずつ絞る</td><td>O(log n)</td></tr>
-<tr><td>バブルソート</td><td>隣り合う要素を比較・交換</td><td>O(n²)</td></tr>
-<tr><td>クイックソート</td><td>分割統治法で高速整列</td><td>O(n log n)</td></tr>
-<tr><td>マージソート</td><td>分割→整列→統合</td><td>O(n log n)</td></tr>
-</table>
-<p>フローチャートはアルゴリズムを図で表したもの。処理（長方形）・判断（ひし形）・端子（角丸長方形）の記号を使う。疑似コードはプログラム言語に依存しない記述方法。ITパスポート試験では「トレース」（プログラムの動きを手で追う）問題が頻出。</p></div>
-<div class="card"><h2>再帰とループの基本</h2>
-<p>反復（ループ）：同じ処理を繰り返す。for文・while文。再帰（再帰呼び出し）：関数が自分自身を呼び出す。階乗計算・フィボナッチ数列の例が有名。スタック・キューはデータ構造の基本。スタックはLIFO（後入れ先出し）、キューはFIFO（先入れ先出し）。木構造（ツリー）は階層的なデータ表現で、ファイルシステムや組織図に使われる。</p></div>
-<div class="card"><h2>🎯 試験対策：アルゴリズムの重要ポイント</h2><p>アルゴリズムとはコンピュータへの「手順書」であり、問題を解くための明確な手続きの集まりです。ITパスポートでは、基本的なアルゴリズムの概念と、フローチャートの読み方が問われます。</p><p>特に重要な概念は「順次・分岐・繰り返し」の3つの制御構造です。順次は上から順に処理を実行すること、分岐は条件によって処理を変えること（if文）、繰り返しは同じ処理を何度も実行すること（ループ）です。この3つの組み合わせでどんな処理も記述できます。</p><p>また、アルゴリズムの「効率性」も重要な観点です。同じ結果を出すアルゴリズムでも、処理速度や使用メモリが異なります。二分探索は線形探索の約1/7の比較回数で済むなど、適切なアルゴリズム選択が実務でも試験でも重要です。</p></div>
-<div class="cta"><h2>最後に確認問題にチャレンジ！</h2>
-<p>インプットの次はアウトプット。実際に解いてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
-</main><footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アルゴリズム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">問題を解く手順・プログラム言語に依存しない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プログラム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アルゴリズムを特定言語で実装したもの</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ構造</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データの格納・管理の形式（配列・スタック等）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フローチャート</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アルゴリズムを図で表現したもの</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：アルゴリズムの重要ポイント</h2>
+<p>ITパスポートのアルゴリズム問題は、高度な実装知識を問うものではなく「アルゴリズムとは何か」「何のために存在するか」という概念理解が中心だ。「アルゴリズムとして適切な説明はどれか」→「問題を解く手順の集合」が正解。「プログラム言語のことだ」「データの格納方法だ」は誤り。</p>
+<p>探索と整列の違いも整理しておこう。探索はデータの中から「目的のものを見つける」手順。整列は「順番に並べ替える」手順。二分探索は「整列済みのデータ」が前提で、真ん中から比較して半分に絞り込むため線形探索より高速だ。「大量のデータから特定の値を速く見つけるには？」→整列してから二分探索が基本戦略だ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-sql.html" style="color:#1F56C6;">itp-sql</a>, <a href="itp-database-normalization.html" style="color:#1F56C6;">itp-database-normalization</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

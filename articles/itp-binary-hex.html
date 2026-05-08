@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2進数・16進数とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="2進数・16進数の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-binary-hex.html">
+  <meta property="og:title" content="2進数・16進数とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="2進数・16進数の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-binary-hex.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">2進数・16進数とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">2進数・16進数</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>2進数・16進数とは何か</h2>
+<p>2進数（Binary）は0と1の2種類の数字だけを使う数値表現で、コンピュータが内部で処理する基本的な形式だ。16進数（Hexadecimal）は0〜9とA〜Fの16種類の記号を使う数値表現で、2進数を人間に読みやすい形に圧縮する目的で使われる。MACアドレス・IPアドレスのマスク計算・色コード（#FF5733など）・メモリアドレスなど実務でも頻出だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 16進数は「2進数4桁をまとめた速記法」—4ビット（0000〜1111）が正確に1桁の16進数（0〜F）に対応するため、16進数1桁を4桁の2進数に変換（またはその逆）がすぐできる。</p></div>
+</div>
+<div class="card"><h2>基数変換の早見表</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">10進数</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">2進数（4桁）</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">16進数</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0000</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0001</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">8</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1000</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">8</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">9</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1001</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">9</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">10</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1010</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">A</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">11</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1011</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">B</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">12</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1100</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">C</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">13</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1101</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">D</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">14</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1110</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">E</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">15</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1111</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">F</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">16</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0001 0000</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">10</td></tr></table></div></div>
+<div class="card"><h2>基数変換の手順</h2>
+<p><strong>2進数→10進数</strong>：各桁の値（0または1）に2のn乗を掛けて合計する。1101(2)＝1×8＋1×4＋0×2＋1×1＝13(10)</p>
+<p><strong>10進数→2進数</strong>：2で繰り返し割り算し、余りを下から並べる。13÷2＝6余り1、6÷2＝3余り0、3÷2＝1余り1、1÷2＝0余り1→1101(2)</p>
+<p><strong>2進数→16進数</strong>：右から4桁ずつグループに分け、各グループを16進数1桁に変換する。10110100(2)→1011|0100→B4(16)</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「16進数のAは10進数の10」を忘れて「Aは10進数のA（A番目）」と混同するケースが多い。A＝10、B＝11、C＝12、D＝13、E＝14、F＝15を確実に暗記する。</p></div>
+</div>
+<div class="card"><h2>実務での使われ方</h2>
+<p>MACアドレス（例：00:1A:2B:3C:4D:5E）は16進数6組で表現される。Webの色指定（#FF0000が赤）はRGBの各値（0〜255）を16進数2桁で表す。IPアドレスのサブネットマスクの計算ではビット演算（AND）が必要であり、2進数の理解が前提になる。</p>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 2進数4桁＝16進数1桁の対応を暗記する（0000〜1111 ↔ 0〜F）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 10進数⇔2進数の変換手順：2で繰り返し割り算（10進数→2進数）、重み付け合計（2進数→10進数）</li>
+<li style="padding:4px 0;font-size:14px;">✅ A＝10、B＝11、C＝12、D＝13、E＝14、F＝15（16進数と10進数の対応）</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2進数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0と1のみ。コンピュータ内部処理の基本単位</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">8進数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0〜7の8種類。Unix系ファイル権限で使用（例：chmod 755）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">16進数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0〜Fの16種類。2進数の圧縮表現。メモリアドレス・色コードで使用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">BCD（2進化10進数）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">10進数の各桁を4ビット2進数で表す。お金の計算など精度が必要な場面</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：2進数・16進数の重要ポイント</h2>
+<p>ITパスポートの計算問題で最も確実に得点できる分野だ。変換手順を完全に覚えれば確実に正解できる。「10進数の200を2進数に変換せよ」という問題では、200÷2の繰り返し割り算で11001000(2)を導く。</p>
+<p>16進数→10進数の変換問題も出る。「16進数のB4を10進数に変換せよ」→B＝11、4＝4なので11×16＋4×1＝176＋4＝180という計算だ。筆算で確実に解けるよう練習しておく。計算問題はサービス問題なので落とさないようにする。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-character-code].html" style="color:#1F56C6;">[itp-character-code]</a>, <a href="[itp-cpu].html" style="color:#1F56C6;">[itp-cpu]</a>, <a href="[itp-ip-address].html" style="color:#1F56C6;">[itp-ip-address]</a></p>
+<p>---</p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

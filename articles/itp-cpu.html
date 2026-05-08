@@ -4,8 +4,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>CPUとは？クロック周波数・コア数・キャッシュの仕組みをわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="CPUの役割、クロック周波数・コア数・スレッド数の意味、キャッシュメモリとの関係、GPUとの違いをITパスポート試験向けにわかりやすく解説します。">
+<title>CPU（クロック・コア・スレッド）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="CPU（クロック・コア・スレッド）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,9 +37,10 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-cpu.html">
-  <meta property="og:title" content="CPUとは？クロック周波数・コア数・キャッシュの仕組みをわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="CPUの役割、クロック周波数・コア数・スレッド数の意味、キャッシュメモリとの関係、GPUとの違いをITパスポート試験向けにわかりやすく解説します。">
+  <meta property="og:title" content="CPU（クロック・コア・スレッド）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="CPU（クロック・コア・スレッド）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-cpu.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
@@ -48,70 +49,34 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
   <div class="ah">
-    <div class="al">ITパスポート｜ハードウェア</div>
-    <h1 class="at">CPUとは？クロック周波数・コア数・キャッシュの仕組みをわかりやすく解説</h1>
-    <div class="am">読了：約4〜5分</div>
-    <div class="tags"><span class="tag">CPU</span> <span class="tag">ハードウェア</span> <span class="tag">クロック周波数</span> <span class="tag">コア</span> <span class="tag">ITパスポート</span></div>
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">CPU（クロック・コア・スレッド）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">CPU（クロック・コア・スレッド）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
   </div>
-<div class="card">
-<h2>CPUとは何か</h2>
-<p>CPU（Central Processing Unit：中央処理装置）は、コンピュータの「頭脳」に相当する最も重要な部品です。プログラムの命令を読み取り、演算・制御を行います。</p>
-<div class="hl"><p>ポイント：コンピュータの5大装置は「入力・出力・記憶・演算・制御」。このうち「演算」と「制御」を担うのがCPUです。</p></div>
-<h3>CPUの基本動作サイクル</h3>
-<ol>
-<li><strong>フェッチ（Fetch）</strong>：メモリから命令を読み取る</li>
-<li><strong>デコード（Decode）</strong>：命令を解釈する</li>
-<li><strong>エグゼキュート（Execute）</strong>：命令を実行する</li>
-<li><strong>ライトバック（Write Back）</strong>：結果をメモリに書き戻す</li>
-</ol>
+<div class="card"><h2>CPU（クロック・コア・スレッド）とは何か</h2>
+<p>CPU（Central Processing Unit：中央処理装置）はコンピュータの演算・制御を担う中核部品だ。性能を決める主要指標として「クロック周波数（処理速度）」「コア数（並列処理の物理ユニット数）」「スレッド数（論理的な並列処理の数）」があり、それぞれ異なる側面でパフォーマンスに影響する。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: CPUのクロックは「処理の速さ」、コアは「同時に処理できる物理的な個数」、スレッドは「OSから見える論理的な処理単位の数」だ。</p></div>
 </div>
-<div class="card">
-<h2>CPUの性能を決める主な指標</h2>
-<h3>クロック周波数</h3>
-<p>CPUが1秒間に実行できる処理サイクル数です。単位はHz（ヘルツ）。「3GHz」なら1秒間に30億回の処理サイクルを実行します。周波数が高いほど（一般的に）高速です。</p>
-<h3>コア数</h3>
-<p>CPU内の処理ユニットの数です。「4コア」なら4つの処理ユニットが同時並行で作業できます。動画編集・3Dレンダリングなど重い処理ではコア数が多いほど有利です。</p>
-<h3>スレッド数</h3>
-<p>1つのコアが同時に処理できる仮想的な処理の数です。「4コア8スレッド」なら、8つの処理を同時並行で実行できます（ハイパースレッディング技術による）。</p>
-<h3>キャッシュメモリ</h3>
-<p>CPUが頻繁にアクセスするデータを一時保存する高速なメモリです。L1→L2→L3の階層があり、L1が最も高速で小容量です。</p>
+<div class="card"><h2>CPU性能指標の比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">指標</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">単位</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">意味</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">多いほど</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クロック周波数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">GHz（ギガヘルツ）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1秒間の処理サイクル数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">単一スレッドが速くなる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コア数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">物理的な処理ユニット数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">並列処理が増える</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スレッド数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スレッド</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OSから見える論理CPU数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">マルチタスク性能向上</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">キャッシュ容量</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MB</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CPU内蔵の高速メモリ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">頻繁なデータ再利用が速くなる</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「クロック周波数が高い＝CPUが速い」は必ずしも正しくなく、コア数・キャッシュ・アーキテクチャなど他の要素も総合的に性能に影響する。</p></div>
 </div>
-<div class="card">
-<h2>CPUとGPUの違い</h2>
-<p>GPU（Graphics Processing Unit）はもともとグラフィックス処理のために設計された演算装置です。</p>
-<ul>
-<li><strong>CPU</strong>：少数の高性能コア（4〜16コア程度）で複雑な処理を逐次的に実行。汎用処理に強い</li>
-<li><strong>GPU</strong>：数千〜数万の小さなコアで単純な計算を大量に並列処理。行列計算・AI学習・画像処理に強い</li>
-</ul>
-<p>近年はAI（機械学習・深層学習）の学習処理にGPUが不可欠になっています。</p>
-</div>
-<div class="card">
-<h2>よくある間違いとひっかけ</h2>
-<div class="mb"><p>❌ 「クロック周波数が高いCPUが常に速い」は誤り</p></div>
-<p>コア数・スレッド数・キャッシュ容量・アーキテクチャの世代など、総合的な性能で速さが決まります。同じ3GHzでも世代が新しいCPUの方が速いことがよくあります。</p>
-<div class="mb"><p>❌ 「CPUとGPUは全く別の用途」は現代では不正確</p></div>
-<p>現代のCPUにはグラフィックス処理機能（内蔵GPU）が搭載されているものも多く、GPUはAI計算など汎用目的にも使われます。境界線は曖昧になっています。</p>
-</div>
-<div class="card"><h2>まとめ</h2>
-<ul>
-<li>CPUはコンピュータの頭脳、演算と制御を担当する</li>
-<li>フェッチ→デコード→エグゼキュート→ライトバックのサイクルで動作</li>
-<li>クロック周波数・コア数・スレッド数・キャッシュが主な性能指標</li>
-<li>GPUは並列処理に特化し、AI学習にも活用される</li>
-<li>コンピュータの5大装置：入力・出力・記憶・演算・制御</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ クロック周波数＝処理速度の基本指標（GHz単位）</li>
+<li style="padding:4px 0;font-size:14px;">✅ マルチコア＝複数コアで並列処理を実現</li>
+<li style="padding:4px 0;font-size:14px;">✅ ハイパースレッディング＝1コアで2スレッドを仮想的に実行</li>
 </ul>
 </div>
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>CPUの性能を決める要素</h2>
-<table><tr><th>要素</th><th>内容</th></tr>
-<tr><td>クロック周波数</td><td>1秒間に処理できるサイクル数（GHz）。高いほど高速</td></tr>
-<tr><td>コア数</td><td>物理的な処理単位の数。多コアで並列処理が可能</td></tr>
-<tr><td>スレッド数</td><td>論理的な処理単位。ハイパースレッディングで1コア2スレッド</td></tr>
-<tr><td>キャッシュメモリ</td><td>CPU内の高速メモリ（L1/L2/L3）。大きいほど高速</td></tr>
-<tr><td>アーキテクチャ</td><td>x86/x64・ARM・RISCなど設計方式</td></tr>
-</table>
-<p>GPU（Graphics Processing Unit）：グラフィック処理に特化した演算装置。多数のコアで並列計算が得意。AI/機械学習・深層学習の学習にも活用される。量子コンピュータは従来のビット（0/1）に対し量子ビット（0と1の重ね合わせ）を使い特定問題を超高速で解く次世代コンピュータ。</p></div>
-<div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CPU</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">演算・制御の中核部品</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「計算処理・制御」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">GPU</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">グラフィックス処理・並列演算特化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「3D描画・機械学習の並列計算」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MIPS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1秒間に実行できる命令数の指標</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「CPUの処理能力を命令数で表す」ならこれ</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：CPU（クロック・コア・スレッド）の重要ポイント</h2>
+<p>CPUの問題で問われるのは「クロック・コア・スレッドの定義」と「パイプライン処理・キャッシュの仕組み」だ。「デュアルコアCPUとは何か」→2つの物理コアを持つCPU。「4コア8スレッドとはどういう意味か」→物理コアが4つ、OSから論理コアが8つ見える（ハイパースレッディング）。</p>
+<p>パイプライン処理も頻出だ。CPUの命令実行を「フェッチ→デコード→実行→ライトバック」の複数ステージに分けて、異なる命令を各ステージで並行処理することで吞吐量を高める技術だ。「CPUの処理効率を向上させる技術はどれか」という設問でパイプラインが正答になる。</p>
+<p>MIPSという性能指標も覚えること。「Millions of Instructions Per Second」の略で、1秒間に何百万命令を実行できるかを表す。試験では「CPUの処理能力の指標として正しいものはどれか」という問いでMIPSが選択肢に出る。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-cache-memory].html" style="color:#1F56C6;">[itp-cache-memory]</a>, <a href="[itp-os].html" style="color:#1F56C6;">[itp-os]</a>, <a href="[itp-hardware].html" style="color:#1F56C6;">[itp-hardware]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

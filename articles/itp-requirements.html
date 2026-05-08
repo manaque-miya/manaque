@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>要件定義（機能要件・非機能要件）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="要件定義（機能要件・非機能要件）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-requirements.html">
+  <meta property="og:title" content="要件定義（機能要件・非機能要件）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="要件定義（機能要件・非機能要件）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-requirements.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">要件定義（機能要件・非機能要件）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">要件定義（機能要件・非機能要件）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>要件定義（機能要件・非機能要件）とは何か</h2>
+<p>要件定義は、システム開発において「何を作るか」を明確化するフェーズで、業務要件をシステム要件に翻訳する作業だ。要件は「機能要件（何ができるか）」と「非機能要件（どのように動くか）」の2種類に分類される。要件定義の品質がプロジェクト全体の成否を左右するため、上流工程で最も重要な工程とされる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 要件定義は「ユーザーが欲しいもの」と「エンジニアが作れるもの」の翻訳作業—曖昧さが後工程の手戻りを生む。</p></div>
+</div>
+<div class="card"><h2>機能要件と非機能要件の比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区分</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">定義</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能要件</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システムが「何をするか」</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">会員登録・商品検索・決済・レポート出力</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非機能要件</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システムが「どのように動くか」</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">応答3秒以内・99.9%稼働率・同時接続1000人</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非機能要件（セキュリティ）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セキュリティ基準</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">TLS暗号化必須・二要素認証・ログ90日保存</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非機能要件（拡張性）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">将来の拡張容易性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">マイクロサービス対応・API公開対応</td></tr></table></div><p>非機能要件の分類（IPA「非機能要求グレード」）：可用性・性能/拡張性・運用/保守性・移行性・セキュリティ・システム環境/エコロジー。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「バックアップを1日1回取得する」は機能か非機能か？→非機能要件（運用・保守性）だ。操作ではなくシステム特性だから。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 機能要件 = 「何をするか」（ユースケース・画面・帳票）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 非機能要件 = 「どのように動くか」（性能・信頼性・セキュリティ）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 要件定義書はRFP（提案依頼書）に先立つか、RFPから導出される</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能要件</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザーが直接利用する機能の仕様</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非機能要件</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システム品質・性能・制約条件</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">設計仕様</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">要件を実装方法に落とし込んだ詳細（要件定義の後）</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：要件定義（機能要件・非機能要件）の重要ポイント</h2>
+<p>試験では「ある記述が機能要件か非機能要件か」を問う選択問題が頻出だ。判断基準は「ユーザーが操作して使う機能→機能要件」「システムの品質特性・制約→非機能要件」で覚える。</p>
+<p>「応答時間3秒以内」「可用性99.9%」「同時接続1000ユーザー」はすべて非機能要件だ。一方「商品をカートに追加する」「請求書を印刷する」は機能要件だ。</p>
+<p>要件定義フェーズの成果物（要件定義書・業務フロー・ユースケース図・データフロー図）も問われる。UML（統一モデリング言語）のユースケース図が要件定義で使われることも確認しておこう。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-non-functional-req].html" style="color:#1F56C6;">[itp-non-functional-req]</a>, <a href="[itp-prototyping-spiral].html" style="color:#1F56C6;">[itp-prototyping-spiral]</a>, <a href="[itp-project-charter].html" style="color:#1F56C6;">[itp-project-charter]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

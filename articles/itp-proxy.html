@@ -1,127 +1,89 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>プロキシサーバーとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="プロキシサーバーの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-proxy.html">
-  <meta property="og:title" content="プロキシサーバーとは？役割と種類をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="プロキシサーバーの仕組み、フォワードプロキシとリバースプロキシの違い、セキュリティ上の役割をITパスポート向けに解説します。">
+  <meta property="og:title" content="プロキシサーバーとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="プロキシサーバーの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-proxy.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>プロキシサーバーとは？役割と種類をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="プロキシサーバーの仕組み、フォワードプロキシとリバースプロキシの違い、セキュリティ上の役割をITパスポート向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">🌐 ネットワーク</div>
-<h1>プロキシサーバーとは？役割と種類をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">プロキシサーバー</span><span class="tag">ネットワーク</span><span class="tag">セキュリティ</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">プロキシサーバーとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">プロキシサーバー</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>プロキシサーバーとは何か</h2>
+<p>プロキシサーバーを一言で表すなら、会社とインターネットの間に立つ「代理人」のようなものだ。社員が外部のWebサイトにアクセスするとき、直接サイトにつなぐのではなく、必ずプロキシサーバーを経由させる。プロキシ（Proxy）は「代理」という意味で、内部ユーザーの代わりにWebサイトへアクセスし、結果をユーザーに返す役割を担う。この仕組みにより、キャッシュ・アクセスログ管理・フィルタリングが実現できる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: プロキシサーバーは「社内からの外部アクセスを管理する代理中継サーバー」——ファイアウォールが「遮断」するのに対し、プロキシは「中継・管理」が目的。</p></div>
 </div>
-
-<div class="card"><h2>プロキシサーバーとは</h2>
-<p>プロキシサーバーとは、<strong>クライアント（PC）とサーバーの間に入って通信を代理する中継サーバー</strong>です。「proxy（代理）」の名の通り、クライアントの代わりにWebサーバーへアクセスします。</p>
-<div class="hl">💡 社内PCからインターネットへのアクセスは、直接ではなくプロキシサーバー経由で行う企業が多いです。</div>
-</div>
-<div class="card"><h2>フォワードプロキシとリバースプロキシ</h2>
-<h3>フォワードプロキシ（一般的なプロキシ）</h3>
-<p>クライアント側に置かれ、クライアントの代わりにWebサーバーへアクセスする。<strong>クライアントを代理する</strong>。</p>
-<p>用途：社内からのインターネットアクセス制御、フィルタリング、キャッシュ</p>
-<h3>リバースプロキシ</h3>
-<p>サーバー側に置かれ、クライアントからのアクセスを代わりに受け付ける。<strong>サーバーを代理する</strong>。</p>
-<p>用途：WebサーバーのIPアドレス隠蔽、負荷分散、SSL処理の集約</p>
-<table>
-<tr><th></th><th>フォワードプロキシ</th><th>リバースプロキシ</th></tr>
-<tr><td>位置</td><td>クライアント側</td><td>サーバー側</td></tr>
-<tr><td>代理する対象</td><td>クライアント</td><td>サーバー</td></tr>
-<tr><td>主な用途</td><td>アクセス制御・キャッシュ</td><td>負荷分散・セキュリティ</td></tr>
-</table>
-</div>
-<div class="card"><h2>プロキシサーバーの役割</h2>
-<ul>
-<li><strong>アクセス制御</strong>：特定サイトへのアクセスを制限（業務外サイトのブロック）</li>
-<li><strong>キャッシュ機能</strong>：一度取得したコンテンツを保存→次回高速表示</li>
-<li><strong>ログ管理</strong>：誰がどのサイトにアクセスしたか記録</li>
-<li><strong>匿名性の向上</strong>：接続先サーバーに対してクライアントのIPを隠す</li>
-<li><strong>セキュリティ向上</strong>：不正サイトへのアクセスをブロック</li>
+<div class="card"><h2>プロキシサーバーの機能</h2>
+<p>プロキシサーバーが提供する主な機能：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>キャッシュ機能</strong>: よくアクセスされるページを保存して次回は素早く返す。回線負荷の軽減</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>アクセスログ管理</strong>: 誰がいつどのサイトにアクセスしたかを記録して管理できる</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>URLフィルタリング</strong>: 不適切なサイトや業務と無関係なサイトへのアクセスをブロックする</li>
+<li style="padding:4px 0;font-size:14px;">④ <strong>IPアドレスの隠蔽</strong>: 外部サイトには内部ユーザーのIPが見えず、プロキシのIPしか見えない</li>
 </ul>
-<div class="mb">❌ プロキシ経由でも完全な匿名ではありません。プロキシサーバー自体にはログが残ります。</div>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">機能</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">効果</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">キャッシュ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">同一コンテンツへの2回目以降のアクセスを高速化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アクセスログ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">社員の不審なアクセスを事後調査できる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィルタリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">社内から禁止サイトへのアクセスを遮断</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: ファイアウォールとプロキシを混同しやすいが、ファイアウォールは通信の「許可・遮断」をルールで管理する。プロキシは通信を「代理中継」して管理・キャッシュ・フィルタリングを行う。目的と動作が違う。</p></div>
 </div>
-<div class="card"><h2>試験直前チェック</h2>
-<div class="hl">✅ 「フォワードプロキシ = クライアントを代理」「リバースプロキシ = サーバーを代理」を区別しましょう。</div>
-<ul>
-<li>プロキシ = 通信の代理中継サーバー</li>
-<li>フォワード：クライアント→インターネットの出口で制御</li>
-<li>リバース：インターネット→サーバーの入口で制御</li>
-<li>機能：アクセス制御、キャッシュ、ログ管理</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ プロキシは「代理中継サーバー」——キャッシュ・ログ・フィルタリングが主な機能</li>
+<li style="padding:4px 0;font-size:14px;">✅ 社内からの外部サイトへのアクセスを管理する「内→外」の仕組み</li>
+<li style="padding:4px 0;font-size:14px;">✅ ファイアウォールとの違いは「遮断（FW）vs 中継管理（プロキシ）」</li>
+<li style="padding:4px 0;font-size:14px;">✅ VPNとの違いは「外→内へのアクセス（VPN）vs 内→外の管理（プロキシ）」</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>プロキシの種類と機能</h2>
-<table><tr><th>種類</th><th>機能</th></tr>
-<tr><td>フォワードプロキシ</td><td>クライアントの代わりにサーバーへリクエスト。社内からインターネットへのアクセス管理</td></tr>
-<tr><td>リバースプロキシ</td><td>サーバーの代わりにクライアントの要求を受付。負荷分散・SSL終端・キャッシュ</td></tr>
-<tr><td>透過型プロキシ</td><td>クライアントが設定なしで利用できるプロキシ</td></tr>
-<tr><td>SOCKSプロキシ</td><td>L5（セッション層）で動作。HTTP以外のプロトコルも中継</td></tr>
-</table></div>
-<div class="card"><h2>プロキシのセキュリティ活用</h2>
-<p>URLフィルタリング：有害サイト・業務無関係サイトへのアクセスをブロック。コンテンツフィルタリング：通信内容を検査してマルウェア・機密情報漏洩を検知。ログ記録：社員のインターネットアクセス履歴を記録して監査。SSLインスペクション（SSL/TLS復号）：暗号化通信を復号して内容を検査する手法（プライバシーへの配慮が必要）。SWG（Secure Web Gateway）はクラウド型のプロキシサービス。</p></div>
-<div class="card"><h2>🎯 試験対策：プロキシの重要ポイント</h2><p>プロキシ（代理）サーバーはクライアントとサーバーの間に立ち、通信を中継する役割を果たします。ITパスポートではプロキシの機能と活用場面を理解することが求められます。</p><p>プロキシの主な機能は4つです。①キャッシュ機能：同じコンテンツへのアクセスを高速化。②フィルタリング：有害サイトや業務外サイトへのアクセスを制限。③ログ記録：誰がどのサイトにアクセスしたか記録・監査。④NAT/IPマスカレード：内部のIPアドレスを隠蔽して外部に公開しない。</p><p>「フォワードプロキシ」と「リバースプロキシ」の違いも重要です。フォワードプロキシはクライアント側に置き、内部ユーザーの外部アクセスを代理します（企業でよく使用）。リバースプロキシはサーバー側に置き、外部からの要求をバックエンドサーバーに振り分けます（負荷分散・セキュリティ向上に使用）。WAFやCDNもリバースプロキシの応用例です。</p></div>
-<div class="cta"><h2>問題で腕試し！</h2>
-<p>頭に入ったか試してみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">通信の方向</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な目的</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロキシサーバー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内→外（社内→インターネット）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代理・キャッシュ・フィルタリング</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ファイアウォール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">両方向</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ルールで通信を許可・遮断</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">VPN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">外→内（外部→社内NW）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化された安全な接続</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：プロキシサーバーの重要ポイント</h2>
+<p>プロキシサーバーの問題で差がつくのは「代理・中継」という役割と、ファイアウォール・VPNとの違いを理解していることだ。「社内のすべてのユーザーのインターネットアクセスが特定のサーバーを経由する仕組み」という記述があればプロキシサーバー。キャッシュ・ログ・フィルタリングという3つの機能もセットで覚えておこう。</p>
+<p>ファイアウォールとの混同は典型的なミスだ。ファイアウォールは「この通信は許可、この通信は遮断」というルールベースの判断をする機器。プロキシは「代わりにアクセスして結果を返す」という代理動作が本質で、フィルタリングはその付加機能だ。試験では「アクセス管理が目的」→プロキシ、「通信遮断が目的」→ファイアウォールで区別できる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-firewall.html" style="color:#1F56C6;">itp-firewall</a>, <a href="itp-vpn.html" style="color:#1F56C6;">itp-vpn</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

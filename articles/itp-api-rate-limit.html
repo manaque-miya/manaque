@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>APIセキュリティ（レートリミット）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="APIセキュリティ（レートリミット）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-api-rate-limit.html">
+  <meta property="og:title" content="APIセキュリティ（レートリミット）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="APIセキュリティ（レートリミット）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-api-rate-limit.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">APIセキュリティ（レートリミット）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">APIセキュリティ（レートリミット）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>APIセキュリティ（レートリミット）とは何か</h2>
+<p>APIセキュリティのレートリミットを答えるポイントは、「<strong>一定時間内のリクエスト数を制限することで、不正利用・過負荷・DoS攻撃を防ぐ仕組み</strong>」という定義と、その具体的な実装方式を把握することだ。</p>
+<h3>レートリミットの主要アルゴリズム</h3>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">アルゴリズム</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">概要</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">固定ウィンドウ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時間窓内のリクエスト数を制限</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">窓の境界でバースト攻撃が可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スライディングウィンドウ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">過去N秒のリクエスト数をリアルタイム計算</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">より均一に制限できる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">トークンバケット</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バケツにトークンを補充し1リクエスト1トークン消費</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バーストに一定程度対応可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リーキーバケット</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リクエストをキューに溜め一定速度で処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">安定した処理レートを保証</td></tr></table></div><h3>APIセキュリティの主要脅威と対策</h3>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">脅威</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対策</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DoS/DDoS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大量リクエストで可用性を侵害</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レートリミット・WAF</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ブルートフォース</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">認証情報を総当たり</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ログイン試行回数制限</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スクレイピング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">APIを通じたデータ大量収集</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レートリミット・CAPTCHA</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">APIキー漏洩</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">キーを悪用した不正アクセス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">キーのローテーション・IPホワイトリスト</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不正なデータ操作</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">認可チェック漏れで他者データを操作</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">オブジェクトレベル認可（OWASP API Top1）</td></tr></table></div><h3>HTTPレスポンスヘッダーでの通知</h3>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ヘッダー</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>X-RateLimit-Limit</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">制限値（例：1000リクエスト/時間）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>X-RateLimit-Remaining</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">残りリクエスト数</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>X-RateLimit-Reset</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">制限リセット時刻（UNIXタイム）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>Retry-After</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">429エラー時の再試行待ち時間</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: レートリミット超過時のHTTPステータスコードは<strong>429 Too Many Requests</strong>だ。APIクライアントはこのステータスを受け取ったら指数バックオフ（1秒→2秒→4秒と待機時間を増やす）で再試行するのが設計上の基本だ。</p></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
+<div class="hl"><p>- <strong>誤</strong>：レートリミットはDDoS攻撃を完全に防ぐことができる</p></div>
+<div class="hl"><p>- <strong>正</strong>：レートリミットはDoS緩和に有効だが、大規模DDoSには<strong>WAF・CDN・ISPレベルの対策</strong>が別途必要。レートリミットは「一人あたりの制限」でありボリューム攻撃への完全な防御にはならない</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<p>1. レートリミット＝時間当たりのリクエスト数上限設定</p>
+<p>2. 429 Too Many Requests＝レートリミット超過のHTTPステータス</p>
+<p>3. ブルートフォース対策にもレートリミット（ログイン試行制限）が有効</p>
+<p>4. トークンバケット・固定ウィンドウなどの実装アルゴリズムが問われる場合あり</p>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レートリミット</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時間当たりのリクエスト数制限</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">過負荷・DoS緩和</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スロットリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">処理速度の制御</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レートリミットに近い概念</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クォータ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一定期間の総使用量制限</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">月間API呼び出し数上限等</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WAF</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Webアプリケーションファイアウォール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃パターン検知・ブロック</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：APIセキュリティ（レートリミット）の重要ポイント</h2>
+<p>「APIに大量のリクエストが送られた場合に429エラーを返す仕組みとして適切なものはどれか」→「レートリミット」。また「認証情報へのブルートフォース攻撃対策としてログイン試行回数を制限する仕組みはどれか」という問いにもレートリミット（ログイン試行制限）が該当する。</p>
+<p>---</p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

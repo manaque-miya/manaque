@@ -1,138 +1,82 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SSDとHDDとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="SSDとHDDの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-ssd-hdd.html">
-  <meta property="og:title" content="SSDとHDDの違いとは？特徴と使い分けをわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="SSD（ソリッドステートドライブ）とHDD（ハードディスクドライブ）の仕組みの違い、速度・耐久性・コストの比較をITパスポート向けに解説します。">
+  <meta property="og:title" content="SSDとHDDとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="SSDとHDDの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-ssd-hdd.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>SSDとHDDの違いとは？特徴と使い分けをわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="SSD（ソリッドステートドライブ）とHDD（ハードディスクドライブ）の仕組みの違い、速度・耐久性・コストの比較をITパスポート向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">💻 ハードウェア</div>
-<h1>SSDとHDDの違いとは？特徴と使い分けをわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">SSD</span><span class="tag">HDD</span><span class="tag">ストレージ</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">SSDとHDDとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">SSDとHDD</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>SSDとHDDとは何か</h2>
+<p>SSD（Solid State Drive）はフラッシュメモリを使用した記憶装置で、物理的な可動部品がなく高速・低消費電力・耐衝撃性に優れる。HDD（Hard Disk Drive）は磁気ディスクを回転させ磁気ヘッドで読み書きする記憶装置で、大容量・低コストが特長だ。どちらも不揮発性ストレージ（電源を切ってもデータが消えない）だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: SSDは「速くて高い」、HDDは「遅くて安い」という対比が試験の軸で、用途によって使い分ける。</p></div>
 </div>
-
-<div class="card"><h2>補助記憶装置（ストレージ）とは</h2>
-<p>コンピュータのデータ保存には<strong>補助記憶装置（ストレージ）</strong>が使われます。電源を切ってもデータが消えない「不揮発性メモリ」です。現在主流なのがHDDとSSDの2種類です。</p>
-</div>
-<div class="card"><h2>HDD（ハードディスクドライブ）</h2>
-<p>磁気ディスク（円盤）を回転させ、磁気ヘッドでデータを読み書きする<strong>機械的な装置</strong>です。</p>
-<ul>
-<li>容量が大きく・価格が安い</li>
-<li>物理的な動作部品があるため、衝撃・振動に弱い</li>
-<li>読み書き速度はSSDより遅い</li>
-<li>アクセス時に回転音・発熱がある</li>
-</ul>
-</div>
-<div class="card"><h2>SSD（ソリッドステートドライブ）</h2>
-<p>フラッシュメモリ（半導体）を使ってデータを保存する<strong>電子的な装置</strong>です。可動部品がありません。</p>
-<ul>
-<li>読み書き速度がHDDの数倍〜数十倍</li>
-<li>衝撃・振動に強い（可動部品なし）</li>
-<li>消費電力が少ない・静音</li>
-<li>HDDに比べて容量あたりのコストが高い（近年は低下中）</li>
-</ul>
-<table>
-<tr><th>比較項目</th><th>HDD</th><th>SSD</th></tr>
-<tr><td>記録方式</td><td>磁気（機械式）</td><td>フラッシュメモリ（電子式）</td></tr>
-<tr><td>速度</td><td>遅い</td><td>速い（数倍〜数十倍）</td></tr>
-<tr><td>耐衝撃性</td><td>弱い</td><td>強い</td></tr>
-<tr><td>容量単価</td><td>安い</td><td>高め（下がっている）</td></tr>
-<tr><td>消費電力</td><td>高い</td><td>低い</td></tr>
-<tr><td>動作音</td><td>あり</td><td>なし</td></tr>
-</table>
-<div class="hl">💡 ノートPCや高速起動が必要なシステムにはSSD、大容量保存が必要なサーバーにはHDDという使い分けが一般的です。</div>
+<div class="card"><h2>SSDとHDDの比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">SSD</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">HDD</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み書き速度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高速（500MB/s〜数GB/s）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低速（100〜150MB/s）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">価格/GB</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">安い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">耐衝撃性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い（可動部なし）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い（磁気ヘッドが可動）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">消費電力</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">動作音</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">無音</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">動作音あり</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">寿命</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">書き込み回数制限あり</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機械的摩耗あり</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大容量</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">TB単位（価格高い）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">数TB（価格安い）</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: SSDは「書き込み回数制限（TBW：Total Bytes Written）」があるため、頻繁な書き込みを繰り返すと劣化するという特性がある（HDDの機械的摩耗とは異なる劣化機構）。</p></div>
 </div>
 <div class="card"><h2>ここが試験のキモ</h2>
-<div class="hl">✅ SSDとHDDの<strong>記録方式の違い（フラッシュメモリ vs 磁気ディスク）</strong>と速度・耐久性の比較が頻出です。</div>
-<ul>
-<li>HDD：磁気ディスク回転→遅い・安い・衝撃に弱い</li>
-<li>SSD：フラッシュメモリ→速い・やや高い・衝撃に強い</li>
-<li>補助記憶装置は「不揮発性」（電源OFFでも消えない）</li>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ SSD＝フラッシュメモリ・高速・耐衝撃・書き込み寿命あり</li>
+<li style="padding:4px 0;font-size:14px;">✅ HDD＝磁気ディスク・低速・大容量・低コスト</li>
+<li style="padding:4px 0;font-size:14px;">✅ どちらも不揮発性（電源OFFでデータが消えない）</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>SSDとHDDの比較</h2>
-<table><tr><th>比較項目</th><th>SSD</th><th>HDD</th></tr>
-<tr><td>記録方式</td><td>フラッシュメモリ（電気的）</td><td>磁気ディスク（機械的）</td></tr>
-<tr><td>読み書き速度</td><td>高速（HDDの数倍〜数十倍）</td><td>低速</td></tr>
-<tr><td>衝撃耐性</td><td>強い（可動部なし）</td><td>弱い（ディスク回転）</td></tr>
-<tr><td>消費電力</td><td>少ない</td><td>多い</td></tr>
-<tr><td>価格（単位容量）</td><td>高い</td><td>安い</td></tr>
-<tr><td>寿命</td><td>書き換え回数に上限</td><td>経年劣化・ヘッド故障リスク</td></tr>
-<tr><td>容量</td><td>増加中（〜数TB）</td><td>大容量（〜数十TB）</td></tr>
-</table></div>
-<div class="card"><h2>ストレージの種類と用途</h2>
-<ul>
-<li><strong>NVMe SSD</strong>：PCIe接続の高速SSD。ゲーミングPC・サーバー向け</li>
-<li><strong>SATA SSD</strong>：従来のHDD接続規格を使うSSD。一般PC向け</li>
-<li><strong>HDD</strong>：大容量・安価。バックアップ・NAS（ネットワーク接続ストレージ）に活用</li>
-<li><strong>光ディスク</strong>：CD・DVD・Blu-ray。配布・長期保存に使用</li>
-<li><strong>フラッシュメモリ</strong>：USBメモリ・SDカード。携帯性重視</li>
-</ul></div>
-<div class="card"><h2>🎯 試験対策：SSD・HDDの重要ポイント</h2><p>SSD（ソリッドステートドライブ）とHDD（ハードディスクドライブ）はコンピュータの補助記憶装置の2大方式です。ITパスポートでは両者の特徴と適切な使い分けを問う問題が出ます。</p><p>SSDとHDDの比較表として覚えるべき点です。読み書き速度：SSDが圧倒的に高速（特にランダムアクセス）。耐衝撃性：SSDは可動部品なしで高耐久。消費電力：SSDが少ない。容量単価：HDDが安い（同容量ならHDDの方がコストパフォーマンス高）。寿命：SSDは書き込み回数の上限あり（TBW値）。</p><p>用途別の使い分けが実務・試験ともに重要です。起動ドライブ・OSインストール先はSSDが最適（システム起動時間が大幅短縮）。大容量データの長期保存・バックアップ用途はHDDがコスト面で優位。エンタープライズ環境では高速アクセスが必要なデータをSSD、アーカイブデータをHDDに配置するティアード・ストレージ構成が一般的です。</p></div>
-<div class="cta"><h2>学んだことを確かめよう！</h2>
-<p>理解を確かめてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SSD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フラッシュメモリ・高速・可動部なし</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「高速・衝撃に強い・ノートPC向き」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HDD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">磁気ディスク・大容量・低コスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「大容量バックアップ・コスト重視」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAM（メインメモリ）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">揮発性・電源OFFで消えるメモリ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「電源OFFでデータが消える」ならこれ</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：SSDとHDDの重要ポイント</h2>
+<p>SSDとHDDの問題で問われるのは「性能・コスト・耐久性の比較」だ。「衝撃に強く消費電力が低い記憶装置はどれか」→SSD。「大容量のデータを低コストで保存するストレージはどれか」→HDD。この2パターンは試験の典型問題として確実に押さえること。</p>
+<p>不揮発性という共通点も確認しておくこと。SSDもHDDも「電源を切ってもデータが消えない不揮発性ストレージ」だ。RAMは「電源を切るとデータが消える揮発性メモリ」であり、この対比は試験で必ず出る。「補助記憶装置として使えるのはどれか」という設問ではSSD・HDD（不揮発性）が正答だ。</p>
+<p>RAID技術との組み合わせも覚えること。RAIDは複数のドライブを組み合わせて信頼性・性能を向上させる技術で、RAID0（ストライピング・高速化）・RAID1（ミラーリング・冗長化）が特に頻出だ。「HDDの障害に備えてデータを2台に同時書き込みする方式はどれか」→RAID1（ミラーリング）が正答だ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-cpu].html" style="color:#1F56C6;">[itp-cpu]</a>, <a href="[itp-hardware].html" style="color:#1F56C6;">[itp-hardware]</a>, <a href="[itp-backup].html" style="color:#1F56C6;">[itp-backup]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

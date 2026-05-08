@@ -4,8 +4,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>DNSとは？仕組み・名前解決・DNSキャッシュポイズニングをわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="DNS（ドメインネームシステム）の仕組み、名前解決の流れ、DNSキャッシュポイズニング攻撃、ドメイン名の構造をITパスポート試験向けに解説します。">
+<title>DNS（ドメイン名解決）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="DNS（ドメイン名解決）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,9 +37,10 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-dns.html">
-  <meta property="og:title" content="DNSとは？仕組み・名前解決・DNSキャッシュポイズニングをわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="DNS（ドメインネームシステム）の仕組み、名前解決の流れ、DNSキャッシュポイズニング攻撃、ドメイン名の構造をITパスポート試験向けに解説します。">
+  <meta property="og:title" content="DNS（ドメイン名解決）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="DNS（ドメイン名解決）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-dns.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
@@ -47,71 +48,36 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-
   <div class="ah">
-    <div class="al">ITパスポート｜ネットワーク</div>
-    <h1 class="at">DNSとは？仕組み・名前解決・DNSキャッシュポイズニングをわかりやすく解説</h1>
-    <div class="am">ITパスポート対策 / 読了：約4分</div>
-    <div class="tags"><span class="tag">DNS</span> <span class="tag">ドメイン</span> <span class="tag">ネットワーク</span> <span class="tag">ITパスポート</span></div>
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">DNS（ドメイン名解決）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">DNS（ドメイン名解決）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
   </div>
-<div class="card">
-<h2>DNSとは何か</h2>
-<p>DNS（Domain Name System）は、ドメイン名（例：www.google.com）をIPアドレス（例：142.250.185.46）に変換する仕組みです。「インターネットの電話帳」とも呼ばれます。</p>
-<p>人間はIPアドレスの数字の羅列を覚えるより「google.com」のような名前の方が覚えやすいため、DNSが両者を対応させています。</p>
-<div class="hl"><p>ポイント：Webブラウザに「https://www.example.com」と入力したとき、まずDNSサーバーに問い合わせてIPアドレスを取得してから接続します。この処理を「名前解決」といいます。</p></div>
+<div class="card"><h2>DNS（ドメイン名解決）とは何か</h2>
+<p>DNS（Domain Name System）は、人間が読みやすいドメイン名（www.example.co.jp）を機械が使うIPアドレス（203.0.113.1）に変換（名前解決）するシステムだ。1984年にポール・モカペトリスが設計し、インターネットの「電話帳」として機能する。DNSがなければウェブサイトのURLを数字のIPアドレスで覚えなければならない。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: DNSは「ドメイン名→IPアドレスの翻訳サービス」のようなもの—ブラウザにURLを入力した瞬間から名前解決が始まっている。</p></div>
 </div>
-<div class="card">
-<h2>名前解決の流れ</h2>
-<ol>
-<li>ブラウザに「www.example.com」を入力する</li>
-<li>コンピュータがキャッシュDNSサーバー（プロバイダのDNSサーバー）に問い合わせる</li>
-<li>キャッシュにない場合、ルートDNSサーバーに問い合わせる</li>
-<li>「.com」のTLDサーバーを教えてもらう</li>
-<li>TLDサーバーが「example.com」の権威DNSサーバーを教える</li>
-<li>権威DNSサーバーが「www.example.com」のIPアドレスを返す</li>
-<li>ブラウザがそのIPアドレスに接続する</li>
-</ol>
-<h3>ドメイン名の構造</h3>
-<p>「www.example.co.jp」の場合：</p>
-<ul>
-<li><strong>jp</strong>：TLD（トップレベルドメイン）。日本のドメイン</li>
-<li><strong>co</strong>：SLD（セカンドレベルドメイン）。企業を意味する</li>
-<li><strong>example</strong>：組織名</li>
-<li><strong>www</strong>：ホスト名（Webサーバーを意味することが多い）</li>
+<div class="card"><h2>DNSの仕組みと名前解決の流れ</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ステップ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">動作</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">機器・サーバー</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">① キャッシュ確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ブラウザ・OSのDNSキャッシュを確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ローカルPC</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">② リゾルバへ問い合わせ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロバイダのフルサービスリゾルバに転送</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リゾルバ（キャッシュDNS）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">③ ルートサーバーへ問い合わせ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">TLD（.jp等）の情報を取得</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ルートDNSサーバー（世界に13系統）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">④ 権威DNSサーバーへ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ドメインの最終的なIPアドレスを取得</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">権威DNSサーバー</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">⑤ IPアドレスを返却</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ブラウザにIPアドレスを応答</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リゾルバ→ブラウザ</td></tr></table></div><p>DNSレコード種別：Aレコード（ドメイン→IPv4）、AAAAレコード（ドメイン→IPv6）、MXレコード（メールサーバー）、CNAMEレコード（別名）、TXTレコード（SPF等の認証情報）。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: DNSポートは53番（UDP/TCP）。HTTPが80番、HTTPSが443番と混同しないよう注意する。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ DNSはドメイン名→IPアドレスの名前解決サービス</li>
+<li style="padding:4px 0;font-size:14px;">✅ ルートDNSサーバーは世界に13系統（A〜M）</li>
+<li style="padding:4px 0;font-size:14px;">✅ DNSキャッシュポイズニング：偽のDNS応答でユーザーを偽サイトへ誘導する攻撃</li>
 </ul>
 </div>
-<div class="card">
-<h2>DNSキャッシュポイズニング攻撃</h2>
-<p>DNSキャッシュポイズニングとは、DNSサーバーのキャッシュに偽の情報を書き込む攻撃です。正規のURLを入力しても偽のIPアドレスに誘導され、フィッシングサイトに接続させられます。</p>
-<p>これを防ぐために「DNSSEC（DNSセキュリティ拡張）」という署名技術が使われます。</p>
-<h3>ファーミングとの関係</h3>
-<p>DNSキャッシュポイズニングを利用した攻撃を「ファーミング」といいます。フィッシングと違い、正規のURLを入力しても偽サイトに誘導されるため、URLを確認しても気づきにくい点が危険です。</p>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DNS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ドメイン名→IPアドレスの変換</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DHCP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IPアドレスの自動割り当て</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">NTP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時刻同期プロトコル</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：DNS（ドメイン名解決）の重要ポイント</h2>
+<p>試験では「DNSの役割（名前解決）」と「DNSキャッシュポイズニング攻撃」が頻出問題だ。DNSキャッシュポイズニングは「偽のDNS応答をキャッシュに登録させ、正規サイトのURL入力でも攻撃者のサイトに誘導する攻撃」—フィッシング詐欺の高度な手口として重要だ。</p>
+<p>SPFレコード（メール送信元のIPアドレスをTXTレコードとして登録）との関連も出題される。DNS上のTXTレコードをメール受信サーバーが確認することでなりすましメールを判定するSPF（v224）の仕組みと合わせて理解する。</p>
+<p>DNSSEC（DNS Security Extensions）はDNS応答に電子署名を付けてなりすましを防ぐ技術で、DNSキャッシュポイズニング対策として近年の出題傾向に含まれる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-servers].html" style="color:#1F56C6;">[itp-servers]</a>, <a href="[itp-protocols].html" style="color:#1F56C6;">[itp-protocols]</a>, <a href="[itp-email-security].html" style="color:#1F56C6;">[itp-email-security]</a></p>
 </div>
-<div class="card">
-<h2>よくある間違いとひっかけ</h2>
-<div class="mb"><p>❌ 「DNSはIPアドレスをドメイン名に変換する」は不完全</p></div>
-<p>DNSは双方向の変換が可能です。ドメイン名→IPアドレスを「正引き」、IPアドレス→ドメイン名を「逆引き」といいます。通常は正引きが使われます。</p>
-<div class="mb"><p>❌ 「ファーミングはメールで誘導する」は誤り</p></div>
-<p>ファーミングはDNSを改ざんして誘導するため、メールは不要です。正規URLを入力しても偽サイトに飛ばされます。メールで誘導するのはフィッシングです。</p>
-</div>
-<div class="card"><h2>まとめ</h2>
-<ul>
-<li>DNSはドメイン名をIPアドレスに変換する「インターネットの電話帳」</li>
-<li>名前解決はルートDNS→TLDサーバー→権威DNSの階層で行われる</li>
-<li>DNSキャッシュポイズニングは偽情報を書き込む攻撃</li>
-<li>ファーミングはDNS改ざんで正規URLでも偽サイトに誘導する攻撃</li>
-<li>正引き（ドメイン→IP）と逆引き（IP→ドメイン）の両方が可能</li>
-</ul><!-- EXPANDED_ITP -->
-<div class="card"><h2>DNS解決の仕組み（再帰的解決）</h2>
-<ol>
-<li>クライアントが「www.example.com」のIPアドレスをDNSリゾルバに問合せ</li>
-<li>リゾルバがルートDNSサーバーに問合せ→「.comのTLDサーバーへ」と回答</li>
-<li>リゾルバが.comのTLDサーバーに問合せ→「example.comの権威DNSへ」と回答</li>
-<li>リゾルバがexample.comの権威DNSに問合せ→IPアドレス返答</li>
-<li>リゾルバがクライアントにIPアドレスを返す（一定期間キャッシュ）</li>
-</ol>
-<p>TTL（Time to Live）：DNSレコードのキャッシュ有効期間。短いほどリアルタイム更新が反映されるが、サーバー負荷が増加。主なDNSレコード：A（IPv4アドレス）・AAAA（IPv6）・MX（メールサーバー）・CNAME（別名）・TXT（ドメイン認証・SPF）。</p></div>
-<div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>情報セキュリティの3要素（CIA）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="情報セキュリティの3要素（CIA）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-cia.html">
+  <meta property="og:title" content="情報セキュリティの3要素（CIA）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="情報セキュリティの3要素（CIA）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-cia.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">情報セキュリティの3要素（CIA）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">情報セキュリティの3要素（CIA）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>情報セキュリティの3要素（CIA）とは何か</h2>
+<p>情報セキュリティの3要素とは、Confidentiality（機密性）・Integrity（完全性）・Availability（可用性）の頭文字を取ったCIAのことだ。機密性は「許可された者だけがアクセスできる」、完全性は「情報が改ざんされていない正確な状態である」、可用性は「必要なときに必要な情報にアクセスできる」を意味する。この3つが揃って初めて情報セキュリティが確保される。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: CIAは「漏らさない（機密性）・変えさせない（完全性）・使えなくさせない（可用性）」の3本柱——事件・事故のシナリオを見たら即座にどのCが損なわれたかを判定できるようにする。</p></div>
+</div>
+<div class="card"><h2>3要素ごとの脅威と対策の比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">要素</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">意味</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">代表的な脅威</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対策例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機密性（Confidentiality）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">許可された者だけがアクセスできる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報漏洩・不正アクセス・盗聴</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化・アクセス制御・認証強化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">完全性（Integrity）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報が正確・改ざんされていない</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ改ざん・なりすまし</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハッシュ・デジタル署名・チェックサム</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">可用性（Availability）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">必要なときに利用できる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DDoS攻撃・システム障害・災害</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">冗長化・バックアップ・BCP</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「情報が流出した→機密性だけが損なわれた」という浅い判断が典型的な誤りだ。実際のインシデントでは複数の要素が同時に損なわれることが多い。「流出（機密性）＋改ざん（完全性）＋システムダウン（可用性）」と3つ全部損なわれることも珍しくない。シナリオ全体を読んで各要素を独立に判断する習慣をつける。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 漏洩・盗聴→機密性が損なわれる</li>
+<li style="padding:4px 0;font-size:14px;">✅ 改ざん・なりすまし→完全性が損なわれる</li>
+<li style="padding:4px 0;font-size:14px;">✅ ダウン・使えない・遅延→可用性が損なわれる</li>
+<li style="padding:4px 0;font-size:14px;">✅ 3要素は独立した概念——1つの事件で複数が同時に損なわれうる</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機密性（C）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">許可なく見られない・アクセスされない</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「漏えい・盗聴」事例で「どのCIAが損なわれたか」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">完全性（I）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正確・改ざんされていない・信頼できる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「改ざん・破損」事例で「どのCIAが損なわれたか」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">可用性（A）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">必要なときに使える・アクセスできる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「DoS攻撃・システム停止」で「どのCIAか」</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：情報セキュリティの3要素（CIA）の重要ポイント</h2>
+<p>ITパスポートのCIA問題は「この出来事でCIAのどれが損なわれたか」という問い方が標準形だ。「パスワードリストが第三者に漏れた→機密性」「データベースの数値が書き換えられた→完全性」「DDoS攻撃でサービスがダウンした→可用性」という3パターンを即答できるようにする。</p>
+<p>さらに「この対策はCIAのどれを守るためか」という問い方もある。「暗号化→機密性確保（盗聴されても読めない）」「ハッシュ値の照合→完全性確保（改ざんの検知）」「冗長構成（RAID・フェイルオーバー）→可用性確保（止まらない設計）」というセットで理解しておく。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-isms].html" style="color:#1F56C6;">[itp-isms]</a>, <a href="[itp-cryptography].html" style="color:#1F56C6;">[itp-cryptography]</a>, <a href="[itp-redundancy].html" style="color:#1F56C6;">[itp-redundancy]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>モデルの公平性評価とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="モデルの公平性評価の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-model-fairness.html">
+  <meta property="og:title" content="モデルの公平性評価とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="モデルの公平性評価の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-model-fairness.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">モデルの公平性評価とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">モデルの公平性評価</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><p>モデルの公平性の問題で差がつくのは「統計的公平性の複数定義（人口統計的均等・機会均等・予測均等）が数学的に同時には満たせない」という不可能定理と、「公平性指標の選択がビジネス要件に依存する」という実践的理解だ。</p>
+</div>
+<div class="card"><h2>モデルの公平性評価とは何か</h2>
+<p><strong>モデルの公平性（Model Fairness）</strong>とは、AIの予測・判断が特定の人種・性別・年齢等の属性で不当に差がつかないことを保証する概念。公平性には複数の定義があり、<strong>統計的公平性</strong>の各指標は相互に矛盾する場合がある。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>:</p></div>
+<ul>
+<li><strong>COMPAS（再犯予測ツール）</strong>：2016年ProPublica記事で黒人被告に不公平なバイアスが指摘された事例</li>
+<li><strong>AIの公平性監査</strong>：米ニューヨーク採用AI監査法（2023年）で企業に義務化</li>
+<li><strong>反実仮想的公平性</strong>：「属性が違っていたら結果も違ったか」という観点での評価</li>
+</ul>
+</div>
+<div class="card"><h2>主要な公平性指標の比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">指標</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">定義</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">重視する場面</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人口統計的均等（Demographic Parity）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">グループ間で陽性予測率が等しい</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">採用・融資等の均等機会</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機会均等（Equal Opportunity）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">グループ間でTPR（真陽性率）が等しい</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">医療スクリーニング（見逃し最小化）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">予測値の均等（Predictive Parity）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">グループ間でPrecisionが等しい</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">再犯予測（誤った拘束を防ぐ）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">個人公平性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">類似した個人には類似した予測</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一般的な公平感の直観</td></tr></table></div></div>
+<div class="card"><h2>公平性の不可能定理</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">定理</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Chouldechova（2017年）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラスバランスが異なるグループで、Parity・Equal Opportunity・Calibrationを同時に満たすことは不可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Kleinberg（2016年）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">3つ以上の公平性基準の同時充足は一般に不可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実務的対応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">用途・リスクに応じて優先する公平性指標を選択する</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
+<ul>
+<li>「全ての公平性指標を同時に満たせる」→ × 不可能定理により数学的に困難</li>
+<li>「精度を上げれば公平性も上がる」→ × 精度と公平性はトレードオフになる場合がある</li>
+<li>「バイアス＝訓練データのみに起因」→ × ラベル付け・特徴量設計・システム設計にも起因</li>
+</ul>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<p>「公平性指標は複数あり同時充足は不可能（不可能定理）」「人口統計的均等・機会均等の定義の違い」「COMPAS事件＝AIバイアスの有名実例」を記憶。</p>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">指標</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">何を等しくするか</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人口統計的均等</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">予測陽性率（グループ間）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機会均等</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">真陽性率（グループ間）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">予測均等</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Precision（グループ間）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">個人公平性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">類似個人への類似予測</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：モデルの公平性評価の重要ポイント</h2>
+<p>「AIの公平性指標の種類と定義」「不可能定理（複数の公平性指標の同時充足は不可能）」「COMPAS＝AI再犯予測のバイアス問題事例」「ニューヨーク採用AI監査法＝公平性の法的義務化」を記憶。</p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

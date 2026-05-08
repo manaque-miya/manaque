@@ -1,137 +1,84 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LAN・WANとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="LAN・WANの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-lan-wan.html">
-  <meta property="og:title" content="LAN・WANとは？ネットワークの基本をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="LAN（ローカルエリアネットワーク）とWAN（ワイドエリアネットワーク）の違いと種類をITパスポート向けに解説します。">
+  <meta property="og:title" content="LAN・WANとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="LAN・WANの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-lan-wan.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>LAN・WANとは？ネットワークの基本をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="LAN（ローカルエリアネットワーク）とWAN（ワイドエリアネットワーク）の違いと種類をITパスポート向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">🌐 ネットワーク</div>
-<h1>LAN・WANとは？ネットワークの基本をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">LAN</span><span class="tag">WAN</span><span class="tag">ネットワーク</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">LAN・WANとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">LAN・WAN</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>LAN・WANとは何か</h2>
+<p>LAN・WANには次の3つのポイントがある。①カバーする地理的範囲が違う。②LAN（Local Area Network）は建物内など限られた範囲のネットワーク、WAN（Wide Area Network）は離れた拠点間をつなぐ広域ネットワーク。③インターネットはWANの代表例だが、試験では「LAN＝構内」「WAN＝広域」という整理で十分に対応できる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 「オフィス内・学校内・家の中」→LAN、「拠点間の専用線・インターネット」→WAN——地理的な「広さ」で区別する。</p></div>
 </div>
-
-<div class="card"><h2>LANとWANの基本</h2>
-<p>コンピュータネットワークは、その規模によって大きく2種類に分類されます。</p>
-<table>
-<tr><th>種類</th><th>フルネーム</th><th>範囲</th><th>例</th></tr>
-<tr><td>LAN</td><td>Local Area Network</td><td>建物内・フロア内</td><td>家庭のWi-Fi、会社の社内ネットワーク</td></tr>
-<tr><td>WAN</td><td>Wide Area Network</td><td>地域・国・世界規模</td><td>インターネット、企業の拠点間接続</td></tr>
-</table>
-<div class="hl">💡 LAN = 近い範囲、WAN = 広い範囲と覚えましょう。インターネットは世界最大のWANです。</div>
+<div class="card"><h2>LANとWANの違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">LAN</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">WAN</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">範囲</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">建物内・構内など限られた範囲</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">地域をまたぐ広域範囲</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">例</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">オフィス内ネットワーク・家のWi-Fi</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インターネット・拠点間専用線</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">速度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高速（光ファイバー・Ethernet）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">相対的に低速または高コスト</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">自社・個人で管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">通信事業者が管理</td></tr></table></div><p>LANの中でも無線（Wi-Fi）で構成したものをWLAN（Wireless LAN）と呼ぶ。試験では「Wi-Fi＝WLAN＝LANの一形態」として押さえておこう。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「インターネット＝WAN」とざっくり覚えることは概ね正しいが、厳密にはインターネットは「多数のネットワークが相互接続されたもの」。試験では「インターネットは広義でWANに分類される」という理解で十分。</p></div>
 </div>
-<div class="card"><h2>有線LANと無線LAN</h2>
-<h3>有線LAN</h3>
-<p>LANケーブル（イーサネットケーブル）を使って接続します。通信速度が速く安定していますが、ケーブルが必要で移動が不便です。</p>
-<h3>無線LAN（Wi-Fi）</h3>
-<p>電波を使って無線接続します。IEEE 802.11規格で標準化されており、移動しながら使えます。アクセスポイント（AP）を中心にデバイスが接続します。</p>
-<table>
-<tr><th></th><th>有線LAN</th><th>無線LAN（Wi-Fi）</th></tr>
-<tr><td>速度・安定性</td><td>高い</td><td>やや劣る</td></tr>
-<tr><td>利便性</td><td>移動不可</td><td>移動可能</td></tr>
-<tr><td>セキュリティ</td><td>高い</td><td>暗号化が必要</td></tr>
-</table>
-</div>
-<div class="card"><h2>LANの接続機器</h2>
-<table>
-<tr><th>機器</th><th>役割</th></tr>
-<tr><td>ハブ（スイッチングハブ）</td><td>複数の機器をLANに接続する集線装置</td></tr>
-<tr><td>ルーター</td><td>異なるネットワーク間でデータを中継する</td></tr>
-<tr><td>NIC（ネットワークカード）</td><td>コンピュータをネットワークに接続するインターフェース</td></tr>
-<tr><td>アクセスポイント</td><td>無線LANの基地局、有線と無線を橋渡し</td></tr>
-</table>
-<div class="mb">❌ よくある混同：ハブとルーターは違います。ハブはLAN内の接続、ルーターはLANとWAN（インターネット）をつなぐ役割です。</div>
-</div>
-<div class="card"><h2>試験で出るポイント</h2>
-<div class="hl">✅ LAN = 建物内（Local）、WAN = 広域（Wide）。それぞれの範囲と代表例を押さえましょう。</div>
-<ul>
-<li>LAN：建物内などの限定的なネットワーク</li>
-<li>WAN：広域ネットワーク（インターネットが最大のWAN）</li>
-<li>無線LAN = Wi-Fi（IEEE 802.11規格）</li>
-<li>ルーター = 異なるネットワーク間を中継する機器</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ LAN＝Local（局所）＝建物内・構内の限られたネットワーク</li>
+<li style="padding:4px 0;font-size:14px;">✅ WAN＝Wide（広域）＝地域をまたぐネットワーク・インターネットもWAN</li>
+<li style="padding:4px 0;font-size:14px;">✅ 無線LANはWLAN（Wireless LAN）——Wi-FiはWLANの規格名</li>
+<li style="padding:4px 0;font-size:14px;">✅ オフィス内のファイルサーバー共有→LAN環境の問題</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>LANとWANの接続技術</h2>
-<table><tr><th></th><th>LAN</th><th>WAN</th></tr>
-<tr><td>範囲</td><td>建物内・フロア内（数〜数百m）</td><td>都市間・国際（〜世界規模）</td></tr>
-<tr><td>速度</td><td>高速（100Mbps〜25Gbps）</td><td>低速〜高速（回線によって異なる）</td></tr>
-<tr><td>コスト</td><td>低い</td><td>高い（距離に応じて）</td></tr>
-<tr><td>代表技術</td><td>イーサネット・Wi-Fi</td><td>光回線・専用線・MPLS・インターネットVPN</td></tr>
-<tr><td>主な機器</td><td>スイッチ・無線AP</td><td>ルーター・回線終端装置</td></tr>
-</table></div>
-<div class="card"><h2>ネットワーク機器の役割</h2>
-<ul>
-<li><strong>ハブ（リピーターハブ）</strong>：L1（物理層）。受信信号を全ポートに中継（現在はほぼ使われない）</li>
-<li><strong>スイッチングハブ（L2スイッチ）</strong>：L2（データリンク層）。MACアドレスを学習して特定ポートに転送</li>
-<li><strong>ルーター</strong>：L3（ネットワーク層）。IPアドレスを見てパケットを最適経路で転送</li>
-<li><strong>L3スイッチ</strong>：ルーター機能を持つスイッチ。企業内ネットワークの中核機器</li>
-<li><strong>ファイアウォール</strong>：L3〜L7。通信を許可・拒否するセキュリティ機器</li>
-</ul></div>
-<div class="card"><h2>🎯 試験対策：LAN・WANの重要ポイント</h2><p>LAN・WANはネットワーク分野の基礎中の基礎で、ITパスポート試験では定義・種類・関連技術を問う問題が毎年出題されます。</p><p>LANの種類として「有線LAN（Ethernet）」と「無線LAN（Wi-Fi）」があります。有線LANはIEEE 802.3規格で、ケーブルの種類（Cat5e/Cat6/Cat6A）と最大速度（100Mbps/1Gbps/10Gbps）の関係を押さえてください。無線LANはIEEE 802.11規格で、11a/b/g/n/ac/axと進化し、周波数帯（2.4GHz/5GHz/6GHz）と速度・干渉の関係が重要です。</p><p>WANの接続形態として「専用線」「IP-VPN」「インターネットVPN」の違いも頻出です。専用線は高コストだが安定・安全。インターネットVPNはインターネット回線上に暗号化トンネルを構築するため低コストですが品質保証がありません。IP-VPNは通信キャリアの閉域網を使うため中間的な位置づけです。</p></div>
-<div class="cta"><h2>問題を解いて仕上げよう！</h2>
-<p>読んだだけより、解いた方が記憶に残る。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LAN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">構内ネットワーク・高速・自社管理</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WAN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">広域ネットワーク・拠点間接続・通信事業者経由</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">VPN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WANやインターネット上に仮想的な専用線を構築する技術</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：LAN・WANの重要ポイント</h2>
+<p>ITパスポートでLAN・WANが問われる典型パターンは「この状況はLANか、WANか」という判断問題だ。判断基準はシンプル——「同じ建物・敷地内」ならLAN、「離れた場所を結んでいる」ならWAN。「本社と支社をつなぐ」「インターネットを経由する」ならWAN側の話だ。</p>
+<p>Wi-Fiとの関係も整理しておこう。Wi-Fiは無線でLANを構成するための規格（IEEE 802.11）だ。「Wi-Fi＝インターネット」と思っている人が多いが、Wi-FiはあくまでLANの無線接続技術。Wi-Fiルーターがインターネット（WAN）への出入口になっているだけで、Wi-Fi自体はLANの話だ。</p>
+<p>VPNも関連知識として押さえておきたい。インターネット（WAN）を経由しながら、暗号化によって仮想的な専用線を張る技術だ。「テレワーク中に会社のLANに安全にアクセスする手段」として頻出する。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-vpn.html" style="color:#1F56C6;">itp-vpn</a>, <a href="itp-wifi-security.html" style="color:#1F56C6;">itp-wifi-security</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

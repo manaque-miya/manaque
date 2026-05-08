@@ -1,130 +1,88 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>標的型攻撃とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="標的型攻撃の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-targeted-attack.html">
-  <meta property="og:title" content="標的型攻撃とは？手口と対策をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="標的型攻撃の手口、スピアフィッシングとの関係、組織が取るべき対策をITパスポート試験向けに解説します。">
+  <meta property="og:title" content="標的型攻撃とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="標的型攻撃の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-targeted-attack.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>標的型攻撃とは？手口と対策をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="標的型攻撃の手口、スピアフィッシングとの関係、組織が取るべき対策をITパスポート試験向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">🔐 セキュリティ</div>
-<h1>標的型攻撃とは？手口と対策をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">標的型攻撃</span><span class="tag">スピアフィッシング</span><span class="tag">セキュリティ</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">標的型攻撃とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">標的型攻撃</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>標的型攻撃とは何か</h2>
+<p>標的型攻撃という概念が広まった背景には、攻撃者の「費用対効果」に対する考え方の変化がある。不特定多数を狙うフィッシング詐欺は効率的だが防御も容易だ。一方、国家機密や知的財産を持つ特定の組織だけを狙い、長期間かけて内部に侵入する標的型攻撃（APT：Advanced Persistent Threat）は、高い準備コストをかけても十分な「見返り」が期待できる。業務メールに完璧に偽装したウイルス添付メールを特定の社員宛だけに送りつけ、気づかれないまま長期間潜伏するのが典型的な手口だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 標的型攻撃は「特定の組織・個人だけを狙う」——不特定多数向けのフィッシングと違い、対象を絞り込んで精度の高い偽装を行う。</p></div>
 </div>
-
-<div class="card"><h2>標的型攻撃とは</h2>
-<p>標的型攻撃とは、<strong>特定の組織・個人を狙って行われる、高度に計画されたサイバー攻撃</strong>です。不特定多数を狙うウイルスとは異なり、ターゲットを絞り込んで巧妙に実行されます。</p>
-<div class="hl">💡 「標的型」＝特定のターゲットを狙うこと。スナイパーのように精密な攻撃です。</div>
+<div class="card"><h2>標的型攻撃の手口と特徴</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">要素</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対象</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定の企業・省庁・研究機関・個人</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">手法</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">業務メールを精巧に偽装したウイルス添付メール</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">目的</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機密情報の窃取・システム破壊・長期潜伏</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特徴</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">事前調査が徹底されており、受信者が疑いにくい内容</td></tr></table></div><p>標的型攻撃の段階：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>偵察</strong>: 標的組織の社員名・業務内容・取引先を事前調査する</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>侵入</strong>: 本物と見分けがつかない偽装メールでマルウェアを送り込む</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>潜伏</strong>: 発見されないよう長期間内部に潜伏し、機密情報を収集し続ける</li>
+</ul>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: フィッシング詐欺と混同しやすいが、フィッシングは「不特定多数に大量送信」、標的型は「特定の組織・個人だけに精巧な偽装メールを送る」——対象の絞り込みが決定的な違い。</p></div>
 </div>
-<div class="card"><h2>攻撃の手口</h2>
-<h3>① 標的型メール（スピアフィッシング）</h3>
-<p>ターゲットが信頼しそうな送り主（上司・取引先・公的機関）を装ったメールを送付。添付ファイルや URLをクリックさせてマルウェアに感染させます。</p>
-<h3>② 水飲み場型攻撃</h3>
-<p>ターゲットがよく訪問するWebサイトを改ざん・偽サイトを作成し、アクセスしたユーザーをマルウェアに感染させます。</p>
-<h3>③ サプライチェーン攻撃</h3>
-<p>直接狙えない大企業の代わりに、セキュリティの弱い取引先・下請け企業を先に攻撃し、そこを踏み台として最終ターゲットへ侵入します。</p>
-<table>
-<tr><th>手口</th><th>特徴</th></tr>
-<tr><td>標的型メール</td><td>信頼できる送り主になりすます</td></tr>
-<tr><td>水飲み場型攻撃</td><td>よく訪れるサイトを罠にする</td></tr>
-<tr><td>サプライチェーン攻撃</td><td>取引先を経由して侵入</td></tr>
-</table>
-<div class="mb">❌ 「有名企業からのメールだから安全」は危険！ドメイン・送信元をよく確認することが重要です。</div>
-</div>
-<div class="card"><h2>対策方法</h2>
-<ul>
-<li><strong>メールフィルタリング</strong>：不審なメールを自動検知・隔離</li>
-<li><strong>セキュリティ教育</strong>：社員が標的型メールを見抜く訓練</li>
-<li><strong>多要素認証（MFA）</strong>：パスワード流出だけでは侵入できない仕組み</li>
-<li><strong>ネットワーク監視</strong>：異常な通信パターンを早期発見</li>
-<li><strong>インシデント対応計画</strong>：侵入されたときの対処手順を事前に整備</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 「特定の組織・個人を狙う」「業務メールを精巧に偽装」が標的型攻撃の定義</li>
+<li style="padding:4px 0;font-size:14px;">✅ APT（Advanced Persistent Threat：高度持続的脅威）とも呼ばれる</li>
+<li style="padding:4px 0;font-size:14px;">✅ フィッシングとの違いは「対象が絞られているかどうか」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 長期潜伏を前提とした攻撃——侵入後すぐに行動しない点が通常のマルウェアと違う</li>
 </ul>
 </div>
-<div class="card"><h2>重要ポイントの整理</h2>
-<div class="hl">✅ <strong>標的型攻撃の最大の特徴</strong>は「特定の組織・個人を狙う」こと。不特定多数へのバラまきウイルスとの違いを押さえましょう。</div>
-<ul>
-<li>標的型攻撃 = 特定ターゲットへの計画的・高度な攻撃</li>
-<li>代表的手口：スピアフィッシング（標的型メール）</li>
-<li>水飲み場型攻撃・サプライチェーン攻撃も標的型の一種</li>
-<li>対策：教育・MFA・メールフィルタリング・監視</li>
-</ul>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">攻撃対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">メールの偽装精度</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的型攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定組織・個人のみ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い（業務内容に沿った偽装）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィッシング詐欺</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不特定多数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中程度（汎用的な偽装）</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：標的型攻撃の重要ポイント</h2>
+<p>標的型攻撃で確実に点を取るには、「フィッシング詐欺との区別」を押さえることだ。問題文に「特定の企業の社員宛に」「その会社の取引先を装った」という記述があれば標的型攻撃。「不特定多数に送った」「銀行や通販サイトを装った汎用的な偽メール」という記述ならフィッシング詐欺を選ぶ。</p>
+<p>標的型攻撃の特徴として「事前調査」と「長期潜伏」も覚えておきたい。攻撃者はターゲット組織の内部情報を事前に調査して、受信者が疑いにくい内容のメールを作成する。侵入後も即座に行動せず長期間潜伏して情報収集を続けるため、被害に気づくのが遅れるのが特徴だ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-phishing.html" style="color:#1F56C6;">itp-phishing</a>, <a href="itp-malware.html" style="color:#1F56C6;">itp-malware</a></p>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>標的型攻撃の段階（Kill Chain）</h2>
-<ol>
-<li><strong>偵察</strong>：ターゲットの組織・人物・システムを調査（SNS・公開情報）</li>
-<li><strong>武器化</strong>：悪意あるメール・マルウェアの準備</li>
-<li><strong>送達</strong>：標的型メール・Webサイト改ざんで侵入口を作る</li>
-<li><strong>エクスプロイト</strong>：脆弱性を利用してマルウェアを実行</li>
-<li><strong>インストール</strong>：バックドア・RAT（遠隔操作ツール）を埋め込む</li>
-<li><strong>C2（コマンド＆コントロール）</strong>：外部サーバーから遠隔操作</li>
-<li><strong>目的達成</strong>：情報窃取・破壊・横展開（ラテラルムーブメント）</li>
-</ol></div>
-<div class="card"><h2>APT攻撃と対策</h2>
-<p>APT（Advanced Persistent Threat）：国家・組織が関与する高度で持続的な標的型攻撃。長期間潜伏しながら情報を収集する。対策：多層防御（Layered Defense）・EDR（Endpoint Detection and Response）・SIEM（Security Information and Event Management）によるログ分析・ゼロトラストアーキテクチャ・セキュリティ意識向上トレーニング。</p></div>
-<div class="card"><h2>🎯 試験対策：標的型攻撃の重要ポイント</h2><p>標的型攻撃は特定の組織・個人を狙い定め、入念な下調べをした上で行う高度なサイバー攻撃です。ITパスポートでは標的型攻撃の特徴・手口・対策を問う問題が出ます。</p><p>標的型攻撃の典型的な流れ（APT攻撃の手順）は①偵察（標的の組織・人物・システム情報の収集）→②侵入（標的型メール・水飲み場攻撃等で入口を突破）→③内部拡散（組織内のシステムを横移動しながら権限昇格）→④情報収集・持出（機密データを特定し外部に送信）→⑤潜伏継続（バックドアを残し長期間活動）です。</p><p>対策として「多層防御」が重要です。境界防御（ファイアウォール・IDS/IPS）だけでなく、エンドポイント保護（EDR）・メールフィルタリング・ネットワーク監視・特権ID管理・ゼロトラストアーキテクチャを組み合わせます。人的対策として従業員への標的型メール訓練も有効です。</p></div>
-<div class="cta"><h2>実際に手を動かそう！</h2>
-<p>ここまで読んだなら、あとは手を動かすだけ。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

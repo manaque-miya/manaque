@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EVM（アーンドバリュー管理）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="EVM（アーンドバリュー管理）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-evm.html">
+  <meta property="og:title" content="EVM（アーンドバリュー管理）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="EVM（アーンドバリュー管理）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-evm.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜マネジメント</div>
+    <h1 class="at">EVM（アーンドバリュー管理）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">EVM（アーンドバリュー管理）</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>EVM（アーンドバリュー管理）とは何か</h2>
+<p>EVM（Earned Value Management：アーンドバリュー管理）とは、プロジェクトのコストと進捗を統合的に管理する手法だ。「計画上の完了作業量（PV）」「実際にかかったコスト（AC）」「実際に完了した作業の計画価値（EV）」の3指標を比較することで、プロジェクトが予算内・期間内に完了するかを定量的に予測できる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: EVMは「遅延しているのかコスト超過しているのかを数値で即座に判断できる」プロジェクト管理の診断ツールのようなものだ。</p></div>
+</div>
+<div class="card"><h2>EVMの主要指標</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">指標</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">英語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">意味</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">計算式</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PV</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Planned Value</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">計画作業量（予算上の完了予定額）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">計画から算出</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EV</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Earned Value</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">出来高（完了作業の計画価値）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">計画単価×完了量</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">AC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Actual Cost</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実際コスト（実際の支出額）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実績から算出</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CV</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Cost Variance</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コスト差異</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EV－AC（プラスが良い）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SV</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Schedule Variance</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スケジュール差異</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EV－PV（プラスが良い）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CPI</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Cost Performance Index</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コスト効率指数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EV÷AC（1以上が良い）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SPI</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Schedule Performance Index</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スケジュール効率指数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EV÷PV（1以上が良い）</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: SV（スケジュール差異）はEV－PVで計算し、<strong>時間ではなくコスト単位で表す</strong>。「2日遅延」のような時間単位ではない点に注意。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ EV（出来高）が全指標の起点：完了作業の計画価値</li>
+<li style="padding:4px 0;font-size:14px;">✅ CV＝EV－AC：マイナスはコスト超過</li>
+<li style="padding:4px 0;font-size:14px;">✅ SV＝EV－PV：マイナスはスケジュール遅延</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EVM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コスト・進捗を統合管理する手法</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「PV/EV/ACを使った定量的管理」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ガントチャート</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業の時間軸スケジュールの可視化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「横棒で工程を可視化」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PERT/アローダイアグラム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業依存関係と最長経路（クリティカルパス）を分析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「最短完了日数」ならこれ</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：EVM（アーンドバリュー管理）の重要ポイント</h2>
+<p>EVMで確実に点を取るには、3つの基本指標（PV・EV・AC）の定義を正確に暗記することだ。特にEVが「完了した作業の計画価値（実際の支出ではない）」という定義は誤解しやすい。「実際に完了した仕事に対する予算上の価値」と言い換えると理解しやすい。</p>
+<p>数値問題の解き方を練習すること。「全体予算100万円のプロジェクトで、50%完了時点でPV=60万、EV=50万、AC=55万のとき、コスト差異(CV)とスケジュール差異(SV)を求めよ」→CV=50-55=-5万（コスト超過）、SV=50-60=-10万（遅延）という計算が試験形式だ。</p>
+<p>CPI・SPIが1未満のとき何が問題かを整理すること。CPI<1はAC>EV→コスト超過、SPI<1はEV<PV→スケジュール遅延を意味する。「CPIが0.8のプロジェクトの状況はどれか」→「予算の1.25倍のコストがかかっている」が正答になる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-arrow-diagram].html" style="color:#1F56C6;">[itp-arrow-diagram]</a>, <a href="[itp-project-management].html" style="color:#1F56C6;">[itp-project-management]</a>, <a href="[itp-gantt].html" style="color:#1F56C6;">[itp-gantt]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

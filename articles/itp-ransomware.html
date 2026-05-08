@@ -4,8 +4,8 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ランサムウェアとは？仕組み・被害事例・企業の対策を徹底解説｜まなクエ！</title>
-<meta name="description" content="ランサムウェアはデータを暗号化して身代金を要求するマルウェアです。感染の仕組み、国内外の被害事例、ITパスポート試験で問われる対策を詳しく解説します。">
+<title>ランサムウェアとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="ランサムウェアの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,9 +37,10 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-ransomware.html">
-  <meta property="og:title" content="ランサムウェアとは？仕組み・被害事例・企業の対策を徹底解説｜まなクエ！">
-  <meta property="og:description" content="ランサムウェアはデータを暗号化して身代金を要求するマルウェアです。感染の仕組み、国内外の被害事例、ITパスポート試験で問われる対策を詳しく解説します。">
+  <meta property="og:title" content="ランサムウェアとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="ランサムウェアの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-ransomware.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
@@ -47,78 +48,41 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-
   <div class="ah">
-    <div class="al">ITパスポート｜セキュリティ</div>
-    <h1 class="at">ランサムウェアとは？仕組み・被害事例・企業の対策を徹底解説</h1>
-    <div class="am">ITパスポート対策 / 読了：約4分</div>
-    <div class="tags"><span class="tag">ランサムウェア</span> <span class="tag">セキュリティ</span> <span class="tag">ITパスポート</span> <span class="tag">バックアップ</span></div>
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">ランサムウェアとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">ランサムウェア</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
   </div>
-<div class="card">
-<h2>ランサムウェアとは何か</h2>
-<p>ランサムウェア（Ransomware）は「Ransom（身代金）」と「Software（ソフトウェア）」を合わせた言葉で、感染したコンピュータ内のファイルを暗号化して使用不能にし、復号の代わりに金銭（多くは暗号資産）を要求するマルウェアです。</p>
-<div class="hl"><p>ポイント：ランサムウェアは「破壊」ではなく「暗号化」が目的。復号鍵を持つのは攻撃者だけです。</p></div>
-<h3>攻撃の流れ</h3>
-<ol>
-<li>フィッシングメールの添付ファイルやVPNの脆弱性から侵入</li>
-<li>ネットワーク内を横展開（ラテラルムーブメント）して広がる</li>
-<li>バックアップも含めて重要ファイルを暗号化</li>
-<li>「◯◯ビットコインを送れば復号する」という要求画面を表示</li>
-<li>支払っても復号されないケースも多い</li>
-</ol>
+<div class="card"><h2>ランサムウェアとは何か</h2>
+<p>ランサムウェアを一言で表すなら、データを「人質」にとる犯罪者のようなものだ。感染するとPC内のファイルが暗号化されて開けなくなり、画面に「ファイルを取り戻したければ○○ドルを支払え」という要求メッセージが現れる。ransom（身代金）＋software（ソフトウェア）の造語で、マルウェアの一種だ。医療機関・自治体・製造業と業種を問わず被害が広がっており、ITパスポートでも頻出の攻撃手法だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: ランサムウェアの決定的な特徴は「身代金要求メッセージ」——ファイルが暗号化されたうえで明示的に金銭を要求する点が他マルウェアとの決定的な違い。</p></div>
 </div>
-<div class="card">
-<h2>国内外の主な被害事例</h2>
-<h3>大阪急性期・総合医療センター（2022年）</h3>
-<p>給食委託業者のVPN機器を経由してランサムウェアが侵入。電子カルテシステムが使用不能になり、通常診療の再開まで約2ヶ月かかりました。被害総額は数十億円とも言われています。</p>
-<h3>カシオ計算機（2024年）</h3>
-<p>不正アクセスを受け、従業員・取引先・求職者を含む約8,500人分の個人情報が漏洩しました。</p>
-<h3>名古屋港統一ターミナルシステム（2023年）</h3>
-<p>コンテナの搬出入管理システムがランサムウェアに感染し、約3日間、港のコンテナ作業が停止しました。</p>
-</div>
-<div class="card">
-<h2>対策：バックアップが最重要</h2>
-<p>ランサムウェア対策で最も重要なのはバックアップです。ただし、バックアップの方法を誤ると意味がなくなります。</p>
-<h3>3-2-1バックアップルール</h3>
-<ul>
-<li><strong>3</strong>：データのコピーを3つ持つ（元データ＋バックアップ2つ）</li>
-<li><strong>2</strong>：2種類の異なるメディアに保存（HDD＋クラウドなど）</li>
-<li><strong>1</strong>：1つはオフサイト（別の場所）に保管</li>
+<div class="card"><h2>ランサムウェアの動作と感染経路</h2>
+<p>感染から要求までの流れ：</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">① <strong>侵入</strong>: フィッシングメールの添付ファイル・悪意あるWebサイト・VPN脆弱性などから侵入する</li>
+<li style="padding:4px 0;font-size:14px;">② <strong>暗号化</strong>: PC内の文書・画像・データベースを暗号化し、拡張子が変わって開けなくなる</li>
+<li style="padding:4px 0;font-size:14px;">③ <strong>要求</strong>: 「○○時間以内に暗号通貨で支払えば復号キーを渡す」というメッセージを表示する</li>
 </ul>
-<div class="hl"><p>重要：バックアップをネットワーク接続したまま保管すると、ランサムウェアがバックアップも暗号化します。オフライン・エアギャップバックアップが有効です。</p></div>
-<h3>その他の対策</h3>
-<ul>
-<li>VPN機器・OSのパッチを常に最新に保つ</li>
-<li>多要素認証を導入してアカウント乗っ取りを防ぐ</li>
-<li>EDR（Endpoint Detection and Response）ツールで異常動作を検知する</li>
-<li>最小権限の原則：必要最低限の権限しか与えない</li>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">段階</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">被害の特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">感染前</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メール添付・悪意あるサイト経由</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">外見上は普通のファイルに見える</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">感染中</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バックグラウンドでファイルを暗号化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">処理完了まで気づかない場合がある</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">感染後</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">身代金要求メッセージが表示される</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">支払っても復号されない場合も多い</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: スパイウェアも情報を「盗む」が身代金は要求しない——「支払えメッセージがある＝ランサムウェア」「メッセージなし・静かに収集＝スパイウェア」で区別する。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ ランサムウェアはマルウェアの一種——「ランサムウェアはマルウェアか？→YES」</li>
+<li style="padding:4px 0;font-size:14px;">✅ ファイル暗号化＋身代金要求の2点セットがランサムウェアの本質</li>
+<li style="padding:4px 0;font-size:14px;">✅ バックアップが最も有効な対策（感染しても復元できる）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「支払えば必ず復号される」わけではない点も出題される</li>
 </ul>
 </div>
-<div class="card">
-<h2>身代金は支払うべきか</h2>
-<p>政府機関や多くのセキュリティ専門家は「支払わないこと」を推奨しています。理由は以下の通りです。</p>
-<ul>
-<li>支払っても復号されるとは限らない（支払い後に無視されるケースも）</li>
-<li>支払うことで攻撃者に資金を提供し、さらなる攻撃を助長する</li>
-<li>「支払う組織」として再び狙われる可能性がある</li>
-<li>テロ組織への資金提供となり、法的問題が生じる場合もある</li>
-</ul>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">身代金要求</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ファイルへの影響</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ランサムウェア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ あり（必ず要求する）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化して開けなくする</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スパイウェア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ なし</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">静かに情報収集・送信</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ウイルス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ なし（一般的に）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ファイル破壊・増殖</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：ランサムウェアの重要ポイント</h2>
+<p>ランサムウェアの問題で問われるのは「身代金要求という明示的な要求が存在する」という点だ。シナリオに「ファイルが開けなくなり、支払いを求めるメッセージが表示された」という記述があれば即座にランサムウェアと判断できる。この「要求メッセージ」という要素がない場合は他のマルウェアの可能性を検討する。</p>
+<p>対策についての知識も試験に出る。ランサムウェア対策として最も有効なのはオフラインバックアップだ。感染したとしても、ネットワークから切り離したバックアップがあれば身代金を払わずにデータを復元できる。「ランサムウェア対策として最も有効なものはどれか」という問いに対し、「定期的なバックアップ」が正解になることを覚えておこう。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-malware.html" style="color:#1F56C6;">itp-malware</a>, <a href="itp-spyware.html" style="color:#1F56C6;">itp-spyware</a></p>
 </div>
-<div class="card">
-<h2>よくある間違いとひっかけ</h2>
-<div class="mb"><p>❌ 「クラウドにバックアップすれば安全」は誤り</p></div>
-<p>クラウドストレージが常時同期されている場合、ランサムウェアが暗号化したファイルもそのまま同期されてしまいます。バージョン管理機能の活用や、接続を切った状態でのバックアップが必要です。</p>
-<div class="mb"><p>❌ ランサムウェアはデータを完全に削除する</p></div>
-<p>ランサムウェアはデータを削除するのではなく「暗号化」します。攻撃者が復号鍵を持っているため、理論上は支払えば復元できるという状況を作ります。</p>
-</div>
-<div class="card"><h2>まとめ</h2>
-<ul>
-<li>ランサムウェアはファイルを暗号化して身代金を要求するマルウェア</li>
-<li>国内でも医療機関・港湾・製造業で深刻な被害が発生している</li>
-<li>3-2-1ルールに基づくオフラインバックアップが最重要対策</li>
-<li>身代金は支払わないことが原則</li>
-<li>クラウド同期だけではランサムウェア対策として不十分</li>
-</ul><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

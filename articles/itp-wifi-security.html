@@ -1,128 +1,83 @@
-<!DOCTYPE html><html lang="ja"><head>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Wi-Fiセキュリティとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="Wi-Fiセキュリティの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
 </style><link rel="canonical" href="https://manaque.net/articles/itp-wifi-security.html">
-  <meta property="og:title" content="Wi-Fiセキュリティとは？WPA3・暗号化方式をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="Wi-Fiのセキュリティ規格WEP・WPA・WPA2・WPA3の違いとフリーWi-Fiの危険性をITパスポート向けに解説します。">
+  <meta property="og:title" content="Wi-Fiセキュリティとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="Wi-Fiセキュリティの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
   <meta property="og:url" content="https://manaque.net/articles/itp-wifi-security.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="まなクエ！">
 </head>
-<title>Wi-Fiセキュリティとは？WPA3・暗号化方式をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="Wi-Fiのセキュリティ規格WEP・WPA・WPA2・WPA3の違いとフリーWi-Fiの危険性をITパスポート向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-<div class="ah">
-<div class="label">🌐 ネットワーク</div>
-<h1>Wi-Fiセキュリティとは？WPA3・暗号化方式をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">Wi-Fiセキュリティ</span><span class="tag">WPA3</span><span class="tag">無線LAN</span><span class="tag">ITパスポート</span></div>
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">Wi-Fiセキュリティとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">Wi-Fiセキュリティ</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>Wi-Fiセキュリティとは何か</h2>
+<p>Wi-Fiの暗号化規格が生まれた背景には、無線通信の根本的な弱点がある。有線と違い、電波は空間に広がるため、傍受しようとすれば誰でも受信できてしまう。この問題に対処するため、WEPという初期の暗号化規格が作られたが、脆弱性が発見されて廃止となり、WPA→WPA2→WPA3と世代が進んだ。現在の推奨規格はWPA3で、試験でも「現在最も安全な規格はどれか」という形で頻出する。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: WEP（廃止・危険）→WPA→WPA2（普及・脆弱性発覚）→WPA3（現在の推奨）——世代の流れとWEPが「廃止済みで危険」という事実を押さえる。</p></div>
 </div>
-
-<div class="card"><h2>Wi-Fiセキュリティとは</h2>
-<p>無線LANは電波を使うため、適切なセキュリティ対策がなければ通信内容を傍受される危険があります。Wi-Fiセキュリティとは、<strong>無線通信を暗号化して第三者による盗聴・不正接続を防ぐ技術</strong>です。</p>
+<div class="card"><h2>Wi-Fi暗号化規格の変遷</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">規格</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">状態</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WEP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ 廃止・危険</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">初期規格・脆弱性発見済み・使用禁止レベル</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WPA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">⚠️ 旧式</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WEPの欠陥を修正・現在は非推奨</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WPA2</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">⚠️ 普及中</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">長らく標準・KRACK攻撃の脆弱性が発覚</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WPA3</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 現在推奨</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最新規格・より強固な暗号化・公共Wi-Fiにも対応</td></tr></table></div><p>公共Wi-Fi（フリーWi-Fi）は暗号化なし・または古い規格のものも多く、通信内容が第三者に傍受されるリスクがある。VPNを併用して通信を暗号化するのが推奨対策だ。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「WPA2は安全」と思い込みがちだが、KRACK攻撃という脆弱性が発覚している。「現在最も推奨される規格はWPA3」が正解。WPA2は「かつての標準・現在は移行期」という位置づけ。</p></div>
 </div>
-<div class="card"><h2>セキュリティ規格の変遷</h2>
-<table>
-<tr><th>規格</th><th>時期</th><th>安全性</th><th>特徴</th></tr>
-<tr><td>WEP</td><td>1999年〜</td><td>❌ 非常に脆弱</td><td>暗号化が弱く解読が容易。現在は使用禁止推奨</td></tr>
-<tr><td>WPA</td><td>2003年〜</td><td>△ 弱い</td><td>WEPの改良版。TKIPを使用</td></tr>
-<tr><td>WPA2</td><td>2004年〜</td><td>○ 良好</td><td>AES採用で大幅に強化。現在も広く使われる</td></tr>
-<tr><td>WPA3</td><td>2018年〜</td><td>✅ 最新・安全</td><td>さらに強化。公衆Wi-Fiでも個別暗号化が可能</td></tr>
-</table>
-<div class="hl">💡 現在推奨されるのは<strong>WPA2またはWPA3</strong>です。WEPは解読が容易なので絶対に使ってはいけません。</div>
-</div>
-<div class="card"><h2>公衆Wi-Fiの危険性</h2>
-<p>カフェや駅などの無料Wi-Fiには注意が必要です。</p>
-<ul>
-<li><strong>通信の傍受</strong>：暗号化なしだと他の人が通信内容を見れる</li>
-<li><strong>偽のアクセスポイント</strong>：本物を装った罠のWi-Fiに接続させる攻撃</li>
-<li><strong>中間者攻撃（MITM）</strong>：通信を傍受・改ざんされる</li>
-</ul>
-<h3>公衆Wi-Fi利用時の対策</h3>
-<ul>
-<li>HTTPS接続のサイトのみ利用する</li>
-<li>VPNを使って通信を暗号化する</li>
-<li>重要な個人情報の入力は避ける</li>
-<li>自動接続機能をオフにする</li>
-</ul>
-<div class="mb">❌ 「無料Wi-Fiだから便利」だけで使うのは危険。特に金融サービスや個人情報の入力は公衆Wi-Fiで行わないことが重要です。</div>
-</div>
-<div class="card"><h2>試験対策まとめ</h2>
-<div class="hl">✅ WEP（脆弱・使用禁止）→ WPA → WPA2 → WPA3（最新）の順に安全性が高まります。</div>
-<ul>
-<li>WEP = 古い・非常に脆弱・現在は使用禁止推奨</li>
-<li>WPA2/WPA3 = 現在推奨のセキュリティ規格</li>
-<li>公衆Wi-Fi = 盗聴・偽APのリスク → VPN推奨</li>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ WEPは廃止済みで使用すべきでない旧規格</li>
+<li style="padding:4px 0;font-size:14px;">✅ 現在の推奨はWPA3（WPA2は脆弱性あり）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 公共Wi-Fiは暗号化されていないリスクがある→VPN併用が推奨</li>
+<li style="padding:4px 0;font-size:14px;">✅ WPA3は「個人情報・重要情報を扱う場合」の必須要件になりつつある</li>
 </ul>
 </div>
-
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>Wi-Fiセキュリティの規格</h2>
-<table><tr><th>規格</th><th>暗号化方式</th><th>安全性</th></tr>
-<tr><td>WEP</td><td>RC4（脆弱）</td><td>✗ 使用禁止</td></tr>
-<tr><td>WPA</td><td>TKIP</td><td>△ 非推奨</td></tr>
-<tr><td>WPA2</td><td>AES（CCMP）</td><td>○ 現在の標準</td></tr>
-<tr><td>WPA3</td><td>SAE（強化版）</td><td>◎ 最新・推奨</td></tr>
-</table>
-<p>WPA2のPSK（事前共有鍵）方式では辞書攻撃・総当たり攻撃に注意。WPA2-Enterpriseは認証サーバー（RADIUS）を使い個人認証するため法人環境向けに安全性が高い。</p></div>
-<div class="card"><h2>公衆Wi-Fiのリスクと対策</h2>
-<p>フリーWi-Fiの危険性：通信の盗聴・中間者攻撃（Evil Twin攻撃）・セッションハイジャック。対策：VPN（仮想プライベートネットワーク）使用・HTTPS通信の確認・重要情報の送信を避ける・自動接続をオフにする。Wi-Fi 6（802.11ax）は現在の最新規格。SSID（ネットワーク名）はアクセスポイントの識別子。MACアドレスフィルタリングは接続できる端末をMACアドレスで制限する仕組み（回避可能なため万全ではない）。</p></div>
-<div class="card"><h2>🎯 試験対策：Wi-Fiセキュリティの重要ポイント</h2><p>Wi-Fiセキュリティはモバイル時代の必須知識です。ITパスポートでは暗号化方式の種類と強度の違い、および安全なWi-Fi利用のポイントが問われます。</p><p>Wi-Fiの暗号化方式の進化を整理します。WEP（現在は廃止・非常に脆弱）→WPA（2003年：TKIP使用）→WPA2（2004年：AES/CCMP使用・現在も主流）→WPA3（2018年：SAE認証でパスワード総当たりに強い・最新推奨）。試験では「最も安全な方式はどれか」という問いでWPA3またはWPA2（AES）が正解となります。</p><p>公衆Wi-Fi（フリーWi-Fi）のリスクも重要です。暗号化されていないフリーWi-Fiでは通信内容が傍受される危険があります（パケットスニッフィング）。また「Evil Twin攻撃」（正規のWi-Fiに見せかけた偽アクセスポイント）も注意が必要です。対策としてVPNの使用が有効です。HTTPS通信が普及したことで傍受リスクは低下しましたが、注意は必要です。</p></div>
-<div class="cta"><h2>最後に確認問題にチャレンジ！</h2>
-<p>インプットの次はアウトプット。実際に解いてみよう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WEP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">廃止済みの旧暗号化規格・脆弱性あり</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WPA2</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">普及した標準規格・KRACK攻撃の脆弱性が発覚</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WPA3</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">現在の推奨・最新規格</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">VPN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">公共Wi-Fi上でも通信を暗号化する仕組み</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：Wi-Fiセキュリティの重要ポイント</h2>
+<p>Wi-Fiセキュリティで試験が問うのは、「どの規格が安全か」という一点に集約される。WEP→WPA→WPA2→WPA3という時系列を覚え、「WEP＝廃止・危険」「WPA3＝現在推奨」を押さえれば選択肢は絞れる。WPA2は「長らく標準だったが脆弱性が発覚した」という事実もセットで覚えておこう。</p>
+<p>公共Wi-Fiのリスクも頻出テーマだ。カフェや駅のフリーWi-Fiは暗号化されていないケースや、古い規格を使っているケースがある。そうした環境で重要な情報を送受信するとき、通信を保護する手段としてVPNが有効だというセットの知識も問われる。「公共Wi-Fiを使う際の対策は？」→「VPNで通信を暗号化する」が正解。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-vpn.html" style="color:#1F56C6;">itp-vpn</a>, <a href="itp-lan-wan.html" style="color:#1F56C6;">itp-lan-wan</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

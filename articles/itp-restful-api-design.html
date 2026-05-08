@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>API設計原則（RESTful）とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="API設計原則（RESTful）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-restful-api-design.html">
+  <meta property="og:title" content="API設計原則（RESTful）とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="API設計原則（RESTful）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-restful-api-design.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">API設計原則（RESTful）とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">API設計原則（RESTful）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>API設計原則（RESTful）とは何か</h2>
+<p>RESTful APIの問題で差がつくのは、<strong>HTTPメソッドとリソース設計の対応</strong>を正確に覚えているかどうかだ。GETとPOSTの違いから始まり、REST制約の原則まで体系的に理解しておく必要がある。</p>
+<h3>HTTPメソッドとCRUD対応</h3>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">HTTPメソッド</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">CRUD操作</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用途</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">冪等性</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">GET</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Read</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リソース取得</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">○（何度実行しても同じ結果）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">POST</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Create</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リソース新規作成</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✗（実行ごとに新規作成）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PUT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Update（全体置換）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リソース全体更新</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">○</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PATCH</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Update（部分更新）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リソースの一部更新</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">△</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DELETE</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Delete</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リソース削除</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">○</td></tr></table></div><h3>RESTの6制約</h3>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">制約</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">概要</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">具体例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クライアント・サーバ分離</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">UIとデータ保存を分離</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SPA + APIサーバ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ステートレス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セッション状態をサーバに持たない</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">JWTトークン認証</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">キャッシュ可能</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レスポンスにキャッシュ可否を明示</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Cache-Controlヘッダ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">統一インタフェース</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">統一されたURL・メソッドで操作</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">/users/123 + GETで取得</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">階層化システム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロキシ・ゲートウェイを透過的に挟める</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">APIゲートウェイ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コードオンデマンド</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クライアントにコードを送って実行（任意）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">JavaScript配信</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: RESTの最重要原則は<strong>ステートレス</strong>だ。サーバーがクライアントのセッション状態を保持しないため、水平スケールが容易になる。認証にはJWTなどのトークンをクライアント側で保持し、毎リクエストで送信する。これがRESTfulなAPIが大規模システムで採用される根本理由だ。</p></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
+<div class="hl"><p>- <strong>誤</strong>：POSTは冪等性があるため、同じリクエストを複数回送っても問題ない</p></div>
+<div class="hl"><p>- <strong>正</strong>：POSTは冪等でない。同じリクエストを複数回送ると複数のリソースが作成される。べき等性があるのはGET・PUT・DELETE</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<p>1. GET＝取得・POST＝作成・PUT＝更新・DELETE＝削除</p>
+<p>2. ステートレス＝サーバにセッション情報を持たない</p>
+<p>3. URIはリソースを表す名詞（/users/123）、操作はメソッドで表現</p>
+<p>4. APIキーやJWTによる認証はステートレスの実現手段</p>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">REST</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アーキテクチャスタイル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">制約の集合体</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RESTful API</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">REST原則に従ったAPI</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTP + URI設計</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SOAP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XMLベースのプロトコル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">エンタープライズ向け</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">GraphQL</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クエリ言語ベースのAPI</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">必要なデータのみ取得</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：API設計原則（RESTful）の重要ポイント</h2>
+<p>「RESTful APIにおいてリソースを削除する操作に使うHTTPメソッドはどれか」が典型問題。答えはDELETE。また「ステートレスとはどういう意味か」という正誤問題では「サーバが前回のリクエスト情報を記憶しない」が正解で「クライアントが状態を持たない」は誤り（逆）。</p>
+<p>---</p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

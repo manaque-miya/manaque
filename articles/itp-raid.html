@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RAID5とRAID6の比較とは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="RAID5とRAID6の比較の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-raid.html">
+  <meta property="og:title" content="RAID5とRAID6の比較とは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="RAID5とRAID6の比較の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-raid.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">RAID5とRAID6の比較とは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">RAID5とRAID6の比較</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>RAID5とRAID6の比較とは何か</h2>
+<p>RAID（Redundant Array of Independent Disks）は複数のディスクを組み合わせてデータの冗長性・性能を高める技術だ。RAID5はパリティ情報を分散配置して1台のディスク障害に耐えられる構成、RAID6は二重パリティで2台同時障害に耐えられる構成だ。クラウド時代でもオンプレミスストレージ・NASの基本技術として重要だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: RAID5の「耐えられる障害は1台まで」とRAID6の「2台まで耐えられる」という冗長度の違いが試験で最も問われるポイントだ。</p></div>
+</div>
+<div class="card"><h2>主要RAIDレベルの比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">RAIDレベル</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">最小ディスク数</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">耐障害数</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID0</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0（冗長なし）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ストライピング・高速・信頼性ゼロ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ミラーリング・コスト高・シンプル</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID5</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">3</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">分散パリティ・容量効率良い（N-1台分）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID6</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">4</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">二重パリティ・2台同時障害OK・書き込み遅い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID10</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">4</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">条件付き複数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID1+0・高速＋冗長・コスト高</td></tr></table></div><p>RAID5の有効容量は（N-1）×ディスク容量（例：4TB×4台＝有効12TB）。RAID6の有効容量は（N-2）×ディスク容量（例：4TB×4台＝有効8TB）。大容量ディスクのRebuild（再構築）中に別ディスクが壊れるリスクが高まっているため、12TB以上の大容量ディスク環境ではRAID5よりRAID6が推奨される。</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「RAID5は3台のディスクで3台分の容量が使える」という誤りがある。RAID5は1台分がパリティに使われるため、実際に使えるデータ容量は（N-1）台分だ。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ RAID5：最小3台・パリティ1台分・1台障害まで耐性</li>
+<li style="padding:4px 0;font-size:14px;">✅ RAID6：最小4台・パリティ2台分・2台障害まで耐性</li>
+<li style="padding:4px 0;font-size:14px;">✅ 有効容量：RAID5は(N-1)台分・RAID6は(N-2)台分</li>
+</ul>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID5</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">分散パリティ・1台耐性・(N-1)容量</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パリティ1台分・シングル障害対応がキー</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID6</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">二重パリティ・2台耐性・(N-2)容量</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">二重パリティ・大容量ディスク向けがキー</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAID1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ミラーリング・1台耐性・容量50%</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">鏡写し・容量半減がキーワード</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：RAID5とRAID6の比較の重要ポイント</h2>
+<p>RAID5とRAID6の問題で差がつくのは「有効容量の計算」と「耐障害台数の違い」を正確に答えられるかだ。</p>
+<p>試験では「6台の2TBディスクでRAID5を構成した場合の有効容量はどれか」という計算問題が頻出だ。正解は「(6-1)×2TB＝10TB」だ。RAID6については「大容量ディスクを4台使う場合に、同時に2台まで壊れても大丈夫な構成はどれか」という問いにRAID6と答える。RAID0の「ストライピングのみ（冗長なし）」とRAID1の「ミラーリング（容量50%）」も比較問題に登場するため4種類セットで整理する。</p>
+<p>覚え方は「RAID5＝5文字のParity（パリティ）が1個」「RAID6＝Parity2個（6本指の2本分がパリティ）」という語呂。混同注意は「RAID0の冗長なし（最速・最危険）」と「RAID1の100%ミラー（最安全・コスト最高）」という両極端を起点にして中間にRAID5・6を位置付けること。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-storage-types].html" style="color:#1F56C6;">[itp-storage-types]</a>, <a href="[itp-backup-types].html" style="color:#1F56C6;">[itp-backup-types]</a>, <a href="[itp-dr-site].html" style="color:#1F56C6;">[itp-dr-site]</a></p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

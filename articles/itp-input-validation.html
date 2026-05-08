@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>入力値検証とサニタイジングとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="入力値検証とサニタイジングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
+</style><link rel="canonical" href="https://manaque.net/articles/itp-input-validation.html">
+  <meta property="og:title" content="入力値検証とサニタイジングとは？ITパスポート試験対策｜まなクエ！">
+  <meta property="og:description" content="入力値検証とサニタイジングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+  <meta property="og:url" content="https://manaque.net/articles/itp-input-validation.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="まなクエ！">
+</head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+  <div class="ah">
+    <div class="al">ITパスポート｜テクノロジ</div>
+    <h1 class="at">入力値検証とサニタイジングとは？ITパスポート試験で確実に正解するポイント</h1>
+    <div class="am">ITパスポート対策 / 読了：約3分</div>
+    <div class="tags"><span class="tag">入力値検証とサニタイジング</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+  </div>
+<div class="card"><h2>入力値検証とサニタイジングとは何か</h2>
+<p>入力値検証とサニタイジングの問題で問われるのは、<strong>2つの概念の違いと、どの脆弱性対策にどちらが有効か</strong>という対応関係だ。混同されやすいが明確に区別できることが高得点につながる。</p>
+<h3>入力値検証とサニタイジングの比較</h3>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">観点</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">入力値検証（バリデーション）</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">サニタイジング</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">目的</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">入力値が期待する形式・範囲内かチェック</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">危険な文字・コードを無害化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">結果</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OK（受け入れ）またはNG（拒否）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変換・除去して安全な値に変更</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">タイミング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">処理前のチェック</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">出力・使用前の変換</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">例</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メールアドレス形式チェック、数値範囲確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTMLエスケープ、SQLエスケープ</td></tr></table></div><h3>処理場所による分類</h3>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">場所</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">注意点</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クライアントサイド検証</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">JavaScriptでブラウザ上でチェック</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発者ツールで簡単に迂回可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバサイド検証</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバで必ずチェック</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>必須</strong>。クライアント検証のみは危険</td></tr></table></div><h3>脆弱性ごとの対策</h3>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">脆弱性</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">検証</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">サニタイジング</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SQLインジェクション</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">型・長さチェック</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プリペアドステートメント使用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XSS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不要な文字の拒否</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTML特殊文字をエンティティに変換</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コマンドインジェクション</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">シェルに渡す値を制限</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メタ文字のエスケープ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パスワード</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">文字種・長さルール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハッシュ化（bcrypt等）で保存</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: <strong>「クライアントサイドのみの検証は意味がない」</strong>という点が試験で特に問われる。ブラウザのJavaScriptは開発者ツールで無効化・改ざんが容易なため、攻撃者は簡単に迂回できる。セキュリティの観点では<strong>サーバサイドの検証が必須</strong>で、クライアントサイドはUX向上のための補助に過ぎない。</p></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
+<div class="hl"><p>- <strong>誤</strong>：サニタイジングとは入力値を拒否することである</p></div>
+<div class="hl"><p>- <strong>正</strong>：サニタイジングは<strong>拒否ではなく変換・無害化</strong>だ。例えばHTMLの<code><</code>を<code>&lt;</code>に変換してもデータは保持される。拒否するのは「検証（バリデーション）」の役割</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<p>1. 検証＝OK/NGの判断（形式・範囲チェック）</p>
+<p>2. サニタイジング＝危険な文字を無害化（変換・除去）</p>
+<p>3. クライアントサイド検証のみはセキュリティ対策として不十分</p>
+<p>4. サーバサイド検証は必須</p>
+</div>
+<div class="card"><h2>混同しやすい用語との違い</h2>
+<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">入力値検証</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">受け入れ可否の判断</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">拒否または受け入れ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サニタイジング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">危険な部分の無害化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変換して使用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">エスケープ処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特殊文字を無害な表現に変換</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サニタイジングの具体的手法</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">エンコード</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">文字を別の表現形式に変換</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">URLエンコード等</td></tr></table></div></div>
+<div class="card"><h2>🎯 試験対策：入力値検証とサニタイジングの重要ポイント</h2>
+<p>「Webアプリケーションで入力されたデータの取り扱いとして最も適切なものはどれか」という問いでは「クライアントサイドでのみJavaScriptで検証する」が誤答。「サーバサイドでも検証・サニタイジングを行う」が正解。2層の対策が必要という視点を持つこと。</p>
+<p>---</p>
+</div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>
