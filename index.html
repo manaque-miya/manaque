@@ -1488,6 +1488,20 @@ function buildUnitCard(unit, subjLabel) {
       <div class="unit-card__counts"><a href="exam-quiz.html" class="count-btn count-btn--default">本気対策モード →</a></div>
     </div>`;
   }
+  if (unit.quizId === 'fp3-vocab') {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
+      <div class="unit-card__meta">
+        <span>📗 単語</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts"><a href="fp3-vocab.html" class="count-btn count-btn--default">単語学習へ →</a></div>
+    </div>`;
+  }
   if (unit.quizId === 'exam-kobun') {
     return `
     <div class="unit-card">
