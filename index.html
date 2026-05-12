@@ -910,6 +910,15 @@
       </div>
       <div style="flex-shrink:0;color:#10b981;font-size:20px;margin-left:auto;">›</div>
     </a>
+    <!-- 宅建士 -->
+    <a href="takken-vocab.html" style="display:flex;align-items:center;gap:18px;background:#fff;border-radius:14px;padding:18px 22px;box-shadow:0 4px 20px rgba(249,115,22,.13);text-decoration:none;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(249,115,22,.22)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(249,115,22,.13)'">
+      <div style="flex-shrink:0;width:52px;height:52px;background:#F97316;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;">🏠</div>
+      <div style="min-width:0;">
+        <div style="font-size:15px;font-weight:900;color:#1e293b;margin-bottom:4px;">宅建士 2択 <span style="font-size:11px;font-weight:700;background:#F97316;color:#fff;border-radius:6px;padding:2px 7px;vertical-align:middle;">500語</span></div>
+        <div style="font-size:12px;color:#64748b;line-height:1.6;">権利・業法・法令・税のSVG図解付き2択。覚え方フレーズ・試験頻出ポイント。522問演習への橋渡し。</div>
+      </div>
+      <div style="flex-shrink:0;color:#F97316;font-size:20px;margin-left:auto;">›</div>
+    </a>
   </div>
 </section>
 
@@ -1510,6 +1519,20 @@ function buildUnitCard(unit, subjLabel) {
         <span class="unit-card__difficulty">${stars}</span>
       </div>
       <div class="unit-card__counts"><a href="fp3-vocab.html" class="count-btn count-btn--default">単語学習へ →</a></div>
+    </div>`;
+  }
+  if (unit.quizId === 'takken-vocab') {
+    return `
+    <div class="unit-card">
+      <div class="unit-card__tags">${tagHtml}</div>
+      <div class="unit-card__title">${unit.label}</div>
+      ${unit.desc ? `<div class="unit-card__desc">${unit.desc}</div>` : ''}
+      <div class="unit-card__meta">
+        <span>🏠 単語</span>
+        <span>⏱ ${unit.time}</span>
+        <span class="unit-card__difficulty">${stars}</span>
+      </div>
+      <div class="unit-card__counts"><a href="takken-vocab.html" class="count-btn count-btn--default">単語学習へ →</a></div>
     </div>`;
   }
   if (unit.quizId === 'exam-kobun') {
