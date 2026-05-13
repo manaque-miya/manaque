@@ -274,8 +274,8 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
   background: #fff; color: var(--brand);
   border: 2px solid var(--brand);
 }
-.result-btn.exam-link { background: #B45309; color: #fff; box-shadow: 0 4px 0 #92400e; }
-.result-btn.exam-link:active { transform: translateY(2px); box-shadow: 0 2px 0 #92400e; }
+.result-btn.exam-link { background: #7C3AED; color: #fff; box-shadow: 0 4px 0 #4C1D95; }
+.result-btn.exam-link:active { transform: translateY(2px); box-shadow: 0 2px 0 #4C1D95; }
 
 /* ===== アニメ ===== */
 @keyframes popIn {
@@ -465,8 +465,8 @@ let selFreq = 'all';
 let selCount = 20;
 
 // 累計学習記録（sessionStorage）
-let totalDone = parseInt(sessionStorage.getItem('boki3_vocab_done') || '0');
-let totalCorrect = parseInt(sessionStorage.getItem('boki3_vocab_correct') || '0');
+let totalDone = parseInt(sessionStorage.getItem('math_vocab_done') || '0');
+let totalCorrect = parseInt(sessionStorage.getItem('math_vocab_correct') || '0');
 
 // ===== INIT =====
 function updateStats() {
@@ -637,8 +637,8 @@ function selectAnswer(btn, isCorrect, card) {
     wrongIds.push(card.id);
   }
   totalDone++;
-  sessionStorage.setItem('boki3_vocab_done', totalDone);
-  sessionStorage.setItem('boki3_vocab_correct', totalCorrect);
+  sessionStorage.setItem('math_vocab_done', totalDone);
+  sessionStorage.setItem('math_vocab_correct', totalCorrect);
   updateStats();
 
   // 解説表示
@@ -679,8 +679,8 @@ function showResult() {
   let title, msg;
   if (acc >= 90) { title = '🏆 完璧！'; msg = 'ほぼ完璧！数学検定クイズにも自信を持って挑もう。'; }
   else if (acc >= 70) { title = '👍 いい感じ！'; msg = '基本はOK。間違えた問題をもう一度やって完成させよう。'; }
-  else if (acc >= 50) { title = '📖 もう少し！'; msg = '半分以上は理解できてる。苦手な仕訳を集中的に復習しよう。'; }
-  else { title = '💪 まだまだこれから！'; msg = 'シナリオをじっくり読んで、借方・貸方のイメージをつかんでいこう。'; }
+  else if (acc >= 50) { title = '📖 もう少し！'; msg = '半分以上は理解できてる。苦手な数式・定義を集中的に復習しよう。'; }
+  else { title = '💪 まだまだこれから！'; msg = 'シナリオをじっくり読んで、数と式・図形のイメージをつかんでいこう。'; }
 
   document.getElementById('resultTitle').textContent = title;
   document.getElementById('resultMsg').textContent = msg;
