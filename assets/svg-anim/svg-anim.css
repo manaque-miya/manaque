@@ -1,0 +1,290 @@
+/*
+ * svg-anim.css
+ * SVG動的演出 共通アニメーションライブラリ
+ * 配置先: site/assets/svg-anim/svg-anim.css
+ * 対象: 簿記3級・基本情報・第二種電工・FP2・他全資格
+ */
+
+/* ============================================================
+   1. むにゅーアニメ (.munyu)
+   正解・強調要素をバウンシーにポップさせる
+   ============================================================ */
+@keyframes munyu {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3) translateY(-5px); }
+  60%  { transform: scale(0.95); }
+  100% { transform: scale(1.1); }
+}
+
+.munyu {
+  animation: munyu 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  transform-origin: center;
+  transform-box: fill-box; /* SVG要素の中心を基準にする */
+}
+
+/* アニメ後そのまま保持したい場合 */
+.munyu-hold {
+  animation: munyu 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* ============================================================
+   2. 正解ハイライト (.correct-highlight)
+   正解部分を赤くパルス表示
+   ============================================================ */
+@keyframes pulse {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes correct-reveal {
+  0%   { fill: inherit; stroke: inherit; }
+  40%  { fill: #fca5a5; stroke: #ef4444; stroke-width: 2; }
+  100% { fill: #ef4444; stroke: #dc2626; stroke-width: 2; }
+}
+
+.correct-highlight {
+  fill: #ef4444;
+  stroke: #dc2626;
+  stroke-width: 2;
+  animation:
+    correct-reveal 0.4s ease-out forwards,
+    pulse 1.5s ease-in-out 0.4s infinite;
+}
+
+/* テキスト要素用（fill のみ変化） */
+.correct-highlight-text {
+  fill: #ef4444;
+  font-weight: bold;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* 正解後に落ち着く（pulse 止め） */
+.correct-highlight-static {
+  fill: #ef4444;
+  stroke: #dc2626;
+  stroke-width: 2;
+  animation: correct-reveal 0.4s ease-out forwards;
+}
+
+/* ============================================================
+   3. 線なぞりアニメ (.line-trace)
+   stroke-dasharray / stroke-dashoffset で線を引く
+   JS側で --line-length カスタムプロパティを設定すること
+   例: element.style.setProperty('--line-length', pathLength)
+   ============================================================ */
+@keyframes line-trace {
+  from { stroke-dashoffset: var(--line-length, 1000); }
+  to   { stroke-dashoffset: 0; }
+}
+
+.line-trace {
+  stroke-dasharray: var(--line-length, 1000);
+  stroke-dashoffset: var(--line-length, 1000);
+  animation: line-trace 1s ease-in-out forwards;
+}
+
+.line-trace-slow {
+  stroke-dasharray: var(--line-length, 1000);
+  stroke-dashoffset: var(--line-length, 1000);
+  animation: line-trace 2s ease-in-out forwards;
+}
+
+.line-trace-fast {
+  stroke-dasharray: var(--line-length, 1000);
+  stroke-dashoffset: var(--line-length, 1000);
+  animation: line-trace 0.4s ease-in-out forwards;
+}
+
+/* ============================================================
+   4. 数値カウントアップ (.count-up)
+   JS の countUp() 関数と連携。見た目の強調のみ担当
+   ============================================================ */
+@keyframes count-up-flash {
+  0%   { color: inherit; transform: scale(1); }
+  50%  { color: #ef4444; transform: scale(1.2); }
+  100% { color: #ef4444; transform: scale(1); }
+}
+
+/* SVG text 要素用 */
+@keyframes count-up-flash-svg {
+  0%   { fill: inherit; font-size: inherit; }
+  50%  { fill: #ef4444; }
+  100% { fill: #ef4444; }
+}
+
+.count-up {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.count-up.counting {
+  animation: count-up-flash 0.3s ease-out;
+}
+
+.count-up-svg {
+  animation: count-up-flash-svg 0.3s ease-out forwards;
+}
+
+/* ============================================================
+   5. 段階表示 (.fade-in-step)
+   revealSteps() で順に opacity を上げる
+   JS側: element.classList.add('visible')
+   ============================================================ */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SVG要素用（translateY は transform-box: fill-box 必須） */
+@keyframes fade-in-up-svg {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-step {
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-in-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* SVG要素：visible クラスでアニメ発火 */
+.fade-in-step-svg {
+  opacity: 0;
+  transform-box: fill-box;
+}
+
+.fade-in-step-svg.visible {
+  animation: fade-in-up-svg 0.5s ease forwards;
+}
+
+/* delay バリアント（段階的に遅らせる場合はJS側でstyle設定推奨） */
+.fade-in-step[data-delay="1"] { transition-delay: 0.1s; }
+.fade-in-step[data-delay="2"] { transition-delay: 0.2s; }
+.fade-in-step[data-delay="3"] { transition-delay: 0.3s; }
+.fade-in-step[data-delay="4"] { transition-delay: 0.4s; }
+.fade-in-step[data-delay="5"] { transition-delay: 0.5s; }
+
+/* ============================================================
+   6. 矢印が走るアニメ (.arrow-run)
+   SVG path + marker-end と組み合わせる
+   線なぞり (.line-trace) + 矢印ヘッド の複合用
+   ============================================================ */
+@keyframes arrow-run {
+  0%   {
+    stroke-dashoffset: var(--line-length, 200);
+    opacity: 0;
+  }
+  10%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.arrow-run {
+  stroke-dasharray: var(--line-length, 200);
+  stroke-dashoffset: var(--line-length, 200);
+  animation: arrow-run 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 繰り返し流れる矢印（フロー図用） */
+@keyframes arrow-flow {
+  0%   { stroke-dashoffset: var(--line-length, 200); }
+  100% { stroke-dashoffset: 0; }
+}
+
+.arrow-flow {
+  stroke-dasharray: var(--line-length, 200);
+  stroke-dashoffset: var(--line-length, 200);
+  animation: arrow-flow 1s ease-in-out infinite;
+}
+
+/* ============================================================
+   7. バーグラフ成長アニメ (.bar-grow)
+   簿記・FP等のグラフ表示用
+   ============================================================ */
+@keyframes bar-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.bar-grow {
+  transform-origin: bottom;
+  transform-box: fill-box;
+  animation: bar-grow 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ============================================================
+   8. 振動・NG強調 (.shake)
+   不正解・警告用
+   ============================================================ */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-4px); }
+  40%       { transform: translateX(4px); }
+  60%       { transform: translateX(-3px); }
+  80%       { transform: translateX(3px); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+  transform-box: fill-box;
+}
+
+/* ============================================================
+   9. ユーティリティ：アニメ一時停止
+   ============================================================ */
+.anim-paused {
+  animation-play-state: paused;
+}
+
+.anim-none {
+  animation: none !important;
+}
+
+/* prefers-reduced-motion 対応 */
+@media (prefers-reduced-motion: reduce) {
+  .munyu,
+  .munyu-hold,
+  .correct-highlight,
+  .correct-highlight-text,
+  .correct-highlight-static,
+  .line-trace,
+  .line-trace-slow,
+  .line-trace-fast,
+  .count-up.counting,
+  .count-up-svg,
+  .fade-in-step-svg.visible,
+  .arrow-run,
+  .arrow-flow,
+  .bar-grow,
+  .shake {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    fill: inherit;
+    stroke-dashoffset: 0 !important;
+  }
+  .fade-in-step { opacity: 1; }
+}

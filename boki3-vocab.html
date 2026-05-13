@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="簿記3級の頻出用語を2択カードで直感学習。仕訳の覚え方・T字勘定・借方貸方を3層解説。簿記3級 過去問・独学・勉強方法に対応した効率暗記ツール。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="まなクエ！">
+<meta property="og:title" content="簿記3級 2択カード｜仕訳・勘定科目まなクエ！">
+<meta property="og:description" content="簿記3級 過去問・仕訳 覚え方・T字勘定・借方貸方・簿記3級 独学・簿記3級 何時間—2択カードで効率暗記。シナリオ形式＋3層解説＋覚え方フレーズで合格へ。">
+<meta property="og:url" content="https://manaque.net/boki3-vocab.html">
+<meta property="og:image" content="https://manaque.net/assets/ogp.png">
+<link rel="canonical" href="https://manaque.net/boki3-vocab.html">
+<title>簿記3級 2択カード｜仕訳・勘定科目 まなクエ！</title>
+<link rel="icon" href="assets/img/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<!-- SVGアニメーション（将来組み込み予定） -->
+<link rel="stylesheet" href="assets/svg-anim/svg-anim.css">
+<script src="assets/svg-anim/svg-anim.js" defer></script>
+<style>
+:root {
+  --brand: #F59E0B; --brand-d: #B45309; --brand-l: #FFFBEB;
+  --ink: #1e293b; --muted: #64748b; --border: #e2e8f0;
+  --bg: #fffbeb; --white: #fff;
+  --correct: #16a34a; --correct-l: #f0fdf4;
+  --wrong: #dc2626; --wrong-l: #fef2f2;
+  --cat-仕訳: #F59E0B;
+  --cat-勘定: #D97706;
+  --cat-財務: #2563EB;
+  --cat-税: #DC2626;
+  --cat-帳簿: #059669;
+  --cat-決算: #7C3AED;
+  --r: 14px; --r-lg: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); min-height: 100vh; }
+
+/* ===== HEADER ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1.5px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; box-shadow: 0 2px 8px rgba(245,158,11,.07);
+}
+.site-header__logo { font-size: 18px; font-weight: 900; color: var(--brand); text-decoration: none; }
+.site-header__back { font-size: 13px; color: var(--muted); text-decoration: none; margin-left: auto; }
+
+/* ===== SCREENS ===== */
+.screen { display: none; max-width: 640px; margin: 0 auto; padding: 20px 16px 60px; }
+.screen.active { display: block; }
+
+/* ===== START SCREEN ===== */
+.start-hero { text-align: center; margin-bottom: 24px; padding-top: 10px; }
+.start-chara {
+  width: 160px; margin: 0 auto 12px; display: block;
+  filter: drop-shadow(0 6px 16px rgba(245,158,11,.18));
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.start-bubble {
+  background: var(--brand); color: #fff; border-radius: 12px 12px 12px 2px;
+  padding: 10px 16px; font-size: 14px; font-weight: 700;
+  display: inline-block; margin-bottom: 16px;
+}
+.start-title { font-size: 26px; font-weight: 900; color: var(--ink); margin-bottom: 4px; }
+.start-badge {
+  display: inline-block; font-size: 12px; font-weight: 800;
+  background: var(--brand); color: #fff; border-radius: 8px;
+  padding: 2px 10px; vertical-align: middle; margin-left: 6px;
+}
+.start-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; margin-top: 6px; }
+
+.stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 24px; }
+.stat-card { background: #fff; border: 1px solid var(--border); border-radius: var(--r); padding: 12px; text-align: center; }
+.stat-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.stat-val { font-size: 20px; font-weight: 900; color: var(--brand); }
+
+.section-title { font-size: 13px; font-weight: 800; color: var(--muted); margin-bottom: 10px; letter-spacing: .05em; text-transform: uppercase; }
+
+.filter-section { margin-bottom: 20px; }
+.filter-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-btn {
+  background: #fff; border: 1.5px solid var(--border); border-radius: 30px;
+  padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: all .15s; color: var(--ink);
+}
+.filter-btn:hover { border-color: var(--brand); color: var(--brand); }
+.filter-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+.filter-btn.cat-仕訳.selected { background: var(--cat-仕訳); border-color: var(--cat-仕訳); }
+.filter-btn.cat-勘定.selected { background: var(--cat-勘定); border-color: var(--cat-勘定); }
+.filter-btn.cat-財務.selected { background: var(--cat-財務); border-color: var(--cat-財務); }
+.filter-btn.cat-税.selected { background: var(--cat-税); border-color: var(--cat-税); }
+.filter-btn.cat-帳簿.selected { background: var(--cat-帳簿); border-color: var(--cat-帳簿); }
+.filter-btn.cat-決算.selected { background: var(--cat-決算); border-color: var(--cat-決算); }
+
+.count-section { margin-bottom: 24px; }
+.count-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+.count-btn {
+  background: #fff; border: 1.5px solid var(--border); border-radius: 30px;
+  padding: 8px 20px; font-size: 14px; font-weight: 800; cursor: pointer;
+  font-family: inherit; transition: all .15s; color: var(--ink);
+}
+.count-btn:hover { border-color: var(--brand); }
+.count-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+.start-go {
+  width: 100%; padding: 18px; background: var(--brand);
+  border: none; border-radius: var(--r-lg); color: #fff;
+  font-size: 18px; font-weight: 900; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 0 var(--brand-d); transition: all .12s;
+}
+.start-go:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--brand-d); }
+
+/* ===== QUIZ SCREEN ===== */
+.quiz-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.quiz-progress-text { font-size: 13px; font-weight: 800; color: var(--muted); }
+.quiz-score-badge {
+  margin-left: auto; font-size: 13px; font-weight: 900;
+  background: var(--brand-l); color: var(--brand);
+  border-radius: 20px; padding: 4px 12px;
+}
+
+.progress-bar-wrap {
+  height: 6px; background: var(--border); border-radius: 4px; margin-bottom: 20px; overflow: hidden;
+}
+.progress-bar { height: 100%; background: var(--brand); border-radius: 4px; transition: width .4s ease; }
+
+/* カード */
+.vocab-card {
+  background: #fff; border-radius: var(--r-lg);
+  box-shadow: 0 4px 20px rgba(245,158,11,.12);
+  padding: 24px 20px; margin-bottom: 16px;
+}
+.card-cat-badge {
+  display: inline-block; font-size: 11px; font-weight: 800;
+  border-radius: 6px; padding: 2px 10px; margin-bottom: 12px; color: #fff;
+}
+.cat-仕訳 { background: var(--cat-仕訳); }
+.cat-勘定 { background: var(--cat-勘定); }
+.cat-財務 { background: var(--cat-財務); }
+.cat-税 { background: var(--cat-税); }
+.cat-帳簿 { background: var(--cat-帳簿); }
+.cat-決算 { background: var(--cat-決算); }
+
+.freq-badge {
+  display: inline-block; font-size: 10px; font-weight: 800;
+  border-radius: 6px; padding: 2px 8px; margin-left: 6px;
+  background: #fef3c7; color: #92400e;
+}
+.freq-badge.mid { background: #f1f5f9; color: var(--muted); }
+
+.card-scenario {
+  font-size: 14px; color: var(--muted); line-height: 1.7;
+  background: var(--bg); border-radius: 10px; padding: 12px 14px;
+  margin-bottom: 16px; border-left: 3px solid var(--brand);
+}
+.card-term-kw {
+  font-size: 12px; color: var(--muted); margin-bottom: 8px;
+  font-weight: 700; letter-spacing: .04em;
+}
+.card-question { font-size: 17px; font-weight: 900; color: var(--ink); margin-bottom: 20px; }
+
+/* SVGエリア */
+.svg-area {
+  margin: 12px 0; text-align: center;
+  overflow-x: auto;
+}
+.svg-area svg { max-width: 100%; height: auto; }
+
+/* 2択ボタン */
+.choices { display: flex; flex-direction: column; gap: 10px; }
+.choice-btn {
+  width: 100%; padding: 16px 18px; border-radius: var(--r);
+  border: 2px solid var(--border); background: #fff;
+  font-size: 15px; font-weight: 800; font-family: inherit;
+  cursor: pointer; text-align: left; color: var(--ink);
+  transition: all .15s; display: flex; align-items: center; gap: 10px;
+}
+.choice-btn:hover:not(:disabled) {
+  border-color: var(--brand); background: var(--brand-l);
+}
+.choice-btn .choice-icon { font-size: 20px; flex-shrink: 0; }
+.choice-btn.correct {
+  border-color: var(--correct); background: var(--correct-l); color: var(--correct);
+}
+.choice-btn.wrong {
+  border-color: var(--wrong); background: var(--wrong-l); color: var(--wrong);
+}
+.choice-btn:disabled { cursor: default; }
+
+/* 解説パネル */
+.exp-panel {
+  display: none; margin-top: 16px;
+  border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+}
+.exp-panel.show { display: block; }
+.exp-row {
+  padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,.15);
+  font-size: 13px; line-height: 1.75; color: var(--ink);
+}
+.exp-row:last-child { border-bottom: none; }
+.exp-row.exp1 { background: #fffbeb; }
+.exp-row.exp2 { background: #eff6ff; }
+.exp-row.exp3 { background: #fff1f2; }
+
+/* 覚え方セクション（A化2.0 memoryフィールド対応） */
+.exp-row.exp-memory {
+  background: #fef9c3;
+  border-left: 4px solid #EAB308;
+}
+.exp-label {
+  font-size: 11px; font-weight: 900; margin-bottom: 5px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.exp1 .exp-label { color: #ea580c; }
+.exp2 .exp-label { color: #2563EB; }
+.exp3 .exp-label { color: var(--wrong); }
+.exp-memory .exp-label { color: #854d0e; }
+
+/* アクションボタン行 */
+.exp-row.exp-actions {
+  background: #fffbeb; display: flex; gap: 10px; flex-wrap: wrap; padding: 12px 16px;
+}
+.action-btn {
+  flex: 1; min-width: 130px; padding: 10px 12px;
+  border: 2px solid var(--brand); border-radius: var(--r-lg);
+  background: #fff; color: var(--brand);
+  font-size: 13px; font-weight: 900; font-family: inherit;
+  cursor: pointer; text-align: center; transition: all .12s;
+  text-decoration: none; display: inline-block;
+}
+.action-btn:hover { background: var(--brand); color: #fff; }
+.action-btn.primary { background: var(--brand); color: #fff; }
+.action-btn.primary:hover { opacity: .85; }
+
+/* 次へボタン */
+.next-btn {
+  width: 100%; padding: 16px; margin-top: 16px;
+  background: var(--brand); border: none; border-radius: var(--r-lg);
+  color: #fff; font-size: 16px; font-weight: 900;
+  cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 0 var(--brand-d); transition: all .12s;
+  display: none;
+}
+.next-btn.show { display: block; }
+.next-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--brand-d); }
+
+/* ===== RESULT SCREEN ===== */
+.result-hero { text-align: center; margin-bottom: 28px; padding-top: 20px; }
+.result-chara { width: 140px; margin: 0 auto 12px; display: block; filter: drop-shadow(0 4px 12px rgba(245,158,11,.2)); }
+.result-title { font-size: 28px; font-weight: 900; color: var(--ink); margin-bottom: 6px; }
+.result-score-big { font-size: 48px; font-weight: 900; color: var(--brand); line-height: 1; }
+.result-score-denom { font-size: 18px; color: var(--muted); font-weight: 800; }
+.result-msg { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+.result-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+.result-stat { background: #fff; border-radius: var(--r); padding: 16px; text-align: center; border: 1px solid var(--border); }
+.result-stat-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; font-weight: 700; }
+.result-stat-val { font-size: 22px; font-weight: 900; color: var(--ink); }
+.result-stat-val.green { color: var(--correct); }
+.result-stat-val.red { color: var(--wrong); }
+
+.result-actions { display: flex; flex-direction: column; gap: 12px; }
+.result-btn {
+  width: 100%; padding: 16px; border-radius: var(--r-lg);
+  font-size: 16px; font-weight: 900; font-family: inherit;
+  cursor: pointer; border: none; transition: all .12s;
+}
+.result-btn.primary { background: var(--brand); color: #fff; box-shadow: 0 4px 0 var(--brand-d); }
+.result-btn.primary:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--brand-d); }
+.result-btn.secondary {
+  background: #fff; color: var(--brand);
+  border: 2px solid var(--brand);
+}
+.result-btn.exam-link { background: #B45309; color: #fff; box-shadow: 0 4px 0 #92400e; }
+.result-btn.exam-link:active { transform: translateY(2px); box-shadow: 0 2px 0 #92400e; }
+
+/* ===== アニメ ===== */
+@keyframes popIn {
+  0% { transform: scale(.8); opacity: 0; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.pop { animation: popIn .25s ease forwards; }
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 400px) {
+  .start-chara { width: 120px; }
+  .card-question { font-size: 15px; }
+  .choice-btn { font-size: 13px; padding: 13px 14px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="site-header__logo">まなクエ！</a>
+  <a href="index.html" class="site-header__back">← トップへ</a>
+</header>
+
+<!-- ===== START SCREEN ===== -->
+<div class="screen active" id="startScreen">
+  <div class="start-hero">
+    <img src="assets/img/characters/ren/base.png" class="start-chara" alt="レン先生">
+    <div class="start-bubble">🧾 2択で仕訳・勘定科目を直感体験！</div>
+    <div class="start-title">簿記3級 2択カード<span class="start-badge">500語</span></div>
+    <div class="start-sub">シナリオで問題→2択→3層解説＋覚え方で簿記3級の用語を体に染み込ませよう</div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">総問題数</div>
+      <div class="stat-val" id="statTotal">500</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">学習済み</div>
+      <div class="stat-val" id="statDone">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">正答率</div>
+      <div class="stat-val" id="statAcc">-</div>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="section-title">📂 分野フィルター</div>
+    <div class="filter-grid">
+      <button class="filter-btn selected" data-cat="all">すべて</button>
+      <button class="filter-btn cat-仕訳" data-cat="仕訳">📝 仕訳</button>
+      <button class="filter-btn cat-勘定" data-cat="勘定">🔢 勘定科目</button>
+      <button class="filter-btn cat-財務" data-cat="財務">📊 財務諸表</button>
+      <button class="filter-btn cat-税" data-cat="税">💴 税</button>
+      <button class="filter-btn cat-帳簿" data-cat="帳簿">📒 帳簿</button>
+      <button class="filter-btn cat-決算" data-cat="決算">📅 決算</button>
+    </div>
+  </div>
+
+  <div class="filter-section">
+    <div class="section-title">⭐ 頻度フィルター</div>
+    <div class="filter-grid">
+      <button class="filter-btn selected" data-freq="all">すべて</button>
+      <button class="filter-btn" data-freq="high">🔥 高頻度のみ</button>
+    </div>
+  </div>
+
+  <div class="count-section">
+    <div class="section-title">📝 出題数</div>
+    <div class="count-grid">
+      <button class="count-btn selected" data-count="20">20問</button>
+      <button class="count-btn" data-count="50">50問</button>
+      <button class="count-btn" data-count="100">100問</button>
+      <button class="count-btn" data-count="all">全部</button>
+    </div>
+  </div>
+
+  <button class="start-go" id="startBtn">はじめる →</button>
+</div>
+
+<!-- ===== QUIZ SCREEN ===== -->
+<div class="screen" id="quizScreen">
+  <div class="quiz-header">
+    <span class="quiz-progress-text" id="progressText">1 / 20</span>
+    <span class="quiz-score-badge" id="scoreBadge">✅ 0 / ❌ 0</span>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar" style="width:0%"></div>
+  </div>
+
+  <div class="vocab-card" id="vocabCard">
+    <div>
+      <span class="card-cat-badge" id="cardCat">仕訳</span>
+      <span class="freq-badge" id="cardFreq">高頻度</span>
+    </div>
+    <div class="card-scenario" id="cardScenario">シナリオテキスト</div>
+    <div class="card-term-kw" id="cardKw">🔑 キーワード</div>
+    <div class="card-question" id="cardQ">問題文</div>
+    <div class="choices" id="choicesArea"></div>
+
+    <div class="exp-panel" id="expPanel">
+      <div class="exp-row exp1">
+        <div class="exp-label">📘 基本解説</div>
+        <div id="exp1Text"></div>
+      </div>
+      <div class="exp-row exp2">
+        <div class="exp-label">🎯 試験対策ポイント</div>
+        <div id="exp2Text"></div>
+      </div>
+      <div class="exp-row exp3">
+        <div class="exp-label">⚠️ 混同注意</div>
+        <div id="exp3Text"></div>
+      </div>
+      <!-- A化2.0: 覚え方セクション（memoryフィールド対応） -->
+      <div class="exp-row exp-memory" id="memoryRow" style="display:none;">
+        <div class="exp-label">🎯 覚え方</div>
+        <div id="memoryText"></div>
+      </div>
+      <div class="exp-row exp-svg" id="svgRow" style="display:none; background:#fef9c3; padding:12px 16px;">
+        <div class="svg-area" id="svgArea"></div>
+      </div>
+      <div class="exp-row exp-actions" id="actionRow">
+        <a id="articleBtn" class="action-btn" href="#" target="_blank" style="display:none">📖 詳細記事を読む</a>
+        <a class="action-btn primary" href="boki3-quiz.html">📝 簿記3級クイズへ</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="next-btn" id="nextBtn">次の問題へ →</button>
+</div>
+
+<!-- ===== RESULT SCREEN ===== -->
+<div class="screen" id="resultScreen">
+  <div class="result-hero">
+    <img src="assets/img/characters/ren/base.png" class="result-chara" alt="レン先生">
+    <div class="result-title" id="resultTitle">お疲れさま！</div>
+    <div>
+      <span class="result-score-big" id="resultScore">0</span>
+      <span class="result-score-denom" id="resultDenom">/ 20 問正解</span>
+    </div>
+    <div class="result-msg" id="resultMsg"></div>
+  </div>
+
+  <div class="result-stats">
+    <div class="result-stat">
+      <div class="result-stat-label">✅ 正解</div>
+      <div class="result-stat-val green" id="resultCorrect">0</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-stat-label">❌ 不正解</div>
+      <div class="result-stat-val red" id="resultWrong">0</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-stat-label">🎯 正答率</div>
+      <div class="result-stat-val" id="resultAcc">0%</div>
+    </div>
+    <div class="result-stat">
+      <div class="result-stat-label">📚 累計学習</div>
+      <div class="result-stat-val" id="resultTotal">0</div>
+    </div>
+  </div>
+
+  <div class="result-actions">
+    <button class="result-btn primary" id="retryBtn">🔄 もう一度チャレンジ</button>
+    <button class="result-btn secondary" id="wrongOnlyBtn">❌ 間違えた問題だけ</button>
+    <button class="result-btn exam-link" onclick="location.href='boki3-quiz.html'">📝 簿記3級クイズへ進む →</button>
+    <button class="result-btn secondary" onclick="location.href='index.html'">🏠 トップへ戻る</button>
+  </div>
+</div>
+
+<script src="data/boki3-vocab.js?v=1"></script>
+<script>
+// ===== STATE =====
+let pool = [];
+let queue = [];
+let current = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let answered = false;
+let wrongIds = [];
+
+// フィルター設定
+let selCat = 'all';
+let selFreq = 'all';
+let selCount = 20;
+
+// 累計学習記録（sessionStorage）
+let totalDone = parseInt(sessionStorage.getItem('boki3_vocab_done') || '0');
+let totalCorrect = parseInt(sessionStorage.getItem('boki3_vocab_correct') || '0');
+
+// ===== INIT =====
+function updateStats() {
+  document.getElementById('statDone').textContent = totalDone;
+  const acc = totalDone > 0 ? Math.round(totalCorrect / totalDone * 100) + '%' : '-';
+  document.getElementById('statAcc').textContent = acc;
+}
+updateStats();
+
+// フィルターボタン
+document.querySelectorAll('.filter-btn[data-cat]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn[data-cat]').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selCat = btn.dataset.cat;
+  });
+});
+document.querySelectorAll('.filter-btn[data-freq]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn[data-freq]').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selFreq = btn.dataset.freq;
+  });
+});
+document.querySelectorAll('.count-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selCount = btn.dataset.count === 'all' ? 9999 : parseInt(btn.dataset.count);
+  });
+});
+
+document.getElementById('startBtn').addEventListener('click', () => startQuiz(false));
+document.getElementById('retryBtn').addEventListener('click', () => startQuiz(false));
+document.getElementById('wrongOnlyBtn').addEventListener('click', () => startQuiz(true));
+document.getElementById('nextBtn').addEventListener('click', nextCard);
+
+// ===== QUIZ LOGIC =====
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startQuiz(wrongOnly) {
+  // フィルタリング
+  let filtered = BOKI3_VOCAB;
+  if (wrongOnly && wrongIds.length > 0) {
+    filtered = BOKI3_VOCAB.filter(c => wrongIds.includes(c.id));
+  } else {
+    if (selCat !== 'all') filtered = filtered.filter(c => c.cat === selCat);
+    if (selFreq === 'high') filtered = filtered.filter(c => c.freq === 'high');
+  }
+
+  if (filtered.length === 0) {
+    alert('条件に合う問題がありません。フィルターを変えてみてください。');
+    return;
+  }
+
+  pool = shuffle(filtered).slice(0, Math.min(selCount, filtered.length));
+  queue = [...pool];
+  current = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  wrongIds = [];
+
+  showScreen('quizScreen');
+  renderCard();
+}
+
+function renderCard() {
+  if (current >= queue.length) {
+    showResult();
+    return;
+  }
+
+  answered = false;
+  const card = queue[current];
+  const total = queue.length;
+
+  // ヘッダー更新
+  document.getElementById('progressText').textContent = `${current + 1} / ${total}`;
+  document.getElementById('scoreBadge').textContent = `✅ ${correctCount} / ❌ ${wrongCount}`;
+  document.getElementById('progressBar').style.width = `${(current / total) * 100}%`;
+
+  // カード内容
+  const catEl = document.getElementById('cardCat');
+  catEl.textContent = card.cat;
+  catEl.className = 'card-cat-badge cat-' + card.cat;
+
+  const freqEl = document.getElementById('cardFreq');
+  freqEl.textContent = card.freq === 'high' ? '🔥 高頻度' : '';
+  freqEl.className = 'freq-badge' + (card.freq === 'mid' ? ' mid' : '');
+
+  document.getElementById('cardScenario').textContent = card.scenario || '';
+  document.getElementById('cardKw').textContent = '🔑 ' + (card.keyword || '');
+  document.getElementById('cardQ').textContent = card.q;
+
+  // 解説リセット
+  document.getElementById('expPanel').classList.remove('show');
+  document.getElementById('exp1Text').textContent = card.exp1 || '';
+  document.getElementById('exp2Text').textContent = card.exp2 || '';
+  const exp3Row = document.querySelector('.exp-row.exp3');
+  if (card.exp3) {
+    document.getElementById('exp3Text').textContent = card.exp3;
+    exp3Row.style.display = '';
+  } else {
+    exp3Row.style.display = 'none';
+  }
+
+  // 覚え方リセット（A化2.0 memoryフィールド）
+  const memoryRow = document.getElementById('memoryRow');
+  memoryRow.style.display = 'none';
+
+  // SVG表示
+  const svgRow = document.getElementById('svgRow');
+  const svgArea = document.getElementById('svgArea');
+  if (card.svg) {
+    svgArea.innerHTML = card.svg;
+    svgRow.style.display = '';
+  } else {
+    svgArea.innerHTML = '';
+    svgRow.style.display = 'none';
+  }
+
+  // 選択肢
+  const area = document.getElementById('choicesArea');
+  area.innerHTML = '';
+  const choices = shuffle(card.choices);
+  choices.forEach((ch, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.innerHTML = `<span class="choice-icon">${i === 0 ? 'Ⓐ' : 'Ⓑ'}</span><span>${ch.text}</span>`;
+    btn.addEventListener('click', () => selectAnswer(btn, ch.correct, card));
+    area.appendChild(btn);
+  });
+
+  document.getElementById('nextBtn').classList.remove('show');
+  // ポップインアニメ
+  document.getElementById('vocabCard').classList.remove('pop');
+  void document.getElementById('vocabCard').offsetWidth;
+  document.getElementById('vocabCard').classList.add('pop');
+}
+
+function selectAnswer(btn, isCorrect, card) {
+  if (answered) return;
+  answered = true;
+
+  const allBtns = document.querySelectorAll('.choice-btn');
+  allBtns.forEach(b => {
+    b.disabled = true;
+    // 正解ボタンを緑に
+    const text = b.querySelector('span:last-child').textContent;
+    const isThisCorrect = card.choices.some(c => c.text === text && c.correct);
+    if (isThisCorrect) b.classList.add('correct');
+  });
+
+  if (isCorrect) {
+    btn.classList.add('correct');
+    correctCount++;
+    totalCorrect++;
+  } else {
+    btn.classList.add('wrong');
+    wrongCount++;
+    wrongIds.push(card.id);
+  }
+  totalDone++;
+  sessionStorage.setItem('boki3_vocab_done', totalDone);
+  sessionStorage.setItem('boki3_vocab_correct', totalCorrect);
+  updateStats();
+
+  // 解説表示
+  document.getElementById('expPanel').classList.add('show');
+
+  // A化2.0: 覚え方セクション表示
+  const memoryRow = document.getElementById('memoryRow');
+  if (card.memory) {
+    document.getElementById('memoryText').textContent = card.memory;
+    memoryRow.style.display = '';
+  } else {
+    memoryRow.style.display = 'none';
+  }
+
+  const artBtn = document.getElementById('articleBtn');
+  artBtn.style.display = 'none';
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('nextBtn').textContent = current + 1 >= queue.length ? '結果を見る 🎉' : '次の問題へ →';
+}
+
+function nextCard() {
+  current++;
+  renderCard();
+}
+
+function showResult() {
+  showScreen('resultScreen');
+  const total = queue.length;
+  const acc = Math.round(correctCount / total * 100);
+
+  document.getElementById('resultScore').textContent = correctCount;
+  document.getElementById('resultDenom').textContent = `/ ${total} 問正解`;
+  document.getElementById('resultCorrect').textContent = correctCount;
+  document.getElementById('resultWrong').textContent = wrongCount;
+  document.getElementById('resultAcc').textContent = acc + '%';
+  document.getElementById('resultTotal').textContent = totalDone + '問';
+
+  let title, msg;
+  if (acc >= 90) { title = '🏆 完璧！'; msg = 'ほぼ完璧！簿記3級クイズにも自信を持って挑もう。'; }
+  else if (acc >= 70) { title = '👍 いい感じ！'; msg = '基本はOK。間違えた問題をもう一度やって完成させよう。'; }
+  else if (acc >= 50) { title = '📖 もう少し！'; msg = '半分以上は理解できてる。苦手な仕訳を集中的に復習しよう。'; }
+  else { title = '💪 まだまだこれから！'; msg = 'シナリオをじっくり読んで、借方・貸方のイメージをつかんでいこう。'; }
+
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultMsg').textContent = msg;
+
+  const wrongBtn = document.getElementById('wrongOnlyBtn');
+  wrongBtn.style.display = wrongIds.length > 0 ? 'block' : 'none';
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
