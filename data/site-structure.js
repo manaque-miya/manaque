@@ -477,6 +477,9 @@ const SITE_STRUCTURE = [
           { label: '簿記3級 用語カード', quizId: 'boki3-vocab', count: 372, time: '約20分', difficulty: 2, gacha: false, isNew: true,
             desc: '日商簿記3級頻出372用語を2択カードで直感学習。仕訳・勘定科目・財務諸表・決算整理を網羅。T字勘定・BS/PLのSVG動的演出付き。覚え方フレーズで定着率UP。簿記3級 過去問・勉強方法・独学にも。',
             tags: [{ text: '簿記3級', cls: 'badge--yellow' }, { text: '用語', cls: 'badge--sky' }, { text: '大人向け', cls: 'badge--neutral' }] },
+          { label: '第二種電気工事士 用語カード', quizId: 'denko2-vocab', count: 400, time: '約20分', difficulty: 3, gacha: false, isNew: true,
+            desc: '第二種電気工事士頻出400用語を2択カードで直感学習。回路図・配線図・工具・法令・技能試験対策を網羅。SVG動的演出付き。覚え方フレーズで定着率UP。第二種電気工事士 過去問・勉強方法・独学・何時間・合格率にも。',
+            tags: [{ text: '第二種電工', cls: 'badge--blue' }, { text: '用語', cls: 'badge--sky' }, { text: '大人向け', cls: 'badge--neutral' }] },
           { label: '英検2級レベル 英語', quizId: 'adult-exam-03', count: 30, time: '約15分', difficulty: 3, gacha: false,
             desc: '高校卒業相当の英語力を測る日本最大規模の英語検定。語彙・文法・読解をバランスよく出題。',
             tags: [{ text: '資格', cls: 'badge--purple' }, { text: '大人向け', cls: 'badge--neutral' }] },
@@ -729,6 +732,23 @@ const SITE_STRUCTURE = [
             gacha: false,
             desc: '不動産・法律・権利関係の専門知識。550問超・本番頻出テーマ完全対策。',
             tags: [{ text: '資格', cls: 'badge--purple' }]
+          }
+        ]
+      },
+      {
+        id: 'exam-denko2', label: '第二種電気工事士', emoji: '⚡',
+        units: [
+          {
+            label: '第二種電工 用語カード',
+            quizId: 'denko2-vocab',
+            count: 400,
+            time: '約20分',
+            difficulty: 3,
+            gacha: false,
+            isNew: true,
+            desc: '第二種電気工事士頻出400用語を2択カードで直感学習。電気理論・配電・施工・法令の全分野対応。シナリオ形式で出題し、正解後にexp1〜exp3の3層解説＋覚え方フレーズ。',
+            tags: [{ text: '第二種電工', cls: 'badge--sky' }, { text: '用語', cls: 'badge--sky' }, { text: '大人向け', cls: 'badge--neutral' }],
+            vocabUrl: 'denko2-vocab.html'
           }
         ]
       }
