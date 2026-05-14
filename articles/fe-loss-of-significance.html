@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>情報落ちとは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="情報落ちの意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-loss-of-significance.html">
+<meta property="og:title" content="情報落ちとは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="情報落ちの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-loss-of-significance.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜基礎理論</div>
+<h1 class="at">情報落ちとは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">情報落ち</span> <span class="tag">基礎理論</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>情報落ちとは何か</h2>
+<p>「大きさが極端に異なる数値を加減算したとき、小さい側の情報が桁数制限で切り捨てられて失われる現象」が情報落ちだ。コンピュータの浮動小数点数は有効桁数に上限があるため、桁数が大きく違う数を足すと小さい方の情報が消えてしまう。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 情報落ちは「大きい数に小さい数を足しても変わらない」現象。<code>1.0×10^10 + 1.0 ≒ 1.0×10^10</code> で <code>1.0</code> の情報が丸ごと消える。</p></div>
+<p>木村さん（IT企業エンジニア1年目）が大量データの積算処理を書いたとき、最初に大きな値を足してから小さな値を積み上げたら合計がズレた。「足す順番が逆。小さい方から足さないと情報落ちするよ」と先輩に指摘され、計算順序が誤差に影響することを初めて知った。</p>
+<p>64ビット倍精度浮動小数点の有効桁は 15〜16 桁程度だ。<code>1.0e15 + 1.0</code> を計算すると、指数を合わせる際に <code>1.0</code> は下位にシフトされ、表現桁数を超えて切り捨てられる。結果は元の <code>1.0e15</code> と変わらない。</p>
+</div>
+<div class="card"><h2>情報落ちの具体例と対策</h2>
+<p>``` 問題のある計算（合計を大きい順に足す）： sum = 1.0e15 sum += 1.0      → sum = 1.0e15（1.0が消える） sum += 1.0      → sum = 1.0e15（また消える） …  1.0e6回繰り返しても sum = 1.0e15のまま</p>
+<p>対策（小さい順に足す）： sum = 0.0 sum += 1.0 を 1.0e6回繰り返す → sum = 1.0e6 sum += 1.0e15  → sum = 1.001e15（今度は情報が残る） ```</p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「情報落ち＝桁落ち」という混同が多い。情報落ちは「大小差のある加算」で小さい値が消える現象。桁落ちは「近い値の引き算」で有効桁が消える現象。発生する演算の種類と方向が正反対だ。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 情報落ち＝「大小差の大きい加減算で小さい側の情報が消える現象」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 対策：小さい値から順番に足す（累積させてから大きい値と合わせる）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」では桁落ちとの区別問題が頻出</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 独学」では「大きい数に1を足しても変わらない」例を手計算で確認</li>
+<li style="padding:4px 0;font-size:14px;">✅ 計算順序を変えるだけで誤差を大幅に低減できる点を覚える</li>
+</ul>
+</div>
+<div class="card"><h2>情報落ちの実務的影響</h2>
+<p>数値積分（台形法・シンプソン法）で区間を細かく分割するとき、各微小区間の値が小さくなりすぎて積分値に反映されなくなる「情報落ち」が発生する。これを防ぐためにカハンの加算アルゴリズム（補正項を追加して累積誤差を抑える）が使われる。</p>
+<p>「基本情報技術者 科目B・午後問題」で「次のアルゴリズムが正確な合計を求めるのに向いていない理由を述べよ」という形式で出題される場合、計算順序の問題として情報落ちが問われることがある。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：情報落ちの重要ポイント</h2>
+<p>「基本情報技術者 過去問」では「次の浮動小数点演算で情報落ちが発生するのはどれか」という形で選択肢から選ぶ問題が出る。<code>10^10 + 10^-5</code> のような数量差が極端な加算が正解の選択肢になる。</p>
+<p>「情報落ち とは」の直問では「絶対値の大きく異なる数値を加算したとき、絶対値の小さい数値の情報が失われる現象」が正答文になる。「引き算で起きる」は誤りのパターンだ。</p>
+<p>「基本情報技術者 勉強方法」として情報落ちは「大きいのと小さいのを足したら小さいのが消えた」というイメージを固めたうえで、桁落ちと対比で整理するのが最短ルートだ。基本情報技術者の過去問・午前午後・独学・何時間の学習でも「桁落ちと情報落ちの区別」は頻出なので、対になる概念として必ずセットで覚えておく。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-numeric-error.html">fe-numeric-error</a>, <a href="fe-cancellation.html">fe-cancellation</a>, <a href="fe-rounding-error.html">fe-rounding-error</a>, <a href="fe-floating-point.html">fe-floating-point</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

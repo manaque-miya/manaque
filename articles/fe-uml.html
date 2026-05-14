@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>UMLとは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="UMLの意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-uml.html">
+<meta property="og:title" content="UMLとは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="UMLの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-uml.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜ソフトウェア開発</div>
+<h1 class="at">UMLとは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">UML</span> <span class="tag">ソフトウェア開発</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>UMLとは何か</h2>
+<p>「ソフトウェアシステムの設計・仕様・構造を視覚的に記述するための標準化された表記法」がUML（Unified Modeling Language、統一モデリング言語）だ。OMG（Object Management Group）が策定した国際標準で、開発者・設計者・顧客が共通言語として設計図を共有するために使われる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: UMLには14種類の図があるが、基本情報試験で頻出なのは「クラス図・シーケンス図・ユースケース図・アクティビティ図・ステートマシン図」の5つだ。この5つを中心に学ぶと試験範囲を効率よくカバーできる。</p></div>
+<p>「基本情報技術者 過去問」ではクラス図とシーケンス図の読解が特に頻出だ。「基本情報技術者 独学」では図の種類と「何を表す図か」の対応を先に覚え、次に各図の記法（記号の意味）を学ぶ順番が効率的だ。</p>
+</div>
+<div class="card"><h2>UMLの主要な図の種類</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>図の種類</th><th>カテゴリ</th><th>用途</th></tr><tr><td>クラス図</td><td>構造図</td><td>クラスの属性・メソッドと関係を表現</td></tr><tr><td>シーケンス図</td><td>振る舞い図</td><td>オブジェクト間のメッセージのやり取りを時系列で表現</td></tr><tr><td>ユースケース図</td><td>振る舞い図</td><td>システムの機能とアクタの関係を表現</td></tr><tr><td>アクティビティ図</td><td>振る舞い図</td><td>業務フロー・アルゴリズムを表現</td></tr><tr><td>ステートマシン図</td><td>振る舞い図</td><td>オブジェクトの状態遷移を表現</td></tr><tr><td>コンポーネント図</td><td>構造図</td><td>ソフトウェアコンポーネントの依存関係を表現</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「UML＝クラス図」という思い込みが多い。クラス図は最もよく使われる構造図だが、シーケンス図（動的な相互作用）やアクティビティ図（フロー）は設計現場でも試験でもクラス図と同頻度で登場する。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ UML＝「ソフトウェア設計の視覚的記述の国際標準」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 14種類の図があるが試験頻出はクラス図・シーケンス図・ユースケース図の3つ</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」ではクラス図の多重度・関連・依存の読解が問われる</li>
+<li style="padding:4px 0;font-size:14px;">✅ シーケンス図：縦軸が時間軸、横軸がオブジェクト（ライフライン）、矢印がメッセージ</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 午前午後」どちらでも図の読解問題が出題される</li>
+</ul>
+</div>
+<div class="card"><h2>シーケンス図の読み方</h2>
+<p>シーケンス図は「誰が誰にいつ何を送るか」を表す。縦に引かれた点線（ライフライン）が各オブジェクトを表し、横向きの矢印（メッセージ）で呼び出しを示す。矢印が実線なら同期呼び出し（返答待ち）、点線なら返答メッセージを表す。「基本情報技術者 科目B・午後問題」でシーケンス図を読んでメソッドの呼び出し順序を答える問題が出ることがある。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：UMLの重要ポイント</h2>
+<p>「基本情報技術者 過去問」での出題は「次の図が表すUMLの図の種類はどれか」という識別問題と、「次のクラス図を読んで関係を答えよ」という読解問題の2形式が中心だ。識別には各図の特徴的な記号（クラス図の3段ボックス、シーケンス図のライフライン）を覚える。</p>
+<p>「UML とは」の直問では「ソフトウェアシステムの設計・分析を視覚的に表現するための標準化されたモデリング言語」が正答文になる。「プログラムの実行形式を定義する言語」「データベースを操作する言語」は誤りのパターンだ。</p>
+<p>「基本情報技術者 過去問・午前午後・独学・何時間かけて学ぶ場合でも」、UMLは過去問の図を見ながら記号の意味を一つずつ確認する帰納的学習が効果的だ。クラス図の「→（依存）」「◇（集約）」「◆（コンポジション）」「△（継承）」の4つの矢印の違いを押さえると読解の8割をカバーできる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-class-diagram.html">fe-class-diagram</a>, <a href="fe-object-oriented.html">fe-object-oriented</a>, <a href="fe-design-pattern.html">fe-design-pattern</a>, <a href="fe-sequence-diagram.html">fe-sequence-diagram</a>, <a href="fe-use-case.html">fe-use-case</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

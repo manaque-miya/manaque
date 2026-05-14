@@ -2,109 +2,95 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>排他的論理和（XOR）とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="排他的論理和（XOR）の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-logic-xor.html">
+<meta property="og:title" content="排他的論理和（XOR）とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="排他的論理和（XOR）の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-logic-xor.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#E3F2FD;color:#1976D2;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1976D2;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-ol{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#E3F2FD;border-left:4px solid #1976D2;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#1976D2,#0D47A1);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1976D2;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#E3F2FD;color:#1976D2;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
 table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#E3F2FD;color:#1976D2;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #BBDEFB;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
 td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F9FBF9;}
-pre code{font-family:monospace;}
-</style>
-<link rel="canonical" href="https://manaque.net/articles/fe-logic-xor.html">
-<meta property="og:title" content="排他的論理和（XOR）とは？基本情報技術者試験対策でわかりやすく解説｜まなクエ！">
-<meta property="og:description" content="排他的論理和（XOR）について基本情報技術者試験対策向けにわかりやすく解説。基礎理論の重要ポイントと試験によく出る問題を網羅。">
-<meta property="og:url" content="https://manaque.net/articles/fe-logic-xor.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
-<title>排他的論理和（XOR）とは？基本情報技術者試験対策でわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="排他的論理和（XOR）について基本情報技術者試験対策向けにわかりやすく解説。基礎理論の重要ポイントと試験によく出る問題を網羅。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="label">💻 基本情報技術者 基礎理論</div>
-<h1>排他的論理和（XOR）とは？基本情報技術者試験対策でわかりやすく解説</h1>
-<p class="meta">基本情報技術者試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">排他的論理和（XOR）</span><span class="tag">基礎理論</span><span class="tag">基本情報技術者</span></div>
+<div class="al">基本情報技術者｜基礎理論</div>
+<h1 class="at">排他的論理和（XOR）とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">排他的論理和（XOR）</span> <span class="tag">基礎理論</span> <span class="tag">基本情報技術者</span></div>
 </div>
-
-<div class="card">
 <div class="card"><h2>排他的論理和（XOR）とは何か</h2>
-<p>「2つの値が違うときに1を返す」演算が排他的論理和（XOR）だ。「排他的（exclusive）」という名前は「両方1を許さない」という意味で、OR（どちらか1なら1）に対して「片方だけ1のときに限って1」となる。コードでは「<code style="background:#F0F0F0;padding:2px 6px;border-radius:4px;font-size:13px;">a ^ b</code>」と書く。</p>
-<div class="hl">💡 <strong>ポイント</strong>: XORは「値が異なるとき1、同じとき0」。1,1のときも0になる点がORとの決定的な違い。</div>
+<p>木村さん（IT企業エンジニア1年目）がパリティチェックのコードを読んでいて「なんで全ビットをXORすると1の個数がわかるの？」と首をひねった。先輩に「同じ値を2回XORしたら消えるんだよ」と言われ、試しに紙で手計算してみたら見事に元の値に戻った。XORの可逆性を体感した瞬間だった。</p>
+<p>「2つの値が違うときに1を返す」演算が排他的論理和（XOR）だ。「排他的（exclusive）」という名前は「両方1を許さない」という意味で、OR（どちらか1なら1）に対して「片方だけ1のときに限って1」となる。コードでは「<code>a ^ b</code>」と書く。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: XORは「値が異なるとき1、同じとき0」。1,1のときも0になる点がORとの決定的な違い。</p></div>
 <p>XORには数学的に美しい性質がある。「A XOR B XOR B = A」、つまり同じ値で2回XORすると元に戻る。この可逆性から簡易暗号・ビット反転・パリティチェックなど幅広い応用がある。</p>
 </div>
 <div class="card"><h2>真理値表</h2>
-<table><tr><th>入力A</th><th>入力B</th><th>A XOR B</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td></tr></table>
-<div class="mb">⚠️ <strong>間違いやすいパターン</strong>: 「ORとXORの違い」が最頻出の引っかけ。「1 OR 1 = 1」だが「1 XOR 1 = 0」。「どちらか1なら1」という説明はORにもXORにも当てはまりそうだが、「両方1のとき」がOR=1・XOR=0で分岐する。</div>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>入力A</th><th>入力B</th><th>A XOR B</th></tr><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>0</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「ORとXORの違い」が最頻出の引っかけ。「1 OR 1 = 1」だが「1 XOR 1 = 0」。「どちらか1なら1」という説明はORにもXORにも当てはまりそうだが、「両方1のとき」がOR=1・XOR=0で分岐する。</p></div>
 </div>
 <div class="card"><h2>ここが試験のキモ ✅</h2>
-<p>✅ XORは入力が異なるとき1、同じとき0（1,1→0が最重要）<br>✅ 「A XOR B XOR B = A」という可逆性が応用の根拠<br>✅ ビット反転（特定ビットをトグル）はXORで行う<br>✅ パリティビット生成・差分検出・簡易暗号でXORが使われる</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ XORは入力が異なるとき1、同じとき0（1,1→0が最重要）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「A XOR B XOR B = A」という可逆性が応用の根拠</li>
+<li style="padding:4px 0;font-size:14px;">✅ ビット反転（特定ビットをトグル）はXORで行う</li>
+<li style="padding:4px 0;font-size:14px;">✅ パリティビット生成・差分検出・簡易暗号でXORが使われる</li>
+</ul>
 </div>
 <div class="card"><h2>XORの主な応用</h2>
-<strong>1. ビット反転（トグル）</strong><br>特定ビットを反転させたいとき、そのビット位置だけ1のマスクとXORを取る。元が0なら1に、元が1なら0になる。ANDが「落とす」、ORが「立てる」のに対し、XORは「反転させる」。
-<strong>2. 簡易暗号</strong><br>「平文 XOR 鍵 = 暗号文」「暗号文 XOR 鍵 = 平文」が成立する。XORの可逆性により、同じ鍵で再度XORすれば復号できる。ストリーム暗号の基礎的な仕組みだ。
-<strong>3. パリティビット生成</strong><br>データの全ビットをXORしていくと、1の個数が偶数なら0、奇数なら1になる。この1ビットをパリティビットとして送信すれば、受信側で1ビットのエラーを検出できる。
-<strong>4. 変数の値交換</strong><br>一時変数なしで2つの変数を入れ替えるトリック：<code style="background:#F0F0F0;padding:2px 6px;border-radius:4px;font-size:13px;">a ^= b; b ^= a; a ^= b;</code> で2変数の交換が成立する。
+<p><strong>1. ビット反転（トグル）</strong> 特定ビットを反転させたいとき、そのビット位置だけ1のマスクとXORを取る。元が0なら1に、元が1なら0になる。ANDが「落とす」、ORが「立てる」のに対し、XORは「反転させる」。</p>
+<p><strong>2. 簡易暗号</strong> 「平文 XOR 鍵 = 暗号文」「暗号文 XOR 鍵 = 平文」が成立する。XORの可逆性により、同じ鍵で再度XORすれば復号できる。ストリーム暗号の基礎的な仕組みだ。</p>
+<p><strong>3. パリティビット生成</strong> データの全ビットをXORしていくと、1の個数が偶数なら0、奇数なら1になる。この1ビットをパリティビットとして送信すれば、受信側で1ビットのエラーを検出できる。</p>
+<p><strong>4. 変数の値交換</strong> 一時変数なしで2つの変数を入れ替えるトリック：<code>a ^= b; b ^= a; a ^= b;</code> で2変数の交換が成立する。</p>
 </div>
 <div class="card"><h2>混同しやすい演算の比較</h2>
-<table><tr><th>演算</th><th>1,0の結果</th><th>1,1の結果</th><th>0,0の結果</th></tr><tr><td>OR</td><td>1</td><td>1</td><td>0</td></tr><tr><td>AND</td><td>0</td><td>1</td><td>0</td></tr><tr><td>XOR</td><td>1</td><td>0</td><td>0</td></tr></table>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>演算</th><th>1,0の結果</th><th>1,1の結果</th><th>0,0の結果</th></tr><tr><td>OR</td><td>1</td><td>1</td><td>0</td></tr><tr><td>AND</td><td>0</td><td>1</td><td>0</td></tr><tr><td>XOR</td><td>1</td><td>0</td><td>0</td></tr></table></div>
 </div>
 <div class="card"><h2>🎯 試験対策：排他的論理和の重要ポイント</h2>
+<p>基本情報技術者試験の過去問・午前午後を独学で攻略するなら、XORのビット計算は2進数変換と合わせて練習し、計20問程度こなせば本番で迷わなくなる。</p>
 <p>XORの試験問題は「OR/AND/XORの違いを問う」「真理値表の穴埋め」「XOR演算の結果計算」の3タイプが多い。真理値表で「1,1のとき何か」を問われたら、OR=1・AND=1・XOR=0という区別が即答できるようにしておく。</p>
 <p>XORのビット計算問題では「10110101 XOR 11001100 = ?」という形で出る。各ビット位置ごとに「同じなら0、違えば1」と機械的に計算するだけだ。</p>
 <p>パリティの問題では「奇数パリティ」「偶数パリティ」という用語も一緒に押さえる。偶数パリティ＝全ビット（パリティビット含む）の1の個数が偶数になるよう設定、奇数パリティ＝1の個数が奇数になるよう設定。どちらの場合でもパリティビット計算の道具はXORだ。</p>
-<strong>関連</strong>: fe-logic-or, fe-logic-and, fe-logic-not, fe-parity
-<p>---</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-logic-or.html">fe-logic-or</a>, <a href="fe-logic-and.html">fe-logic-and</a>, <a href="fe-logic-not.html">fe-logic-not</a>, <a href="fe-parity.html">fe-parity</a></p>
 </div>
 
-<div class="cta"><h2>問題を解いて仕上げよう！</h2>
-<p>実際に解いて定着させよう。</p>
-<a href="../fe-quiz.html">基本情報技術者クイズに挑戦する</a></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

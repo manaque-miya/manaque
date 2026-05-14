@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>逆ポーランド記法とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="逆ポーランド記法の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-reverse-polish-notation.html">
+<meta property="og:title" content="逆ポーランド記法とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="逆ポーランド記法の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-reverse-polish-notation.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜基礎理論</div>
+<h1 class="at">逆ポーランド記法とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">逆ポーランド記法</span> <span class="tag">基礎理論</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>逆ポーランド記法とは何か</h2>
+<p>「演算子をオペランドの後ろに書く記法」が逆ポーランド記法（RPN: Reverse Polish Notation、後置記法）だ。通常の <code>3 + 4</code> を <code>3 4 +</code> と書く。括弧が不要で、スタックを使って機械的に計算できるという性質から、コンパイラの中間コード・電卓・JVM（Java仮想機械）のバイトコードで広く採用されている。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 逆ポーランド記法の計算は「数値ならスタックに push、演算子なら2つ pop して計算し結果を push」というルール1つで機械的に実行できる。</p></div>
+<p>木村さん（IT企業エンジニア1年目）が過去問で「3 4 2 * +」の値を聞かれ、「え、これどこから計算するの」と焦った。スタックに押し込んでいく手順を先輩に実演してもらい、「数字は積む、記号は2つ出して計算して積む——これだけか」と拍子抜けするほどシンプルな規則に気づいた。</p>
+<p>「基本情報技術者 過去問」では「中置記法の式を逆ポーランド記法に変換せよ」または「逆ポーランド式の値を計算せよ」という問題が頻出中の頻出だ。どちらも手順が決まっているのでスタックの動きを書ける人は確実に点が取れる。</p>
+</div>
+<div class="card"><h2>3種類の記法の比較</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>記法</th><th>演算子の位置</th><th>例</th><th>特徴</th></tr><tr><td>中置記法（通常）</td><td>2つのオペランドの間</td><td><code>3 + 4</code></td><td>人間が読みやすい・括弧が必要</td></tr><tr><td>前置記法（ポーランド）</td><td>オペランドの前</td><td><code>+ 3 4</code></td><td>括弧不要・LISPで採用</td></tr><tr><td>後置記法（逆ポーランド）</td><td>オペランドの後</td><td><code>3 4 +</code></td><td>括弧不要・スタック計算が容易</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「ポーランド記法（前置）」と「逆ポーランド記法（後置）」を混同しやすい。前置は演算子が先頭（<code>+ 3 4</code>）、後置は演算子が末尾（<code>3 4 +</code>）だ。試験では「逆ポーランド記法はどれか」という問いに前置記法が誤りの選択肢として混ぜ込まれる。</p></div>
+</div>
+<div class="card"><h2>逆ポーランド記法への変換手順</h2>
+<p>中置式 <code>3 + 4 * 2</code> を逆ポーランド記法に変換する（演算子スタック法）：</p>
+<p>``` 入力：3 + 4 * 2</p>
+<p>手順：</p>
+<ol>
+<li>'3'  → 数値なので出力：  出力: [3]      スタック: []</li>
+<li>'+'  → 演算子、スタックに積む  出力: [3]      スタック: [+]</li>
+<li>'4'  → 数値なので出力：  出力: [3,4]    スタック: [+]</li>
+<li>'<em>'  → '+' より優先度高いのでスタックに積む  スタック: [+,</em>]</li>
+<li>'2'  → 数値なので出力：  出力: [3,4,2]  スタック: [+,*]</li>
+<li>終了 → スタックを全て出力：出力: [3,4,2,*,+]</li>
+</ol>
+<p>結果：3 4 2 * + ```</p>
+</div>
+<div class="card"><h2>逆ポーランド式の計算手順</h2>
+<p>逆ポーランド式 <code>3 4 2 * +</code> をスタックで計算する：</p>
+<p>``` 入力：3 4 2 * +</p>
+<p>手順：</p>
+<ol>
+<li>'3'  → push  スタック: [3]</li>
+<li>'4'  → push  スタック: [3,4]</li>
+<li>'2'  → push  スタック: [3,4,2]</li>
+<li>'<em>'  → pop 2個（4と2）→ 4</em>2=8 → push  スタック: [3,8]</li>
+<li>'+'  → pop 2個（3と8）→ 3+8=11 → push スタック: [11]</li>
+</ol>
+<p>結果：11（= 3 + 4*2 の正しい値） ```</p>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 逆ポーランド記法＝「演算子を後ろに書く後置記法」</li>
+<li style="padding:4px 0;font-size:14px;">✅ スタック計算：数値→push、演算子→2個pop・計算・push の繰り返し</li>
+<li style="padding:4px 0;font-size:14px;">✅ 括弧なしで演算子優先度を自然に表現できる</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」では変換問題・計算問題の両方が頻出</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 独学」ではスタックの動きを図示しながら手計算する練習が最速</li>
+<li style="padding:4px 0;font-size:14px;">✅ 前置記法（ポーランド記法）と逆ポーランド（後置）の区別は必須</li>
+</ul>
+</div>
+<div class="card"><h2>計算問題のトレース練習</h2>
+<p><code>5 1 2 + 4 * + 3 -</code> をスタック計算する：</p>
+<p>``` push 5       [5] push 1       [5,1] push 2       [5,1,2] '+'→pop 1,2→1+2=3 push  [5,3] push 4       [5,3,4] '<em>'→pop 3,4→3</em>4=12 push [5,12] '+'→pop 5,12→5+12=17 push [17] push 3       [17,3] '-'→pop 17,3→17-3=14 push [14]</p>
+<p>結果：14 ```</p>
+<p>中置に戻すと <code>5 + (1+2)*4 - 3 = 5 + 12 - 3 = 14</code> で正解が確認できる。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：逆ポーランド記法の重要ポイント</h2>
+<p>「基本情報技術者 過去問・午前午後」での出題は「中置記法の式を後置記法に変換したものはどれか」と「後置記法の式を評価した結果はどれか」の2パターンに集約される。「基本情報技術者 独学・何時間」かけるにせよ、スタックのマス目トレースを5〜10問練習すれば本番で焦ることはない。</p>
+<p>変換問題は「演算子スタック法（シャンティング・ヤード法）」を練習する。優先度が低い演算子は後でスタックから出てくるので出力が後になる、という原理を掴むと頭で追えるようになる。</p>
+<p>計算問題はスタックの動きをマス目で書いて機械的に処理するだけで必ず正解できる。手を動かす練習を 5〜10 問こなしておくと試験本番でも焦らない。</p>
+<p>「逆ポーランド記法 とは」の直問では「演算子をオペランドの後に記述する後置記法で、スタックを用いて順次計算できる記法」が正答文になる。「演算子を先頭に書く記法」「括弧を多用して優先度を示す記法」は誤りのパターンだ。</p>
+<p>「基本情報技術者 科目B・午後問題」ではスタックを使うアルゴリズム問題が出題されることがあり、逆ポーランド記法の計算プロセスはスタック動作の理解チェックとしても機能する。スタックの push/pop 操作を正確にトレースできるかどうかがアルゴリズム問題の得点に直結する。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-stack.html">fe-stack</a>, <a href="fe-expression-tree.html">fe-expression-tree</a>, <a href="fe-compiler.html">fe-compiler</a>, <a href="fe-bnf.html">fe-bnf</a>, <a href="fe-automaton.html">fe-automaton</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

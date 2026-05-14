@@ -2,104 +2,89 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>円の接線とは？数学検定試験対策｜まなクエ！</title>
+<meta name="description" content="円の接線の意味・仕組み・試験のポイントを分かりやすく解説。数学検定対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/suken-en-no-sessen.html">
+<meta property="og:title" content="円の接線とは？数学検定試験対策｜まなクエ！">
+<meta property="og:description" content="円の接線の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/suken-en-no-sessen.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#E0F2F1;color:#00695C;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#00695C;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-ol{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#E0F2F1;border-left:4px solid #00695C;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#00695C,#004D40);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#00695C;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#E0F2F1;color:#00695C;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
 table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#E0F2F1;color:#00695C;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #80CBC4;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
 td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F9FBF9;}
-pre code{font-family:monospace;}
-</style>
-<link rel="canonical" href="https://manaque.net/articles/suken-en-no-sessen.html">
-<meta property="og:title" content="円の接線とは？数学検定試験対策でわかりやすく解説｜まなクエ！">
-<meta property="og:description" content="円の接線について数学検定試験対策向けにわかりやすく解説。図形と方程式の重要ポイントと試験によく出る問題を網羅。">
-<meta property="og:url" content="https://manaque.net/articles/suken-en-no-sessen.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
-<title>円の接線とは？数学検定試験対策でわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="円の接線について数学検定試験対策向けにわかりやすく解説。図形と方程式の重要ポイントと試験によく出る問題を網羅。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="label">🔢 数学検定 図形と方程式</div>
-<h1>円の接線とは？数学検定試験対策でわかりやすく解説</h1>
-<p class="meta">数学検定試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">円の接線</span><span class="tag">図形と方程式</span><span class="tag">数学検定</span></div>
+<div class="al">数学検定｜図形と方程式</div>
+<h1 class="at">円の接線とは？数学検定試験で確実に正解するポイント</h1>
+<div class="am">数学検定対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">円の接線</span> <span class="tag">図形と方程式</span> <span class="tag">数学検定</span></div>
 </div>
-
-<div class="card">
 <div class="card"><h2>円の接線とは何か</h2>
+<p>中村さん（中学3年生・数学検定3級受験）が「接線って1本しか引けないんじゃないの？」と首をかしげた。先生が「円の外の点からなら2本引けるよ」と答えると、中村さんは図を描きながら「なるほど、対称になるんだ」と納得した。</p>
 <p>円と1点だけで交わる直線を<strong>接線</strong>、その交わる点を<strong>接点</strong>という。接線には重要な性質が1つある——「接点で円の半径と垂直になる」。この性質を式として使いこなすことが、接線の問題を解く核心だ。</p>
-<div class="hl">💡 <strong>ポイント</strong>: 原点中心の円 x²＋y²＝r² 上の点(x₀, y₀)における接線の方程式は <strong>xx₀＋yy₀＝r²</strong>。この公式は円の式の x² を xx₀ に、y² を yy₀ に置き換えるだけで得られる。</div>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 原点中心の円 x²＋y²＝r² 上の点(x₀, y₀)における接線の方程式は <strong>xx₀＋yy₀＝r²</strong>。この公式は円の式の x² を xx₀ に、y² を yy₀ に置き換えるだけで得られる。</p></div>
 </div>
 <div class="card"><h2>接線の求め方（2パターン）</h2>
 <h3>パターン1：接点がわかっている場合</h3>
 <p>円 x²＋y²＝r² 上の点(x₀, y₀)での接線：<strong>xx₀＋yy₀＝r²</strong></p>
-<p>例：円 x²＋y²＝25 上の点(3, 4)での接線<br>→ 3x＋4y＝25</p>
+<p>例：円 x²＋y²＝25 上の点(3, 4)での接線 → 3x＋4y＝25</p>
+<p>[SVG必要：座標平面（円と接線と半径の垂直関係を示す図）]</p>
 <h3>パターン2：円の外の点から接線を引く場合</h3>
-<p>円 x²＋y²＝r² の外の点P(p, q)から引いた接線の方程式を求める手順：<br>① 接線を y＝m(x－p)＋q（点P通る傾きm の直線）と置く<br>② 「中心(0,0)から接線への距離＝r」の条件で m を求める<br>③ 求めた m を代入して接線の式を確定</p>
-<table><tr><th>状況</th><th>接線の本数</th></tr><tr><td>点が円の外</td><td>2本</td></tr><tr><td>点が円周上</td><td>1本（接点）</td></tr><tr><td>点が円の内部</td><td>0本</td></tr></table>
-<div class="mb">⚠️ <strong>間違いやすいパターン</strong>: 公式 xx₀＋yy₀＝r² を「中心(a,b)の一般的な円にも同じ形で使える」と誤解するケースが多い。中心(a,b)の円 (x－a)²＋(y－b)²＝r² の場合、接点(x₀,y₀)での接線は (x₀－a)(x－a)＋(y₀－b)(y－b)＝r² となる。</div>
+<p>円 x²＋y²＝r² の外の点P(p, q)から引いた接線の方程式を求める手順： ① 接線を y＝m(x－p)＋q（点P通る傾きm の直線）と置く ② 「中心(0,0)から接線への距離＝r」の条件で m を求める ③ 求めた m を代入して接線の式を確定</p>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>状況</th><th>接線の本数</th></tr><tr><td>点が円の外</td><td>2本</td></tr><tr><td>点が円周上</td><td>1本（接点）</td></tr><tr><td>点が円の内部</td><td>0本</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 公式 xx₀＋yy₀＝r² を「中心(a,b)の一般的な円にも同じ形で使える」と誤解するケースが多い。中心(a,b)の円 (x－a)²＋(y－b)²＝r² の場合、接点(x₀,y₀)での接線は (x₀－a)(x－a)＋(y₀－b)(y－b)＝r² となる。</p></div>
 </div>
 <div class="card"><h2>ここが試験のキモ ✅</h2>
-<p>✅ 接点既知の場合は公式 xx₀＋yy₀＝r²（原点中心）で即答<br>✅ 接点未知の場合は「距離＝半径」の条件を立てて傾きを求める<br>✅ 「2本の接線の長さは等しい」（円外の点から接点までの距離）も頻出</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 接点既知の場合は公式 xx₀＋yy₀＝r²（原点中心）で即答</li>
+<li style="padding:4px 0;font-size:14px;">✅ 接点未知の場合は「距離＝半径」の条件を立てて傾きを求める</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「2本の接線の長さは等しい」（円外の点から接点までの距離）も頻出</li>
+</ul>
 </div>
 <div class="card"><h2>🎯 試験対策：円の接線の重要ポイント</h2>
 <p>数学検定準2級〜2級の頻出問題が「点Pから円に引いた接線の方程式を2本求めよ」だ。傾きが不定（y軸に平行な接線）のケースをmで表せないことに注意し、y軸に平行かどうかを先に確認する習慣を持つ。</p>
-<p>検定2次では「接線と弦で囲まれた面積」や「接線と座標軸が作る三角形の面積」まで発展する。接線の方程式が正確に求まれば面積計算はシンプルだ。計算ミスを防ぐため、求めた接線の式を元の円の方程式と連立して接点を確認してから面積に進むこと。</p>
+<p>検定2次では「接線と弦で囲まれた面積」や「接線と座標軸が作る三角形の面積」まで発展する。接線の方程式が正確に求まれば面積計算はシンプルだ。計算ミスを防ぐため、求めた接線の式を元の円の方程式と連立して接点を確認してから面積に進むこと。数学検定 過去問・勉強方法・独学で接線2本を求める演習を繰り返すと、傾き不定ケースのミスが激減する。</p>
 <p>SEOキーワード：数学検定 過去問 勉強方法 独学 準1級 実用数学技能検定 円の接線 とは</p>
-<strong>関連</strong>: suken-en-no-hoteishiki, suken-en-to-chokusen, suken-ten-to-chokusen-no-kyori
-<p>---</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="suken-en-no-hoteishiki.html">suken-en-no-hoteishiki</a>, <a href="suken-en-to-chokusen.html">suken-en-to-chokusen</a>, <a href="suken-ten-to-chokusen-no-kyori.html">suken-ten-to-chokusen-no-kyori</a></p>
 </div>
 
-<div class="cta"><h2>問題を解いて仕上げよう！</h2>
-<p>実際に解いて定着させよう。</p>
-<a href="../suken-quiz.html">数学検定クイズに挑戦する</a></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../math-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>IaC（Infrastructure as Code）とは？ITパスポート試験対策｜まなクエ！</title>
 <meta name="description" content="IaC（Infrastructure as Code）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/itp-iac.html">
+<meta property="og:title" content="IaC（Infrastructure as Code）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="IaC（Infrastructure as Code）の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/itp-iac.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,80 +41,55 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-iac.html">
-  <meta property="og:title" content="IaC（Infrastructure as Code）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="IaC（Infrastructure as Code）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-iac.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">IaC（Infrastructure as Code）とは？ITパスポート試験対策で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">IaC（Infrastructure as Code）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
+<div class="ah">
+<div class="al">ITパスポート｜テクノロジ</div>
+<h1 class="at">IaC（Infrastructure as Code）とは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">IaC（Infrastructure as Code）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+</div>
 <div class="card"><h2>IaC（Infrastructure as Code）とは何か</h2>
-
 <p>「ITパスポート 独学」で基盤技術を学ぶ際に必ず出会うのがIaC（Infrastructure as Code）だ。IaCとはサーバ・ネットワーク・クラウドリソースの構成をコードとして記述し、バージョン管理しながら自動的に構築・変更する手法のことを指す。「インフラをコードで定義する」という考え方が核心で、手作業によるサーバ構築の属人化・設定ミスを根本から解消することを目的としている。</p>
-
 <p>代表的なツールはTerraform（クラウドリソース全般）・Ansible（構成管理・プロビジョニング）・AWS CloudFormationがある。いずれも「どうやって作るか（手順）」ではなく「どういう状態にするか（宣言）」を記述する宣言型アプローチが主流だ。</p>
-
 <div class="hl"><p>💡 <strong>ポイント</strong>: IaCの最大の特徴は「冪等性（べきとうせい）」。何度実行しても同じ構成が得られることで、本番環境と開発環境の差分をなくし、再現性を担保する。</p></div>
-
 </div>
 <div class="card"><h2>仕組み・種類</h2>
-
 <p>IaCには主に2つのアプローチがある。</p>
-
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">アプローチ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">代表ツール</th></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">宣言型（Declarative）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「あるべき状態」を記述、差分を自動適用</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Terraform・CloudFormation</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">手続き型（Imperative）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「手順」をコードで記述、逐次実行</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Ansible（タスク型）・シェルスクリプト</td></tr></table></div>
-
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>アプローチ</th><th>内容</th><th>代表ツール</th></tr><tr><td>宣言型（Declarative）</td><td>「あるべき状態」を記述、差分を自動適用</td><td>Terraform・CloudFormation</td></tr><tr><td>手続き型（Imperative）</td><td>「手順」をコードで記述、逐次実行</td><td>Ansible（タスク型）・シェルスクリプト</td></tr></table></div>
 <p>IaCを実践することで得られるメリットは次の3点に集約される。</p>
-
 <ol>
 <li><strong>再現性の確保</strong>: 同じコードから本番・ステージング・開発環境を完全に同一構成で構築できる</li>
 <li><strong>バージョン管理</strong>: Gitでインフラの変更履歴を管理でき、ロールバックが容易になる</li>
 <li><strong>自動化・効率化</strong>: 手動操作のミスをなくし、100台のサーバも一括構築できる</li>
 </ol>
-
 <div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「IaC＝CI/CD」とする誤答が出やすい。CI/CDはアプリケーションのビルド・テスト・デプロイの自動化。IaCは<strong>インフラ自体の構築</strong>を自動化するものであり、対象レイヤーが異なる。</p></div>
-
 </div>
 <div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-
 <ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ IaC＝インフラをコードで定義・バージョン管理・自動構築する手法  </li>
-<li style="padding:4px 0;font-size:14px;">✅ 代表ツール：Terraform・Ansible・CloudFormation  </li>
-<li style="padding:4px 0;font-size:14px;">✅ CI/CDとの違い：CI/CDはアプリのパイプライン、IaCはインフラ構築そのもの  </li>
+<li style="padding:4px 0;font-size:14px;">✅ IaC＝インフラをコードで定義・バージョン管理・自動構築する手法</li>
+<li style="padding:4px 0;font-size:14px;">✅ 代表ツール：Terraform・Ansible・CloudFormation</li>
+<li style="padding:4px 0;font-size:14px;">✅ CI/CDとの違い：CI/CDはアプリのパイプライン、IaCはインフラ構築そのもの</li>
 <li style="padding:4px 0;font-size:14px;">✅ 冪等性（何度実行しても同じ結果）が重要特性</li>
 </ul>
-
 </div>
 <div class="card"><h2>混同しやすい用語との違い</h2>
-
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IaC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インフラ（サーバ・NW・クラウド）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インフラ構築の自動化・再現性</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CI/CD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アプリケーション</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ビルド・テスト・デプロイの自動化</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DevOps</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発と運用の連携全般</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発サイクル全体の高速化</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">GitOps</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インフラ＋アプリの本番反映</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Git＝唯一の真実とした自動デプロイ</td></tr></table></div>
-
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>対象</th><th>目的</th></tr><tr><td>IaC</td><td>インフラ（サーバ・NW・クラウド）</td><td>インフラ構築の自動化・再現性</td></tr><tr><td>CI/CD</td><td>アプリケーション</td><td>ビルド・テスト・デプロイの自動化</td></tr><tr><td>DevOps</td><td>開発と運用の連携全般</td><td>開発サイクル全体の高速化</td></tr><tr><td>GitOps</td><td>インフラ＋アプリの本番反映</td><td>Git＝唯一の真実とした自動デプロイ</td></tr></table></div>
 </div>
 <div class="card"><h2>🎯 試験対策：IaCの重要ポイント</h2>
-
 <p>「ITパスポート 過去問」でIaCが出題される文脈は「インフラ構築の効率化・属人化排除・再現性担保」だ。設問では「サーバ100台の設定をコードで管理する手法」「構成変更をGitで履歴管理する技術」として登場することが多い。</p>
-
 <p>「ITパスポート 勉強方法」としてCI/CDとの区別を意識したい。CI/CDとIaCはどちらも「自動化」の文脈で出るが、CI/CDは<strong>ソフトウェアのデリバリーパイプライン</strong>、IaCは<strong>インフラの状態定義</strong>が主題だ。Terraformという固有名詞が選択肢に出た場合はIaCを指している。</p>
+<p>「ITパスポート 独学・過去問・勉強方法・何時間」で学ぶIaC問題の多くは「手作業でのサーバ構築とコード管理の違い」を問うものなので、冪等性という言葉と「何度実行しても同じ結果」をセットで押さえておくと確実に得点につながる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-gitops.html">itp-gitops</a>, <a href="itp-cicd.html">itp-cicd</a>, <a href="itp-devops.html">itp-devops</a>, <a href="itp-serverless.html">itp-serverless</a></p>
+</div>
 
-<p>「ITパスポート 何時間」の勉強でIaC用語が出てくるのはシラバス4.0以降のクラウド・DevOps関連分野。「IaC とは」で検索すると「手作業からコード化による再現性」という説明が出るはず。試験では概念レベルの理解で十分で、ツール名の暗記は二次的でよい。</p>
-
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-gitops.html" style="color:#1F56C6;">itp-gitops</a>, <a href="itp-cicd.html" style="color:#1F56C6;">itp-cicd</a>, <a href="itp-devops.html" style="color:#1F56C6;">itp-devops</a>, <a href="itp-serverless.html" style="color:#1F56C6;">itp-serverless</a></p></div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 ITパスポート対策クイズに挑戦 →</a></div></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

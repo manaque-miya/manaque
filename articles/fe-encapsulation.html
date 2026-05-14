@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>カプセル化とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="カプセル化の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-encapsulation.html">
+<meta property="og:title" content="カプセル化とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="カプセル化の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-encapsulation.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜ソフトウェア開発</div>
+<h1 class="at">カプセル化とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">カプセル化</span> <span class="tag">ソフトウェア開発</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>カプセル化とは何か</h2>
+<p>「オブジェクトの内部データ（属性）と実装詳細を外部から隠蔽し、公開インタフェース（メソッド）を通じてのみアクセスさせる設計原則」がカプセル化（Encapsulation）だ。クラスの内部状態を守り、外部からの不正な変更を防ぐ仕組みであり、OOPの3大要素の1つだ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: カプセル化は「データ隠蔽（情報隠蔽）」とも呼ばれる。属性を <code>private</code> にして直接アクセスを禁止し、<code>getter</code>/<code>setter</code> メソッドでのみ読み書きを許可する実装パターンが典型だ。</p></div>
+<p>銀行口座クラスを例にすると、残高（<code>balance</code>）を <code>private</code> にしておけば、外部コードから <code>account.balance = -1000000</code> と勝手に書き換えることができない。<code>deposit(amount)</code> メソッドを通じてのみ変更でき、メソッド内でバリデーションを行うことで不正な状態を防げる。</p>
+</div>
+<div class="card"><h2>アクセス修飾子の種類</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>修飾子</th><th>範囲</th><th>説明</th></tr><tr><td><code>public</code></td><td>全クラス</td><td>どこからでもアクセス可能</td></tr><tr><td><code>protected</code></td><td>同クラス＋サブクラス</td><td>継承先からのみアクセス可能</td></tr><tr><td><code>private</code></td><td>同クラスのみ</td><td>クラス内部からしかアクセスできない</td></tr><tr><td>（デフォルト）</td><td>同パッケージ</td><td>Javaのパッケージ内のみ</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「カプセル化＝すべてを<code>private</code>にする」という誤解がある。カプセル化の本質は「必要なものだけを外に出す」ことで、公開すべき操作は<code>public</code>メソッドとして提供する。全<code>private</code>にすると外部から使えないだけだ。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ カプセル化＝「データ隠蔽＋公開インタフェースによるアクセス制御」</li>
+<li style="padding:4px 0;font-size:14px;">✅ <code>private</code> 属性 ＋ <code>getter</code>/<code>setter</code> パターンが実装の基本形</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」では「カプセル化の目的として適切なものはどれか」が頻出</li>
+<li style="padding:4px 0;font-size:14px;">✅ 目的は「内部実装の変更が外部に影響しない」「不正なデータ変更を防ぐ」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 午前午後」ではアクセス修飾子の種類と範囲も問われる</li>
+</ul>
+</div>
+<div class="card"><h2>カプセル化の実務的メリット</h2>
+<p>外部コードがクラスの内部実装に依存しなくなるため、内部のデータ構造を変更しても外部コードを修正する必要がなくなる。例えば残高管理を整数型から専用の <code>Money</code> 型に変更しても、<code>deposit()</code>・<code>withdraw()</code> の引数と戻り値の型さえ変えなければ呼び出し元はノータッチで対応できる。「基本情報技術者 科目B・午後問題」でクラス設計の修正問題が出たとき、この考え方が解法の根拠になる。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：カプセル化の重要ポイント</h2>
+<p>「基本情報技術者 過去問・午前午後・独学」で取り組む場合、カプセル化の出題は「カプセル化の説明として最も適切なものはどれか」という問いに「データと操作を一体化し、内部実装を外部から隠蔽すること」が正答文になる。「複数のクラスで共通の処理を再利用できること」（継承）、「同じメソッド名で異なる処理を実現すること」（ポリモーフィズム）は誤りの選択肢として混ぜ込まれる。基本情報技術者の独学では何時間かけても混乱しやすいポイントなので3大要素をセットで整理すること。</p>
+<p>「基本情報技術者 科目B・午後問題」ではアクセス修飾子の設定誤りを指摘する問題が出ることがある。<code>public</code> にすべきフィールドを <code>private</code> にして<code>getter</code>がない、または逆に <code>private</code> にすべきフィールドを <code>public</code> にして不正変更できる状況を見つける問題だ。</p>
+<p>「基本情報技術者 勉強方法」として、銀行口座・ユーザー管理・在庫管理など実務に即した具体例でカプセル化を考えると概念が定着しやすい。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-object-oriented.html">fe-object-oriented</a>, <a href="fe-inheritance.html">fe-inheritance</a>, <a href="fe-polymorphism.html">fe-polymorphism</a>, <a href="fe-access-control.html">fe-access-control</a>, <a href="fe-class-diagram.html">fe-class-diagram</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

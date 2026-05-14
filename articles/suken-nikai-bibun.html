@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2階微分とは？数学検定試験対策｜まなクエ！</title>
+<meta name="description" content="2階微分の意味・仕組み・試験のポイントを分かりやすく解説。数学検定対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/suken-nikai-bibun.html">
+<meta property="og:title" content="2階微分とは？数学検定試験対策｜まなクエ！">
+<meta property="og:description" content="2階微分の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/suken-nikai-bibun.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">数学検定｜微分積分（高校）</div>
+<h1 class="at">2階微分とは？数学検定試験で確実に正解するポイント</h1>
+<div class="am">数学検定対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">2階微分</span> <span class="tag">微分積分（高校）</span> <span class="tag">数学検定</span></div>
+</div>
+<div class="card"><h2>2階微分とは何か</h2>
+<p>関数 f(x) を2回続けて微分した関数が<strong>2階微分</strong>（または二次導関数）だ。記号は <strong>f''(x)</strong>（ダッシュ2個）または <strong>d²f/dx²</strong> で表す。物理的には「位置の2階微分 ＝ 加速度」というように、変化量の変化量を表す概念でもある。</p>
+<p><strong>f''(x) ＝ [f'(x)]'</strong>（f'(x) をさらに x で微分する）</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 2階微分 f''(x) は3つの使い方がある。①<strong>凹凸の判定</strong>（f''＞0：下に凸、f''＜0：上に凸）、②<strong>変曲点の検出</strong>（f'' ＝ 0 かつ符号変化）、③<strong>極値の2次判定</strong>（f'(a) ＝ 0 のとき、f''(a) ＞ 0 なら極小、f''(a) ＜ 0 なら極大）——これら3役を理解することが2階微分の核心だ。</p></div>
+<p>中村さん（中学3年生・数学検定3級受験）が「f'とf''って何が違うの？」と聞いたとき、先生は「f'は上り下りの方向、f''はその方向が急になるか緩むかを教えてくれる」と答えた。中村さんは「加速度みたいな感じか」とつぶやき、3役の使い分けをメモに整理し始めた。</p>
+</div>
+<div class="card"><h2>2階微分の計算と活用</h2>
+<p><strong>例題</strong>: f(x) ＝ x⁴ − 4x³ ＋ 2 の 2 階微分を求め、凹凸を調べよ。</p>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>ステップ</th><th>計算</th><th>結果</th></tr><tr><td>① 1階微分</td><td>f'(x) を計算</td><td>f'(x) ＝ 4x³ − 12x²</td></tr><tr><td>② 2階微分</td><td>f'(x) をさらに微分</td><td>f''(x) ＝ 12x² − 24x ＝ 12x(x − 2)</td></tr><tr><td>③ f''(x) ＝ 0 を解く</td><td>12x(x−2) ＝ 0</td><td>x ＝ 0 または x ＝ 2</td></tr><tr><td>④ 符号を確認</td><td>x ＜ 0: ＋, 0＜x＜2: −, x＞2: ＋</td><td>変曲点：x ＝ 0, x ＝ 2</td></tr></table></div>
+<p><strong>極値の2次判定（f'' による判定）</strong>:</p>
+<p>f'(a) ＝ 0 の点 x ＝ a が極値かどうかを f'' で判定できる：</p>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>f''(a) の値</th><th>判定</th><th>理由</th></tr><tr><td>f''(a) ＞ 0</td><td>x ＝ a は<strong>極小</strong></td><td>その点で下に凸 → 谷底</td></tr><tr><td>f''(a) ＜ 0</td><td>x ＝ a は<strong>極大</strong></td><td>その点で上に凸 → 山頂</td></tr><tr><td>f''(a) ＝ 0</td><td>判定不可</td><td>増減表（1階微分）で再確認</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「2階微分 f''(x)」と「関数を2乗した [f(x)]²」は全く別物だ。f''(x) はダッシュ2個（微分を2回行う操作）で、[f(x)]² は元の関数の2乗——記号の見た目が似ているだけで内容は完全に異なる。もう一つのミスは「f''(a) ＝ 0 なら変曲点と断言する」こと——f'' ＝ 0 は変曲点の必要条件に過ぎず、前後の符号変化の確認が必要だ。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 2階微分は「f'(x) をさらに微分」——f''(x) ＝ [f'(x)]'</li>
+<li style="padding:4px 0;font-size:14px;">✅ f''(x) の3役：①凹凸判定、②変曲点の検出、③極値の2次判定</li>
+<li style="padding:4px 0;font-size:14px;">✅ f''(a) ＝ 0 だけで変曲点と断言不可——前後の符号変化が必要</li>
+</ul>
+</div>
+<div class="card"><h2>2階微分の記法</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>記法</th><th>読み方</th><th>使用場面</th></tr><tr><td>f''(x)</td><td>エフ・ダッシュ・ダッシュ</td><td>一般的な教科書・参考書</td></tr><tr><td>y''</td><td>ワイ・ダッシュ・ダッシュ</td><td>y ＝ f(x) の場合</td></tr><tr><td>d²f/dx²</td><td>ディー・ツー・エフ・ディー・エックスの2乗</td><td>物理・工学・大学数学</td></tr><tr><td>d²y/dx²</td><td>同上</td><td>y ＝ f(x) の場合</td></tr></table></div>
+</div>
+<div class="card"><h2>🎯 試験対策：2階微分の重要ポイント</h2>
+<p>数学検定準1級の2次（記述式）では「グラフの概形を描く問題」の中で2階微分を使う凹凸表の作成が必要だ。解答手順として「f''(x) を求める → f''(x) ＝ 0 の解を求める → 前後の符号を確認して凹凸表を作成 → 変曲点の座標を求める」というステップを答案に丁寧に書き出すことが求められる。</p>
+<p>数学検定 過去問・勉強方法・独学で対策する際は「f'(a) ＝ 0 の点が極値かどうかを2次判定で確認する」問題も出るため、f''(a) が 0 になった場合に「2次判定法が使えない」と注記して増減表に切り替える姿勢を示せる答案が高得点につながる。</p>
+<p>SEOキーワード：数学検定 過去問 勉強方法 独学 準1級 実用数学技能検定 2階微分 とは</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="suken-oto.html">suken-oto</a>, <a href="suken-henkokuten.html">suken-henkokuten</a>, <a href="suken-grafu-gaike.html">suken-grafu-gaike</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../math-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

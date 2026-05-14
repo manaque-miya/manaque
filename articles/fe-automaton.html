@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>オートマトンとは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="オートマトンの意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-automaton.html">
+<meta property="og:title" content="オートマトンとは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="オートマトンの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-automaton.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜基礎理論</div>
+<h1 class="at">オートマトンとは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">オートマトン</span> <span class="tag">基礎理論</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>オートマトンとは何か</h2>
+<p>「内部状態を持ち、入力記号を1つずつ読んで状態を遷移させる抽象的な仮想機械」がオートマトン（Automaton）だ。コンピュータ科学の理論的基盤であり、正規表現・コンパイラ・プロトコル設計・テスト自動化など実用的な場面に幅広く応用されている。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: オートマトンは「状態機械の理論モデル」だ。現実のコード（switch 文・状態変数）はオートマトンの実装と見なせる。</p></div>
+<p>木村さん（IT企業エンジニア1年目）が「なんで字句解析ってスイッチ文の塊なんだろう」と首をかしげていたとき、先輩に「それ、有限オートマトンを手で実装してるんだよ」と言われてはっとした。状態と遷移——それが設計の本質だったのだ。</p>
+<p>コンパイラのフロントエンドでは「字句解析（Lexer）」がオートマトンで実装される。ソースコードを1文字ずつ読み、「数字が続いているうちは整数読み取り状態」「空白が来たらトークン確定」というように状態を遷移させてトークンを切り出す。</p>
+</div>
+<div class="card"><h2>オートマトンの階層</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>種類</th><th>受理できる言語</th><th>特徴</th></tr><tr><td>有限オートマトン（FA）</td><td>正規言語</td><td>状態数有限・スタックなし</td></tr><tr><td>プッシュダウンオートマトン（PDA）</td><td>文脈自由言語</td><td>スタック1本を持つ</td></tr><tr><td>線形有界オートマトン（LBA）</td><td>文脈依存言語</td><td>テープ長に制限あり</td></tr><tr><td>チューリング機械（TM）</td><td>帰納的可算言語</td><td>無限テープ・最も強力</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「オートマトン＝チューリング機械」という混同がある。チューリング機械はオートマトン階層の最上位で、有限オートマトンはその最下位だ。現実の字句解析には有限オートマトンで十分で、チューリング機械を使う必要はない。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ オートマトン＝「状態と遷移で動作する抽象機械」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 有限オートマトン（FA）は正規言語（正規表現で書ける言語）を受理する</li>
+<li style="padding:4px 0;font-size:14px;">✅ 決定性FA（DFA）vs 非決定性FA（NFA）：NFA→DFAへ等価変換できる</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」では状態遷移図の読み取りが頻出</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 独学」では有限状態機械・正規表現と一緒に学ぶと連なりで理解できる</li>
+</ul>
+</div>
+<div class="card"><h2>DFAとNFAの違い</h2>
+<p>決定性FA（DFA）は「現在の状態と入力が決まれば、次の状態が必ず1つに決まる」。非決定性FA（NFA）は「次の状態が複数の候補から選べる（ε遷移も可）」。</p>
+<p>表現力は同等で、任意のNFAをDFAへ変換する「部分集合構成法」が知られている。「基本情報技術者 過去問」では「次のNFAを受理する文字列はどれか」という問いに状態遷移図を追って答える形式が出る。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：オートマトンの重要ポイント</h2>
+<p>「基本情報技術者 過去問・午前午後」でオートマトン関連の出題は「状態遷移図を読んで入力文字列が受理されるか判定する」形式が多い。初期状態から入力を1文字ずつたどり、最後に受理状態にいれば「受理」と答える手順を慣れておく。「基本情報技術者 独学・何時間」かけるにせよ、状態遷移図を手でなぞる練習を10〜20問こなせば安定して得点できる。</p>
+<p>「オートマトン とは」の直問では「有限個の状態と遷移規則を持ち、入力列を読んで最終的に受理・不受理を判定する抽象機械」が正答文になる。</p>
+<p>「基本情報技術者 勉強方法」として、状態遷移図を手書きする練習が効果的だ。自動販売機（「硬貨投入」「商品選択」「排出」「お釣り」の状態をつなぐ）を描いてみると理解が定着する。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-fsm.html">fe-fsm</a>, <a href="fe-regular-expression.html">fe-regular-expression</a>, <a href="fe-turing-machine.html">fe-turing-machine</a>, <a href="fe-compiler.html">fe-compiler</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>クリティカルパスとは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="クリティカルパスの意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-critical-path.html">
+<meta property="og:title" content="クリティカルパスとは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="クリティカルパスの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-critical-path.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜マネジメント</div>
+<h1 class="at">クリティカルパスとは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">クリティカルパス</span> <span class="tag">マネジメント</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>クリティカルパスとは何か</h2>
+<p>木村さん（IT企業エンジニア1年目）が「作業Aが1日遅れただけで納期が1日ずれた」と驚いて報告したら、先輩に「それはAがクリティカルパス上にあったからだ、フロートゼロの怖さを覚えておけ」と言われ、以来PERT図を必ず確認するようになった。</p>
+<p>「PERT図（ネットワーク図）において、開始から終了まで結ぶすべての経路のうち、所要時間の合計が最長になる経路」がクリティカルパス（Critical Path）だ。この経路上のいずれかの作業が1日遅延すると、プロジェクト全体の完了日が1日遅れる。逆に言うと、クリティカルパス以外の作業には「余裕時間（フロート）」があるため、少々の遅延はプロジェクト全体に影響しない。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: クリティカルパスの「クリティカル」は「重大・危機的」の意味だ。この経路を守ることがプロジェクト期限遵守の絶対条件になる。PM（プロジェクトマネージャ）はクリティカルパス上の作業に重点的にリソースと監視を集中させる。</p></div>
+<p>「基本情報技術者 過去問・午前午後・独学・何時間」で学ぶ際は、PERT図の計算手順（前向き・後ろ向き計算）と合わせてクリティカルパスを求める練習を繰り返すことが得点への最短ルートになる。</p>
+</div>
+<div class="card"><h2>クリティカルパス法（CPM）の手順</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>ステップ</th><th>内容</th></tr><tr><td>①ネットワーク作成</td><td>PERT図で作業と依存関係を描く</td></tr><tr><td>②所要時間記入</td><td>各作業の時間を矢印に記入</td></tr><tr><td>③最早開始時刻計算</td><td>前向きに各イベントのESを計算（複数経路は最大値）</td></tr><tr><td>④最遅完了時刻計算</td><td>後ろ向きに各イベントのLFを計算（複数経路は最小値）</td></tr><tr><td>⑤フロート計算</td><td>フロート＝LF−ES−作業時間。フロート0がクリティカルパス</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「クリティカルパス＝最短経路（距離が短い）」という誤解が多い。クリティカルパスは所要時間が「最長」の経路だ。最長＝プロジェクト完了に必要な最短期間となる（これ以上短くできない理論的な下限）。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ クリティカルパス＝「PERT図で所要時間合計が最長の経路」</li>
+<li style="padding:4px 0;font-size:14px;">✅ クリティカルパス上の作業のフロートは0（遅延余裕ゼロ）</li>
+<li style="padding:4px 0;font-size:14px;">✅ プロジェクト全体の最短完了日＝クリティカルパスの所要時間合計</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」ではPERT図からCPを求める計算問題が最頻出カテゴリ</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 午前午後」の午前でも「クリティカルパスとは何か」という概念問題が出る</li>
+</ul>
+</div>
+<div class="card"><h2>計算例</h2>
+<p>``<code> A(3日) → C(4日) → E(2日)  合計: 9日 A(3日) → D(6日)           合計: 9日 B(5日) → D(6日)           合計: 11日  ← 最長 → クリティカルパス B(5日) → E(2日)           合計: 7日 </code>``</p>
+<p>上記例ではB→Dの経路が11日で最長。クリティカルパスは「B→D」、プロジェクト最短完了は11日となる。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：クリティカルパスの重要ポイント</h2>
+<p>「基本情報技術者 過去問」では「次のPERT図においてプロジェクトの最短完了日数は何日か」と「クリティカルパスに含まれない作業の余裕日数は何日か」の2形式が特に頻出だ。前者は全経路を列挙して最長を見つけ、後者はフロート計算（LF−ES−作業時間）で答える。</p>
+<p>「クリティカルパス とは」の直問では「プロジェクトのネットワーク図において開始から終了までの最長経路であり、この経路上の作業の遅延がプロジェクト全体の遅延に直結する」が正答文になる。「プロジェクトの最短経路」「コストが最小の経路」は誤りのパターンだ。</p>
+<p>「基本情報技術者 過去問・午前午後・独学・何時間」かけるかの目安として、PERT図の計算は10問程度の過去問を繰り返すことで計算パターンが身に付く。最初は全経路を列挙する方法から始め、慣れたらES/LF/フロートの計算に移行すると効率的だ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-pert.html">fe-pert</a>, <a href="fe-gantt-chart.html">fe-gantt-chart</a>, <a href="fe-project-management.html">fe-project-management</a>, <a href="fe-float.html">fe-float</a>, <a href="fe-wbs.html">fe-wbs</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

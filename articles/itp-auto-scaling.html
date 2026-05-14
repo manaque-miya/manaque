@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>オートスケーリングとは？ITパスポート試験対策｜まなクエ！</title>
 <meta name="description" content="オートスケーリングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/itp-auto-scaling.html">
+<meta property="og:title" content="オートスケーリングとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="オートスケーリングの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/itp-auto-scaling.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,79 +41,53 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-auto-scaling.html">
-  <meta property="og:title" content="オートスケーリングとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="オートスケーリングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-auto-scaling.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">オートスケーリングとは？ITパスポート試験対策で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">オートスケーリング</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
+<div class="ah">
+<div class="al">ITパスポート｜テクノロジ</div>
+<h1 class="at">オートスケーリングとは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">オートスケーリング</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+</div>
 <div class="card"><h2>オートスケーリングとは何か</h2>
-
 <p>「ITパスポート 勉強方法」でクラウドの特性を学ぶ場面で必ず登場するのがオートスケーリングだ。オートスケーリングとは、CPU使用率・リクエスト数・メモリ使用量などの指標を監視し、負荷が高まったときに自動でサーバ（インスタンス）を追加し、負荷が下がったときに自動で削減する仕組みのことだ。クラウドの「必要なときに必要な分だけ使う」という特性を実現する代表的な機能で、AWS Auto Scaling・Azure Scale Sets・Google Cloud Autoscalerなどで提供されている。</p>
-
 <div class="hl"><p>💡 <strong>ポイント</strong>: オートスケーリングには「スケールアウト（台数を増やす）」と「スケールイン（台数を減らす）」がある。これは「スケールアップ（1台のCPU・メモリを強化する）」「スケールダウン（1台の性能を落とす）」とは概念が異なる。</p></div>
-
 </div>
 <div class="card"><h2>仕組み・種類</h2>
-
 <p>オートスケーリングの動作フローは次の通りだ。</p>
-
 <ol>
 <li><strong>監視</strong>: CPU使用率70%超過などのしきい値をあらかじめ設定する</li>
 <li><strong>検知</strong>: クラウドの監視サービスがしきい値超過を検知する</li>
 <li><strong>スケールアウト</strong>: 新しいインスタンスを自動で追加しロードバランサに組み込む</li>
 <li><strong>スケールイン</strong>: 負荷が下がったら余剰インスタンスを自動で削除する</li>
 </ol>
-
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">方向</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スケールアウト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">横方向拡張</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インスタンス台数を増やす</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スケールイン</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">横方向縮小</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インスタンス台数を減らす</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スケールアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">縦方向拡張</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1台のスペック（CPU・RAM）を上げる</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スケールダウン</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">縦方向縮小</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1台のスペックを下げる</td></tr></table></div>
-
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>方向</th><th>内容</th></tr><tr><td>スケールアウト</td><td>横方向拡張</td><td>インスタンス台数を増やす</td></tr><tr><td>スケールイン</td><td>横方向縮小</td><td>インスタンス台数を減らす</td></tr><tr><td>スケールアップ</td><td>縦方向拡張</td><td>1台のスペック（CPU・RAM）を上げる</td></tr><tr><td>スケールダウン</td><td>縦方向縮小</td><td>1台のスペックを下げる</td></tr></table></div>
 <div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「オートスケーリング＝ロードバランサ」とする誤答が出やすい。ロードバランサは既存の複数サーバへのリクエストを振り分ける機能。オートスケーリングは<strong>サーバ台数自体を増減させる</strong>機能で、通常はロードバランサと組み合わせて使われるが役割は別物だ。</p></div>
-
 </div>
 <div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-
 <ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ オートスケーリング＝負荷に応じてサーバ台数を自動増減させる仕組み  </li>
-<li style="padding:4px 0;font-size:14px;">✅ スケールアウト（台数増加）・スケールイン（台数削減）がペア用語  </li>
-<li style="padding:4px 0;font-size:14px;">✅ ロードバランサとの違い：LBは振り分け、オートスケーリングは台数増減  </li>
+<li style="padding:4px 0;font-size:14px;">✅ オートスケーリング＝負荷に応じてサーバ台数を自動増減させる仕組み</li>
+<li style="padding:4px 0;font-size:14px;">✅ スケールアウト（台数増加）・スケールイン（台数削減）がペア用語</li>
+<li style="padding:4px 0;font-size:14px;">✅ ロードバランサとの違い：LBは振り分け、オートスケーリングは台数増減</li>
 <li style="padding:4px 0;font-size:14px;">✅ コスト最適化と可用性を同時に達成する</li>
 </ul>
-
 </div>
 <div class="card"><h2>混同しやすい用語との違い</h2>
-
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">機能</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">操作対象</th></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">オートスケーリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">負荷に応じた台数の自動増減</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバ台数</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ロードバランサ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リクエストを複数サーバへ振り分け</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">トラフィック分散</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スケールアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1台の性能を強化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバスペック</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバレス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リクエスト時のみ起動</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">関数単位の実行</td></tr></table></div>
-
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>機能</th><th>操作対象</th></tr><tr><td>オートスケーリング</td><td>負荷に応じた台数の自動増減</td><td>サーバ台数</td></tr><tr><td>ロードバランサ</td><td>リクエストを複数サーバへ振り分け</td><td>トラフィック分散</td></tr><tr><td>スケールアップ</td><td>1台の性能を強化</td><td>サーバスペック</td></tr><tr><td>サーバレス</td><td>リクエスト時のみ起動</td><td>関数単位の実行</td></tr></table></div>
 </div>
 <div class="card"><h2>🎯 試験対策：オートスケーリングの重要ポイント</h2>
-
 <p>「ITパスポート 過去問」でオートスケーリングはクラウドの特性問題として頻出だ。「ECサイトがセールで急激にアクセスが増えたとき、自動でサーバを追加する機能」という説明があればオートスケーリングを選ぶ。</p>
+<p>「ITパスポート 過去問・勉強方法・独学・何時間」でオートスケーリングを学ぶ際はスケールアウトとスケールアップの混同が頻繁に指摘される典型的ミスだ。「アウト＝外に広げる＝台数を増やす」「アップ＝上に高める＝性能を上げる」という方向性で覚えると確実だ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-serverless.html">itp-serverless</a>, <a href="itp-load-balancer.html">itp-load-balancer</a>, <a href="itp-cloud-service-model.html">itp-cloud-service-model</a></p>
+</div>
 
-<p>「オートスケーリング とは」で検索すると「自動拡張・スケールアウト・スケールイン」が出る。「ITパスポート 何時間」の学習計画の中では、クラウドのIaaS/PaaS/SaaSの次に学ぶ応用知識として位置づけると自然に整理できる。</p>
-
-<p>スケールアウトとスケールアップの混同は「ITパスポート 勉強方法」の中で頻繁に指摘される典型的ミスだ。「アウト＝外に広げる＝台数を増やす」「アップ＝上に高める＝性能を上げる」という方向性で覚えると確実だ。</p>
-
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-serverless.html" style="color:#1F56C6;">itp-serverless</a>, <a href="itp-load-balancer.html" style="color:#1F56C6;">itp-load-balancer</a>, <a href="itp-cloud-service-model.html" style="color:#1F56C6;">itp-cloud-service-model</a></p></div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 ITパスポート対策クイズに挑戦 →</a></div></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

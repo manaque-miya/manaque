@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>サーバレス（FaaS）とは？ITパスポート試験対策｜まなクエ！</title>
 <meta name="description" content="サーバレス（FaaS）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/itp-serverless.html">
+<meta property="og:title" content="サーバレス（FaaS）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="サーバレス（FaaS）の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/itp-serverless.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,76 +41,50 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-serverless.html">
-  <meta property="og:title" content="サーバレス（FaaS）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="サーバレス（FaaS）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-serverless.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">サーバレス（FaaS）とは？ITパスポート試験対策で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">サーバレス（FaaS）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
+<div class="ah">
+<div class="al">ITパスポート｜テクノロジ</div>
+<h1 class="at">サーバレス（FaaS）とは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">サーバレス（FaaS）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+</div>
 <div class="card"><h2>サーバレス（FaaS）とは何か</h2>
-
 <p>「ITパスポート 独学」でクラウドの実行モデルを理解するうえで欠かせないのがサーバレス（Serverless）、別名FaaS（Function as a Service）だ。サーバレスとは、サーバの管理・運用を意識せず、関数（Function）単位でコードをデプロイし、リクエストが来た瞬間だけ自動起動・自動スケールする実行モデルを指す。</p>
-
 <p>代表的なサービスはAWS Lambda・Azure Functions・Google Cloud Functionsだ。「サーバがない」わけではなく、「開発者がサーバを管理しなくていい」という意味でサーバレスと呼ぶ点に注意が必要だ。</p>
-
 <div class="hl"><p>💡 <strong>ポイント</strong>: 課金体系が「使った分だけ」になる。常時起動するサーバと違い、関数が実行された時間・回数に応じた従量課金のため、アクセスがゼロのときは費用が発生しない。</p></div>
-
 </div>
 <div class="card"><h2>仕組み・種類</h2>
-
 <p>サーバレスの動作原理は「イベント駆動」にある。HTTPリクエスト・ファイルアップロード・タイマーなどのイベントをトリガーに関数が起動し、処理が終わると自動で停止する。</p>
-
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特性</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">自動スケール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リクエスト数に応じて自動的にインスタンスが増減</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">従量課金</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行時間（ミリ秒単位）と実行回数で課金</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ステートレス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">関数はリクエストごとに独立して実行（状態を持たない）</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コールドスタート</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">しばらく起動していない関数は初回起動に数百ms〜秒単位の遅延</td></tr></table></div>
-
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>特性</th><th>内容</th></tr><tr><td>自動スケール</td><td>リクエスト数に応じて自動的にインスタンスが増減</td></tr><tr><td>従量課金</td><td>実行時間（ミリ秒単位）と実行回数で課金</td></tr><tr><td>ステートレス</td><td>関数はリクエストごとに独立して実行（状態を持たない）</td></tr><tr><td>コールドスタート</td><td>しばらく起動していない関数は初回起動に数百ms〜秒単位の遅延</td></tr></table></div>
 <p>サーバレスが向いているユースケースは「イベント駆動の小さな処理」（画像リサイズ・通知送信・APIバックエンド）だ。一方、常時起動が必要なアプリや処理時間が長いバッチ処理には向かない。</p>
-
 <div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「サーバレス＝PaaS」とする誤答に注意。PaaSはアプリケーション全体を常時ホスティングする基盤を提供する。サーバレスは関数単位の超細粒度で、常時起動ではなくリクエスト時のみ起動する点が本質的な違いだ。</p></div>
-
 </div>
 <div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-
 <ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ サーバレス＝関数単位デプロイ・リクエスト時のみ起動・従量課金  </li>
-<li style="padding:4px 0;font-size:14px;">✅ 代表サービス：AWS Lambda・Azure Functions  </li>
-<li style="padding:4px 0;font-size:14px;">✅ PaaSとの違い：PaaSは常時起動、サーバレスはリクエスト時のみ起動  </li>
+<li style="padding:4px 0;font-size:14px;">✅ サーバレス＝関数単位デプロイ・リクエスト時のみ起動・従量課金</li>
+<li style="padding:4px 0;font-size:14px;">✅ 代表サービス：AWS Lambda・Azure Functions</li>
+<li style="padding:4px 0;font-size:14px;">✅ PaaSとの違い：PaaSは常時起動、サーバレスはリクエスト時のみ起動</li>
 <li style="padding:4px 0;font-size:14px;">✅ コールドスタート（初回遅延）はデメリットとして頻出</li>
 </ul>
-
 </div>
 <div class="card"><h2>混同しやすい用語との違い</h2>
-
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">粒度</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">起動</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">課金</th></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IaaS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">VM単位</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">常時</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時間単位</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PaaS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アプリ単位</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">常時</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時間単位</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバレス（FaaS）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">関数単位</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リクエスト時のみ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行時間・回数</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コンテナ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コンテナ単位</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">起動後は常時</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時間単位</td></tr></table></div>
-
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>粒度</th><th>起動</th><th>課金</th></tr><tr><td>IaaS</td><td>VM単位</td><td>常時</td><td>時間単位</td></tr><tr><td>PaaS</td><td>アプリ単位</td><td>常時</td><td>時間単位</td></tr><tr><td>サーバレス（FaaS）</td><td>関数単位</td><td>リクエスト時のみ</td><td>実行時間・回数</td></tr><tr><td>コンテナ</td><td>コンテナ単位</td><td>起動後は常時</td><td>時間単位</td></tr></table></div>
 </div>
 <div class="card"><h2>🎯 試験対策：サーバレスの重要ポイント</h2>
-
 <p>「ITパスポート 過去問」でサーバレスが出題される文脈は「クラウドの利用形態・コスト最適化・イベント駆動処理」が多い。「スタートアップがサーバ常時起動のコストを避けて関数単位でデプロイした」というシナリオはIaaSではなくサーバレスを選ぶ。</p>
-
 <p>「ITパスポート 勉強方法」としてFaaSとPaaSの違いを整理しておく。「PaaSはアプリを常時ホスト、FaaSは関数を一瞬起動」というイメージで覚えると選択肢の判断がしやすくなる。</p>
+<p>「ITパスポート 過去問・独学・勉強方法・何時間」でサーバレスを学ぶ際は、コールドスタートという用語も選択肢に出ることがあるので「初回起動遅延」と押さえておくと複数選択肢の絞り込みに効く。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-iac.html">itp-iac</a>, <a href="itp-cloud-service-model.html">itp-cloud-service-model</a>, <a href="itp-auto-scaling.html">itp-auto-scaling</a>, <a href="itp-container.html">itp-container</a></p>
+</div>
 
-<p>「サーバレス とは」で検索すると「サーバ管理不要・従量課金・自動スケール」が必ず出てくる。「ITパスポート 何時間」の勉強時間の観点でも、この3点セットを1セットで覚えると効率的だ。コールドスタートという語も選択肢に出ることがあるので「初回起動遅延」と押さえておく。</p>
-
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-iac.html" style="color:#1F56C6;">itp-iac</a>, <a href="itp-cloud-service-model.html" style="color:#1F56C6;">itp-cloud-service-model</a>, <a href="itp-auto-scaling.html" style="color:#1F56C6;">itp-auto-scaling</a>, <a href="itp-container.html" style="color:#1F56C6;">itp-container</a></p></div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 ITパスポート対策クイズに挑戦 →</a></div></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

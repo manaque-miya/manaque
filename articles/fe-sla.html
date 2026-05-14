@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SLAとは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="SLAの意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-sla.html">
+<meta property="og:title" content="SLAとは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="SLAの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-sla.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜マネジメント</div>
+<h1 class="at">SLAとは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">SLA</span> <span class="tag">マネジメント</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>SLAとは何か</h2>
+<p>「ITサービス提供者（プロバイダ）と利用者（顧客）の間で、提供するサービスの品質・可用性・応答時間などを数値で明示した合意文書」がSLA（Service Level Agreement、サービスレベル合意書）だ。「どのサービスを・どのレベルで・どんな条件で提供するか」を両者が合意した契約文書であり、SLAを達成できなかった場合のペナルティ（サービスクレジット等）も含む。</p>
+<p>木村さん（IT企業エンジニア1年目）がクラウドサービスの契約書を初めてレビューしたとき、「可用性99.9%保証」という文字を見て「何時間止まっていいんだろう」と計算してみた。年間で約8.7時間と知って驚き、MTBF・MTTRの計算式をすぐに調べたという経験から、SLAの数字の重みを実感した。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: SLAの代表的な指標は「可用性（稼働率）・応答時間・復旧時間（MTTR）・故障間隔（MTBF）」だ。数値で約束するため曖昧な「できる限り対応します」ではなく「99.9%の稼働率」「障害発生から4時間以内に復旧」という具体的なコミットメントになる。</p></div>
+<p>「基本情報技術者 過去問」ではSLAの定義・構成要素と、MTBF・MTTRなどの数値計算が問われる。「基本情報技術者 独学」ではSLAの定義から始め、可用性・MTBF・MTTRの計算式をセットで覚えると計算問題まで対応できる。「基本情報技術者 午前午後」いずれでも出題実績がある。</p>
+</div>
+<div class="card"><h2>SLAの主要指標と計算式</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>指標</th><th>読み</th><th>計算式/定義</th></tr><tr><td>可用性（Availability）</td><td>アベイラビリティ</td><td>MTBF ÷ (MTBF + MTTR) × 100（%）</td></tr><tr><td>MTBF</td><td>平均故障間隔</td><td>稼働時間の合計 ÷ 故障回数</td></tr><tr><td>MTTR</td><td>平均修復時間</td><td>修復時間の合計 ÷ 故障回数</td></tr><tr><td>応答時間（Response Time）</td><td>レスポンスタイム</td><td>ユーザの要求から応答開始までの時間</td></tr><tr><td>スループット</td><td>単位時間当たりの処理件数</td><td>例：毎秒1000トランザクション処理</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: MTBFとMTTRの計算を逆にする誤りが多い。MTBF（Mean Time Between Failures）は「故障が発生してから次の故障までの稼働時間の平均」、MTTR（Mean Time To Repair）は「故障発生から修復完了までの時間の平均」だ。計算式と定義をセットで覚える。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ SLA＝「ITサービスの品質水準をプロバイダと顧客が数値で合意した文書」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 可用性（稼働率）＝MTBF ÷ (MTBF + MTTR) の計算式を覚える</li>
+<li style="padding:4px 0;font-size:14px;">✅ MTBF（平均故障間隔）とMTTR（平均修復時間）の定義と計算式の違い</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」では可用性・MTBF・MTTRの数値計算が頻出</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 独学」では計算式を使った数値問題を繰り返し練習する</li>
+</ul>
+</div>
+<div class="card"><h2>計算例</h2>
+<p>``<code> システムが1000時間稼働中に5回故障し、修復に計25時間かかったとする： MTBF = (1000 - 25) ÷ 5 = 195時間 MTTR = 25 ÷ 5 = 5時間 可用性 = 195 ÷ (195 + 5) = 195 ÷ 200 = 0.975 = 97.5% </code>``</p>
+<p>SLAで「可用性99.9%」を約束している場合、上記の97.5%では未達となりペナルティが発生しうる。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：SLAの重要ポイント</h2>
+<p>「基本情報技術者 過去問・午前午後・独学・何時間で対策するか」という観点では、可用性の計算パターンは5〜10問の反復練習で定着し、2〜3時間で計算問題をほぼ確実に正解できるようになる。</p>
+<p>「基本情報技術者 過去問」での典型問題は「MTBFが200時間、MTTRが10時間のシステムの稼働率は何%か」という計算問題だ。計算式（MTBF÷(MTBF+MTTR)）を適用すると 200÷210≒95.2% となる。また「SLAとして定めるべき指標はどれか」という選択問題では、数値で計測・合意できる指標（稼働率・応答時間等）が正答になる。</p>
+<p>「SLA とは」の直問では「ITサービスの提供者と利用者の間で、サービス品質の目標水準を数値で明記した合意書」が正答文になる。「サービスの技術仕様を定めた設計書」「ITシステムの運用手順書」は誤りのパターンだ。</p>
+<p>「基本情報技術者 勉強方法」として、SLAは可用性の計算問題を5〜10問繰り返すことで計算パターンが身に付く。MTBF・MTTRの定義を正確に覚えた上で計算練習をすると計算問題での失点がほぼなくなる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-it-service-management.html">fe-it-service-management</a>, <a href="fe-availability.html">fe-availability</a>, <a href="fe-mtbf.html">fe-mtbf</a>, <a href="fe-reliability.html">fe-reliability</a>, <a href="fe-project-management.html">fe-project-management</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>有限状態機械とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="有限状態機械の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-fsm.html">
+<meta property="og:title" content="有限状態機械とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="有限状態機械の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-fsm.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜基礎理論</div>
+<h1 class="at">有限状態機械とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">有限状態機械</span> <span class="tag">基礎理論</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>有限状態機械とは何か</h2>
+<p>「有限個の状態を持ち、入力に応じて状態を遷移させながら動作するシステムモデル」が有限状態機械（FSM: Finite State Machine）だ。オートマトン理論の実用版として、組込みシステムのファームウェア・UIの画面遷移・通信プロトコルの設計に幅広く使われる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: FSM の構成要素は「状態集合・入力記号集合・遷移関数・初期状態・受理状態」の5つ。この5要素で任意の有限状態機械を完全に記述できる。</p></div>
+<p>木村さん（IT企業エンジニア1年目）が組込みの研修課題でLEDの点滅制御を書いていたとき、「なんでこんなにifだらけになるんだ」と悩んでいた。FSMの状態遷移図で整理し直したら、コードが半分の長さにすっきりまとまって「これが設計の力か」と実感した。</p>
+<p>自動販売機を例にすると「待機・硬貨投入中・選択待ち・排出中」の4状態を持つ FSM として設計できる。「硬貨を入れる」という入力で「待機」から「硬貨投入中」へ遷移し、「金額不足」なら「硬貨投入中」に留まり、「金額充足」で「選択待ち」へ遷移する。</p>
+</div>
+<div class="card"><h2>ミール機械とムーア機械</h2>
+<p>FSM には出力のタイミングで2つの設計スタイルがある。</p>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>種類</th><th>出力タイミング</th><th>特徴</th></tr><tr><td>ミール機械（Mealy）</td><td>遷移時（状態×入力に依存）</td><td>少ない状態数で設計できる</td></tr><tr><td>ムーア機械（Moore）</td><td>状態滞在時（状態にのみ依存）</td><td>出力が状態だけで決まり設計が明快</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「ミール機械は出力が状態のみで決まる」という誤りが多い。ミール機械の出力は「状態×入力」の組み合わせで決まる。状態だけで決まるのはムーア機械だ。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ FSM＝「有限個の状態と遷移で動作する機械モデル」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 状態遷移図（円と矢印）・状態遷移表（行=状態・列=入力）の2種の記述方法</li>
+<li style="padding:4px 0;font-size:14px;">✅ ミール（遷移に出力）vs ムーア（状態に出力）の区別</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」では遷移表の穴埋め・状態遷移図の読解が出る</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 独学」では実装例（トラフィックライトやATM）で状態を描いて練習</li>
+</ul>
+</div>
+<div class="card"><h2>状態遷移図と状態遷移表</h2>
+<p>状態遷移図は「円が状態、矢印が遷移、矢印の上に条件」を書く図示法だ。状態遷移表は縦軸=現在状態・横軸=入力、セルに遷移先状態（と出力）を書く表形式だ。試験では図と表を相互変換できることが求められる。</p>
+<p>「基本情報技術者 科目B・午後問題」では FSM の状態遷移表を読んで「特定の入力列を与えたとき最終的にどの状態になるか」を問う問題が出ることがある。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：有限状態機械の重要ポイント</h2>
+<p>「基本情報技術者 過去問・午前午後」での出題は状態遷移図・表の読み取りが中心だ。「入力列 <code>abbca</code> を与えたときの状態遷移をトレースし、最終状態を答えよ」という形式が典型で、図を1ステップずつなぞれば確実に解ける。「基本情報技術者 独学・何時間」の学習でも、自動販売機や信号機の設計図を自分で描く練習が最もコスパよく得点に結びつく。</p>
+<p>「有限状態機械 とは」の直問では「有限個の内部状態と遷移規則を持ち、入力に応じて状態が変化するシステムモデル」が正答文になる。「無限の状態を持つ」「記憶機能を持たない」は誤りの選択肢パターンだ。</p>
+<p>「基本情報技術者 勉強方法」として、FSM はプロトコルや組込み制御の設計手法として実務直結の知識だ。「自販機・エレベータ・信号機」を FSM として設計してみる練習が理解と記憶の両方に効く。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-automaton.html">fe-automaton</a>, <a href="fe-regular-expression.html">fe-regular-expression</a>, <a href="fe-state-diagram.html">fe-state-diagram</a>, <a href="fe-embedded-system.html">fe-embedded-system</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>数値誤差とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="数値誤差の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-numeric-error.html">
+<meta property="og:title" content="数値誤差とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="数値誤差の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-numeric-error.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜基礎理論</div>
+<h1 class="at">数値誤差とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">数値誤差</span> <span class="tag">基礎理論</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>数値誤差とは何か</h2>
+<p>コンピュータで数値を扱うとき、「真の値」と「コンピュータが保持する値」の間には必ずズレが生じる。このズレの総称が数値誤差だ。浮動小数点の有限ビットという構造上の制約から逃れられない宿命的な問題で、金融・科学計算など精度が命の分野では設計の中心課題になる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 数値誤差は「バグ」ではなく「仕様上のズレ」だ。丸め誤差・打切り誤差・桁落ち・情報落ちなど種類があり、それぞれ発生メカニズムが異なる。</p></div>
+<p>木村さん（IT企業エンジニア1年目）が「<code>0.1 + 0.2</code> の結果がテストで <code>0.3</code> じゃなくて落ちた」と焦って先輩に相談。「バグじゃなくて浮動小数点の仕様。2進数で 0.1 は表せないんだよ」と教わり、初めて数値誤差の概念と向き合った。</p>
+<p>JavaScript で <code>0.1 + 0.2</code> を実行すると <code>0.30000000000000004</code> になる。これは実装のバグではなく、2進数で 0.1 を正確に表現できない浮動小数点の仕様から来る丸め誤差だ。「基本情報技術者 過去問」ではこの仕組みと種類の区別が問われる。</p>
+</div>
+<div class="card"><h2>数値誤差の分類</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>種類</th><th>発生条件</th><th>典型例</th></tr><tr><td>丸め誤差</td><td>表現できない桁を切り捨て・四捨五入</td><td>0.1+0.2≠0.3</td></tr><tr><td>打切り誤差</td><td>無限級数を有限項で打ち切る</td><td>sin(x)のテイラー展開を途中で止める</td></tr><tr><td>桁落ち</td><td>近い値の引き算で有効桁が消える</td><td>1.000001-1.000000</td></tr><tr><td>情報落ち</td><td>大小差の大きい加算で小さい値が消える</td><td>1.0e10+1.0≒1.0e10</td></tr><tr><td>オーバーフロー</td><td>表現範囲を超える</td><td>8ビットで256を保持しようとする</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「数値誤差＝丸め誤差」と思い込んでいるケースが多い。4種類をそれぞれ定義と発生条件で区別できることが試験では問われる。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 数値誤差は「バグ」ではなく浮動小数点の構造上の必然</li>
+<li style="padding:4px 0;font-size:14px;">✅ 丸め・桁落ち・情報落ち・打切りの4種類を区別できること</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」では発生条件の違いを選択肢で問う</li>
+<li style="padding:4px 0;font-size:14px;">✅ 誤差を抑える工夫：小さい数から順に足す（情報落ち対策）、式の変形で桁落ちを回避</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 独学」では各誤差を1つずつ数値例で理解してから整理する</li>
+</ul>
+</div>
+<div class="card"><h2>数値誤差と実務</h2>
+<p>金融計算で浮動小数点を使うと消費税の丸め誤差が累積し、月末集計で数円〜数十円のズレが生じる。これを防ぐために整数型で「銭」まで扱ったり、10進数専用の <code>Decimal</code> 型を使ったりする。「基本情報技術者 勉強方法」として、「なぜズレるか」だけでなく「どう防ぐか」まで押さえると実践的な理解になる。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：数値誤差の重要ポイント</h2>
+<p>「基本情報技術者 科目B・午後問題」ではアルゴリズムの実行結果と予想値が一致しない原因として数値誤差が問われることがある。「<code>[用語名] とは</code>」という形では「桁落ち とは」「情報落ち とは」が典型的な用語問題だ。</p>
+<p>科目A（旧午前）では「次のうち桁落ちが起きるのはどれか」という選択問題形式で出題される。「ほぼ同じ値を引き算している」選択肢が桁落ち、「極端に大小差がある値を足している」選択肢が情報落ちと即判定できると確実に得点できる。</p>
+<p>「基本情報技術者 勉強方法」として、4種の誤差を「丸め＝下位を切る」「打切り＝途中でやめる」「桁落ち＝引き算で消える」「情報落ち＝足しても変わらない」と1行で言い換えて頭に入れると混同が防げる。基本情報技術者の過去問・午前午後・独学・何時間かかるかを問わず、数値誤差の4分類は必ず出題されるため最優先で押さえておく。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-floating-point.html">fe-floating-point</a>, <a href="fe-rounding-error.html">fe-rounding-error</a>, <a href="fe-cancellation.html">fe-cancellation</a>, <a href="fe-loss-of-significance.html">fe-loss-of-significance</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

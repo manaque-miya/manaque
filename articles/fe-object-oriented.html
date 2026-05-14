@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>オブジェクト指向とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="オブジェクト指向の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-object-oriented.html">
+<meta property="og:title" content="オブジェクト指向とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="オブジェクト指向の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-object-oriented.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜ソフトウェア開発</div>
+<h1 class="at">オブジェクト指向とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">オブジェクト指向</span> <span class="tag">ソフトウェア開発</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>オブジェクト指向とは何か</h2>
+<p>「現実世界のモノ（オブジェクト）をデータ（属性）と振る舞い（メソッド）の塊として捉え、それらを組み合わせてシステムを設計・実装するパラダイム」がオブジェクト指向（Object-Oriented Programming, OOP）だ。手続き型プログラミングが「処理の流れ」を中心に設計するのに対し、OOPは「モノの関係」を中心に設計する。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: オブジェクト指向の3大要素は「カプセル化・継承・ポリモーフィズム」だ。この3つを軸に学ぶと体系が一気に整理される。</p></div>
+<p>IT企業エンジニア1年目の木村さんは「クラスって何が違うんですか？」と先輩に聞いた。「設計図と実物の違いだよ」と言われ、ようやく「Carクラスは設計図、myCar = new Car()が実物か！」と腑に落ちた瞬間、3大要素の意味がするすると頭に入ってきた。</p>
+<p>Java・Python・C#・Ruby など現代の主要言語はほぼOOPをサポートする。「基本情報技術者 過去問」ではクラス・インスタンス・継承・インタフェースの概念が繰り返し問われる。「基本情報技術者 独学」ではまず「クラスは設計図、インスタンスは実物」というたとえを固めると後続の概念が理解しやすい。</p>
+</div>
+<div class="card"><h2>クラスとインスタンス</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>概念</th><th>意味</th><th>例</th></tr><tr><td>クラス</td><td>オブジェクトの設計図・型</td><td><code>Car</code>クラス（車の定義）</td></tr><tr><td>インスタンス</td><td>クラスを実体化したオブジェクト</td><td><code>myCar = new Car()</code></td></tr><tr><td>属性（フィールド）</td><td>オブジェクトが持つデータ</td><td><code>color</code>, <code>speed</code></td></tr><tr><td>メソッド</td><td>オブジェクトが持つ操作</td><td><code>accelerate()</code>, <code>brake()</code></td></tr><tr><td>コンストラクタ</td><td>インスタンス生成時に呼ばれる初期化処理</td><td><code>Car(color, speed)</code></td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「クラス＝インスタンス」という混同が初学者に多い。クラスは1つの定義だが、インスタンスは同じクラスから複数生成できる（<code>myCar</code> と <code>yourCar</code> は別々のインスタンスだが、どちらも <code>Car</code> クラスの実体）。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ クラス＝設計図、インスタンス＝実体、この2つを区別すること</li>
+<li style="padding:4px 0;font-size:14px;">✅ カプセル化・継承・ポリモーフィズムの3大要素をセットで覚える</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」ではクラス図・継承関係・インタフェースの読解が頻出</li>
+<li style="padding:4px 0;font-size:14px;">✅ 抽象クラスとインタフェースの違い：前者は実装を含めるが後者は原則メソッドの宣言のみ</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 午前午後」どちらでも出題されるため優先度高でマスターしたい</li>
+</ul>
+</div>
+<div class="card"><h2>オブジェクト指向の利点</h2>
+<ol>
+<li><strong>再利用性</strong>：クラスを部品として使い回せる</li>
+<li><strong>保守性</strong>：変更箇所が局所化され影響範囲が限定される</li>
+<li><strong>拡張性</strong>：継承・ポリモーフィズムで既存コードを変えずに機能追加できる</li>
+</ol>
+<p>手続き型では1つの関数に処理が集中して保守困難になりやすいが、OOPでは責務を分散してクラスに持たせることで大規模開発でも管理しやすい。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：オブジェクト指向の重要ポイント</h2>
+<p>「基本情報技術者 過去問・午前午後・独学・何時間かけるかに関わらず、OOP3大要素は最優先で押さえるべき基礎中の基礎だ。「基本情報技術者 過去問」での出題は「次のうちオブジェクト指向の説明として適切なものはどれか」の選択問題が典型だ。「データとその操作を一体としてオブジェクトとして扱う考え方」が正答文になる。「処理の順番を上から下に記述する考え方」「デバッグを自動化する技術」は誤りのパターンだ。</p>
+<p>「基本情報技術者 科目B・午後問題」ではクラス図を読んでプログラムの動作を追う問題が増えている。クラス間の関係（集約・コンポジション・継承）を図から読み取る練習が直結する。</p>
+<p>「基本情報技術者 勉強方法」として、手続き型と比較しながら学ぶのが定着最速だ。「同じ機能を手続き型とOOPで書いてみる」という演習で違いが体感できる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-encapsulation.html">fe-encapsulation</a>, <a href="fe-inheritance.html">fe-inheritance</a>, <a href="fe-polymorphism.html">fe-polymorphism</a>, <a href="fe-class-diagram.html">fe-class-diagram</a>, <a href="fe-design-pattern.html">fe-design-pattern</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

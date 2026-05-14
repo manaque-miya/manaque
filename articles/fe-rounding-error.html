@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>丸め誤差とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="丸め誤差の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-rounding-error.html">
+<meta property="og:title" content="丸め誤差とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="丸め誤差の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-rounding-error.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜基礎理論</div>
+<h1 class="at">丸め誤差とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">丸め誤差</span> <span class="tag">基礎理論</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>丸め誤差とは何か</h2>
+<p>コンピュータで数値を有限ビットで表現するとき、収まりきらない下位の桁を切り捨て・切り上げ・四捨五入で丸める必要がある。この処理で生じるズレが丸め誤差だ。1回あたりのズレは微小でも、繰り返し計算で累積すると無視できない大きさになる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 丸め誤差は「表現できない桁を処理する際のズレ」だ。浮動小数点演算では原理的に避けられない。</p></div>
+<p>木村さん（IT企業エンジニア1年目）が集計バッチを書いたとき、<code>0.1 + 0.1 + 0.1</code> の結果が <code>0.3</code> にならず上司に報告。「これが丸め誤差の累積。<code>Decimal</code> 型を使おう」と指摘され、初めて誤差が積み重なることを実感した。</p>
+<p>10進数の <code>0.1</code> は 2進数では <code>0.0001100110011…</code> と無限循環小数になる。これを 64 ビットで打ち切ると微小な誤差が入り込む。<code>0.1 + 0.1 + 0.1</code> が <code>0.30000000000000004</code> になるのはこの累積丸め誤差だ。</p>
+</div>
+<div class="card"><h2>丸め方式の種類</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>方式</th><th>説明</th><th>特徴</th></tr><tr><td>切り捨て</td><td>下位を削除</td><td>負の無限大方向へのバイアス</td></tr><tr><td>切り上げ</td><td>下位を1増やす</td><td>正の無限大方向へのバイアス</td></tr><tr><td>四捨五入</td><td>0.5以上で繰り上げ</td><td>0.5ちょうどが常に切り上がる偏り</td></tr><tr><td>偶数丸め（バンカーズ）</td><td>0.5のとき偶数側へ丸め</td><td>長期で偏りが打ち消される</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「四捨五入で誤差は完全に公平」という思い込みがある。0.5ちょうどのケースでは常に切り上げになるため、大量のデータを扱う金融計算では統計的な偏りが蓄積する。偶数丸め（バンカーズ・ラウンディング）を使うとこの偏りが抑えられる。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 丸め誤差は「有限桁で表せない下位部分を処理したときのズレ」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 累積丸め誤差：繰り返し演算で少量ずつ蓄積する</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」では桁落ち・情報落ちとの区別が問われる</li>
+<li style="padding:4px 0;font-size:14px;">✅ 対策：<code>double</code> 使用・計算順序の工夫・<code>Decimal</code> 型の採用</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 独学」では浮動小数点の仕組み（IEEE754）と一緒に学ぶのが効率的</li>
+</ul>
+</div>
+<div class="card"><h2>丸め誤差と累積</h2>
+<p>科学シミュレーションで時間ステップを 10 万回繰り返すとき、毎ステップ $10^{-15}$ の丸め誤差が累積すると最終的に $10^{-10}$ のズレになる。これが「数値積分の打切り・丸め誤差」として試験でも問われる文脈だ。</p>
+<p>対策として「計算の各段階で精度を確認する」「中間値を保持する変数に十分な精度型を使う」「補正項を加える（カハンの加算アルゴリズム等）」などの手法がある。</p>
+</div>
+<div class="card"><h2>🎯 試験対策：丸め誤差の重要ポイント</h2>
+<p>「基本情報技術者 過去問」では「浮動小数点演算で誤差が生じる原因として最も適切なものはどれか」という問いに「有限ビット数で表現できない小数が存在するため」が正解になる選択問題が頻出だ。</p>
+<p>「丸め誤差 とは」を問う選択肢では「桁落ち（近い値の引き算）」との区別が重要だ。丸め誤差は「表現できない下位桁を処理するズレ」、桁落ちは「引き算の結果で有効桁が消える現象」と区別する。</p>
+<p>「基本情報技術者 勉強方法」として、<code>Python</code> の対話環境で <code>0.1 + 0.2</code> を試して実際の誤差値を目で見ることが理解を定着させる最短ルートだ。基本情報技術者の過去問・午前午後・独学・何時間の勉強でも、丸め誤差は浮動小数点単元の代表問題として最初に確認すべきテーマだ。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-numeric-error.html">fe-numeric-error</a>, <a href="fe-cancellation.html">fe-cancellation</a>, <a href="fe-floating-point.html">fe-floating-point</a>, <a href="fe-ieee754.html">fe-ieee754</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

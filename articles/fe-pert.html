@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PERT図とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="PERT図の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-pert.html">
+<meta property="og:title" content="PERT図とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="PERT図の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-pert.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">基本情報技術者｜マネジメント</div>
+<h1 class="at">PERT図とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">PERT図</span> <span class="tag">マネジメント</span> <span class="tag">基本情報技術者</span></div>
+</div>
+<div class="card"><h2>PERT図とは何か</h2>
+<p>木村さん（IT企業エンジニア1年目）がガントチャートを作ったはいいが「どの作業が遅れたらまずいのか分からない」と悩み、先輩に「それはPERT図でクリティカルパスを出せば一発だ」と教わって、依存関係を矢印で書いた瞬間に全体像が見えた。</p>
+<p>「プロジェクトの各作業（アクティビティ）と作業間の依存関係を有向ネットワーク図で表し、工期の計算やボトルネック特定に使うスケジュール分析手法」がPERT図（Program Evaluation and Review Technique）だ。1950年代に米海軍ポラリスミサイル開発プロジェクトで考案された。矢印と結節点（円）で作業の順序関係を表し、最長経路（クリティカルパス）を求めることが主目的だ。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: PERT図の「矢印」はアクティビティ（作業）を、「結節点（ノード）」はイベント（作業の開始または完了時点）を表す。矢印に作業時間を付記して、全経路の所要時間を計算する。</p></div>
+<p>「基本情報技術者 過去問・午前午後・独学・何時間」で取り組む際は、まずPERT図の「矢印＝作業、結節点＝イベント」という基本規則を固め、次にクリティカルパスの計算手順を練習する流れが効果的だ。</p>
+</div>
+<div class="card"><h2>PERT図の記法と用語</h2>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>説明</th></tr><tr><td>アクティビティ（Activity）</td><td>矢印で表す作業。所要時間を矢印に付記する</td></tr><tr><td>イベント（Event）</td><td>円（結節点）で表す作業の開始・完了時点</td></tr><tr><td>ダミーアクティビティ</td><td>所要時間ゼロの点線矢印。論理的な依存関係のみを示す</td></tr><tr><td>最早開始時刻（ES）</td><td>前作業がすべて完了した最も早い開始可能時点</td></tr><tr><td>最遅完了時刻（LF）</td><td>プロジェクト全体の完了を遅らせない最も遅い完了時点</td></tr><tr><td>余裕時間（フロート）</td><td>作業の遅延許容量。クリティカルパス上の作業のフロートは0</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: PERT図の「矢印が作業」というルールを混同するケースがある。ガントチャートでは横棒が作業だが、PERT図では矢印が作業で結節点がイベント（時点）だ。この違いを問う問題が出る。</p></div>
+</div>
+<div class="card"><h2>ここが試験のキモ ✅</h2>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ PERT図＝「作業の依存関係をネットワーク図で表し、クリティカルパスを求める手法」</li>
+<li style="padding:4px 0;font-size:14px;">✅ 矢印＝作業（アクティビティ）、結節点（円）＝イベント（時点）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 最早開始時刻（ES）を前から計算し、最遅完了時刻（LF）を後ろから計算する</li>
+<li style="padding:4px 0;font-size:14px;">✅ フロート＝余裕時間。クリティカルパス上はフロート0</li>
+<li style="padding:4px 0;font-size:14px;">✅ 「基本情報技術者 過去問」でPERT図からクリティカルパスを求める計算問題が頻出</li>
+</ul>
+</div>
+<div class="card"><h2>PERT図の計算手順</h2>
+<ol>
+<li><strong>前向き計算（最早時刻）</strong>: 開始結節点から順に各イベントの最早開始時刻を計算。複数の矢印が入る結節点では最大値をとる</li>
+<li><strong>後ろ向き計算（最遅時刻）</strong>: 終了結節点から逆向きに最遅完了時刻を計算。複数の矢印が出る結節点では最小値をとる</li>
+<li><strong>フロート計算</strong>: フロート＝最遅完了時刻 − 最早開始時刻 − 作業時間。フロートが0の経路がクリティカルパス</li>
+</ol>
+</div>
+<div class="card"><h2>🎯 試験対策：PERT図の重要ポイント</h2>
+<p>「基本情報技術者 過去問」では「次のPERT図においてクリティカルパスに含まれる作業はどれか」という問題が頻出だ。前向き計算・後ろ向き計算を手順通りに行い、フロートが0の作業の経路を答える。計算問題のため計算練習が点数直結だ。</p>
+<p>「PERT図 とは」の直問では「プロジェクトの作業とその依存関係をネットワーク図で表し、最長経路（クリティカルパス）や余裕時間を計算する工程管理手法」が正答文になる。「棒グラフで各作業の期間を示す図」（ガントチャート）は誤りのパターンだ。</p>
+<p>「基本情報技術者 過去問・午前午後・独学・何時間」で最速習得するには、過去問のネットワーク図を手書きでトレースしながら計算するのが効果的だ。図を見慣れれば前向き・後ろ向き計算の手順がスムーズに流れるようになる。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-critical-path.html">fe-critical-path</a>, <a href="fe-gantt-chart.html">fe-gantt-chart</a>, <a href="fe-wbs.html">fe-wbs</a>, <a href="fe-project-management.html">fe-project-management</a>, <a href="fe-float.html">fe-float</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

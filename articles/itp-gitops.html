@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>GitOpsとは？ITパスポート試験対策｜まなクエ！</title>
 <meta name="description" content="GitOpsの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/itp-gitops.html">
+<meta property="og:title" content="GitOpsとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="GitOpsの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/itp-gitops.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -37,74 +41,49 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-gitops.html">
-  <meta property="og:title" content="GitOpsとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="GitOpsの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-gitops.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">GitOpsとは？ITパスポート試験対策で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">GitOps</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
+<div class="ah">
+<div class="al">ITパスポート｜テクノロジ</div>
+<h1 class="at">GitOpsとは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">GitOps</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
+</div>
 <div class="card"><h2>GitOpsとは何か</h2>
-
 <p>「ITパスポート 独学」でDevOps・クラウド運用の発展概念として登場するのがGitOpsだ。GitOpsとは、Gitリポジトリを本番システムの「唯一の真実（Single Source of Truth：SSoT）」として、Git上の変更を自動検知して本番環境に反映させる運用手法だ。Kubernetes時代のクラウドネイティブな標準デプロイ手法として2018年頃から急速に普及した。</p>
-
 <p>核心は「すべての変更はGit経由で行い、手動で本番環境を直接操作しない」という原則にある。コードの変更と同様に、インフラや設定の変更もPull Request・コードレビューのプロセスを経て本番に適用される。</p>
-
 <div class="hl"><p>💡 <strong>ポイント</strong>: 代表的なGitOpsツールはFluxCD・ArgoCDだ。これらはGitリポジトリの変更を監視し、差分を自動的に本番クラスタに反映するエージェントとして動作する。</p></div>
-
 </div>
 <div class="card"><h2>仕組み・種類</h2>
-
 <p>GitOpsは「宣言的構成」と「自動同期」の2原則で動作する。</p>
-
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">概念</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">宣言的構成</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">あるべき状態をコードで記述（Kubernetes YAMLなど）</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">自動同期</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Gitの変更をエージェントが検知し本番に自動反映</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Pull型デプロイ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">本番側のエージェントがGitを参照する（Pushの逆）</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">監査ログ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">すべての変更がGit履歴として残り、コンプライアンス対応が容易</td></tr></table></div>
-
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>概念</th><th>内容</th></tr><tr><td>宣言的構成</td><td>あるべき状態をコードで記述（Kubernetes YAMLなど）</td></tr><tr><td>自動同期</td><td>Gitの変更をエージェントが検知し本番に自動反映</td></tr><tr><td>Pull型デプロイ</td><td>本番側のエージェントがGitを参照する（Pushの逆）</td></tr><tr><td>監査ログ</td><td>すべての変更がGit履歴として残り、コンプライアンス対応が容易</td></tr></table></div>
 <p>GitOpsのメリットは「デプロイの再現性確保」「変更の追跡可能性（誰がいつ何を変えたかGit履歴で確認可能）」「ロールバックの容易さ（git revertで簡単に戻せる）」の3点だ。</p>
-
 <div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「GitOps＝DevOps」とする誤答に注意。DevOpsは開発と運用の連携全般を指す広い概念。GitOpsは「Git＝SSoTとして本番反映する」という具体的な実装手法で、DevOpsの実現手段の一つに位置づけられる。</p></div>
-
 </div>
 <div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-
 <ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ GitOps＝Git＝唯一の真実・変更はすべてGit経由で管理  </li>
-<li style="padding:4px 0;font-size:14px;">✅ 自動同期・宣言的構成・監査ログが3キーワード  </li>
-<li style="padding:4px 0;font-size:14px;">✅ DevOpsとの違い：DevOpsは概念・プラクティス全般、GitOpsは具体的実装手法  </li>
+<li style="padding:4px 0;font-size:14px;">✅ GitOps＝Git＝唯一の真実・変更はすべてGit経由で管理</li>
+<li style="padding:4px 0;font-size:14px;">✅ 自動同期・宣言的構成・監査ログが3キーワード</li>
+<li style="padding:4px 0;font-size:14px;">✅ DevOpsとの違い：DevOpsは概念・プラクティス全般、GitOpsは具体的実装手法</li>
 <li style="padding:4px 0;font-size:14px;">✅ 代表ツール：FluxCD・ArgoCD</li>
 </ul>
-
 </div>
 <div class="card"><h2>混同しやすい用語との違い</h2>
-
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">範囲</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">本番反映</th></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DevOps</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発・運用連携全般の思想・プラクティス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">方式は問わない</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">GitOps</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Git＝SSoTとした自動デプロイ手法</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Gitトリガーで自動反映</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IaC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インフラをコードで定義</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コード実行で構築</td></tr>
-<tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CI/CD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アプリのビルド・デプロイパイプライン</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パイプラインがトリガー</td></tr></table></div>
-
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>範囲</th><th>本番反映</th></tr><tr><td>DevOps</td><td>開発・運用連携全般の思想・プラクティス</td><td>方式は問わない</td></tr><tr><td>GitOps</td><td>Git＝SSoTとした自動デプロイ手法</td><td>Gitトリガーで自動反映</td></tr><tr><td>IaC</td><td>インフラをコードで定義</td><td>コード実行で構築</td></tr><tr><td>CI/CD</td><td>アプリのビルド・デプロイパイプライン</td><td>パイプラインがトリガー</td></tr></table></div>
 </div>
 <div class="card"><h2>🎯 試験対策：GitOpsの重要ポイント</h2>
-
 <p>「ITパスポート 過去問」ではGitOpsはまだ出題頻度が高くないが、シラバス5.0以降のDevOps・クラウドネイティブ関連問題で選択肢として登場することがある。「Git上の変更が自動的に本番に反映される」「手動での本番操作を禁止する」というシナリオがGitOpsの文脈だ。</p>
+<p>「GitOps とは」で検索すると「Git＝Single Source of Truth」という説明が必ず出てくる。「ITパスポート 過去問・勉強方法・独学・何時間」でGitOpsを扱う際は、IaC・DevOps・CI/CDとの位置関係を整理して覚えるのが効率的だ。「インフラをコードで書く＝IaC」「Gitに変更をpushすれば自動で本番反映＝GitOps」という対比で記憶する。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-iac.html">itp-iac</a>, <a href="itp-devops.html">itp-devops</a>, <a href="itp-cicd.html">itp-cicd</a>, <a href="itp-kubernetes.html">itp-kubernetes</a></p>
+</div>
 
-<p>「GitOps とは」で検索すると「Git＝Single Source of Truth」という説明が必ず出てくる。「ITパスポート 勉強方法」としてはIaC・DevOps・CI/CDとの位置関係を整理して覚えるのが効率的だ。「インフラをコードで書く＝IaC」「Gitに変更をpushすれば自動で本番反映＝GitOps」という対比で記憶する。</p>
-
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-iac.html" style="color:#1F56C6;">itp-iac</a>, <a href="itp-devops.html" style="color:#1F56C6;">itp-devops</a>, <a href="itp-cicd.html" style="color:#1F56C6;">itp-cicd</a>, <a href="itp-kubernetes.html" style="color:#1F56C6;">itp-kubernetes</a></p></div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 ITパスポート対策クイズに挑戦 →</a></div></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

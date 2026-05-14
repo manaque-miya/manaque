@@ -2,106 +2,90 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>一次不等式とは？数学検定試験対策｜まなクエ！</title>
+<meta name="description" content="一次不等式の意味・仕組み・試験のポイントを分かりやすく解説。数学検定対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/suken-ichiji-futoushiki.html">
+<meta property="og:title" content="一次不等式とは？数学検定試験対策｜まなクエ！">
+<meta property="og:description" content="一次不等式の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/suken-ichiji-futoushiki.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#E0F2F1;color:#00695C;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#00695C;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-ol{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#E0F2F1;border-left:4px solid #00695C;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#00695C,#004D40);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#00695C;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#E0F2F1;color:#00695C;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
 table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#E0F2F1;color:#00695C;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #80CBC4;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
 td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F9FBF9;}
-pre code{font-family:monospace;}
-</style>
-<link rel="canonical" href="https://manaque.net/articles/suken-ichiji-futoushiki.html">
-<meta property="og:title" content="一次不等式とは？数学検定試験対策でわかりやすく解説｜まなクエ！">
-<meta property="og:description" content="一次不等式について数学検定試験対策向けにわかりやすく解説。方程式・不等式の重要ポイントと試験によく出る問題を網羅。">
-<meta property="og:url" content="https://manaque.net/articles/suken-ichiji-futoushiki.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
-<title>一次不等式とは？数学検定試験対策でわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="一次不等式について数学検定試験対策向けにわかりやすく解説。方程式・不等式の重要ポイントと試験によく出る問題を網羅。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="label">🔢 数学検定 方程式・不等式</div>
-<h1>一次不等式とは？数学検定試験対策でわかりやすく解説</h1>
-<p class="meta">数学検定試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">一次不等式</span><span class="tag">方程式・不等式</span><span class="tag">数学検定</span></div>
+<div class="al">数学検定｜方程式・不等式</div>
+<h1 class="at">一次不等式とは？数学検定試験で確実に正解するポイント</h1>
+<div class="am">数学検定対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">一次不等式</span> <span class="tag">方程式・不等式</span> <span class="tag">数学検定</span></div>
 </div>
-
-<div class="card">
 <div class="card"><h2>一次不等式とは何か</h2>
-<strong>一次不等式</strong>とは、xの最高次数が1の不等式——3x＋2＜11 や −2x＋5≧1 といった形の式だ。「方程式を解くのと同じ手順で解けるが、負の数で割る瞬間だけ不等号が逆転する」という1点を除けば、一次方程式の解法とほぼ同じだ。解は「1つの数」ではなく「範囲（x＜3 など）」になる。
-<div class="hl">💡 <strong>ポイント</strong>: 一次不等式の解は数直線上の「半直線」。x＜3 なら「3より左のすべての実数」、x≧−2 なら「−2以上のすべての実数」が解の範囲。境界点を含むか否かで白丸・黒丸の表記が変わる。</div>
+<p>中村さん（中学3年生・数学検定3級受験）が問題集を広げ、「−2x＋5≧1 って方程式と同じように解けばいい？」と聞いた。「9割同じ、でも最後だけ違う」と先生が答え、÷(−2) の行で不等号をひっくり返す瞬間、中村さんは「ここか！」と赤ペンで大きく丸をつけた。</p>
+<p><strong>一次不等式</strong>とは、xの最高次数が1の不等式——3x＋2＜11 や −2x＋5≧1 といった形の式だ。「方程式を解くのと同じ手順で解けるが、負の数で割る瞬間だけ不等号が逆転する」という1点を除けば、一次方程式の解法とほぼ同じだ。解は「1つの数」ではなく「範囲（x＜3 など）」になる。</p>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 一次不等式の解は数直線上の「半直線」。x＜3 なら「3より左のすべての実数」、x≧−2 なら「−2以上のすべての実数」が解の範囲。境界点を含むか否かで白丸・黒丸の表記が変わる。</p></div>
 </div>
 <div class="card"><h2>一次不等式の解法ステップ</h2>
-<strong>例題</strong>: 3x＋2＜11 を解け
-<table><tr><th>ステップ</th><th>操作</th><th>式</th></tr><tr><td>① 定数項を右辺へ移項</td><td>2を右辺へ（符号反転）</td><td>3x＜11－2</td></tr><tr><td>② 右辺を計算</td><td>11−2＝9</td><td>3x＜9</td></tr><tr><td>③ 両辺を係数で割る</td><td>÷3（正の数→反転なし）</td><td>x＜3</td></tr></table>
-<strong>不等号反転の例</strong>: −2x＋5≧1 を解け
-<table><tr><th>ステップ</th><th>操作</th><th>式</th></tr><tr><td>① 移項</td><td>5を右辺へ</td><td>−2x≧1−5</td></tr><tr><td>② 右辺計算</td><td>1−5＝−4</td><td>−2x≧−4</td></tr><tr><td>③ ÷(−2)で割る</td><td><strong>負→反転</strong></td><td>x≦2</td></tr></table>
-<div class="mb">⚠️ <strong>間違いやすいパターン</strong>: 「両辺を −2 で割ったら x≧2」という不等号を変えない誤答が頻発する。また「移項しても不等号の向きは変わらない」という基本ルールと「負の数で割るときだけ反転する」ルールを混同するケースも多い。移項（加減）とスカラー倍（乗除）は別の操作だと意識すること。</div>
+<p><strong>例題</strong>: 3x＋2＜11 を解け</p>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>ステップ</th><th>操作</th><th>式</th></tr><tr><td>① 定数項を右辺へ移項</td><td>2を右辺へ（符号反転）</td><td>3x＜11－2</td></tr><tr><td>② 右辺を計算</td><td>11−2＝9</td><td>3x＜9</td></tr><tr><td>③ 両辺を係数で割る</td><td>÷3（正の数→反転なし）</td><td>x＜3</td></tr></table></div>
+<p><strong>不等号反転の例</strong>: −2x＋5≧1 を解け</p>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>ステップ</th><th>操作</th><th>式</th></tr><tr><td>① 移項</td><td>5を右辺へ</td><td>−2x≧1−5</td></tr><tr><td>② 右辺計算</td><td>1−5＝−4</td><td>−2x≧−4</td></tr><tr><td>③ ÷(−2)で割る</td><td><strong>負→反転</strong></td><td>x≦2</td></tr></table></div>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「両辺を −2 で割ったら x≧2」という不等号を変えない誤答が頻発する。また「移項しても不等号の向きは変わらない」という基本ルールと「負の数で割るときだけ反転する」ルールを混同するケースも多い。移項（加減）とスカラー倍（乗除）は別の操作だと意識すること。</p></div>
 </div>
 <div class="card"><h2>ここが試験のキモ ✅</h2>
-<p>✅ 解は「範囲（不等号付きのxの式）」——1つの数ではない<br>✅ 負の係数で割るときだけ不等号反転——この1点を確実に実行する<br>✅ 答えを数直線で確認（境界点を含むか・向きが正しいか）</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ 解は「範囲（不等号付きのxの式）」——1つの数ではない</li>
+<li style="padding:4px 0;font-size:14px;">✅ 負の係数で割るときだけ不等号反転——この1点を確実に実行する</li>
+<li style="padding:4px 0;font-size:14px;">✅ 答えを数直線で確認（境界点を含むか・向きが正しいか）</li>
+</ul>
 </div>
 <div class="card"><h2>境界点の表記</h2>
-<table><tr><th>不等号</th><th>境界点を含む</th><th>数直線の記号</th></tr><tr><td>< または ></td><td>含まない</td><td>○（白丸）</td></tr><tr><td>≦ または ≧</td><td>含む</td><td>●（黒丸）</td></tr></table>
-数学検定の解答では「x＜3」「x≦−2」のように不等号記号で表現する。「3未満」「−2以上」のような日本語でも正解だが、式形式が推奨される。
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>不等号</th><th>境界点を含む</th><th>数直線の記号</th></tr><tr><td>< または ></td><td>含まない</td><td>○（白丸）</td></tr><tr><td>≦ または ≧</td><td>含む</td><td>●（黒丸）</td></tr></table></div>
+<p>数学検定の解答では「x＜3」「x≦−2」のように不等号記号で表現する。「3未満」「−2以上」のような日本語でも正解だが、式形式が推奨される。</p>
 </div>
 <div class="card"><h2>🎯 試験対策：一次不等式の重要ポイント</h2>
 <p>数学検定3級の1次では一次不等式が毎回出題される。合格ラインは「移項→係数で割る」の2ステップを符号ミスなしで実行できる速度と精度だ。特に小数や分数係数の不等式（例：0.5x−1＜2 → ×2で整数化してから解く、1/3 x＋2≦3 → ×3して整数化）は「分数・小数を含む一次方程式」と同じ前処理が有効。</p>
-<p>2次（記述式）では解を数直線で図示するよう求める問題がある。境界点の●○と矢印の向きを正確に書くこと——「x＜3 で白丸から左向き矢印」が正解のパターン。</p>
+<p>2次（記述式）では解を数直線で図示するよう求める問題がある。境界点の●○と矢印の向きを正確に書くこと——「x＜3 で白丸から左向き矢印」が正解のパターン。数学検定 過去問・勉強方法・独学で反復練習する際は、符号チェックと数直線図示をセットにしよう。</p>
 <p>SEOキーワード：数学検定 過去問 勉強方法 独学 実用数学技能検定 一次不等式 とは</p>
-<strong>関連</strong>: suken-futoushiki-seishitsu, suken-renritsu-futoushiki, suken-niji-futoushiki
-<p>---</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="suken-futoushiki-seishitsu.html">suken-futoushiki-seishitsu</a>, <a href="suken-renritsu-futoushiki.html">suken-renritsu-futoushiki</a>, <a href="suken-niji-futoushiki.html">suken-niji-futoushiki</a></p>
 </div>
 
-<div class="cta"><h2>問題を解いて仕上げよう！</h2>
-<p>実際に解いて定着させよう。</p>
-<a href="../suken-quiz.html">数学検定クイズに挑戦する</a></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../math-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

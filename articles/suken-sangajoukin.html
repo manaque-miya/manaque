@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#E0F2F1;color:#2B3858;min-height:100vh;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
+.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
+.logo span{color:#00695C;}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#00897B,#004D40);display:grid;place-items:center;}
+.back{font-size:13px;font-weight:700;color:#00695C;text-decoration:none;}
+.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,77,64,.07);}
+.label{display:inline-block;background:#E0F2F1;color:#00695C;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
+.meta{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,77,64,.07);}
+h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #E0F2F1;}
+h3{font-size:15px;font-weight:800;color:#00695C;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+p:last-child{margin-bottom:0;}
+ul{padding-left:20px;margin-bottom:10px;}
+li{font-size:14px;line-height:1.8;color:#2B3858;}
+.cta{background:linear-gradient(135deg,#00695C,#004D40);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
+.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
+.cta p{color:rgba(255,255,255,.9);}
+.cta a{display:inline-block;background:#fff;color:#00695C;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag{background:#E0F2F1;color:#00695C;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
+.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
+.ft a{color:#00695C;text-decoration:none;margin:0 8px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#E0F2F1;color:#00695C;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #80CBC4;}
+td{padding:10px 12px;border:1px solid #E0F2F1;line-height:1.7;}
+tr:nth-child(even) td{background:#F5FAFA;}
+</style>
+<link rel="canonical" href="https://manaque.net/articles/suken-sangajoukin.html">
+<meta property="og:title" content="相加相乗平均｜a+b≧2√(ab)の証明・最小値の求め方｜数学検定対策｜まなクエ！">
+<meta property="og:description" content="数学検定「相加相乗平均」(a+b)/2≧√(ab)の公式・等号成立条件・a+1/aの最小値・3変数拡張の使い方を解説。">
+<meta property="og:url" content="https://manaque.net/articles/suken-sangajoukin.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<title>相加相乗平均｜a+b≧2√(ab)の証明・最小値の求め方｜数学検定対策｜まなクエ！</title>
+<meta name="description" content="数学検定「相加相乗平均」(a+b)/2≧√(ab)の公式・等号成立条件・a+1/aの最小値・3変数拡張の使い方を解説。">
+</head><body>
+<header class="hd"><div class="hd-inner">
+<a class="logo" href="../index.html"><span class="logo-icon">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+</svg></span>まな<span>クエ！</span></a>
+<a class="back" href="../index.html">← TOPにもどる</a>
+</div></header>
+<main class="main">
+<div class="ah">
+<div class="label">🔢 数学検定 数と式</div>
+<h1>相加相乗平均｜a+b≧2√(ab)の証明・最小値の求め方</h1>
+<p class="meta">数学検定試験対策｜まなクエ！学習ガイド</p>
+<div class="tags"><span class="tag">数と式</span><span class="tag">相加相乗平均</span><span class="tag">不等式</span><span class="tag">最小値</span><span class="tag">数学検定</span></div>
+</div>
+
+<div class="card"><h2>相加相乗平均とは何か</h2>
+<p>a, b ≧ 0 のとき <strong>(a+b)/2 ≧ √(ab)</strong> が成り立つ——これが相加相乗平均の不等式だ。左辺が「相加平均（算術平均）」、右辺が「相乗平均（幾何平均）」で、算術平均は幾何平均以上になるという事実を表している。</p>
+<p>変形すると <strong>a + b ≧ 2√(ab)</strong>（よく使う形）。<strong>等号成立は a = b のとき</strong>（等号 = ⟺ a = b）。「a, b ≧ 0 の確認」と「等号成立条件の明示」が記述答案の必須要素だ。</p>
+</div>
+
+<div class="card"><h2>基本公式と証明</h2>
+<table>
+<tr><th>公式</th><th>条件</th></tr>
+<tr><td>(a+b)/2 ≧ √(ab)</td><td>a, b ≧ 0（等号成立 ⟺ a = b）</td></tr>
+<tr><td>a + b ≧ 2√(ab)</td><td>a, b ≧ 0（等号成立 ⟺ a = b）</td></tr>
+</table>
+<h3>証明（差を取る方法）</h3>
+<p>a + b − 2√(ab) = (√a − √b)² ≧ 0<br>
+(√a − √b)² = a − 2√(ab) + b だから a + b ≧ 2√(ab) が成り立つ。<br>
+等号成立は √a = √b、すなわち <strong>a = b のとき</strong>（a, b ≧ 0 を前提）。</p>
+</div>
+
+<div class="card"><h2>例題①：a + 1/a の最小値（a &gt; 0）</h2>
+<p>相加相乗平均より a &gt; 0、1/a &gt; 0 に対して：</p>
+<p>a + 1/a ≧ 2√(a × 1/a) = 2√1 = <strong>2</strong></p>
+<p>等号成立は a = 1/a → a² = 1 → <strong>a = 1</strong>（a &gt; 0 より）</p>
+<p>よって a + 1/a の最小値は <strong>2</strong>（a = 1 のとき）</p>
+<h3>例題②：a² + b² ≧ 2ab の証明</h3>
+<p>a² と b² に相加相乗平均を適用（a², b² ≧ 0）：<br>
+a² + b² ≧ 2√(a²b²) = 2|ab| ≧ 2ab<br>
+（|ab| ≧ ab は常に成立）</p>
+</div>
+
+<div class="card"><h2>適用条件チェックリスト</h2>
+<ul>
+<li><strong>a, b ≧ 0 の確認</strong>——負の数には直接使えない（問題文の条件を必ず確認）</li>
+<li><strong>等号成立条件の明示</strong>——「a = b のとき等号成立」を答案に必ず書く</li>
+<li><strong>和が一定か積が一定かを判断</strong>——積 ab = k（一定）なら和 a + b の最小値、和 a + b = k（一定）なら積 ab の最大値を求める問題</li>
+<li><strong>最小値に達することの確認</strong>——等号成立条件が与えられた制約（a &gt; 0 など）と矛盾しないか確認する</li>
+</ul>
+</div>
+
+<div class="card"><h2>2パターンの頻出問題</h2>
+<table>
+<tr><th>パターン</th><th>問題の形</th><th>使い方</th></tr>
+<tr><td>積が一定 → 和の最小</td><td>ab = k のとき a + b の最小値</td><td>a + b ≧ 2√(ab) = 2√k</td></tr>
+<tr><td>和が一定 → 積の最大</td><td>a + b = k のとき ab の最大値</td><td>ab ≦ ((a+b)/2)² = (k/2)²</td></tr>
+</table>
+<h3>3変数への拡張</h3>
+<p>a, b, c ≧ 0 のとき <strong>(a+b+c)/3 ≧ ³√(abc)</strong>（3変数の相加相乗平均）<br>
+等号成立 ⟺ a = b = c<br>
+「a + b + c の最小値（abc = k 固定）」や「abc の最大値（a + b + c = k 固定）」で使う。</p>
+</div>
+
+<div class="card"><h2>試験のキモ</h2>
+<ul>
+<li>a + b ≧ 2√(ab)——等号成立は a = b のとき（a, b ≧ 0）</li>
+<li>a + 1/a の最小値は 2（a = 1 のとき）——最頻出パターン</li>
+<li>「積が一定 → 和の最小」「和が一定 → 積の最大」の2パターンを使い分ける</li>
+<li>記述式では「a, b ≧ 0 より相加相乗平均を適用すると…、等号成立は a = b のとき」という論理を明示する</li>
+<li>最多のミスは「等号成立条件を書かない」こと——条件を省くと記述式では減点される</li>
+</ul>
+</div>
+
+<div class="card"><h2>試験対策・まとめ</h2>
+<p>数学検定2級〜準1級の不等式分野では相加相乗平均が頻出だ。「a + 1/a の最小値」「ab が一定のとき a + b の最小値」という2パターンは必ず出る問題型なので手順を完全に自動化しておくことが独学対策の基本だ。記述式では「a, b ≧ 0 を確認 → 相加相乗平均を適用 → 等号成立条件を明示 → 最小値（または最大値）を結論づける」という4ステップの論理展開を丁寧に書くことが満点答案の条件だ。3変数への拡張（(a+b+c)/3 ≧ ³√(abc)）も準1級では出題されるため、公式と等号成立条件（a = b = c）をセットで覚えておくことが重要だ。</p>
+</div>
+
+<div class="cta"><h2>問題を解いて仕上げよう！</h2>
+<p>実際に解いて定着させよう。</p>
+<a href="../suken-quiz.html">数学検定クイズに挑戦する</a></div>
+</main>
+<footer class="ft">
+<a href="../index.html">TOP</a>
+<a href="../about.html">運営について</a>
+<a href="../privacy.html">プライバシーポリシー</a>
+<p style="margin-top:12px;">© 2025 まなクエ！</p>
+</footer></body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="ja"><head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ブリッジ回路とバランス条件とは？第二種電気工事士試験対策｜まなクエ！</title>
+<meta name="description" content="ブリッジ回路とバランス条件の意味・仕組み・試験のポイントを分かりやすく解説。第二種電気工事士対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/denko2-bridge-kairo.html">
+<meta property="og:title" content="ブリッジ回路とバランス条件とは？第二種電気工事士試験対策｜まなクエ！">
+<meta property="og:description" content="ブリッジ回路とバランス条件の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/denko2-bridge-kairo.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
+.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
+td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
+<main class="main">
+<div class="ah">
+<div class="al">第二種電気工事士｜電気理論</div>
+<h1 class="at">ブリッジ回路とバランス条件とは？第二種電気工事士試験で確実に正解するポイント</h1>
+<div class="am">第二種電気工事士対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ブリッジ回路とバランス条件</span> <span class="tag">電気理論</span> <span class="tag">第二種電気工事士</span></div>
+</div>
+<div class="card"><h2>ブリッジ回路・バランス条件とは何か</h2>
+<p>ブリッジ回路（ぶりっじかいろ）とは、4つの抵抗（インピーダンス）を菱形（ひし形）に配置し、対角線上に電源と検出器（検流計）を接続した回路のことです。バランス条件（平衡条件）とは何かを一言でいえば「ブリッジ回路において対角の抵抗の積が等しいとき（R₁×R₃ = R₂×R₄）、中央の検流計に電流が流れなくなる平衡状態の条件」です。</p>
+<p>佐藤さん（電工見習い・現場新人）がブリッジ回路の問題を見て「どの抵抗が対角なんだ？」と回路図をにらんだ。「向かい合う抵抗同士の積が等しければ釣り合う」と覚えてから、図を見た瞬間に対角を見つけられるようになった。</p>
+<p>「ホイートストンブリッジって何？」——未知の抵抗を精密に測定するためのブリッジ回路のことです。バランス条件（R₁/R₂ = R₃/R₄）が成立したとき、検流計の電流がゼロになることを利用して未知抵抗を決定します。第二種電気工事士 筆記試験ではブリッジ回路のバランス条件（平衡条件）が出題され、第二種電気工事士 過去問・技能試験・独学・何時間の学習でも比較的短時間で習得できる頻出テーマです。</p>
+</div>
+<div class="card"><h2>ブリッジ回路とバランス条件の公式</h2>
+<p><strong>ブリッジ回路の構成</strong></p>
+<p>``<code> A / \ R₁    R₂ /     \ B---G---D   G: 検流計（galvanometer） \     / R₃    R₄ \ / C (電源) </code>``</p>
+<p>A-B間R₁、A-D間R₂、B-C間R₃、D-C間R₄として、B-D間に検流計Gを接続します。</p>
+<p><strong>バランス条件（平衡条件）</strong></p>
+<p>``` ブリッジが平衡（検流計に電流が流れない）条件：</p>
+<p>R₁ × R₄ = R₂ × R₃</p>
+<p>または等価的に： R₁ / R₂ = R₃ / R₄ （対辺の比が等しい） ```</p>
+<p><strong>計算例</strong></p>
+<p>``` 例：R₁=10Ω、R₂=20Ω、R₃=15Ωのとき、 バランスするR₄を求めよ。</p>
+<p>バランス条件：R₁ × R₄ = R₂ × R₃ 10 × R₄ = 20 × 15 10 × R₄ = 300 R₄ = 30Ω ```</p>
+<p><strong>ブリッジ回路の覚え方</strong></p>
+<p>「向かい合う（対角の）抵抗の積が等しい」——R₁とR₄が向かい合い（対角位置）、R₂とR₃が向かい合っている場合は R₁×R₄ = R₂×R₃ です。「向かい同士の積が等しい＝バランス」と覚えましょう。</p>
+</div>
+<div class="card"><h2>ここが試験のキモ</h2>
+<p>第二種電気工事士 筆記試験でブリッジ回路・バランス条件について押さえるべきポイントは3点です。</p>
+<ol>
+<li><strong>「対角の積が等しい＝バランス（検流計に電流ゼロ）」を暗記</strong>：バランス条件 R₁×R₄ = R₂×R₃ は第二種電気工事士 過去問で「ブリッジが平衡するとき検流計に流れる電流は？」（答え：0）や「平衡するための抵抗値は？」という形で出題されます。公式そのものは単純な掛け算・割り算ですが、「どの抵抗が対角にあるか」を回路図から正しく読み取ることが最重要です。</li>
+</ol>
+<ol>
+<li><strong>バランス条件では検流計（中央の電流計）を「開放（無限大抵抗）」として扱う</strong>：ブリッジが平衡しているとき、検流計に電流が流れないため、中央の枝路を「断線している」と考えても回路の計算結果が変わりません。バランス条件の問題では「検流計＝開放」として外側の4抵抗だけで電流・電圧を計算すればよいことを把握しておくと、複雑に見える問題も解きやすくなります。</li>
+</ol>
+<ol>
+<li><strong>ホイートストンブリッジとの関連（精密抵抗測定への応用）</strong>：バランス条件を使った精密抵抗測定法をホイートストンブリッジといいます。既知の3抵抗と可変抵抗を使い、検流計がゼロになったときのバランス条件から未知抵抗を算出します。第二種電気工事士 筆記試験では「バランス条件の計算」が主な出題形式ですが、応用として抵抗測定の原理として理解しておくと問題背景が把握しやすくなります。</li>
+</ol>
+</div>
+<div class="card"><h2>混同しやすい用語</h2>
+<ul>
+<li><strong>ブリッジ回路のバランス条件 vs キルヒホッフの法則による一般的な回路計算</strong>：ブリッジが平衡しているときはバランス条件（対角の積が等しい）で一発解答できる。平衡していないときはキルヒホッフの電流則・電圧則を使った連立方程式による計算が必要。「まずバランス条件を確認する→平衡ならバランス公式・非平衡ならキルヒホッフ」という判断手順が重要。</li>
+</ul>
+<ul>
+<li><strong>対角の積（R₁×R₄=R₂×R₃）vs 対辺の比（R₁/R₂=R₃/R₄）</strong>：バランス条件は積の等式と比の等式という2通りの表現ができる（数学的に等価）。問題によって使いやすい形が異なるため、どちらの表現でも同じ条件を表していることを理解しておく。</li>
+</ul>
+<ul>
+<li><strong>ブリッジ回路の検流計 vs 電流計の接続</strong>：ブリッジ回路の中央に接続するのは「検流計（零点検出器）」であり、電流の有無（方向含む）を検出するために使う。一般的な電流計（アンメーター）とは用途・感度が異なるが、原理は同じ。試験ではどちらも「電流がゼロのとき平衡」という判定に使われる。</li>
+</ul>
+</div>
+<div class="card"><h2>試験対策・関連リンク</h2>
+<p>第二種電気工事士 勉強方法として、ブリッジ回路のバランス条件は「対角の積が等しい（R₁×R₄=R₂×R₃）」の1公式を確実に覚え、計算例を3〜5問解いて「どの抵抗が対角かを正しく読み取る」練習をすることが最短の習得法です。第二種電気工事士 独学では自分でブリッジ回路を手描きして対角の位置関係を確認することをすすめます。第二種電気工事士 過去問・技能試験・独学・何時間の学習でもバランス条件は1問あたり30秒以内に解けるよう練習しておくと試験時間の節約になります。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="denko2-合成抵抗.html">denko2-合成抵抗</a>, <a href="denko2-キルヒホッフの法則.html">denko2-キルヒホッフの法則</a>, <a href="denko2-オームの法則.html">denko2-オームの法則</a>, <a href="denko2-直列回路.html">denko2-直列回路</a></p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../denko2-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+</main>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

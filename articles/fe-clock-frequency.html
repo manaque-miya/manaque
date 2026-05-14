@@ -2,86 +2,77 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>クロック周波数とは？基本情報技術者試験対策｜まなクエ！</title>
+<meta name="description" content="クロック周波数の意味・仕組み・試験のポイントを分かりやすく解説。基本情報技術者対策に役立つ解説記事です。">
+<link rel="canonical" href="https://manaque.net/articles/fe-clock-frequency.html">
+<meta property="og:title" content="クロック周波数とは？基本情報技術者試験対策｜まなクエ！">
+<meta property="og:description" content="クロック周波数の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:url" content="https://manaque.net/articles/fe-clock-frequency.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#E3F2FD;color:#1976D2;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1976D2;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-ol{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#E3F2FD;border-left:4px solid #1976D2;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#1976D2,#0D47A1);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1976D2;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#E3F2FD;color:#1976D2;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
+.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.hl p{margin:0;font-weight:700;color:#0F1830;}
+.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
+.mb p{margin:0;color:#C0392B;font-weight:700;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
 table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#E3F2FD;color:#1976D2;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #BBDEFB;}
+th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
 td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F9FBF9;}
-pre code{font-family:monospace;}
-</style>
-<link rel="canonical" href="https://manaque.net/articles/fe-clock-frequency.html">
-<meta property="og:title" content="クロック周波数とは？基本情報技術者試験対策でわかりやすく解説｜まなクエ！">
-<meta property="og:description" content="クロック周波数について基本情報技術者試験対策向けにわかりやすく解説。コンピュータ構成の重要ポイントと試験によく出る問題を網羅。">
-<meta property="og:url" content="https://manaque.net/articles/fe-clock-frequency.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
-<title>クロック周波数とは？基本情報技術者試験対策でわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="クロック周波数について基本情報技術者試験対策向けにわかりやすく解説。コンピュータ構成の重要ポイントと試験によく出る問題を網羅。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+tr:nth-child(even) td{background:#F5F8FF;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="label">💻 基本情報技術者 コンピュータ構成</div>
-<h1>クロック周波数とは？基本情報技術者試験対策でわかりやすく解説</h1>
-<p class="meta">基本情報技術者試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">クロック周波数</span><span class="tag">コンピュータ構成</span><span class="tag">基本情報技術者</span></div>
+<div class="al">基本情報技術者｜コンピュータ構成</div>
+<h1 class="at">クロック周波数とは？基本情報技術者試験で確実に正解するポイント</h1>
+<div class="am">基本情報技術者対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">クロック周波数</span> <span class="tag">コンピュータ構成</span> <span class="tag">基本情報技術者</span></div>
 </div>
-
-<div class="card">
 <div class="card"><h2>クロック周波数とは何か</h2>
 <p>CPU が動作するタイミングを刻む「クロック信号」の 1 秒あたりの回数がクロック周波数だ。単位は Hz（ヘルツ）で、3 GHz ＝ 1 秒に 30 億回の信号が発生することを意味する。クロック周波数が高いほど 1 秒あたりに処理できる命令数が増え、CPU が「速い」と感じられる。</p>
-<div class="hl">💡 <strong>ポイント</strong>: 1 GHz = 10^9 Hz（10 億 Hz）。「3.5 GHz の CPU」は 1 秒間に 35 億回のクロックを刻む。周波数が 2 倍になると単純計算で処理速度も約 2 倍になる。</div>
+<div class="hl"><p>💡 <strong>ポイント</strong>: 1 GHz = 10^9 Hz（10 億 Hz）。「3.5 GHz の CPU」は 1 秒間に 35 億回のクロックを刻む。周波数が 2 倍になると単純計算で処理速度も約 2 倍になる。</p></div>
 <p>基本情報試験では「クロック周波数・CPI・MIPS」を組み合わせた計算問題が頻出だ。3 つの関係式「MIPS = クロック周波数（Hz）÷ CPI ÷ 10^6」を押さえれば、値を代入するだけで正解できる。</p>
+<p>木村さん（IT企業エンジニア1年目）が性能比較の資料を作るとき、「GHzの数字だけ見てればいいですよね？」と先輩に聞いた。「CPIが違えば意味ないよ」と返され、MIPSの計算式を覚えてから初めてスペック表の読み方がわかった気がした。</p>
 </div>
 <div class="card"><h2>クロック周波数・CPI・MIPSの関係</h2>
-<table><tr><th>指標</th><th>意味</th><th>例</th></tr><tr><td>クロック周波数（f）</td><td>1 秒あたりのクロック数</td><td>3 GHz = 3 × 10^9 Hz</td></tr><tr><td>CPI</td><td>1 命令あたりの平均クロック数</td><td>3 クロック/命令</td></tr><tr><td>MIPS</td><td>1 秒あたりの命令実行数（100 万単位）</td><td>1000 MIPS</td></tr></table>
-計算例：クロック周波数 3 GHz、CPI = 3 のとき  
-MIPS = (3 × 10^9) ÷ 3 ÷ 10^6 = <strong>1000 MIPS</strong>
-<div class="mb">⚠️ <strong>間違いやすいパターン</strong>: 「クロック周波数が 2 倍＝処理速度が 2 倍」は必ずしも正しくない。CPI が異なれば実際の処理速度は変わる。RISC は CPI が小さく（約 1）、CISC は大きい（2〜数十）。クロック周波数だけでなく CPI も含めた「実効性能」で評価する。</div>
+<div style="overflow-x:auto;margin:12px 0"><table><tr><th>指標</th><th>意味</th><th>例</th></tr><tr><td>クロック周波数（f）</td><td>1 秒あたりのクロック数</td><td>3 GHz = 3 × 10^9 Hz</td></tr><tr><td>CPI</td><td>1 命令あたりの平均クロック数</td><td>3 クロック/命令</td></tr><tr><td>MIPS</td><td>1 秒あたりの命令実行数（100 万単位）</td><td>1000 MIPS</td></tr></table></div>
+<p>計算例：クロック周波数 3 GHz、CPI = 3 のとき MIPS = (3 × 10^9) ÷ 3 ÷ 10^6 = <strong>1000 MIPS</strong></p>
+<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「クロック周波数が 2 倍＝処理速度が 2 倍」は必ずしも正しくない。CPI が異なれば実際の処理速度は変わる。RISC は CPI が小さく（約 1）、CISC は大きい（2〜数十）。クロック周波数だけでなく CPI も含めた「実効性能」で評価する。</p></div>
 </div>
 <div class="card"><h2>ここが試験のキモ ✅</h2>
-<p>✅ MIPS = クロック周波数（Hz）÷ CPI ÷ 10^6<br>✅ 実行時間 = 命令数 × CPI ÷ クロック周波数（秒）<br>✅ 1 クロックの時間 = 1 ÷ クロック周波数（秒）<br>✅ 高周波数 = 発熱・消費電力が増大 → スマホは低周波数で省電力設計</p>
+<ul style="list-style:none;padding-left:0;">
+<li style="padding:4px 0;font-size:14px;">✅ MIPS = クロック周波数（Hz）÷ CPI ÷ 10^6</li>
+<li style="padding:4px 0;font-size:14px;">✅ 実行時間 = 命令数 × CPI ÷ クロック周波数（秒）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 1 クロックの時間 = 1 ÷ クロック周波数（秒）</li>
+<li style="padding:4px 0;font-size:14px;">✅ 高周波数 = 発熱・消費電力が増大 → スマホは低周波数で省電力設計</li>
+</ul>
 </div>
 <div class="card"><h2>クロック周波数の限界とマルチコア化</h2>
 <p>クロック周波数は 2005 年前後に 4〜5 GHz 程度で頭打ちになった。これ以上上げると発熱量が急増し、冷却コストが現実的でなくなる。その解決策として登場したのがマルチコア（1 チップ内に複数の演算コアを搭載）だ。4 コア 3 GHz の CPU は、シングルコア 3 GHz と比べて並列処理可能な場面で大幅に高速化できる。</p>
@@ -89,18 +80,11 @@ MIPS = (3 × 10^9) ÷ 3 ÷ 10^6 = <strong>1000 MIPS</strong>
 <div class="card"><h2>🎯 試験対策：クロック周波数の重要ポイント</h2>
 <p>「基本情報技術者 過去問」でよく出るのは「クロック周波数・CPI・MIPS の計算問題」と「クロック周波数の違う 2 つの CPU の性能比較」だ。</p>
 <p>計算問題のコツは「単位に注目する」こと。GHz → Hz に直す（× 10^9）操作を忘れると桁がズレる。MIPS の最後に ÷ 10^6 を忘れるミスも頻発する。式を書き出して単位を揃える習慣をつける。</p>
-<p>「基本情報技術者 科目B」では、クロック周波数の知識そのものより「CPUの動作をトレースするアルゴリズム問題」が出る。1 命令ごとにプログラムカウンタ（PC）が進む仕組みと、ジャンプ命令で PC が書き換わる仕組みを理解しておく。</p>
-<strong>関連</strong>: fe-cpu, fe-pipeline, fe-mips, fe-cpi
-<p>---</p>
+<p>「基本情報技術者 科目B」では、クロック周波数の知識そのものより「CPUの動作をトレースするアルゴリズム問題」が出る。1 命令ごとにプログラムカウンタ（PC）が進む仕組みと、ジャンプ命令で PC が書き換わる仕組みを理解しておく。基本情報技術者 過去問・午前午後を横断して計算問題を反復し、独学で何時間か集中的に演習すると計算ミスが激減する。</p>
+<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="fe-cpu.html">fe-cpu</a>, <a href="fe-pipeline.html">fe-pipeline</a>, <a href="fe-mips.html">fe-mips</a>, <a href="fe-cpi.html">fe-cpi</a></p>
 </div>
 
-<div class="cta"><h2>問題を解いて仕上げよう！</h2>
-<p>実際に解いて定着させよう。</p>
-<a href="../fe-quiz.html">基本情報技術者クイズに挑戦する</a></div>
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../fe-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>
