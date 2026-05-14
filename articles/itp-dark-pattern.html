@@ -3,10 +3,10 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ダークパターンとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ダークパターンの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ダークパターンの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
 <link rel="canonical" href="https://manaque.net/articles/itp-dark-pattern.html">
 <meta property="og:title" content="ダークパターンとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ダークパターンの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:description" content="ダークパターンの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
 <meta property="og:url" content="https://manaque.net/articles/itp-dark-pattern.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="まなクエ！">
@@ -29,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -41,48 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F5F8FF;}
 </style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="al">ITパスポート｜ストラテジ</div>
-<h1 class="at">ダークパターンとは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ダークパターンとは？自分ごと体験で覚えるITパスポート対策</h1>
 <div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ダークパターン</span> <span class="tag">ストラテジ</span> <span class="tag">ITパスポート</span></div>
-</div>
-<div class="card"><h2>ダークパターンとは何か</h2>
-<p>「無料体験」のつもりで申し込んだら毎月課金が続き、解約しようとしたら導線がメニューの奥深くに隠されていた——こういった「利用者の意図に反して不利益な行動をさせるUI設計」をダークパターンという。</p>
-<p><strong>ダークパターン（Dark Pattern）</strong>とは、利用者を騙して事業者に有利な選択をさせるよう意図的に設計されたUI/UX手法の総称。「解約導線を隠す」「事前チェック済みオプション追加」「焦らせるカウントダウン」「購入画面での不意打ち追加費用」が典型例。2022年の特定商取引法改正で日本でも規制が明確化された。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: ダークパターン＝「事業者を儲けさせるために利用者を操る騙しデザイン」。本当に優れたUXは利用者の利益を高めるが、ダークパターンは真逆の方向を向いている。</p></div>
-</div>
-<div class="card"><h2>ダークパターンの代表的な手口</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>手口の種類</th><th>具体例</th></tr><tr><td>隠れた解約手続き</td><td>解約ボタンを複数階層のメニュー奥に配置</td></tr><tr><td>スネーキング（こっそり追加）</td><td>購入直前にオプションをチェック済みで追加</td></tr><tr><td>フォールス・アージェンシー</td><td>「あと1個！」「3時間で終了！」偽の緊迫感演出</td></tr><tr><td>コンファーム・シェーミング</td><td>「特典を受け取らない」という否定的な選択肢で断りにくくする</td></tr><tr><td>定期購入の見えにくい表示</td><td>「初回100円」を大きく表示し「2回目以降3,000円」を小さく</td></tr></table></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: UX改善は「利用者体験を向上させる正当な設計」。ダークパターンは「利用者を不利益に誘導する不当な設計」。見た目は「デザインの工夫」でも、目的が利用者か事業者かで真逆になる。</p></div>
-</div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ ダークパターン＝利用者の不利益を誘導するUI設計・消費者庁・特商法改正で規制対象</li>
-<li style="padding:4px 0;font-size:14px;">✅ 2022年特商法改正で「定期購入解除手続の容易化」がダークパターン規制の柱</li>
-<li style="padding:4px 0;font-size:14px;">✅ UX改善との違い：利用者の利益を上げるか、事業者の利益のために利用者を操るかの違い</li>
-<li style="padding:4px 0;font-size:14px;">✅ EUでも規制強化中・消費者庁ガイドライン等で日本も継続的に規制対象が拡大</li>
-</ul>
-</div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>特徴</th></tr><tr><td>ダークパターン</td><td>意図的に利用者を操る不正UI設計</td></tr><tr><td>UX改善</td><td>利用者体験を向上させる正当な設計改善</td></tr><tr><td>A/Bテスト</td><td>どちらのUIが利用者にとって良いか検証する手法</td></tr></table></div>
-</div>
-<div class="card"><h2>🎯 試験対策：ダークパターンの重要ポイント</h2>
-<p>ITパスポート試験では「ダークパターン＝消費者を不利益に誘導するUI手法」という定義と、「2022年特商法改正による規制強化」がセットで問われる。「定期購入の解除手続きを明確にする義務」が改正の目玉なので、具体的な義務内容まで押さえておくと得点につながる。ITパスポートの過去問・勉強方法・独学・何時間の計画を立てる際、ダークパターンは時事性の高い頻出テーマのため早めに押さえておきたい。</p>
-<p>UX改善との区別は「設計の意図」で判断する。同じ「クリックしやすいボタン配置」でも、利用者が本当に必要なアクションへ誘導するのはUX改善、事業者に有利な不本意なアクションへ誘導するのがダークパターン。「誰が得をするか」という問いが判断基準になる。</p>
-<p>消費者庁が2023年に発表した「ダークパターンに関する実態調査」も試験の時事問題として出やすい。「違法ではなくても不公正」な設計が問題視されている点、EU・米国での規制先行と日本の対応、という流れを整理しておくと時事問題対応にもなる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-tokushoho].html">[itp-tokushoho]</a>, <a href="[itp-consumer-protection].html">[itp-consumer-protection]</a></p>
+<div class="tags"><span class="tag">ダークパターン</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>ECサイトの利用者の自分。「無料体験」のつもりで申込んだら、解約ボタンが見つからず、解約導線が深いメニューの奥…！消費者を不利益に誘導するこのUI、何と呼ぶ？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ダークパターン</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>UX改善</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ UX改善は利用者の利益を向上させる設計。利用者の不利益に誘導するのはダークパターン</div></li>
+
+</ul>
+</div>
+<p style="margin-top:12px;"><strong>✅ 正解：ダークパターン</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 ダークパターンとは何か</h2>
+<span class="kw">騙すUI設計</span>
+<p>利用者の意図に反して不利益な選択をさせるよう設計されたUI/UX手法。「解約導線を隠す」「事前チェック済オプション」「焦らせるカウントダウン」が典型。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>EU・米国・日本で規制強化。日本でも消費者庁ガイドライン・特商法改正で禁止対象が明確化。「定期購入の解除手続の容易化」が2022年特商法改正のポイント。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>UX改善は利用者体験を向上させる正当な設計。ダークパターンは利用者を欺いて事業者利益を優先する不当な設計。「目的が利用者か事業者か」で区別。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>ダークパターン＝**暗黒UI＝騙しデザイン**。**「解約ボタンどこ？？」と探させる**のは反則。利用者目線かどうかが境目。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ダークパターンはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

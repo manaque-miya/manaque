@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>HTTPヘッダーのセキュリティ設定とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="HTTPヘッダーのセキュリティ設定の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="HTTPヘッダーのセキュリティ設定の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-security-headers.html">
+<meta property="og:title" content="HTTPヘッダーのセキュリティ設定とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="HTTPヘッダーのセキュリティ設定の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-security-headers.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,45 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-security-headers.html">
-  <meta property="og:title" content="HTTPヘッダーのセキュリティ設定とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="HTTPヘッダーのセキュリティ設定の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-security-headers.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">HTTPヘッダーのセキュリティ設定とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">HTTPヘッダーのセキュリティ設定</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>HTTPヘッダーのセキュリティ設定とは何か</h2>
-<p>試験ではHTTPセキュリティヘッダーを<strong>「どのヘッダーがどの攻撃を防ぐか」</strong>という対応関係の形で問う。各ヘッダーの名称・目的・代表的な設定値をセットで覚えておくことが得点の近道だ。</p>
-<h3>主要セキュリティヘッダー一覧</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ヘッダー名</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">代表的な設定値</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Strict-Transport-Security（HSTS）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTPS強制（HTTPSのみ許可）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>max-age=31536000; includeSubDomains</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Content-Security-Policy（CSP）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リソース読み込み元制限（XSS緩和）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>default-src 'self'</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X-Frame-Options</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クリックジャッキング防止（iframe禁止）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>DENY</code> または <code>SAMEORIGIN</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X-Content-Type-Options</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MIMEタイプスニッフィング防止</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>nosniff</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Referrer-Policy</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リファラー情報の漏洩制限</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>no-referrer-when-downgrade</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Permissions-Policy</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">カメラ・位置情報等の機能アクセス制限</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>camera=(), geolocation=()</code></td></tr></table></div><h3>ヘッダーと防御する攻撃の対応</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">攻撃・リスク</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対策ヘッダー</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クリックジャッキング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X-Frame-Options</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XSS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Content-Security-Policy</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTP→HTTPSダウングレード</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Strict-Transport-Security（HSTS）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MIMEスニッフィング攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X-Content-Type-Options: nosniff</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リファラーによる情報漏洩</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Referrer-Policy</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: <strong>クリックジャッキング</strong>とは、透明なiframeを重ねてユーザに意図しないクリックをさせる攻撃だ。<code>X-Frame-Options: DENY</code>を設定すると、そのページは<strong>いかなるiframeにも表示されなくなる</strong>。<code>SAMEORIGIN</code>なら同一オリジンのiframeのみ許可する。この2つの値の違いが試験で問われやすい。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：HSTSを設定するとHTTP通信が暗号化される</p></div>
-<div class="hl"><p>- <strong>正</strong>：HSTSはHTTP通信を<strong>HTTPSにリダイレクト</strong>させるヘッダー。暗号化自体はTLSが担う。一度HSTSを受け取ったブラウザは指定期間内にHTTPでアクセスしようとすると自動でHTTPSに変換する</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">HTTPヘッダーのセキュリティ設定とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">HTTPヘッダーのセキュリティ設定</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. X-Frame-Options: DENY → iframeでの表示を全禁止（クリックジャッキング対策）</p>
-<p>2. HSTS → HTTPS強制（ダウングレード攻撃対策）</p>
-<p>3. X-Content-Type-Options: nosniff → MIMEタイプを勝手に変えさせない</p>
-<p>4. これらは全てHTTPレスポンスヘッダーとして設定する</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>ECサイトのセキュリティ担当の自分。「一度HTTPS接続したら次回以降も必ずHTTPSで接続強制」するヘッダー。X-Frame-Options？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ヘッダー</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">防御対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X-Frame-Options</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クリックジャッキング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">iframe関連</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XSS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リソース読み込み制御</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HSTS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ダウングレード攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTPS強制</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X-Content-Type-Options</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MIMEスニッフィング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>nosniff</code>という値が特徴</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：HTTPヘッダーのセキュリティ設定の重要ポイント</h2>
-<p>「クリックジャッキング攻撃を防ぐためにWebサーバが設定するHTTPヘッダーとして適切なものはどれか」→「X-Frame-Options: DENY」。「Strict-Transport-Security」（HTTPS強制）や「Content-Security-Policy」（XSS対策）と混同しないよう、各ヘッダーと防御対象の1対1対応を表で暗記しておくこと。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>HSTS（HTTP Strict Transport Security）ヘッダーを設定する</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>X-Frame-Optionsヘッダーを設定する</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ X-Frame-Optionsはクリックジャッキング対策。「HTTPS強制」がHSTS</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：HSTS（HTTP Strict Transport Security）ヘッダーを設定する</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 HTTPヘッダーのセキュリティ設定とは何か</h2>
+<span class="kw">HSTS=HTTPS強制、X-Frame-Options=クリックジャッキング防止</span>
+<p>主要セキュリティヘッダー：①HSTS（HTTPS接続の強制）②X-Frame-Options（iframeでの表示禁止→クリックジャッキング対策）③Content-Security-Policy（スクリプト実行元制限）。レスポンスヘッダーでブラウザの挙動を制御する。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では各ヘッダーの「目的」と「対策する脅威」の対応が問われる。HSTS＝プロトコルダウングレード攻撃対策、X-Frame-Options＝クリックジャッキング対策、CSP＝XSS緩和。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：HSTSはHTTPS化のブラウザ強制。SSLサーバー証明書のインストール自体とは別の設定。証明書＋HSTS＋CSPを組み合わせて使う。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**HSTS（HTTPS強制）・X-Frame-Options（クリックジャッキング）・CSP（XSS）**の3つの守護ヘッダー。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>HTTPヘッダーのセキュリティ設定はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

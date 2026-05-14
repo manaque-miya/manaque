@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>クラウド移行戦略（6R）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="クラウド移行戦略（6R）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="クラウド移行戦略（6R）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-cloud-migration-6r.html">
+<meta property="og:title" content="クラウド移行戦略（6R）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="クラウド移行戦略（6R）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-cloud-migration-6r.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-cloud-migration-6r.html">
-  <meta property="og:title" content="クラウド移行戦略（6R）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="クラウド移行戦略（6R）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-cloud-migration-6r.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">クラウド移行戦略（6R）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">クラウド移行戦略（6R）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>クラウド移行戦略（6R）とは何か</h2>
-<p>クラウド移行戦略6Rとは、オンプレミスのシステムをクラウドへ移行する際に取りうる6つのアプローチを体系化したフレームワークだ。Gartnerが提唱し、AWSが普及させた概念で、Rehost・Replatform・Repurchase・Refactor・Retire・Retainの頭文字を取って「6R」と呼ぶ。システムの重要度・技術的負債・コストを考慮して最適な戦略を選択する。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 6Rは「全てのシステムを同じ方法でクラウド移行する必要はない」という考え方であり、システムごとに最適な移行戦略を選ぶための選択肢の地図だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">クラウド移行戦略（6R）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">クラウド移行戦略（6R）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>6Rの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">戦略</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">別名</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">工数</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Rehost</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Lift & Shift</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">そのままクラウドに移す（IaaS上で動かす）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Replatform</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Lift, Tinker & Shift</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一部最適化してクラウドに移す（DB→マネージドDB等）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Repurchase</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Drop & Shop</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SaaSに乗り換える（自社CRM→Salesforce等）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Refactor</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Re-architect</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アーキテクチャを再設計（マイクロサービス化等）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Retire</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">-</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">使われていないシステムを廃止する</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なし</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Retain</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Revisit</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">移行しない（オンプレ維持・後日検討）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なし</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: Rehost（Lift & Shift）は「最も速く移行できる」が「クラウドの恩恵を最大化できるわけではない」。コスト最適化・スケーラビリティの恩恵を享受するにはRefactorが必要だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>クラウド移行PMの自分。「既存オンプレアプリを変更せずそのままクラウドVMに移行」する最シンプル戦略。Refactor？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ Rehost＝そのままクラウドへ移す・最もシンプル</li>
-<li style="padding:4px 0;font-size:14px;">✅ Refactor＝クラウドネイティブに再設計・工数が最大</li>
-<li style="padding:4px 0;font-size:14px;">✅ Retire＝不要システムを廃止してコスト削減</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>Rehost（リホスト／Lift and Shift）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>Refactor（リファクタ）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ Refactorはクラウドネイティブ再設計（高コスト）。「コード変更なし移行」がRehost</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Rehost</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アーキテクチャ変更なしに移行</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「そのままクラウドへ・Lift&Shift」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Refactor</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラウドネイティブに再設計</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「マイクロサービス化・設計から見直す」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Repurchase</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SaaSへの乗り換え</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「自社開発からSaaSパッケージへ切替」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：クラウド移行戦略（6R）の重要ポイント</h2>
-<p>クラウド移行戦略（6R）で確実に点を取るには、6つの戦略名と「移行コスト（工数）の大小関係」を押さえることだ。Retire・Retain（移行コストなし）→Rehost（低）→Replatform・Repurchase（中）→Refactor（高）という順序を覚えること。「最も短期間でクラウドに移行できる戦略はどれか」→Rehost（Lift & Shift）が正答だ。</p>
-<p>各戦略の「なぜ選ぶか」という判断基準も問われる。Rehost：速さ重視・スキル不足の場合。Replatform：部分最適化で運用コスト削減。Repurchase：自社開発の業務アプリをSaaSで代替。Refactor：将来の拡張性・クラウド機能を最大活用。Retire：棚卸しでコスト削減。Retain：コンプライアンス・依存性で移行困難。</p>
-<p>DXや大規模クラウド移行プロジェクトの文脈でも出題される。「複数のシステムをクラウドに移行する際にシステムごとに戦略を決めるフレームワークはどれか」→6Rが正答。「レガシーシステムをそのままクラウドに移行する方式の名称はどれか」→Rehost（Lift & Shift）が正答だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-cloud].html" style="color:#1F56C6;">[itp-cloud]</a>, <a href="[itp-microservices].html" style="color:#1F56C6;">[itp-microservices]</a>, <a href="[itp-legacy-modernization].html" style="color:#1F56C6;">[itp-legacy-modernization]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：Rehost（リホスト／Lift and Shift）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 クラウド移行戦略（6R）とは何か</h2>
+<span class="kw">Rehost=そのまま移行、Refactor=クラウドネイティブに再設計</span>
+<p>クラウド移行の6R戦略：Rehost（そのままIaaSに移行）・Replatform（一部最適化してPaaSに移行）・Refactor（クラウドネイティブに再設計）・Repurchase（SaaSに乗り換え）・Retire（廃止）・Retain（移行しない）。コスト・工数・効果のトレードオフで戦略を選択する。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>移行の基本方針：まずRehostで素早くクラウドへ移し、その後クラウド上でRefactorするのが現実的なアプローチ（Lift and Shift then Optimize）。Refactorはクラウドのメリット（スケーラビリティ・耐障害性）を最大活用できるが投資が必要。
+
+**覚え方** 🎯 **6R＝Rehost・Replatform・Refactor・Repurchase・Retire・Retain**。**Lift&amp;Shift（Rehost）→Optimize（Refactor）**が現実的順序。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**6R＝Rehost・Replatform・Refactor・Repurchase・Retire・Retain**。**Lift&Shift（Rehost）→Optimize（Refactor）**が現実的順序。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>クラウド移行戦略（6R）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

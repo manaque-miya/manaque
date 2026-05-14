@@ -3,10 +3,10 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CAP定理とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="CAP定理の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="CAP定理の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
 <link rel="canonical" href="https://manaque.net/articles/itp-cap-theorem.html">
 <meta property="og:title" content="CAP定理とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="CAP定理の意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:description" content="CAP定理の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
 <meta property="og:url" content="https://manaque.net/articles/itp-cap-theorem.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="まなクエ！">
@@ -29,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -41,51 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F5F8FF;}
 </style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="al">ITパスポート｜テクノロジ</div>
-<h1 class="at">CAP定理とは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">CAP定理とは？自分ごと体験で覚えるITパスポート対策</h1>
 <div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">CAP定理</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-</div>
-<div class="card"><h2>CAP定理とは何か</h2>
-<p>「ITパスポート 独学」でNoSQLやデータベース設計の背景知識として登場するのがCAP定理だ。CAP定理とは、分散システムにおいてConsistency（一貫性）・Availability（可用性）・Partition tolerance（分断耐性）の3つの特性を同時に完全には満たせない、という理論だ。コンピュータ科学者Eric Brewerが2000年に提唱し、2002年に定理として証明された。</p>
-<p>分散データベース（複数のサーバにデータが分散して格納されるシステム）を設計するときに「何を優先するか」というトレードオフの根拠として使われる。NoSQLデータベースがRDBと異なる設計思想を持つ理由を説明するフレームワークでもある。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: ネットワーク分断（Partition）はクラウド・分散システムでは必ず発生し得るため、P（分断耐性）は事実上必須。したがって「CPシステム」（一貫性優先・可用性をある程度犠牲）か「APシステム」（可用性優先・一貫性をある程度犠牲）かの選択が実質的なトレードオフになる。</p></div>
-</div>
-<div class="card"><h2>仕組み・種類</h2>
-<p>CAP定理の3要素を理解する。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>要素</th><th>略</th><th>内容</th></tr><tr><td>一貫性</td><td>C（Consistency）</td><td>すべてのノードが常に同じデータを見る（最新状態が全員に返る）</td></tr><tr><td>可用性</td><td>A（Availability）</td><td>すべてのリクエストに対して応答が返る（エラーを返さない）</td></tr><tr><td>分断耐性</td><td>P（Partition tolerance）</td><td>ネットワーク分断が起きてもシステムが動作し続ける</td></tr></table></div>
-<p>主なデータベースのCAP特性分類だ。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>タイプ</th><th>優先</th><th>代表DB</th><th>特徴</th></tr><tr><td>CP</td><td>一貫性＋分断耐性</td><td>多くのRDB・HBase</td><td>データ不整合を許さない・分断時に可用性を落とす</td></tr><tr><td>AP</td><td>可用性＋分断耐性</td><td>Cassandra・DynamoDB・CouchDB</td><td>常時応答を優先・データが一時的に不整合になることを許容</td></tr><tr><td>CA</td><td>一貫性＋可用性</td><td>単一ノードRDB（理論上）</td><td>分散なしなら実現可能だが、分散システムでは実用不可</td></tr></table></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「CAP定理＝ACIDの別名」とする誤答が出やすい。ACIDはRDBのトランザクションが保証する4特性（Atomicity・Consistency・Isolation・Durability）。CAP定理は分散システム設計のトレードオフ理論であり、ACIDとは別の概念だ。</p></div>
-</div>
-<div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ CAP定理＝分散システムでC・A・Pの3つを同時に満たせないという理論</li>
-<li style="padding:4px 0;font-size:14px;">✅ C＝Consistency（一貫性）・A＝Availability（可用性）・P＝Partition tolerance（分断耐性）</li>
-<li style="padding:4px 0;font-size:14px;">✅ 実際は「CPか APか」の選択（Pは必須）</li>
-<li style="padding:4px 0;font-size:14px;">✅ ACID特性（RDBのトランザクション）との混同に注意</li>
-</ul>
-</div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>対象</th><th>内容</th></tr><tr><td>CAP定理</td><td>分散システム設計</td><td>C・A・Pの3つを同時に完全には満たせない</td></tr><tr><td>ACID特性</td><td>RDBのトランザクション</td><td>原子性・一貫性・独立性・永続性の4保証</td></tr><tr><td>BASE特性</td><td>NoSQL設計思想</td><td>ACIDと対比する「弱い一貫性を許容する」設計思想</td></tr></table></div>
-</div>
-<div class="card"><h2>🎯 試験対策：CAP定理の重要ポイント</h2>
-<p>「ITパスポート 過去問・勉強方法・独学・何時間」を調べるとCAP定理はNoSQLの背景として出題されるテーマで、独学でも「3要素の意味と全部同時には無理」という2点を覚えれば短時間で対応できる。「一貫性・可用性・分断耐性のうち2つしか同時に保証できない」という命題を正しい選択肢として選ぶ問題が典型的だ。</p>
-<p>「CAP定理 とは」で検索すると「3つの願いは2つまで」という説明が出てくる。「ITパスポート 勉強方法」としてはACIDとの違いを「ACID＝RDBのトランザクション品質、CAP＝分散DBの設計トレードオフ」という対比で整理すると混同を防げる。</p>
-<p>CAP定理を知るとなぜCassandraやDynamoDBがRDBと異なる設計になっているのかが理解できる。深い知識よりも「3要素の意味」と「全部同時には無理」という結論を覚えることが最優先だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-nosql.html">itp-nosql</a>, <a href="itp-rdb.html">itp-rdb</a>, <a href="itp-acid.html">itp-acid</a>, <a href="itp-data-lake.html">itp-data-lake</a></p>
+<div class="tags"><span class="tag">CAP定理</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>分散DBの設計を任された新人エンジニアの自分。「一貫性（C）・可用性（A）・分断耐性（P）の3つ全部は同時に成り立たない」と先輩から言われた。これ何の定理？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>CAP定理</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ACID特性</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ACIDはRDBのトランザクション4特性。分散DBのトレードオフ理論はCAP</div></li>
+
+</ul>
+</div>
+<p style="margin-top:12px;"><strong>✅ 正解：CAP定理</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 CAP定理とは何か</h2>
+<span class="kw">3つ全ては取れない</span>
+<p>分散システムにおいてConsistency（一貫性）・Availability（可用性）・Partition tolerance（分断耐性）の3つを同時に完全には満たせない、という理論。NoSQLの設計選択の根拠。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>ネットワーク分断発生時に「一貫性を取るか可用性を取るか」を選ぶ。RDB＝CP寄り、Cassandra等NoSQL＝AP寄り、と分類される。
+
+**覚え方** 🎯 CAP＝**Consistency, Availability, Partition tolerance**。**3つの願いは2つまで**の魔法のルール。分散システム界の「あちらを立てればこちらが立たず」。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>CAP＝**Consistency, Availability, Partition tolerance**。**3つの願いは2つまで**の魔法のルール。分散システム界の「あちらを立てればこちらが立たず」。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>CAP定理はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

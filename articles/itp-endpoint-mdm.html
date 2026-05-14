@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>エンドポイントセキュリティ・MDMとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="エンドポイントセキュリティ・MDMの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="エンドポイントセキュリティ・MDMの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-endpoint-mdm.html">
+<meta property="og:title" content="エンドポイントセキュリティ・MDMとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="エンドポイントセキュリティ・MDMの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-endpoint-mdm.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-endpoint-mdm.html">
-  <meta property="og:title" content="エンドポイントセキュリティ・MDMとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="エンドポイントセキュリティ・MDMの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-endpoint-mdm.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">エンドポイントセキュリティ・MDMとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">エンドポイントセキュリティ・MDM</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>エンドポイントセキュリティ・MDMとは何か</h2>
-<p>エンドポイントセキュリティとは、PCやスマートフォン等の末端デバイス（エンドポイント）を攻撃から守るセキュリティ対策の総称だ。MDM（Mobile Device Management）は、スマートフォン・タブレット等のモバイル端末を組織が一元管理する仕組みで、紛失・盗難時の遠隔ロック・データ消去などが代表機能だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: MDMは「企業の管理者がスマホを遠隔操作できる管理ツール」のようなもの。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">エンドポイントセキュリティ・MDMとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">エンドポイントセキュリティ・MDM</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>エンドポイントセキュリティの主要技術</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">技術</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">英語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">機能</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ウイルス対策</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">AV（Antivirus）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">既知マルウェアの検出・除去</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EDR</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Endpoint Detection & Response</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">振る舞い検知・侵害後の調査対応</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MDM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Mobile Device Management</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">端末の一元管理・遠隔制御</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DLP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Data Loss Prevention</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機密データの持ち出し防止</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチ管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Patch Management</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OSや脆弱性の修正適用管理</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: EDRはウイルス対策の「代替」ではなく補完関係で、既知マルウェア以外の未知の脅威をふるまい検知で対処する。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>中小企業の情シス担当の自分。「社員スマホ業務利用→紛失時リモートワイプ・禁止アプリ防止・パスコード強制」を一元管理。何導入？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ MDMの主要機能：遠隔ロック・遠隔データ消去・アプリ配布管理</li>
-<li style="padding:4px 0;font-size:14px;">✅ EDRは「侵害後の対応（レスポンス）」も含む点がAVとの違い</li>
-<li style="padding:4px 0;font-size:14px;">✅ BYODとMDMはセットで問われる（私物端末の業務利用管理）</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>MDM（モバイルデバイス管理）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>EDR（エンドポイント検知・対応）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ EDRはマルウェア検知対応。「端末ポリシー管理・リモートワイプ」がMDM</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MDM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">端末自体の管理・制御</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「遠隔ロック・消去・アプリ配布」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EDR</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">端末上の脅威検知・対応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「振る舞い検知・インシデント対応」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MAM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アプリの管理のみ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MDMより限定的で「アプリだけ制御」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：エンドポイントセキュリティ・MDMの重要ポイント</h2>
-<p>エンドポイントセキュリティ・MDMの問題で問われるのは、MDMの「できること」と「できないこと」の境界だ。MDMは端末を管理するが、サーバ側のネットワーク機器は管理しない。「スマートフォンを紛失した際に遠隔でデータを消去する仕組みはどれか」→MDMが正答パターンだ。</p>
-<p>BYODとの関係も頻出だ。私物端末（BYOD）を業務利用する場合、MDMで管理することで情報漏洩リスクを低減する。しかし「プライバシー侵害のリスク」という負の側面も試験で問われる。個人アプリや位置情報まで追跡できる点が問題視される。</p>
-<p>EDRはAVより上位の概念と覚えること。AVが「既知マルウェアを止める」のに対し、EDRは「侵害が起きた後の調査・封じ込め・復旧（Response）まで行う」。試験では「侵害された端末を素早く隔離・調査する仕組み」として問われる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-zero-trust].html" style="color:#1F56C6;">[itp-zero-trust]</a>, <a href="[itp-byod].html" style="color:#1F56C6;">[itp-byod]</a>, <a href="[itp-malware].html" style="color:#1F56C6;">[itp-malware]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：MDM（モバイルデバイス管理）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 エンドポイントセキュリティ・MDMとは何か</h2>
+<span class="kw">端末一台一台をポリシーで統合管理</span>
+<p>MDM（Mobile Device Management）はスマートフォン・タブレット・PCなどのエンドポイント端末を組織のポリシーで一元管理するシステム。機能：デバイス登録・設定配布・アプリ管理・リモートワイプ・セキュリティポリシー適用。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>MDMはBYOD（私物デバイス業務利用）や企業支給デバイスの管理に使われる。EDRはマルウェアの検知・調査・封じ込めを担う。MDMで「入り口管理」、EDRで「侵入後の対応」という役割分担。
+
+**覚え方** 🎯 **MDM＝端末の門番（ポリシー・ワイプ）／EDR＝端末の警備員（マルウェア検知）**。入口管理と侵入対応の分担。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**MDM＝端末の門番（ポリシー・ワイプ）／EDR＝端末の警備員（マルウェア検知）**。入口管理と侵入対応の分担。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>エンドポイントセキュリティ・MDMはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>コンパイラ・インタプリタとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="コンパイラ・インタプリタの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="コンパイラ・インタプリタの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-compiler-interpreter.html">
+<meta property="og:title" content="コンパイラ・インタプリタとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="コンパイラ・インタプリタの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-compiler-interpreter.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,51 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-compiler-interpreter.html">
-  <meta property="og:title" content="コンパイラ・インタプリタとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="コンパイラ・インタプリタの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-compiler-interpreter.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">コンパイラ・インタプリタとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">コンパイラ・インタプリタ</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>コンパイラ・インタプリタとは何か</h2>
-<p>コンパイラとは、プログラミング言語で書いたソースコード全体を実行前に機械語（CPUが直接理解できるコード）へ一括翻訳するプログラムだ。インタプリタとは、ソースコードを1行ずつ読んでその場で解釈しながら実行するプログラムだ。同じ「ソースコードを実行する」行為でも、翻訳のタイミングが全く違う。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: コンパイラは「実行前に全部翻訳」、インタプリタは「実行しながら1行ずつ翻訳」——実行速度はコンパイラ型が速く、開発・修正のしやすさはインタプリタ型が優れる。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">コンパイラ・インタプリタとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">コンパイラ・インタプリタ</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>コンパイラとインタプリタの比較</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">① <strong>翻訳タイミング</strong>: コンパイラは実行前に全体を一括翻訳——インタプリタは実行しながら1行ずつ翻訳する</li>
-<li style="padding:4px 0;font-size:14px;">② <strong>実行速度</strong>: コンパイラ型は翻訳済み機械語を直接実行するため速い——インタプリタは毎回翻訳するため遅い</li>
-<li style="padding:4px 0;font-size:14px;">③ <strong>開発・修正のしやすさ</strong>: インタプリタは修正後すぐ実行確認できる——コンパイラは修正のたびに再コンパイルが必要</li>
-</ul>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">観点</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">コンパイラ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">インタプリタ</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">翻訳タイミング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行前に全体を一括翻訳</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行時に1行ずつ翻訳</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行速度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">速い（翻訳済みの機械語を直接実行）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">遅い（実行のたびに翻訳）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発・デバッグ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">手間がかかる（修正→再コンパイル）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">手軽（修正してすぐ実行できる）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">エラー検出</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行前にコンパイルエラーを一括検出</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行中にその行に達したときエラー発生</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代表的言語</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">C・C++・Go</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Python・Ruby・JavaScript</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">配布形式</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行ファイル（ソースコード不要）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ソースコードと実行環境が必要</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「Javaはコンパイラ型かインタプリタ型か」という問いが難しい。JavaはソースコードをJavaバイトコード（中間言語）にコンパイルし、JVM（Java仮想マシン）がバイトコードを解釈実行するハイブリッド方式だ。試験では「コンパイラ」として扱われることが多いが、厳密には中間言語経由の特殊なモデルだ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>プログラミング学習中の自分。「Cは実行前に全体を機械語に翻訳、Pythonは1行ずつ実行」と教科書に。これって何の違い？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ コンパイラは実行前に全体翻訳——実行速度が速い</li>
-<li style="padding:4px 0;font-size:14px;">✅ インタプリタは実行時に1行ずつ翻訳——開発・修正がしやすい</li>
-<li style="padding:4px 0;font-size:14px;">✅ CはコンパイラでPythonはインタプリタが典型例</li>
-<li style="padding:4px 0;font-size:14px;">✅ コンパイラは事前エラー検出が可能、インタプリタは実行してみてエラーがわかる</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>コンパイラとインタプリタの違い</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>どちらも実行速度は同じ</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ コンパイラの方が実行速度は速い。「実行前に一括翻訳」がコンパイラ</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コンパイラ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行前に全ソースコードを機械語に変換するプログラム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「実行速度が速い」=本番運用向き</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インタプリタ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行しながら1行ずつ解釈・実行するプログラム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「修正後すぐ確認できる」=開発・デバッグ向き</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アセンブラ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アセンブリ言語を機械語に変換するプログラム（低水準言語）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「低水準・アセンブリ言語専用」=CPUに近い概念として問われる</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：コンパイラ・インタプリタの重要ポイント</h2>
-<p>試験問題では「実行速度が速いのはどちらか」という問いにはコンパイラが正解になる。「修正後すぐに動作確認できるのはどちらか」という問いにはインタプリタが正解だ。「ソースコードを実行環境に持ち込めばどのOSでも動かせる可搬性が高いのはどちらか」という問いもインタプリタ型の特徴として出ることがある。</p>
-<p>また「コンパイルエラー」という用語も押さえておく。コンパイラは翻訳時に文法エラーを発見して「コンパイルエラー」として報告する。これは実行前に発見できるので開発品質を高める。インタプリタ型では文法エラーがあっても、そのコードが実行されるまで発見できないという違いがある。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-programming].html" style="color:#1F56C6;">[itp-programming]</a>, <a href="[itp-machine-language].html" style="color:#1F56C6;">[itp-machine-language]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：コンパイラとインタプリタの違い</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 コンパイラ・インタプリタとは何か</h2>
+<span class="kw">一括翻訳 vs 行ごと実行</span>
+<p>コンパイラ：ソースコード全体を実行前に機械語へ一括翻訳。実行が速いが翻訳（コンパイル）に時間がかかる（C・Java等）。インタプリタ：1行ずつ解釈しながら実行（Python・JavaScript等）。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>「実行速度重視→コンパイラ型」「開発・テストのしやすさ→インタプリタ型」という使い分けが基本。試験では「どちらの方式か」を問われる。
+
+**覚え方** 🎯 **コンパイラ＝事前翻訳（C/Java）→速いが準備に時間／インタプリタ＝即興翻訳（Python/JS）→遅いが手軽**。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**コンパイラ＝事前翻訳（C/Java）→速いが準備に時間／インタプリタ＝即興翻訳（Python/JS）→遅いが手軽**。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>コンパイラ・インタプリタはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

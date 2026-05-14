@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>技術的負債の管理とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="技術的負債の管理の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="技術的負債の管理の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-tech-debt.html">
+<meta property="og:title" content="技術的負債の管理とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="技術的負債の管理の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-tech-debt.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,45 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-tech-debt.html">
-  <meta property="og:title" content="技術的負債の管理とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="技術的負債の管理の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-tech-debt.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">技術的負債の管理とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">技術的負債の管理</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>技術的負債の管理とは何か</h2>
-<p>技術的負債の問題で問われるのは、<strong>「短期的な開発速度のために先送りした設計・実装の問題が将来の開発コストとして積み重なる概念」</strong>という定義と、その種類・管理方法だ。</p>
-<h3>技術的負債の種類</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">発生原因</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">意図的な負債</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">速度優先でわざと簡略化（後で直すと決めている）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リリース期限・MVP戦略</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非意図的な負債</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">知識不足・ベストプラクティス無知から生じる問題</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">経験不足・古い設計</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ビット腐れ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">使われない・保守されないコードの劣化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能廃止後のコード放置</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">環境的負債</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">依存ライブラリ・OSの陳腐化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アップデート怠慢</td></tr></table></div><h3>技術的負債の「利子」</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">段階</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">状態</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">影響</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">元本蓄積</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">問題コードが存在するだけ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">まだコストは低い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">利子発生</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">そのコードに変更が必要になる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">余分な作業コストが発生</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">複利化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">負債が積み重なりシステム全体に影響</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">新機能追加が困難・バグ頻発</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">デフォルト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">技術的負債が手に負えなくなる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システム全体のリライトが必要</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: 技術的負債は<strong>ウォード・カニンガムが提唱した比喩</strong>だ。「借金（技術的近道）をして素早く市場に出たが、後で『利子（修正コスト）』を払い続ける」という考え方だ。負債自体が悪いわけではなく、意図的かどうかの認識と計画的な返済（リファクタリング）こそが重要だ。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：技術的負債はバグのことであり、テストで全て検出・修正できる</p></div>
-<div class="hl"><p>- <strong>正</strong>：技術的負債はバグではなく<strong>設計・実装の問題（コードの複雑性・保守困難性）</strong>だ。テストで検出できるバグとは異なり、機能は動くが将来の変更を困難にする構造的問題</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">技術的負債の管理とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">技術的負債の管理</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. 技術的負債＝短期の速度優先が将来の開発コスト増大を招く概念</p>
-<p>2. ウォード・カニンガムが「借金」の比喩として提唱</p>
-<p>3. リファクタリングが主な解消手段</p>
-<p>4. 意図的な負債（後で直す計画あり）と非意図的な負債（気づかず蓄積）の区別</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>開発リーダーの自分。「2年間スピード優先でテスト省略・設計妥協→新機能実装に以前の3倍時間」かかる状況。バグが多い？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">技術的負債</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">設計・実装の問題の蓄積</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能は動くが将来コスト高</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バグ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能的な誤り</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">現在の機能に問題あり</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レガシーシステム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">老朽化したシステム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">技術的負債が極限まで蓄積</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リファクタリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">外部動作を変えずに内部構造を改善</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">技術的負債の返済手段</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：技術的負債の管理の重要ポイント</h2>
-<p>「ソフトウェア開発において、短期的なスピード優先の実装が将来のメンテナンスや機能追加を困難にする問題を表す概念はどれか」→「技術的負債」。「バグとの違いは」→「バグは現在の動作の誤りだが、技術的負債は動作するが設計的に問題のあるコードの蓄積」という区別が重要。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>技術的負債（Technical Debt）が蓄積し、開発速度と品質が低下した</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>バグ（Bug）が多く発生したため開発速度が低下した</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ バグは動作の誤り。「設計・複雑性の構造的問題」が技術的負債</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：技術的負債（Technical Debt）が蓄積し、開発速度と品質が低下した</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 技術的負債の管理とは何か</h2>
+<span class="kw">近道実装の将来コスト＝利息として蓄積</span>
+<p>技術的負債（Technical Debt）はWard Cunninghamが提唱した概念。「今は動くが設計が悪い近道実装」が「利息（将来の修正コスト増大）」として蓄積する比喩。返済（リファクタリング）を怠ると利息が増え続ける。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「技術的負債＝設計・実装品質の問題が将来コストとして顕在化する」として問われる。アジャイル開発で「速度優先→品質犠牲」を繰り返すと蓄積するリスクがある。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：バグ＝動作の誤り（修正すれば解消）。技術的負債＝構造的問題（リファクタリングやアーキテクチャ改善が必要）。コードが「動いている」かどうかでは区別できない。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>技術的負債＝**近道実装の借金＋利息（複雑性）**。**返済＝リファクタリング**。動くけど痛む構造問題。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>技術的負債の管理はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

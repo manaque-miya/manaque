@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ニューラルネットワーク基本構造（CNN/RNN/Transformer）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ニューラルネットワーク基本構造（CNN/RNN/Transformer）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ニューラルネットワーク基本構造（CNN/RNN/Transformer）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-nn-architecture.html">
+<meta property="og:title" content="ニューラルネットワーク基本構造（CNN/RNN/Transformer）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="ニューラルネットワーク基本構造（CNN/RNN/Transformer）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-nn-architecture.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,53 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-nn-architecture.html">
-  <meta property="og:title" content="ニューラルネットワーク基本構造（CNN/RNN/Transformer）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="ニューラルネットワーク基本構造（CNN/RNN/Transformer）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-nn-architecture.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">ニューラルネットワーク基本構造（CNN/RNN/Transformer）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">ニューラルネットワーク基本構造（CNN/RNN/Transformer）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><p>ニューラルネットワーク基本構造を答えるポイントは「CNN＝空間的局所特徴（画像）」「RNN＝時系列依存（テキスト・音声）」「Transformer＝Self-Attentionで全位置の依存関係（LLMの基盤）」という3モデルの対応関係を識別できるかどうかだ。</p>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ニューラルネットワーク基本構造（CNN/RNN/Transformer）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ニューラルネットワーク基本構造（CNN/RNN/Transformer）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ニューラルネットワーク基本構造（CNN/RNN/Transformer）とは何か</h2>
-<p><strong>ニューラルネットワーク（Neural Network）</strong>は、人間の脳の神経回路を模した層状の計算モデル。<strong>CNN（畳み込みニューラルネットワーク）</strong>・<strong>RNN（再帰型ニューラルネットワーク）</strong>・<strong>Transformer</strong>は各々異なるデータ形式に特化した代表的なアーキテクチャ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>:</p></div>
-<ul>
-<li><strong>AlexNet（2012年）</strong>：ImageNet競争でCNNが深層学習ブームを起こした転換点</li>
-<li><strong>LSTM（長短期記憶）</strong>：RNNの勾配消失問題を解決した改良版</li>
-<li><strong>Transformer（2017年）</strong>：「Attention is All You Need」（Google）で提案。現在のLLMの基盤</li>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>NLPエンジニアの自分。「英→日機械翻訳・長文で文脈保持精度高い」アーキテクチャ。RNN？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>Transformer— Self-Attentionで文中の任意の位置間の関係を直接捉えられ、長距離依存に強い</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>RNN（再帰型ニューラルネットワーク）— 時系列を順番に処理するが長距離依存に弱く、翻訳では現在Transformerに置き換えられている</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ かつての主流だが現在はTransformerが上</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>3大アーキテクチャの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">CNN</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">RNN/LSTM</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">Transformer</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">得意な入力</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画像・格子状データ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時系列・テキスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テキスト・画像・音声</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特徴抽出</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">畳み込みフィルタ（局所特徴）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">時刻ごとの隠れ状態</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Self-Attention（全位置）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">並列処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅（フィルタ並列）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✗（逐次処理）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅（全位置同時計算）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">長距離依存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">△（層を重ねる必要）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">△（勾配消失問題）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅（Attentionが直接参照）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代表モデル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">AlexNet・ResNet・VGG</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LSTM・GRU・seq2seq</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">GPT・BERT・ViT</td></tr></table></div></div>
-<div class="card"><h2>各アーキテクチャの主な用途</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">アーキテクチャ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な用途</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CNN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画像分類・物体検出・医療画像診断</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RNN/LSTM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機械翻訳・音声認識・株価予測</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Transformer</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大規模言語モデル・画像認識（ViT）・マルチモーダル</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<ul>
-<li>「Transformerはテキストのみ」→ × ViT（Vision Transformer）で画像にも適用</li>
-<li>「RNN＝過去の全情報を記憶」→ × 長期記憶に課題あり（LSTMで改善）</li>
-<li>「CNN＝深層学習の代名詞」→ × CNNは画像向け特化。現在のLLMはTransformer</li>
-</ul>
+<p style="margin-top:12px;"><strong>✅ 正解：Transformer— Self-Attentionで文中の任意の位置間の関係を直接捉えられ、長距離依存に強い</strong></p>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>「CNN＝画像・畳み込み」「RNN＝時系列・逐次処理」「Transformer＝Self-Attention・LLMの基盤」の3対応。Transformer登場（2017年）がLLMの出発点という歴史的位置づけも重要。</p>
+
+<div class="card">
+<h2>📘 ニューラルネットワーク基本構造（CNN/RNN/Transformer）とは何か</h2>
+<span class="kw">CNN=画像、RNN=時系列、Transformer=言語・汎用の現在主流</span>
+<p>主要アーキテクチャの用途：CNN（Convolutional NN）→画像認識・空間的パターン抽出。RNN（Recurrent NN）→時系列・旧来の翻訳。Transformer→現在の言語モデルの主流（GPT・BERT・T5）。Self-Attentionにより並列処理が可能で長文に強い。</p>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">モデル</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">キーワード</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">代表例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CNN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">畳み込み・局所特徴・画像</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ResNet・AlexNet</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RNN/LSTM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">再帰・時系列・隠れ状態</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LSTM・seq2seq</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Transformer</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Self-Attention・並列・LLM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">GPT・BERT・T5</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：ニューラルネットワーク基本構造（CNN/RNN/Transformer）の重要ポイント</h2>
-<p>「CNN→画像」「RNN→時系列」「Transformer→Self-Attention・LLMの基盤」の3対応を反射的に答えられるよう練習。「Transformer＝2017年・Attention is All You Need」「LSTM＝RNNの勾配消失問題を解決」も頻出。</p>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「画像→CNN、言語・翻訳→Transformer（現在の主流）、時系列→RNNまたはTransformer」の対応が問われる。LLMはすべてTransformerベースであることも押さえる。</p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：RNNは「時系列を扱える」が長距離依存に弱い。TransformerはAttentionで全位置を同時参照するため長距離依存に強い。翻訳の最新モデルはほぼTransformerに移行済み。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**CNN（画像）・RNN（時系列・旧翻訳）・Transformer（言語・現在主流）**。LLMは全部Transformer。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ニューラルネットワーク基本構造（CNN/RNN/Transformer）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

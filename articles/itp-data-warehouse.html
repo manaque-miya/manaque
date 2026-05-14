@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>データウェアハウスとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="データウェアハウスの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="データウェアハウスの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-data-warehouse.html">
+<meta property="og:title" content="データウェアハウスとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="データウェアハウスの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-data-warehouse.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-data-warehouse.html">
-  <meta property="og:title" content="データウェアハウスとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="データウェアハウスの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-data-warehouse.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">データウェアハウスとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">データウェアハウス</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>データウェアハウスとは何か</h2>
-<p>データウェアハウス（DWH：Data Warehouse）は、業務システムから抽出したデータを統合・整理して蓄積し、経営分析・意思決定支援に使うための大規模データベースだ。William Inmonが1990年代に提唱した概念で、「主題志向・統合・時系列・非揮発性」の4特性を持つ。トランザクション処理（OLTP）ではなく分析処理（OLAP）に最適化されている。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 業務DBは「今の取引を処理する」ためのもの、DWHは「過去から今までのデータをまとめて分析する」ためのもの—目的がまったく違う。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">データウェアハウスとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">データウェアハウス</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>DWHと関連概念の比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">概念</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">規模</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データウェアハウス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大（全社）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">経営分析・BI</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全社的統合データ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データマート</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中（部門別）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">部門分析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DWHの部門サブセット</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データレイク</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大（原始データ）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">分析・AI用途</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">生データをそのまま格納</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OLTP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">小〜中（業務DB）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">日常業務処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高速なCRUD操作</td></tr></table></div><p>ETL（Extract・Transform・Load）：業務システムからデータを抽出→変換・クレンジング→DWHへロードする処理のこと。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: データレイクはデータウェアハウスの上位互換ではない。DWHは整理済みデータ、データレイクは生データの巨大プール—目的と形式が異なる。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>ECサイトの経営企画の私。「販売システム（OLTP）は毎日更新で重い。過去3年の販売トレンド分析は別基盤要る」と社長。これって何DB？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ DWHの4特性：主題志向・統合・時系列・非揮発性</li>
-<li style="padding:4px 0;font-size:14px;">✅ ETL：業務DBからDWHへのデータ移送プロセス（抽出→変換→ロード）</li>
-<li style="padding:4px 0;font-size:14px;">✅ OLAPはDWH上での多次元分析（ドリルダウン・スライシング）</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>データウェアハウス（DWH）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>OLTP（オンライントランザクション処理）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ OLTPは日常業務のリアルタイム更新DB。「時系列蓄積で分析特化」がDWH</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DWH</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">整理・統合された分析用大規模DB</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データマート</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DWHの部門特化版サブセット</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データレイク</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">生データをそのまま格納する大規模ストレージ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：データウェアハウスの重要ポイント</h2>
-<p>試験では「DWHの目的」と「OLTPとOLAPの違い」が頻出だ。OLTP（Online Transaction Processing）は日常業務の高速処理（注文・在庫更新）、OLAP（Online Analytical Processing）は大量履歴データの多次元分析（売上トレンド・顧客セグメント）という対比で覚える。</p>
-<p>ETLプロセスの理解も重要だ。「T（Transform）」のフェーズでデータのクレンジング（重複削除・欠損補完・フォーマット統一）が行われることで、複数システムのデータを統合できる点を押さえる。</p>
-<p>「BIツール（Business Intelligence）」はDWH上のデータを可視化するためのツールで、Tableau・Power BIが代表例だ。DWH→ETL→BIツールという分析基盤の流れを理解しておこう。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-data-driven].html" style="color:#1F56C6;">[itp-data-driven]</a>, <a href="[itp-statistics-basics].html" style="color:#1F56C6;">[itp-statistics-basics]</a>, <a href="[itp-oop].html" style="color:#1F56C6;">[itp-oop]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：データウェアハウス（DWH）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 データウェアハウスとは何か</h2>
+<span class="kw">更新より参照・時系列蓄積の分析専用DB</span>
+<p>データウェアハウス（DWH）は複数の業務システムからデータを収集・統合し、時系列で大量に蓄積して経営分析に使う「参照特化型」の基盤。更新頻度は低く、読み取り（クエリ）に最適化されている。BIツールと連携して多次元分析を行う。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>OLTP（Online Transaction Processing）は業務処理（注文・決済・在庫更新）をリアルタイムに行う「更新特化型」のDB。試験では「分析→DWH」「リアルタイム業務処理→OLTP」で区別する。
+
+**覚え方** 🎯 **DWH＝倉庫（過去データ蓄積・分析用）／OLTP＝レジ（リアルタイム取引）**。倉庫とレジの役割分担。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**DWH＝倉庫（過去データ蓄積・分析用）／OLTP＝レジ（リアルタイム取引）**。倉庫とレジの役割分担。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>データウェアハウスはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

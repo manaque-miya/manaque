@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>インシデント対応とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="インシデント対応の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="インシデント対応の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-incident-response.html">
+<meta property="og:title" content="インシデント対応とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="インシデント対応の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-incident-response.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-incident-response.html">
-  <meta property="og:title" content="インシデント対応とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="インシデント対応の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-incident-response.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">インシデント対応とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">インシデント対応</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>インシデント対応とは何か</h2>
-<p>インシデント対応とは、不正アクセス・情報漏洩・マルウェア感染・サービス停止などのセキュリティ事故（インシデント）が発生した後に、被害の封じ込め・証拠保全・原因究明・復旧・再発防止を行う一連のプロセスだ。組織内の専門対応チームをCSIRT（Computer Security Incident Response Team：シーサート）という。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: インシデント対応は「起きた後の対処」——「起きる前の予防」であるリスクマネジメントとは時系列が逆だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">インシデント対応とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">インシデント対応</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>インシデント対応フェーズの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">フェーズ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な作業</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検知・初動</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インシデントの発生を認識する</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ログ監視・アラート確認・報告</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">封じ込め</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">被害の拡大を止める</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">感染端末のネットワーク遮断・アクセス制限</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">根絶</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">原因（マルウェア・脆弱性）を除去する</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ウイルス除去・脆弱性パッチ適用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">復旧</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正常な状態に戻す</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システム復元・サービス再開</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">事後対応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">再発防止と報告</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">原因分析・対策強化・関係者への報告</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「インシデント対応＝すぐに復旧する」という誤解が典型的だ。正しい順序は「①まず封じ込めて被害拡大を止め→②根絶して原因を除去し→③その後に復旧する」だ。証拠保全もせずに急いでシステムを復元してしまうと、攻撃の痕跡が消えて原因究明ができなくなる。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>情シス担当の自分。社内サーバへ不正アクセス検知！「焦らず手順通り：被害範囲特定→証拠保全→システム復旧→再発防止策」と先輩から。この一連の対応の呼び名は？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ インシデント対応は「検知→封じ込め→根絶→復旧→事後対応」の順序で進める</li>
-<li style="padding:4px 0;font-size:14px;">✅ CSIRTはセキュリティインシデントに対応する組織内専門チーム</li>
-<li style="padding:4px 0;font-size:14px;">✅ リスクマネジメントとの違い：リスク管理は事前の予防、インシデント対応は事後の対処</li>
-<li style="padding:4px 0;font-size:14px;">✅ 証拠保全（フォレンジック）は復旧より先に行う——法的証拠として使うため</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>インシデント対応（CSIRT）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>リスク管理</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ リスク管理は事前の予防。「事故発生後の対処」がインシデント対応</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インシデント対応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セキュリティ事故発生後の封じ込め・復旧・再発防止</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「事後の封じ込め・復旧」=インシデント対応</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リスクマネジメント</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インシデント発生前のリスク評価と予防措置</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「事前の予防・リスク評価」でインシデント対応と区別</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSIRT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">組織のインシデント対応専門チーム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「専門チーム名称」として設問の選択肢に登場</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：インシデント対応の重要ポイント</h2>
-<p>試験では「不正アクセスが発生したとき、最初に行うべき対応はどれか」という問いがある。答えは「感染・被害の封じ込め（ネットワーク遮断など）」で、「すぐに復旧作業を始める」は正解ではない。まず被害の拡大を止めてから、証拠を保全し、原因を究明してから復旧するという順序が重要だ。</p>
-<p>CSIRTという用語も頻出だ。「自社のセキュリティインシデントを専門的に処理する組織内チームは何か」という問いにCSIRTが答えになる。また「JPCERT/CC」は日本の国家的なCSIRT機関で、企業のCSIRTに対して技術的支援を行う組織として試験に出ることがある。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-risk-management].html" style="color:#1F56C6;">[itp-risk-management]</a>, <a href="[itp-digital-forensics].html" style="color:#1F56C6;">[itp-digital-forensics]</a>, <a href="[itp-isms].html" style="color:#1F56C6;">[itp-isms]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：インシデント対応（CSIRT）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 インシデント対応とは何か</h2>
+<span class="kw">セキュリティ事故発生後の対処手順</span>
+<p>セキュリティ事故（インシデント）発生後の対応手順。検知→封じ込め→根絶→復旧→事後対応のフェーズで実施する。組織内の専門チームをCSIRT（シーサート）という。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>インシデントには「不正アクセス・情報漏洩・マルウェア感染・サービス停止」などが含まれる。CSIRT（Computer Security Incident Response Team）が中心となって対応する。
+
+**覚え方** 🎯 CSIRT＝**シーサート＝セキュリティ事故の119番隊**。火事発生→消火→原因究明→再発防止。火消し職人。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>CSIRT＝**シーサート＝セキュリティ事故の119番隊**。火事発生→消火→原因究明→再発防止。火消し職人。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>インシデント対応はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

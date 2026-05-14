@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>医療情報システム（HIS/LIS/PACS）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="医療情報システム（HIS/LIS/PACS）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="医療情報システム（HIS/LIS/PACS）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-his-lis-pacs.html">
+<meta property="og:title" content="医療情報システム（HIS/LIS/PACS）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="医療情報システム（HIS/LIS/PACS）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-his-lis-pacs.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,45 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-his-lis-pacs.html">
-  <meta property="og:title" content="医療情報システム（HIS/LIS/PACS）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="医療情報システム（HIS/LIS/PACS）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-his-lis-pacs.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜ストラテジ</div>
-    <h1 class="at">医療情報システム（HIS/LIS/PACS）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">医療情報システム（HIS/LIS/PACS）</span> <span class="tag">ストラテジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>医療情報システム（HIS/LIS/PACS）とは何か</h2>
-<p>医療情報システムを確実に点を取るには、<strong>HIS・LIS・PACSそれぞれの略称の意味と扱う情報の種類</strong>をセットで覚えることが最優先だ。</p>
-<h3>主要な医療情報システム</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">略称</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">正式名称</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">扱う情報</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な機能</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Hospital Information System（病院情報システム）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">患者情報・診療情報全般</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">受付・会計・入院管理・電子カルテ連携</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Laboratory Information System（臨床検査システム）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">血液・尿・病理検査データ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検査オーダー・結果管理・自動分析機連携</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PACS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Picture Archiving and Communication System（医療画像管理）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X線・CT・MRI等の画像データ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画像保存・閲覧・転送・診断支援</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Radiology Information System（放射線情報システム）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">放射線検査の予約・照射情報</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検査予約・照射管理・PACSとの連携</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EMR/EHR</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">電子カルテ/電子健康記録</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">診療記録全般</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">診療記録・処方・指示の電子化</td></tr></table></div><h3>医療情報システムの連携構造</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">接続方向</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">連携内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HIS→LIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検査オーダー情報を送信</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LIS→HIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検査結果を返送・電子カルテに反映</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HIS→RIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">放射線検査オーダーを送信</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PACS→HIS/EMR</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画像をリンクして電子カルテから参照可能に</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: 医療情報システムの統合における標準規格が<strong>HL7（Health Level 7）</strong>だ。異なるベンダーのHIS・LIS・PACSを連携させるための医療情報交換の国際標準規格で、最新版のHL7 FHIRはWebAPIベースで実装が容易になっている。この標準化により病院間の医療情報共有（EHR連携）が可能になる。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：PACSは患者の診療記録・処方情報を管理するシステムだ</p></div>
-<div class="hl"><p>- <strong>正</strong>：PACSはX線・CT・MRI等の<strong>医療画像の保存・管理・転送</strong>を担うシステム。診療記録・処方はHISやEMRが管理する</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">医療情報システム（HIS/LIS/PACS）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">医療情報システム（HIS/LIS/PACS）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. HIS＝病院全体の情報管理（受付・会計・入院等）</p>
-<p>2. LIS＝臨床検査（血液・尿検査）のデータ管理</p>
-<p>3. PACS＝医療画像（X線・CT・MRI）の保存・管理</p>
-<p>4. HL7＝医療情報交換の国際標準規格</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>病院システム担当の自分。「レントゲン・MRI画像をデジタル管理・共有」する仕組み導入。HIS？PACS？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">病院情報全般のシステム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最も広範な病院システム</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LIS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検査データ管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">血液・尿等の検査特化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PACS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">医療画像管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X線・CT・MRI画像</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">EMR/EHR</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">電子カルテ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">診療記録・処方</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：医療情報システム（HIS/LIS/PACS）の重要ポイント</h2>
-<p>「患者がCTスキャンを受けた後、その画像データを放射線科医が端末から閲覧・診断するために使うシステムはどれか」→「PACS」。「血液検査のオーダーから結果報告までを管理するシステムはどれか」→「LIS（臨床検査システム）」。3つの略称を画像・検査・病院情報という区分で覚えること。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>PACS（医用画像情報システム）。医用画像（X線・CT・MRI等）をデジタルで保管・配信・閲覧するシステム</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>HIS（病院情報システム）。患者情報・診療記録・会計・医療材料管理など病院全体の情報を一元管理するシステム</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ HISは病院全体業務。「画像保管配信特化」がPACS</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：PACS（医用画像情報システム）。医用画像（X線・CT・MRI等）をデジタルで保管・配信・閲覧するシステム</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 医療情報システム（HIS/LIS/PACS）とは何か</h2>
+<span class="kw">HIS=病院全体、LIS=検査、PACS=画像保管</span>
+<p>医療情報システムの主要分類：HIS（Hospital Information System：病院全体の業務統合）、LIS（Laboratory Information System：臨床検査データ管理）、PACS（Picture Archiving and Communication System：医用画像の保管・配信）、EMR/EHR（電子カルテ・電子健康記録）。これらが連携して病院DXを実現する。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「PACS＝医用画像専門システム」「HIS＝病院全体の業務管理」「LIS＝検査データ管理」の3つの役割の区別が問われる。DICOM（医用画像の国際標準規格）との組み合わせも頻出。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：EMR（電子医療記録）は特定の医療機関内の記録。EHR（電子健康記録）は複数機関をまたいで患者の健康情報を共有する概念。スコープの広さが異なる。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**HIS（病院全体）・LIS（検査）・PACS（画像）**の3兄弟。**DICOM**が医用画像規格。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>医療情報システム（HIS/LIS/PACS）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

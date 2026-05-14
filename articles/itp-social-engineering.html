@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ソーシャルエンジニアリングとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ソーシャルエンジニアリングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ソーシャルエンジニアリングの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-social-engineering.html">
+<meta property="og:title" content="ソーシャルエンジニアリングとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="ソーシャルエンジニアリングの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-social-engineering.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,58 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-social-engineering.html">
-  <meta property="og:title" content="ソーシャルエンジニアリングとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="ソーシャルエンジニアリングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-social-engineering.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">ソーシャルエンジニアリングとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">ソーシャルエンジニアリング</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>ソーシャルエンジニアリングとは何か</h2>
-<p>IT企業のシステム管理者・田中さんは、ある日「情報システム部の鈴木です。緊急障害対応中で、確認のためあなたのパスワードを教えてください」という電話を受けた。電話の相手はシステムにハッキングする技術を一切使わず、ただ「信頼できる社内の人物」を演じるだけで情報を引き出そうとしていた。これがソーシャルエンジニアリングだ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 「技術を使わず人間の心理的隙を突いて情報を盗む」——電話・対面・なりすましが典型手法。ファイアウォールや暗号化では防げない点が特徴。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ソーシャルエンジニアリングとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ソーシャルエンジニアリング</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ソーシャルエンジニアリングの主な手口</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">① <strong>なりすまし電話</strong>：上司や管理部門を装い、パスワードや機密情報を電話で聞き出す。</li>
-</ul>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">② <strong>ショルダーハッキング（肩越し盗み見）</strong>：背後や隣から、パスワード入力や画面内容を盗み見る。</li>
-</ul>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">③ <strong>ゴミ箱漁り（トラッシング）</strong>：廃棄した書類・付箋・レシートから情報を入手する。</li>
-</ul>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">④ <strong>フィッシング</strong>：偽メール・偽サイトに誘導してID・パスワードを入力させる（デジタル版）。</li>
-</ul>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手口</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">方法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">防御策</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なりすまし電話</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">権威・緊急性を使い口頭で聞き出す</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">本人確認手順の徹底</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ショルダーハッキング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">背後から画面を見る</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画面フィルター・席配置の工夫</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ゴミ箱漁り</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">廃棄書類から情報収集</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">シュレッダー必須</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: フィッシング詐欺と混同しやすい。フィッシングは偽サイト・偽メールを使うデジタル手法。ソーシャルエンジニアリングは「電話・対面・物理的な接触」など人間を直接騙す手法を指す（ただし広義にはフィッシングもソーシャルエンジニアリングの一種とされることもある）。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>一人情シスの自分。突然「あ、佐藤社長の秘書ですが、システムトラブルで社長のパスワードが必要で…！」と電話が来た。…えっ、声に焦りがあって本物っぽいけど、これって罠？？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ システムやネットワークに技術的に侵入せず、人の心理を利用して情報を盗む手法</li>
-<li style="padding:4px 0;font-size:14px;">✅ なりすまし・ショルダーハッキング・ゴミ箱漁りが代表例</li>
-<li style="padding:4px 0;font-size:14px;">✅ 技術的対策（ファイアウォール等）で防げない——人的対策・教育が必要</li>
-<li style="padding:4px 0;font-size:14px;">✅ フィッシング詐欺との違い：電話・対面などアナログ手法か、偽サイト等デジタル手法か</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ソーシャルエンジニアリング</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>フィッシング詐欺</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ フィッシングは偽サイト・偽メール経由。電話・対面で人間を直接騙すのはソーシャルエンジニアリング</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手法の特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ソーシャルエンジニアリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人間の心理を直接狙う・技術不要</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィッシング詐欺</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">偽メール・偽サイトを使うデジタル手法</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的型攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定の組織・人物を狙う高度なサイバー攻撃</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：ソーシャルエンジニアリングの重要ポイント</h2>
-<p>ソーシャルエンジニアリングを試験で見分けるポイントは「技術を使わず人を騙す」という一点だ。「電話でパスワードを聞き出された」「背後から画面を見られた」「捨てた書類から情報を取られた」——これらはすべてソーシャルエンジニアリングだ。</p>
-<p>対策の観点からも問われる。技術的なセキュリティ対策（ファイアウォール・暗号化・ウイルス対策ソフト）は「コンピュータへの攻撃」には有効だが、ソーシャルエンジニアリングには効かない。なぜなら、人間が自分から情報を渡してしまうからだ。対策は「社員教育・セキュリティポリシーの徹底・電話での情報確認手順の整備」という人的対策が中心になる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-phishing.html" style="color:#1F56C6;">itp-phishing</a>, <a href="itp-targeted-attack.html" style="color:#1F56C6;">itp-targeted-attack</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：ソーシャルエンジニアリング</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 ソーシャルエンジニアリングとは何か</h2>
+<span class="kw">技術を使わず人を騙す</span>
+<p>システムに侵入するのではなく、人間の心理的隙（信頼・焦り・権威への服従）を突いて情報を引き出す攻撃。技術を使わない点が特徴。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>「なりすまし電話・ゴミ箱漁り・肩越し盗み見（ショルダーハッキング）」がソーシャルエンジニアリングの代表例。技術的防御が効かない。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>フィッシング詐欺は偽サイト・偽メールでIDを盗むデジタル攻撃。ソーシャルエンジニアリングは電話・対面など人間を直接狙う。どちらも「騙す」手口だが手段が違う。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>ソーシャル＝**人間関係**を悪用。**技術じゃなくて口八丁**でだます。最強のセキュリティは結局「人」が弱点。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ソーシャルエンジニアリングはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ゼロデイ攻撃とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ゼロデイ攻撃の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ゼロデイ攻撃の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-zero-day.html">
+<meta property="og:title" content="ゼロデイ攻撃とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="ゼロデイ攻撃の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-zero-day.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,52 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-zero-day.html">
-  <meta property="og:title" content="ゼロデイ攻撃とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="ゼロデイ攻撃の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-zero-day.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">ゼロデイ攻撃とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">ゼロデイ攻撃</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>ゼロデイ攻撃とは何か</h2>
-<p>試験では「ソフトウェアの脆弱性に対して、修正プログラムが存在しない状態で行われる攻撃として正しいものはどれか」という形でゼロデイ攻撃が出題される。ゼロデイとは「パッチが公開された日から0日（ゼロ日）」という意味で、修正プログラム（パッチ）がまだ提供されていない脆弱性を突いた攻撃を指す。パッチが出ていないため、従来のウイルス対策ソフトや更新を徹底する通常の対策が効かないのが最大の特徴だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: ゼロデイ攻撃は「パッチ未公開の脆弱性を突く」——防御側はパッチがない状態で攻撃を受けるため、事前防御が非常に困難。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ゼロデイ攻撃とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ゼロデイ攻撃</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ゼロデイ攻撃の特徴と対策</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃タイミング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">脆弱性発見〜パッチ公開の「ゼロ日目」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対策の難しさ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチが存在しないため適用できない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃者の優位性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">防御側より攻撃者が脆弱性を先に知っている状態</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主な対策</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">侵入検知（IDS/IPS）・最小権限の原則・セグメント分離</td></tr></table></div><p>ゼロデイ攻撃への現実的な対策：</p>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">① <strong>侵入後の被害最小化</strong>: ネットワークセグメント分離・最小権限設定で被害範囲を限定する</li>
-<li style="padding:4px 0;font-size:14px;">② <strong>早期検知</strong>: IDS/IPS・振る舞い検知型セキュリティで異常な動作を検知する</li>
-<li style="padding:4px 0;font-size:14px;">③ <strong>パッチ管理の徹底</strong>: ゼロデイ対策そのものではないが、既知の脆弱性を放置しない</li>
-</ul>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: パッチを適用すればゼロデイ攻撃を防げると思いがちだが、パッチがまだ「存在しない」のがゼロデイ攻撃——パッチ適用は既知の脆弱性への対策であり、ゼロデイには効かない。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>情シス担当の自分。朝の脅威情報メルマガで「昨日発見されたWebサーバの脆弱性が悪用中、パッチ未公開」と読んだ。修正版がまだ出てないのに攻撃が始まってる…どうすれば？？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 「パッチが存在しない（提供前）の脆弱性を突く攻撃」がゼロデイ攻撃の定義</li>
-<li style="padding:4px 0;font-size:14px;">✅ パッチ適用では防げない——これがゼロデイ攻撃の本質的な問題点</li>
-<li style="padding:4px 0;font-size:14px;">✅ 脆弱性を発見してから修正プログラム公開までの期間が攻撃者にとっての「チャンス」</li>
-<li style="padding:4px 0;font-size:14px;">✅ 標的型攻撃とゼロデイ攻撃を組み合わせた高度攻撃も出題される</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ゼロデイ攻撃</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>標的型攻撃</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 標的型は対象が特定企業。ゼロデイは「パッチが間に合っていない」という時間軸の問題</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">脆弱性のパッチ状態</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対策の可否</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ゼロデイ攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチ未公開（存在しない）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">通常の更新では防げない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">既知脆弱性への攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチ公開済み</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">適用すれば防げる</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：ゼロデイ攻撃の重要ポイント</h2>
-<p>ゼロデイ攻撃で得点するには「パッチが存在しない状態での攻撃」という定義を正確に覚えることだ。問題文に「修正プログラムが公開されていない脆弱性を悪用した」「パッチが提供される前に発見され攻撃された」という記述があればゼロデイ攻撃で確定する。逆に「既に修正プログラムが公開されていたにもかかわらず適用していなかった」という場合はゼロデイ攻撃ではない。</p>
-<p>ゼロデイ攻撃の対策問題では「IDS（侵入検知システム）」や「ネットワーク分離」が正解になることが多い。パッチ適用は既知脆弱性への対策なので、ゼロデイ攻撃の「対策として正しいもの」の選択肢には適さない点を覚えておこう。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-firewall.html" style="color:#1F56C6;">itp-firewall</a>, <a href="itp-targeted-attack.html" style="color:#1F56C6;">itp-targeted-attack</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：ゼロデイ攻撃</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 ゼロデイ攻撃とは何か</h2>
+<span class="kw">パッチなし脆弱性</span>
+<p>パッチが提供される前（対策ゼロ日）の脆弱性を突く攻撃。発見即悪用されるため事前防御が困難。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>「パッチが存在しない」「修正プログラム未公開の段階で攻撃」という記述があればゼロデイ攻撃で確定。
+
+**覚え方** 🎯 ゼロデイ＝**対策が出てから0日**。パッチ職人が間に合う前に攻撃される徒競走。先手必勝のずるい攻撃。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>ゼロデイ＝**対策が出てから0日**。パッチ職人が間に合う前に攻撃される徒競走。先手必勝のずるい攻撃。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ゼロデイ攻撃はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

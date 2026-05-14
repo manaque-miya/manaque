@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>デバッグ・バグ管理とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="デバッグ・バグ管理の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="デバッグ・バグ管理の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-debug.html">
+<meta property="og:title" content="デバッグ・バグ管理とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="デバッグ・バグ管理の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-debug.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,50 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-debug.html">
-  <meta property="og:title" content="デバッグ・バグ管理とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="デバッグ・バグ管理の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-debug.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">デバッグ・バグ管理とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">デバッグ・バグ管理</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>デバッグ・バグ管理とは何か</h2>
-<p>デバッグ（Debug）とは、プログラムの誤り（バグ）を発見・特定・修正するプロセスだ。バグ管理とは、発見されたバグの記録・優先度付け・担当割り当て・修正確認・クローズまでの一連のライフサイクルを体系的に追跡する仕組みを指す。Jira・GitHub Issues・Redmineなどのバグトラッキングシステム（BTS）が代表的なツールだ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: バグ管理の核心は「再現できないバグは直せない」こと—バグ報告に「再現手順・期待値・実際の動作・環境情報」が欠けていると修正作業が何倍にもなる。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">デバッグ・バグ管理とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">デバッグ・バグ管理</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>デバッグの主要手法</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">適用場面</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プリント（ログ）デバッグ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変数の値や処理の通過を出力して確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">簡易確認・本番環境での調査</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">デバッガ使用</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IDEのデバッガでブレークポイント設定・ステップ実行</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発環境での詳細調査</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バイナリサーチ法</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">処理を半分ずつ絞り込んで原因箇所を特定</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">広範囲のコードで原因不明の場合</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ダンプ解析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラッシュ時のメモリダンプを解析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">本番クラッシュの原因調査</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リグレッションテスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">修正後に既存機能が壊れていないか確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バグ修正後の検証</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「デバッグ＝バグを見つけること」と思われがちだが、正確には「発見したバグの原因を特定して修正するまでの全工程」だ。テストでバグを発見する工程とデバッグで修正する工程は別フェーズだ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>テスト担当の私。バグが100個見つかった！「優先度・担当者・修正状況をツールで追跡」しないと管理崩壊。この管理ツールの呼び名は？</p></div>
 </div>
-<div class="card"><h2>バグのライフサイクルと重要度分類</h2>
-<p>バグには発見から解決まで状態（ステータス）が遷移する：「新規（New）→割り当て（Assigned）→修正中（In Progress）→レビュー待ち（In Review）→テスト待ち（Testing）→クローズ（Closed）」。</p>
-<p>重要度（Severity）と優先度（Priority）は別軸だ。重要度は「機能へのインパクトの大きさ」、優先度は「修正の緊急性」を示す。「画面の文字色がズレる」バグは重要度は低いが、リリース前日なら優先度が高くなる場合がある。</p>
-</div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ バグ管理では重要度（Severity）と優先度（Priority）を別々に評価する</li>
-<li style="padding:4px 0;font-size:14px;">✅ 「再現手順・期待値・実動作・環境」の4要素がバグ報告の基本</li>
-<li style="padding:4px 0;font-size:14px;">✅ リグレッションテストは修正後の副作用（既存機能の破壊）を確認するテスト</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>バグ管理（バグトラッキング）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>コードレビュー</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ レビューは実行前に人がコードを読む静的検証。「実行後に発見したバグの追跡」がバグ管理</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">デバッグ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バグの原因特定と修正プロセス</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バグを発見するためのプロセス。デバッグより前の工程</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リファクタリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能を変えずにコードの内部構造を改善する作業</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コードレビュー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行前にソースコードを人間が確認してバグを早期発見する手法</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：デバッグ・バグ管理の重要ポイント</h2>
-<p>「テストとデバッグの違い」は定番問題だ。テストは「バグが存在するか確認する」、デバッグは「バグの原因を特定して修正する」という役割の違いを押さえる。</p>
-<p>バグ管理ツール（BTS）の目的として「個人の記憶に頼らない体系的管理」「修正状況の可視化」「過去バグのナレッジ化」が挙げられる。プロジェクト管理との連携（バグ件数の推移がリリース判定に使われる）も理解しておく。品質管理の観点では「バグの密度（コード1000行あたりのバグ数）」がソフトウェア品質メトリクスとして使われる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-software-test].html" style="color:#1F56C6;">[itp-software-test]</a>, <a href="[itp-test-types].html" style="color:#1F56C6;">[itp-test-types]</a>, <a href="[itp-sdlc].html" style="color:#1F56C6;">[itp-sdlc]</a></p>
-<p>---</p>
+<p style="margin-top:12px;"><strong>✅ 正解：バグ管理（バグトラッキング）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 デバッグ・バグ管理とは何か</h2>
+<span class="kw">バグを発見・修正・追跡する</span>
+<p>デバッグ：プログラムのバグ（誤り）を発見・修正する作業。バグ管理：発見したバグをツール（JIRA・Redmineなど）に登録し、優先度・担当者・ステータスを管理する仕組み。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>バグの重要度（致命的・重大・軽微）と優先度を組み合わせて修正順序を決める。リリース基準として「重大バグゼロ」などを定める。
+
+**覚え方** 🎯 バグ管理＝**バグの戸籍管理**。**JIRA/Redmineで重要度×優先度を管理**。リリース基準は「重大バグゼロ」。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>バグ管理＝**バグの戸籍管理**。**JIRA/Redmineで重要度×優先度を管理**。リリース基準は「重大バグゼロ」。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>デバッグ・バグ管理はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SSDとHDDとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="SSDとHDDの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="SSDとHDDの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-ssd-hdd.html">
+<meta property="og:title" content="SSDとHDDとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="SSDとHDDの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-ssd-hdd.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-ssd-hdd.html">
-  <meta property="og:title" content="SSDとHDDとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="SSDとHDDの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-ssd-hdd.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">SSDとHDDとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">SSDとHDD</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>SSDとHDDとは何か</h2>
-<p>SSD（Solid State Drive）はフラッシュメモリを使用した記憶装置で、物理的な可動部品がなく高速・低消費電力・耐衝撃性に優れる。HDD（Hard Disk Drive）は磁気ディスクを回転させ磁気ヘッドで読み書きする記憶装置で、大容量・低コストが特長だ。どちらも不揮発性ストレージ（電源を切ってもデータが消えない）だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: SSDは「速くて高い」、HDDは「遅くて安い」という対比が試験の軸で、用途によって使い分ける。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">SSDとHDDとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">SSDとHDD</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>SSDとHDDの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">SSD</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">HDD</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み書き速度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高速（500MB/s〜数GB/s）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低速（100〜150MB/s）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">価格/GB</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">安い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">耐衝撃性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い（可動部なし）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い（磁気ヘッドが可動）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">消費電力</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">動作音</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">無音</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">動作音あり</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">寿命</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">書き込み回数制限あり</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機械的摩耗あり</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大容量</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">TB単位（価格高い）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">数TB（価格安い）</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: SSDは「書き込み回数制限（TBW：Total Bytes Written）」があるため、頻繁な書き込みを繰り返すと劣化するという特性がある（HDDの機械的摩耗とは異なる劣化機構）。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>ノートPC新調する私。「起動・読書速度最優先・衝撃に強い」のが欲しい。SSD？HDD？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ SSD＝フラッシュメモリ・高速・耐衝撃・書き込み寿命あり</li>
-<li style="padding:4px 0;font-size:14px;">✅ HDD＝磁気ディスク・低速・大容量・低コスト</li>
-<li style="padding:4px 0;font-size:14px;">✅ どちらも不揮発性（電源OFFでデータが消えない）</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>SSD（ソリッドステートドライブ）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>HDD（ハードディスクドライブ）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ HDDは磁気円盤を物理回転（遅い・衝撃弱い）。「フラッシュメモリで可動部なし・高速」がSSD</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SSD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フラッシュメモリ・高速・可動部なし</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「高速・衝撃に強い・ノートPC向き」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HDD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">磁気ディスク・大容量・低コスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「大容量バックアップ・コスト重視」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAM（メインメモリ）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">揮発性・電源OFFで消えるメモリ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「電源OFFでデータが消える」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：SSDとHDDの重要ポイント</h2>
-<p>SSDとHDDの問題で問われるのは「性能・コスト・耐久性の比較」だ。「衝撃に強く消費電力が低い記憶装置はどれか」→SSD。「大容量のデータを低コストで保存するストレージはどれか」→HDD。この2パターンは試験の典型問題として確実に押さえること。</p>
-<p>不揮発性という共通点も確認しておくこと。SSDもHDDも「電源を切ってもデータが消えない不揮発性ストレージ」だ。RAMは「電源を切るとデータが消える揮発性メモリ」であり、この対比は試験で必ず出る。「補助記憶装置として使えるのはどれか」という設問ではSSD・HDD（不揮発性）が正答だ。</p>
-<p>RAID技術との組み合わせも覚えること。RAIDは複数のドライブを組み合わせて信頼性・性能を向上させる技術で、RAID0（ストライピング・高速化）・RAID1（ミラーリング・冗長化）が特に頻出だ。「HDDの障害に備えてデータを2台に同時書き込みする方式はどれか」→RAID1（ミラーリング）が正答だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-cpu].html" style="color:#1F56C6;">[itp-cpu]</a>, <a href="[itp-hardware].html" style="color:#1F56C6;">[itp-hardware]</a>, <a href="[itp-backup].html" style="color:#1F56C6;">[itp-backup]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：SSD（ソリッドステートドライブ）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 SSDとHDDとは何か</h2>
+<span class="kw">SSD=フラッシュメモリ・高速、HDD=磁気円盤・大容量低コスト</span>
+<p>SSD（Solid State Drive）：フラッシュメモリを記憶媒体に使用。物理的な可動部がないため高速・低消費電力・耐衝撃性が高い。HDD（Hard Disk Drive）：磁気円盤（プラッター）をモーターで回転させて磁気ヘッドで読み書き。大容量・低コストだが速度と消費電力でSSDに劣る。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>価格はHDDが有利だが価格差は縮小傾向。システムドライブ（OS・アプリ）にSSD、大容量バックアップにHDDという使い分けが一般的。衝撃に弱いHDDはノートPCには不向き。
+
+**覚え方** 🎯 **SSD＝Solid（固体）・可動部なし・高速／HDD＝Hard Disk・回転円盤・大容量低コスト**。OSはSSD、バックアップはHDD。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**SSD＝Solid（固体）・可動部なし・高速／HDD＝Hard Disk・回転円盤・大容量低コスト**。OSはSSD、バックアップはHDD。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>SSDとHDDはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

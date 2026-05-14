@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SDN（ソフトウェア定義ネットワーク）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="SDN（ソフトウェア定義ネットワーク）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="SDN（ソフトウェア定義ネットワーク）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-sdn.html">
+<meta property="og:title" content="SDN（ソフトウェア定義ネットワーク）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="SDN（ソフトウェア定義ネットワーク）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-sdn.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-sdn.html">
-  <meta property="og:title" content="SDN（ソフトウェア定義ネットワーク）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="SDN（ソフトウェア定義ネットワーク）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-sdn.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">SDN（ソフトウェア定義ネットワーク）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">SDN（ソフトウェア定義ネットワーク）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>SDN（ソフトウェア定義ネットワーク）とは何か</h2>
-<p>SDN（Software-Defined Networking）とは、ネットワークの制御機能（コントロールプレーン）とデータ転送機能（データプレーン）を分離し、集中型のソフトウェアコントローラでネットワーク全体をプログラム的に制御する技術だ。従来のルーター・スイッチは制御と転送を一体で行ったが、SDNではコントローラが一元的に経路設定・ポリシー適用を行い、転送機器はコントローラの指示に従う。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: SDNは「ネットワーク機器を個別に設定する手間を省いて、ソフトウェアからネットワーク全体を一括プログラムできる」技術であり、クラウドデータセンターでの柔軟なネットワーク構築に使われる。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">SDN（ソフトウェア定義ネットワーク）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">SDN（ソフトウェア定義ネットワーク）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>SDNと従来ネットワークの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">従来のネットワーク</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">SDN</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">制御の場所</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">各ネットワーク機器に分散</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">集中コントローラに集約</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">設定方法</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機器ごとに個別設定</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コントローラAPIで一括設定</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">柔軟性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更に時間・手間がかかる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ソフトウェアで即時変更可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代表プロトコル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OSPF・BGP・VLAN設定</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OpenFlow・NETCONF</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主な用途</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">企業ネットワーク全般</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラウドDC・大規模WAN（SD-WAN）</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: SDNの「ソフトウェア定義」はネットワーク機器をソフトウェアに置き換えることではなく、「制御ロジックをソフトウェア（コントローラ）に集約してプログラム制御する」という意味だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>データセンター運用の自分。「ルーター/スイッチを個別設定する手間→ソフトウェアで一元管理」したい。NFV？SDN？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ SDN＝コントロールプレーンとデータプレーンの分離</li>
-<li style="padding:4px 0;font-size:14px;">✅ 集中コントローラがネットワーク全体を一元管理</li>
-<li style="padding:4px 0;font-size:14px;">✅ OpenFlowがSDNの代表的な制御プロトコル</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>SDN（Software-Defined Networking）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>NFV（Network Functions Virtualization）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ NFVは機器機能の仮想化。「制御をソフトでコントローラ一元化」がSDN</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SDN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">制御と転送を分離・集中ソフトウェア制御</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「コントローラがネットワークを集中管理」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">NFV</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ネットワーク機能をソフトウェアで仮想化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「FW・LBなどをVMで代替」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SD-WAN</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SDNの考え方をWANに適用</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「インターネット回線を使ったWAN最適化」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：SDN（ソフトウェア定義ネットワーク）の重要ポイント</h2>
-<p>SDNの問題で差がつくのは「コントロールプレーンとデータプレーンの分離」という概念の理解だ。「SDNの特徴として最も適切なものはどれか」という設問では「ネットワーク機器の制御機能を集中型コントローラに分離する」が正答だ。「ネットワーク機器をソフトウェアで代替する」（それはNFV）と区別すること。</p>
-<p>OpenFlowを覚えること。OpenFlowはSDNの代表的な標準プロトコルで、コントローラとスイッチ間の通信に使われる。「SDNのコントローラとネットワーク機器間の通信に使われるプロトコルはどれか」→OpenFlowが正答だ。</p>
-<p>クラウド・仮想化との親和性も試験で出る。SDNはクラウドデータセンターで仮想マシンやコンテナのネットワークを動的に構成・変更するために使われる。「クラウド環境で仮想マシンのネットワーク接続を動的に変更できる仕組みはどれか」→SDN（または仮想ネットワーク）が正答だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-nfv].html" style="color:#1F56C6;">[itp-nfv]</a>, <a href="[itp-cloud].html" style="color:#1F56C6;">[itp-cloud]</a>, <a href="[itp-vpc].html" style="color:#1F56C6;">[itp-vpc]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：SDN（Software-Defined Networking）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 SDN（ソフトウェア定義ネットワーク）とは何か</h2>
+<span class="kw">ネットワーク制御をソフトウェアで一元化</span>
+<p>SDN：ネットワークの制御プレーン（どこにパケットを転送するか決める機能）とデータプレーン（実際に転送する機能）を分離し、コントローラソフトウェアで一元管理するアーキテクチャ。OpenFlowが代表的なプロトコル。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>従来：ルーター・スイッチごとに個別CLI設定。SDN：コントローラから全機器を一括設定・変更。クラウドデータセンターの柔軟なネットワーク変更に適する。NFVとSDNは組み合わせて使われることが多い。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>SDN＝「どこにどう転送するかをソフトウェアで一元管理する思想」。NFV＝「ネットワーク機器の機能をVM上で動かす技術」。SDNが「制御の集中化」、NFVが「機器のソフトウェア化」。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**SDN＝制御を集中化（思想）／NFV＝機器をソフト化（技術）**。OpenFlowがSDNの代表プロトコル。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>SDN（ソフトウェア定義ネットワーク）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

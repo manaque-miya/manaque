@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>自動運転レベル（0〜5）とシステム要件とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="自動運転レベル（0〜5）とシステム要件の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="自動運転レベル（0〜5）とシステム要件の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-autonomous-driving-level.html">
+<meta property="og:title" content="自動運転レベル（0〜5）とシステム要件とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="自動運転レベル（0〜5）とシステム要件の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-autonomous-driving-level.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,45 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-autonomous-driving-level.html">
-  <meta property="og:title" content="自動運転レベル（0〜5）とシステム要件とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="自動運転レベル（0〜5）とシステム要件の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-autonomous-driving-level.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">自動運転レベル（0〜5）とシステム要件とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">自動運転レベル（0〜5）とシステム要件</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>自動運転レベル（0〜5）とシステム要件とは何か</h2>
-<p>自動運転レベルを答えるポイントは、<strong>SAE（米国自動車技術者協会）が定義したレベル0〜5の6段階</strong>と、それぞれで「誰が主体的に運転するか」という責任主体の違いを正確に覚えることだ。</p>
-<h3>自動運転レベル一覧</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">レベル</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">名称</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">運転主体</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">システムの役割</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非自動化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人間のみ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なし</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">従来車</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">運転支援</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人間（システムが補助）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">操舵または加減速のどちらか1つ支援</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クルーズコントロール</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">部分自動化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人間（監視が必要）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">操舵と加減速の両方を同時に支援</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テスラAutopilot</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">3</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">条件付き自動化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>システム（条件内）</strong></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定条件下で全操作。緊急時は人間に引き継ぎ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Honda SENSING Elite</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">4</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高度自動化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>システム（特定環境）</strong></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定環境内で完全自動（人間不要）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ロボタクシー（地理限定）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">5</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">完全自動化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>システム（全条件）</strong></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">あらゆる状況で完全自動。ハンドル不要</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">（未実現）</td></tr></table></div><h3>レベル2〜3の重要な違い</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">観点</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">レベル2</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">レベル3</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">監視責任</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>ドライバー</strong>が常時監視必要</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>システム</strong>が監視（ドライバーは監視不要）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">過失責任</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">事故時はドライバー責任</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">事故時はメーカー責任（可能性）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前方注視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">常に必要</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">条件内では前方を見なくてよい</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: レベル2とレベル3の最大の違いは<strong>「監視責任の所在」</strong>だ。レベル2ではシステムが動いていても<strong>ドライバーが常に監視し即座に介入できる状態</strong>でなければならない。レベル3になると特定条件下でシステムが全責任を持つため、ドライバーは前方を見ずに他のことをできる（ただし緊急時の引き継ぎ要求には応じる必要がある）。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：レベル2の自動運転中はシステムが全ての監視を担当するため、ドライバーは休んでよい</p></div>
-<div class="hl"><p>- <strong>正</strong>：レベル2はドライバーが常時監視を継続する義務がある。<strong>レベル3から</strong>特定条件下でのシステム監視が認められる</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">自動運転レベル（0〜5）とシステム要件とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">自動運転レベル（0〜5）とシステム要件</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. 自動運転レベル0〜5＝SAE定義の6段階</p>
-<p>2. レベル2＝操舵+加減速の同時支援（ドライバー監視必須）</p>
-<p>3. レベル3＝システムが監視（条件付き）、ドライバーは監視不要</p>
-<p>4. 完全自動化（レベル5）はまだ実現していない</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>自動車メーカー担当の自分。「高速限定・システム全操作・要請時ドライバー引継ぎ義務」の機能。Lv3？Lv4？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">レベル</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">覚え方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">L2</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">操舵+加減速両方、ドライバーが監視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「両方だが監視は人間」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">L3</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">条件付き自動、システムが監視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「条件内はシステム主体」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">L4</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定環境で完全自動</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「エリア限定の完全自動」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">L5</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全条件で完全自動</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「究極・未実現」</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：自動運転レベル（0〜5）とシステム要件の重要ポイント</h2>
-<p>「自動運転レベル3の特徴として最も適切なものはどれか」→「特定の条件下においてシステムが全ての運転操作を行い、ドライバーは常時監視が不要だが緊急時には対応が求められる」。「レベル2との最大の違いは」→「監視責任の主体がドライバーからシステムに移ること」。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>SAEレベル3（条件付き自動化）。特定条件下でシステムが全操作を担当するが、要請時のドライバー応答が必要</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>SAEレベル4（高度自動化）。特定エリア内で人間の介入なく完全に自動運転できる</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ Lv4は応答不要。「引継ぎ義務あり」がLv3</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：SAEレベル3（条件付き自動化）。特定条件下でシステムが全操作を担当するが、要請時のドライバー応答が必要</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 自動運転レベル（0〜5）とシステム要件とは何か</h2>
+<span class="kw">Level3=任せてOK・呼ばれたら即交代義務、Level4=呼ばれなくても自律走行</span>
+<p>SAE（米国自動車技術者協会）の自動運転レベル定義：Level0（なし）→Level1（運転支援）→Level2（部分自動化：複数機能の同時制御）→Level3（条件付き自動化：特定条件下でシステムが全操作・要請時に人間が引き継ぐ）→Level4（高度自動化：特定エリアで完全自動・人間介入不要）→Level5（完全自動化：あらゆる状況で人間不要）。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「Level3とLevel4の違い＝ドライバーの引き継ぎ義務の有無」が最頻出ひっかけ。Level2は「ハンズオフ可能なACCやレーン維持の組み合わせ」、Level3は「アイズオフ可能だが要請時に応答義務あり」と覚える。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：Level2（部分自動化）もシステムが加速・操舵・制動の複数を担当するが、ドライバーは常時監視義務あり。Level3はそれがない点が根本的な違い。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**Lv3（要請で人間引継ぎ）／Lv4（要請なし・特定エリア完全自動）／Lv5（完全自動）**。引継ぎ義務が境界。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>自動運転レベル（0〜5）とシステム要件はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

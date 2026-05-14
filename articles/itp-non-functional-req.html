@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>非機能要件とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="非機能要件の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="非機能要件の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-non-functional-req.html">
+<meta property="og:title" content="非機能要件とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="非機能要件の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-non-functional-req.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-non-functional-req.html">
-  <meta property="og:title" content="非機能要件とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="非機能要件の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-non-functional-req.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">非機能要件とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">非機能要件</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>非機能要件とは何か</h2>
-<p>非機能要件とは、システムが「何をするか」（機能要件）ではなく「どのように動くか」を規定する要件だ。性能・信頼性・セキュリティ・保守性・移植性・可用性・拡張性などが含まれる。機能要件が「商品を検索できること」であれば、非機能要件は「検索結果を1秒以内に表示すること」「稼働率99.9%を保証すること」「同時1,000ユーザーのアクセスに耐えること」だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 非機能要件は「後付けで追加できない」—性能・セキュリティ・拡張性はアーキテクチャ設計の段階から織り込む必要があり、開発後に追加しようとすると全面的な設計変更が必要になることがある。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">非機能要件とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">非機能要件</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>非機能要件の主要カテゴリ</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">カテゴリ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">具体的な指標例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">性能・効率性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">応答速度・スループット・リソース消費</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ページ表示3秒以内、同時接続1,000ユーザー</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">信頼性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">障害耐性・エラーからの回復</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">年間稼働率99.9%、MTBFが3年以上</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">可用性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サービス継続性・計画外ダウンタイムの最小化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">24時間365日稼働、メンテナンス停止は月1回・深夜2時間以内</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セキュリティ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不正アクセス・情報漏えい防止</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ペネトレーションテスト合格、HTTPS必須、ログ保存期間1年</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">保守性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更・修正・テストのしやすさ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コードカバレッジ80%以上、デプロイ時間30分以内</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">移植性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">別環境への移行のしやすさ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主要3ブラウザ対応、コンテナ化による環境依存排除</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">拡張性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">将来的なスケールアップへの対応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー数10倍時に性能劣化なく対応可能</td></tr></table></div><p>IPAが発表した「非機能要求グレード2018」は、非機能要件を体系的に定義・レベル評価するフレームワークとして多くの公共システム開発で使われている。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「ユーザーがパスワードでログインできること」は機能要件だが「パスワードは8文字以上・英数字混在必須で暗号化保存すること」は非機能要件（セキュリティ）だ。「何ができるか」と「どう実現するか」の区別が判断軸になる。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>システム発注担当の自分。「在庫管理機能を作って」だけ決めて発注したら、できたシステムが遅い・落ちる・脆弱…！機能じゃない要件って何要件？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 非機能要件は「どのように動くか」を規定：性能・信頼性・セキュリティ・保守性・移植性</li>
-<li style="padding:4px 0;font-size:14px;">✅ 機能要件は「何をするか」、非機能要件は「どのくらいの品質で動くか」</li>
-<li style="padding:4px 0;font-size:14px;">✅ ISO/IEC 25010の8品質特性が非機能要件の体系的な定義フレームワーク</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>非機能要件の定義（信頼性・性能・拡張性等）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>機能要件の詳細化</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 機能要件は「何をするか」。「どのように動くか」が非機能要件</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能要件</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システムが実行すべき機能・処理の定義</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非機能要件</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能の「質」に関する要件（性能・信頼性・セキュリティ等）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SLA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非機能要件を顧客との合意として文書化したもの</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ISO/IEC 25010</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非機能要件を8特性で体系化した品質モデル規格</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：非機能要件の重要ポイント</h2>
-<p>「次のうち非機能要件はどれか」という分類問題が頻出だ。「検索機能がある」→機能要件、「検索結果が2秒以内に表示される」→非機能要件（性能）という判断を繰り返し練習する。</p>
-<p>非機能要件が軽視されたシステムの失敗事例も出題される背景知識として重要だ。2020年の大手証券会社の発注システム障害では非機能要件（同時接続数・性能）の見積もりが甘く、想定外の注文集中でシステムが停止した。要件定義フェーズで非機能要件を機能要件と同等に扱うことの重要性を理解しておく。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-iso-25010].html" style="color:#1F56C6;">[itp-iso-25010]</a>, <a href="[itp-sla].html" style="color:#1F56C6;">[itp-sla]</a>, <a href="[itp-sdlc].html" style="color:#1F56C6;">[itp-sdlc]</a></p>
-<p>---</p>
+<p style="margin-top:12px;"><strong>✅ 正解：非機能要件の定義（信頼性・性能・拡張性等）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 非機能要件とは何か</h2>
+<span class="kw">機能以外の品質要件（速度・信頼性・安全性）</span>
+<p>非機能要件：システムが「どのような品質・特性で動作するか」の要件。主な分類：信頼性（稼働率・MTBF）・性能（応答時間・スループット）・保守性・移植性・セキュリティ・拡張性。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>非機能要件を発注前に定義しないと「動くが遅い・落ちる・セキュリティ弱い」というシステムになる。契約時に数値で明記することが重要（例：稼働率99.9%以上・応答時間3秒以内）。
+
+**覚え方** 🎯 **機能＝何ができる／非機能＝どう動く（速さ・信頼性・安全性）**。発注時に数値で明記しないと痛い目見る。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**機能＝何ができる／非機能＝どう動く（速さ・信頼性・安全性）**。発注時に数値で明記しないと痛い目見る。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>非機能要件はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>水飲み場攻撃（Watering Hole Attack）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="水飲み場攻撃（Watering Hole Attack）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="水飲み場攻撃（Watering Hole Attack）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-watering-hole.html">
+<meta property="og:title" content="水飲み場攻撃（Watering Hole Attack）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="水飲み場攻撃（Watering Hole Attack）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-watering-hole.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,44 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-watering-hole.html">
-  <meta property="og:title" content="水飲み場攻撃（Watering Hole Attack）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="水飲み場攻撃（Watering Hole Attack）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-watering-hole.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">水飲み場攻撃（Watering Hole Attack）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">水飲み場攻撃（Watering Hole Attack）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>水飲み場攻撃（Watering Hole Attack）とは何か</h2>
-<p>水飲み場攻撃で得点するには、<strong>「標的が頻繁に訪問するWebサイトを改ざんしてマルウェアを仕込む攻撃」</strong>という定義と、標的型攻撃の文脈での位置づけを理解することだ。</p>
-<h3>水飲み場攻撃の攻撃フロー</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ステップ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1. 標的調査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃対象の組織・個人が訪問するサイトを調査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">業界団体・取引先・専門誌等</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2. サイト侵害</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的が訪問するサイトの脆弱性を悪用して改ざん</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セキュリティの弱いサイトを利用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">3. マルウェア設置</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ドライブバイダウンロード用コードを埋め込む</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的のみに絞った場合もある</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">4. 感染待機</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的がそのサイトを訪問するのを待つ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「水飲み場」に獲物を待つ捕食者の比喩</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">5. 感染・侵入</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的のPCにマルウェアが自動インストール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高度標的型攻撃（APT）の入口</td></tr></table></div><h3>標的型攻撃の手口比較</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">攻撃手口</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">概要</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">標的への接近方法</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">水飲み場攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的が訪問するサイトを改ざん</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的を待ち伏せ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スピアフィッシング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定個人に向けた標的型フィッシングメール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メールで直接接触</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ソーシャルエンジニアリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">心理的操作で情報を引き出す</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">電話・対面等で接触</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サプライチェーン攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的が利用するソフトウェアや業者を経由</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">間接的に侵入</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: 名称の由来は「サバンナで捕食者が水飲み場の周囲で獲物を待つ」行動から来ている。標的のPCを直接攻撃するのではなく、<strong>標的が必ず訪れる場所（Webサイト）を汚染</strong>して待つという間接的手法が特徴だ。標的が信頼しているサイトを経由するため、不審なリンクをクリックしなくても感染する可能性がある。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：水飲み場攻撃はランダムなユーザーを広く標的とする一般的な攻撃だ</p></div>
-<div class="hl"><p>- <strong>正</strong>：水飲み場攻撃は<strong>特定の組織・個人を狙った標的型攻撃</strong>であり、標的が訪問するサイトを選んで改ざんする点が特徴。不特定多数への一般的なWebサイト改ざんとは性格が異なる</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">水飲み場攻撃（Watering Hole Attack）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">水飲み場攻撃（Watering Hole Attack）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. 水飲み場攻撃＝標的が訪問するサイトを改ざんしてマルウェアを仕込む</p>
-<p>2. <strong>標的型攻撃</strong>（APT）の手法の1つ</p>
-<p>3. 信頼しているサイトを経由するため標的が気づきにくい</p>
-<p>4. 対策＝ブラウザ・プラグイン更新・URLフィルタリング・EDR</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>防衛企業の情シスの自分。「業界専門家が頻訪する業界団体サイトを攻撃者が改ざん→閲覧した社員が感染」。フィッシング？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">攻撃手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手口</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">水飲み場攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的が訪れるサイトを汚染</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">待ち伏せ型標的型攻撃</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スピアフィッシング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的にフィッシングメール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">直接接触型</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ドライブバイダウンロード</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不特定多数向けのサイト汚染</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的を絞らない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サプライチェーン攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的が使うソフト・業者経由</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">間接侵入</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：水飲み場攻撃（Watering Hole Attack）の重要ポイント</h2>
-<p>「攻撃対象の組織が頻繁にアクセスするWebサイトを改ざんし、そのサイトを通じてマルウェアに感染させる攻撃手法はどれか」→「水飲み場攻撃（Watering Hole Attack）」。スピアフィッシング（メール経由）・サプライチェーン攻撃（業者経由）との手口の違いを明確に区別できるようにしておくこと。</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>水飲み場攻撃（標的集団が訪問するサイトを予め汚染して待ち伏せする）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>フィッシング攻撃（標的にメールを送り偽サイトへ誘導する）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ フィッシングは攻撃者→被害者の能動アプローチ。「行きつけ先で待ち伏せ」が水飲み場</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：水飲み場攻撃（標的集団が訪問するサイトを予め汚染して待ち伏せする）</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 水飲み場攻撃（Watering Hole Attack）とは何か</h2>
+<span class="kw">標的の訪問先サイトを事前に汚染</span>
+<p>水飲み場攻撃（Watering Hole Attack）はライオンが水飲み場で獲物を待つように、攻撃者が標的集団の「行きつけサイト」にマルウェアを埋め込んで待ち伏せする攻撃。標的を直接だますより検知されにくい。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「特定業界・特定企業を狙った高度標的型攻撃の手法」として問われる。標的型攻撃の一種だが、フィッシングと違い「攻撃者から仕掛けるメールがない」点で検知が難しい。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：フィッシング＝攻撃者が能動的に連絡。水飲み場＝被害者が能動的に訪問するのを待つ。標的は同じでも「誰が動くか」が逆。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>水飲み場攻撃＝**ライオンが水場で獲物を待つ**＝**行きつけサイトを汚染して待ち伏せ**。フィッシングとは正反対の能動性。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>水飲み場攻撃（Watering Hole Attack）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>自然言語処理（NLP）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="自然言語処理（NLP）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="自然言語処理（NLP）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-nlp.html">
+<meta property="og:title" content="自然言語処理（NLP）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="自然言語処理（NLP）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-nlp.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-nlp.html">
-  <meta property="og:title" content="自然言語処理（NLP）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="自然言語処理（NLP）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-nlp.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">自然言語処理（NLP）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">自然言語処理（NLP）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>自然言語処理（NLP）とは何か</h2>
-<p>自然言語処理（NLP：Natural Language Processing）は、人間が日常的に使う言語（日本語・英語など）をコンピュータが理解・生成・翻訳するための技術分野だ。ディープラーニングの進歩により、2017年のTransformerアーキテクチャ登場以降、機械翻訳・文章要約・質問応答の精度が飛躍的に向上した。ChatGPTはNLPの最先端応用であるLLM（大規模言語モデル）の代表例だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: NLPは「コンピュータに人間の言葉を理解させる技術」—形態素解析（語の分割）から始まり、意味理解・文章生成まで扱う広い分野だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">自然言語処理（NLP）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">自然言語処理（NLP）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>NLPの主要技術と応用</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">技術</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">応用例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">形態素解析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">文を最小意味単位に分割</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検索エンジン・IME</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">構文解析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">文の文法的構造を解析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機械翻訳</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">感情分析（センチメント分析）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テキストの肯定・否定・中立を判定</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SNS分析・レビュー分析</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機械翻訳</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">言語を別言語に変換</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Google翻訳・DeepL</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テキスト生成</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">文章を自動生成</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ChatGPT・GitHub Copilot</td></tr></table></div><p>チャットボットはNLPを使ってユーザーの質問を解析し、適切な回答を返す応用システムだ。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「自然言語処理＝翻訳」と思いがちだが、翻訳はNLPの応用の一つに過ぎない。感情分析・要約・質問応答など多様なタスクを含む。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>チャットボット開発担当の私。「ユーザーの日本語質問を理解→自動回答」する技術。画像認識じゃなくて言語系の…これって何？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ NLPはAI・機械学習の応用分野（言語処理特化）</li>
-<li style="padding:4px 0;font-size:14px;">✅ 形態素解析：日本語処理の第一ステップ（MeCab等のツールが有名）</li>
-<li style="padding:4px 0;font-size:14px;">✅ LLM（大規模言語モデル）はNLPの最先端—GPT・BERTが代表例</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>自然言語処理（NLP）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>画像認識</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 画像認識は画像からの情報抽出。「テキスト・音声などの言語を理解生成」がNLP</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">NLP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人間言語のコンピュータ処理技術全般</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LLM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大量テキストで学習した大規模NLPモデル</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">チャットボット</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">NLPを使った対話システム（応用製品）</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：自然言語処理（NLP）の重要ポイント</h2>
-<p>試験では「NLPの定義」と「具体的な応用例の識別」が問われる。「スパムメールを自動分類する」「SNSの投稿を肯定・否定に分類する」「文書を自動要約する」はすべてNLPの応用だ。</p>
-<p>チャットボットとFAQシステムの違いも出題される。FAQは固定回答の検索、チャットボットはNLPによる動的な対話応答だという区別を理解しておく。</p>
-<p>AIの「ハルシネーション」問題（NLPシステムが事実と異なる情報を自信を持って生成する現象）も近年の重要トピックだ。LLMを業務利用する際のリスクとして、情報の正確性確認（ファクトチェック）の必要性と合わせて覚えておこう。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-deep-learning].html" style="color:#1F56C6;">[itp-deep-learning]</a>, <a href="[itp-ai-ethics].html" style="color:#1F56C6;">[itp-ai-ethics]</a>, <a href="[itp-data-driven].html" style="color:#1F56C6;">[itp-data-driven]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：自然言語処理（NLP）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 自然言語処理（NLP）とは何か</h2>
+<span class="kw">人間の言葉をコンピュータが理解・生成</span>
+<p>自然言語処理（NLP: Natural Language Processing）はコンピュータが人間の言葉（テキスト・音声）を理解・分析・生成する技術。機械翻訳・文書要約・感情分析・チャットボット・検索エンジンに活用されている。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>大規模言語モデル（LLM）はNLPの応用。形態素解析（文章を単語に分割）・品詞タグ付け・構文解析などの処理が基礎技術として存在する。
+
+**覚え方** 🎯 NLP＝**Natural Language Processing＝人間の言葉のAI処理**。**LLM（ChatGPT等）はNLPの最先端応用**。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>NLP＝**Natural Language Processing＝人間の言葉のAI処理**。**LLM（ChatGPT等）はNLPの最先端応用**。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>自然言語処理（NLP）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

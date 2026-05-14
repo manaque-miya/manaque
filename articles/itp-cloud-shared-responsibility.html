@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>クラウドセキュリティ責任共有モデルとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="クラウドセキュリティ責任共有モデルの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="クラウドセキュリティ責任共有モデルの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-cloud-shared-responsibility.html">
+<meta property="og:title" content="クラウドセキュリティ責任共有モデルとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="クラウドセキュリティ責任共有モデルの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-cloud-shared-responsibility.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-cloud-shared-responsibility.html">
-  <meta property="og:title" content="クラウドセキュリティ責任共有モデルとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="クラウドセキュリティ責任共有モデルの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-cloud-shared-responsibility.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">クラウドセキュリティ責任共有モデルとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">クラウドセキュリティ責任共有モデル</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>クラウドセキュリティ責任共有モデルとは何か</h2>
-<p>クラウドセキュリティの責任共有モデル（Shared Responsibility Model）は、クラウドサービス利用時のセキュリティ責任を「クラウドプロバイダー（CSP）」と「ユーザー企業」の間でどう分担するかを定めたフレームワークだ。AWSが2010年代に明示化して業界標準となった。「クラウドのセキュリティはすべてAWSが管理してくれる」という誤解が事故の原因となることが多いため、責任範囲の明確化が重要だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: CSPは「インフラのセキュリティ」、ユーザーは「クラウド上で動かすものへのセキュリティ」—IaaSはユーザー責任が広く、SaaSは狭い。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">クラウドセキュリティ責任共有モデルとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">クラウドセキュリティ責任共有モデル</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>サービスモデル別の責任分担</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">責任領域</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">IaaS（例：EC2）</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">PaaS（例：RDS）</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">SaaS（例：Gmail）</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">物理インフラ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSP</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OS・ミドルウェア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSP</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アプリケーション</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSP</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ・アクセス管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー</td></tr></table></div><p>データの暗号化・バックアップ・アクセス権限（IAM）管理は、どのサービスモデルでもユーザー責任になることが多い。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「SaaSを使えばセキュリティはCSP任せ」は誤り。データのアクセス制御・ユーザーアカウント管理はSaaSでもユーザー責任だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>AWS（IaaS）利用中の社内システム担当の自分。OSパッチ放置→マルウェア感染！「クラウドだから安全なはず」と思ってたら、これ誰の責任？？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ IaaS→PaaS→SaaSの順でCSPの責任範囲が広がる（ユーザー責任は縮小）</li>
-<li style="padding:4px 0;font-size:14px;">✅ データ保護・アクセス管理は常にユーザー責任</li>
-<li style="padding:4px 0;font-size:14px;">✅ 物理データセンターのセキュリティは常にCSP責任</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>利用者（企業）の責任</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>クラウドサービスプロバイダー（CSP）の責任</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ IaaSではOS以上は利用者責任。「CSPはハード・仮想化基盤まで」</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IaaS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インフラのみ提供・OS以上はユーザー管理</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PaaS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OS・ミドルウェアも提供・アプリはユーザー</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SaaS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アプリまで提供・データ管理はユーザー</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：クラウドセキュリティ責任共有モデルの重要ポイント</h2>
-<p>試験では「クラウドサービス利用時にユーザーが責任を持つべき領域はどれか」という問題が頻出だ。「OSのパッチ適用はIaaSでは誰の責任か」→ユーザー、「データの暗号化はSaaSでも誰が行うか」→ユーザー、という判断ができるようにする。</p>
-<p>「クラウドセキュリティのリスク」としてCSPM（クラウドセキュリティポスチャ管理）や設定ミス（S3バケットの公開設定など）が出題される。2019年のCapital One情報漏えい事件（S3バケットの設定ミスが原因）は責任共有モデルのユーザー側ミスの典型例だ。</p>
-<p>CASB（Cloud Access Security Broker）はユーザーとCSPの間に入ってクラウド利用を可視化・制御するセキュリティツールで、責任共有モデルにおけるユーザー側のセキュリティ補完手段として近年の試験にも登場している。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-servers].html" style="color:#1F56C6;">[itp-servers]</a>, <a href="[itp-isms].html" style="color:#1F56C6;">[itp-isms]</a>, <a href="[itp-gdpr].html" style="color:#1F56C6;">[itp-gdpr]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：利用者（企業）の責任</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 クラウドセキュリティ責任共有モデルとは何か</h2>
+<span class="kw">どこまでがCSP・どこからが利用者の責任か</span>
+<p>責任共有モデル（Shared Responsibility Model）：クラウドでのセキュリティ責任はCSPと利用者で分担する。IaaS：CSPは物理・仮想化層を担当、利用者はOS〜アプリまで管理。SaaS：CSPがほぼ全責任、利用者はデータとアクセス管理のみ。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>「クラウドだから全部安全」は誤解。利用サービス形態（IaaS/PaaS/SaaS）によって自分が管理すべき範囲が異なることを把握しておく必要がある。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>SaaSは利用者の管理範囲が最も少なく（データとアカウント管理のみ）、IaaSは最も多い（OS以上全て）。PaaSはその中間。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**IaaS＝利用者責任多（OS以上）／SaaS＝CSP責任多（データのみ）／PaaS＝中間**。サービスSが浅いほど自分の責任減。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>クラウドセキュリティ責任共有モデルはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

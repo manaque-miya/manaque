@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>工場IoT（IIoT）とOT/ITセキュリティとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="工場IoT（IIoT）とOT/ITセキュリティの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="工場IoT（IIoT）とOT/ITセキュリティの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-iiot-ot-security.html">
+<meta property="og:title" content="工場IoT（IIoT）とOT/ITセキュリティとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="工場IoT（IIoT）とOT/ITセキュリティの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-iiot-ot-security.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,45 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-iiot-ot-security.html">
-  <meta property="og:title" content="工場IoT（IIoT）とOT/ITセキュリティとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="工場IoT（IIoT）とOT/ITセキュリティの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-iiot-ot-security.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">工場IoT（IIoT）とOT/ITセキュリティとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">工場IoT（IIoT）とOT/ITセキュリティ</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>工場IoT（IIoT）とOT/ITセキュリティとは何か</h2>
-<p>IIoTとOT/ITセキュリティの問題で差がつくのは、<strong>「IT（情報技術）とOT（運用技術）の統合がもたらすセキュリティリスクの本質」</strong>だ。工場のIoT化で従来は隔離されていたOTシステムがネットワークに接続されるリスクを理解することが重要だ。</p>
-<h3>ITとOTの比較</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">観点</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">IT（Information Technology）</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">OT（Operational Technology）</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対象</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報システム・ビジネスデータ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">物理的プロセス制御（工場設備・インフラ）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">優先事項</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機密性（C）＞完全性（I）＞可用性（A）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>可用性（A）</strong>＞完全性（I）＞機密性（C）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システム寿命</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">3〜5年でリプレース</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>10〜30年</strong>（設備と一体化）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチ適用</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">定期的に実施可能</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">停止できないため<strong>困難</strong></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ネットワーク</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インターネット接続が前提</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">従来は<strong>エアギャップ</strong>（隔離）が前提</td></tr></table></div><h3>IIoTがもたらすセキュリティリスク</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">リスク</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃面の拡大</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">従来隔離されていたOTシステムがインターネットに接続</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レガシーシステムの脆弱性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">古いOSのOT機器にパッチが当てられていない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">物理的被害リスク</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サイバー攻撃が物理インフラ（電力・水道・生産ライン）の停止に直結</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IT・OT境界の曖昧化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ITとOTのネットワーク統合で攻撃者がITを通じてOTに到達</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: OTセキュリティで最も重要な違いはCIA優先度の逆転だ。<strong>ITでは機密性（C）が最優先</strong>だが、<strong>OTでは可用性（A）が最優先</strong>だ。工場の生産ラインや電力網は止められないため、「パッチを当てるために停止する」という通常のセキュリティ対応が取れない。これが攻撃者にとって格好の標的になる理由だ。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：OTシステムはインターネットに接続されていないため、サイバー攻撃のリスクはない</p></div>
-<div class="hl"><p>- <strong>正</strong>：IIoTの普及でOTシステムがネットワークに接続されるようになり、<strong>エアギャップが失われつつある</strong>。StuxnetウイルスのようにUSB経由でエアギャップを越えた攻撃事例もある</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">工場IoT（IIoT）とOT/ITセキュリティとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">工場IoT（IIoT）とOT/ITセキュリティ</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. IIoT＝Industrial IoT（工場・インフラのIoT化）</p>
-<p>2. OTはIT以上に可用性を重視（止められないシステム）</p>
-<p>3. IT/OT統合によりOTが攻撃経路に晒されるリスク</p>
-<p>4. レガシーOT機器へのパッチ適用困難がセキュリティ課題</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>製造業のDX推進担当の自分。「生産設備PLCデータをクラウドへ→OT直接接続のリスク」を経営に説明。同一NW化？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IIoT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">産業用IoT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">工場・インフラのIoT化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">運用技術（制御システム）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">物理システム制御</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報技術</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ビジネス情報処理</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SCADA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">産業制御システムの一種</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OTの代表的な技術</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：工場IoT（IIoT）とOT/ITセキュリティの重要ポイント</h2>
-<p>「工場の生産設備制御システム（OT）にサイバー攻撃が及んだ場合の影響として最も深刻なものはどれか」→「生産ラインの停止や物理的な設備破損など、物理的な被害が生じる可能性がある」。「OTのセキュリティでITと最も異なる点はどれか」→「可用性を最優先にするため、パッチ適用のためのシステム停止が困難」。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>OT（制御系）とIT（情報系）をDMZや変換装置で分離し、直接接続を避けてデータを連携させる</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>OT機器もIPアドレスを持てるため、IT系と同一ネットワークに接続してコスト効率を高める</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ OTは停止困難・パッチ困難で攻撃即物理被害。「境界分離」が原則</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：OT（制御系）とIT（情報系）をDMZや変換装置で分離し、直接接続を避けてデータを連携させる</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 工場IoT（IIoT）とOT/ITセキュリティとは何か</h2>
+<span class="kw">OT=制御系・IT=情報系・境界分離が重要</span>
+<p>IIoT（Industrial IoT）は製造・インフラ分野の機器をネットワーク接続する技術。OT（Operational Technology：制御系）はPLC・SCADA等の製造設備制御技術。IT系とは異なり「24時間停止不可・旧型機器が多い・パッチ適用困難」という制約がある。OT/IT統合には「境界分離＋データダイオード等」による段階的連携が原則。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「OT環境の特性＝高可用性優先・長寿命・パッチ困難」「OT/IT統合リスク＝サイバー攻撃の物理被害波及」が問われる。OT環境へのサイバー攻撃事例（ウクライナ停電・米国水処理施設攻撃）が試験文脈で使われることがある。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：IT系のセキュリティ原則（CIA：機密性・完全性・可用性）に対し、OT系では「可用性＞機密性」が優先される。セキュリティ対策の優先度が逆転することに注意。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**OT（制御・可用性優先）／IT（情報・機密性優先）**。**境界分離・DMZ・データダイオード**で安全連携。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>工場IoT（IIoT）とOT/ITセキュリティはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

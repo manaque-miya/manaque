@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CSP（コンテンツセキュリティポリシー）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="CSP（コンテンツセキュリティポリシー）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="CSP（コンテンツセキュリティポリシー）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-csp.html">
+<meta property="og:title" content="CSP（コンテンツセキュリティポリシー）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="CSP（コンテンツセキュリティポリシー）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-csp.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-csp.html">
-  <meta property="og:title" content="CSP（コンテンツセキュリティポリシー）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="CSP（コンテンツセキュリティポリシー）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-csp.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">CSP（コンテンツセキュリティポリシー）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">CSP（コンテンツセキュリティポリシー）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>CSP（コンテンツセキュリティポリシー）とは何か</h2>
-<p>CSPの問題で差がつくのは、<strong>「何を目的としたどのような仕組みか」</strong>という本質の把握だ。XSS攻撃の緩和策として、許可するリソースの読み込み元をWebサーバが宣言する仕組みと理解しておく。</p>
-<h3>CSPの基本概念</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">要素</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">目的</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><strong>XSS攻撃の緩和</strong>（インラインスクリプト実行・外部悪意リソース読み込みを防止）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">仕組み</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTPレスポンスヘッダーに許可ポリシーを記述</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ヘッダー名</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>Content-Security-Policy</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代替手段</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code><meta></code>タグでHTML内に記述も可能</td></tr></table></div><h3>主要なCSPディレクティブ</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ディレクティブ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">制御対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>default-src</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全リソースのデフォルト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>'self'</code>（同一オリジンのみ）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>script-src</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">JavaScriptの読み込み元</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>'self' https://cdn.example.com</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>style-src</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSSの読み込み元</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>'self' 'unsafe-inline'</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>img-src</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画像の読み込み元</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>'self' data:</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>connect-src</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XHR/fetchの接続先</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>'self' https://api.example.com</code></td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>frame-src</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">iframeの読み込み元</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>'none'</code>（全て禁止）</td></tr></table></div><h3>XSSとCSPの関係</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">攻撃シナリオ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">CSPなし</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">CSPあり</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インラインスクリプト挿入</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行される</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>script-src 'unsafe-inline'</code>なければブロック</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">外部悪意スクリプト読み込み</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み込まれる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">許可リスト外のドメインをブロック</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">data: URI経由の攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行される</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>img-src data:</code>を許可しなければブロック</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: CSPは「<strong>XSSを根本的に防ぐものではなく、被害を限定化する多層防御の一層</strong>」だ。<code>script-src 'none'</code>とすればJavaScriptを一切読み込まなくなり、最も安全だが機能も制限される。現実的には<code>'self'</code>と信頼できるCDNドメインのみを許可する設定が一般的だ。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：CSPを設定すればXSS攻撃を完全に防ぐことができる</p></div>
-<div class="hl"><p>- <strong>正</strong>：CSPはXSS攻撃の<strong>影響を緩和</strong>する補助的対策だ。根本的な対策は<strong>出力時のエスケープ処理</strong>（入力値をHTMLとして解釈させない）</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">CSP（コンテンツセキュリティポリシー）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">CSP（コンテンツセキュリティポリシー）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. CSP＝XSS緩和のためのHTTPヘッダー</p>
-<p>2. 許可するリソース読み込み元をサーバが宣言する仕組み</p>
-<p>3. <code>'self'</code>＝同一オリジンのみ許可（最も基本的な設定）</p>
-<p>4. CORSはクロスオリジンリクエストの制御、CSPはリソース読み込みの制限（別の概念）</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>Webセキュリティ担当の自分。「XSS対策に自社ドメイン以外のJS実行を一切させない」設定をHTTPヘッダーで。CORS？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み込むリソースの許可リスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XSS緩和策</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CORS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クロスオリジンAPIリクエストの制御</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">API連携の許可制御</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XSS対策</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">出力エスケープ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">根本的なXSS防止</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HSTS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTTPS強制ヘッダー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">通信経路の安全確保</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：CSP（コンテンツセキュリティポリシー）の重要ポイント</h2>
-<p>「WebアプリにCSPを設定する主な目的はどれか」→「XSSによる悪意あるスクリプトの実行を緩和するため」。「SQLインジェクション防止」「DDoS防御」「セッション管理の強化」は誤答。XSS緩和という目的とHTTPヘッダーによる実装がセットで正解になる。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>Content-Security-Policy（CSP）ヘッダーで許可スクリプトの出所を制限する</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>CORS設定で他ドメインからのリクエストを拒否する</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ CORSはAPIリクエスト制御。「スクリプト実行元制限」がCSP</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：Content-Security-Policy（CSP）ヘッダーで許可スクリプトの出所を制限する</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 CSP（コンテンツセキュリティポリシー）とは何か</h2>
+<span class="kw">ブラウザのスクリプト実行元ホワイトリスト</span>
+<p>CSP（Content Security Policy）は、ブラウザに対して「どのオリジンのスクリプト・スタイルシート・画像を読み込んでよいか」を指示するHTTPヘッダー。XSSの被害を限定的にする多層防御の一つ。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「CSP＝XSS緩和策」「CORS＝API間通信の許可制御」の区別が頻出。両方ともHTTPヘッダーで設定するため混同しやすい。
+
+**覚え方** 🎯 **CSP（XSS対策・スクリプト元制限）／CORS（API許可制御）**。両方ヘッダ設定だが目的別。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**CSP（XSS対策・スクリプト元制限）／CORS（API許可制御）**。両方ヘッダ設定だが目的別。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>CSP（コンテンツセキュリティポリシー）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SLAのKPI設定方法とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="SLAのKPI設定方法の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="SLAのKPI設定方法の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-sla-kpi.html">
+<meta property="og:title" content="SLAのKPI設定方法とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="SLAのKPI設定方法の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-sla-kpi.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-sla-kpi.html">
-  <meta property="og:title" content="SLAのKPI設定方法とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="SLAのKPI設定方法の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-sla-kpi.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜マネジメント</div>
-    <h1 class="at">SLAのKPI設定方法とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">SLAのKPI設定方法</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>SLAのKPI設定方法とは何か</h2>
-<p>SLA（Service Level Agreement・サービスレベル合意）はITサービスの品質・可用性・応答時間などについてプロバイダーとユーザーが合意した文書だ。SLAを運用するには合意した水準を定量的に測定するKPI（Key Performance Indicator）を設定することが不可欠であり、測定不能なSLAは意味をなさない。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: SLAは「合意書」であり、KPIは「合意した内容を数字で測る物差し」だ。物差しがなければ守られているかどうか判断できない。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">SLAのKPI設定方法とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">SLAのKPI設定方法</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>SLAの主なKPI設定例</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">KPI項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">測定内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目標値の例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">可用性（Availability）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システムが稼働している時間の割合</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">99.9%（月間ダウン44分以内）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">平均応答時間（MTTF/MTTR）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">障害から復旧までの平均時間</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MTTR 4時間以内</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インシデント解決率</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SLAで合意した時間内に解決した割合</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">95%以上</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">初回解決率（FCR）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1回の問い合わせで解決した割合</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">75%以上</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更成功率</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">計画通りに実施された変更の割合</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">98%以上</td></tr></table></div><p>SLAの上位概念にSLM（Service Level Management）があり、SLAの策定・モニタリング・改善サイクル全体を管理する。SLO（Service Level Objective）はSLA達成のための内部目標値であり、SLAより厳しく設定することでSLA違反を予防する設計になっている（例：SLA可用性99.9%に対しSLO99.95%を内部目標とする）。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 可用性99.9%の月間ダウン許容時間を誤って計算する誤りがある。30日×24時間×60分×0.001≒43.8分（約44分）であり、「99.9%＝ほぼダウン無し」という感覚で覚えると実運用の感覚と一致する。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>IT部長の自分。「ユーザー部門と『可用性99.9%保証』の合意書類＋測定指標」を整備。SLO・OKR？それともSLA・KPI？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 可用性99.9%＝月間約44分のダウン許容</li>
-<li style="padding:4px 0;font-size:14px;">✅ SLO（内部目標）はSLA（合意値）より厳しく設定する</li>
-<li style="padding:4px 0;font-size:14px;">✅ SLM（Service Level Management）がSLAの策定・管理・改善サイクルを担う</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>SLA（Service Level Agreement）・KPI（Key Performance Indicator）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>SLO（Service Level Objective）・OKR</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ SLOは内部目標・OKRは組織目標管理。「外部合意書+測定指標」がSLA+KPI</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SLA</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サービス品質の合意書（外部向け）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">合意・ユーザーとの契約がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SLO</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部達成目標値（SLAより厳しい）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部目標・バッファ設計がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">KPI</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">目標達成度の定量測定指標</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">数値・測定・モニタリングがキーワード</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：SLAのKPI設定方法の重要ポイント</h2>
-<p>SLAのKPI設定の問題で差がつくのは「可用性の数値計算」と「SLA・SLO・KPIの関係性の整理」だ。</p>
-<p>試験では「可用性99.9%のシステムで月間許容できるダウンタイムはどれか」という計算問題が頻出だ。正解は「約43.8分（約44分）」で、計算式は「30日×24時間×60分×(1-0.999)」だ。SLOとSLAの関係では「SLOはSLAを達成するための内部目標であり、SLAより厳しく設定する」という原則を押さえる。また「SLMの目的はどれか」という問いでは「サービスレベルの合意・モニタリング・改善のサイクル管理」が正解だ。</p>
-<p>覚え方は「SLA＝外との約束（Agreement）」「SLO＝内の目標（Objective）」「KPI＝数字で測る（Key）指標」。混同注意は「SLAとOLA（運用レベル合意）」で、OLAはIT部門内部の合意でありユーザーとの合意ではない。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-service-catalog].html" style="color:#1F56C6;">[itp-service-catalog]</a>, <a href="[itp-itscm].html" style="color:#1F56C6;">[itp-itscm]</a>, <a href="[itp-itil].html" style="color:#1F56C6;">[itp-itil]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：SLA（Service Level Agreement）・KPI（Key Performance Indicator）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 SLAのKPI設定方法とは何か</h2>
+<span class="kw">SLA=外部との合意、KPI=SLA達成を測定する数値指標</span>
+<p>SLA（サービスレベル合意）：ITサービス提供者と利用者の間で締結する、サービスの品質・範囲・責任について合意した文書。可用性（稼働率）・応答時間・インシデント解決時間等を数値で定義。KPIはSLAの達成状況を測定するための指標。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>SLA・SLO・OLAの違い：SLA＝外部のユーザーとの合意。SLO（Service Level Objective）＝SLA達成のための内部目標（SLAより厳しい値を設定）。OLA（Operational Level Agreement）＝IT部門内部の部門間合意。
+
+**覚え方** 🎯 **SLA（外部約束）／SLO（内部目標・厳しめ）／OLA（部門間合意）**＋**KPIで測定**。3階層構造。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**SLA（外部約束）／SLO（内部目標・厳しめ）／OLA（部門間合意）**＋**KPIで測定**。3階層構造。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>SLAのKPI設定方法はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

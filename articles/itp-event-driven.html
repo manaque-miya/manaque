@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>イベント駆動アーキテクチャとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="イベント駆動アーキテクチャの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="イベント駆動アーキテクチャの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-event-driven.html">
+<meta property="og:title" content="イベント駆動アーキテクチャとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="イベント駆動アーキテクチャの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-event-driven.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-event-driven.html">
-  <meta property="og:title" content="イベント駆動アーキテクチャとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="イベント駆動アーキテクチャの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-event-driven.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">イベント駆動アーキテクチャとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">イベント駆動アーキテクチャ</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>イベント駆動アーキテクチャとは何か</h2>
-<p>イベント駆動アーキテクチャ（EDA：Event-Driven Architecture）とは、「イベント（状態変化）」の発生と処理を中心に設計されたシステムアーキテクチャだ。イベントを発行するプロデューサーと処理するコンシューマーが疎結合に連携し、新たなコンシューマーを追加しても既存システムへの影響を最小化できる。リアルタイム処理・マイクロサービス間連携に広く使われる。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: イベント駆動は「何かが起きたこと（注文確定・センサー値変化）を通知して、関心のあるサービスが各自で反応する」仕組みであり、呼び出し側が受信側を知らなくてよい点が特徴だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">イベント駆動アーキテクチャとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">イベント駆動アーキテクチャ</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>イベント駆動の主要パターン</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">パターン</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">構成</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Pub/Sub（出版・購読）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロデューサー→トピック→サブスクライバー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">複数のコンシューマーが同じイベントを受信</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">イベントストリーミング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">連続するイベントをリアルタイムで処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Apache Kafka・時系列処理</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">イベントソーシング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">状態変化をイベントとして全て記録</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全履歴から現在状態を再現できる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CQRS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み取りと書き込みモデルを分離</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大規模システムのパフォーマンス最適化</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: イベント駆動はメッセージキューと似ているが、メッセージキューは「1対1の非同期処理」、Pub/SubのEDAは「1対多の疎結合なイベント配信」という違いがある。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>設計担当の自分。「『商品購入』イベント発生で在庫・配送・通知が自律的に処理開始」するアーキテクチャ。バッチ？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ EDA＝イベントの発生をトリガーに処理が起動するアーキテクチャ</li>
-<li style="padding:4px 0;font-size:14px;">✅ プロデューサー（イベント発行）とコンシューマー（イベント処理）が疎結合</li>
-<li style="padding:4px 0;font-size:14px;">✅ Pub/Sub＝1つのイベントを複数のサブスクライバーが受け取るパターン</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>イベント駆動アーキテクチャ（EDA）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>バッチ処理アーキテクチャ</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ バッチは一定時間ごとの一括処理。「イベント即時トリガーで自律反応」がEDA</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">イベント駆動（EDA）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">イベント発生を契機に複数コンシューマーが反応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「イベント通知・Pub/Sub・疎結合」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メッセージキュー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1対1の非同期処理・バッファリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「処理の待ち行列・非同期・1:1」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ポーリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">定期的に能動的に状態を確認する方式</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「一定間隔で問い合わせる」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：イベント駆動アーキテクチャの重要ポイント</h2>
-<p>イベント駆動の問題で問われるのは「疎結合による拡張性」と「Pub/Subパターンの仕組み」だ。「新しいサービスを追加しても既存サービスを変更せずにイベントを受信できる設計はどれか」→Pub/Sub（イベント駆動）が正答。新しいサブスクライバーを追加するだけでよく、プロデューサーを変更しなくてよい点が拡張性の源泉だ。</p>
-<p>リアルタイム処理との関係も覚えること。IoTセンサーからのデータ・ユーザー行動ログ・金融取引データ等を即時に処理するリアルタイムシステムでは、EDAが基本設計として使われる。「大量のセンサーデータを発生する都度即時処理するアーキテクチャはどれか」→イベント駆動アーキテクチャが正答だ。</p>
-<p>サーバーレスアーキテクチャとの親和性も覚えること。AWS LambdaやAzure Functionsのようなサーバーレス関数は「イベント発生をトリガーに実行される」ため、EDAと非常に相性がよい。「特定のイベント（ファイルアップロード・DBへの書き込み）を契機として自動実行される関数実行基盤はどれか」→FaaS（サーバーレス）が正答だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-message-queue].html" style="color:#1F56C6;">[itp-message-queue]</a>, <a href="[itp-microservices].html" style="color:#1F56C6;">[itp-microservices]</a>, <a href="[itp-api-gateway].html" style="color:#1F56C6;">[itp-api-gateway]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：イベント駆動アーキテクチャ（EDA）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 イベント駆動アーキテクチャとは何か</h2>
+<span class="kw">イベント発生→各サービス自律反応・疎結合</span>
+<p>イベント駆動アーキテクチャ（EDA：Event-Driven Architecture）は「イベント（状態変化の通知）」を中心に各コンポーネントが疎結合で連携するアーキテクチャ。イベントプロデューサーがイベントを発行し、イベントブローカー（Kafka等）を経由して複数のコンシューマーが独立して処理する。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>EDAのメリット：サービス間の疎結合（新しいコンシューマーを追加しても他に影響なし）・スケーラビリティ・リアルタイム性。デメリット：イベントの順序保証・重複処理の防止・デバッグの複雑さ。マイクロサービスと組み合わせて使われることが多い。
+
+**覚え方** 🎯 EDA＝**Event-Driven Architecture＝事件発生で各人が動く**。**Kafkaがブローカー**。マイクロサービスと相性◎。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>EDA＝**Event-Driven Architecture＝事件発生で各人が動く**。**Kafkaがブローカー**。マイクロサービスと相性◎。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>イベント駆動アーキテクチャはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

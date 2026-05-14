@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ソフトウェアアーキテクチャパターンとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ソフトウェアアーキテクチャパターンの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ソフトウェアアーキテクチャパターンの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-sw-arch-pattern.html">
+<meta property="og:title" content="ソフトウェアアーキテクチャパターンとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="ソフトウェアアーキテクチャパターンの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-sw-arch-pattern.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,45 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-sw-arch-pattern.html">
-  <meta property="og:title" content="ソフトウェアアーキテクチャパターンとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="ソフトウェアアーキテクチャパターンの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-sw-arch-pattern.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">ソフトウェアアーキテクチャパターンとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">ソフトウェアアーキテクチャパターン</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>ソフトウェアアーキテクチャパターンとは何か</h2>
-<p>ソフトウェアアーキテクチャパターンを答えるポイントは、<strong>各パターンの構成要素と代表的な適用例</strong>をセットで覚えることだ。試験では「このシステムに最適なアーキテクチャはどれか」という適用判断を問われる。</p>
-<h3>主要アーキテクチャパターン比較</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">パターン名</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">構造</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">代表例</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レイヤードアーキテクチャ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プレゼンテーション→ビジネス→データ層</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">業務システム全般</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">層ごとに役割分離、変更容易</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MVC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Model・View・Controller</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WebフレームワークDjango/Rails</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">UIと業務ロジック分離</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">マイクロサービス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">独立したサービス群をAPIで連携</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Netflix, Amazon</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スケール・デプロイ独立性</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">イベント駆動</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">イベント発生→ブローカー→ハンドラ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IoT, リアルタイム処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非同期・疎結合</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パイプ＆フィルタ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">処理をパイプでつないだフィルタ連鎖</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ETLパイプライン, Unix</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ変換に適す</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CQRS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">参照（Query）と更新（Command）を分離</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高トラフィックECサイト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み書き最適化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ヘキサゴナル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ポートとアダプタでコアを外部から隔離</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DDD（ドメイン駆動設計）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テスト容易性</td></tr></table></div><h3>Webシステムの典型構成</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">構成要素</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">役割</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">技術例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プレゼンテーション層</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザーインタフェース</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">HTML/CSS, React</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アプリケーション層</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ビジネスロジック処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Java, Python</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データアクセス層</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DBへのアクセス制御</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ORM, JDBC</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ層</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ永続化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RDB, NoSQL</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: <strong>MVCパターン</strong>はITパスポートで最も問われやすいパターンだ。ModelはデータとビジネスロジックをViewはUI表示を、ControllerはModelとViewを仲介する。<strong>ViewはModelを直接変更しない</strong>という依存方向が重要なポイントになる。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：MVCのViewはModelとControllerの両方を自由に操作する</p></div>
-<div class="hl"><p>- <strong>正</strong>：ViewはModelの状態を表示するだけ。ユーザ操作はControllerが受け取りModelを更新し、ModelがViewに通知する流れ</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ソフトウェアアーキテクチャパターンとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ソフトウェアアーキテクチャパターン</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. MVC＝Model（データ）・View（画面）・Controller（制御）</p>
-<p>2. レイヤードアーキテクチャは「上位層から下位層への依存」が原則</p>
-<p>3. マイクロサービスは「独立デプロイ」「APIで連携」が特徴</p>
-<p>4. イベント駆動はIoTや非同期処理の文脈で登場</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>Webアプリ設計者の自分。「UI表示・ビジネスロジック・データアクセスを独立コンポーネント分離」する代表パターン。マイクロサービス？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MVC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Model/View/Controller分離</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Web/GUIアプリの定番</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MVP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Model/View/Presenter分離</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PresenterがViewを知る</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MVVM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Model/View/ViewModel</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データバインディング</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レイヤード</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">水平方向の層分け</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">業務システム定番</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：ソフトウェアアーキテクチャパターンの重要ポイント</h2>
-<p>「MVCアーキテクチャにおいてControllerの役割として適切なものはどれか」が頻出。正解は「ユーザの入力を受け取り、Modelを操作してViewを更新する仲介役」。ViewがModelを直接更新するという誤答に引っかからないこと。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>MVCパターン（Model-View-Controller）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>マイクロサービスアーキテクチャ</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ マイクロサービスはビジネス機能単位分割。「単一アプリ内の役割分担」がMVC</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：MVCパターン（Model-View-Controller）</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 ソフトウェアアーキテクチャパターンとは何か</h2>
+<span class="kw">MVC=表示/ロジック/データを分離、レイヤード=責務を階層化</span>
+<p>主なソフトウェアアーキテクチャパターン：MVC（Model-View-Controller）＝表示・制御・データを分離。UI変更がビジネスロジックに影響しない。MVVM（Model-View-ViewModel）＝WPF・Angularで使われるMVCの変形。レイヤードアーキテクチャ＝プレゼンテーション層・ビジネスロジック層・データアクセス層の階層分離。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>クリーンアーキテクチャ・ヘキサゴナルアーキテクチャ：ビジネスロジックを外側の技術（DB・UI・フレームワーク）から完全に独立させる設計思想。「技術の詳細はビジネスロジックに依存してはいけない」という原則を徹底する。DDDと組み合わせて使われることが多い。
+
+**覚え方** 🎯 **MVC＝Model（DB）/View（画面）/Controller（制御）の役割分担**。**MVVM・レイヤード・クリーン**等の派生多数。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**MVC＝Model（DB）/View（画面）/Controller（制御）の役割分担**。**MVVM・レイヤード・クリーン**等の派生多数。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ソフトウェアアーキテクチャパターンはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

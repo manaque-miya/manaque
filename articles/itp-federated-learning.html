@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>フェデレーテッドラーニング（連合学習）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="フェデレーテッドラーニング（連合学習）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="フェデレーテッドラーニング（連合学習）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-federated-learning.html">
+<meta property="og:title" content="フェデレーテッドラーニング（連合学習）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="フェデレーテッドラーニング（連合学習）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-federated-learning.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,53 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-federated-learning.html">
-  <meta property="og:title" content="フェデレーテッドラーニング（連合学習）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="フェデレーテッドラーニング（連合学習）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-federated-learning.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">フェデレーテッドラーニング（連合学習）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">フェデレーテッドラーニング（連合学習）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><p>フェデレーテッドラーニングで確実に点を取るには「生データをサーバに送らずモデルだけを共有する」というプライバシー保護の仕組みと、「医療・金融・スマートフォンでの実用例」を結びつけられるかが核心だ。</p>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">フェデレーテッドラーニング（連合学習）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">フェデレーテッドラーニング（連合学習）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>フェデレーテッドラーニング（連合学習）とは何か</h2>
-<p><strong>フェデレーテッドラーニング（Federated Learning：連合学習）</strong>とは、各デバイス・機関に分散したデータを中央サーバに集めることなく、<strong>ローカルでモデルを学習し、パラメータ（勾配）のみをサーバに送って集約</strong>するAI学習手法。Googleが2016年に提唱。プライバシー保護と分散学習の両立が目的。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>:</p></div>
-<ul>
-<li><strong>差分プライバシー</strong>との組み合わせでさらなるプライバシー保護が可能</li>
-<li><strong>非IID（non-IID）問題</strong>：各デバイスのデータ分布が不均一→精度低下の主要課題</li>
-<li>Googleの<strong>Flower（フラワー）</strong>・PySyftが代表的なFLフレームワーク</li>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>医療AI担当の自分。「複数病院が患者データ外部送信せず・各院内ローカル学習・モデル更新情報だけ共有して共同改善」したい。集中学習？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>フェデレーテッドラーニング（連合学習）— 生データではなくモデルの更新（勾配）のみをサーバーに集約</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>集中学習— 全施設の患者データをサーバーに送り一括学習</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 医療データ持出し規制違反。「データ集めず更新だけ」が連合学習</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>通常の集中学習とフェデレーテッドラーニングの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">集中学習</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">フェデレーテッドラーニング</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データの場所</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中央サーバに集約</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">各デバイス・機関に分散</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">通信内容</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データそのもの</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モデルパラメータ（勾配）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プライバシーリスク</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高（生データ流出リスク）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低（生データは送らない）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">通信コスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高（データ量に依存）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低〜中（パラメータのみ）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">学習精度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高（全データを一括処理）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">やや低下する場合あり</td></tr></table></div></div>
-<div class="card"><h2>主な活用事例</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">分野</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用途</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スマートフォン</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Googleキーボードの次単語予測（Gboard）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">医療</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">複数病院の電子カルテを使った疾患予測（データ共有不要）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">金融</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">複数金融機関での詐欺検出モデル協調学習</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">自動車</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">各車両の走行データを使った自動運転改善</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<ul>
-<li>「フェデレーテッドラーニング＝完全にプライバシー安全」→ × 勾配から元データが復元できる攻撃（グラジェントインバージョン）のリスクがある</li>
-<li>「データを集めないので精度が落ちる」→ × 適切な設計で集中学習と同等の精度を達成できる場合もある</li>
-<li>「連合学習＝分散コンピューティング（Hadoop等）と同じ」→ × 目的が異なる（FLはプライバシー保護のための学習分散）</li>
-</ul>
+<p style="margin-top:12px;"><strong>✅ 正解：フェデレーテッドラーニング（連合学習）— 生データではなくモデルの更新（勾配）のみをサーバーに集約</strong></p>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>「フェデレーテッドラーニング＝生データを送らずパラメータを集約してプライバシーを保護」「医療・金融でのデータ連携に活用」「Googleが提唱・Gboardが実用例」の3点。</p>
+
+<div class="card">
+<h2>📘 フェデレーテッドラーニング（連合学習）とは何か</h2>
+<span class="kw">データを集めずモデル更新値だけを集約する分散学習</span>
+<p>フェデレーテッドラーニングは各デバイス・施設でローカルにモデルを学習→モデルの重みの更新量（勾配）のみを中央サーバーに送信→サーバーが集約して全体モデルを更新→各端末に配信。生データは外に出ない。</p>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">意味</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フェデレーテッドラーニング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">分散データでパラメータのみ集約学習</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">差分プライバシー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ノイズ付加でデータを統計的に保護</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">集中学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全データを中央に集めて学習</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">転移学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">事前学習モデルを別タスクに転用</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：フェデレーテッドラーニング（連合学習）の重要ポイント</h2>
-<p>「生データを送らずモデル更新（勾配）だけを集約する＝フェデレーテッドラーニング」「医療・金融・スマートフォンでの応用」「差分プライバシーとの組み合わせでさらなる保護」を一本の流れで記憶。</p>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「連合学習＝プライバシー保護×協調学習の両立」として問われる。スマートフォンでのキーボード予測改善（Google）が身近な事例。差分プライバシーと組み合わせることでさらに強いプライバシー保護が実現できる。</p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：集中学習＝データを一か所に集める（プライバシーリスク大）。連合学習＝データを集めずモデルを改善（プライバシー保護）。「分散学習」という似た語があるが、並列計算目的の分散学習とは目的が異なる。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>連合学習＝**データ集めずモデル更新だけ共有**。**プライバシー保護×協調学習**の両立。医療・スマホで活用。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>フェデレーテッドラーニング（連合学習）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

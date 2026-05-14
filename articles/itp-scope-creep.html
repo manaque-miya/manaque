@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>スコープクリープとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="スコープクリープの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="スコープクリープの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-scope-creep.html">
+<meta property="og:title" content="スコープクリープとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="スコープクリープの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-scope-creep.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-scope-creep.html">
-  <meta property="og:title" content="スコープクリープとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="スコープクリープの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-scope-creep.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜マネジメント</div>
-    <h1 class="at">スコープクリープとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">スコープクリープ</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>スコープクリープとは何か</h2>
-<p>スコープクリープとは、プロジェクトにおいて当初合意したスコープ（作業範囲）が、正式な変更管理プロセスを経ずに少しずつ拡大していく現象だ。「小さな追加要望」が積み重なることで、工数・コスト・期間が計画を大幅に超過し、プロジェクト失敗の主要因となる。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: スコープクリープは「少しくらいいいか」という小さな合意の積み重ねで気づかぬうちにプロジェクトが膨らむ現象であり、予防には変更管理プロセスの徹底が必須だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">スコープクリープとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">スコープクリープ</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>スコープクリープの原因・影響・対策</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">観点</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での問われ方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主な原因</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">要件定義の曖昧さ・ステークホルダーの追加要望・口頭での変更合意</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「スコープクリープが起きる原因」として問われる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">影響</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">工数・コスト超過・品質低下・納期遅延・チームの疲弊</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「スコープクリープの結果として起こること」で問われる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対策①変更管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更要求を正式なプロセス（CCB等）で審査・承認する仕組みを作る</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「変更管理プロセス」との連携で問われる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対策②WBS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業範囲をWBSで詳細に定義し「スコープ外」を明確化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WBSの役割との関係で問われる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対策③スコープ文書</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プロジェクト憲章・スコープ記述書に成果物と除外事項を明記</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「スコープ定義の文書」として問われる</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: スコープクリープは「顧客の追加要望が全て問題」なのではなく、「正式な変更管理プロセスを経ずに追加される」ことが問題だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>PMの自分。「『ついでにこれも追加して』が積み重なってスケジュール・コスト崩壊！」。承認なしの膨張現象、これって？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ スコープクリープ＝変更管理なしにスコープが拡大する現象</li>
-<li style="padding:4px 0;font-size:14px;">✅ 対策は「変更管理プロセスの整備」と「WBSによるスコープ明確化」</li>
-<li style="padding:4px 0;font-size:14px;">✅ プロジェクト失敗の典型的な原因として出題される</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>スコープクリープ</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>リスク顕在化</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ リスク顕在化は事前識別リスクの発生。「承認なし追加要求の膨張」がスコープクリープ</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スコープクリープ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">管理なしに作業範囲が拡大</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「気づかぬうちに作業が増える」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正式手順でスコープ変更を審査・承認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「変更要求を審査するプロセス」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スコープ定義</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">初期にプロジェクトの範囲を確定する作業</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「何をするか・しないかを決める」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：スコープクリープの重要ポイント</h2>
-<p>スコープクリープの問題で問われるのは「定義」と「対策」の2点だ。「プロジェクトの途中で作業範囲が当初計画より拡大する現象はどれか」→スコープクリープが正答。「スコープクリープの防止策として適切なものはどれか」→変更管理プロセスの整備・WBSによるスコープ明確化が正答候補だ。</p>
-<p>WBSとの関連を整理することが重要だ。WBS（Work Breakdown Structure）はプロジェクトの作業を階層的に分解した構造で、各要素の成果物を明確にすることで「スコープ内外の境界」を可視化する。スコープクリープの予防ツールとしてWBSが正答になる問題がある。</p>
-<p>アジャイル開発との対比も出る。ウォーターフォール型ではスコープ固定が前提でスコープクリープが問題になるが、アジャイルではスコープは反復的に変化するものとして受け入れる。試験では「どの開発手法でスコープクリープが問題になりやすいか」という設問でウォーターフォールが正答になる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-wbs].html" style="color:#1F56C6;">[itp-wbs]</a>, <a href="[itp-change-management].html" style="color:#1F56C6;">[itp-change-management]</a>, <a href="[itp-project-management].html" style="color:#1F56C6;">[itp-project-management]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：スコープクリープ</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 スコープクリープとは何か</h2>
+<span class="kw">承認なく要件が際限なく膨らむ現象</span>
+<p>スコープクリープの原因：ステークホルダーとの要件定義の不徹底・変更管理プロセスの未整備・「小さい変更だから」という軽視の積み重ね。対策：WBSで作業範囲を明確化・変更管理プロセス（変更依頼→影響分析→承認→計画更新）の徹底。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>変更管理計画（チェンジコントロール）：スコープ変更はすべて変更依頼書（CR）を提出→CCB（変更諮問委員会）で審査→承認された場合のみ計画に反映するプロセス。小さな変更でも必ず記録・承認を経ることがスコープクリープ防止の鍵。
+
+**覚え方** 🎯 スコープクリープ＝**Creep（じわじわ忍び寄る）**＝**承認なし要件膨張**。**「ついでに」が口癖の人が病原菌**。CCBで防御。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>スコープクリープ＝**Creep（じわじわ忍び寄る）**＝**承認なし要件膨張**。**「ついでに」が口癖の人が病原菌**。CCBで防御。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>スコープクリープはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

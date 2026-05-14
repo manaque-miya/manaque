@@ -3,10 +3,10 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>データレイクとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="データレイクの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="データレイクの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
 <link rel="canonical" href="https://manaque.net/articles/itp-data-lake.html">
 <meta property="og:title" content="データレイクとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="データレイクの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:description" content="データレイクの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
 <meta property="og:url" content="https://manaque.net/articles/itp-data-lake.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="まなクエ！">
@@ -29,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -41,50 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F5F8FF;}
 </style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="al">ITパスポート｜テクノロジ</div>
-<h1 class="at">データレイクとは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">データレイクとは？自分ごと体験で覚えるITパスポート対策</h1>
 <div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">データレイク</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-</div>
-<div class="card"><h2>データレイクとは何か</h2>
-<p>「ITパスポート 独学」でデータ活用・AI活用の基盤知識として必須なのがデータレイクだ。データレイクとは、構造化データ（RDBのテーブル）・半構造化データ（JSONやCSV）・非構造化データ（画像・動画・音声・ログファイル）を問わず、あらゆる生データをそのままの形で大量に蓄積できる大規模ストレージ基盤のことだ。</p>
-<p>「湖（Lake）」という名称の通り、あらゆるデータが「未加工・未整形のまま流れ込む」イメージが本質だ。AI機械学習の学習データや、後からどんな分析をするか決まっていないデータの保管先として2020年代の標準となっている。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: データレイクはSchema-on-Read（取り出すときに構造を定義する）という設計思想を持つ。データウェアハウス（DWH）がSchema-on-Write（入れるときに整形する）なのと正反対だ。</p></div>
-</div>
-<div class="card"><h2>仕組み・種類</h2>
-<p>データレイクのデータフローは「収集→貯蔵→活用」の3段階だ。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>段階</th><th>内容</th></tr><tr><td>収集</td><td>センサーデータ・ログ・SNS・業務DBなどあらゆるソースから取り込む</td></tr><tr><td>貯蔵</td><td>生データのまま大容量ストレージ（S3・Azure Data Lakeなど）に格納</td></tr><tr><td>活用</td><td>AIモデル学習・Spark等でのバッチ分析・リアルタイム分析に提供</td></tr></table></div>
-<p>データウェアハウスとの進化関係も整理しておく。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>概念</th><th>データ形態</th><th>設計思想</th><th>用途</th></tr><tr><td>データレイク</td><td>生データ（未整形・多様）</td><td>Schema-on-Read</td><td>AI学習・探索的分析</td></tr><tr><td>データウェアハウス（DWH）</td><td>整形・構造化済み</td><td>Schema-on-Write</td><td>BI・定型レポート</td></tr><tr><td>データレイクハウス</td><td>両方の特性を統合</td><td>両方対応</td><td>柔軟な活用</td></tr></table></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「データレイク＝データウェアハウス」とする誤答が定番。DWHはBI・定型レポート向けに<strong>整形済み</strong>データを保持するが、データレイクは<strong>未加工・多様なデータをそのまま貯める</strong>点が本質的に異なる。</p></div>
-</div>
-<div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ データレイク＝生データ（構造化・非構造化問わず）を未加工で大量蓄積</li>
-<li style="padding:4px 0;font-size:14px;">✅ Schema-on-Read（取り出し時に構造化）がデータレイクの設計思想</li>
-<li style="padding:4px 0;font-size:14px;">✅ DWHとの違い：DWHは整形済み・分析用、データレイクは未加工・多様</li>
-<li style="padding:4px 0;font-size:14px;">✅ AI機械学習の学習データ保管先として最適</li>
-</ul>
-</div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>データ状態</th><th>主な用途</th></tr><tr><td>データレイク</td><td>未加工・多様（構造化・非構造化）</td><td>AI学習・探索的分析</td></tr><tr><td>データウェアハウス</td><td>整形・構造化済み</td><td>BI・定型レポート</td></tr><tr><td>データマート</td><td>部門特化の小型DWH</td><td>部門別分析</td></tr><tr><td>データベース（RDB）</td><td>構造化・正規化済み</td><td>業務アプリの読み書き</td></tr></table></div>
-</div>
-<div class="card"><h2>🎯 試験対策：データレイクの重要ポイント</h2>
-<p>「ITパスポート 過去問」でデータレイクはDXやビッグデータ活用の文脈で出題が増えている。「構造化・非構造化問わず生データを蓄積する仕組み」がデータレイクで、「整形済みデータを分析向けに保持する」がDWHという対比が最頻出の出題パターンだ。</p>
-<p>「ITパスポート 過去問・独学・勉強方法・何時間」でデータレイクを学ぶ際は「湖（Lake）＝何でも流れ込む未加工の水＝生データ、浄水場のタンク（DWH）＝飲める水＝整形済みデータ」というたとえで記憶すると混同しにくい。データ活用系の語彙としてDWH・データマート・ETLとセットで整理するのが効率的だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-data-warehouse.html">itp-data-warehouse</a>, <a href="itp-data-mart.html">itp-data-mart</a>, <a href="itp-etl.html">itp-etl</a>, <a href="itp-big-data.html">itp-big-data</a></p>
+<div class="tags"><span class="tag">データレイク</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>データサイエンティスト見習いの自分。社内の構造化データ（DB）・半構造化（JSON）・非構造化（画像・動画・ログ）を「整形せずに一旦全部貯めて」と言われた。後から分析用に取り出す貯蔵庫って何？？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>データレイク</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>データウェアハウス（DWH）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ DWHは整形・加工済みの構造化データ保管所。生データを未加工で貯めるのがデータレイク</div></li>
+
+</ul>
+</div>
+<p style="margin-top:12px;"><strong>✅ 正解：データレイク</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 データレイクとは何か</h2>
+<span class="kw">生データ何でも貯める湖</span>
+<p>構造化・半構造化・非構造化を問わずあらゆる生データをそのまま貯蔵する大規模ストレージ。AI学習・後続分析の素材庫として2020年代の標準。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>「Schema-on-Read（取出時に構造化）」がデータレイクの特徴。対するDWHは「Schema-on-Write（投入時に整形）」。両者の中間が「データレイクハウス」。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>DWHはBIや定型レポート用に整形済みデータを保持。データレイクは「未加工で多様」。「未整形・大量・多様」ならレイク、「整形済み・分析用」ならDWH。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>データレイク＝**何でも貯める湖（生水）／DWH＝浄水場のタンク（飲める水）**。湖から汲んで使う前に浄水する。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>データレイクはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

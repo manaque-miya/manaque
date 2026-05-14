@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>データバックアップ（フル/差分/増分）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="データバックアップ（フル/差分/増分）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="データバックアップ（フル/差分/増分）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-backup-types.html">
+<meta property="og:title" content="データバックアップ（フル/差分/増分）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="データバックアップ（フル/差分/増分）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-backup-types.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-backup-types.html">
-  <meta property="og:title" content="データバックアップ（フル/差分/増分）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="データバックアップ（フル/差分/増分）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-backup-types.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">データバックアップ（フル/差分/増分）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">データバックアップ（フル/差分/増分）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>データバックアップ（フル/差分/増分）とは何か</h2>
-<p>データバックアップとは障害・誤削除・ランサムウェアなどに備えてデータのコピーを保存しておく作業だ。バックアップ方式にはフル（全量）・差分（前回フルからの変更分）・増分（前回バックアップからの変更分）の3種類があり、バックアップ時間・復元時間・ストレージ消費のトレードオフで使い分ける。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 3方式の差は「毎回全部取るか・前回フルからの差だけ取るか・毎回の増分だけ取るか」であり、復元時に必要なデータセット数が異なる点が試験の核心だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">データバックアップ（フル/差分/増分）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">データバックアップ（フル/差分/増分）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>3種類のバックアップ方式比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">方式</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">何をバックアップ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">バックアップ時間</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">復元時間</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ストレージ</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フルバックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全データ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">長い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">短い（単体で完結）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最大</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">差分バックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前回フルからの変更分</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中程度</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中程度（フル+最新差分）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中程度</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">増分バックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前回バックアップからの変更分</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">短い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">長い（フル+全増分）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最小</td></tr></table></div><p>復元手順の違い：フルは「最新フルのみ」、差分は「最新フル＋最新差分の2セット」、増分は「最新フル＋その後の全増分」を組み合わせる必要がある。3-2-1バックアップルールは「バックアップを3か所に保存・2種類の媒体・1か所はオフサイト（クラウドや遠隔地）」という業界ベストプラクティスだ。ランサムウェア対策では「イミュータブルバックアップ（変更不可バックアップ）」が有効で、S3のObject Lockがその代表例だ。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 差分と増分を逆に覚える誤りが最多だ。差分は「前回フルからの変更分（累積増加）」、増分は「前回のどのバックアップからの変更分（毎回最小）」という起点の違いを確認する。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>運用担当の自分。「月曜フル＋火〜木差分」運用。水曜障害→復元に必要なのは？フル+水曜差分の2つ？フル+火+水の3つ？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 差分：前回フルからの変更分・復元は「フル+最新差分（2セット）」</li>
-<li style="padding:4px 0;font-size:14px;">✅ 増分：前回バックアップからの変更分・復元は「フル+全増分（多セット）」</li>
-<li style="padding:4px 0;font-size:14px;">✅ バックアップ速度：増分＞差分＞フル・復元速度：フル＞差分＞増分（逆順）</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>フル（月曜）＋差分（水曜）の2つ</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>フル（月曜）＋差分（火曜）＋差分（水曜）の3つ</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 差分は毎回「フル以降の全変更」。「最新差分のみで復元可」が差分の特徴</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">差分バックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前回フルからの累積変更分</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フルからの差分・2セットで復元がキー</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">増分バックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">前回バックアップからの変更分のみ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">毎回最小・多セット復元がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フルバックアップ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全量・単体で復元可能</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全量・単独復元・時間最長がキーワード</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：データバックアップ（フル/差分/増分）の重要ポイント</h2>
-<p>データバックアップの問題で差がつくのは「復元に必要なデータセット数」を正確に答えられるかどうかだ。</p>
-<p>試験では「差分バックアップと増分バックアップで復元手順が異なる理由はどれか」という問いで「差分は直近フルと最新差分の2つで復元できるが、増分は直近フル以降の全増分が必要になるため」が正解だ。また「ストレージ消費を最小化するバックアップ方式はどれか」では増分バックアップが正解になる。3-2-1バックアップルールはランサムウェア対策の文脈で「オフサイト（クラウド）保存の重要性」として出題される。</p>
-<p>覚え方は「差分＝差分（フルからの累積）・復元2セット」「増分＝増分（前回からの微増）・復元多セット」。混同注意は「差分（Differential）と増分（Incremental）」を英語の語義と組み合わせて覚えると混乱しにくい。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-rpo-rto].html" style="color:#1F56C6;">[itp-rpo-rto]</a>, <a href="[itp-dr-site].html" style="color:#1F56C6;">[itp-dr-site]</a>, <a href="[itp-raid].html" style="color:#1F56C6;">[itp-raid]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：フル（月曜）＋差分（水曜）の2つ</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 データバックアップ（フル/差分/増分）とは何か</h2>
+<span class="kw">フル=全量、差分=前回フル以降の全変更、増分=直前バックアップ以降の変更のみ</span>
+<p>フルバックアップ：全データを毎回バックアップ。復元が最速。保存容量が最大。差分バックアップ：前回フルバックアップ以降に変更されたデータを保存。復元は「フル＋最新差分」の2点だけ。増分バックアップ：直前のバックアップ（フルまたは増分）以降の変更分のみ保存。保存量最小だが復元に「フル＋全増分」が必要。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>復元手順の比較：差分→「フル1つ＋差分1つ」で復元（速い）。増分→「フル1つ＋増分×n」で復元（時間がかかる）。保存量の比較：増分＜差分＜フル。実運用では「週1フル＋日次増分」や「週1フル＋日次差分」を組み合わせることが多い。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>差分＝「前フル以降の全変更を毎回丸ごと保存」→復元は2点だけ。増分＝「直前バックアップからの差分のみ」→復元は全増分が必要。「差分は復元が速い・増分は保存量が少ない」でトレードオフを押さえる。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**フル（全量）／差分（前フル基点・復元2点）／増分（直前基点・復元n点）**。差分は速く・増分は軽い。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>データバックアップ（フル/差分/増分）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

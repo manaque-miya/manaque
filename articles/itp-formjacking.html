@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>フォームジャッキングとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="フォームジャッキングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="フォームジャッキングの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-formjacking.html">
+<meta property="og:title" content="フォームジャッキングとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="フォームジャッキングの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-formjacking.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,45 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-formjacking.html">
-  <meta property="og:title" content="フォームジャッキングとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="フォームジャッキングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-formjacking.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">フォームジャッキングとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">フォームジャッキング</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>フォームジャッキングとは何か</h2>
-<p>フォームジャッキングを答えるポイントは、<strong>「決済フォームにスクリプトを埋め込み、入力されたクレジットカード情報を盗む攻撃」</strong>という定義と、Webスキミングとの関係を理解することだ。</p>
-<h3>フォームジャッキングの仕組み</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ステップ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1. 侵入</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的のECサイトのCMS・プラグインの脆弱性を悪用して侵入</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2. スクリプト埋め込み</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">決済フォームのページに悪意あるJavaScriptを埋め込む</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">3. 情報盗取</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正規ユーザーが入力したクレジットカード番号・個人情報をリアルタイムに攻撃者サーバへ送信</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">4. 正規処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正規の決済処理も並行して行われるためユーザーは気づかない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">5. 情報悪用</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">盗んだカード情報を販売・不正使用</td></tr></table></div><h3>フォームジャッキングと関連攻撃の比較</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">攻撃</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手口</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">被害</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フォームジャッキング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ECサイトの決済フォーム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">悪意あるJSを埋め込む</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">カード情報・個人情報</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィッシング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザーを偽サイトへ誘導</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なりすましメール・偽サイト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">認証情報・カード情報</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スキミング（物理）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ATM・カードリーダー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">物理的なカード読取装置</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">カード磁気情報</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">MiTB攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ブラウザのフォーム</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ブラウザへのマルウェア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">入力値全般</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: フォームジャッキングはユーザーが<strong>正規のサイトを利用しているにも関わらず被害を受ける</strong>点が深刻だ。URLも証明書も本物であるため、ユーザー側での検知は極めて困難。対策はサイト運営者側による<strong>コンテンツ整合性検証（SRI: Subresource Integrity）の活用</strong>と<strong>定期的なコードレビュー・改ざん検知</strong>が中心となる。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：フォームジャッキングはフィッシングの一種で、ユーザーを偽サイトに誘導する攻撃だ</p></div>
-<div class="hl"><p>- <strong>正</strong>：フォームジャッキングはユーザーを<strong>本物のサイトに誘導したまま</strong>、そのサイトに埋め込まれたスクリプトで情報を盗む。偽サイトへの誘導はフィッシングの特徴</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">フォームジャッキングとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">フォームジャッキング</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. フォームジャッキング＝正規サイトの決済フォームにスクリプトを埋め込む</p>
-<p>2. 被害者は正規サイトを使っているため検知困難</p>
-<p>3. Webスキミング・Eスキミングとも呼ばれる</p>
-<p>4. 対策＝SRI（サブリソースの整合性確認）・改ざん検知・WAF</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>ECサイト運営者の自分。「正規ECサイトで購入した顧客のカード情報漏洩・URL証明書は本物・フィッシングではない」事案。何攻撃？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フォームジャッキング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正規サイトのフォームを汚染</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サイト自体を侵害</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィッシング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">偽サイトへ誘導</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">偽サイトに誘導する</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クレデンシャルスタッフィング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">盗んだID/PWで認証試行</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">盗んだ認証情報を使い回す</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スキミング（物理）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ATMへの物理装置取付</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">現実世界のカード読取</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：フォームジャッキングの重要ポイント</h2>
-<p>「ECサイトの決済ページに不正なスクリプトを埋め込み、入力されたクレジットカード情報を盗む攻撃の名称はどれか」→「フォームジャッキング（Webスキミング）」。ユーザーが<strong>正規サイトを利用しているにも関わらず被害を受ける</strong>という点がフィッシングとの決定的な違い。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>フォームジャッキング（正規サイトの決済フォームに不正スクリプトが注入されカード情報が盗まれた）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>フィッシング詐欺（偽サイトに誘導されてカード情報を入力させた）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ フィッシングは偽サイト前提。「正規サイトを汚染」がフォームジャッキング</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：フォームジャッキング（正規サイトの決済フォームに不正スクリプトが注入されカード情報が盗まれた）</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 フォームジャッキングとは何か</h2>
+<span class="kw">決済フォームへのスキマースクリプト注入</span>
+<p>フォームジャッキング（Magecart攻撃とも呼ばれる）は、攻撃者がECサイトのコードに悪意のあるJavaScriptを注入し、決済フォームに入力されたカード情報をリアルタイムで攻撃者サーバーに送信する攻撃。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「正規サイトなのに情報漏洩→フォームジャッキングの可能性」というシナリオが問われる。サプライチェーン攻撃（CDN・サードパーティJS改ざん）と組み合わせた出題にも注意。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>混同注意：フィッシング＝ユーザーを偽サイトへ誘導。フォームジャッキング＝正規サイトを汚染。被害者の行動は同じ（フォーム入力）でも攻撃側の構造が全く異なる。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>フォームジャッキング＝**正規サイトの決済フォームに罠JS注入（Magecart）**。フィッシング（偽サイト）とは別。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>フォームジャッキングはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

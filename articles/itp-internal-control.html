@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>内部統制とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="内部統制の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="内部統制の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-internal-control.html">
+<meta property="og:title" content="内部統制とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="内部統制の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-internal-control.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,52 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-internal-control.html">
-  <meta property="og:title" content="内部統制とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="内部統制の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-internal-control.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜マネジメント</div>
-    <h1 class="at">内部統制とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">内部統制</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>内部統制とは何か</h2>
-<p>内部統制とは、企業が業務の有効性・効率性、財務報告の信頼性、法令遵守、資産保全の4目的を達成するために自ら構築・運用する仕組みの総体だ。2006年に改正された金融商品取引法（J-SOX法）により、上場企業には内部統制報告書の提出が義務付けられた。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 内部統制は「不正や誤りを未然に防ぐ組織的な自己管理システム」—一人の人間の判断に依存せず、チェック機能を組織に埋め込む設計思想だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">内部統制とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">内部統制</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>内部統制の6つの構成要素</h2>
-<p>COSO（トレッドウェイ委員会支援組織委員会）フレームワークをベースに、日本のJ-SOXでは内部統制を6要素で定義している。</p>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">構成要素</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">具体例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">統制環境</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部統制の基盤となる組織風土・経営者の姿勢</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">倫理規程の整備、経営陣のコミットメント</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リスクの評価と対応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">目的達成を阻害するリスクの識別・分析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リスクマップの作成、定期レビュー</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">統制活動</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リスクへの対応策としての規則・手続き</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">承認権限の設定、職務分掌</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報と伝達</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">必要な情報を適時に識別・捕捉・伝達する仕組み</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部報告制度、ホットライン</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モニタリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部統制が有効に機能しているか継続的に評価</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部監査、自己点検</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ITへの対応</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IT環境に対応した統制活動の整備</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アクセス権管理、ログ監視</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 内部統制は「不正を100%防ぐ絶対的な仕組み」ではない。固有の限界（人的ミス・共謀・経営者による無効化など）があり、合理的な保証を提供するにとどまる。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>上場準備中の経理部長の自分。「不正できない仕組み」を作りたい。承認なし支払不可・2人チェック必須・監査部門による検査…ルール教育じゃなく「仕組み」で守るこれ何？</p></div>
 </div>
-<div class="card"><h2>J-SOX（日本版SOX法）の実務</h2>
-<p>上場企業は毎事業年度末に「内部統制報告書」を有価証券報告書と一緒に提出し、公認会計士または監査法人による監査を受ける。評価対象は「財務報告に係る内部統制」に限定されており、業務全体の内部統制ではない点に注意が必要だ。</p>
-<p>2023年の改正金融商品取引法では、内部統制報告書の電子的保存要件が強化され、IT関連の統制（IT全般統制・IT業務処理統制）の重要性がさらに高まった。IT全般統制は「アクセス管理」「変更管理」「運用管理」「物理的セキュリティ」の4領域が評価対象となる。</p>
-</div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 内部統制の4目的：業務の有効性・効率性、財務報告の信頼性、法令遵守、資産保全</li>
-<li style="padding:4px 0;font-size:14px;">✅ 構成要素6つはCOSOフレームワークに基づく（統制環境・リスク評価・統制活動・情報伝達・モニタリング・IT対応）</li>
-<li style="padding:4px 0;font-size:14px;">✅ J-SOXは上場企業に財務報告に係る内部統制の評価・報告を義務付けた法律</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>内部統制の整備・運用</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>コンプライアンス研修</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 研修は「知る・守る意識」。「不正できない仕組み」を組織に組み込むのが内部統制</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部統制</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">組織が自ら構築する4目的達成のための仕組み</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部監査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部統制が機能しているかを組織内部で独立的に評価する活動</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">外部監査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">公認会計士等が独立した第三者として財務諸表等を監査する行為</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コンプライアンス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">法令・規則・社会規範を遵守すること。内部統制の「法令遵守」目的と重なるが概念は広い</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：内部統制の重要ポイント</h2>
-<p>ITパスポートでは「内部統制の4目的」と「6構成要素」が最頻出だ。選択肢では「コスト削減」「利益最大化」といった誤りの目的が混じることが多い。</p>
-<p>実務上のポイントとして「職務分掌」が重要だ。1人の担当者が発注・承認・支払の全権を持つ状態は内部統制の観点から問題であり、役割を分離することで不正を抑制する。2023年の明電舎や多数の製造業での内部統制不備事例でも、承認プロセスの形骸化が原因として挙げられている。</p>
-<p>J-SOXとCOSOの関係を問う問題にも注意。J-SOXはCOSOフレームワークを日本向けに適用したものだが、日本版では「ITへの対応」が独立した6番目の要素として明示されている点が米国COSOとの違いだ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-compliance].html" style="color:#1F56C6;">[itp-compliance]</a>, <a href="[itp-system-audit].html" style="color:#1F56C6;">[itp-system-audit]</a>, <a href="[itp-it-governance].html" style="color:#1F56C6;">[itp-it-governance]</a></p>
-<p>---</p>
+<p style="margin-top:12px;"><strong>✅ 正解：内部統制の整備・運用</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 内部統制とは何か</h2>
+<span class="kw">組織の不正防止・財務信頼性を仕組みで確保</span>
+<p>組織が業務の有効性・財務報告の信頼性・法令遵守・資産保全を達成するために整備する仕組み。「ルールを知っているだけ」ではなく、「守れる仕組み」を作ることが本質。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>日本では金融商品取引法（J-SOX）で上場企業に内部統制報告書の提出が義務付けられている。ITシステムに関する「IT統制」も内部統制の一部。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>コンプライアンスは「ルールを知って守る意識・行動」。内部統制は「1人が不正を試みても仕組みが防ぐ」体制。「教育→コンプライアンス」「仕組み→内部統制」で覚える。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**内部統制＝仕組みで守る／コンプライアンス＝意識で守る**。**性悪説の仕組み**で1人の悪意も防ぐ。J-SOXで義務化。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>内部統制はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

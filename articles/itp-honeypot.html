@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ハニーポットとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ハニーポットの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ハニーポットの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-honeypot.html">
+<meta property="og:title" content="ハニーポットとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="ハニーポットの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-honeypot.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-honeypot.html">
-  <meta property="og:title" content="ハニーポットとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="ハニーポットの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-honeypot.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">ハニーポットとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">ハニーポット</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>ハニーポットとは何か</h2>
-<p>ハニーポットとは、攻撃者をわざと引き寄せるために設置された「おとり」のシステムやネットワーク資源だ。本物のシステムに見せかけて攻撃を誘い込み、攻撃者の手法・侵入経路・使用するマルウェアを観察・記録することで、脅威インテリジェンスの収集や攻撃の早期検知に活用する。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: ハニーポットは「本物ではないが本物に見える囮システム」であり、攻撃者がハニーポットにアクセスした時点で「正規ユーザーは決してアクセスしないシステム」へのアクセスとして確実に不正アクセスを検知できる。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ハニーポットとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ハニーポット</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ハニーポットの種類と比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低対話型ハニーポット</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">限られたサービスのみを模倣・自動化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大量の攻撃情報収集・リスク低い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高対話型ハニーポット</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実際のOSやサービスを使った本格的な囮</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">攻撃者の詳細な手法収集・管理コスト高</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハニーネット</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">複数のハニーポットで構成した囮ネットワーク</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大規模な攻撃キャンペーン観察</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">蜜壺（Canary Token）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">閲覧されると通知が来る埋め込みトークン</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報漏洩・内部不正の早期検知</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: ハニーポットは「攻撃を防ぐシステム」ではなく「攻撃を観察・記録するシステム」だ。ハニーポットへの攻撃を許容することで攻撃手法を学ぶという逆転の発想だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>セキュリティ研究担当の自分。「わざと脆弱に見せかけたサーバを設置→攻撃者の手法を観察・記録」する仕組み。IDS？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ ハニーポット＝攻撃者を誘い込む「おとりシステム」</li>
-<li style="padding:4px 0;font-size:14px;">✅ 目的は「攻撃の防御」ではなく「攻撃の観察・脅威情報収集・早期検知」</li>
-<li style="padding:4px 0;font-size:14px;">✅ アクセス自体が不正の証拠となるため誤検知が極めて少ない</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ハニーポット</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>IDS（侵入検知システム）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ IDSは実NWの通信監視。「意図的な囮システムで攻撃情報収集」がハニーポット</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハニーポット</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">囮システム・攻撃を観察・検知</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「おとり・攻撃者を誘い込む」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IDS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">既存システムへの侵入を検知</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「正規システムを守るために不正アクセスを検知」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DMZ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">外部公開サービスを隔離するネットワーク区間</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「公開サーバーを内部から分離」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：ハニーポットの重要ポイント</h2>
-<p>ハニーポットの問題で問われるのは「目的（攻撃の観察・脅威情報収集）」と「仕組み（正規ユーザーはアクセスしない囮）」だ。「攻撃者の手法を調査するために設置される、実際には使用されていないサーバーやシステムはどれか」→ハニーポットが正答。「ハニーポットへのアクセスを不正アクセスと断定できる理由はどれか」→正規業務では決してアクセスされないシステムだからが正答だ。</p>
-<p>脅威インテリジェンス収集の手段としての位置付けも覚えること。ハニーポットに誘い込んだ攻撃者の行動（使用するエクスプロイト・C2サーバーのIP・マルウェアの挙動）を記録することで、自組織だけでなく業界全体のセキュリティ向上に役立てられる。</p>
-<p>法的・倫理的リスクも覚えておくこと。高対話型ハニーポットでは「攻撃者がハニーポットを踏み台に第三者を攻撃するリスク」があり、適切な設計と法的確認が必要だ。「ハニーポット運用上の注意点として適切なものはどれか」→踏み台攻撃リスクへの対策が正答候補だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-threat-intelligence].html" style="color:#1F56C6;">[itp-threat-intelligence]</a>, <a href="[itp-ids-ips].html" style="color:#1F56C6;">[itp-ids-ips]</a>, <a href="[itp-incident-response].html" style="color:#1F56C6;">[itp-incident-response]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：ハニーポット</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 ハニーポットとは何か</h2>
+<span class="kw">攻撃者をおびき寄せる「おとり」システム</span>
+<p>ハニーポット：攻撃者をおびき寄せることを目的に設置する囮（おとり）システム。本物に見せかけた偽サーバー・偽DBに攻撃を誘導し、攻撃手法・使用ツール・侵入経路を観察・記録する。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>ハニーポットへのアクセスはすべて異常（正規ユーザーは存在しないため）。攻撃者の早期検知に有効。ハニーネット：複数のハニーポットで構成したネットワーク全体。ITPでは「おとり＝ハニーポット」の対応が頻出。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>IDS（侵入検知）＝実際の通信トラフィックを監視して不正を通報する。ハニーポット＝意図的に攻撃を誘い込んで情報収集する。「本物のシステムか偽物か」が根本的な違い。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>ハニーポット＝**蜂蜜の罠（おとりシステム）**。**正規ユーザーは来ない→アクセス＝全て攻撃者**。研究用。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ハニーポットはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

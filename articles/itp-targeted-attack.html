@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>標的型攻撃とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="標的型攻撃の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="標的型攻撃の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-targeted-attack.html">
+<meta property="og:title" content="標的型攻撃とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="標的型攻撃の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-targeted-attack.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,52 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-targeted-attack.html">
-  <meta property="og:title" content="標的型攻撃とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="標的型攻撃の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-targeted-attack.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">標的型攻撃とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">標的型攻撃</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>標的型攻撃とは何か</h2>
-<p>標的型攻撃という概念が広まった背景には、攻撃者の「費用対効果」に対する考え方の変化がある。不特定多数を狙うフィッシング詐欺は効率的だが防御も容易だ。一方、国家機密や知的財産を持つ特定の組織だけを狙い、長期間かけて内部に侵入する標的型攻撃（APT：Advanced Persistent Threat）は、高い準備コストをかけても十分な「見返り」が期待できる。業務メールに完璧に偽装したウイルス添付メールを特定の社員宛だけに送りつけ、気づかれないまま長期間潜伏するのが典型的な手口だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 標的型攻撃は「特定の組織・個人だけを狙う」——不特定多数向けのフィッシングと違い、対象を絞り込んで精度の高い偽装を行う。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">標的型攻撃とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">標的型攻撃</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>標的型攻撃の手口と特徴</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">要素</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">対象</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定の企業・省庁・研究機関・個人</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">手法</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">業務メールを精巧に偽装したウイルス添付メール</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">目的</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機密情報の窃取・システム破壊・長期潜伏</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特徴</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">事前調査が徹底されており、受信者が疑いにくい内容</td></tr></table></div><p>標的型攻撃の段階：</p>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">① <strong>偵察</strong>: 標的組織の社員名・業務内容・取引先を事前調査する</li>
-<li style="padding:4px 0;font-size:14px;">② <strong>侵入</strong>: 本物と見分けがつかない偽装メールでマルウェアを送り込む</li>
-<li style="padding:4px 0;font-size:14px;">③ <strong>潜伏</strong>: 発見されないよう長期間内部に潜伏し、機密情報を収集し続ける</li>
-</ul>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: フィッシング詐欺と混同しやすいが、フィッシングは「不特定多数に大量送信」、標的型は「特定の組織・個人だけに精巧な偽装メールを送る」——対象の絞り込みが決定的な違い。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>防衛関連の中小企業の情シス担当の自分。社長宛に「取引先A社の田中です。先日の見積もりについて」と添付付きメールが届いた。…でもうちは田中さんと取引してない。これ、私たち狙い？？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 「特定の組織・個人を狙う」「業務メールを精巧に偽装」が標的型攻撃の定義</li>
-<li style="padding:4px 0;font-size:14px;">✅ APT（Advanced Persistent Threat：高度持続的脅威）とも呼ばれる</li>
-<li style="padding:4px 0;font-size:14px;">✅ フィッシングとの違いは「対象が絞られているかどうか」</li>
-<li style="padding:4px 0;font-size:14px;">✅ 長期潜伏を前提とした攻撃——侵入後すぐに行動しない点が通常のマルウェアと違う</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>標的型攻撃</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>フィッシング詐欺</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ フィッシングは不特定多数にばらまく。「うちの会社だけ狙ってる」なら標的型</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">攻撃対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">メールの偽装精度</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">標的型攻撃</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特定組織・個人のみ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い（業務内容に沿った偽装）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィッシング詐欺</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不特定多数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中程度（汎用的な偽装）</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：標的型攻撃の重要ポイント</h2>
-<p>標的型攻撃で確実に点を取るには、「フィッシング詐欺との区別」を押さえることだ。問題文に「特定の企業の社員宛に」「その会社の取引先を装った」という記述があれば標的型攻撃。「不特定多数に送った」「銀行や通販サイトを装った汎用的な偽メール」という記述ならフィッシング詐欺を選ぶ。</p>
-<p>標的型攻撃の特徴として「事前調査」と「長期潜伏」も覚えておきたい。攻撃者はターゲット組織の内部情報を事前に調査して、受信者が疑いにくい内容のメールを作成する。侵入後も即座に行動せず長期間潜伏して情報収集を続けるため、被害に気づくのが遅れるのが特徴だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-phishing.html" style="color:#1F56C6;">itp-phishing</a>, <a href="itp-malware.html" style="color:#1F56C6;">itp-malware</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：標的型攻撃</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 標的型攻撃とは何か</h2>
+<span class="kw">特定組織狙い</span>
+<p>特定の組織・個人を狙い、業務メールに偽装してウイルスを送り込むAPT（高度持続型脅威）の一種。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>「特定組織を狙う」「業務メール偽装」の2点がそろえば標的型攻撃。フィッシングとの違いは対象が絞られているかどうか。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>フィッシングは不特定多数が対象。標的型攻撃はその企業・その人だけを狙う。どちらもメール偽装を使う点で混同しやすい。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>標的型＝**スナイパーの一本釣り**。あなただけを狙う。フィッシングは**投網**で誰でもいい。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>標的型攻撃はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

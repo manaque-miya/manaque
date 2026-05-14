@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>推薦システム（協調フィルタリング・コンテンツフィルタリング）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="推薦システム（協調フィルタリング・コンテンツフィルタリング）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="推薦システム（協調フィルタリング・コンテンツフィルタリング）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-recommendation.html">
+<meta property="og:title" content="推薦システム（協調フィルタリング・コンテンツフィルタリング）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="推薦システム（協調フィルタリング・コンテンツフィルタリング）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-recommendation.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-recommendation.html">
-  <meta property="og:title" content="推薦システム（協調フィルタリング・コンテンツフィルタリング）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="推薦システム（協調フィルタリング・コンテンツフィルタリング）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-recommendation.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">推薦システム（協調フィルタリング・コンテンツフィルタリング）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">推薦システム（協調フィルタリング・コンテンツフィルタリング）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>推薦システム（協調フィルタリング・コンテンツフィルタリング）とは何か</h2>
-<p>推薦システムとは、ユーザーの過去行動・好みを分析して適切なコンテンツや商品を自動的に提示するAI技術だ。主要手法は「協調フィルタリング（他の似たユーザーの行動を参考にする）」と「コンテンツベースフィルタリング（商品・コンテンツの属性を分析する）」の2種類で、ECサイトや動画配信サービスで広く使われる。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 協調フィルタリングは「自分に似た人が好むものを勧める」、コンテンツフィルタリングは「自分が過去に好んだものと似たものを勧める」という違いがある。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">推薦システム（協調フィルタリング・コンテンツフィルタリング）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">推薦システム（協調フィルタリング・コンテンツフィルタリング）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>2種の推薦手法の比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">協調フィルタリング</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">コンテンツベースフィルタリング</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">分析対象</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザーの行動・評価データ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アイテムの属性・特徴量</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">推薦根拠</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">類似ユーザーの嗜好</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アイテムの類似性</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コールドスタート問題</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">新規ユーザーへの推薦が困難</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">新規ユーザーでも属性があれば推薦可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代表例</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Amazonの「この商品を買った人は…」</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Netflixのジャンル・特徴ベース推薦</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">弱点</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スパース問題（評価データが少ない時）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィルターバブル（類似ものしか出ない）</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 協調フィルタリングはアイテムの内容を分析しない。「ユーザーAとBが同じ商品を高評価しているなら、Aが好きな他の商品をBも好きだろう」という行動パターンの類似に基づく。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>ECサイトのレコメンド担当の私。「新規ユーザーは履歴がなくて推薦できない（コールドスタート）」問題発生。どっちの手法でなりやすい？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 協調フィルタリング＝類似ユーザーの行動から推薦</li>
-<li style="padding:4px 0;font-size:14px;">✅ コンテンツフィルタリング＝アイテムの属性・特徴から推薦</li>
-<li style="padding:4px 0;font-size:14px;">✅ コールドスタート問題＝新規ユーザー・新規アイテムへの推薦が困難</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>協調フィルタリング</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>コンテンツベースフィルタリング</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ コンテンツベースは属性類似で対応可能。「他ユーザー行動比較」必須の協調フィルタリングがコールドスタートに弱い</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">協調フィルタリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">類似ユーザーの行動パターンを参照</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「この商品を買った人はこれも…」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コンテンツフィルタリング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アイテムの内容・属性を分析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「閲覧履歴と似たジャンルを推薦」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィルターバブル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">偏った情報しか届かない現象</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「同じ傾向の情報ばかり表示される問題」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：推薦システム（協調フィルタリング・コンテンツフィルタリング）の重要ポイント</h2>
-<p>推薦システムの問題で問われるのは「2手法の仕組みの違い」と「コールドスタート問題」だ。「新規登録ユーザーへの推薦が難しい手法はどれか」→協調フィルタリング（行動データがないため）が正答。「アイテムの属性情報を活用して推薦する手法はどれか」→コンテンツベースフィルタリングが正答だ。</p>
-<p>フィルターバブルという社会的問題も試験で出る。コンテンツフィルタリング・協調フィルタリングともに、ユーザーの既存の好みに似たものばかりを推薦するため、多様な情報・意見に触れる機会が減るという問題だ。「推薦システムの課題として適切なものはどれか」という設問で登場する。</p>
-<p>ECサイトでの具体的な実装例も覚えること。「この商品を購入した人は、次の商品も購入しています」はユーザー-ユーザー協調フィルタリング、「この商品を最近見ました、似た商品はこちら」はコンテンツベースフィルタリングの典型例として試験に出る。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-ml-types].html" style="color:#1F56C6;">[itp-ml-types]</a>, <a href="[itp-deep-learning].html" style="color:#1F56C6;">[itp-deep-learning]</a>, <a href="[itp-data-analytics].html" style="color:#1F56C6;">[itp-data-analytics]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：協調フィルタリング</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 推薦システム（協調フィルタリング・コンテンツフィルタリング）とは何か</h2>
+<span class="kw">協調=似たユーザーの行動、コンテンツ=商品属性の類似</span>
+<p>協調フィルタリング：「自分と似た購買・閲覧履歴を持つユーザーが選んだ商品」を推薦。ユーザー同士の行動の類似性を利用する。コンテンツベースフィルタリング：ユーザーが過去に好んだ商品の属性（ジャンル・著者・キーワード等）と類似する商品を推薦。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>コールドスタート問題：協調フィルタリングは「他ユーザーとの比較」が前提なため、履歴がない新規ユーザーや評価数の少ない新商品には推薦精度が低下する。コンテンツベースは属性データで補完できる。実際のサービスはハイブリッド型（両手法の組み合わせ）でコールドスタートに対応することが多い。
+
+**覚え方** 🎯 **協調＝他人の行動パターン参考（コールドスタートに弱い）／コンテンツ＝商品属性類似（履歴不要）**。両者ハイブリッドが現実。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**協調＝他人の行動パターン参考（コールドスタートに弱い）／コンテンツ＝商品属性類似（履歴不要）**。両者ハイブリッドが現実。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>推薦システム（協調フィルタリング・コンテンツフィルタリング）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

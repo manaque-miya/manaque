@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>運用・保守（パッチ管理・監視）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="運用・保守（パッチ管理・監視）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="運用・保守（パッチ管理・監視）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-operations.html">
+<meta property="og:title" content="運用・保守（パッチ管理・監視）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="運用・保守（パッチ管理・監視）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-operations.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-operations.html">
-  <meta property="og:title" content="運用・保守（パッチ管理・監視）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="運用・保守（パッチ管理・監視）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-operations.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜マネジメント</div>
-    <h1 class="at">運用・保守（パッチ管理・監視）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">運用・保守（パッチ管理・監視）</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>運用・保守（パッチ管理・監視）とは何か</h2>
-<p>システム運用（Operations）はシステムを安定稼働させる日常的な活動で、保守（Maintenance）はシステムへの変更・修正・改善を行う活動だ。ITIL（IT Infrastructure Library）ではサービスオペレーション領域として体系化されており、パッチ管理・監視・インシデント管理が中核活動となる。開発フェーズが終わった後、実際にシステムが稼働し続ける期間（ほとんどのシステムでは数年〜数十年）を支える基盤活動だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 「システムはリリースしてからが本番」—開発コストよりも運用・保守コストの方が生涯総額として大きいことが多い。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">運用・保守（パッチ管理・監視）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">運用・保守（パッチ管理・監視）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>主要な運用・保守活動</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">活動</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パッチ管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">OSやソフトウェアの脆弱性修正プログラムの適用管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セキュリティ脆弱性の解消</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">死活監視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバー・サービスの稼働状態を継続監視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">障害の早期検知</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パフォーマンス監視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CPU・メモリ・通信量・応答時間の継続監視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ボトルネックの早期発見</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ログ管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アクセスログ・エラーログの収集・保存・分析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">障害調査・セキュリティ監査</td></tr></table></div><p>保守の4種類（ISO/IEC 14764）：①是正保守（バグ修正）②適応保守（環境変化への対応）③完全化保守（機能改善）④予防保守（将来の問題を事前に防ぐ）。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: パッチ適用は「すぐに当てるべき」だが、本番環境では事前にテスト環境での動作確認が必須。緊急パッチでも検証なしの適用はリスクを生む。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>運用エンジニアの自分。「脆弱性が発見→ベンダー提供の修正プログラムを計画的に適用」する活動。インシデント管理？それとも別？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ パッチ管理：脆弱性修正プログラムの計画的適用（緊急パッチは迅速対応）</li>
-<li style="padding:4px 0;font-size:14px;">✅ 保守4種類：是正・適応・完全化・予防</li>
-<li style="padding:4px 0;font-size:14px;">✅ ITILのサービスオペレーション：インシデント管理・問題管理・変更管理</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>パッチ管理（パッチ適用）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>インシデント管理</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ インシデント管理は事故発生後の対応。「脆弱性を予防的に修正適用」がパッチ管理</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インシデント管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">障害を迅速に復旧（根本原因は後で）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">問題管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インシデントの根本原因を特定・排除</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">変更管理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システム変更を計画的・安全に実施</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：運用・保守（パッチ管理・監視）の重要ポイント</h2>
-<p>試験では「保守の4種類の定義と事例の対応」が頻出だ。「OSのバージョンアップに合わせてアプリを修正」→適応保守、「ユーザーから要望のあった機能を追加」→完全化保守、「本番稼働中に発見したバグを修正」→是正保守、という判断ができるようにする。</p>
-<p>パッチ管理の重要性として、2017年のWannaCry（ランサムウェア）は公開済みのパッチを当てていないWindows端末を標的にして世界150か国で被害を発生させた。「パッチを当てていない＝既知の穴を開けたまま」という認識を持つ。</p>
-<p>SLAとの関係も重要で、運用チームはSLAで定めた可用性（稼働率）・応答時間・障害対応時間を守ることが責務だ。ITILのCSI（継続的サービス改善）フレームワークでPDCAを回すことがサービス品質維持の基盤となる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-mtbf-mttr].html" style="color:#1F56C6;">[itp-mtbf-mttr]</a>, <a href="[itp-slo-ola].html" style="color:#1F56C6;">[itp-slo-ola]</a>, <a href="[itp-release-management].html" style="color:#1F56C6;">[itp-release-management]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：パッチ管理（パッチ適用）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 運用・保守（パッチ管理・監視）とは何か</h2>
+<span class="kw">脆弱性パッチを計画的に適用して安全運用</span>
+<p>パッチ管理は脆弱性を修正するプログラム（パッチ）を適切なタイミングで適用し、システムのセキュリティを維持するプロセス。手順：脆弱性情報の収集→影響範囲評価→テスト環境での検証→本番適用→動作確認。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>パッチ未適用のシステムが攻撃の標的になるケース（WannaCry等）が多い。ゼロデイ脆弱性（パッチが存在しない段階での攻撃）への対策も必要で、WAF・IPS等の補完的な対策も組み合わせる。
+
+**覚え方** 🎯 パッチ管理＝**穴あきソフトに継ぎ当て（patch）**。**脆弱性収集→影響評価→検証→本番**の4ステップ。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>パッチ管理＝**穴あきソフトに継ぎ当て（patch）**。**脆弱性収集→影響評価→検証→本番**の4ステップ。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>運用・保守（パッチ管理・監視）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

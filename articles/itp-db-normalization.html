@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>データベース正規化とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="データベース正規化の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="データベース正規化の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-db-normalization.html">
+<meta property="og:title" content="データベース正規化とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="データベース正規化の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-db-normalization.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,49 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-db-normalization.html">
-  <meta property="og:title" content="データベース正規化とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="データベース正規化の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-db-normalization.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">データベース正規化とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">データベース正規化</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>データベース正規化とは何か</h2>
-<p>データベース正規化とは、テーブル内のデータの重複を排除し、更新異常・挿入異常・削除異常を防ぐための設計手法だ。注文テーブルに顧客住所を直接入れると、引越しのたびに全注文レコードを修正しなければならない——正規化はこの問題を「テーブルの適切な分割」で解決する。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 正規化の目的は「重複をなくして変更を1か所で済むようにすること」だ。インデックスは検索を速くする道具であり、正規化とは別の概念。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">データベース正規化とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">データベース正規化</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>正規形の段階と達成条件</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">正規形</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">達成条件</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">解消される問題</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">第1正規形（1NF）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">繰り返しグループ・複数値の排除、各列に単一値</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セル内に複数値が入る問題</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">第2正規形（2NF）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">部分関数従属の排除（主キーの一部だけに依存するデータを分離）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">複合主キーの片方にしか依存しない列</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">第3正規形（3NF）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">推移関数従属の排除（主キー以外の列に依存するデータを分離）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">更新異常・削除異常</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：正規化を進めるほどデータベースの検索が速くなる</p></div>
-<div class="hl"><p>- <strong>正</strong>：正規化でテーブルが分割されるほど結合（JOIN）が増え、検索は遅くなる場合がある。速度と整合性はトレードオフの関係</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>DB設計担当の自分。「注文テーブルに顧客名・住所が重複→引越し時に全行修正」の問題。これって何で解決？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 正規化の目的＝<strong>重複排除による更新異常・挿入異常・削除異常の防止</strong></li>
-<li style="padding:4px 0;font-size:14px;">✅ 第1NF：繰り返しグループ排除 / 第2NF：部分関数従属排除 / 第3NF：推移関数従属排除</li>
-<li style="padding:4px 0;font-size:14px;">✅ 「正規化＝高速化」は誤り。JOIN増加でむしろ遅くなる場合あり</li>
-<li style="padding:4px 0;font-size:14px;">✅ 非正規化（あえて冗長にする）は性能優先の設計で意図的に行う</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>正規化</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>インデックス設計</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ インデックスは検索高速化用。「重複排除でテーブル分割」が正規化</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正規化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データの整合性確保・重複排除</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「更新異常をなくす」文脈</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">インデックス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検索速度の向上</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「検索を速くする」文脈</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非正規化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">意図的な冗長化（性能優先）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「あえて重複させる」設計</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">トランザクション</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ操作の原子性確保</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ACID特性の文脈</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：データベース正規化の重要ポイント</h2>
-<p>データベース正規化の問題で問われるのは「どの正規形で何を排除するか」と「正規化の目的と副作用」だ。特に頻出なのは「正規化＝高速化」という誤解を問う問題で、正規化はデータの整合性を高めるが、テーブル分割によりJOINが増えて検索コストが上がる可能性があると理解しておく必要がある。</p>
-<p>第1〜第3正規形のそれぞれの達成条件を覚える際は、「繰り返し→部分→推移」の順番で段階的に進む点を押さえる。第2正規形は複合主キーがある場合のみ問題になる（単一主キーなら自動的に2NFを満たす）という点も問われる。</p>
-<p>「正規化 vs インデックス」の使い分けを問う問題では、整合性・重複排除なら正規化、検索速度なら索引（インデックス）と明確に区別する。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-dbms.html" style="color:#1F56C6;">itp-dbms</a>, <a href="itp-transaction.html" style="color:#1F56C6;">itp-transaction</a>, <a href="itp-er-diagram.html" style="color:#1F56C6;">itp-er-diagram</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：正規化</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 データベース正規化とは何か</h2>
+<span class="kw">重複排除→更新異常をなくす設計</span>
+<p>正規化はデータの重複をなくしてテーブルを適切に分割する設計手法。第1正規形（繰り返しグループ排除）→第2正規形（部分関数従属排除）→第3正規形（推移関数従属排除）の順に進める。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>正規化しないと起きる問題：更新異常（1箇所変更で複数行修正が必要）・挿入異常（一部の値がないとレコードを挿入できない）・削除異常（削除で別の情報まで失われる）。
+
+**覚え方** 🎯 正規化＝**1正規（繰り返し排除）→2正規（部分従属排除）→3正規（推移従属排除）**。**重複退治の3段ロケット**。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>正規化＝**1正規（繰り返し排除）→2正規（部分従属排除）→3正規（推移従属排除）**。**重複退治の3段ロケット**。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>データベース正規化はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

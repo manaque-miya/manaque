@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI品質保証（テスト・評価基準）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="AI品質保証（テスト・評価基準）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="AI品質保証（テスト・評価基準）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-ai-quality-assurance.html">
+<meta property="og:title" content="AI品質保証（テスト・評価基準）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="AI品質保証（テスト・評価基準）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-ai-quality-assurance.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,54 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-ai-quality-assurance.html">
-  <meta property="og:title" content="AI品質保証（テスト・評価基準）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="AI品質保証（テスト・評価基準）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-ai-quality-assurance.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">AI品質保証（テスト・評価基準）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">AI品質保証（テスト・評価基準）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><p>AI品質保証で得点するには「従来ソフトウェアテスト」と「AIシステム特有のテスト（モデル評価・データ品質・公平性テスト）」の違いを識別し、「精度・再現率・F1スコア」の計算定義を答えられることが核心だ。</p>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">AI品質保証（テスト・評価基準）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">AI品質保証（テスト・評価基準）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>AI品質保証（テスト・評価基準）とは何か</h2>
-<p><strong>AI品質保証（AI Quality Assurance）</strong>とは、AIシステムが意図した通りに動作し、安全・公正・信頼できることを検証する活動。モデル精度の評価だけでなく、<strong>公平性・堅牢性・説明可能性・セキュリティ</strong>等の多面的な品質を担保する。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>:</p></div>
-<ul>
-<li><strong>混同行列（Confusion Matrix）</strong>：TP・TN・FP・FNを整理した評価の基本ツール</li>
-<li><strong>コンセプトドリフト</strong>：本番運用中に入力データの分布が変化し精度が劣化する現象</li>
-<li><strong>ISO/IEC 25010（SQuaRE）</strong>：ソフトウェア品質特性標準。AIへの拡張版「AI品質モデル」も策定中</li>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>採用AI担当の自分。「導入前に『性別・年齢・出身校で不当低評価ないか』検証」する評価。機能テスト？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>AI公平性評価（Fairness Evaluation）— 属性グループ間の出力差異・バイアスを検証</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>通常のソフトウェアテスト（機能テスト）— 仕様通りに動作するかを確認。バイアスの有無は検証対象外</strong></li>
+
 </ul>
 </div>
-<div class="card"><h2>AI評価指標の比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">指標</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">計算式</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">意味</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">精度（Accuracy）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正解数/全データ数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全体の正解率</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">適合率（Precision）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">TP/(TP+FP)</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「陽性」と予測したもののうち本当に陽性の割合</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">再現率（Recall）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">TP/(TP+FN)</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">本当に陽性のものをどれだけ見逃さずに予測できたか</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">F1スコア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2×P×R/(P+R)</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">適合率と再現率の調和平均</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">AUC-ROC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ROC曲線下面積</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">閾値に依存しない分類性能</td></tr></table></div><p>（TP：真陽性、FP：偽陽性、FN：偽陰性）</p>
+<p style="margin-top:12px;"><strong>✅ 正解：AI公平性評価（Fairness Evaluation）— 属性グループ間の出力差異・バイアスを検証</strong></p>
 </div>
-<div class="card"><h2>AIシステム特有のテスト種別</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">テスト種別</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">目的</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モデル精度テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">精度・F1・AUC等で性能検証</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ品質テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">学習データの偏り・欠損・ラベルミス検証</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">公平性テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">性別・人種等の属性でのバイアス確認</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">堅牢性テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">入力のノイズ・敵対的サンプルへの耐性</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">説明可能性評価</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XAIツールで判断根拠を確認</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ドリフト検出</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">本番データと学習データの分布変化を監視</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<ul>
-<li>「精度（Accuracy）が高い＝良いモデル」→ × クラス不均衡時は精度が高くても使えない（F1で評価）</li>
-<li>「再現率＝適合率」→ × 再現率はFNを最小化、適合率はFPを最小化（目的が異なる）</li>
-<li>「AIテスト＝通常のUnitテストと同じ」→ × 確率的動作・データ依存性という特有の難しさがある</li>
-</ul>
+
+<div class="card">
+<h2>📘 AI品質保証（テスト・評価基準）とは何か</h2>
+<span class="kw">AI評価軸=精度・公平性・堅牢性・説明可能性</span>
+<p>AIシステムの品質評価は通常のソフトウェアと異なる軸が必要：①精度（Accuracy）②公平性（Fairness）③堅牢性（Robustness：敵対的入力への耐性）④説明可能性（Explainability）⑤プライバシー保護。特に採用・融資・医療等の高リスク分野では公平性評価が必須。</p>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>「精度（Accuracy）・適合率（Precision）・再現率（Recall）・F1の定義と計算式」「クラス不均衡→F1スコアで評価」「コンセプトドリフト＝本番運用中の精度劣化」を記憶。</p>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「AI品質＝機能精度だけでなく公平性・説明可能性も評価対象」として問われる。EU AI法では高リスクAIに公平性・透明性の要件が義務化されている。
+
+**覚え方** 🎯 AI品質5軸＝**精度・公平性・堅牢性・説明可能性・プライバシー**。機能テストでは公平性まで見えない。</p>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">指標</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">何を最小化</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">向いている場面</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">適合率（Precision）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">FP（偽陽性）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スパム検出（誤検知を減らす）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">再現率（Recall）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">FN（偽陰性）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">病気診断（見逃しを減らす）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">F1スコア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バランス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">両方重要な場面</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">AUC-ROC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">—</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">閾値非依存の性能比較</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：AI品質保証（テスト・評価基準）の重要ポイント</h2>
-<p>「精度・適合率・再現率・F1の定義と使い分け（スパム→Precision・病気→Recall）」「混同行列のTP/TN/FP/FN」「コンセプトドリフト＝本番運用中の精度劣化→監視が必要」「ISO/IEC 25010のAI品質への拡張」を整理。</p>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>AI品質5軸＝**精度・公平性・堅牢性・説明可能性・プライバシー**。機能テストでは公平性まで見えない。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>AI品質保証（テスト・評価基準）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -3,10 +3,10 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ETL／ELTとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ETL／ELTの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ETL／ELTの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
 <link rel="canonical" href="https://manaque.net/articles/itp-etl.html">
 <meta property="og:title" content="ETL／ELTとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ETL／ELTの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:description" content="ETL／ELTの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
 <meta property="og:url" content="https://manaque.net/articles/itp-etl.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="まなクエ！">
@@ -29,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -41,51 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F5F8FF;}
 </style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="al">ITパスポート｜テクノロジ</div>
-<h1 class="at">ETL／ELTとは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ETL／ELTとは？自分ごと体験で覚えるITパスポート対策</h1>
 <div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ETL／ELT</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-</div>
-<div class="card"><h2>ETL／ELTとは何か</h2>
-<p>「ITパスポート 独学」でデータ統合・データパイプラインの基礎として覚えたいのがETL（またはELT）だ。ETLとは、Extract（抽出）→Transform（変換・整形）→Load（格納）の3ステップでデータを複数のソースシステムから収集・加工してデータウェアハウス（DWH）に格納する一連の処理のことだ。</p>
-<p>企業内には販売システム・在庫システム・会計システムなど複数のシステムが存在し、それぞれ異なる形式でデータを持っている。ETLはこれらのデータを統一形式に変換してDWHに集約し、BI・経営分析に使えるようにする「データ統合の中心処理」だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: ELT（Extract→Load→Transform）はETLの変形版で、クラウドDWH（Snowflake・BigQueryなど）の高い処理能力を活かして「先に格納してから変換する」アプローチ。変換コストをDWH側に持たせるクラウド時代の主流手法だ。</p></div>
-</div>
-<div class="card"><h2>仕組み・種類</h2>
-<p>ETLの3ステップを詳しく理解する。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>ステップ</th><th>内容</th><th>例</th></tr><tr><td>Extract（抽出）</td><td>複数ソースシステムからデータを取り出す</td><td>販売DB・ログファイル・APIからデータ取得</td></tr><tr><td>Transform（変換）</td><td>形式統一・クレンジング・集計</td><td>日付形式統一・NULL処理・コード変換</td></tr><tr><td>Load（格納）</td><td>変換後のデータをDWHに投入</td><td>DWH・データマートへ書き込み</td></tr></table></div>
-<p>ETLとELTの比較も重要だ。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th></th><th>ETL</th><th>ELT</th></tr><tr><td>変換のタイミング</td><td>格納前（外部ETLツールで変換）</td><td>格納後（DWH内で変換）</td></tr><tr><td>向いている環境</td><td>オンプレミス・従来型DWH</td><td>クラウドDWH（Snowflake・BigQuery）</td></tr><tr><td>処理スピード</td><td>変換ツールの性能に依存</td><td>クラウドDWHの大規模並列処理で高速</td></tr></table></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: ETLのEはExtract（抽出）でExport（書き出し）ではない点、TはTransform（変換）でTransfer（転送）ではない点に注意。また「ETLとELTの順序が逆」という選択肢が出ることがあるが、ELTはL（格納）とT（変換）が入れ替わっているだけで、Eは共通して最初に来る。</p></div>
-</div>
-<div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ ETL＝Extract（抽出）→Transform（変換）→Load（格納）の3ステップ</li>
-<li style="padding:4px 0;font-size:14px;">✅ データ統合の中心処理でDWH構築に不可欠</li>
-<li style="padding:4px 0;font-size:14px;">✅ ELTはETLのL・T逆順版・クラウドDWH時代の主流</li>
-<li style="padding:4px 0;font-size:14px;">✅ Extract＝抽出（Exportではない）、Transform＝変換（Transferではない）</li>
-</ul>
-</div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>処理順序</th><th>変換タイミング</th><th>主な用途</th></tr><tr><td>ETL</td><td>E→T→L</td><td>格納前</td><td>オンプレ・従来型DWH</td></tr><tr><td>ELT</td><td>E→L→T</td><td>格納後</td><td>クラウドDWH</td></tr><tr><td>RPA</td><td>手順自動化（画面操作）</td><td>対象外</td><td>業務処理自動化</td></tr></table></div>
-</div>
-<div class="card"><h2>🎯 試験対策：ETL/ELTの重要ポイント</h2>
-<p>「ITパスポート 過去問・勉強方法・独学・何時間」の観点でETLを調べると、データ統合・DWH構築の文脈で繰り返し出題されており、独学でも3ステップの意味を覚えれば短時間で得点できると評判だ。「複数システムのデータを抽出・変換・格納する処理」という説明がETLに対応する。英略語の各文字の意味「E＝Extract・T＝Transform・L＝Load」を問う問題もある。</p>
-<p>「ETL とは」で検索すると「Extract Transform Load＝取って整えて格納」という説明が出る。「ITパスポート 勉強方法」としては「ETL＝取って・整えて・しまう」という語呂で覚えると3ステップを忘れにくい。</p>
-<p>ELTはITパスポートではまだ出題頻度が低いが、「クラウドDWH向けにT・Lを逆にした手法」という概念を知っておくと複数の選択肢を消去しやすくなる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-data-lake.html">itp-data-lake</a>, <a href="itp-data-warehouse.html">itp-data-warehouse</a>, <a href="itp-data-mart.html">itp-data-mart</a></p>
+<div class="tags"><span class="tag">ETL／ELT</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>データエンジニアの自分。複数システム（販売・在庫・会計）から毎日データを集めて、整形してDWHに入れる処理を組んでる。この一連のワークフロー、何？？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ETL</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ETL'sの逆順ELT</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ELTはクラウドDWH（Snowflake等）時代の主流で「先に格納、後で変換」。古典的順序はExtract→Transform→Loadの ETL</div></li>
+
+</ul>
+</div>
+<p style="margin-top:12px;"><strong>✅ 正解：ETL</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 ETL／ELTとは何か</h2>
+<span class="kw">抽出→変換→格納</span>
+<p>Extract（抽出）→Transform（変換）→Load（格納）の順でデータを統合する処理。データ統合の古典手法。バッチ実行が一般的。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>クラウドDWHのスケール革命でELT（変換を後ろに）も主流化。「変換コストをどこで負担するか」で順序が違うだけ。試験では「3要素＋順序」がよく問われる。
+
+**覚え方** 🎯 ETL＝**Extract Transform Load＝抽出・変換・格納の3工程**。**ETL：取って・整えて・しまう**。ELTは「取ってしまって・後で整える」クラウド世代。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>ETL＝**Extract Transform Load＝抽出・変換・格納の3工程**。**ETL：取って・整えて・しまう**。ELTは「取ってしまって・後で整える」クラウド世代。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ETL／ELTはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

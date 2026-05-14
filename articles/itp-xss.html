@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>XSS（クロスサイトスクリプティング）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="XSS（クロスサイトスクリプティング）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="XSS（クロスサイトスクリプティング）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-xss.html">
+<meta property="og:title" content="XSS（クロスサイトスクリプティング）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="XSS（クロスサイトスクリプティング）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-xss.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,51 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-xss.html">
-  <meta property="og:title" content="XSS（クロスサイトスクリプティング）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="XSS（クロスサイトスクリプティング）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-xss.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">XSS（クロスサイトスクリプティング）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">XSS（クロスサイトスクリプティング）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>XSS（クロスサイトスクリプティング）とは何か</h2>
-<p>XSS（Cross-Site Scripting）とは、Webアプリケーションの入力値検証の不備を悪用し、攻撃者が悪意あるスクリプト（JavaScriptなど）を正規のWebページに埋め込んで、そのページを閲覧したユーザーのブラウザ上でスクリプトを実行させる攻撃だ。OWASPのTop 10にも継続的にランクインする重大な脆弱性であり、2023年のCVE（共通脆弱性識別子）登録件数でも上位を占める。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: XSSの本質は「Webサーバーが悪意あるコードを正規コンテンツと一緒に配信してしまう」こと—攻撃対象はサーバーではなく、そのサイトを信頼するユーザーのブラウザだ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">XSS（クロスサイトスクリプティング）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">XSS（クロスサイトスクリプティング）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>XSSの種類</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">仕組み</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">反射型（Reflected XSS）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">悪意あるスクリプトをURLパラメータに埋め込み、サーバーがそれをそのまま返す</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フィッシングメールと組み合わせて使われる。1度限りの攻撃</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">蓄積型（Stored XSS）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スクリプトをDBに保存させ、閲覧者全員に配信される</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">掲示板・コメント欄・SNSへの書き込みで発生。影響範囲が広い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DOM-based XSS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバーを介さずブラウザ側のJavaScriptがDOMを操作する際に発生</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバー側では検知困難</td></tr></table></div><p>2005年のMySpaceワーム「Samy」は蓄積型XSSを悪用し、100万人以上のアカウントに自動的に友達申請を送り続けた。Webの歴史上最速で拡散したワームの一つだ。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: XSSは「サーバーへの攻撃」ではなく「ユーザーのブラウザへの攻撃」だ。攻撃者はWebサーバーに侵入するのではなく、Webサーバーを「スクリプト配送業者」として悪用する。被害者はサーバーではなくユーザーだ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>Webサービス運営の自分。掲示板コメント欄に`&lt;script&gt;...&lt;/script&gt;`を書き込まれ、見た他のユーザーのブラウザでJSが勝手に実行→セッション盗難！この攻撃の名前は？</p></div>
 </div>
-<div class="card"><h2>XSSの被害と対策</h2>
-<p>被害としては、セッションCookieの窃取（セッションハイジャック）、フィッシング画面の表示、キーロガーの埋め込み、ユーザーの意図しない操作の実行などがある。</p>
-<p>対策の核心は「入力値のサニタイジング」と「出力時のエスケープ処理」だ。<code><script></code>タグの<code><</code>を<code>&lt;</code>にエスケープすることでスクリプトとして解釈されなくなる。加えてContent Security Policy（CSP）ヘッダーの設定、HttpOnly属性付きCookieの使用（JavaScriptからのCookieアクセス禁止）も有効だ。</p>
-</div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ XSSは攻撃者のスクリプトを正規サイト経由でユーザーブラウザに実行させる攻撃</li>
-<li style="padding:4px 0;font-size:14px;">✅ 対策は出力時のエスケープ処理とCSPヘッダーの設定</li>
-<li style="padding:4px 0;font-size:14px;">✅ セッションCookieの窃取→セッションハイジャックという被害の連鎖を理解する</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>XSS（クロスサイトスクリプティング）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>SQLインジェクション</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ SQLiはDBを狙う。「他ユーザーのブラウザで悪意JSを実行させる」のがXSS</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XSS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">悪意あるスクリプトをユーザーブラウザで実行させる攻撃</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CSRF</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザーが意図しないリクエストをサーバーに送らせる攻撃。XSSと目的が異なる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SQLインジェクション</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データベースへの不正クエリを挿入する攻撃。攻撃対象がサーバー側</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クリックジャッキング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">透明なiframeを重ねてユーザーに気づかせずボタンをクリックさせる攻撃</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：XSS（クロスサイトスクリプティング）の重要ポイント</h2>
-<p>試験では「XSSの対策として正しいものはどれか」という問題が多い。正解は「出力時のエスケープ（サニタイジング）」であり、「入力値の長さ制限」や「ファイアウォールの導入」は対策として不十分な選択肢として登場する。</p>
-<p>XSSとCSRFの区別も頻出だ。XSSは「攻撃者のコードをユーザーのブラウザで動かす」、CSRFは「ユーザーのブラウザを使ってサーバーに不正リクエストを送らせる」という違いを明確にする。どちらもWebアプリの脆弱性を突くが、攻撃の向き先が異なる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-csrf].html" style="color:#1F56C6;">[itp-csrf]</a>, <a href="[itp-sql-injection].html" style="color:#1F56C6;">[itp-sql-injection]</a>, <a href="[itp-security-policy].html" style="color:#1F56C6;">[itp-security-policy]</a></p>
-<p>---</p>
+<p style="margin-top:12px;"><strong>✅ 正解：XSS（クロスサイトスクリプティング）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 XSS（クロスサイトスクリプティング）とは何か</h2>
+<span class="kw">罠スクリプトを仕込んで閲覧者を攻撃</span>
+<p>Webアプリの入力フォーム等に悪意あるスクリプト（JavaScript等）を埋め込み、別のユーザーのブラウザで実行させる攻撃。セッションハイジャック・フィッシング・不正送信に悪用される。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>対策はサニタイジング（特殊文字のエスケープ処理）とCSP（コンテンツセキュリティポリシー）の設定。「入力値をそのまま画面に表示するアプリ」は特に危険。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>SQLインジェクション＝DBを狙う攻撃（データ盗取・改ざん）。XSS＝閲覧ユーザーのブラウザを狙う攻撃（セッション盗取）。攻撃対象が「DB」か「ブラウザ」かで区別する。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**SQLi＝DB攻撃／XSS＝ブラウザ攻撃**。XSSは**他人のブラウザに罠スクリプトを置いとくドッキリ**。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>XSS（クロスサイトスクリプティング）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

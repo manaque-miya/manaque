@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>メールヘッダー解析とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="メールヘッダー解析の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="メールヘッダー解析の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-email-header.html">
+<meta property="og:title" content="メールヘッダー解析とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="メールヘッダー解析の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-email-header.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-email-header.html">
-  <meta property="og:title" content="メールヘッダー解析とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="メールヘッダー解析の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-email-header.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">メールヘッダー解析とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">メールヘッダー解析</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>メールヘッダー解析とは何か</h2>
-<p>メールヘッダー解析の問題で問われるのは、<strong>フィッシングメールや迷惑メールを識別するためにヘッダーのどの情報を確認すべきか</strong>だ。SPF・DKIM・DMARCという認証技術と合わせて理解する。</p>
-<h3>メールヘッダーの主要フィールド</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ヘッダーフィールド</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">フィッシング判定への活用</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">From</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信者表示名とメールアドレス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なりすましで偽装されやすい</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Reply-To</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">返信先アドレス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">FromとReply-Toが異なる場合は警戒</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Received</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">経由したメールサーバの記録</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実際の送信経路を追跡可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">X-Originating-IP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信元IPアドレス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信元の地域・組織確認</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Authentication-Results</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SPF/DKIM/DMARCの認証結果</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「fail」は偽装メールの可能性</td></tr></table></div><h3>メール送信元認証技術</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">技術</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">仕組み</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">設定場所</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SPF（Sender Policy Framework）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信を許可するIPアドレスをDNSに登録し、受信側が照合</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信ドメインのDNS（TXTレコード）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DKIM（DomainKeys Identified Mail）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">秘密鍵でメールに電子署名→受信側が公開鍵で検証</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信ドメインのDNS（公開鍵公開）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DMARC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SPF・DKIMの結果に基づく対処ポリシーを定義</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信ドメインのDNS（TXTレコード）</td></tr></table></div><h3>DMARCのポリシー設定</h3>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ポリシー</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">効果</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>none</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">認証失敗でもメール配信（監視のみ）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レポート収集に活用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>quarantine</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">認証失敗メールを迷惑メールフォルダへ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">疑わしいメールを隔離</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;"><code>reject</code></td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">認証失敗メールを拒否（最も強い保護）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なりすましを完全排除</td></tr></table></div><div class="hl"><p>💡 <strong>ポイント</strong>: <strong>「Fromアドレスは誰でも偽装できる」</strong>という事実がメールセキュリティの核心だ。SPF・DKIM・DMARCは合わせて「なりすましメールかどうかを技術的に検証する」仕組みで、3つがそろってはじめて効果的なフィッシング対策になる。Authentication-Resultsヘッダーで<code>spf=pass</code>・<code>dkim=pass</code>・<code>dmarc=pass</code>を確認するのが判定の基本だ。</p></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<div class="hl"><p>- <strong>誤</strong>：SPFはメールの内容を暗号化してフィッシングを防ぐ</p></div>
-<div class="hl"><p>- <strong>正</strong>：SPFは<strong>送信者のIPアドレスが正規かどうかを検証</strong>する仕組みで、暗号化ではない。暗号化を担うのはS/MIMEやPGP</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">メールヘッダー解析とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">メールヘッダー解析</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>1. SPF＝送信元IPをDNSで検証</p>
-<p>2. DKIM＝電子署名でメール改ざん検知</p>
-<p>3. DMARC＝SPF/DKIM結果に基づくポリシー（none/quarantine/reject）</p>
-<p>4. Receivedヘッダー＝メール経路の追跡に使用</p>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>セキュリティ担当の自分。「フィッシング疑いメール→Fromは偽装可能。送信元の実際のIPアドレス特定」したい。本文リンク？</p></div>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">技術</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">検証内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">区別ポイント</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SPF</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">送信IPが許可リストにあるか</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DNSでIP検証</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DKIM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">電子署名の正当性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">秘密鍵で署名・公開鍵で検証</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DMARC</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SPF/DKIM結果に基づく処理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ポリシー定義（none/quarantine/reject）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">S/MIME</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メール本文の暗号化と署名</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コンテンツの保護</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：メールヘッダー解析の重要ポイント</h2>
-<p>「メールの送信元ドメインのなりすましを防ぐためにDNSに設定するレコードはどれか」→「SPFレコード」。「メールに電子署名を行い受信側が改ざんを検知できる仕組みはどれか」→「DKIM」。SPF・DKIM・DMARCの役割の違いを3点セットで整理しておくこと。</p>
-<p>---</p>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>メールヘッダーのReceivedフィールドを確認し、最初のIPアドレス（送信元サーバー）を特定する</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>メール本文のリンクにカーソルを当ててURLを確認する</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ URL確認はフィッシング判定。「送信元IP特定」はReceivedヘッダー</div></li>
+
+</ul>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+<p style="margin-top:12px;"><strong>✅ 正解：メールヘッダーのReceivedフィールドを確認し、最初のIPアドレス（送信元サーバー）を特定する</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 メールヘッダー解析とは何か</h2>
+<span class="kw">Receivedヘッダー=メール転送経路の時系列記録</span>
+<p>メールヘッダーのReceivedフィールドは、メールが通過したサーバーを下から上の順で記録する。最下部（一番古い）がオリジナル送信元に最も近い。FromやSender欄は偽装可能なため信頼できない。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「メール送信元偽装の検出」として「SPF/DKIM/DMARC（受信サーバー側の検証）」と「ヘッダー解析（手動調査）」が問われる。Receivedヘッダーは右側（下から）に読む点を覚える。
+
+**覚え方** 🎯 メールヘッダー＝**Received（下から上に経路記録）**。**Fromは偽装可・Receivedで真の送信元特定**。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>メールヘッダー＝**Received（下から上に経路記録）**。**Fromは偽装可・Receivedで真の送信元特定**。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>メールヘッダー解析はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

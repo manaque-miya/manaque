@@ -2,123 +2,105 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ガントチャートとは？ITパスポート試験対策｜まなクエ！</title>
+<meta name="description" content="ガントチャートの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-gantt-chart.html">
+<meta property="og:title" content="ガントチャートとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="ガントチャートの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-gantt-chart.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;min-height:100vh;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 32px;position:sticky;top:0;z-index:100;}
-.hd-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-.logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:20px;font-weight:900;color:#0F1830;}
-.logo span{color:#1F56C6;}
-.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#2E6DE5,#1A449E);display:grid;place-items:center;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
+.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
+.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
 .back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:860px;margin:0 auto;padding:40px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-.label{display:inline-block;background:#EBF1FD;color:#1F56C6;font-size:12px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
-h1{font-size:26px;font-weight:900;color:#0F1830;line-height:1.4;margin-bottom:10px;}
-.meta{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.07);}
-h2{font-size:17px;font-weight:800;color:#0F1830;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:15px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
+.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
+.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
+.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
+.am{font-size:12px;color:#8693AE;}
+.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
+h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
+h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-p:last-child{margin-bottom:0;}
-ul{padding-left:20px;margin-bottom:10px;}
-li{font-size:14px;line-height:1.8;color:#2B3858;}
-.hl{background:#EBF1FD;border-left:4px solid #2E6DE5;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;padding:14px 16px;border-radius:0 12px 12px 0;margin:14px 0;font-size:14px;line-height:1.8;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:32px;text-align:center;margin-bottom:20px;color:#fff;}
-.cta h2{color:#fff;border-bottom:2px solid rgba(255,255,255,.3);}
-.cta p{color:rgba(255,255,255,.9);}
-.cta a{display:inline-block;background:#fff;color:#1F56C6;font-weight:900;font-size:15px;padding:14px 36px;border-radius:40px;text-decoration:none;margin-top:16px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-.tag{background:#F0F5FF;color:#1F56C6;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
-.ft{background:#fff;border-top:1px solid #E4E9F2;padding:24px;text-align:center;font-size:12px;color:#8693AE;margin-top:40px;}
-.ft a{color:#1F56C6;text-decoration:none;margin:0 8px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EBF1FD;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #D8E4FA;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F7F9FE;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-gantt-chart.html">
-  <meta property="og:title" content="ガントチャートとは？作り方と読み方をわかりやすく解説｜まなクエ！">
-  <meta property="og:description" content="ガントチャートの見方・作り方、PERT図との違い、プロジェクト管理での活用方法をITパスポート試験向けに解説します。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-gantt-chart.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
-<title>ガントチャートとは？作り方と読み方をわかりやすく解説｜まなクエ！</title>
-<meta name="description" content="ガントチャートの見方・作り方、PERT図との違い、プロジェクト管理での活用方法をITパスポート試験向けに解説します。">
-</head><body>
-<header class="hd"><div class="hd-inner">
-<a class="logo" href="../index.html"><span class="logo-icon">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-<path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
-</svg></span>まな<span>クエ！</span></a>
-<a class="back" href="../index.html">← TOPにもどる</a>
-</div></header>
+ul,ol{padding-left:1.4em;margin-bottom:10px;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
+.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
+.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
+.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
+.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
+.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
+</style></head>
+<body>
+<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="label">📋 プロジェクト管理</div>
-<h1>ガントチャートとは？作り方と読み方をわかりやすく解説</h1>
-<p class="meta">ITパスポート試験対策｜まなクエ！学習ガイド</p>
-<div class="tags"><span class="tag">ガントチャート</span><span class="tag">プロジェクト管理</span><span class="tag">スケジュール管理</span><span class="tag">ITパスポート</span></div>
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ガントチャートとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ガントチャート</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
 
-<div class="card"><h2>ガントチャートとは</h2>
-<p>ガントチャート（Gantt chart）とは、<strong>横軸に時間（日付・週・月）、縦軸に作業（タスク）を配置し、各作業の期間を横棒で表したスケジュール管理図</strong>です。考案者のヘンリー・ガントの名前に由来します。</p>
-<div class="hl">💡 プロジェクトの「いつ・どの作業を・どのくらいの期間で行うか」を一目で確認できます。</div>
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>プロジェクトの進捗会議担当の自分。「各タスクの開始日・終了日・担当者が横棒で並んで、進捗率が一目で分かる図」を準備した。これって何チャート？</p></div>
 </div>
-<div class="card"><h2>ガントチャートの読み方</h2>
-<p>ガントチャートの横棒（バー）は各タスクの開始日〜終了日を表します。</p>
-<table>
-<tr><th>タスク</th><th>1週目</th><th>2週目</th><th>3週目</th><th>4週目</th></tr>
-<tr><td>要件定義</td><td>████</td><td></td><td></td><td></td></tr>
-<tr><td>設計</td><td></td><td>████</td><td></td><td></td></tr>
-<tr><td>開発</td><td></td><td>██</td><td>████</td><td></td></tr>
-<tr><td>テスト</td><td></td><td></td><td></td><td>████</td></tr>
-</table>
-<p>この図から「要件定義は1週目、開発は2〜3週目にまたがる」ことが一目でわかります。</p>
-</div>
-<div class="card"><h2>ガントチャートとPERT図の違い</h2>
-<table>
-<tr><th>ツール</th><th>特徴</th><th>得意なこと</th></tr>
-<tr><td>ガントチャート</td><td>横棒グラフでスケジュールを表現</td><td>各作業の期間・進捗を視覚的に把握</td></tr>
-<tr><td>PERT図</td><td>ネットワーク図で作業の依存関係を表現</td><td>クリティカルパス分析・順序関係の把握</td></tr>
-</table>
-<h3>クリティカルパス（PERT図で重要）</h3>
-<p>プロジェクトの開始から終了までの中で、<strong>最も時間がかかる作業の流れ</strong>を「クリティカルパス」と言います。このパス上のタスクが遅延するとプロジェクト全体が遅延します。</p>
-<div class="mb">❌ ガントチャートは「作業の順序・依存関係」の表現が苦手です。依存関係を明示したい場合はPERT図を使います。</div>
-</div>
-<div class="card"><h2>試験対策ポイント</h2>
-<div class="hl">✅ ガントチャート = 「横棒グラフでスケジュール管理」。WBS（作業分解）→ガントチャート（スケジュール化）の流れを押さえましょう。</div>
-<ul>
-<li>ガントチャート：横軸=時間、縦軸=タスク、横棒=期間</li>
-<li>スケジュール管理・進捗管理に使用</li>
-<li>PERT図：作業の依存関係とクリティカルパスを分析</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ガントチャート</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>WBS</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ WBSは作業の階層分解（樹形図）。「時系列棒グラフ」はガント</div></li>
+
 </ul>
 </div>
+<p style="margin-top:12px;"><strong>✅ 正解：ガントチャート</strong></p>
+</div>
 
-<!-- EXPANDED_ITP -->
-<div class="card"><h2>ガントチャートの読み方</h2>
-<p>ガントチャート（バーチャート）は横軸に時間・縦軸に作業を置き、作業期間を棒で示したスケジュール管理ツール。</p>
-<ul>
-<li><strong>マイルストーン</strong>：ひし形（◆）で示す中間目標・承認ポイント</li>
-<li><strong>依存関係</strong>：前の作業が完了してから次の作業が開始できる関係（FS：Finish to Start）</li>
-<li><strong>クリティカルパス</strong>：遅延するとプロジェクト全体が遅れる最長ルート</li>
-<li><strong>フロート（余裕時間）</strong>：クリティカルパス外の作業が持つ遅延可能な時間</li>
-</ul></div>
-<div class="card"><h2>プロジェクト管理ツールと活用</h2>
-<p>代表的なツール：Microsoft Project・Jira・Backlog・Asana・Trello・Notion。Jira・Backlogはアジャイル開発のスプリント管理にも対応。EVMSは出来高（Earned Value）を使ってコスト・スケジュールのパフォーマンスを数値化する手法。SPI（スケジュール効率指数）とCPI（コスト効率指数）が1.0を下回るとプロジェクトが遅延・予算超過していることを示す。</p></div>
-<div class="card"><h2>🎯 試験対策：ガントチャートの重要ポイント</h2><p>ガントチャートはプロジェクト管理で最も広く使われるスケジュール管理ツールです。ITパスポートではガントチャートの特徴と、WBSとの違いを理解することが重要です。</p><p>ガントチャートの縦軸にはタスク（作業）、横軸には時間（日付・週・月）を配置します。各タスクの開始日・終了日・担当者を視覚的に把握でき、複数タスクの並行状況も一目でわかります。また実績を重ねることで進捗の遅延を早期発見できます。</p><p>WBSとの違いを整理します。WBS（Work Breakdown Structure）は「何をするか」を階層的に分解する作業リストです。ガントチャートは「いつ・誰がやるか」を示すスケジュール表です。プロジェクト管理ではまずWBSで作業を洗い出し、次にガントチャートでスケジュールを可視化するという順番で活用します。クリティカルパス（最長の作業経路）の管理にはPERT図が補完的に使われます。</p></div>
-<div class="cta"><h2>実力を試してみよう！</h2>
-<p>この知識を使って実際の問題を解いてみましょう。</p>
-<a href="../exam-quiz.html">試験対策クイズに挑戦する</a></div>
+<div class="card">
+<h2>📘 ガントチャートとは何か</h2>
+<span class="kw">工程の時系列表示</span>
+<p>横軸を時間・縦軸をタスクとした棒グラフ形式の工程表。各作業の開始・終了日と担当者を視覚化する。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>WBSで作業分解→ガントチャートで時系列管理、という順番が頻出。進捗管理・スケジュール確認に使う。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>WBSは「作業の分解・整理」のためのもの。ガントチャートは「時間軸での管理・可視化」のためのもの。目的が違う。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>ガントチャート＝**横棒のタイムライン**。Gantt（人名）が考案。**WBSが樹形→ガントが横棒**でセット利用。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ガントチャートはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
-<footer class="ft">
-<a href="../index.html">TOP</a>
-<a href="../about.html">運営について</a>
-<a href="../privacy.html">プライバシーポリシー</a>
-<p style="margin-top:12px;">© 2025 まなクエ！</p>
-</footer></body></html>
+<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
+</body></html>

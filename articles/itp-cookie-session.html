@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Cookie・セッション管理とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="Cookie・セッション管理の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="Cookie・セッション管理の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-cookie-session.html">
+<meta property="og:title" content="Cookie・セッション管理とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="Cookie・セッション管理の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-cookie-session.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-cookie-session.html">
-  <meta property="og:title" content="Cookie・セッション管理とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="Cookie・セッション管理の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-cookie-session.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">Cookie・セッション管理とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">Cookie・セッション管理</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>Cookie・セッション管理とは何か</h2>
-<p>HTTP（Webの通信プロトコル）は本来「ステートレス（状態を保持しない）」であり、リクエストのたびに誰からの通信か識別できない。CookieとセッションはこのHTTPの限界を補い、「ログイン状態の維持」「ショッピングカートの保持」などの機能を実現するための仕組みだ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: Cookieはブラウザ側に保存する小さなデータ、セッションはサーバー側に保存する状態情報—クライアント管理かサーバー管理かの違いだ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">Cookie・セッション管理とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">Cookie・セッション管理</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>CookieとセッションIDの仕組み</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">Cookie</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">セッション</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">保存場所</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ブラウザ（クライアント側）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバー側</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">仕組み</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバーがSet-Cookieヘッダで送信→ブラウザが保存・次回自動送信</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバーがセッションIDをCookieで送付→サーバー内のセッション情報と紐付け</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">保存できる情報</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">文字列（ユーザーIDや設定など）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">任意の情報（サーバー上）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セキュリティリスク</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">XSS・CSRF・盗聴</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セッションハイジャック</td></tr></table></div><p>Cookieの属性：HttpOnly（JavaScriptからのCookie読み取りを禁止→XSS対策）、Secure（HTTPS通信時のみCookieを送信）、SameSite（CSRF対策）。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: セッションIDはCookieで送受信されることが多いが、URLパラメータ（?session_id=xxx）に含める実装もある。URLに含めるとリファラやブラウザ履歴に残るためセキュリティ上危険だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>ネットショッピングの私。「カート閉じて翌日開いてもログイン状態とカート維持」されてた！これってサーバ側？ブラウザ側？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ Cookieはクライアント保存・セッション情報はサーバー保存</li>
-<li style="padding:4px 0;font-size:14px;">✅ HttpOnly属性：XSSでのCookie窃取を防ぐ重要なセキュリティ属性</li>
-<li style="padding:4px 0;font-size:14px;">✅ セッションハイジャック：セッションIDを盗んで他人になりすます攻撃</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>Cookie（クッキー）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>セッション</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ セッションはサーバ側でブラウザ閉じると消える。「ブラウザに保存・期限内維持」がCookie</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Cookie</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ブラウザに保存するクライアント側の状態管理</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セッション</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバー側に保存する状態管理（IDをCookieで送受信）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">JWT（JSON Web Token）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">署名付きトークンによるステートレス認証（現代的手法）</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：Cookie・セッション管理の重要ポイント</h2>
-<p>試験では「Cookieのセキュリティ属性の目的」と「セッションハイジャックの仕組み」が問われる。HttpOnly属性（XSS対策でJSからCookieを読めなくする）、Secure属性（HTTPSのみでCookieを送信）、SameSite属性（CSRF対策でクロスサイトリクエストにCookieを送らない）の3属性と対応するリスクを押さえる。</p>
-<p>サードパーティCookieの廃止（Google Chrome 2024年段階的廃止）はデジタルマーケティング（v192）との関連で出題される可能性がある。サードパーティCookieはトラッキング広告の基盤だったが、プライバシー規制強化で廃止される方向だ。</p>
-<p>セッション固定攻撃（Session Fixation）も関連の攻撃手法だ。ログイン前のセッションIDをログイン後も継続使用させる攻撃で、対策は「ログイン成功後にセッションIDを新規発行すること」だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-xss].html" style="color:#1F56C6;">[itp-xss]</a>, <a href="[itp-csrf].html" style="color:#1F56C6;">[itp-csrf]</a>, <a href="[itp-protocols].html" style="color:#1F56C6;">[itp-protocols]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：Cookie（クッキー）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 Cookie・セッション管理とは何か</h2>
+<span class="kw">Cookie=ブラウザ保存、セッション=サーバー保存</span>
+<p>Cookie：Webサーバーがブラウザに保存させる小さなデータ。ログイン情報・カート・設定の保持に使われる。有効期限を設定可能。セッション：サーバー側でユーザーの状態を管理する仕組み。セッションIDをCookieで渡すことが多い。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>セキュリティ上の注意：CookieのHttpOnly属性でJavaScriptからの読み取り禁止、Secure属性でHTTPS通信のみ送信、SameSite属性でCSRF対策。SessionはサーバーメモリやRedisで管理する。
+
+**覚え方** 🎯 **Cookie＝ブラウザに保管（持ち歩く）／セッション＝サーバに保管（金庫）**。**Cookieは焼き菓子のクッキー**みたいに食いついて離さない。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**Cookie＝ブラウザに保管（持ち歩く）／セッション＝サーバに保管（金庫）**。**Cookieは焼き菓子のクッキー**みたいに食いついて離さない。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>Cookie・セッション管理はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

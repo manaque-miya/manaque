@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>暗号化（公開鍵・共通鍵）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="暗号化（公開鍵・共通鍵）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="暗号化（公開鍵・共通鍵）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-encryption.html">
+<meta property="og:title" content="暗号化（公開鍵・共通鍵）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="暗号化（公開鍵・共通鍵）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-encryption.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,51 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-encryption.html">
-  <meta property="og:title" content="暗号化（公開鍵・共通鍵）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="暗号化（公開鍵・共通鍵）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-encryption.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">暗号化（公開鍵・共通鍵）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">暗号化（公開鍵・共通鍵）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>暗号化（公開鍵・共通鍵）とは何か</h2>
-<p>なぜ通信の暗号化には「共通鍵」と「公開鍵」の2種類の方式が存在するのか。それは1つの方式だけでは速度・安全性・鍵配送のすべてを同時に解決できないからだ。暗号化とは鍵を使ってデータを読めない形に変換し、受信者が同じか対応する鍵で元のデータに戻せる（復号できる）技術だ。ハッシュ化と違い、暗号化は「元に戻せる」点が本質で、鍵の種類と管理方式によって共通鍵暗号方式と公開鍵暗号方式に分かれる。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 暗号化は「元に戻せる変換」——ハッシュ化（元に戻せない）との違いが最初に問われる最重要ポイント。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">暗号化（公開鍵・共通鍵）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">暗号化（公開鍵・共通鍵）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>共通鍵と公開鍵の違い</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">① <strong>共通鍵暗号方式</strong>: 暗号化と復号に同じ鍵を使う。処理が速いが「鍵配送問題」がある</li>
-<li style="padding:4px 0;font-size:14px;">② <strong>公開鍵暗号方式</strong>: 暗号化に公開鍵、復号に秘密鍵を使う別々の鍵のペア。鍵配送問題を解決できる</li>
-</ul>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">方式</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">使う鍵</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">速度</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">鍵配送の問題</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な用途</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">共通鍵暗号</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化＝復号の鍵が同一</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 速い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ 鍵を安全に渡す手段がない</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大量データの暗号化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">公開鍵暗号</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化に公開鍵・復号に秘密鍵</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ 遅い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 公開鍵は誰でも受け取れる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">鍵交換・デジタル署名</td></tr></table></div><p>実際のHTTPS通信はハイブリッド方式——公開鍵暗号で共通鍵を安全に交換してから、共通鍵暗号で高速な通信を行う。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「暗号化＝元に戻せない」と思いがちだが、元に戻せないのはハッシュ化——暗号化は鍵があれば必ず復号できる点が違う。パスワード保存→ハッシュ化、通信保護→暗号化、と使い分ける。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>フリーランスの私。顧客に契約書PDFをメールで送るとき「中身見られたら困るから、パスワードかけて送って」と言われた。これって元に戻せる変換だよね？ハッシュ化とは違うの？？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 暗号化は「鍵で変換→鍵で復号できる」——ハッシュ化（不可逆変換）との違いが最重要</li>
-<li style="padding:4px 0;font-size:14px;">✅ 共通鍵は「鍵配送問題」がある——安全に鍵を送る手段がない</li>
-<li style="padding:4px 0;font-size:14px;">✅ 公開鍵は「公開鍵で暗号化・秘密鍵で復号」——秘密鍵は本人だけが保管</li>
-<li style="padding:4px 0;font-size:14px;">✅ HTTPSは公開鍵と共通鍵を組み合わせたハイブリッド方式を使用</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>暗号化</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ハッシュ化</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ハッシュは元に戻せない一方向変換。「復号できる」のが暗号化</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">技術</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">元に戻せるか</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">鍵の種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な用途</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化（共通鍵）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 戻せる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1種類（同じ鍵）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大量データの高速暗号化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化（公開鍵）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 戻せる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2種類（ペア）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">鍵交換・デジタル署名</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハッシュ化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ 戻せない</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">なし（一方向）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パスワード保存・改ざん検知</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：暗号化（公開鍵・共通鍵）の重要ポイント</h2>
-<p>暗号化を答えるポイントは「共通鍵の鍵配送問題」と「公開鍵暗号での鍵の役割」の2点を区別することだ。共通鍵暗号は処理が速いが、通信相手に同じ鍵を安全に渡す手段がない（これを鍵配送問題という）。この問題を解決するのが公開鍵暗号で、誰でも入手できる公開鍵で暗号化し、本人だけが持つ秘密鍵でのみ復号できる仕組みにする。</p>
-<p>ハッシュ化との混同も注意が必要だ。「パスワードをハッシュ化して保存する」という文脈では、ハッシュ値から元のパスワードを復元できない（一方向変換）が重要だ。一方で「通信内容を第三者に見られないよう保護する」という文脈では暗号化が使われ、送受信側は鍵を使って元のデータを復元できる。「戻せるか戻せないか」で暗号化とハッシュ化を選び分ける練習をしておこう。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-https-ssl.html" style="color:#1F56C6;">itp-https-ssl</a>, <a href="itp-pki.html" style="color:#1F56C6;">itp-pki</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：暗号化</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 暗号化（公開鍵・共通鍵）とは何か</h2>
+<span class="kw">復号できる変換</span>
+<p>鍵を使ってデータを読めない形に変換する技術。受信側は鍵で元のデータに戻せる（復号できる）。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>共通鍵（暗号化・復号に同じ鍵）と公開鍵（異なる鍵）の2方式の違いが頻出。鍵の管理コストも出題される。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>ハッシュ化は一方向変換で元に戻せない。暗号化は「鍵があれば復号できる」が決定的な違い。パスワード保存→ハッシュ、通信保護→暗号化。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>暗号化＝**鍵付き金庫**（鍵で開けて中身を取り出せる）。ハッシュ＝**シュレッダー**（戻せない）。鍵で行き来できるかが違い。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>暗号化（公開鍵・共通鍵）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

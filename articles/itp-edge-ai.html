@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>エッジAI（オンデバイス推論）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="エッジAI（オンデバイス推論）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="エッジAI（オンデバイス推論）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-edge-ai.html">
+<meta property="og:title" content="エッジAI（オンデバイス推論）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="エッジAI（オンデバイス推論）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-edge-ai.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,53 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-edge-ai.html">
-  <meta property="og:title" content="エッジAI（オンデバイス推論）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="エッジAI（オンデバイス推論）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-edge-ai.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">エッジAI（オンデバイス推論）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">エッジAI（オンデバイス推論）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><p>エッジAIで確実に点を取るには「クラウドAIとエッジAIのレイテンシ・プライバシー・コストのトレードオフ」と「TensorFlow Lite・ONNX Runtime等のエッジ向け最適化フォーマット」を問題シナリオに応じて選択できるかが鍵だ。</p>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">エッジAI（オンデバイス推論）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">エッジAI（オンデバイス推論）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>エッジAI（オンデバイス推論）とは何か</h2>
-<p><strong>エッジAI（Edge AI）</strong>とは、AIの推論処理をクラウドではなく<strong>エンドデバイス（スマートフォン・IoTデバイス・監視カメラ・製造機器）上で実行</strong>する技術。オンデバイス推論とも呼ぶ。低レイテンシ・プライバシー保護・オフライン動作が主なメリット。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>:</p></div>
-<ul>
-<li><strong>NPU（Neural Processing Unit）</strong>：エッジデバイスに搭載されるAI専用チップ（Apple Neural Engine・Qualcomm Hexagon等）</li>
-<li>自動運転：安全性のためミリ秒単位の推論が必要→エッジAI必須</li>
-<li>スマートフォン：Siri・Google Assistant・顔認証はオンデバイス推論</li>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>工場の品質検査担当の自分。「生産ラインカメラが製品をその場でリアルタイム判定・通信遅延NG」。クラウドAI？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>エッジAI— 端末（エッジ）上でAI推論を実行。低遅延・オフライン対応・プライバシー保護</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>クラウドAI— データをクラウドサーバーに送って推論。通信遅延が生じ、リアルタイム判定には不向き</strong></li>
+
 </ul>
 </div>
-<div class="card"><h2>クラウドAIとエッジAIの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">クラウドAI</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">エッジAI</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">推論場所</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラウドサーバ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">デバイス上</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レイテンシ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い（通信往復）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い（ローカル処理）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">プライバシー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データ送信が必要</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データが端末から出ない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">オフライン</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不可</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">可能</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">処理能力</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">無制限（サーバリソース）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">限定（端末スペック）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">通信コスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モデル更新</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">即時</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">デバイス毎に更新必要</td></tr></table></div></div>
-<div class="card"><h2>エッジAI向けモデル最適化技術</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">技術</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">量子化（Quantization）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">32bit浮動小数点→8bit整数に圧縮（精度わずか低下・速度向上）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">刈り込み（Pruning）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不要なニューロン・接続を削除</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">知識蒸留（Knowledge Distillation）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">大モデルの知識を小モデルに転移</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">TensorFlow Lite</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">TensorFlowのモバイル・エッジ向け軽量版</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ONNX Runtime</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">汎用モデル実行エンジン（デバイス最適化）</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<ul>
-<li>「エッジAI＝低精度のAI」→ × 最適化技術で精度を維持しつつ軽量化可能</li>
-<li>「エッジAI＝IoTデバイスのみ」→ × スマートフォン・自動車・産業機器等も含む</li>
-<li>「クラウドAIの方が常に優れる」→ × リアルタイム・プライバシー用途ではエッジAIが適切</li>
-</ul>
+<p style="margin-top:12px;"><strong>✅ 正解：エッジAI— 端末（エッジ）上でAI推論を実行。低遅延・オフライン対応・プライバシー保護</strong></p>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>「エッジAI＝デバイス上で推論→低レイテンシ・プライバシー保護・オフライン動作」「クラウドAIとのトレードオフ（処理能力 vs レイテンシ/プライバシー）」「量子化・刈り込み・蒸留の最適化技術」を記憶。</p>
+
+<div class="card">
+<h2>📘 エッジAI（オンデバイス推論）とは何か</h2>
+<span class="kw">クラウド非依存・端末内でリアルタイムAI推論</span>
+<p>エッジAIはAI推論をスマートフォン・カメラ・IoTセンサーなどの端末側で実行する。利点：①低遅延（ミリ秒単位）②オフライン動作③データをクラウドに送らないプライバシー保護④通信コスト削減。スマートフォンの顔認証・補聴器・自動運転が事例。</p>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">概念</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">推論場所</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラウドAI</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">サーバ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高性能・高レイテンシ・プライバシーリスク</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">エッジAI</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">デバイス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低レイテンシ・プライバシー保護・限定処理能力</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フォグコンピューティング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">中間ノード（ゲートウェイ等）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラウドとエッジの中間</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：エッジAI（オンデバイス推論）の重要ポイント</h2>
-<p>「エッジAIのメリット（低レイテンシ・プライバシー・オフライン）」「最適化手法（量子化・刈り込み・蒸留）」「NPU搭載デバイス（Apple Neural Engine等）」「用途：自動運転・スマートフォン・製造IoT」を問題シナリオで使い分け。</p>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「エッジAI＝端末処理＝低遅延・プライバシー保護」「クラウドAI＝高性能だが通信依存」のトレードオフが問われる。IoTと組み合わせた文脈で頻出。
+
+**覚え方** 🎯 **エッジAI（端末・低遅延・プライバシー）／クラウドAI（サーバ・高性能・通信依存）**。リアルタイムはエッジ。</p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**エッジAI（端末・低遅延・プライバシー）／クラウドAI（サーバ・高性能・通信依存）**。リアルタイムはエッジ。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>エッジAI（オンデバイス推論）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

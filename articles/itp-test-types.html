@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>テスト種類（単体・結合・システム・受入）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="テスト種類（単体・結合・システム・受入）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="テスト種類（単体・結合・システム・受入）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-test-types.html">
+<meta property="og:title" content="テスト種類（単体・結合・システム・受入）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="テスト種類（単体・結合・システム・受入）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-test-types.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,51 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-test-types.html">
-  <meta property="og:title" content="テスト種類（単体・結合・システム・受入）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="テスト種類（単体・結合・システム・受入）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-test-types.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">テスト種類（単体・結合・システム・受入）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">テスト種類（単体・結合・システム・受入）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>テスト種類（単体・結合・システム・受入）とは何か</h2>
-<p>ソフトウェア開発において、プログラムの品質を段階的に確認するためのテストは4つの主要な種類に分類される。単体テスト（ユニットテスト）→結合テスト（統合テスト）→システムテスト→受入テスト（ユーザー受入テスト）の順に実施され、それぞれ異なる視点・粒度でソフトウェアの動作を検証する。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 4種類のテストは「ズームアウトしながら確認する」構造—単体は部品単体、結合は部品の組み合わせ、システムは完成品全体、受入は実際の利用者視点という具合に、確認の範囲が段階的に広がる。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">テスト種類（単体・結合・システム・受入）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">テスト種類（単体・結合・システム・受入）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>4種類のテストの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">テスト種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な検証内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">実施者</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">単体テスト（ユニットテスト）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">個別の関数・モジュール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ロジックの正確性、境界値、異常系</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発者</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">結合テスト（統合テスト）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モジュール間のインターフェース</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データの受け渡し、API連携、依存関係</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発者・テストエンジニア</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システムテスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システム全体</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機能要件・非機能要件（性能・セキュリティ）の充足</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テストエンジニア（QA）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">受入テスト（UAT）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー視点での全体動作</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ビジネス要件・使いやすさ・実業務での動作</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザー・顧客</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 単体テストを「開発者が自分のコードを眺めて確認すること」と混同しがちだが、正確には「テストコードを書いて自動実行し、仕様通りの出力が得られるかを機械的に検証すること」だ。TDD（テスト駆動開発）では実装より先にテストコードを書く。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>新人テスターの自分。「単体（部品ごと）→結合（部品の連携）→システム（全体）→受入（発注者最終確認）」の順でやれと先輩。なぜこの順番？</p></div>
 </div>
-<div class="card"><h2>テスト技法の分類</h2>
-<p>テスト設計には「ホワイトボックステスト」と「ブラックボックステスト」がある。</p>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種別</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">適用テスト種類</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ホワイトボックステスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部構造・ロジックを把握した上で設計</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">命令網羅、分岐網羅、条件網羅</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">単体テスト中心</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ブラックボックステスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">内部構造を考慮せず入出力のみ確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">同値分割、境界値分析、デシジョンテーブル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">結合・システム・受入テスト</td></tr></table></div><p>境界値分析は「入力値の端っこで動作がおかしくなりやすい」という経験則に基づくテスト手法だ。例えば「1〜100を有効範囲とする」仕様なら0・1・100・101の4値を重点的にテストする。</p>
-</div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 4種類のテストは単体→結合→システム→受入の順に「粒度が粗くなる」</li>
-<li style="padding:4px 0;font-size:14px;">✅ ホワイトボックス＝内部構造把握型、ブラックボックス＝入出力確認型</li>
-<li style="padding:4px 0;font-size:14px;">✅ 受入テスト（UAT）はユーザー・顧客が実施し、開発サイドではなく依頼サイドが主体</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>単体→結合→システム→受入の順にテストを実施</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>受入テストを最初に行う</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 受入は発注者最終確認の最後。「小さい単位から確認」が原則</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">単体テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最小単位（関数・モジュール）の動作確認。開発者が実施</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">結合テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モジュール間のインターフェース動作確認</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システムテスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">要件定義通りにシステム全体が動作するかを確認</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">受入テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユーザーが実際業務で使えるかを確認。納品前最終関門</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">回帰テスト（リグレッションテスト）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">修正・追加後に既存機能が壊れていないことを確認する再テスト</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：テスト種類（単体・結合・システム・受入）の重要ポイント</h2>
-<p>ITパスポートで最も問われるのは「4種類のテストの順番と実施者」だ。特に受入テストの実施者が「発注者（ユーザー）」であること、システムテストの実施者が「開発側のQAチーム」である点の違いが頻出の引っかけだ。</p>
-<p>V字モデルとの対応も重要だ。要件定義→基本設計→詳細設計→実装という開発工程が「V字の左側」、それぞれに対応するテスト（受入→システム→結合→単体）が「V字の右側」に並ぶ。詳細設計に対応するのが単体テスト、基本設計に対応するのが結合テストという対応関係を押さえる。</p>
-<p>非機能要件（性能・負荷・セキュリティ）のテストはシステムテスト段階で実施する。負荷テスト・ストレステスト・ペネトレーションテストはすべてシステムテストの範疇であり、単体テストや受入テストの場で実施するものではない。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-sdlc].html" style="color:#1F56C6;">[itp-sdlc]</a>, <a href="[itp-waterfall].html" style="color:#1F56C6;">[itp-waterfall]</a>, <a href="[itp-software-test].html" style="color:#1F56C6;">[itp-software-test]</a></p>
-<p>---</p>
+<p style="margin-top:12px;"><strong>✅ 正解：単体→結合→システム→受入の順にテストを実施</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 テスト種類（単体・結合・システム・受入）とは何か</h2>
+<span class="kw">小さい単位から広げて最終確認</span>
+<p>単体テスト（モジュール単体の動作確認）→結合テスト（複数モジュールの連携確認）→システムテスト（全体機能・性能・セキュリティ確認）→受入テスト（発注者による最終確認）の順で実施。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>ウォーターフォール開発では「V字モデル」として設計フェーズと対応させてテストを設計する。「要件定義→受入テスト」「基本設計→システムテスト」「詳細設計→結合テスト」「実装→単体テスト」が対応関係。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>受入テスト（UAT）は発注者・ユーザーが実施する最終確認。「動く」ではなく「使い物になるか」を確認する。開発チームではなくユーザー側が主体であることがポイント。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**単・結・シ・受**の4段階。**部品→組立→全体→お客様検収**の階段。V字モデルで設計と対応。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>テスト種類（単体・結合・システム・受入）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

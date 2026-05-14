@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>情報セキュリティ監査とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="情報セキュリティ監査の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="情報セキュリティ監査の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-security-audit.html">
+<meta property="og:title" content="情報セキュリティ監査とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="情報セキュリティ監査の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-security-audit.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-security-audit.html">
-  <meta property="og:title" content="情報セキュリティ監査とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="情報セキュリティ監査の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-security-audit.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜マネジメント</div>
-    <h1 class="at">情報セキュリティ監査とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">情報セキュリティ監査</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>情報セキュリティ監査とは何か</h2>
-<p>情報セキュリティ監査は、組織の情報セキュリティ対策が適切に整備・運用されているかを独立した立場から検証・評価する活動だ。経済産業省が2003年に「情報セキュリティ監査制度」を制定し、「情報セキュリティ監査基準」と「情報セキュリティ管理基準」が策定された。ISMSの取得・維持においても内部監査と外部審査が必須要件となっている。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 情報セキュリティ監査は「セキュリティ対策が機能しているか」を第三者が確認するプロセス—ポリシーが存在するだけでなく実際に機能しているかが評価対象だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">情報セキュリティ監査とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">情報セキュリティ監査</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>情報セキュリティ監査の種類</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">実施者</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">保証型監査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セキュリティ管理が十分かを評価・保証</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">独立した監査人</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">助言型監査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">改善すべき点を見つけてアドバイス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">独立した監査人</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ISMS内部監査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ISMSの要求事項への適合を自己確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">組織内（訓練された監査員）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ペネトレーションテスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実際に攻撃してみて脆弱性を発見</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">外部の専門セキュリティ企業</td></tr></table></div><p>監査の3段階：計画→実施（証拠収集）→報告（監査意見の表明）。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 情報セキュリティ監査は「脆弱性診断・ペネトレーションテスト」と同義ではない。技術的なテストは監査の一部に過ぎず、ポリシー・手続き・教育まで含む包括的な評価活動だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>セキュリティ責任者の私。「ISMS管理策が方針通り実施されているか体系的に評価」する活動を外部に依頼。ペネトレ？それとも別？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 保証型（十分かを評価）と助言型（改善点を提示）の2種類</li>
-<li style="padding:4px 0;font-size:14px;">✅ ISMSではPDCAサイクルで内部監査の実施が必須要件</li>
-<li style="padding:4px 0;font-size:14px;">✅ 監査の独立性：監査対象業務を担当していない者が監査を行う</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>情報セキュリティ監査</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ペネトレーションテスト</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ペネトレは技術的な侵入テスト。「管理体制・規程・運用状況の包括評価」が情報セキュリティ監査</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">情報セキュリティ監査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">セキュリティ管理体制全体の評価</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">脆弱性診断</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">システムの技術的な脆弱点を検査</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ペネトレーションテスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実際の攻撃手法で突破可能性を確認</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：情報セキュリティ監査の重要ポイント</h2>
-<p>試験では「情報セキュリティ監査の目的と種類」が問われる。保証型は「適切か？（Yes/No）」を回答、助言型は「こうすれば改善できる」を回答するという役割の違いを明確に覚える。</p>
-<p>ISMSとの関係は重要で、ISO/IEC 27001ではISMS内部監査を定期的に実施することが要求事項となっており、監査員の独立性（自分の業務は監査しない）も規格で求められている。</p>
-<p>「監査証跡（Audit Trail）」という概念も出題される。システムの操作記録・アクセスログを保存し、後から操作内容を追跡できる仕組みで、不正行為の発見・証拠確保に不可欠だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-isms].html" style="color:#1F56C6;">[itp-isms]</a>, <a href="[itp-audit].html" style="color:#1F56C6;">[itp-audit]</a>, <a href="[itp-internal-control].html" style="color:#1F56C6;">[itp-internal-control]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：情報セキュリティ監査</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 情報セキュリティ監査とは何か</h2>
+<span class="kw">ISMSが適切に機能しているか第三者が確認</span>
+<p>情報セキュリティ監査はISMS（情報セキュリティマネジメントシステム）の管理策が適切に実施されているかを、内部または外部の監査人が体系的に評価する活動。経営陣へのリスク報告と改善提言が目的。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>ISMS認証（ISO/IEC 27001）取得に向けた内部監査はPDCAサイクルの「Check」に相当。定期的な外部審査で認証維持。情報セキュリティ監査と技術的なペネトレーションテストは相補関係にある。
+
+**覚え方** 🎯 **情報セキュリティ監査＝管理体制の総点検／ペネトレ＝技術的な侵入テスト**。包括評価と侵入検証は別。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**情報セキュリティ監査＝管理体制の総点検／ペネトレ＝技術的な侵入テスト**。包括評価と侵入検証は別。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>情報セキュリティ監査はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

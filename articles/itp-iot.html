@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>IoTとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="IoTの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="IoTの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-iot.html">
+<meta property="og:title" content="IoTとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="IoTの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-iot.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,52 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-iot.html">
-  <meta property="og:title" content="IoTとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="IoTの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-iot.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">IoTとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">IoT</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>IoTとは何か</h2>
-<p>IoTを一言で表すなら、「モノがインターネットに繋がって賢くなる」世界のことだ。スマートフォンやPCだけでなく、冷蔵庫・エアコン・工場の機械・自動車・信号機まで、あらゆる「モノ（Things）」がインターネットに接続されてデータを送受信し、遠隔制御や自動化が可能になる。IoT（Internet of Things：モノのインターネット）はこうした仕組みや社会全体の総称で、スマートファクトリー・スマートホーム・ウェアラブル端末が代表的な応用例だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: IoTは「センサー＋ネット接続＋データ活用」の3要素——モノがデータを収集・送信することでAI分析やリモート制御が実現する。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">IoTとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">IoT</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>IoTの構成要素と活用例</h2>
-<p>IoTシステムの主な構成：</p>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">① <strong>センサー・デバイス</strong>: 温度・湿度・位置・動きなどのデータを収集するモノ（スマート機器）</li>
-<li style="padding:4px 0;font-size:14px;">② <strong>ネットワーク</strong>: Wi-Fi・Bluetooth・LPWAなどでデータをクラウドへ送信する</li>
-<li style="padding:4px 0;font-size:14px;">③ <strong>クラウド・分析基盤</strong>: 収集したビッグデータをAI・機械学習で分析してインサイトを抽出する</li>
-</ul>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">分野</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">活用例</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">効果</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">製造（スマートファクトリー）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機械の状態をリアルタイム監視</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">故障予知・稼働率向上</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">家庭（スマートホーム）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">冷暖房・照明の遠隔制御</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">省エネ・快適性向上</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">医療・ヘルスケア</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ウェアラブルによる生体データ収集</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">健康管理・早期発見</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: M2M（Machine to Machine）もIoTに似ているが、M2Mは機械同士が直接通信する限定的な概念。IoTはクラウド・スマートフォン・人のインターフェースも含む広い概念で、M2MはIoTの一部に含まれる。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>一人暮らしの私。買った冷蔵庫から「牛乳の賞味期限あと2日です」とスマホに通知が来た！えっ、冷蔵庫からネット？？これって何技術？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ IoTはあらゆる「モノ」がインターネットに接続されてデータを活用する仕組みの総称</li>
-<li style="padding:4px 0;font-size:14px;">✅ センサーで収集したデータがビッグデータになり、AI・機械学習で分析される流れが頻出</li>
-<li style="padding:4px 0;font-size:14px;">✅ セキュリティリスク：IoT機器が脆弱性を抱えたままネット接続されると攻撃の踏み台になる</li>
-<li style="padding:4px 0;font-size:14px;">✅ M2MはIoTの一形態——人の介在なしに機械同士が直接通信する概念</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>IoT</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>M2M</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ M2Mは機械同士の直接通信（人を介さない）。IoTはクラウド・スマホ・人まで含む広い概念</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">接続の範囲</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">人の関与</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IoT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">あらゆるモノ＋インターネット＋クラウド</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人も含む広い概念</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">M2M</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">機械同士の直接通信</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">人の介在なしの自動通信</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：IoTの重要ポイント</h2>
-<p>IoTの問題で問われるのは「モノ×インターネット×データ活用」という3つの要素の組み合わせだ。「センサーで収集した温度データをクラウドに送ってAIで異常検知する」「スマートフォンから家電を遠隔操作する」という記述があればIoTの典型例として押さえておこう。</p>
-<p>IoTのセキュリティリスクも出題されるテーマだ。IoT機器はパスワードのデフォルトのまま運用されたり、ソフトウェア更新が困難だったりするケースが多く、マルウェアに感染してボットネットの踏み台にされる事例が増えている。「IoT機器のセキュリティリスクとして正しいものはどれか」という問いには「ソフトウェア更新が困難で脆弱性が放置されやすい」「デフォルトパスワードのまま運用されることが多い」などが正解になりやすい。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-ai-ml.html" style="color:#1F56C6;">itp-ai-ml</a>, <a href="itp-bigdata.html" style="color:#1F56C6;">itp-bigdata</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：IoT</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 IoTとは何か</h2>
+<span class="kw">モノがネットにつながる</span>
+<p>Internet of Things。センサや家電などの「モノ」をインターネットに接続し、データ収集・自動制御を行う技術の総称。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>「モノ×ネット×データ活用」がIoTの3要素。スマート家電・スマートファクトリー・ウェアラブル端末が典型例。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>M2M（Machine to Machine）は機械同士が直接通信する仕組みで人のインターフェースを介さない。IoTはクラウドやスマホを含む広い概念。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>IoT＝**モノ（Things）にネットを生やす**。冷蔵庫・カメラ・腕時計が全部つぶやき始める世界。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>IoTはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

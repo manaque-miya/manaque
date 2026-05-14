@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ハッシュ関数とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ハッシュ関数の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ハッシュ関数の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-hash.html">
+<meta property="og:title" content="ハッシュ関数とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="ハッシュ関数の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-hash.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,51 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-hash.html">
-  <meta property="og:title" content="ハッシュ関数とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="ハッシュ関数の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-hash.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">ハッシュ関数とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">ハッシュ関数</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>ハッシュ関数とは何か</h2>
-<p>ハッシュ関数とは、任意の長さのデータを受け取り、固定長の値（ハッシュ値・ダイジェスト）に変換する一方向関数だ。「一方向」とは変換結果から元データを復元することが計算上不可能であることを意味し、これが暗号化との最大の違いだ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: ハッシュは「元に戻せない変換」——パスワードを平文で保存する代わりにハッシュ値を保存することで、漏洩しても元のパスワードがわからない。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ハッシュ関数とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ハッシュ関数</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ハッシュ・暗号化・電子署名の比較</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">① <strong>パスワード保存</strong>: パスワードをハッシュ化して保存し、原文を復元できない形で安全に管理する</li>
-<li style="padding:4px 0;font-size:14px;">② <strong>データの改ざん検出</strong>: 送信前後でハッシュ値を比較し、データが変更されていないことを証明する</li>
-<li style="padding:4px 0;font-size:14px;">③ <strong>電子署名への応用</strong>: 文書のハッシュ値を秘密鍵で暗号化して電子署名を作成——フォレンジックでも証拠の完全性確認に使う</li>
-</ul>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">観点</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ハッシュ関数</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">暗号化（対称/公開鍵）</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">電子署名</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">逆変換</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不可能（一方向）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">鍵があれば復元できる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハッシュ+秘密鍵で生成</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">主な用途</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">パスワード保存・改ざん検知</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">データの機密性確保</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">本人確認・改ざん検知</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代表的な規格</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SHA-256・MD5（脆弱で非推奨）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">AES（対称）・RSA（公開鍵）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RSA+SHA-256</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">同じ入力は同じ出力</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">常に同じ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">鍵が同じなら同じ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">鍵が同じなら同じ</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「暗号化＝ハッシュ」という混同が最もよく見られる誤りだ。暗号化は鍵で復号できる双方向処理。ハッシュは復元不可能な一方向処理。「元に戻したいなら暗号化」「戻さなくていいなら（保存・検証）ハッシュ」という整理が正確だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>Web開発中の自分。「パスワードを生の文字列でDB保存はNG！ハッシュ化して」と先輩。SHA-256で変換すれば元に戻せない…なぜ戻せないが安全？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ ハッシュは一方向変換——ハッシュ値から元データを復元することはできない</li>
-<li style="padding:4px 0;font-size:14px;">✅ 同じ入力からは必ず同じハッシュ値が得られる（決定論的）</li>
-<li style="padding:4px 0;font-size:14px;">✅ パスワード保存とファイル改ざん検知がハッシュの2大用途</li>
-<li style="padding:4px 0;font-size:14px;">✅ SHA-256が現在の標準——MD5は衝突が発見されており非推奨</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ハッシュ関数</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>暗号化</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 暗号化は鍵で戻せる。「戻せない一方向変換」がハッシュ</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハッシュ関数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一方向変換・復元不可・改ざん検知・パスワード保存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「一方向・復元不可・改ざん検知」が問われる核心</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">暗号化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">鍵を使って双方向変換・復号して元データを取り出せる</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「双方向・復号可能・鍵が必要」でハッシュとの違いを問われる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ソルト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ハッシュ前にランダム文字列を追加してレインボーテーブル攻撃を防ぐ手法</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「ハッシュ+ランダム文字列追加」でレインボーテーブル対策</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：ハッシュ関数の重要ポイント</h2>
-<p>ハッシュ関数の試験問題では「パスワードをそのまま（平文で）保存するのは危険。ハッシュ値で保存すれば漏洩してもパスワードがわからない」という文脈が頻出だ。「ハッシュ値から元のパスワードを割り出すことはできるか」という問いには「計算上不可能」が正解になる。</p>
-<p>改ざん検知の用途も押さえておく。ファイルをダウンロードしたとき、公開されているハッシュ値と一致するかを確認することで「正規のファイルかどうか」を検証できる。ファイルが1バイトでも改ざんされると全く異なるハッシュ値になる性質（雪崩効果）がこれを可能にする。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-public-key].html" style="color:#1F56C6;">[itp-public-key]</a>, <a href="[itp-digital-signature].html" style="color:#1F56C6;">[itp-digital-signature]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：ハッシュ関数</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 ハッシュ関数とは何か</h2>
+<span class="kw">元に戻せない一方向変換</span>
+<p>任意のデータを固定長の値（ハッシュ値）に変換する関数。同じ入力からは必ず同じ出力が得られるが、ハッシュ値から元データを復元することは計算上不可能。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>用途：パスワード保存（平文保存NG）・ファイルの改ざん検知（ダウンロード後のハッシュ値確認）・デジタル署名。SHA-256が現在の標準。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>暗号化は鍵を使えば元に戻せる（復号できる）。ハッシュは一方向で復元不可。「保管→ハッシュ」「送受信→暗号化」という使い分けが基本。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>ハッシュ＝**シュレッダー**（戻せない）／暗号化＝**鍵付き金庫**（鍵で戻せる）。パスワードはシュレッダーで保管が安全。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ハッシュ関数はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

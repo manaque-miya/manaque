@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>トランザクションとACIDとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="トランザクションとACIDの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="トランザクションとACIDの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-acid.html">
+<meta property="og:title" content="トランザクションとACIDとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="トランザクションとACIDの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-acid.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,48 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-acid.html">
-  <meta property="og:title" content="トランザクションとACIDとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="トランザクションとACIDの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-acid.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">トランザクションとACIDとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">トランザクションとACID</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>トランザクションとACIDとは何か</h2>
-<p>トランザクション（Transaction）は、データベースに対する一連の操作をひとまとめにした処理単位で、「全部成功するか・全部なかったことにするか」のどちらかしかない。銀行の振込（A口座から引き落とし→B口座へ入金）が途中で止まって片方だけ実行されると困るため、2つの操作をひとつのトランザクションとして扱う。ACIDはトランザクションが満たすべき4つの特性の頭文字だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: トランザクションは「全か無か（All or Nothing）」の原則—途中で失敗したら最初の状態に巻き戻す（ロールバック）。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">トランザクションとACIDとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">トランザクションとACID</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>ACIDの4特性</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特性</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">英語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">意味</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">原子性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Atomicity</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">トランザクションは全て完了（コミット）か全て取消（ロールバック）のどちらか</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一貫性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Consistency</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">トランザクション前後でデータベースの整合性が保たれる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">独立性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Isolation</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">複数のトランザクションが同時進行しても互いに影響しない</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">永続性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Durability</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コミットされたデータはシステム障害後も失われない</td></tr></table></div><p>コミット（COMMIT）：トランザクションを確定させる操作。</p>
-<p>ロールバック（ROLLBACK）：トランザクションをキャンセルして開始前の状態に戻す操作。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: ACIDの「I（Isolation）」を「完全な独立」と思いがちだが、実際のDBでは性能とのトレードオフで「分離レベル」を設定する。完全分離では性能が落ちるため、多くのシステムで緩やかな分離レベルが使われる。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>銀行システム担当の自分。「送金中：A口座引落OK→B入金失敗→両方取消！」この「全か無か」を保証する特性は？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 原子性（A）：コミットかロールバックかの二択</li>
-<li style="padding:4px 0;font-size:14px;">✅ 独立性（I）：同時実行でも他のトランザクションの途中状態が見えない</li>
-<li style="padding:4px 0;font-size:14px;">✅ ロールバック：トランザクション失敗時の自動巻き戻し</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>原子性（Atomicity）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>一貫性（Consistency）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 一貫性はDBビジネスルール上の矛盾なし。「全部成功か全部失敗」を保証するのは原子性</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ACID</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RDBのトランザクション保証の4特性</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">BASE</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">NoDBの整合性モデル（Basically Available・Soft state・Eventual consistency）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CAP定理</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">分散DBは一貫性・可用性・分断耐性の全3つは満たせない原理</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：トランザクションとACIDの重要ポイント</h2>
-<p>試験では「ACIDの各文字が何を表すか」と「コミット・ロールバックの意味」が問われる。「振込処理で引き落としが成功したが入金処理でエラーが発生したときどうなるか」→ロールバックで引き落とし前の状態に戻る、という具体的なシナリオで理解する。</p>
-<p>デッドロック（2つのトランザクションが互いに相手のロックを待ち合って永久に止まる状態）もACIDの独立性と絡めて出題される。デッドロックの検知と解消（片方をロールバック）がDBMSの責務だ。</p>
-<p>NoSQLデータベース（MongoDB・Redis等）はACIDではなくBASEで設計されており、「結果整合性（Eventual Consistency）」を採用する。高可用性とスケーラビリティを優先するトレードオフを理解しておく。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-database-normalization].html" style="color:#1F56C6;">[itp-database-normalization]</a>, <a href="[itp-sql-join].html" style="color:#1F56C6;">[itp-sql-join]</a>, <a href="[itp-primary-foreign-key].html" style="color:#1F56C6;">[itp-primary-foreign-key]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：原子性（Atomicity）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 トランザクションとACIDとは何か</h2>
+<span class="kw">原子性・一貫性・独立性・永続性の4特性セット</span>
+<p>ACID特性：A（原子性：全部成功か全部ロールバックか）・C（一貫性：トランザクション前後でDB制約を満たす）・I（独立性：同時実行トランザクションが互いに干渉しない）・D（永続性：コミットされたデータは障害後も消えない）。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>トランザクションのライフサイクル：BEGIN→処理→COMMIT（確定）またはROLLBACK（取り消し）。NoSQLはACIDより結果整合性（Eventual Consistency）を優先することが多い。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>原子性（Atomic）＝「分割不可の1つの処理として扱う」。一貫性（Consistent）＝「処理前後でルール違反がない」。両者の違いは「処理の不可分性」か「データの整合性」か。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**ACID＝Atomicity（原子性）・Consistency（一貫性）・Isolation（独立性）・Durability（永続性）**。**全か無か・整合性・干渉なし・消えない**の4本柱。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>トランザクションとACIDはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>説明可能AI（XAI）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="説明可能AI（XAI）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="説明可能AI（XAI）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-xai-techniques.html">
+<meta property="og:title" content="説明可能AI（XAI）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="説明可能AI（XAI）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-xai-techniques.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,53 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-xai-techniques.html">
-  <meta property="og:title" content="説明可能AI（XAI）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="説明可能AI（XAI）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-xai-techniques.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">説明可能AI（XAI）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">説明可能AI（XAI）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><p>試験では説明可能AIを「XAI（Explainable AI）とは何か」という定義と「LIME・SHAP・Grad-CAMの違い（対象モデルの種類と説明の範囲）」という形で問う。</p>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">説明可能AI（XAI）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">説明可能AI（XAI）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>説明可能AI（XAI）とは何か</h2>
-<p><strong>XAI（Explainable AI：説明可能AI）</strong>とは、AIの判断・予測の根拠を人間が理解できる形で説明する技術・手法の総称。ブラックボックス問題への対策として、特にハイステークスな意思決定（医療・金融・司法）での適用が求められる。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>:</p></div>
-<ul>
-<li><strong>SHAP値</strong>：各特徴量が予測値にどれだけ貢献したかを数値で示す（正負で方向も表現）</li>
-<li><strong>EU AI法・GDPR第22条</strong>：高リスクAIに説明可能性を義務付け→XAIが法的要件に</li>
-<li><strong>Feature Importance（特徴量重要度）</strong>：決定木・ランダムフォレストのグローバル説明ツール</li>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>融資審査AI担当の自分。「『なぜ否決か理由教えて』と顧客問合せ→判断根拠を説明できないとダメ」。精度向上で対応？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>XAI（Explainable AI）— 「年収・勤続年数・借入残高が主な否決理由」のように判断根拠を人間が理解できる形で提示する</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>精度向上（より高精度なモデルへの変更）— 正確な判定ができても「なぜ」を説明できなければ問い合わせに対応できない</strong></li>
+
 </ul>
 </div>
-<div class="card"><h2>主要XAI手法の比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">説明範囲</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LIME</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モデル非依存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ローカル（個別予測）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">局所近似モデルで説明</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SHAP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モデル非依存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ローカル／グローバル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ゲーム理論のShapley値に基づく</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Grad-CAM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CNN（画像）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ローカル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画像のどの部分が判断に使われたかを可視化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PDPICE</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モデル非依存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">グローバル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">特徴量の影響を部分依存プロットで可視化</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">決定木</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ホワイトボックス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">グローバル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">構造そのものが説明</td></tr></table></div></div>
-<div class="card"><h2>ローカル説明とグローバル説明の違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">説明種別</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">対象</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ローカル説明</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1件の予測に対する説明</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「この融資申請が否決された理由」</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">グローバル説明</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">モデル全体の傾向説明</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「このモデルは年収を最も重視する」</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>:</p></div>
-<ul>
-<li>「LIME＝全データに対して一貫した説明」→ × ローカル説明（1件ずつ局所近似）</li>
-<li>「XAI＝モデルを透明にする＝精度が落ちる」→ × SHAPやLIMEはモデルに手を加えない</li>
-<li>「Grad-CAM＝表形式データに使用可能」→ × CNN等画像モデル専用</li>
-</ul>
+<p style="margin-top:12px;"><strong>✅ 正解：XAI（Explainable AI）— 「年収・勤続年数・借入残高が主な否決理由」のように判断根拠を人間が理解できる形で提示する</strong></p>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<p>「LIME＝ローカル・モデル非依存」「SHAP＝Shapley値・ローカル＋グローバル」「Grad-CAM＝画像・CNN専用」の3手法の対比。EU AI法・GDPRとXAIの法的必要性も頻出。</p>
+
+<div class="card">
+<h2>📘 説明可能AI（XAI）とは何か</h2>
+<span class="kw">黒箱AIの判断根拠を人間が理解できる形で提示</span>
+<p>XAI（Explainable AI）は「なぜその判断をしたか」を説明する技術。代表手法：LIME（局所的な近似モデル）、SHAP（特徴量の貢献度スコア）、Attention可視化。EU AI法・金融規制では高リスクAIへの説明責任が義務化されている。</p>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">モデル依存性</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">説明範囲</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な対象データ</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">LIME</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非依存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ローカル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">表・テキスト・画像</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SHAP</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非依存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ローカル＋グローバル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">表・テキスト・画像</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Grad-CAM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">CNN依存</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ローカル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">画像</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">決定木</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ホワイトボックス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">グローバル</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">表形式</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：説明可能AI（XAI）の重要ポイント</h2>
-<p>「XAI3大手法（LIME・SHAP・Grad-CAM）の違い」「ローカル説明vs グローバル説明」「EU AI法・GDPR→説明可能性が法的義務に」「ブラックボックス問題への対策がXAI」を整理。</p>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>試験では「XAI＝AIの判断透明性確保」「規制上の説明責任への対応」として問われる。高精度でも説明できないモデルは規制上・信頼上の問題がある。
+
+**覚え方** 🎯 XAI＝**判断根拠を人間にわかる形で説明**。**LIME・SHAP**が代表手法。規制対応必須。</p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>XAI＝**判断根拠を人間にわかる形で説明**。**LIME・SHAP**が代表手法。規制対応必須。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>説明可能AI（XAI）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

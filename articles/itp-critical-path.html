@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>クリティカルパスとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="クリティカルパスの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="クリティカルパスの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-critical-path.html">
+<meta property="og:title" content="クリティカルパスとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="クリティカルパスの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-critical-path.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,53 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-critical-path.html">
-  <meta property="og:title" content="クリティカルパスとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="クリティカルパスの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-critical-path.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜マネジメント</div>
-    <h1 class="at">クリティカルパスとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">クリティカルパス</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>クリティカルパスとは何か</h2>
-<p>クリティカルパスとは、プロジェクト全体の作業を結ぶ経路のうち、最も合計所要時間が長くなる作業の連続だ。この経路上にある作業（クリティカル活動）は一日でも遅延するとプロジェクト全体の完了が遅れるため、プロジェクトマネージャーが最優先で管理する対象となる。クリティカルパス法（CPM：Critical Path Method）はPERT（Program Evaluation and Review Technique）とともに1950年代のアメリカの大型プロジェクトで開発された手法だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: クリティカルパス上の作業にはフロート（余裕時間）がゼロ—非クリティカルパスの作業はフロートがある分だけ遅れても全体スケジュールに影響しないが、クリティカルパスはその余裕がまったく存在しない。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">クリティカルパスとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">クリティカルパス</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>クリティカルパスの計算方法</h2>
-<p>アローダイアグラム（PERT図）を使ってクリティカルパスを求める手順は以下の通りだ。</p>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ステップ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">出力・結果</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1 作業の洗い出し</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WBSから全作業（アクティビティ）を列挙</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">全作業リスト</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2 依存関係の設定</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">各作業の前後依存（先行・後行）を定義</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">アローダイアグラム</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">3 所要時間の見積もり</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">各作業の期間を推定（PERTでは3点見積もり）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">各作業の所要時間</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">4 前向き計算（最早開始日計算）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最初の作業から順に最も早く開始できる日を計算</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最早開始日（ES）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">5 後ろ向き計算（最遅開始日計算）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">完了日から逆算して作業を遅らせられる限界日を計算</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最遅開始日（LS）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">6 フロート計算</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">フロート＝最遅開始日－最早開始日。ゼロの経路がクリティカルパス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クリティカルパスの確定</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「最も作業数が多い経路がクリティカルパス」は誤り。作業数ではなく合計所要時間が最大の経路がクリティカルパスだ。3工程でも合計60日かかる経路は5工程で合計50日の経路より長いクリティカルパスとなる。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>大規模プロジェクトのPMの自分。ネットワーク図を引いたら、最長時間がかかる経路が判明！この経路上の作業が1日でも遅れると全体納期も遅延…これ何経路？</p></div>
 </div>
-<div class="card"><h2>具体例：3経路のクリティカルパス計算</h2>
-<p>作業A→C→F（5日＋8日＋4日＝17日）、作業A→D→G（5日＋6日＋9日＝20日）、作業B→E→G（3日＋12日＋9日＝24日）の3経路がある場合、最長の24日を要する「B→E→G」がクリティカルパスだ。プロジェクトの最短完了期間は24日となる。</p>
-</div>
-<div class="card"><h2>EVMとの組み合わせ</h2>
-<p>EVM（アーンドバリューマネジメント）と組み合わせることで、スケジュール遅延の測定（SV：スケジュール差異）とクリティカルパスへの影響を定量的に把握できる。クリティカルパス上の遅延はSVとして数値化されるため、経営陣への報告も容易になる。</p>
-</div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ クリティカルパスは最長所要時間の作業経路。フロートがゼロ</li>
-<li style="padding:4px 0;font-size:14px;">✅ クリティカルパス上の作業が遅れると、そのまま全体プロジェクトの遅延になる</li>
-<li style="padding:4px 0;font-size:14px;">✅ フロート（余裕時間）＝最遅開始日－最早開始日で計算する</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>クリティカルパス</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>WBS（作業分解構造）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ WBSは作業の階層分解。「依存関係と所要時間から求める最長経路」がクリティカルパス</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クリティカルパス</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最長所要時間の作業経路。フロートゼロ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ガントチャート</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業のスケジュールを横棒グラフで表示する図。時間軸が直感的に分かる</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">PERT</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業依存関係と所要時間のばらつきを確率的に分析する手法。3点見積もり（楽観・最頻・悲観）を使う</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">WBS</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業を階層的に分解した構造図。クリティカルパス計算の前提となる</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：クリティカルパスの重要ポイント</h2>
-<p>ITパスポートではクリティカルパスの定義と計算（最長経路の特定）が必出だ。数値計算問題では複数の経路の合計日数を足し算して最大のものを選ぶだけで解けるため、計算そのものは難しくない。注意点は「最長経路がクリティカルパス」「クリティカルパス上の作業のフロートはゼロ」という2点を確実に理解しているかの確認だ。</p>
-<p>ガントチャートとの違いも頻出だ。ガントチャートは「スケジュールの見える化」ツールであり作業の開始・終了日を示すが、依存関係の可視化やクリティカルパスの特定にはアローダイアグラムが使われる。現実のプロジェクト管理では、両者を組み合わせて使うことが多い（MSプロジェクト等のツールはどちらも表示できる）。</p>
-<p>プロジェクト管理の試験問題では「経路A（○日）、経路B（○日）、経路C（○日）のうちクリティカルパスはどれか」という形式が定番だ。数値を正確に足し算してから比較する習慣をつけておく。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-wbs].html" style="color:#1F56C6;">[itp-wbs]</a>, <a href="[itp-gantt].html" style="color:#1F56C6;">[itp-gantt]</a>, <a href="[itp-pmbok].html" style="color:#1F56C6;">[itp-pmbok]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：クリティカルパス</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 クリティカルパスとは何か</h2>
+<span class="kw">プロジェクトで遅れが許されない最長経路</span>
+<p>プロジェクトのネットワーク図において、最も時間がかかる作業の経路。クリティカルパス上の作業に余裕（フロート）はなく、1つでも遅れるとプロジェクト全体の完了が遅れる。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>プロジェクトマネージャーはクリティカルパス上の作業を優先的に管理する。クリティカルパス以外の作業には「フロート（余裕時間）」があり、その範囲では遅れても全体に影響しない。
+
+**覚え方** 🎯 クリティカルパス＝**遅れたら詰む最長ルート**。**この経路の作業はフロート（余裕時間）ゼロ**。PMはここを最優先で守る。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>クリティカルパス＝**遅れたら詰む最長ルート**。**この経路の作業はフロート（余裕時間）ゼロ**。PMはここを最優先で守る。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>クリティカルパスはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

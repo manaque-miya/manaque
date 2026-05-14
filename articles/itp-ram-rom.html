@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>RAM・ROMとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="RAM・ROMの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="RAM・ROMの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-ram-rom.html">
+<meta property="og:title" content="RAM・ROMとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="RAM・ROMの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-ram-rom.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,48 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-ram-rom.html">
-  <meta property="og:title" content="RAM・ROMとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="RAM・ROMの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-ram-rom.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">RAM・ROMとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">RAM・ROM</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>RAM・ROMとは何か</h2>
-<p>RAMとROMの違いを一言で言うなら、電源を切ったときに内容が消えるかどうかだ。RAM（Random Access Memory）は電源オフで内容が消える揮発性メモリで、コンピュータが処理中のデータを一時的に置く作業領域として使う。ROM（Read Only Memory）は電源オフでも消えない不揮発性メモリで、BIOSや組み込み機器の固定プログラムを格納するために使う。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 「作業机（消える）＝RAM」「印刷物（消えない）＝ROM」と覚えると混同しなくなる。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">RAM・ROMとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">RAM・ROM</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>揮発性と不揮発性の違い</h2>
-<p>「揮発性か不揮発性か」がRAMとROMを分ける決定的な基準だ。</p>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">項目</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">RAM</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ROM</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">電源オフで消えるか</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">✅ 消える（揮発性）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">❌ 消えない（不揮発性）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み書き</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">読み書き両方</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">基本的に読み取り専用</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">用途</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作業領域・プログラム実行</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">BIOS・ファームウェア保存</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">容量の呼び方</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「メモリ〇GB」はRAMのこと</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">容量はRAMより小さい</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「電源を切ったら消えた＝揮発性＝RAM」「消えない＝不揮発性＝ROM」——パソコンの「メモリ容量8GB」という表現はRAMの容量を指している。ROMは容量を意識する場面が少ない。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>仕事中の私。書きかけの資料を保存せず電源ボタン押しちゃった！再起動したら…全部消えてる！！えええ、ROMには残らないの？？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ RAMは揮発性（電源オフで消える）・作業領域として使う</li>
-<li style="padding:4px 0;font-size:14px;">✅ ROMは不揮発性（電源オフでも消えない）・BIOSや組み込みプログラムを保存</li>
-<li style="padding:4px 0;font-size:14px;">✅ 「メモリ容量〇GB」という表現は一般的にRAMを指す</li>
-<li style="padding:4px 0;font-size:14px;">✅ 電源オフで「消えるか消えないか」がRAM/ROMの判断軸</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>RAM（揮発性・電源で消える）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ROM（不揮発性）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ROMは電源切っても消えない。「保存してないと消える作業領域」はRAM</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">RAM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">揮発性・読み書き可能・作業領域</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ROM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">不揮発性・読み取り専用・固定プログラム保存</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SSD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">補助記憶装置・不揮発性・大容量ファイル保存</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：RAM・ROMの重要ポイント</h2>
-<p>試験でRAMとROMが問われるときは、ほぼ必ず「揮発性・不揮発性」という軸だ。「電源を切ったらデータが消えた」→揮発性→RAM。「電源オフでも保持される固定プログラム」→不揮発性→ROM。このシナリオを見た瞬間に反応できれば解ける。</p>
-<p>もう一つ押さえておきたいのは「メモリ容量」という日常語の意味だ。「このパソコンはメモリが16GB」と言うとき、それはRAMの容量を指している。購入時のスペック表で「メモリ：16GB」と書いてあれば、それはRAM。SSDやHDDはストレージとして別項目になる。</p>
-<p>RAMとSSDの混同にも注意が必要だ。どちらも不揮発性ではないか？——違う。SSDは不揮発性（電源オフでも消えない）だが、RAMは揮発性（消える）。OSが起動するとストレージ（SSD/HDD）からRAMにプログラムが読み込まれ、CPUがRAMで作業し、結果をストレージに保存する——という流れを頭に入れると、三者の役割関係がクリアになる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-cpu.html" style="color:#1F56C6;">itp-cpu</a>, <a href="itp-ssd-hdd.html" style="color:#1F56C6;">itp-ssd-hdd</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：RAM（揮発性・電源で消える）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 RAM・ROMとは何か</h2>
+<span class="kw">電源オフで消えるメモリ</span>
+<p>RAM（Random Access Memory）は電源オフで内容が消える揮発性メモリ。作業領域として使う。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>ROM（Read Only Memory）は電源オフでも消えない不揮発性。BIOSや組み込みシステムの固定プログラムを格納。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>「電源を切ったら消えた＝揮発性＝RAM」「消えない＝不揮発性＝ROM」で即座に判断できるようにする。「メモリ容量」の話はRAMのこと。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**RAM＝Run And Memory（走らせるための一時メモ・消える）／ROM＝Read Only（読むだけ・残る）**。書いて消えるRAM、読むだけROM。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>RAM・ROMはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

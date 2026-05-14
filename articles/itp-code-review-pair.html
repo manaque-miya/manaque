@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>コードレビュー・ペアプログラミングとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="コードレビュー・ペアプログラミングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="コードレビュー・ペアプログラミングの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-code-review-pair.html">
+<meta property="og:title" content="コードレビュー・ペアプログラミングとは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="コードレビュー・ペアプログラミングの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-code-review-pair.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-code-review-pair.html">
-  <meta property="og:title" content="コードレビュー・ペアプログラミングとは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="コードレビュー・ペアプログラミングの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-code-review-pair.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">コードレビュー・ペアプログラミングとは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">コードレビュー・ペアプログラミング</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>コードレビュー・ペアプログラミングとは何か</h2>
-<p>コードレビューは他者がコードを読んでバグ・品質・可読性を確認するプロセス、ペアプログラミングは2人のエンジニアが1台のPCを共有してリアルタイムで協力しながらコードを書く手法だ。いずれもソフトウェア品質の向上と知識共有を目的とする開発プラクティスである。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: コードレビューは「後から検査」、ペアプログラミングは「書きながら検査」という時間軸の違いがある。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">コードレビュー・ペアプログラミングとは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">コードレビュー・ペアプログラミング</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>両手法の比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">手法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">タイミング</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">人数</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">主な効果</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コードレビュー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コード完成後</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1人以上がレビュー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">バグ発見・品質担保・知識共有</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ペアプログラミング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コーディング中</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">常に2人</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">リアルタイム修正・スキル移転</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ソロコーディング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コーディング中</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1人</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">速度優先・レビューは後工程</td></tr></table></div><p>ペアプログラミングではドライバー（コードを書く人）とナビゲーター（指示・確認する人）が役割を交代しながら作業する。コストは高いが複雑なロジックや新人育成に特に有効だ。コードレビューにはGitHubのプルリクエスト機能が広く使われ、コメントで改善点を指摘した後にマージするフローが一般的になっている。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: ペアプログラミングを「2人分の作業量を1人分しか生産しない非効率な手法」と捉えるのは誤りで、バグ密度低下・後工程の修正コスト削減で全体効率が上がることが多い。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>開発チームリーダーの自分。「コード書いた後、別の開発者が後でレビューしてフィードバック」するプロセス。ペアプロ？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ ペアプログラミングはXP（エクストリームプログラミング）のプラクティスの一つ</li>
-<li style="padding:4px 0;font-size:14px;">✅ コードレビューの目的は「バグ早期発見」「品質担保」「知識共有」の三点</li>
-<li style="padding:4px 0;font-size:14px;">✅ ドライバーとナビゲーターの役割分担がペアプログラミングの特徴</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>コードレビュー</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ペアプログラミング</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ペアプロは2人同時作業（同期）。「後で別の人がチェック」の非同期がコードレビュー</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コードレビュー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コード完成後に他者が確認</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">非同期・書面確認がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ペアプログラミング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2人同時にリアルタイムで開発</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">同席・同時作業がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ウォークスルー</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作成者がレビュアーに説明する形式</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">作成者主導の説明会がキーワード</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：コードレビュー・ペアプログラミングの重要ポイント</h2>
-<p>コードレビュー・ペアプログラミングを答えるポイントは、「いつ・何人で・どんな目的で行うか」の3軸で整理することだ。</p>
-<p>試験ではXP（エクストリームプログラミング）の実践手法としてペアプログラミングを問うパターンが最頻出だ。「XPのプラクティスに含まれるものはどれか」という選択問題でペアプログラミングが正解になる。コードレビューについては「品質向上手段」として問われ、レビューにより早期バグ発見コストが後工程修正より低くなることが正当化される根拠になる。</p>
-<p>覚え方は「ペアプロ＝XP・2人・ドライバー＋ナビゲーター」。混同注意は「ウォークスルー（作成者が説明）vsインスペクション（作成者抜きでレビュー）」で、どちらも品質手法だが主導者が異なる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-cicd-pipeline].html" style="color:#1F56C6;">[itp-cicd-pipeline]</a>, <a href="[itp-static-dynamic-analysis].html" style="color:#1F56C6;">[itp-static-dynamic-analysis]</a>, <a href="[itp-git].html" style="color:#1F56C6;">[itp-git]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：コードレビュー</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 コードレビュー・ペアプログラミングとは何か</h2>
+<span class="kw">コードレビュー=非同期で品質チェック、ペアプロ=2人で同時作業</span>
+<p>コードレビュー：開発者が書いたコードを別の開発者が確認し、バグ・設計の問題・セキュリティリスク・可読性をチェックするプロセス。GitHubのPull Requestがレビューを支援。メリット：バグ早期発見・チームへの知識共有・コード品質向上。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>ペアプログラミング（XP：エクストリームプログラミングの手法）：ドライバー（コードを書く）とナビゲーター（方針を考えレビュー）が役割を交代しながら1台のPCで作業。即時レビューで品質が高いが2人分のコストがかかる。アジャイル開発で採用される。
+
+**覚え方** 🎯 **コードレビュー＝非同期チェック（PR上）／ペアプロ＝同期2人作業（1台のPC）**。両方品質向上だがリアルタイム性が違う。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**コードレビュー＝非同期チェック（PR上）／ペアプロ＝同期2人作業（1台のPC）**。両方品質向上だがリアルタイム性が違う。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>コードレビュー・ペアプログラミングはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

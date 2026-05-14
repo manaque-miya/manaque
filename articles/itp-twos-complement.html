@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>2の補数とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="2の補数の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="2の補数の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-twos-complement.html">
+<meta property="og:title" content="2の補数とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="2の補数の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-twos-complement.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,48 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-twos-complement.html">
-  <meta property="og:title" content="2の補数とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="2の補数の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-twos-complement.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">2の補数とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">2の補数</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>2の補数とは何か</h2>
-<p>2の補数（Two's Complement）は、コンピュータで負の整数を2進数で表現するための方式だ。2の補数を使うことで、加算回路だけで減算も実現でき（減算を負数の加算として処理）、CPUの回路設計が大幅に簡略化される。現代のほぼすべてのコンピュータが整数の負数表現に2の補数方式を採用している。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 「なぜ2の補数か」の答えは「引き算を足し算で代替できるから」—−1は「2進数で足すと桁あふれが起きてゼロになる数」だ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">2の補数とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">2の補数</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>2の補数の求め方と例</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">ステップ</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">操作</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">例（−5を8ビットで表現）</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">① 元の正数を2進数で表す</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">5 → 00000101</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">00000101</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">② 全ビットを反転（1の補数）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">0↔1 反転</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">11111010</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">③ 1を加算</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">+1</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">11111011</td></tr></table></div><p>検証：5（00000101）＋（−5）（11111011）= 100000000 → 9ビット目が桁あふれ → 下位8ビット = 00000000（ゼロ）✓</p>
-<p>8ビットで表現できる範囲：−128（10000000）〜＋127（01111111）。最上位ビット（MSB）が「1」なら負数。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 2の補数の「2」はビット数の「2進法の2」から来る概念。「なぜ2の補数というか」→「2のN乗から元の数を引いた値」だから。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>情報処理学習中の自分。「-5を8ビットで表現：5を2進数→全ビット反転→1を加算」と教科書。この負数表現方式の名前は？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 2の補数 = ビット反転 → 1加算（2ステップで覚える）</li>
-<li style="padding:4px 0;font-size:14px;">✅ 最上位ビット(MSB)が1なら負数（符号ビット）</li>
-<li style="padding:4px 0;font-size:14px;">✅ 8ビット2の補数の範囲：−128〜＋127</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>2の補数表現</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>符号絶対値表現</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 符号絶対値は最上位ビットを符号として使う方式。「反転+1」が2の補数</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">2の補数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">現代コンピュータの標準的な負数表現</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">1の補数</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ビット反転のみ（2の補数の途中段階）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">符号絶対値表現</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">最上位ビットで符号を示す（古い方式・+0と−0が存在する問題）</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：2の補数の重要ポイント</h2>
-<p>試験では「−5を8ビットの2の補数で表せ」という計算問題と「最大値・最小値の範囲」の問題が出る。計算手順（反転→+1）を手で繰り返し練習することが最も重要だ。</p>
-<p>「オーバーフロー」（計算結果が表現できる範囲を超える）も関連問題だ。8ビット2の補数で127（01111111）に1を足すと10000000＝−128になる（オーバーフロー）現象を理解しておく。</p>
-<p>2進数・16進数・10進数の相互変換もセットで出題されることが多い。2進数4桁＝16進数1桁の対応（0000〜1111 = 0〜F）を素早く変換できるよう練習しておく。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-bit-byte].html" style="color:#1F56C6;">[itp-bit-byte]</a>, <a href="[itp-binary-hex].html" style="color:#1F56C6;">[itp-binary-hex]</a>, <a href="[itp-character-code].html" style="color:#1F56C6;">[itp-character-code]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：2の補数表現</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 2の補数とは何か</h2>
+<span class="kw">負の数をビットで表す方法</span>
+<p>2の補数はコンピュータが負の整数を2進数で表現する最も一般的な方法。手順：①正の値を2進数に変換→②全ビットを反転（1の補数）→③1を加算。これにより加算と減算を同じ回路で処理できる。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>8ビットで表せる範囲：符号なし0〜255、2の補数表現で−128〜127。最上位ビット（MSB）が1なら負の数を示す。試験では計算手順を問う問題が出る。
+
+**覚え方** 🎯 2の補数＝**反転＋1**で負数表現。**加算回路だけで引き算ができる魔法**。MSBが1なら負。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>2の補数＝**反転＋1**で負数表現。**加算回路だけで引き算ができる魔法**。MSBが1なら負。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>2の補数はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

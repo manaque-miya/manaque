@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>静的解析・動的解析とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="静的解析・動的解析の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="静的解析・動的解析の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-static-dynamic-analysis.html">
+<meta property="og:title" content="静的解析・動的解析とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="静的解析・動的解析の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-static-dynamic-analysis.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,47 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-static-dynamic-analysis.html">
-  <meta property="og:title" content="静的解析・動的解析とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="静的解析・動的解析の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-static-dynamic-analysis.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">静的解析・動的解析とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">静的解析・動的解析</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>静的解析・動的解析とは何か</h2>
-<p>静的解析はプログラムを実行せずにソースコードを検査してバグや品質問題を検出する手法、動的解析はプログラムを実際に実行した状態でメモリ・パフォーマンス・動作を検査する手法だ。両者を組み合わせることでソフトウェア品質の多面的な確保が可能になる。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 静的解析は「設計図を見て欠陥を探す」、動的解析は「実際に動かして挙動を観察する」イメージだ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">静的解析・動的解析とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">静的解析・動的解析</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>静的解析と動的解析の比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">観点</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">静的解析</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">動的解析</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行の有無</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行しない</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行する</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">検出対象</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コーディング規約違反・潜在バグ・セキュリティ脆弱性</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">メモリリーク・パフォーマンス問題・実行時エラー</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">タイミング</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コーディング中〜ビルド時</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テスト時〜本番監視</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">代表ツール</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">SonarQube, ESLint, Checkmarx</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Valgrind, New Relic, Dynatrace</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">低い（早期発見）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">高い（環境準備が必要）</td></tr></table></div><p>静的解析はCI/CDパイプラインに組み込み、コードプッシュのたびに自動実行するのが現代の標準だ。セキュリティ用途ではSAST（Static Application Security Testing）とも呼ばれ、SQLインジェクション・XSSなどの脆弱性パターンをコード段階で検出できる。動的解析のセキュリティ版はDAST（Dynamic Application Security Testing）で、実際にアプリを動かして外部から攻撃を試みる。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 静的解析と単体テストを混同する誤りがある。単体テストはコードを実行して結果を検証する「動的」な手法であり、静的解析とは別物だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>セキュリティ担当の自分。「リリース前にコードのセキュリティ脆弱性を検査→プログラム実行せずスキャン」する手法。DAST？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 静的解析＝実行せずにコードを検査、動的解析＝実行して検査</li>
-<li style="padding:4px 0;font-size:14px;">✅ SASTが静的、DASTが動的のセキュリティ版</li>
-<li style="padding:4px 0;font-size:14px;">✅ 静的解析はコーディング規約・脆弱性の早期発見に有効</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>静的解析（SAST：Static Application Security Testing）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>動的解析（DAST：Dynamic Application Security Testing）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ DASTは起動状態の外部攻撃模倣テスト。「コード実行せずスキャン」がSAST</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">静的解析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行なし・コードを直接検査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「実行せずに」がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">動的解析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">実行あり・実際の挙動を検査</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「実行中に」「ランタイム」がキーワード</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">単体テスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">コードを実行して期待値と照合</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">テスト結果の検証がキーワード</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：静的解析・動的解析の重要ポイント</h2>
-<p>試験では静的解析・動的解析を「プログラムを実行するかどうか」という形で問う。</p>
-<p>「プログラムを実行せずに品質を検査する手法はどれか」という問いに静的解析と答えられれば十分だ。セキュリティ分野との連携では「SASTはいつ実行するか」という問いも出る。正解は「コーディング時またはCIパイプライン中（ビルド前後）」だ。静的解析の利点として「早期発見によりバグ修正コストが低い（バグは後工程ほど修正コストが指数関数的に増加する）」という知識も問われることがある。</p>
-<p>覚え方は「静的＝静止・実行なし」「動的＝動いている・実行あり」。混同注意は「SAST（静的）とDAST（動的）」のSとDの頭文字に注目すること。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-cicd-pipeline].html" style="color:#1F56C6;">[itp-cicd-pipeline]</a>, <a href="[itp-code-review-pair].html" style="color:#1F56C6;">[itp-code-review-pair]</a>, <a href="[itp-siem].html" style="color:#1F56C6;">[itp-siem]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：静的解析（SAST：Static Application Security Testing）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 静的解析・動的解析とは何か</h2>
+<span class="kw">静的=実行せずコードを検査、動的=実際に動かして検査</span>
+<p>静的解析（SAST）：ソースコードを実行せずにスキャンして脆弱性パターン（SQLインジェクション箇所・ハードコードされたパスワード等）を検出。開発初期段階で実施できる。動的解析（DAST）：アプリを実際に動かし、HTTPリクエストを送って挙動を解析する。本番に近い環境でのテスト。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>SAST→コード段階で早期発見、DAST→実行時の脆弱性発見、という組み合わせが理想的。ファジング（Fuzzing）：予測不能な入力データを大量に送ってクラッシュや異常を見つける動的テスト手法。SCA（ソフトウェアコンポジション解析）：使用OSSの既知脆弱性を検出する。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>静的（Static）＝「止まった状態でコードを読む」。動的（Dynamic）＝「実際に動かして見る」。試験では「コードを動かさずに→静的」「実際に起動して→動的」が判断のポイント。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**SAST＝Static（止めて読む・早期）／DAST＝Dynamic（動かして見る・実行時）**。両方併用が理想。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>静的解析・動的解析はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

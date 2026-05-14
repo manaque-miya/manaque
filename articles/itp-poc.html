@@ -3,10 +3,10 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>PoC（実証実験）・PoVとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="PoC（実証実験）・PoVの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="PoC（実証実験）・PoVの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
 <link rel="canonical" href="https://manaque.net/articles/itp-poc.html">
 <meta property="og:title" content="PoC（実証実験）・PoVとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="PoC（実証実験）・PoVの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:description" content="PoC（実証実験）・PoVの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
 <meta property="og:url" content="https://manaque.net/articles/itp-poc.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="まなクエ！">
@@ -29,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -41,47 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F5F8FF;}
 </style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="al">ITパスポート｜マネジメント</div>
-<h1 class="at">PoC（実証実験）・PoVとは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">PoC（実証実験）・PoVとは？自分ごと体験で覚えるITパスポート対策</h1>
 <div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">PoC（実証実験）・PoV</span> <span class="tag">マネジメント</span> <span class="tag">ITパスポート</span></div>
-</div>
-<div class="card"><h2>PoCとは何か</h2>
-<p>「いきなり全社展開はリスクが高い。まず1部署で試して効果を確認してから判断しよう」——このような「本番前の小規模試行検証フェーズ」をPoC（実証実験）という。新しいシステム・技術・サービスの導入で必ず通過するプロセスだ。</p>
-<p><strong>PoC（Proof of Concept・実証実験）</strong>とは、新技術・新システムが実際に機能するかを小規模・短期間で検証するフェーズ。本格導入前にコスト効果・技術的実現性・現場適用可能性・組織受容性を確認し、Go/No-Goの判断材料を得る。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: PoC＝「本番前のお試し公演」。試して良ければ本公演（全社展開）、ダメなら早期撤退の判断材料を作る投資対効果確認フェーズ。</p></div>
-</div>
-<div class="card"><h2>PoCとPoV・MVPの比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>主な問い</th><th>目的</th></tr><tr><td>PoC（Proof of Concept）</td><td>「技術的に実現できるか？」</td><td>実現可能性の確認</td></tr><tr><td>PoV（Proof of Value）</td><td>「ビジネス価値が出るか？」</td><td>価値創出の確認</td></tr><tr><td>MVP（Minimum Viable Product）</td><td>「最小構成で顧客に刺さるか？」</td><td>市場検証・学習</td></tr><tr><td>パイロット</td><td>「本番環境で動くか？」</td><td>実運用前の最終確認</td></tr></table></div>
-<p>「PoC疲れ」は組織課題として頻出。PoC止まりで本番化しない状態が続くと、現場は疲弊し経営層は「ROIが見えない」と投資継続を躊躇う。PoVに進化させて「価値の測定」まで実施することが重要。</p>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: リリースは「本番展開・正式公開」。PoCは「本番前の小規模試行検証」。本番化前の確認フェーズという位置づけが本質的な違い。</p></div>
-</div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ PoC＝Proof of Concept＝技術的実現可能性を小規模検証する試行段階</li>
-<li style="padding:4px 0;font-size:14px;">✅ PoVはPoCの進化版：「技術的にできる」から「価値が出るか」の検証へ</li>
-<li style="padding:4px 0;font-size:14px;">✅ 「PoC疲れ（PoCのまま本番化しない問題）」が組織課題として出題されやすい</li>
-</ul>
-</div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>特徴</th></tr><tr><td>PoC</td><td>実現可能性を確認する試行検証</td></tr><tr><td>PoV</td><td>ビジネス価値創出を確認する検証</td></tr><tr><td>リリース</td><td>本番環境への正式公開・展開</td></tr><tr><td>MVP</td><td>最小機能で市場に出し学習する製品</td></tr></table></div>
-</div>
-<div class="card"><h2>🎯 試験対策：PoCの重要ポイント</h2>
-<p>ITパスポート試験では「PoC＝本番前の試行検証」という基本定義から「PoV・パイロット・MVPとの違い」まで問われることがある。主要な区別は「何を確認するフェーズか」で整理する。PoC＝技術的実現性、PoV＝ビジネス価値、パイロット＝実運用可否。ITパスポートの過去問・勉強方法・独学・何時間かで学習計画を立てるなら、マネジメント系はPoC・アジャイル・プロジェクト管理のセットで短期集中すると効率が良い。</p>
-<p>「PoC疲れ」という問題も重要。大企業でDXが「PoC乱立・本番化ゼロ」に陥るのは、実現性確認（PoC）ばかりで「誰のどんな課題を解決するか（価値）」の検証が後回しになるから。「課題定義→PoC→PoV→本番化」という順序の重要性として理解する。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-digital-garage].html">[itp-digital-garage]</a>, <a href="[itp-agile].html">[itp-agile]</a></p>
+<div class="tags"><span class="tag">PoC（実証実験）・PoV</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>新システム導入検討中の情シス課長の自分。「いきなり全社展開はリスク。まず1部署で1か月試して効果検証して」と社長。この試行検証フェーズ、何という？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>PoC（実証実験）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>リリース</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ リリースは本番展開。本番前の小規模試行検証がPoC</div></li>
+
+</ul>
+</div>
+<p style="margin-top:12px;"><strong>✅ 正解：PoC（実証実験）</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 PoC（実証実験）・PoVとは何か</h2>
+<span class="kw">本番前の試行検証</span>
+<p>Proof of Concept。新技術・新システムが実用可能かを小規模に試して検証する段階。コスト効果・運用課題・組織受容性を確認してから本格導入を判断する。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>進化形のPoV（Proof of Value）は「実用可能か」より「ビジネス価値が出るか」を測る。PoC疲れ（PoC止まりで本番化しない）が組織課題として頻出。
+
+**覚え方** 🎯 PoC＝**Proof of Concept＝コンセプト実証**。**本番前のお試し公演**。試して良ければ本公演、ダメなら撤退の判断材料。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>PoC＝**Proof of Concept＝コンセプト実証**。**本番前のお試し公演**。試して良ければ本公演、ダメなら撤退の判断材料。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>PoC（実証実験）・PoVはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

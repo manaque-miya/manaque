@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>機械学習の種類とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="機械学習の種類の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="機械学習の種類の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-ml-types.html">
+<meta property="og:title" content="機械学習の種類とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="機械学習の種類の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-ml-types.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,62 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-ml-types.html">
-  <meta property="og:title" content="機械学習の種類とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="機械学習の種類の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-ml-types.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">機械学習の種類とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">機械学習の種類</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>機械学習の種類とは何か</h2>
-<p>機械学習とは、コンピュータがデータから自動的にパターンを学習し、予測や分類を行う人工知能の手法だ。学習方法の違いにより「教師あり学習」「教師なし学習」「強化学習」の3種類に大別される。ITパスポートでは各学習方式の特徴と代表的な適用例が問われる。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: 教師あり＝「正解ラベル付きデータで学習」、教師なし＝「正解なしで構造を発見」、強化学習＝「報酬を最大化する行動を学習」という対比が試験のキモだ。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">機械学習の種類とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">機械学習の種類</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>機械学習3種の比較</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">種類</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">学習方法</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">代表アルゴリズム</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">適用例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">教師あり学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正解ラベル付きデータを使用</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">回帰・分類・決定木・SVM</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">スパムフィルタ・画像分類・売上予測</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">教師なし学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ラベルなしデータからパターン発見</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クラスタリング・主成分分析</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">顧客セグメント・異常検知</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">強化学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">報酬シグナルを基に行動を最適化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">Q学習・ディープQ学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ゲームAI・自動運転・ロボット制御</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「教師なし学習」は「教師がいないから精度が低い」ではなく、「正解データを用意せずに特徴を発見する」手法であり、異常検知に特に有効だ。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>AI勉強中の自分。「スパムor正常のラベル付きデータで学習→新着メール分類」する手法。教師あり？強化？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ 教師あり学習＝正解データ（ラベル）を使って学習する</li>
-<li style="padding:4px 0;font-size:14px;">✅ 教師なし学習＝正解なし・クラスタリングが代表</li>
-<li style="padding:4px 0;font-size:14px;">✅ 強化学習＝試行錯誤して報酬最大化・ゲームAIが代表例</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>教師あり学習</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>強化学習</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 強化学習は報酬で行動最適化。「正解ラベル付きで分類学習」が教師あり</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">教師あり学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">正解ラベル付きデータで学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「正解データ」「ラベル」という言葉が出たらこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">教師なし学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ラベルなしでパターン発見</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「グループ分け」「クラスタリング」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">強化学習</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">報酬を基に行動を最適化</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「試行錯誤」「報酬」「エージェント」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：機械学習の種類の重要ポイント</h2>
-<p>機械学習の種類の問題で差がつくのは、「どの種類がどの問題に対応するか」の具体例だ。スパムメール分類・画像認識・売上予測は教師あり学習、顧客グループ分け・不正アクセス検知は教師なし学習、ゲームAI・自動運転は強化学習と即答できることが目標だ。</p>
-<p>「ディープラーニング（深層学習）」との関係も整理すること。ディープラーニングは機械学習の一手法であり、ニューラルネットワークを多層化したものだ。「機械学習⊃ディープラーニング」という包含関係を押さえておくと、選択肢の絞り込みで役立つ。</p>
-<p>過学習という概念も頻出だ。学習データに過剰適合してしまい、未知データへの精度が下がる現象を指す。「訓練データの精度は高いが、テストデータの精度が低い」という状況が過学習のサインだ。対策として「正則化」「データ増強」「交差検証」が使われる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-deep-learning].html" style="color:#1F56C6;">[itp-deep-learning]</a>, <a href="[itp-ai-types].html" style="color:#1F56C6;">[itp-ai-types]</a>, <a href="[itp-data-analytics].html" style="color:#1F56C6;">[itp-data-analytics]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：教師あり学習</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 機械学習の種類とは何か</h2>
+<span class="kw">教師あり=正解ラベルで学習、教師なし=ラベルなしで発見、強化学習=報酬で行動最適化</span>
+<p>教師あり学習：ラベル付きデータ（入力と正解のペア）でモデルを学習。分類（スパム判定・画像分類）と回帰（価格予測）に使われる。教師なし学習：ラベルなしデータからパターンを発見。クラスタリング・次元削減・異常検知に使われる。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>強化学習：エージェントが環境内で行動し、報酬・罰に基づいて最適な行動方針を学習。AlphaGo・自動運転・ロボット制御に応用。学習データが「正解ラベル付き」か「ラベルなし」か「報酬信号」かで3種を区別する。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p>教師あり（正解を教える）、教師なし（正解なしで発見させる）、強化学習（報酬でフィードバック）。「スパム判定や画像分類→教師あり」「顧客セグメンテーション→教師なし（クラスタリング）」が試験頻出の対応。</p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>**教師あり＝正解付き（分類/回帰）／教師なし＝ラベルなし（クラスタリング）／強化＝報酬（囲碁AI）**の3種類。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>機械学習の種類はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

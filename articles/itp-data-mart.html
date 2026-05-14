@@ -3,10 +3,10 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>データマートとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="データマートの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="データマートの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
 <link rel="canonical" href="https://manaque.net/articles/itp-data-mart.html">
 <meta property="og:title" content="データマートとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="データマートの意味・仕組み・試験のポイントを分かりやすく解説。">
+<meta property="og:description" content="データマートの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
 <meta property="og:url" content="https://manaque.net/articles/itp-data-mart.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="まなクエ！">
@@ -29,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -41,50 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F5F8FF;}
 </style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
 <div class="ah">
-<div class="al">ITパスポート｜テクノロジ</div>
-<h1 class="at">データマートとは？ITパスポート試験で確実に正解するポイント</h1>
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">データマートとは？自分ごと体験で覚えるITパスポート対策</h1>
 <div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">データマート</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-</div>
-<div class="card"><h2>データマートとは何か</h2>
-<p>「ITパスポート 独学」でデータ活用の階層を理解するうえで欠かせないのがデータマートだ。データマートとは、全社規模のデータウェアハウス（DWH）から特定の部門・用途向けにデータを切り出して構築した小規模な分析用データベースのことを指す。</p>
-<p>営業部門向けの販売データマート、マーケティング部門向けの顧客行動データマート、財務部門向けのコストデータマートのように、部門の分析ニーズに特化した形で設計される。全社DWHのすべてのデータにアクセスするよりも処理が速く、部門担当者がセルフサービスで分析しやすいという利点がある。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: データ活用の階層は「データレイク（生データ）→DWH（整形・全社）→データマート（部門特化）」の3段階で理解するのが試験対策上も実務上も有効だ。</p></div>
-</div>
-<div class="card"><h2>仕組み・種類</h2>
-<p>データマートの構築方式には2種類ある。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>方式</th><th>内容</th><th>特徴</th></tr><tr><td>依存型（Dependent）</td><td>DWHからデータを取得して構築</td><td>DWHとの整合性が保たれる・最もオーソドックス</td></tr><tr><td>独立型（Independent）</td><td>データソースから直接構築</td><td>DWH不要だが整合性管理が課題</td></tr></table></div>
-<p>データ活用基盤の階層構造を整理すると以下のようになる。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>レイヤー</th><th>規模</th><th>データ状態</th><th>担当者</th></tr><tr><td>データレイク</td><td>大（全社・超大容量）</td><td>生データ・未整形</td><td>データエンジニア</td></tr><tr><td>データウェアハウス</td><td>中（全社・整形済み）</td><td>整形・構造化済み</td><td>DBAエンジニア</td></tr><tr><td>データマート</td><td>小（部門特化）</td><td>部門用途に加工済み</td><td>各部門のデータ担当</td></tr></table></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「データマート＝データレイク」とする誤答に注意。データレイクは生データを大量に貯める貯蔵庫で、データマートは特定部門向けに加工済みの小型分析DBだ。両者は規模・データ加工度合い・用途がすべて異なる。</p></div>
-</div>
-<div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ データマート＝DWHから部門特化で切り出した小型の分析用DB</li>
-<li style="padding:4px 0;font-size:14px;">✅ DWH＞データマート（DWHのサブセット）の包含関係</li>
-<li style="padding:4px 0;font-size:14px;">✅ データレイク（生データ）→DWH（整形・全社）→データマート（部門特化）の3階層</li>
-<li style="padding:4px 0;font-size:14px;">✅ 部門担当者がセルフサービスで分析しやすい点がメリット</li>
-</ul>
-</div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>規模</th><th>データ加工度</th><th>用途</th></tr><tr><td>データマート</td><td>小（部門別）</td><td>部門用途に加工</td><td>部門の定期分析</td></tr><tr><td>データウェアハウス</td><td>中（全社）</td><td>整形・構造化済み</td><td>全社BI・経営分析</td></tr><tr><td>データレイク</td><td>大（全社）</td><td>未加工・多様</td><td>AI学習・探索分析</td></tr></table></div>
-</div>
-<div class="card"><h2>🎯 試験対策：データマートの重要ポイント</h2>
-<p>「ITパスポート 過去問・勉強方法・独学・何時間」を調べると、データマートはDWHとの比較問題として繰り返し登場しており、独学でも短時間でポイントを押さえやすいテーマだ。「全社DWHから特定部門向けに切り出した小型の分析DB」という説明がデータマートに対応する。「部門専用」「小型」「DWHのサブセット」がキーワードだ。</p>
-<p>「データマート とは」で検索すると「部門特化・DWHから切り出し」という説明が出てくる。「ITパスポート 勉強方法」としてデータレイク・DWH・データマートの3段階を「原料倉庫（レイク）→製品倉庫（DWH）→店頭陳列棚（マート）」というたとえで整理すると混同を防げる。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-data-lake.html">itp-data-lake</a>, <a href="itp-data-warehouse.html">itp-data-warehouse</a>, <a href="itp-etl.html">itp-etl</a>, <a href="itp-bi.html">itp-bi</a></p>
+<div class="tags"><span class="tag">データマート</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>マーケ部門のデータ分析担当の自分。全社DWHは膨大で重い…うちの部門の販売・顧客データだけ抽出した小型の専用DBがほしい。これって何？？</p></div>
+</div>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>データマート</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>データレイク</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ レイクは生データの大規模貯蔵庫。「部門特化・分析しやすく加工済の小型DB」がデータマート</div></li>
+
+</ul>
+</div>
+<p style="margin-top:12px;"><strong>✅ 正解：データマート</strong></p>
+</div>
+
+<div class="card">
+<h2>📘 データマートとは何か</h2>
+<span class="kw">部門特化型小型DWH</span>
+<p>特定部門・用途向けに切り出した小規模なデータ分析用DB。全社DWHのサブセット。販売・マーケ・財務など部門単位で構築されることが多い。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>「DWH＞データマート＝部門別の引き出し」の階層。データレイク（生）→DWH（整形）→データマート（部門特化）の流れが頻出。
+
+**覚え方** 🎯 データマート＝**部門別のミニコンビニ**。大型スーパー（DWH）から欲しい棚だけ持ってきた専門店。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>データマート＝**部門別のミニコンビニ**。大型スーパー（DWH）から欲しい棚だけ持ってきた専門店。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>データマートはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>

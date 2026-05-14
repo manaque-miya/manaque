@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
+<!DOCTYPE html><html lang="ja"><head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ドメイン駆動設計（DDD）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ドメイン駆動設計（DDD）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
+<meta name="description" content="ドメイン駆動設計（DDD）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
+<link rel="canonical" href="https://manaque.net/articles/itp-ddd.html">
+<meta property="og:title" content="ドメイン駆動設計（DDD）とは？ITパスポート試験対策｜まなクエ！">
+<meta property="og:description" content="ドメイン駆動設計（DDD）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
+<meta property="og:url" content="https://manaque.net/articles/itp-ddd.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="まなクエ！">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
@@ -25,11 +29,15 @@ h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-botto
 h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
 p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
 ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
+li{font-size:14px;line-height:1.85;color:#2B3858;}
+.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
+.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
+.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
+.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
+.qlist{list-style:none;padding-left:0;}
+.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
+.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
+.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
 .cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
 .cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
 .cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
@@ -37,46 +45,64 @@ li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
 .tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
 .ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
 .ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-code{background:#F0F4FF;padding:2px 6px;border-radius:4px;font-size:13px;}
-</style><link rel="canonical" href="https://manaque.net/articles/itp-ddd.html">
-  <meta property="og:title" content="ドメイン駆動設計（DDD）とは？ITパスポート試験対策｜まなクエ！">
-  <meta property="og:description" content="ドメイン駆動設計（DDD）の意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-  <meta property="og:url" content="https://manaque.net/articles/itp-ddd.html">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="まなクエ！">
-</head>
+</style></head>
 <body>
 <div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
 <main class="main">
-  <div class="ah">
-    <div class="al">ITパスポート｜テクノロジ</div>
-    <h1 class="at">ドメイン駆動設計（DDD）とは？ITパスポート試験で確実に正解するポイント</h1>
-    <div class="am">ITパスポート対策 / 読了：約3分</div>
-    <div class="tags"><span class="tag">ドメイン駆動設計（DDD）</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-  </div>
-<div class="card"><h2>ドメイン駆動設計（DDD）とは何か</h2>
-<p>DDD（Domain-Driven Design：ドメイン駆動設計）とは、エリック・エヴァンスが提唱したソフトウェア設計手法で、ビジネスの概念・ルール（ドメイン）をソフトウェアの中心に置き、ドメインエキスパートと開発者が共通言語（ユビキタス言語）を使って設計・実装を進めるアプローチだ。複雑なビジネスロジックを整理して長期的な保守性を高めることが目的だ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: DDDは「技術的な都合ではなくビジネスの言葉でシステムを設計する」考え方であり、エンジニアとビジネス担当者が同じ言葉でコミュニケーションできる状態を目指す。</p></div>
+<div class="ah">
+<div class="al">ITパスポート｜IT全般</div>
+<h1 class="at">ドメイン駆動設計（DDD）とは？自分ごと体験で覚えるITパスポート対策</h1>
+<div class="am">ITパスポート対策 / 読了：約3分</div>
+<div class="tags"><span class="tag">ドメイン駆動設計（DDD）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
 </div>
-<div class="card"><h2>DDDの主要概念</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">概念</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">内容</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">具体例</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ドメイン</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ビジネスの問題領域・業務知識の集合</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ECの「注文」「在庫」「決済」など</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユビキタス言語</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">開発者とドメインエキスパートが共有する共通言語</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「出荷」「与信」をコードの変数名にも使う</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">境界づけられたコンテキスト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ユビキタス言語と設計が一貫して適用される境界</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「注文コンテキスト」と「在庫コンテキスト」を分離</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">エンティティ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一意のIDを持ち同一性で識別されるオブジェクト（例：注文・顧客）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">注文ID:1001（内容が変わっても同一の注文）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">値オブジェクト</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">IDを持たず属性値で識別されるオブジェクト（例：住所・金額）</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「東京都渋谷区」（同じ値なら同じモノ）</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">集約</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">一貫性を保つべきエンティティ・値オブジェクトのまとまり</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">注文（集約ルート）＋注文明細（エンティティ）</td></tr></table></div><div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: DDDは特定のフレームワークや技術ではなく「設計思想・哲学」であり、マイクロサービスと組み合わせて使うことが多いが、DDDがマイクロサービスを意味するわけではない。</p></div>
+
+<div class="card">
+<h2>🎬 こんなシーン、想像してみて</h2>
+<div class="scenario"><p>大規模システム開発の自分。「業務担当者と『ユビキタス言語』を作って、業務概念をそのまま設計に反映」する手法。TDD？</p></div>
 </div>
-<div class="card"><h2>ここが試験のキモ</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ DDD＝ビジネスドメインを中心にソフトウェアを設計する手法</li>
-<li style="padding:4px 0;font-size:14px;">✅ ユビキタス言語＝開発者とビジネス側の共通言語</li>
-<li style="padding:4px 0;font-size:14px;">✅ 境界づけられたコンテキスト＝マイクロサービスの分割指針になる</li>
+
+<div class="card">
+<h2>❓ 2問問題：あなたならどっち？</h2>
+<div class="qbox">
+<h3>次の状況に当てはまるのは？</h3>
+<ul class="qlist">
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ドメイン駆動設計（DDD）</strong></li>
+<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>テスト駆動開発（TDD）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ TDDはテスト先行開発手法。「ビジネスドメイン中心の設計アプローチ」がDDD</div></li>
+
 </ul>
 </div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">用語</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">特徴</th><th style="background:#EAF2FE;padding:8px 10px;text-align:left;font-weight:800;border-bottom:2px solid #C5D7F5;">試験での見分け方</th></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">DDD</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">ビジネスドメインを中心とした設計思想</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「ユビキタス言語・ドメインエキスパート協働」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">オブジェクト指向設計</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">オブジェクトの属性・メソッドで設計</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「クラス・継承・カプセル化」ならこれ</td></tr><tr><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">クリーンアーキテクチャ</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">レイヤー分離によるシステム構造の設計原則</td><td style="padding:7px 10px;border-bottom:1px solid #E4E9F2;">「依存関係の方向を内側に向ける」ならこれ</td></tr></table></div></div>
-<div class="card"><h2>🎯 試験対策：ドメイン駆動設計（DDD）の重要ポイント</h2>
-<p>DDDの問題で問われるのは「ユビキタス言語の目的」と「境界づけられたコンテキストの意義」だ。「ビジネス担当者と開発者が同じ言葉でコミュニケーションし、モデルとコードに同じ用語を使う手法はどれか」→DDD（ユビキタス言語）が正答だ。</p>
-<p>マイクロサービスとの関係も重要だ。マイクロサービスのサービス分割において、DDDの「境界づけられたコンテキスト」は各マイクロサービスの境界を決める指針になる。「マイクロサービスの適切な分割単位を決めるためにDDDのどの概念を参照するか」→境界づけられたコンテキストが正答だ。</p>
-<p>複雑なビジネスロジックへの適合という文脈も覚えること。DDDが最も効果を発揮するのは「複雑なビジネスロジックを持つシステム」だ。CRUDのみの単純なシステムにはオーバーエンジニアリングになりがちな点も試験で問われることがある。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="[itp-microservices].html" style="color:#1F56C6;">[itp-microservices]</a>, <a href="[itp-oop].html" style="color:#1F56C6;">[itp-oop]</a>, <a href="[itp-software-architecture].html" style="color:#1F56C6;">[itp-software-architecture]</a></p>
+<p style="margin-top:12px;"><strong>✅ 正解：ドメイン駆動設計（DDD）</strong></p>
 </div>
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../exam-quiz.html">🏆 資格試験対策クイズに挑戦 →</a></div></div>
+
+<div class="card">
+<h2>📘 ドメイン駆動設計（DDD）とは何か</h2>
+<span class="kw">ビジネスの言葉でソフトウェアを設計・実装</span>
+<p>ドメイン駆動設計（DDD：Domain-Driven Design）はEric Evansが提唱した設計手法。核心概念：ユビキタス言語（開発者と業務担当者が共有する用語集）・境界づけられたコンテキスト（ドメインの境界）・エンティティ・値オブジェクト・集約・リポジトリ・ドメインサービスなど。</p>
+</div>
+
+<div class="card">
+<h2>🎯 試験のキモ</h2>
+<p>DDDは複雑なビジネスロジックを持つエンタープライズシステムに適している。マイクロサービスの境界設計にも活用される（境界づけられたコンテキスト→マイクロサービスの単位）。小規模・シンプルなシステムへの適用はオーバーエンジニアリングになる場合がある。
+
+**覚え方** 🎯 DDD＝**Domain-Driven Design＝業務領域中心の設計**。**ユビキタス言語**で開発・業務担当が共通語彙化。</p>
+</div>
+
+<div class="card">
+<h2>⚠️ 間違いやすいポイント</h2>
+<p></p>
+</div>
+
+<div class="card">
+<h2>🧠 覚え方</h2>
+<div class="memory"><p>DDD＝**Domain-Driven Design＝業務領域中心の設計**。**ユビキタス言語**で開発・業務担当が共通語彙化。</p></div>
+</div>
+
+<div class="card">
+<h2>📚 ITパスポートの試験対策・勉強方法</h2>
+<p>ドメイン駆動設計（DDD）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
+</div>
+
+<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
 </main>
 <footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
 </body></html>
