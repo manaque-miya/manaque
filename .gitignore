@@ -1,1 +1,8 @@
 character/
+_inbox/
+assets/old/
+convert_articles.py
+*.pyc
+__pycache__/
+_audit-report.md
+_audit-fix-report.md
