@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>専用実施権とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="専用実施権と通常実施権の違いをわかりやすく解説。「独占できる」のが専用実施権。ITパスポート試験で混同しやすいポイントと覚え方ゴロ付き。">
+<link rel="canonical" href="https://example.com/itp-exclusive-license">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5a3dbd,#2a1a6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(42,26,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbd6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#4256b8;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.compare-cell{border-radius:12px;padding:12px;}
+.compare-cell h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.compare-cell ul{list-style:none;}
+.compare-cell li{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;padding-left:14px;position:relative;}
+.compare-cell li::before{content:"・";position:absolute;left:0;}
+.cell-ex{background:#ede7fb;}.cell-ex h4{color:#5a3dbd;}
+.cell-no{background:#e7eefc;}.cell-no h4{color:#2e6de5;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#5a3dbd;--fbg:#f0ecff;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ 法務・知的財産</span>
+    <h1><b>専用実施権</b>とは？</h1>
+    <p>特許を持つ権利者から「あなただけが使っていい」と認められた、<br>独占的な使用権。他の誰にも渡さない契約。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="58" width="52" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="16" y="38" width="40" height="28" rx="8" fill="#5a3dbd"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 19 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="42" y="55" width="18" height="13" rx="2" fill="#48506a"/>
+        <rect x="44" y="57" width="14" height="9" rx="1" fill="#b8d0f5"/>
+        <!-- 鍵アイコン -->
+        <circle cx="48" cy="61" r="3" fill="none" stroke="#ffd23f" stroke-width="1.5"/>
+        <rect x="47" y="63" width="2" height="3" rx="0.5" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        A社は画期的な技術を特許で持つ発明者と交渉し、「うちだけが製品に使える」独占契約を結んだ。競合B社が「同じ技術を使わせてほしい」と交渉しても断れる状態。
+        <div class="scene-q">…この「独占使用の権利」のことを何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔑 専用実施権 vs 通常実施権</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="専用実施権と通常実施権の比較図">
+      <!-- 特許権者 -->
+      <rect x="120" y="10" width="100" height="40" rx="10" fill="#4256b8"/>
+      <text x="170" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">特許権者</text>
+      <text x="170" y="43" text-anchor="middle" font-size="10" font-weight="700" fill="#c0cafe" font-family="M PLUS Rounded 1c">（発明者・所有者）</text>
+
+      <!-- 専用実施権 矢印 -->
+      <line x1="130" y1="50" x2="80" y2="110" stroke="#5a3dbd" stroke-width="2.5" marker-end="url(#arr1)"/>
+      <defs>
+        <marker id="arr1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#5a3dbd"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#2e6de5"/>
+        </marker>
+      </defs>
+      <text x="88" y="85" text-anchor="middle" font-size="10" font-weight="800" fill="#5a3dbd" font-family="M PLUS Rounded 1c">専用実施権</text>
+      <text x="88" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#7a6acd" font-family="M PLUS Rounded 1c">独占・排他</text>
+
+      <!-- 通常実施権 矢印 -->
+      <line x1="210" y1="50" x2="260" y2="110" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arr2)"/>
+      <text x="252" y="85" text-anchor="middle" font-size="10" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">通常実施権</text>
+      <text x="252" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#6a8acd" font-family="M PLUS Rounded 1c">非独占</text>
+
+      <!-- 専用実施権ボックス -->
+      <rect x="20" y="110" width="120" height="60" rx="12" fill="#ede7fb" stroke="#5a3dbd" stroke-width="2.5"/>
+      <text x="80" y="132" text-anchor="middle" font-size="11" font-weight="900" fill="#5a3dbd" font-family="M PLUS Rounded 1c">A社だけ</text>
+      <text x="80" y="148" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">独占使用OK</text>
+      <text x="80" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">特許権者も×</text>
+
+      <!-- 通常実施権ボックス -->
+      <rect x="200" y="110" width="120" height="60" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2.5"/>
+      <text x="260" y="132" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">A社・B社・C社…</text>
+      <text x="260" y="148" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">複数に許諾可</text>
+      <text x="260" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">特許権者もOK</text>
+
+      <!-- 禁止バッジ -->
+      <rect x="22" y="180" width="116" height="28" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="80" y="194" text-anchor="middle" font-size="10" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">他社・特許権者への</text>
+      <text x="80" y="207" text-anchor="middle" font-size="10" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">使用を禁止できる</text>
+
+      <rect x="202" y="180" width="116" height="28" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="260" y="194" text-anchor="middle" font-size="10" font-weight="800" fill="#216b3b" font-family="M PLUS Rounded 1c">他社に使用禁止</text>
+      <text x="260" y="207" text-anchor="middle" font-size="10" font-weight="800" fill="#216b3b" font-family="M PLUS Rounded 1c">を言えない</text>
+    </svg>
+    <div class="compare-grid">
+      <div class="compare-cell cell-ex">
+        <h4>専用実施権</h4>
+        <ul>
+          <li>契約した1社だけが使える</li>
+          <li>特許権者本人も使用不可に</li>
+          <li>第三者への使用差し止め可</li>
+          <li>特許庁への登録が必要</li>
+        </ul>
+      </div>
+      <div class="compare-cell cell-no">
+        <h4>通常実施権</h4>
+        <ul>
+          <li>複数の会社に同時許諾可</li>
+          <li>特許権者本人も使用できる</li>
+          <li>差し止め権は持たない</li>
+          <li>登録なしでも成立する</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー・詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 契約の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 特許権者と実施許諾契約を結ぶ</div><div class="fb">「専用実施権を設定する」契約。独占したい企業が特許権者と交渉。金額が高いほど独占性が強い。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 特許庁に登録する（専用実施権の場合は必須）</div><div class="fb">専用実施権は特許庁への登録なしには第三者に対抗できない。通常実施権は登録不要。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 独占的に使用・侵害者を排除できる</div><div class="fb">第三者が無断使用した場合、専用実施権者は自ら差し止め請求できる。通常実施権者はできない。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「通常実施権＝使えない」は誤り</div>
+      <div class="tb">通常実施権でも合法的に特許技術を使える。「専用でないだけ」で使用自体は可能。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">専用実施権でも特許権者が使えなくなる</div>
+      <div class="tb">専用実施権を設定すると、特許権者本人さえも実施できなくなる場合がある。「自分の特許なのに自分で使えない」というひっかけに注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">著作権の「独占的利用許諾」との混同</div>
+      <div class="tb">著作権にも似た概念があるが、特許の専用実施権は特許庁登録が必要という点で異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>独占・他社を排除</strong>」が出てきたら → <strong>専用実施権</strong>。「<strong>複数に許諾・非独占</strong>」なら → <strong>通常実施権</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">専用＝センヨウ＝占有</span>（占領・独り占め）<br>
+    「<span class="hl">専用トイレ</span>」→ 他の人は絶対入れない！<br><br>
+    専用実施権＝<span class="hl">「おれだけ」権</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">特許権者さえ追い出せる「おれだけ部屋」</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-exclusive-license</div>
+
+</div>
+</body>
+</html>

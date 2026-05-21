@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RTOとRPOとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="RTO（目標復旧時間）とRPO（目標復旧時点）をわかりやすく解説。障害発生時に「いつまでに復旧するか」「どこまで戻すか」の違い、BCPとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-rto-rpo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a4a7a,#0d2a4a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,42,74,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#a3d0f0 56%,#a3d0f0 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d8fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1a4a7a;--cbg:#e7eef7;}
+.p-green{--c:#1a7a4f;--cbg:#e2f3e8;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-teal{--c:#1a6a7a;--cbg:#e2eff3;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a4a7a;}
+
+.twobox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+@media(max-width:440px){.twobox{grid-template-columns:1fr;}}
+.tbox{border-radius:12px;padding:14px 12px;}
+.tbox h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.tbox p{font-size:12px;font-weight:600;line-height:1.7;}
+.tbox-rto{background:#e7eef7;}.tbox-rto h4{color:#1a4a7a;}
+.tbox-rpo{background:#e2f3e8;}.tbox-rpo h4{color:#1a7a4f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#dd5a3a;--fbg:#fce8e4;}
+.f2{--fc:#1a4a7a;--fbg:#e7eef7;}
+.f3{--fc:#1a7a4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系・BCP</span>
+    <h1><b>RTO</b>と<b>RPO</b></h1>
+    <p>障害が起きたとき「いつまでに復旧するか（RTO）」と「どこまでデータを戻すか（RPO）」の2本柱。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#0d2a4a" opacity=".1"/>
+        <!-- サーバー -->
+        <rect x="20" y="28" width="38" height="46" rx="5" fill="#3c4456"/>
+        <rect x="24" y="33" width="30" height="7" rx="2" fill="#5a6070"/>
+        <rect x="24" y="43" width="30" height="7" rx="2" fill="#5a6070"/>
+        <rect x="24" y="53" width="30" height="7" rx="2" fill="#5a6070"/>
+        <!-- 赤い×印（障害） -->
+        <circle cx="57" cy="24" r="12" fill="#dd5a3a"/>
+        <line x1="51" y1="18" x2="63" y2="30" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <line x1="63" y1="18" x2="51" y2="30" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="scene-txt">
+        深夜に会社の基幹システムが障害で停止した。翌朝の業務開始には「どうしても動いていなければならない」。データは前日22時まで分は確実に守りたい。<br>
+        <strong>「何時間以内に復旧するか」「どの時点のデータまで復元するか」</strong>の2つの目標が必要になる。
+        <div class="scene-q">…この2つの目標値を表す用語、何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：RTOとRPOの違い -->
+  <div class="panel p-teal">
+    <span class="phead">📊 RTOとRPOの違いを図で理解</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="時系列でRTOとRPOの違いを示す図">
+      <defs>
+        <marker id="arr7" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#48506a"/>
+        </marker>
+        <marker id="arr8" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#1a7a4f"/>
+        </marker>
+        <marker id="arr9" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#1a4a7a"/>
+        </marker>
+      </defs>
+
+      <!-- 時系列ライン -->
+      <line x1="20" y1="100" x2="320" y2="100" stroke="#c2c8d8" stroke-width="2" marker-end="url(#arr7)"/>
+      <text x="328" y="104" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">時間</text>
+
+      <!-- バックアップ時点 -->
+      <line x1="80" y1="86" x2="80" y2="114" stroke="#1a7a4f" stroke-width="2.5"/>
+      <rect x="40" y="66" width="80" height="18" rx="6" fill="#e2f3e8" stroke="#1a7a4f" stroke-width="1.5"/>
+      <text x="80" y="79" text-anchor="middle" font-size="10" font-weight="800" fill="#1a7a4f" font-family="M PLUS Rounded 1c">最後のバックアップ</text>
+
+      <!-- 障害発生 -->
+      <line x1="180" y1="84" x2="180" y2="114" stroke="#dd5a3a" stroke-width="2.5"/>
+      <rect x="145" y="64" width="70" height="18" rx="6" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="180" y="77" text-anchor="middle" font-size="10" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">⚡ 障害発生</text>
+
+      <!-- 復旧完了 -->
+      <line x1="280" y1="86" x2="280" y2="114" stroke="#1a4a7a" stroke-width="2.5"/>
+      <rect x="240" y="66" width="80" height="18" rx="6" fill="#e7eef7" stroke="#1a4a7a" stroke-width="1.5"/>
+      <text x="280" y="79" text-anchor="middle" font-size="10" font-weight="800" fill="#1a4a7a" font-family="M PLUS Rounded 1c">✅ 復旧完了</text>
+
+      <!-- RPO矢印（バックアップ→障害） -->
+      <path d="M80 130 L180 130" stroke="#1a7a4f" stroke-width="2" marker-end="url(#arr8)"/>
+      <path d="M180 130 L80 130" stroke="#1a7a4f" stroke-width="2"/>
+      <rect x="100" y="138" width="60" height="18" rx="6" fill="#e2f3e8"/>
+      <text x="130" y="151" text-anchor="middle" font-size="11" font-weight="900" fill="#1a7a4f" font-family="M PLUS Rounded 1c">RPO（データ損失許容）</text>
+
+      <!-- RTO矢印（障害→復旧） -->
+      <path d="M180 165 L280 165" stroke="#1a4a7a" stroke-width="2" marker-end="url(#arr9)"/>
+      <path d="M280 165 L180 165" stroke="#1a4a7a" stroke-width="2"/>
+      <rect x="195" y="173" width="70" height="18" rx="6" fill="#e7eef7"/>
+      <text x="230" y="186" text-anchor="middle" font-size="11" font-weight="900" fill="#1a4a7a" font-family="M PLUS Rounded 1c">RTO（復旧時間目標）</text>
+    </svg>
+
+    <div class="twobox">
+      <div class="tbox tbox-rto">
+        <h4>RTO（Recovery Time Objective）目標復旧時間</h4>
+        <p>障害発生から「何時間以内に復旧するか」の目標値。短いほどシステムの停止が少なくて済む。</p>
+      </div>
+      <div class="tbox tbox-rpo">
+        <h4>RPO（Recovery Point Objective）目標復旧時点</h4>
+        <p>「どの時点のデータまで戻すか」の目標値。障害前の何時間前まで許容するかを決める。短いほどデータ損失が少ない。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：BCP策定での使い方 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ BCP（事業継続計画）とRTO・RPOの関係</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 障害・災害発生</div>
+        <div class="fb">システム停止・データ消失のリスクが現実に。被害状況の把握と初動対応。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② RTOに基づいて復旧を進める</div>
+        <div class="fb">「○時間以内に再稼働」という目標（RTO）に向けてシステム復旧作業を実施。バックアップから環境を再構築。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ RPOに基づいてデータを復元</div>
+        <div class="fb">「○時間前のデータまで復元」という目標（RPO）に基づき、バックアップからデータをリストア。業務再開。</div>
+      </div>
+    </div>
+    <p style="margin-top:12px;">RTOとRPOはBCP（事業継続計画）やDR（ディザスタリカバリ）計画を策定する際に<strong>必ずセットで決める</strong>目標値。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">RTOとRPOの取り違え（最頻出ひっかけ）</div>
+      <div class="tb">RTO＝<strong>Time（時間）→ いつまでに復旧するか</strong>。RPO＝<strong>Point（時点）→ どこまでデータを戻すか</strong>。「T＝タイム（時間）」「P＝ポイント（時点）」で覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「RTOが長い＝良い」は誤り</div>
+      <div class="tb">RTOは<strong>短いほど</strong>システムの停止時間が短く、ビジネスへの影響が少ない。コストと天秤にかけて適切な目標値を設定する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">RPOはデータのバックアップ頻度に直結</div>
+      <div class="tb">RPO＝「1時間」なら、最大1時間分のデータ損失まで許容するということ。バックアップを1時間ごとに取る必要がある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">RTOとRPOはゼロが理想だが現実は難しい</div>
+      <div class="tb">「瞬時に復旧＆データ損失ゼロ」が理想だが、コストが膨大。目標値は<strong>コストと業務への影響のバランス</strong>で決める。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">RTO＝「時間（Time）で返す」、RPO＝「地点（Point）に戻す」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Recovery <strong>T</strong>ime Objective＝どのくらいで動くか。Recovery <strong>P</strong>oint Objective＝どこまでのデータを回収するか。</span><br><br>
+      「<span class="hl">Time＝タイマーをかけて復旧</span>」「<span class="hl">Point＝データの待ち合わせ地点</span>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">T＝時間（復旧までの長さ）／P＝時点（データを戻す起点）</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

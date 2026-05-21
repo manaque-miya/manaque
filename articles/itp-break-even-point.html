@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>損益分岐点・損益分岐点売上高とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="損益分岐点の概念と損益分岐点売上高の計算式を図解で解説。固定費・変動費率から黒字になる最低売上高を求める公式、CVP分析・安全余裕率まで。ITパスポート試験対策。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-break-even-point">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0f766e,#134e4a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(15,118,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#99f6e4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-teal{--c:#0f766e;--cbg:#ccfbf1;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-amber{--c:#b45309;--cbg:#fef3c7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0f766e;}
+
+.def-box{background:#f0fdf9;border-radius:13px;padding:14px 16px;margin-top:8px;border-left:5px solid #0f766e;}
+.def-box .dt{font-size:13px;font-weight:900;color:#0f766e;margin-bottom:6px;}
+.def-box .dd{font-size:13px;font-weight:700;line-height:1.8;color:#3c4456;}
+
+.cost-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.cost-card{border-radius:12px;padding:12px;}
+.cost-card h4{font-size:13px;font-weight:900;margin-bottom:5px;}
+.cost-card p{font-size:12px;font-weight:600;line-height:1.65;color:#48506a;}
+.cost-card ul{list-style:none;margin-top:5px;}
+.cost-card li{font-size:11.5px;font-weight:600;padding-left:11px;position:relative;color:#48506a;}
+.cost-card li::before{content:"・";position:absolute;left:0;}
+.fixed{background:#e7eefc;}.fixed h4{color:#2e6de5;}
+.variable{background:#e2f3e5;}.variable h4{color:#2e8b4f;}
+
+.formula-box{background:#fef3c7;border-radius:14px;padding:16px;margin:10px 0;border:2.5px solid #f59e0b;text-align:center;}
+.formula-box .fl{font-size:12px;font-weight:800;color:#92400e;margin-bottom:6px;}
+.formula-box .fm{font-size:17px;font-weight:900;color:#78350f;line-height:1.6;}
+
+.formula-box-cyan{background:#cffafe;border-radius:14px;padding:14px 16px;margin:8px 0;border:2px solid #0e7490;}
+.formula-box-cyan .fl{font-size:12px;font-weight:800;color:#155e75;margin-bottom:5px;}
+.formula-box-cyan .fm{font-size:15px;font-weight:900;color:#0c4a6e;line-height:1.6;}
+
+.step-box{border-radius:13px;padding:13px 15px;border:2px solid var(--sc);background:var(--sbg);margin-bottom:9px;}
+.step-box .sh{font-size:14px;font-weight:900;color:var(--sc);margin-bottom:5px;}
+.step-box .sb{font-size:13px;font-weight:700;line-height:1.8;color:#48506a;}
+.step-box .scalc{font-size:14px;font-weight:900;color:var(--sc);margin-top:6px;}
+.s1{--sc:#b45309;--sbg:#fef9ee;}
+.s2{--sc:#2e6de5;--sbg:#eef3fd;}
+.s3{--sc:#2e8b4f;--sbg:#eef8f1;}
+
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.acard{border-radius:12px;padding:12px;}
+.acard h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.acard p{font-size:12px;font-weight:600;line-height:1.65;color:#48506a;}
+.ac-blue{background:#e7eefc;}.ac-blue h4{color:#2e6de5;}
+.ac-green{background:#e2f3e5;}.ac-green h4{color:#2e8b4f;}
+.ac-orange{background:#fcefd9;}.ac-orange h4{color:#d9851f;}
+.ac-teal{background:#cffafe;}.ac-teal h4{color:#0e7490;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ①ヒーロー -->
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>損益分岐点</b>と売上高計算</h1>
+    <p>「赤字と黒字の境界線」を公式で求める。固定費・変動費率の2つを押さえれば、最低必要売上高が1分で出る。</p>
+  </div>
+
+  <!-- ②こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#0a3d3a" opacity=".1"/>
+        <rect x="8" y="60" width="62" height="25" rx="8" fill="#99f6e4" opacity=".6"/>
+        <rect x="14" y="38" width="50" height="30" rx="10" fill="#0f766e"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- 天秤アイコン -->
+        <line x1="44" y1="57" x2="62" y2="57" stroke="#ffd23f" stroke-width="2"/>
+        <line x1="53" y1="57" x2="53" y2="70" stroke="#ffd23f" stroke-width="2"/>
+        <circle cx="48" cy="70" r="4" fill="#ffd23f"/>
+        <circle cx="58" cy="70" r="4" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        カフェを開業したあなた。家賃・人件費は毎月固定で100万円かかる。コーヒー1杯500円・原価200円（変動費率40%）。<strong>「最低いくら売れれば赤字にならない？」</strong>という疑問が湧いた。
+        <div class="scene-q">…「損益分岐点」と計算式さえ覚えれば一発で答えが出る。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③図解SVG：損益分岐点の基本グラフ -->
+  <div class="panel p-blue">
+    <span class="phead">📊 損益分岐点グラフ</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="損益分岐点グラフ：売上線と総費用線が交わる点が損益分岐点">
+      <rect x="40" y="20" width="280" height="200" fill="#f8faff"/>
+      <!-- 赤字エリア -->
+      <polygon points="40,220 40,20 160,220" fill="#fce4dd" opacity=".5"/>
+      <!-- 黒字エリア -->
+      <polygon points="160,220 320,20 320,220" fill="#e2f3e5" opacity=".5"/>
+      <!-- 軸 -->
+      <line x1="40" y1="220" x2="320" y2="220" stroke="#c2c8d8" stroke-width="2"/>
+      <line x1="40" y1="220" x2="40" y2="20" stroke="#c2c8d8" stroke-width="2"/>
+      <!-- 固定費（水平線） -->
+      <line x1="40" y1="170" x2="320" y2="170" stroke="#2e6de5" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="44" y="165" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">固定費（変わらない）</text>
+      <!-- 総費用線 -->
+      <line x1="40" y1="170" x2="320" y2="70" stroke="#d9851f" stroke-width="2.5"/>
+      <text x="246" y="62" font-size="11" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">総費用線</text>
+      <!-- 売上線 -->
+      <line x1="40" y1="220" x2="320" y2="20" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="260" y="30" font-size="11" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">売上線</text>
+      <!-- 損益分岐点 -->
+      <circle cx="160" cy="120" r="7" fill="#dd5a3a"/>
+      <line x1="160" y1="120" x2="160" y2="220" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="140" y="115" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">損益分岐点</text>
+      <!-- ラベル -->
+      <text x="80" y="200" font-size="13" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">赤字</text>
+      <text x="230" y="200" font-size="13" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">黒字</text>
+      <!-- 軸ラベル -->
+      <text x="40" y="240" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">売上高 →</text>
+      <text x="8" y="130" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c" transform="rotate(-90,8,130)">金額 ↑</text>
+    </svg>
+    <div class="def-box">
+      <div class="dt">損益分岐点（Break-Even Point）とは</div>
+      <div class="dd">売上高と総費用（固定費＋変動費）が<strong>ちょうど等しくなる売上高</strong>。この点より売上が多ければ黒字、少なければ赤字になる。損益分岐点での利益はゼロ。</div>
+    </div>
+  </div>
+
+  <!-- ④フロー/詳細：費用の分類と計算式 -->
+  <div class="panel p-green">
+    <span class="phead">📦 固定費と変動費の違い</span>
+    <div class="cost-grid">
+      <div class="cost-card fixed">
+        <h4>固定費</h4>
+        <p>売上に<strong>関係なく</strong>かかる費用</p>
+        <ul>
+          <li>家賃・地代</li>
+          <li>正社員の人件費</li>
+          <li>設備の減価償却費</li>
+          <li>保険料</li>
+        </ul>
+      </div>
+      <div class="cost-card variable">
+        <h4>変動費</h4>
+        <p>売上に<strong>比例して</strong>増える費用</p>
+        <ul>
+          <li>原材料費</li>
+          <li>アルバイト人件費</li>
+          <li>輸送費（個数比例）</li>
+          <li>包装費</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:12px;">損益分岐点を下げる（黒字になりやすくする）には、<strong>固定費を削る</strong>か<strong>変動費率を下げる</strong>かどちらかが必要。</p>
+  </div>
+
+  <div class="panel p-amber">
+    <span class="phead">📐 損益分岐点売上高の公式と計算手順</span>
+    <div class="formula-box">
+      <div class="fl">損益分岐点売上高（円）＝</div>
+      <div class="fm">固定費 ÷ （1 − 変動費率）</div>
+    </div>
+    <p>変動費率＝<strong>変動費 ÷ 売上高</strong>（小数または%）</p>
+    <p style="margin-top:6px;">（1−変動費率）＝<strong>限界利益率</strong>。売上1円あたりどれだけ固定費回収に使えるかを表す。</p>
+    <p style="margin-top:10px;font-weight:700;">条件：固定費＝100万円、変動費率＝40%（0.4）</p>
+    <div class="step-box s1" style="margin-top:10px;">
+      <div class="sh">ステップ① 限界利益率を求める</div>
+      <div class="sb">限界利益率 ＝ 1 − 変動費率 ＝ 1 − 0.4</div>
+      <div class="scalc">＝ 0.6（60%）</div>
+    </div>
+    <div class="step-box s2">
+      <div class="sh">ステップ② 損益分岐点売上高を計算</div>
+      <div class="sb">損益分岐点売上高 ＝ 固定費 ÷ 限界利益率</div>
+      <div class="scalc">＝ 100万円 ÷ 0.6 ≒ 166.7万円</div>
+    </div>
+    <div class="step-box s3">
+      <div class="sh">ステップ③ 答えを確認</div>
+      <div class="sb">毎月166.7万円以上売れれば黒字。166.7万円未満なら赤字。</div>
+    </div>
+  </div>
+
+  <div class="panel p-orange">
+    <span class="phead">📈 損益分岐点分析（CVP分析）への発展</span>
+    <div class="formula-box-cyan">
+      <div class="fl">目標利益を達成する必要売上高＝</div>
+      <div class="fm">（固定費 ＋ 目標利益）÷（1 − 変動費率）</div>
+    </div>
+    <div class="formula-box-cyan">
+      <div class="fl">安全余裕率（%）＝</div>
+      <div class="fm">（現在売上高 − 損益分岐点売上高）÷ 現在売上高 × 100</div>
+    </div>
+    <p>損益分岐点売上高は「目標利益＝0円」の特別なケース。安全余裕率が高いほど経営が安定（損益分岐点から余裕がある）。</p>
+    <div class="analysis-grid" style="margin-top:10px;">
+      <div class="acard ac-teal">
+        <h4>安全余裕率</h4>
+        <p>現在売上が損益分岐点からどれだけ余裕があるか。高いほど安全。</p>
+      </div>
+      <div class="acard ac-blue">
+        <h4>目標利益逆算</h4>
+        <p>目標利益を達成するための必要売上高を計算して計画に使う。</p>
+      </div>
+      <div class="acard ac-green">
+        <h4>施策評価</h4>
+        <p>固定費削減・変動費率改善がどれだけ損益分岐点を下げるか試算。</p>
+      </div>
+      <div class="acard ac-orange">
+        <h4>価格設定</h4>
+        <p>販売価格を変えたとき、何個売れば黒字になるかを計算する。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「1−変動費率」を忘れて固定費÷変動費率で計算する</div>
+      <div class="tb">公式の分母は「変動費率」ではなく「1−変動費率（限界利益率）」。変動費率をそのまま分母に入れると全く違う答えになる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">変動費率と変動費（金額）を混同する</div>
+      <div class="tb">変動費率は「売上に対する変動費の割合（%）」。変動費の金額そのままを公式に入れると間違い。まず率（小数）に変換してから計算する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">固定費が増えると損益分岐点売上高は「上がる」</div>
+      <div class="tb">固定費↑→分子が大きくなる→損益分岐点売上高↑。黒字になるのがより大変になる。固定費削減が経営改善の定石。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">損益分岐点での利益はゼロ</div>
+      <div class="tb">損益分岐点は「黒字でも赤字でもない」点＝利益はゼロ。「利益が最大になる点」ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">安全余裕率が低いほど「危険」</div>
+      <div class="tb">安全余裕率が低い＝損益分岐点に近い売上高＝少し売上が落ちただけで赤字になる。「高いほど安全」を押さえる。</div>
+    </div>
+  </div>
+
+  <!-- ⑥覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      公式は「<span class="hl">コテイ（固定）÷ イチヒキ（1引く）</span>」<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">固定費 ÷（1 − 変動費率）＝ 損益分岐点売上高</span><br><br>
+      損益分岐点＝「<span class="hl">ソンも得もしない分かれ目</span>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">グラフで言えば：売上線と費用線が交わる ✕ の場所。右が黒字・左が赤字。</span><br><br>
+      目標利益ありの公式：<span class="hl">「固定＋目標」をイチヒキで割る</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BPO（ビジネスプロセスアウトソーシング）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="BPO（ビジネスプロセスアウトソーシング）の意味・メリット・デメリットを図解で解説。アウトソーシング・SLA・シェアードサービスとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-bpo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a5fa0,#0a2f60);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(10,47,96,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d8f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#1a5fa0;--cbg:#d8eaf8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a5fa0;}
+
+.merit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.merit-cell{border-radius:11px;padding:10px 10px;}
+.merit-cell h4{font-size:12px;font-weight:900;margin-bottom:5px;}
+.merit-cell ul{list-style:none;}
+.merit-cell li{font-size:11px;font-weight:600;line-height:1.6;color:#48506a;padding-left:12px;position:relative;}
+.merit-cell li::before{content:"✓";position:absolute;left:0;font-weight:900;}
+.cell-merit{background:#e2f3e5;}.cell-merit h4{color:#2e8b4f;}.cell-merit li::before{color:#2e8b4f;}
+.cell-demerit{background:#fce4dd;}.cell-demerit h4{color:#bb3c1f;}.cell-demerit li::before{color:#bb3c1f;}
+@media(max-width:400px){.merit-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a5fa0;--fbg:#d8eaf8;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🏢 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>BPO</b>（ビジネスプロセスアウトソーシング）とは？</h1>
+    <p>社内業務プロセスを丸ごと外部の専門会社に委託し、コア業務に集中する経営戦略。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#b0cce8"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#1a5fa0"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <!-- 書類・外部委託アイコン -->
+        <rect x="14" y="54" width="22" height="16" rx="2" fill="#d8eaf8" stroke="#1a5fa0" stroke-width="1.2"/>
+        <line x1="17" y1="59" x2="33" y2="59" stroke="#1a5fa0" stroke-width="1.2"/>
+        <line x1="17" y1="63" x2="33" y2="63" stroke="#1a5fa0" stroke-width="1.2"/>
+        <path d="M38 62 l8-6 v4 h6 v4 h-6 v4z" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        A社の経理部は毎月の給与計算・請求書処理に忙しく、本来やりたい事業開発に時間が割けない。そこで給与計算・経理処理を<strong>専門の外部サービス会社に丸ごと委託</strong>することにした。
+        <div class="scene-q">…こうして本業に集中できるようにする経営手法を何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：BPOの構造 -->
+  <div class="panel p-indigo">
+    <span class="phead">🏗️ BPOの構造</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="発注企業がBPO事業者に業務プロセスを委託し、コア業務に集中できる図">
+      <rect x="0" y="0" width="340" height="200" rx="12" fill="#f2f4fb"/>
+      <!-- 発注企業 -->
+      <rect x="10" y="20" width="140" height="156" rx="12" fill="#d8eaf8" stroke="#1a5fa0" stroke-width="2"/>
+      <text x="80" y="44" text-anchor="middle" font-size="11" font-weight="900" fill="#1a5fa0" font-family="M PLUS Rounded 1c">発注企業（A社）</text>
+      <!-- コア業務（強調） -->
+      <rect x="20" y="52" width="120" height="44" rx="8" fill="#1a5fa0"/>
+      <text x="80" y="72" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">コア業務</text>
+      <text x="80" y="87" text-anchor="middle" font-size="9.5" fill="#c8e2f8" font-family="M PLUS Rounded 1c">（製品開発・営業など）</text>
+      <!-- 非コア業務（薄く） -->
+      <rect x="20" y="104" width="120" height="60" rx="8" fill="#fff" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="80" y="123" text-anchor="middle" font-size="10" font-weight="900" fill="#8898cc" font-family="M PLUS Rounded 1c">非コア業務</text>
+      <text x="80" y="138" text-anchor="middle" font-size="9" fill="#8898cc" font-family="M PLUS Rounded 1c">経理・給与・コールセンター</text>
+      <text x="80" y="153" text-anchor="middle" font-size="9" fill="#8898cc" font-family="M PLUS Rounded 1c">総務・情報処理など</text>
+      <!-- 矢印：委託 -->
+      <path d="M152 135 L188 135" stroke="#d9851f" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#arrb)"/>
+      <text x="170" y="126" text-anchor="middle" font-size="9.5" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">委託</text>
+      <path d="M188 148 L152 148" stroke="#2e8b4f" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrc)"/>
+      <text x="170" y="161" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">成果・報告</text>
+      <defs>
+        <marker id="arrb" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#d9851f"/>
+        </marker>
+        <marker id="arrc" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+      <!-- BPO事業者 -->
+      <rect x="190" y="110" width="140" height="70" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="260" y="132" text-anchor="middle" font-size="11" font-weight="900" fill="#8a5500" font-family="M PLUS Rounded 1c">BPO事業者</text>
+      <text x="260" y="148" text-anchor="middle" font-size="9.5" fill="#8a5500" font-family="M PLUS Rounded 1c">専門スタッフ＋システムで</text>
+      <text x="260" y="163" text-anchor="middle" font-size="9.5" fill="#8a5500" font-family="M PLUS Rounded 1c">非コア業務を代行</text>
+      <!-- SLAバッジ -->
+      <rect x="200" y="22" width="120" height="74" rx="10" fill="#fffbe8" stroke="#e0a800" stroke-width="1.5"/>
+      <text x="260" y="42" text-anchor="middle" font-size="10.5" font-weight="900" fill="#8a5500" font-family="M PLUS Rounded 1c">SLAで品質保証</text>
+      <text x="260" y="58" text-anchor="middle" font-size="9" fill="#8a5500" font-family="M PLUS Rounded 1c">（Service Level Agreement）</text>
+      <text x="260" y="73" text-anchor="middle" font-size="9" fill="#8a5500" font-family="M PLUS Rounded 1c">処理速度・品質水準を</text>
+      <text x="260" y="86" text-anchor="middle" font-size="9" fill="#8a5500" font-family="M PLUS Rounded 1c">契約書で明記</text>
+    </svg>
+    <div class="merit-grid">
+      <div class="merit-cell cell-merit">
+        <h4>メリット</h4>
+        <ul>
+          <li>コア業務に集中できる</li>
+          <li>コスト削減（人件費等）</li>
+          <li>専門性・品質向上</li>
+          <li>人員の柔軟調整</li>
+        </ul>
+      </div>
+      <div class="merit-cell cell-demerit">
+        <h4>デメリット</h4>
+        <ul>
+          <li>情報漏洩リスク</li>
+          <li>ノウハウが社内に残らない</li>
+          <li>委託先への依存</li>
+          <li>管理コストがかかる</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：BPO導入の流れ -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ BPO導入の典型的な流れ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 業務仕分け：コア / 非コアを整理</div>
+        <div class="fb">自社で続けるべき競争力の源泉（コア業務）と、専門外に委託できる業務（非コア）を峻別する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② BPO事業者の選定・SLA締結</div>
+        <div class="fb">複数の事業者を比較し、サービス品質水準（SLA）を定めた契約を結ぶ。セキュリティ要件も盛り込む。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 業務移管・継続管理</div>
+        <div class="fb">業務プロセスを事業者へ引き継ぎ、SLAに基づき定期的に品質・コストを評価・改善する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「アウトソーシング（外注）＝BPO」は違う</div>
+      <div class="tb">アウトソーシングは業務の一部や単発作業の外部委託。BPOは<strong>業務プロセス全体を継続的に</strong>委託する点が特徴。「プロセス」と「継続」がキーワード。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「シェアードサービス」と混同しやすい</div>
+      <div class="tb">シェアードサービスはグループ企業内で間接業務を共同化する仕組み。BPOは<strong>外部の専門会社</strong>への委託。社内か社外かが違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「情報漏洩リスクがない」は誤り</div>
+      <div class="tb">BPOでは機密情報を外部事業者が扱うため、<strong>情報漏洩リスクが生じる</strong>。試験で「BPOのリスクは何か」という問いに対し「漏洩」は正解肢になりやすい。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>業務プロセス＋外部委託＋専門会社＋継続</strong>」のキーワードが揃ったら → <strong>BPO</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「B（ビジネス）P（プロセス）O（おまかせ！）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">業務プロセスを丸ごとおまかせ＝BPO</span><br><br>
+      「<span class="hl">経理も給与も全部よそにポイっ</span>→俺たちは本業だけ！」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">非コアを外に出してコアに集中 ＝ BPOの目的</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-bpo</div>
+
+</div>
+</body>
+</html>

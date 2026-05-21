@@ -1,106 +1,194 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ハッシュ関数とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ハッシュ関数の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-hash.html">
-<meta property="og:title" content="ハッシュ関数とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ハッシュ関数の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-hash.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ハッシュ関数とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ハッシュ関数の仕組み・特性・用途を図解で解説。パスワード管理・データ改ざん検知・デジタル署名との関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.jp/itp/itp-hash">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a5e7a,#0d2e40);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,46,64,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#7de8ff 56%,#7de8ff 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b0dcea;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-teal{--c:#1a5e7a;--cbg:#ddf2fa;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#1a6e3c;--cbg:#e0f5ea;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a5e7a;}
+
+.hash-ex{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.hash-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.hash-in{background:#e7eefc;border:2px solid #2e6de5;border-radius:10px;padding:6px 12px;font-size:12.5px;font-weight:900;color:#1a3a7a;font-family:monospace;min-width:120px;}
+.hash-arrow{font-size:20px;color:#1a5e7a;font-weight:900;flex-shrink:0;}
+.hash-out{background:#ddf2fa;border:2px solid #1a5e7a;border-radius:10px;padding:6px 12px;font-size:11px;font-weight:900;color:#0d2e40;font-family:monospace;word-break:break-all;flex:1;}
+
+.prop-list{list-style:none;margin-top:8px;}
+.prop-list li{font-size:13px;font-weight:600;line-height:1.75;color:#3c4456;padding:9px 12px 9px 40px;position:relative;border-radius:10px;margin-bottom:7px;background:#f4f9fc;}
+.prop-list li::before{content:attr(data-ico);position:absolute;left:10px;font-size:14px;}
+
+.use-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.use-card{border-radius:13px;padding:12px;background:#eef8f1;border:2px solid #1a6e3c;}
+.use-card .uh{font-size:13px;font-weight:900;color:#1a6e3c;margin-bottom:4px;}
+.use-card .ub{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+@media(max-width:480px){.use-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">ハッシュ関数とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ハッシュ関数</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>Web開発中の自分。「パスワードを生の文字列でDB保存はNG！ハッシュ化して」と先輩。SHA-256で変換すれば元に戻せない…なぜ戻せないが安全？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系 ／ セキュリティ</span>
+    <h1><b>ハッシュ関数</b>とは？</h1>
+    <p>任意の長さのデータを、決まった長さの「指紋」に変換する一方向の変換関数。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ハッシュ関数</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>暗号化</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 暗号化は鍵で戻せる。「戻せない一方向変換」がハッシュ</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#0d2e40" opacity=".12"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#b0dcea"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#1a5e7a"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <!-- lock icon -->
+        <rect x="42" y="62" width="16" height="12" rx="3" fill="#fff" opacity=".8"/>
+        <path d="M44 62 a6 6 0 0 1 12 0" stroke="#fff" stroke-width="2" fill="none"/>
+        <circle cx="50" cy="68" r="2" fill="#1a5e7a"/>
+      </svg>
+      <div class="scene-txt">
+        ショッピングサイトのパスワードを「password123」と設定した。でも、このサービスのデータベースには「<strong>a3f8b…c92d</strong>」という暗号のような文字列しか保存されていない。
+        <div class="scene-q">→ パスワードをハッシュ値に変換して保存＝元に戻せない「指紋」！</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：ハッシュ関数</strong></p>
-</div>
+  <!-- 図解：ハッシュ変換 -->
+  <div class="panel p-blue">
+    <span class="phead">🔑 ハッシュ変換の仕組み（1方向・不可逆）</span>
+    <svg width="100%" viewBox="0 0 340 170" role="img" aria-label="任意のデータをハッシュ関数に入れると固定長のハッシュ値が出る。逆方向には戻せない図解">
+      <!-- ハッシュ関数ボックス -->
+      <rect x="120" y="65" width="100" height="50" rx="12" fill="#1a5e7a"/>
+      <text x="170" y="87" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ハッシュ関数</text>
+      <text x="170" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#b0dcea" font-family="M PLUS Rounded 1c">（SHA-256 など）</text>
+      <!-- 左（入力） -->
+      <rect x="5" y="30" width="100" height="28" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="55" y="48" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">「password123」（短い）</text>
+      <rect x="5" y="70" width="100" height="28" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="55" y="88" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">「1GBの動画ファイル」（巨大）</text>
+      <rect x="5" y="110" width="100" height="28" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="55" y="128" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">「password124」（1文字違い）</text>
+      <!-- 矢印 右方向 -->
+      <path d="M106 44 Q113 44 118 80" stroke="#9aa3b2" stroke-width="1.5" fill="none" marker-end="url(#ha1)"/>
+      <path d="M106 84 L119 84" stroke="#9aa3b2" stroke-width="1.5" marker-end="url(#ha1)"/>
+      <path d="M106 124 Q113 124 118 104" stroke="#9aa3b2" stroke-width="1.5" fill="none" marker-end="url(#ha1)"/>
+      <defs><marker id="ha1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#9aa3b2"/></marker></defs>
+      <!-- 右（出力）3つ -->
+      <path d="M221 84 L234 44" stroke="#9aa3b2" stroke-width="1.5" fill="none" marker-end="url(#ha2)"/>
+      <path d="M221 84 L234 84" stroke="#9aa3b2" stroke-width="1.5" marker-end="url(#ha2)"/>
+      <path d="M221 84 L234 124" stroke="#9aa3b2" stroke-width="1.5" fill="none" marker-end="url(#ha2)"/>
+      <defs><marker id="ha2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#9aa3b2"/></marker></defs>
+      <rect x="235" y="30" width="100" height="28" rx="8" fill="#ddf2fa" stroke="#1a5e7a" stroke-width="2"/>
+      <text x="285" y="48" text-anchor="middle" font-size="9.5" font-weight="900" fill="#0d2e40" font-family="monospace">a3f8b…c92d（256bit）</text>
+      <rect x="235" y="70" width="100" height="28" rx="8" fill="#ddf2fa" stroke="#1a5e7a" stroke-width="2"/>
+      <text x="285" y="88" text-anchor="middle" font-size="9.5" font-weight="900" fill="#0d2e40" font-family="monospace">9e2f1…04ab（256bit）</text>
+      <rect x="235" y="110" width="100" height="28" rx="8" fill="#ddf2fa" stroke="#1a5e7a" stroke-width="2"/>
+      <text x="285" y="128" text-anchor="middle" font-size="9.5" font-weight="900" fill="#0d2e40" font-family="monospace">ff12c…8a71（256bit）</text>
+      <!-- 下：「逆はできない」 -->
+      <rect x="80" y="148" width="180" height="18" rx="8" fill="#fce4dd"/>
+      <text x="170" y="160" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">← ハッシュ値から元データに戻すことは「できない」</text>
+    </svg>
 
-<div class="card">
-<h2>📘 ハッシュ関数とは何か</h2>
-<span class="kw">元に戻せない一方向変換</span>
-<p>任意のデータを固定長の値（ハッシュ値）に変換する関数。同じ入力からは必ず同じ出力が得られるが、ハッシュ値から元データを復元することは計算上不可能。</p>
-</div>
+    <ul class="prop-list">
+      <li data-ico="📏">入力がどんな長さでも、出力（ハッシュ値）は<strong>常に固定長</strong>（例：SHA-256 は 256 ビット）</li>
+      <li data-ico="🔁"><strong>一方向性</strong>：ハッシュ値から元データを復元できない（不可逆）</li>
+      <li data-ico="🎯">同じ入力からは<strong>必ず同じハッシュ値</strong>が出る（再現性）</li>
+      <li data-ico="⚡">1文字でも違うと<strong>まったく違うハッシュ値</strong>になる（雪崩効果）</li>
+    </ul>
+  </div>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>用途：パスワード保存（平文保存NG）・ファイルの改ざん検知（ダウンロード後のハッシュ値確認）・デジタル署名。SHA-256が現在の標準。</p>
-</div>
+  <!-- 主な用途 -->
+  <div class="panel p-green">
+    <span class="phead">🛠️ ハッシュ関数の主な使いどころ</span>
+    <div class="use-grid">
+      <div class="use-card">
+        <div class="uh">パスワード保管</div>
+        <div class="ub">パスワードはハッシュ値で保存。ハッキングされても元のパスワードが分からない。</div>
+      </div>
+      <div class="use-card">
+        <div class="uh">改ざん検知</div>
+        <div class="ub">ファイルのハッシュ値を事前に記録。受け取ったファイルのハッシュと比較→違えば改ざんあり。</div>
+      </div>
+      <div class="use-card">
+        <div class="uh">デジタル署名</div>
+        <div class="ub">文書全体ではなく「文書のハッシュ値」に署名する。処理が速く安全。</div>
+      </div>
+      <div class="use-card">
+        <div class="uh">ブロックチェーン</div>
+        <div class="ub">前のブロックのハッシュ値を次のブロックに含める→チェーンが繋がり改ざん不可能に。</div>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>暗号化は鍵を使えば元に戻せる（復号できる）。ハッシュは一方向で復元不可。「保管→ハッシュ」「送受信→暗号化」という使い分けが基本。</p>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「暗号化」と混同しやすい</div>
+      <div class="tb">暗号化は<strong>復号（元に戻す）できる</strong>（鍵が必要）。ハッシュは<strong>一方向で元に戻せない</strong>。試験で「ハッシュ化したデータを復号する」という選択肢は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「衝突」という概念</div>
+      <div class="tb">理論上、異なる入力から同じハッシュ値が出ることを「衝突」という。MD5 などの古いアルゴリズムは衝突発見→現在は SHA-256 以上を推奨。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「完全に安全」は誤り</div>
+      <div class="tb">ハッシュ化されたパスワードも「レインボーテーブル攻撃」（よく使うパスワードのハッシュ一覧で照合）で解析されることがある。対策は「ソルト」を加えることで同じパスワードでも異なるハッシュ値になる。</div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>ハッシュ＝**シュレッダー**（戻せない）／暗号化＝**鍵付き金庫**（鍵で戻せる）。パスワードはシュレッダーで保管が安全。</p></div>
-</div>
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「ハッシュは一方通行のミンチ機」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">牛肉（元データ）を入れたらミンチ（ハッシュ値）が出る。<br>ミンチから元の牛肉には戻らない＝不可逆！</span><br><br>
+      <span class="hl">同じ肉を入れると</span> → <span class="hl">必ず同じミンチ</span>（再現性）<br>
+      <span class="hl">1gでも肉を変えると</span> → <span class="hl">まったく別のミンチ</span>（雪崩効果）
+    </div>
+  </div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>ハッシュ関数はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
 </div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

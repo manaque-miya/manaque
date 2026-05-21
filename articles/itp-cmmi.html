@@ -1,106 +1,190 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>プロジェクト成熟度（CMMI）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="プロジェクト成熟度（CMMI）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-cmmi.html">
-<meta property="og:title" content="プロジェクト成熟度（CMMI）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="プロジェクト成熟度（CMMI）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-cmmi.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CMMIとは？ 能力成熟度モデル統合 — ITパスポート 詳細解説</title>
+<meta name="description" content="CMMI（能力成熟度モデル統合）をわかりやすく解説。5段階の成熟度レベルの意味、SPI・CMM・ISOとの違い、ひっかけポイントと無理やりゴロで確実に覚える。ITパスポート マネジメント系。">
+<link rel="canonical" href="https://manaque.com/itp/itp-cmmi">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#0e4a28);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,74,40,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#bce8cd;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.level-list{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:6px;}
+.lv-item{display:flex;align-items:flex-start;gap:10px;border-radius:10px;padding:10px 12px;}
+.lv-num{min-width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;}
+.lv-body{flex:1;}
+.lv-body h4{font-size:13px;font-weight:900;margin-bottom:2px;}
+.lv-body p{font-size:12px;font-weight:600;line-height:1.65;color:#48506a;}
+.lv1{background:#fce4dd;}.lv1 .lv-num{background:#dd5a3a;}.lv1 h4{color:#bb3c1f;}
+.lv2{background:#fcefd9;}.lv2 .lv-num{background:#d9851f;}.lv2 h4{color:#a05a0a;}
+.lv3{background:#e2f3e5;}.lv3 .lv-num{background:#2e8b4f;}.lv3 h4{color:#1e5c35;}
+.lv4{background:#e7eefc;}.lv4 .lv-num{background:#2e6de5;}.lv4 h4{color:#1a4aa8;}
+.lv5{background:#e4e7f7;}.lv5 .lv-num{background:#4256b8;}.lv5 h4{color:#2d3d8a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">プロジェクト成熟度（CMMI）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">プロジェクト成熟度（CMMI）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>開発リーダーの自分。「CMMI評価Level2と判定→個人能力依存・組織標準化未達」と指摘。Level3との違いは？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">📊 ITパスポート ｜ マネジメント系</span>
+    <h1><b>CMMI</b>（能力成熟度モデル統合）とは？</h1>
+    <p>ソフトウェア開発組織のプロセス能力を5段階で評価・改善するフレームワーク。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>CMMIレベル2（管理された）。個々のプロジェクトで要件・計画・進捗管理が行われているが、組織全体で標準化されたプロセスには達していない</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>CMMIレベル3（定義済み）。組織として標準プロセスが整備・定義されており、すべてのプロジェクトがその標準に従って実施される</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ Lv3は組織標準。「PJ単位の管理」がLv2</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true" style="flex-shrink:0">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 階段 -->
+        <rect x="5" y="70" width="14" height="12" rx="2" fill="#dd5a3a"/>
+        <rect x="19" y="58" width="14" height="24" rx="2" fill="#d9851f"/>
+        <rect x="33" y="46" width="14" height="36" rx="2" fill="#2e8b4f"/>
+        <rect x="47" y="34" width="14" height="48" rx="2" fill="#2e6de5"/>
+        <rect x="61" y="22" width="14" height="60" rx="2" fill="#4256b8"/>
+        <!-- 人物 -->
+        <circle cx="12" cy="60" r="7" fill="#f4c89a"/>
+        <path d="M6 57 a6 5 0 0 1 12 0 q-3-5-6-5-3 0-6 5z" fill="#3a3f4a"/>
+        <!-- 矢印上向き -->
+        <path d="M39 18 L39 8 M35 12 L39 8 L43 12" stroke="#fff" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        A社のソフトウェア開発チームは、プロジェクトのたびにスケジュールが遅延し、品質もバラバラ。「なぜかいつもうまくいかない」と悩んでいる。同業のB社はなぜ安定して高品質を出せるのか？
+        <div class="scene-q">…組織のプロセス能力に「差」があるかも</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：CMMIレベル2（管理された）。個々のプロジェクトで要件・計画・進捗管理が行われているが、組織全体で標準化されたプロセスには達していない</strong></p>
-</div>
+  <!-- 図解SVG：5段階ピラミッド -->
+  <div class="panel p-indigo">
+    <span class="phead">🏔️ 成熟度レベル5段階</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="CMMIの5段階成熟度レベルをピラミッドで表した図。下から初期・管理された・定義された・定量的に管理された・最適化の順。">
+      <!-- 各段ピラミッド -->
+      <polygon points="120,10 220,10 240,40 100,40" fill="#4256b8"/>
+      <text x="170" y="30" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Lv5 最適化</text>
 
-<div class="card">
-<h2>📘 プロジェクト成熟度（CMMI）とは何か</h2>
-<span class="kw">レベル1=初期、レベル3=定義済み、レベル5=最適化・数字で覚える</span>
-<p>CMMI（Capability Maturity Model Integration）の5段階：Level1（初期）＝場当たり的・個人依存 → Level2（管理された）＝プロジェクト単位で計画・追跡 → Level3（定義済み）＝組織全体で標準プロセスが確立 → Level4（定量的に管理）＝プロセスをデータで制御 → Level5（最適化）＝継続的改善・革新。</p>
-</div>
+      <polygon points="100,44 240,44 265,78 75,78" fill="#2e6de5"/>
+      <text x="170" y="65" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Lv4 定量的に管理された</text>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>試験では「Level2＝プロジェクト単位の管理（組織標準ではない）」「Level3＝組織標準プロセスの定義」の区別が最頻出ひっかけ。「CMMI評価を顧客が取引先に要求する」という文脈（防衛・政府調達）も押さえる。</p>
-</div>
+      <polygon points="75,82 265,82 290,118 50,118" fill="#2e8b4f"/>
+      <text x="170" y="104" text-anchor="middle" font-size="11.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Lv3 定義された</text>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>混同注意：「プロセスが標準化されている」＝Level3以上。「プロジェクトごとに管理している」＝Level2。Level2とLevel3の境界は「組織レベルの標準化の有無」。</p>
-</div>
+      <polygon points="50,122 290,122 315,158 25,158" fill="#d9851f"/>
+      <text x="170" y="143" text-anchor="middle" font-size="11.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Lv2 管理された</text>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>CMMI 5段階＝**初期・管理・定義済・定量管理・最適化**。**Lv2（PJ単位）／Lv3（組織標準）**の境界が要。</p></div>
-</div>
+      <rect x="10" y="162" width="320" height="30" rx="5" fill="#dd5a3a"/>
+      <text x="170" y="181" text-anchor="middle" font-size="11.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Lv1 初期（場当たり的・予測不能）</text>
+    </svg>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>プロジェクト成熟度（CMMI）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
+    <ul class="level-list">
+      <li class="lv-item lv1"><div class="lv-num">1</div><div class="lv-body"><h4>初期（Initial）</h4><p>プロセスが場当たり的。プロジェクトの成否が個人の能力に依存する。</p></div></li>
+      <li class="lv-item lv2"><div class="lv-num">2</div><div class="lv-body"><h4>管理された（Managed）</h4><p>プロジェクト単位でプロセスが計画・管理されている。再現性が生まれる。</p></div></li>
+      <li class="lv-item lv3"><div class="lv-num">3</div><div class="lv-body"><h4>定義された（Defined）</h4><p>組織全体で標準プロセスが定義・文書化されている。個人差が減る。</p></div></li>
+      <li class="lv-item lv4"><div class="lv-num">4</div><div class="lv-body"><h4>定量的に管理された（Quantitatively Managed）</h4><p>数値データでプロセスを測定・制御している。品質が予測可能になる。</p></div></li>
+      <li class="lv-item lv5"><div class="lv-num">5</div><div class="lv-body"><h4>最適化（Optimizing）</h4><p>継続的な改善が組織に組み込まれている。データに基づき常に進化する。</p></div></li>
+    </ul>
+  </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+  <!-- フロー/詳細 -->
+  <div class="panel p-blue">
+    <span class="phead">🗺️ CMMIの使われ方</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">現状アセスメント — 自組織のレベルを評価</div>
+        <div class="fb">専門の評価チームが組織のプロセスを調査し、現在のレベルを判定する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">改善計画 — 上位レベルに向けた取り組みを設計</div>
+        <div class="fb">不足しているプロセス領域を特定し、改善活動（SPI：Software Process Improvement）を実施する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f1">
+        <div class="fh">再評価 — 改善の効果を確認してレベルアップ</div>
+        <div class="fb">改善後に再アセスメントを受け、レベルが上がれば対外的な信頼性の証明になる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「レベル3が合格ライン」と思い込まない</div>
+      <div class="tb">「定義された」のLv3が実務的に重要視されることは多いが、CMMIとして最高はLv5。試験では「どのレベルが何か」を正確に覚えること。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">CMMとCMMIを混同しない</div>
+      <div class="tb">CMM（Capability Maturity Model）はソフトウェア専用の旧モデル。CMMIはCMMを「統合（Integration）」してHW開発・サービスにも拡張した進化版。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「個人の能力評価ではない」</div>
+      <div class="tb">CMMIは組織・プロセスの成熟度を評価するもの。個人のスキル評価モデルではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">Lv1の特徴：「混沌としている」</div>
+      <div class="tb">Lv1は「プロセスが無い」状態ではなく「場当たり的・個人依存で予測できない」状態。ゼロではないが管理されていない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「シーエムエムアイ＝チームをミガく」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">CMMI＝Capability Maturity Model Integration＝組織のプロセスを磨くモデル</span><br><br>
+      5段階の頭文字：<span class="hl">「初・管・定・量・最」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「初（期）めて 管（理）して 定（義）して 量（る）→ 最（適）！」<br>下から1段ずつ登る階段＝プロセス改善の旅</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

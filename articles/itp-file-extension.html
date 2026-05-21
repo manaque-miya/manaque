@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ファイル拡張子とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ファイル拡張子をわかりやすく解説。.jpg/.pdf/.exeなど主要拡張子の種類と意味、セキュリティリスク、ITパスポート試験のひっかけポイントをSVG図解で紹介。">
+<link rel="canonical" href="https://example.com/itp-file-extension">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0e6bb5,#053d72);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(5,61,114,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#7acfff 56%,#7acfff 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a8d4f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#0e6bb5;--cbg:#dceefa;}
+.p-purple{--c:#5d2d9c;--cbg:#ede4fc;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0e6bb5;}
+
+.ext-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
+.ext-card{border-radius:11px;padding:10px;text-align:center;}
+.ext-card .ext{font-size:14px;font-weight:900;margin-bottom:4px;}
+.ext-card .desc{font-size:10.5px;font-weight:700;line-height:1.5;color:#48506a;}
+.ext-img{background:#e7eefc;}.ext-img .ext{color:#0e6bb5;}
+.ext-doc{background:#e4e7f7;}.ext-doc .ext{color:#4256b8;}
+.ext-vid{background:#e2f3e5;}.ext-vid .ext{color:#1a6e3c;}
+.ext-exe{background:#fce4dd;}.ext-exe .ext{color:#dd5a3a;}
+.ext-zip{background:#fcefd9;}.ext-zip .ext{color:#d9851f;}
+.ext-txt{background:#f0f0f0;}.ext-txt .ext{color:#3c4456;}
+@media(max-width:360px){.ext-grid{grid-template-columns:repeat(2,1fr);}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>ファイル拡張子</b>とは？</h1>
+    <p>ファイル名の末尾「.txt」「.exe」の部分。ファイルの種類をOSやアプリに伝える"名札"。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="82" rx="26" ry="4" fill="#053d72" opacity=".1"/>
+        <rect x="8" y="56" width="54" height="20" rx="5" fill="#c0d8ee"/>
+        <rect x="14" y="34" width="42" height="28" rx="9" fill="#0e6bb5"/>
+        <circle cx="36" cy="19" r="12" fill="#f4c89a"/>
+        <path d="M25 16 a11 10 0 0 1 22 0 q-5 -8 -11 -8 q-6 0 -11 8z" fill="#102040"/>
+        <rect x="29" y="29" width="14" height="7" fill="#f4c89a"/>
+        <!-- ファイルアイコン -->
+        <rect x="38" y="54" width="22" height="26" rx="3" fill="#fff" stroke="#0e6bb5" stroke-width="1.5"/>
+        <path d="M38 60 l6 -6 h16 v26 h-22z" fill="#7acfff" opacity=".4"/>
+        <text x="49" y="72" text-anchor="middle" font-size="7" font-weight="900" fill="#0e6bb5" font-family="M PLUS Rounded 1c">.txt</text>
+      </svg>
+      <div class="scene-txt">
+        メールに添付された「invoice.exe」。見た目は請求書っぽいが、<strong>.exe はプログラムファイル</strong>。開いたら最後、マルウェアが起動した…！
+        <div class="scene-q">→ 拡張子を知らないと、危険なファイルを踏む。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：ファイル名の構造 -->
+  <div class="panel p-blue">
+    <span class="phead">📄 ファイル名の構造</span>
+    <svg width="100%" viewBox="0 0 340 120" role="img" aria-label="ファイル名の構造：ベース名とドット区切りの拡張子">
+      <!-- ファイル名全体 -->
+      <rect x="20" y="24" width="300" height="44" rx="10" fill="#f0f6ff" stroke="#0e6bb5" stroke-width="2.5"/>
+      <!-- ベース名部分 -->
+      <rect x="30" y="34" width="168" height="24" rx="6" fill="#dceefa"/>
+      <text x="114" y="51" text-anchor="middle" font-size="14" font-weight="900" fill="#0e6bb5" font-family="M PLUS Rounded 1c">document</text>
+      <!-- ドット -->
+      <text x="202" y="51" text-anchor="middle" font-size="18" font-weight="900" fill="#9aa3b2" font-family="M PLUS Rounded 1c">.</text>
+      <!-- 拡張子部分 -->
+      <rect x="212" y="34" width="98" height="24" rx="6" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="261" y="51" text-anchor="middle" font-size="14" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">pdf</text>
+      <!-- ラベル -->
+      <text x="114" y="86" text-anchor="middle" font-size="11" font-weight="800" fill="#0e6bb5" font-family="M PLUS Rounded 1c">ファイル名（ベース）</text>
+      <text x="261" y="86" text-anchor="middle" font-size="11" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">拡張子</text>
+      <line x1="114" y1="59" x2="114" y2="76" stroke="#0e6bb5" stroke-width="1.5"/>
+      <line x1="261" y1="59" x2="261" y2="76" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="170" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#3c4456" font-family="M PLUS Rounded 1c">「.（ドット）」の後ろの部分がファイルの種類を示す</text>
+    </svg>
+
+    <p style="margin-top:10px;">OSやアプリは拡張子を見て<strong>「どのアプリで開くか」を自動判断</strong>する。.docx ならWord、.jpg なら画像ビューアで開く。</p>
+
+    <!-- 主要拡張子一覧 -->
+    <div class="ext-grid" style="margin-top:14px;">
+      <div class="ext-card ext-img"><div class="ext">.jpg / .png</div><div class="desc">画像ファイル</div></div>
+      <div class="ext-card ext-doc"><div class="ext">.docx / .xlsx</div><div class="desc">Office文書</div></div>
+      <div class="ext-card ext-vid"><div class="ext">.mp4 / .mov</div><div class="desc">動画ファイル</div></div>
+      <div class="ext-card ext-exe"><div class="ext">.exe / .bat</div><div class="desc">実行ファイル⚠️</div></div>
+      <div class="ext-card ext-zip"><div class="ext">.zip / .tar</div><div class="desc">圧縮ファイル</div></div>
+      <div class="ext-card ext-txt"><div class="ext">.txt / .csv</div><div class="desc">テキスト系</div></div>
+    </div>
+  </div>
+
+  <!-- セキュリティと拡張子 -->
+  <div class="panel p-red">
+    <span class="phead">🔐 セキュリティと拡張子</span>
+    <p>Windowsは初期設定で拡張子を<strong>非表示</strong>にする。そのため「invoice.pdf.exe」が「invoice.pdf」に見えてしまう。これを悪用したマルウェアが多数存在する。</p>
+    <svg width="100%" viewBox="0 0 340 90" role="img" aria-label="拡張子偽装の例：invoice.pdf.exe が invoice.pdf に見える罠">
+      <rect x="10" y="16" width="150" height="34" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="85" y="30" text-anchor="middle" font-size="10" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">実際のファイル名</text>
+      <text x="85" y="44" text-anchor="middle" font-size="12" font-weight="900" fill="#aa2200" font-family="M PLUS Rounded 1c">invoice.pdf.exe</text>
+      <polygon points="168,28 188,33 168,38" fill="#9aa3b2"/>
+      <rect x="190" y="16" width="140" height="34" rx="8" fill="#fff3cd" stroke="#d9851f" stroke-width="2"/>
+      <text x="260" y="30" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">拡張子非表示だと</text>
+      <text x="260" y="44" text-anchor="middle" font-size="12" font-weight="900" fill="#6b3400" font-family="M PLUS Rounded 1c">invoice.pdf 😊</text>
+      <text x="170" y="74" text-anchor="middle" font-size="11" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">⚠️ 開いた瞬間にマルウェアが実行される！</text>
+    </svg>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-orange">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">拡張子を変えてもファイルの中身は変わらない</div>
+      <div class="tb">「.jpg」→「.txt」に名前を変えても、中のデータは画像のまま。拡張子はあくまで「名札」であり、中身を変換するものではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">.pdf は安全とは言い切れない</div>
+      <div class="tb">PDFにはスクリプトを埋め込める。「.pdf だから安全」は誤り。不審なPDFは開かないことが原則。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">MIMEタイプと混同しやすい</div>
+      <div class="tb">MIMEタイプ（例：image/jpeg）はネットワーク通信でファイル種別を伝える仕組み。拡張子と概念は似ているが別物。メールやHTTPで使われるのはMIMEタイプ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      拡張子は<span class="hl">ファイルの"職業名札"</span>！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">.jpg ＝画家、.exe ＝プログラマー、.txt ＝ライター</span><br><br>
+      <span class="hl">.exe は危険人物</span>（エグゼクティブ＝実行者）<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">exe ＝ execute（実行）→ プログラムを起動する → マルウェアの温床</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

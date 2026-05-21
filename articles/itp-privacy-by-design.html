@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>プライバシーバイデザインとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="プライバシーバイデザイン（Privacy by Design）を図解でわかりやすく解説。後付けでなく「設計段階から」プライバシーを組み込む考え方、7原則、GDPRとの関係、ひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-privacy-by-design">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2563a8,#0d3566);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,53,102,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8d8f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563a8;--cbg:#deeaf8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2563a8;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2563a8;--fbg:#deeaf8;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>プライバシーバイデザイン</b>とは？</h1>
+    <p>後付けでなく「設計段階から」プライバシーを組み込む——個人情報保護を最初から仕様に入れる思想。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#c5d4e8"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#2563a8"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        新しい会員制アプリを開発するチームに配属されたあなた。<br>
+        リリース直前に「個人情報の扱いはどうするの？」と上司に聞かれた。<br>
+        「あ、あとで設定します……」と答えたら、強く叱られた。
+        <div class="scene-q">→ 「最初から設計に入れておくべきだろ！」それが<strong>プライバシーバイデザイン</strong>。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：対比 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔷 「後付け」vs「最初から」の違い</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="後付けプライバシーとプライバシーバイデザインの対比図">
+      <!-- 後付け -->
+      <rect x="10" y="20" width="148" height="185" rx="12" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="84" y="46" text-anchor="middle" font-size="12" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">後付けプライバシー</text>
+      <rect x="25" y="56" width="118" height="28" rx="6" fill="#fff"/>
+      <text x="84" y="75" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">① 機能を設計・開発</text>
+      <text x="84" y="100" text-anchor="middle" font-size="18" fill="#dd5a3a" font-family="M PLUS Rounded 1c">▼</text>
+      <rect x="25" y="110" width="118" height="28" rx="6" fill="#fff"/>
+      <text x="84" y="129" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">② リリース直前に対応</text>
+      <text x="84" y="155" text-anchor="middle" font-size="18" fill="#dd5a3a" font-family="M PLUS Rounded 1c">▼</text>
+      <rect x="25" y="164" width="118" height="28" rx="6" fill="#fce4dd"/>
+      <text x="84" y="183" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">コスト大・漏れやすい</text>
+
+      <!-- Privacy by Design -->
+      <rect x="182" y="20" width="148" height="185" rx="12" fill="#deeaf8" stroke="#2563a8" stroke-width="2"/>
+      <text x="256" y="46" text-anchor="middle" font-size="12" font-weight="900" fill="#1a4a80" font-family="M PLUS Rounded 1c">Privacy by Design</text>
+      <rect x="197" y="56" width="118" height="28" rx="6" fill="#fff"/>
+      <text x="256" y="75" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">① 設計段階でプライバシー込み</text>
+      <text x="256" y="100" text-anchor="middle" font-size="18" fill="#2563a8" font-family="M PLUS Rounded 1c">▼</text>
+      <rect x="197" y="110" width="118" height="28" rx="6" fill="#fff"/>
+      <text x="256" y="129" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">② そのまま開発・リリース</text>
+      <text x="256" y="155" text-anchor="middle" font-size="18" fill="#2563a8" font-family="M PLUS Rounded 1c">▼</text>
+      <rect x="197" y="164" width="118" height="28" rx="6" fill="#deeaf8"/>
+      <text x="256" y="183" text-anchor="middle" font-size="11" font-weight="900" fill="#1a4a80" font-family="M PLUS Rounded 1c">コスト小・漏れにくい</text>
+    </svg>
+    <p style="margin-top:10px;font-size:12.5px;">プライバシーバイデザインは「後から直す」のではなく、<strong>最初から設計仕様の一部として</strong>個人情報保護を組み込む考え方。</p>
+  </div>
+
+  <!-- 7原則 -->
+  <div class="panel p-green">
+    <span class="phead">📋 プライバシーバイデザインの7原則</span>
+    <div class="flow">
+      <div class="fstep f2"><div class="fh">① プロアクティブ（事後対処より事前対策）</div><div class="fb">問題が起きてから対処するのでなく、起きないよう先手を打つ。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f1"><div class="fh">② プライバシーをデフォルト設定に</div><div class="fb">ユーザーが何も操作しなくても、自動的に最大限のプライバシーが守られている状態にする。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 設計に組み込む（後付けでない）</div><div class="fb">システム設計・アーキテクチャの中心的な要素として組み込む。オプション扱いにしない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">④ 機能の総和（トレードオフなし）</div><div class="fb">プライバシーと機能性を「二者択一」と思わず、どちらも実現する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f1"><div class="fh">⑤ エンドツーエンドのセキュリティ</div><div class="fb">データのライフサイクル全体を通じて保護する（収集から削除まで）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">⑥ 可視性と透明性</div><div class="fb">関係するすべてのステークホルダーに対して、どんな処理をしているか見えるようにする。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">⑦ ユーザーのプライバシーを尊重</div><div class="fb">ユーザーを中心に置き、同意・アクセス・正確性などの個人の権利を守る。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「セキュリティバイデザイン」と混同しやすい</div>
+      <div class="tb">セキュリティバイデザインは<strong>情報セキュリティ全般</strong>（機密性・完全性・可用性）を設計段階から組み込む概念。プライバシーバイデザインは<strong>個人情報・プライバシー保護</strong>に特化している点が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「後からでも対応すれば同じ」ではない</div>
+      <div class="tb">後付け対応はコストが高く、設計上の制約で完全には対応できないことが多い。「最初から組み込む」ことに本質がある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">GDPRとの関係</div>
+      <div class="tb">EU一般データ保護規則（GDPR）の第25条がプライバシーバイデザインを法的義務として定めている。試験では「GDPRが採用した考え方」として出題されることがある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「設計段階から」「最初から」「後付けでなく」というキーワードが出たら → <strong>プライバシーバイデザイン</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">プライバシー「By（バイ）」</span>＝「バイ」は"買いに行く前（事前）"のバイ！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">バイ＝Before（前）、買い物リストに最初から書いておく＝設計段階から組み込む</span><br><br>
+      「後から直すな、<span class="hl">最初から入れろ</span>」<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">プライバシーは仕様書の1行目に書く — それがプライバシーバイデザイン</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

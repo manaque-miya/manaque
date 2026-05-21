@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>配列（アレイ）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="配列（アレイ）をわかりやすく解説。インデックス・要素・多次元配列の仕組み、リスト・変数との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-array">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#cf4f86,#7a1f50);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,31,80,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c8dc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cf4f86;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#cf4f86;--fbg:#fdf0f5;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.code-block{background:#2b3245;border-radius:10px;padding:13px 15px;font-family:monospace;font-size:13px;line-height:1.9;color:#dbe6fb;margin-top:10px;overflow-x:auto;}
+.code-block .kw{color:#ffd23f;font-weight:900;}
+.code-block .cm{color:#7ecfb5;}
+.code-block .num{color:#f4a26a;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>配列（アレイ）</b>とは？</h1>
+    <p>同じ種類のデータを<strong>番号付き</strong>で並べて一括管理するデータ構造。<br>「引き出しに番号を振って、まとめて整理する棚」です。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-pink">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#7a1f50" opacity=".12"/>
+        <!-- 棚 -->
+        <rect x="8" y="30" width="62" height="55" rx="5" fill="#f5c8dc" stroke="#cf4f86" stroke-width="2"/>
+        <!-- 引き出し3段 -->
+        <rect x="12" y="35" width="54" height="14" rx="3" fill="#fff" stroke="#cf4f86" stroke-width="1.2"/>
+        <text x="20" y="45" font-size="8" font-weight="900" fill="#cf4f86" font-family="sans-serif">[0] 85</text>
+        <rect x="12" y="52" width="54" height="14" rx="3" fill="#fff" stroke="#cf4f86" stroke-width="1.2"/>
+        <text x="20" y="62" font-size="8" font-weight="900" fill="#cf4f86" font-family="sans-serif">[1] 90</text>
+        <rect x="12" y="69" width="54" height="14" rx="3" fill="#fff" stroke="#cf4f86" stroke-width="1.2"/>
+        <text x="20" y="79" font-size="8" font-weight="900" fill="#cf4f86" font-family="sans-serif">[2] 73</text>
+      </svg>
+      <div class="scene-txt">
+        クラス全員の試験点数を管理するプログラムを作ることになった。生徒が40人いるとき、変数を40個作る？<br>
+        そんなときに使うのが<strong>配列</strong>。「scores[0]＝85点、scores[1]＝90点…」と番号を振ってまとめて管理できる。
+        <div class="scene-q">…これが配列の力！ 大量データを番号で一括管理。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：配列の構造 -->
+  <div class="panel p-blue">
+    <span class="phead">🔍 配列の構造（図解）</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="配列の構造：インデックス0から4までの5要素。各ボックスに値が格納されている">
+      <!-- 配列名 -->
+      <text x="10" y="28" font-size="14" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">scores[ ]</text>
+
+      <!-- ボックス5つ -->
+      <rect x="10" y="38" width="58" height="52" rx="6" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="39" y="62" text-anchor="middle" font-size="18" font-weight="900" fill="#7a1f50" font-family="M PLUS Rounded 1c">85</text>
+      <text x="39" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">要素</text>
+
+      <rect x="74" y="38" width="58" height="52" rx="6" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="103" y="62" text-anchor="middle" font-size="18" font-weight="900" fill="#7a1f50" font-family="M PLUS Rounded 1c">90</text>
+      <text x="103" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">要素</text>
+
+      <rect x="138" y="38" width="58" height="52" rx="6" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="167" y="62" text-anchor="middle" font-size="18" font-weight="900" fill="#7a1f50" font-family="M PLUS Rounded 1c">73</text>
+      <text x="167" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">要素</text>
+
+      <rect x="202" y="38" width="58" height="52" rx="6" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="231" y="62" text-anchor="middle" font-size="18" font-weight="900" fill="#7a1f50" font-family="M PLUS Rounded 1c">88</text>
+      <text x="231" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">要素</text>
+
+      <rect x="266" y="38" width="58" height="52" rx="6" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="295" y="62" text-anchor="middle" font-size="18" font-weight="900" fill="#7a1f50" font-family="M PLUS Rounded 1c">67</text>
+      <text x="295" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">要素</text>
+
+      <!-- インデックス -->
+      <text x="39" y="105" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">[0]</text>
+      <text x="103" y="105" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">[1]</text>
+      <text x="167" y="105" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">[2]</text>
+      <text x="231" y="105" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">[3]</text>
+      <text x="295" y="105" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">[4]</text>
+
+      <text x="170" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">↑ インデックス（添字）は 0 から始まる！</text>
+
+      <!-- ブレース -->
+      <text x="10" y="148" font-size="11" font-weight="800" fill="#9aa3b2" font-family="M PLUS Rounded 1c">← 要素数 5 ／ scores[2] と書けば「73」を取り出せる</text>
+    </svg>
+    <p>配列の特徴は3つ：① 同じ型のデータをまとめる ② <strong>インデックス（添字）で個別アクセス</strong> ③ <strong>インデックスは 0 から始まる</strong>（0始まりが重要）</p>
+  </div>
+
+  <!-- 1次元・2次元配列 -->
+  <div class="panel p-green">
+    <span class="phead">📋 1次元配列 vs 2次元配列</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">1次元配列 — 1本の列</div>
+        <div class="fb">scores[0]〜scores[4] のように、1方向に並べる。数値・文字列のリスト管理に使う。アクセスは scores[インデックス] の1つの数字。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">2次元配列 — 表（縦×横）</div>
+        <div class="fb">table[行][列] のように、縦・横の2方向で管理。クラス×教科の点数表など表形式のデータに対応。アクセスは2つの数字が必要。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">多次元配列 — さらに次元を増やせる</div>
+        <div class="fb">3次元以上も論理的には可能だが、ITパスポートの範囲では1次元・2次元を理解しておけば十分。</div>
+      </div>
+    </div>
+    <div class="code-block">
+      <span class="cm">// 1次元：点数の列</span><br>
+      scores[<span class="num">0</span>] = <span class="num">85</span>;  scores[<span class="num">1</span>] = <span class="num">90</span>;<br><br>
+      <span class="cm">// 2次元：クラス×教科</span><br>
+      table[<span class="num">0</span>][<span class="num">0</span>] = <span class="num">85</span>; <span class="cm">// 1組・国語</span><br>
+      table[<span class="num">0</span>][<span class="num">1</span>] = <span class="num">90</span>; <span class="cm">// 1組・数学</span>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「インデックスは1から始まる」は誤り</div>
+      <div class="tb">多くのプログラミング言語でインデックスは<strong>0から始まる</strong>。要素が5個なら [0][1][2][3][4]。最後の要素は scores[4]（5ではない！）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">配列 vs 変数の混同</div>
+      <div class="tb">変数は1つの値しか持てない。配列は同じ名前で複数の値を番号付きで管理できる。大量データには配列を使う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">配列のサイズは宣言時に決まる（多くの言語）</div>
+      <div class="tb">C言語など静的型付け言語では、配列のサイズ（要素数）は宣言時に決める必要がある。後から変えられない点に注意。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">配列＝「番号付き引き出しの棚」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">scores[0]・scores[1]・scores[2]…と引き出し（インデックス）に番号を振って並べる棚！</span><br><br>
+      <span class="hl">0から始まる＝「ゼロ番から」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「最初の引き出しは1番」ではなく「0番」。<br>5個の引き出しは 0・1・2・3・4 ＝最後は4番！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

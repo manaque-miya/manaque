@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>自然言語理解（NLU）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="自然言語理解（NLU）を音声アシスタント・チャットボットの仕組みから図解。NLP・NLGとの違い、意図理解・文脈理解の概念、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-nlu">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7b4fb5,#420d80);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(66,13,128,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d8bff5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-violet{--c:#7b4fb5;--cbg:#ece4f8;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7b4fb5;}
+
+.intent-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.intent-cell{background:#f4f6fb;border-radius:12px;padding:12px;}
+.intent-cell .ic-q{font-size:12px;font-weight:700;color:#7b4fb5;margin-bottom:4px;padding:4px 8px;background:#ece4f8;border-radius:7px;}
+.intent-cell .ic-a{font-size:12px;font-weight:600;line-height:1.65;color:#48506a;}
+.intent-cell .ic-intent{font-size:11.5px;font-weight:900;color:#2e8b4f;margin-top:5px;}
+@media(max-width:480px){.intent-grid{grid-template-columns:1fr;}}
+
+.venn-wrap{margin:10px 0;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2565a8;--fbg:#eef3fa;}
+.f2{--fc:#7b4fb5;--fbg:#f2ecfc;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（AI）</span>
+    <h1><b>自然言語理解</b>（NLU）とは？</h1>
+    <p>人間の言葉の「意味・意図・文脈」をコンピュータが読み取る技術。NLP（自然言語処理）の中でも「わかる」部分に特化している。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-violet">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-txt">
+      スマートスピーカーに「寒いね」と話しかけると「暖房をつけますか？」と返ってきた。<br><br>
+      「寒いね」という言葉には「暖房をつけろ」という命令は含まれていない。でもAIは文脈から<strong>「暖房をつけたいという意図」</strong>を読み取った。<br><br>
+      <div class="scene-q">…この「言葉の裏の意図・意味を理解する」のがNLU（自然言語理解）。</div>
+    </div>
+  </div>
+
+  <!-- SVG図解：NLUの意図理解 -->
+  <div class="panel p-blue">
+    <span class="phead">💡 NLUが「理解」する3つの要素</span>
+    <svg width="100%" viewBox="0 0 560 240" role="img" aria-label="NLUが理解する3要素：意図・エンティティ・文脈の図解">
+      <!-- 中央：入力テキスト -->
+      <rect x="160" y="100" width="240" height="50" rx="12" fill="#7b4fb5" stroke="#fff" stroke-width="2"/>
+      <text x="280" y="121" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">「明日の東京の天気は？」</text>
+      <text x="280" y="139" text-anchor="middle" font-size="11" font-weight="700" fill="#d8bff5" font-family="M PLUS Rounded 1c">ユーザーの発話</text>
+
+      <!-- 意図（Intent） -->
+      <line x1="220" y1="100" x2="100" y2="52" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <rect x="10" y="10" width="180" height="56" rx="11" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="100" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">意図（Intent）</text>
+      <text x="100" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">「天気を調べたい」</text>
+
+      <!-- エンティティ（Entity） -->
+      <line x1="280" y1="100" x2="280" y2="52" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <rect x="180" y="10" width="200" height="56" rx="11" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="280" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">エンティティ（Entity）</text>
+      <text x="280" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">日時：明日 ／ 場所：東京</text>
+
+      <!-- 文脈（Context） -->
+      <line x1="340" y1="100" x2="460" y2="52" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <rect x="370" y="10" width="180" height="56" rx="11" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="460" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">文脈（Context）</text>
+      <text x="460" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">旅行の話中＝出発前確認</text>
+
+      <!-- 下：解析結果 -->
+      <rect x="80" y="178" width="400" height="50" rx="12" fill="#f4f6fb" stroke="#7b4fb5" stroke-width="1.5"/>
+      <text x="280" y="198" text-anchor="middle" font-size="12" font-weight="900" fill="#7b4fb5" font-family="M PLUS Rounded 1c">NLUの解析結果</text>
+      <text x="280" y="216" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">「ユーザーは明日の東京の天気を知りたい」と理解</text>
+      <line x1="280" y1="150" x2="280" y2="178" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+
+    <!-- 意図理解の例 -->
+    <div class="intent-grid">
+      <div class="intent-cell">
+        <div class="ic-q">「予約できる？」</div>
+        <div class="ic-intent">意図：予約リクエスト</div>
+        <div class="ic-a">疑問形だが実際は「予約したい」という要求と理解。</div>
+      </div>
+      <div class="intent-cell">
+        <div class="ic-q">「さっきの話に戻って」</div>
+        <div class="ic-intent">意図：前の話題を再開</div>
+        <div class="ic-a">「さっき」の文脈を保持して過去の会話を参照する。</div>
+      </div>
+      <div class="intent-cell">
+        <div class="ic-q">「それ、高くない？」</div>
+        <div class="ic-intent">意図：値段への不満・確認</div>
+        <div class="ic-a">「高くない（安い）」という否定形ではなく「高いと思う」という意図を正しく判断。</div>
+      </div>
+      <div class="intent-cell">
+        <div class="ic-q">「ちょっと待って」</div>
+        <div class="ic-intent">意図：処理を一時停止</div>
+        <div class="ic-a">「少し待て」の意味を理解し、タスクを一時中断する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NLP・NLU・NLGの包含関係 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ NLP・NLU・NLGの位置づけ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">NLP（自然言語処理）【最上位概念】</div>
+        <div class="fb">人間の言語をコンピュータが扱う技術の総称。「読む・理解する・生成する・翻訳する」すべてを含む大きな概念。</div>
+      </div>
+      <div class="farrow">NLPの中に含まれる↓</div>
+      <div class="fstep f2">
+        <div class="fh">NLU（自然言語理解）【入力→理解】</div>
+        <div class="fb">人間が入力した言葉の<strong>意味・意図・文脈</strong>を機械が理解する処理。チャットボットが「何を求めているか」を判断する部分。</div>
+      </div>
+      <div class="farrow">＋↓</div>
+      <div class="fstep f3">
+        <div class="fh">NLG（自然言語生成）【理解→出力】</div>
+        <div class="fb">理解した内容を踏まえて、機械が<strong>自然な人間の言葉を生成</strong>して返す処理。「明日は晴れです」と答えるのがNLG。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">NLU＝「理解だけ」・NLPは「処理全体」</div>
+      <div class="tb">NLUは<strong>NLPの一部（下位概念）</strong>。NLPは翻訳・検索・音声認識など全体を指すが、NLUは「入力された言葉の意味・意図を理解する部分」に特化。「NLU＝NLP」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「文字を認識する＝NLU」は誤り</div>
+      <div class="tb">文字の認識（OCRや音声認識）はNLPの前処理。NLUは認識した文字の<strong>「意味・意図」を理解する</strong>段階。文字を読むだけでは理解していない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">NLUとNLGはセットで「対話システム」を作る</div>
+      <div class="tb">チャットボットは「NLU（ユーザーの意図を理解）＋NLG（適切な返答を生成）」の組み合わせ。どちらか片方では成立しない。試験では「どちらが何をするか」を問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">NLUは「機械翻訳」ではない</div>
+      <div class="tb">機械翻訳（日→英など）はNLPの応用。NLUは言語を別言語に変換するのではなく、<strong>言葉の意味・意図を機械が内部で理解する</strong>処理。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">NLU＝「なんとなく理解」の頭文字ではなく「N・L・U」</span><br>
+      Natural Language <span class="hl">U</span>nderstanding＝<span class="hl">U＝Understand（わかる）</span><br><br>
+      NLP・NLU・NLGの3段階を一言で：<br>
+      <span class="hl">「ぜんぶ（NLP）＝わかる（NLU）＋作る（NLG）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">P（プロセス全体）＝ U（アンダースタンド）＋ G（ジェネレート）</span><br><br>
+      試験の見分け方：<span class="hl">「意図・意味・文脈の理解→NLU」「文章の生成・出力→NLG」「処理の総称→NLP」</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-nlu</div>
+
+</div>
+</body>
+</html>

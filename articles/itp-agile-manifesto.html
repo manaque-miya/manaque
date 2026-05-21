@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>アジャイルソフトウェア開発宣言とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="アジャイルソフトウェア開発宣言をわかりやすく解説。4つの価値観（個人・動くソフトウェア・顧客との協調・変化への対応）の意味、12の原則との関係、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp/itp-agile-manifesto">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1d4ed8,#1e3a8a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(30,58,138,.30);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:24px;font-weight:900;line-height:1.35;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#bfdbfe;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1d4ed8;--cbg:#dbeafe;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1d4ed8;}
+
+/* 4価値観グリッド */
+.valGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.valCard{border-radius:14px;padding:12px 13px;}
+.valCard .vnum{font-size:11px;font-weight:900;margin-bottom:4px;}
+.valCard .vtit{font-size:13px;font-weight:900;margin-bottom:4px;}
+.valCard .vbody{font-size:11px;font-weight:700;line-height:1.6;color:#48506a;}
+.v1{background:#dbeafe;}.v1 .vnum,.v1 .vtit{color:#1d4ed8;}
+.v2{background:#e2f3e5;}.v2 .vnum,.v2 .vtit{color:#2e8b4f;}
+.v3{background:#fcefd9;}.v3 .vnum,.v3 .vtit{color:#d9851f;}
+.v4{background:#ede9fe;}.v4 .vnum,.v4 .vtit{color:#7c3aed;}
+@media(max-width:480px){.valGrid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1d4ed8;--fbg:#eff6ff;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>アジャイルソフトウェア<br>開発宣言</b>とは？</h1>
+    <p>2001年に17人の開発者がまとめた「ソフトウェア開発はこうあるべき」という4つの価値観。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1e3a8a" opacity=".12"/>
+        <!-- 演台 -->
+        <rect x="18" y="60" width="42" height="22" rx="4" fill="#dbeafe"/>
+        <rect x="28" y="58" width="22" height="6" rx="2" fill="#1d4ed8"/>
+        <!-- 体 -->
+        <rect x="20" y="42" width="38" height="22" rx="7" fill="#1d4ed8"/>
+        <!-- 頭 -->
+        <circle cx="39" cy="29" r="15" fill="#f4c89a"/>
+        <!-- 首 -->
+        <rect x="32" y="42" width="14" height="4" fill="#f4c89a"/>
+        <!-- マイク -->
+        <circle cx="39" cy="56" r="3" fill="#3a3f4a"/>
+        <rect x="38" y="56" width="2" height="8" fill="#3a3f4a"/>
+        <!-- 旗/宣言書 -->
+        <rect x="52" y="45" width="18" height="14" rx="2" fill="#fde68a"/>
+        <rect x="54" y="47" width="14" height="2" rx="1" fill="#9a6b00"/>
+        <rect x="54" y="50" width="14" height="2" rx="1" fill="#9a6b00"/>
+        <rect x="54" y="53" width="10" height="2" rx="1" fill="#9a6b00"/>
+        <text x="50" y="66" font-size="8" fill="#d9851f" font-weight="900" font-family="sans-serif">宣言！</text>
+      </svg>
+      <div class="scene-txt">
+        2001年、アメリカのスキー場に17人のソフトウェア開発の達人たちが集まった。「従来の重いドキュメント中心の開発はもう古い。もっと人間らしく、変化に対応できる開発をしよう」と議論し、<strong>4つの価値観</strong>をまとめた文書を公開した。
+        <div class="scene-q">…この「17人がまとめた開発の価値観宣言」は何？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4つの価値観SVG -->
+  <div class="panel p-blue">
+    <span class="phead">📜 4つの価値観</span>
+    <svg width="100%" viewBox="0 0 340 80" role="img" aria-label="アジャイル宣言の構造：右側よりも左側に価値を置く">
+      <!-- タイトル -->
+      <rect x="10" y="8" width="148" height="28" rx="8" fill="#1d4ed8"/>
+      <text x="84" y="22" text-anchor="middle" font-size="10" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">左側に価値を置く</text>
+      <text x="84" y="34" text-anchor="middle" font-size="9" font-weight="700" fill="#bfdbfe" font-family="M PLUS Rounded 1c">（より重要と考える）</text>
+
+      <text x="182" y="25" text-anchor="middle" font-size="18" font-weight="900" fill="#9aa3b2" font-family="sans-serif">＞</text>
+
+      <rect x="198" y="8" width="132" height="28" rx="8" fill="#e2e8f0"/>
+      <text x="264" y="22" text-anchor="middle" font-size="10" font-weight="900" fill="#64748b" font-family="M PLUS Rounded 1c">右側も価値はある</text>
+      <text x="264" y="34" text-anchor="middle" font-size="9" font-weight="700" fill="#94a3b8" font-family="M PLUS Rounded 1c">（否定はしない）</text>
+
+      <text x="170" y="65" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">※ 右側（プロセス・文書など）を無視するわけではない</text>
+    </svg>
+
+    <div class="valGrid">
+      <div class="valCard v1">
+        <div class="vnum">価値①</div>
+        <div class="vtit">個人と対話</div>
+        <div class="vbody">プロセスやツールよりも<strong>人間同士のコミュニケーション</strong>を重視する</div>
+      </div>
+      <div class="valCard v2">
+        <div class="vnum">価値②</div>
+        <div class="vtit">動くソフトウェア</div>
+        <div class="vbody">包括的なドキュメントよりも<strong>実際に動くもの</strong>を届けることを優先する</div>
+      </div>
+      <div class="valCard v3">
+        <div class="vnum">価値③</div>
+        <div class="vtit">顧客との協調</div>
+        <div class="vbody">契約交渉よりも<strong>顧客と一緒に進める</strong>ことを大切にする</div>
+      </div>
+      <div class="valCard v4">
+        <div class="vnum">価値④</div>
+        <div class="vtit">変化への対応</div>
+        <div class="vbody">計画に従うことよりも<strong>変化に対応する</strong>ことを価値とする</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 背景と経緯 -->
+  <div class="panel p-green">
+    <span class="phead">📅 なぜ宣言が生まれたか</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">2001年以前：重厚な開発が主流</div>
+        <div class="fb">ウォーターフォールが中心。膨大なドキュメント・厳格なプロセスが当たり前。仕様変更が発生すると全工程がやり直しになる問題があった。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">2001年：17人の達人がスキー場に集まる</div>
+        <div class="fb">スクラム・XP・FDDなど異なるアジャイル手法の提唱者が集まり議論。「共通する価値観」を4つにまとめ、アジャイルソフトウェア開発宣言として公開。以降のソフトウェア開発に大きな影響を与えた。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ドキュメントを否定している」は誤り</div>
+      <div class="tb">宣言は「左側の価値をより重視する」という意味。<strong>ドキュメントやプロセスも価値がある</strong>と明示している。「文書は不要」という誤読に注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">4つの価値観の「左右」の順序</div>
+      <div class="tb">試験で「アジャイル宣言が優先するのはどちらか」と問われる。左側（個人・動くもの・協調・変化対応）が<strong>より価値を置く</strong>側。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「宣言」と「12の原則」の区別</div>
+      <div class="tb">アジャイル宣言は<strong>4つの価値観</strong>のこと。これを実践するための<strong>12の原則</strong>もあるが、試験では「4つの価値」が頻出。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「人・動く・協・変」の4つが宣言</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">人（個人と対話）・動（動くソフト）・協（顧客との協調）・変（変化への対応）<br><br></span>
+      追加ゴロ：<span class="hl">17人がスキー場で「変わろう！」と叫んだ</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">2001年・スキー場・17人・変化への対応 ＝ 全部セットで覚える</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-agile-manifesto</div>
+
+</div>
+</body>
+</html>

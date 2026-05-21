@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>フェールオーバーとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="フェールオーバーをフェールセーフ・フォールトトレランスとの違いでわかりやすく解説。障害が起きた瞬間に自動で切り替わる仕組み。ITパスポート試験のひっかけと覚え方ゴロ付き。">
+<link rel="canonical" href="https://example.com/itp-failover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2070c8,#0d2e6a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,46,106,.24);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0d8f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2070c8;--cbg:#e0edfc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2070c8;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2070c8;--fbg:#edf4fc;}
+.f2{--fc:#dd5a3a;--fbg:#fce4dd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.concept-cell{border-radius:12px;padding:11px;}
+.concept-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.concept-cell .desc{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.concept-cell .ex{font-size:10.5px;font-weight:700;color:#7a80a0;margin-top:5px;}
+.cc-fo{background:#e0edfc;}.cc-fo h4{color:#2070c8;}
+.cc-fs{background:#e2f3e5;}.cc-fs h4{color:#2e8b4f;}
+.cc-ft{background:#fcefd9;}.cc-ft h4{color:#d9851f;}
+.cc-fb{background:#e4e7f7;}.cc-fb h4{color:#4256b8;}
+@media(max-width:480px){.concept-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・システム信頼性</span>
+    <h1><b>フェールオーバー</b>とは？</h1>
+    <p>現用系に障害が発生した瞬間、<br>自動的に待機系へ切り替えて運転を続ける仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- サーバー現用系 -->
+        <rect x="8" y="30" width="22" height="30" rx="4" fill="#2070c8"/>
+        <rect x="11" y="33" width="16" height="4" rx="1" fill="#90bce8"/>
+        <rect x="11" y="40" width="16" height="4" rx="1" fill="#90bce8"/>
+        <rect x="11" y="47" width="16" height="4" rx="1" fill="#ffd23f"/>
+        <!-- X印（障害） -->
+        <line x1="8" y1="30" x2="30" y2="60" stroke="#dd5a3a" stroke-width="3"/>
+        <line x1="30" y1="30" x2="8" y2="60" stroke="#dd5a3a" stroke-width="3"/>
+        <!-- 矢印 切替 -->
+        <path d="M32 45 L40 45" stroke="#ffd23f" stroke-width="2.5" marker-end="url(#asw)"/>
+        <defs>
+          <marker id="asw" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+            <path d="M0,0 L7,3.5 L0,7 Z" fill="#ffd23f"/>
+          </marker>
+        </defs>
+        <!-- サーバー待機系 -->
+        <rect x="42" y="30" width="22" height="30" rx="4" fill="#2e8b4f"/>
+        <rect x="45" y="33" width="16" height="4" rx="1" fill="#90e0a8"/>
+        <rect x="45" y="40" width="16" height="4" rx="1" fill="#90e0a8"/>
+        <rect x="45" y="47" width="16" height="4" rx="1" fill="#ffd23f"/>
+        <!-- ラベル -->
+        <text x="19" y="72" text-anchor="middle" font-size="8" font-weight="900" fill="#dd5a3a" font-family="sans-serif">現用系</text>
+        <text x="53" y="72" text-anchor="middle" font-size="8" font-weight="900" fill="#2e8b4f" font-family="sans-serif">待機系</text>
+      </svg>
+      <div class="scene-txt">
+        銀行の決済サーバーが突然ダウンした。しかしユーザーはエラー画面を見なかった。なぜなら、裏で待機していた<strong>バックアップサーバーへ自動で切り替わっていた</strong>から。
+        <div class="scene-q">…この「自動切り替え」がフェールオーバー。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔄 フェールオーバーの動き</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="フェールオーバーの動作手順図">
+      <!-- ステップ1：通常時 -->
+      <rect x="10" y="20" width="80" height="36" rx="10" fill="#e0edfc" stroke="#2070c8" stroke-width="2"/>
+      <text x="50" y="38" text-anchor="middle" font-size="11" font-weight="900" fill="#2070c8" font-family="M PLUS Rounded 1c">現用系</text>
+      <text x="50" y="52" text-anchor="middle" font-size="9" font-weight="700" fill="#4a6acd" font-family="M PLUS Rounded 1c">稼働中</text>
+
+      <rect x="250" y="20" width="80" height="36" rx="10" fill="#f4f6fb" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="5 3"/>
+      <text x="290" y="38" text-anchor="middle" font-size="11" font-weight="900" fill="#9aa3b2" font-family="M PLUS Rounded 1c">待機系</text>
+      <text x="290" y="52" text-anchor="middle" font-size="9" font-weight="700" fill="#b0b8c8" font-family="M PLUS Rounded 1c">スタンバイ</text>
+
+      <text x="170" y="35" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">→ 通常は現用系が処理 →</text>
+
+      <!-- ステップ2：障害発生 -->
+      <rect x="10" y="80" width="80" height="36" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2.5"/>
+      <text x="50" y="98" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">現用系</text>
+      <text x="50" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">障害発生！</text>
+
+      <!-- 自動切り替え矢印 -->
+      <path d="M90 98 Q170 60 250 98" fill="none" stroke="#ffd23f" stroke-width="2.5" marker-end="url(#afo)"/>
+      <text x="170" y="75" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">自動切り替え</text>
+      <defs>
+        <marker id="afo" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#ffd23f"/>
+        </marker>
+      </defs>
+
+      <rect x="250" y="80" width="80" height="36" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="290" y="98" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">待機系</text>
+      <text x="290" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#216b3b" font-family="M PLUS Rounded 1c">引き継ぎ稼働！</text>
+
+      <!-- ポイント -->
+      <rect x="10" y="140" width="320" height="50" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="170" y="158" text-anchor="middle" font-size="11" font-weight="900" fill="#9a5010" font-family="M PLUS Rounded 1c">▶ ユーザーへの影響を最小化（サービス継続）</text>
+      <text x="170" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="#9a5010" font-family="M PLUS Rounded 1c">▶ 自動・無停止・透過的（気づかれない）が特徴</text>
+    </svg>
+
+    <div class="concept-grid">
+      <div class="concept-cell cc-fo">
+        <h4>フェールオーバー</h4>
+        <div class="desc">障害発生→自動切り替え→継続</div>
+        <div class="ex">例：DBサーバーが落ちた瞬間に待機DBへ自動切替</div>
+      </div>
+      <div class="concept-cell cc-fs">
+        <h4>フェールセーフ</h4>
+        <div class="desc">障害発生→安全な方向へ移行</div>
+        <div class="ex">例：信号機が壊れたら全方向赤に</div>
+      </div>
+      <div class="concept-cell cc-ft">
+        <h4>フォールトトレランス</h4>
+        <div class="desc">障害が起きても動き続ける設計</div>
+        <div class="ex">例：CPU1つ壊れても残りで処理継続</div>
+      </div>
+      <div class="concept-cell cc-fb">
+        <h4>フェールソフト</h4>
+        <div class="desc">障害時に機能を縮小して継続</div>
+        <div class="ex">例：エアコン故障→暖房だけ停止・換気は継続</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー・詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🔧 高可用性を実現する3ステップ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 冗長化（現用系 ＋ 待機系を用意する）</div><div class="fb">あらかじめバックアップのサーバー・回線・電源を用意しておく。「1つあれば十分」ではなく「2重・3重」が原則。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 障害検知（異常を素早く察知する）</div><div class="fb">監視ソフトが現用系の死活を常時チェック。ハートビート（定期的な「生存確認」）などの仕組みで即時検出。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 自動切り替え（フェールオーバーの発動）</div><div class="fb">障害検知から数秒〜数十秒で待機系が引き継ぐ。ユーザーには「繋ぎ直し」がほぼ見えない状態にする。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">フェールオーバー＝瞬時に切り替わるわけではない</div>
+      <div class="tb">わずかな切り替え時間（秒〜分）は発生する。「完全無停止」と「フェールオーバー」は違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">フェールセーフとフェールオーバーの混同</div>
+      <div class="tb">フェールセーフは「安全方向に止まる」。フェールオーバーは「別のシステムに引き継ぐ」。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">フォールトトレランスとの違い</div>
+      <div class="tb">フォールトトレランスは「切り替えなしで同時に複数が動いて耐える」。フェールオーバーは「障害後に切り替える」点が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>障害発生→自動切り替え→継続</strong>」が出たら → <strong>フェールオーバー</strong>。「<strong>安全な状態に止まる</strong>」なら → <strong>フェールセーフ</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">フェールオーバー＝「倒れたら乗り換え」</span><br>
+    <span class="hl">フェール（fail＝倒れる）→ オーバー（over＝向こうへ）</span><br><br>
+    「<span class="hl">電車が止まったら（fail）タクシーに乗り換え（over）</span>」<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">目的地（サービス継続）を諦めずに別ルートで行く</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-failover</div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,196 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>システム監査とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="システム監査の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-system-audit.html">
-<meta property="og:title" content="システム監査とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="システム監査の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-system-audit.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>システム監査とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="システム監査を図解で徹底解説。ITシステムの信頼性・安全性・有効性を第三者が検証する仕組み、システム監査人の独立性、内部監査・会計監査との違い、ITパスポート試験頻出ひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-system-audit">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e3a5f,#0f2541);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(15,37,65,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#93c5fd;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-navy{--c:#1e3a5f;--cbg:#dbeafe;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1a7f5a;--cbg:#d9f5eb;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1e3a5f;}
+
+.three-view{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;}
+.tvcell{border-radius:12px;padding:11px 10px;text-align:center;}
+.tvcell h5{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.tvcell p{font-size:11px;font-weight:600;line-height:1.6;color:#48506a;}
+.tv1{background:#dbeafe;}.tv1 h5{color:#1e3a5f;}
+.tv2{background:#d9f5eb;}.tv2 h5{color:#1a7f5a;}
+.tv3{background:#fcefd9;}.tv3 h5{color:#d9851f;}
+@media(max-width:480px){.three-view{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e3a5f;--fbg:#eff6ff;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#1a7f5a;--fbg:#eef8f4;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+.f5{--fc:#7c3aed;--fbg:#f5f3ff;}
+
+.compare-list{margin-top:10px;}
+.citem{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #eef1f7;}
+.citem:last-child{border-bottom:none;padding-bottom:0;}
+.ctag{flex-shrink:0;border-radius:7px;padding:4px 9px;font-size:11px;font-weight:900;min-width:80px;text-align:center;}
+.ctxt{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">システム監査とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">システム監査</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>システム監査</b>とは？</h1>
+    <p>ITシステムが「信頼できるか・安全か・有効に使われているか」を第三者が独立して検証・評価すること。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-navy">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#0f2541" opacity=".12"/>
+        <rect x="8" y="54" width="56" height="26" rx="7" fill="#bfdbfe"/>
+        <rect x="14" y="34" width="44" height="28" rx="9" fill="#1e3a5f"/>
+        <circle cx="36" cy="18" r="14" fill="#f4c89a"/>
+        <path d="M23 15 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#dbeafe"/>
+        <!-- 虫眼鏡 -->
+        <circle cx="54" cy="58" r="9" fill="none" stroke="#ffd23f" stroke-width="2.5"/>
+        <line x1="60" y1="64" x2="66" y2="70" stroke="#ffd23f" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- チェックマーク -->
+        <text x="54" y="62" text-anchor="middle" font-size="8" font-weight="900" fill="#1e3a5f">✓</text>
+      </svg>
+      <div class="scene-txt">
+        IT担当のDさん。自社の基幹システムに問題がないか経営陣が心配している。そこで外部の専門家（<strong>システム監査人</strong>）を呼んで、システムの安全性・正確性・効率性を<strong>独立した立場で評価</strong>してもらうことにした。
+        <div class="scene-q">→ これがシステム監査。「自分で自分を調べる」ではなく「第三者が検証する」のが核心。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：システム監査の3つの視点 -->
+  <div class="panel p-blue">
+    <span class="phead">🔍 システム監査が見る3つの観点</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="システム監査の3つの観点：信頼性・安全性・有効性">
+      <!-- 背景 -->
+      <rect x="0" y="0" width="340" height="180" rx="14" fill="#f0f4ff"/>
+      <!-- 中心：システム -->
+      <rect x="120" y="60" width="100" height="60" rx="10" fill="#1e3a5f" stroke="#3b82f6" stroke-width="2"/>
+      <text x="170" y="85" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ITシステム</text>
+      <text x="170" y="103" text-anchor="middle" font-size="10" fill="#93c5fd" font-family="M PLUS Rounded 1c">（検査対象）</text>
+      <!-- 矢印と観点バッジ -->
+      <!-- 信頼性 -->
+      <line x1="120" y1="72" x2="68" y2="44" stroke="#2e6de5" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="4" y="16" width="74" height="42" rx="9" fill="#dbeafe" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="41" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#1e3a5f" font-family="M PLUS Rounded 1c">信頼性</text>
+      <text x="41" y="50" text-anchor="middle" font-size="10" fill="#2e6de5" font-family="M PLUS Rounded 1c">正確に動くか</text>
+      <!-- 安全性 -->
+      <line x1="170" y1="60" x2="170" y2="36" stroke="#1a7f5a" stroke-width="2"/>
+      <rect x="118" y="10" width="104" height="26" rx="8" fill="#d9f5eb" stroke="#1a7f5a" stroke-width="1.5"/>
+      <text x="170" y="27" text-anchor="middle" font-size="11" font-weight="900" fill="#065f46" font-family="M PLUS Rounded 1c">安全性 — 守られているか</text>
+      <!-- 有効性 -->
+      <line x1="220" y1="72" x2="272" y2="44" stroke="#d9851f" stroke-width="2"/>
+      <rect x="264" y="16" width="68" height="42" rx="9" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="298" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#92400e" font-family="M PLUS Rounded 1c">有効性</text>
+      <text x="298" y="50" text-anchor="middle" font-size="10" fill="#d9851f" font-family="M PLUS Rounded 1c">役に立つか</text>
+      <!-- 監査人バッジ -->
+      <rect x="96" y="148" width="148" height="26" rx="9" fill="#1e3a5f"/>
+      <text x="170" y="165" text-anchor="middle" font-size="11" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">システム監査人（独立・中立）</text>
+      <!-- 矢印 -->
+      <line x1="170" y1="148" x2="170" y2="128" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+    <div class="three-view">
+      <div class="tvcell tv1"><h5>信頼性</h5><p>システムが正確に・安定して動いているか（誤作動・データ不整合がないか）</p></div>
+      <div class="tvcell tv2"><h5>安全性</h5><p>不正アクセス・情報漏洩・災害に対して守られているか</p></div>
+      <div class="tvcell tv3"><h5>有効性</h5><p>業務目標に対して効果的・効率的に活用されているか</p></div>
+    </div>
+  </div>
+
+  <!-- フロー：システム監査の流れ -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ システム監査の進め方</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 監査計画の立案</div><div class="fb">監査目的・対象・スケジュールを決める。経営者またはトップの承認を得る。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 予備調査</div><div class="fb">関連文書・ドキュメントを事前に収集・確認。監査の焦点を絞る。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 本調査（実地調査）</div><div class="fb">インタビュー・観察・ドキュメントレビューを通じてシステムの実態を調べる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 監査報告書の作成</div><div class="fb">問題点・改善提言をまとめた報告書を作成し、経営者に提出する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f5"><div class="fh">⑤ フォローアップ</div><div class="fb">改善が実施されたか確認する（システム監査人が改善作業自体は行わない）。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「システム監査人が問題を直す」は×</div>
+      <div class="tb">システム監査人の仕事は<strong>評価・報告・改善提言</strong>まで。実際の改善作業は<strong>被監査部門（担当者）</strong>が行う。監査人が直接修正することは独立性を損なう。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">内部監査 vs システム監査の混同</div>
+      <div class="tb">内部監査は会社組織の中の監査部門が行う広い監査。システム監査は「ITシステムの信頼性・安全性・有効性」に特化した監査。対象が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">会計監査との混同</div>
+      <div class="tb">会計監査は財務諸表の正確性を見る監査。システム監査はITシステム全体を対象にする。財務系のシステムを監査することもあるが、目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「独立性」が最重要キーワード</div>
+      <div class="tb">システム監査人は<strong>監査対象のシステム開発・運用に関与していない</strong>こと（独立性の保持）が大前提。関与した人が監査するのは利益相反で無効。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「システム監査」＝ITの健康診断</span><br>
+    医者（監査人）が患者（システム）を診て「ここが悪い」と伝える。<br>
+    医者は薬を処方するが、<span class="hl">手術（改善作業）はしない！</span><br><br>
+    3観点：<span class="hl">「しん（信頼性）・あん（安全性）・ゆう（有効性）」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">信頼・安全・有効 ＝「しんあんゆう」</span></div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>上場準備の経理部長の自分。「うちの情報システムが信頼性・安全性・効率性を満たしてるか、独立した第三者にチェックさせる必要がある」と監査法人から指摘。これ何？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>システム監査</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>情報セキュリティ監査</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ セキュリティ監査はセキュリティ特化。「システム全体の適切性検証」はシステム監査</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：システム監査</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 システム監査とは何か</h2>
-<span class="kw">ITシステムが適切か第三者が検証</span>
-<p>情報システムの信頼性・安全性・効率性を、独立した第三者（システム監査人）が客観的に検証し、関係者に報告する活動。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「独立性・客観性・専門性」がシステム監査人の要件。監査対象の業務に関わっていた人は監査できない（独立性の確保）。
-
-**覚え方** 🎯 システム監査＝**第三者の健康診断**。**独立性・客観性・専門性**の3要件を持つ監査人がチェック。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「内部監査」との混同に注意。システム監査は**独立した第三者**が行う点が必須要件。監査対象のシステム開発・運用に関わった人は独立性を欠くため監査不可。また「監査」は問題を指摘・報告するだけで**是正作業は行わない**（実施するのは被監査部門）という役割の分離も頻出。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>システム監査＝**第三者の健康診断**。**独立性・客観性・専門性**の3要件を持つ監査人がチェック。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>システム監査はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

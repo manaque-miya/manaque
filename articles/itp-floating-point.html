@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>浮動小数点数とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="浮動小数点数をわかりやすく解説。固定小数点数との違い、仮数部・指数部の仕組み、誤差が生じる理由、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-floating-point">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e6de5,#19357f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.compare-cell{border-radius:12px;padding:12px;}
+.compare-cell h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.compare-cell p{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.cell-fixed{background:#e4e7f7;}.cell-fixed h4{color:#4256b8;}
+.cell-float{background:#e2f3e5;}.cell-float h4{color:#2e8b4f;}
+@media(max-width:400px){.compare-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>浮動小数点数</b>とは？</h1>
+    <p>小数点の位置を"動かして"極大・極小の数を表現する方法。巨大な宇宙の距離も、極小のウイルスのサイズも同じ仕組みで扱える。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="82" rx="26" ry="4" fill="#19357f" opacity=".12"/>
+        <rect x="8" y="56" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#2e6de5"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5-9-13-9 q-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="20" y="61" width="32" height="11" rx="3" fill="#19357f" opacity=".35"/>
+      </svg>
+      <div class="scene-txt">
+        科学計算ソフトを作るエンジニアのあなた。
+        「光の速度（約3億 m/s）」と「電子の質量（約0.00000000000000000000000000000091 kg）」を同じプログラムで扱いたい。<br><br>
+        固定小数点では桁が足りない……。
+        <div class="scene-q">…どうすれば巨大な数も極小の数も扱えるの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：浮動小数点の仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">📐 浮動小数点の構造</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="浮動小数点数の構造：符号部・指数部・仮数部">
+      <!-- 背景 -->
+      <rect width="340" height="210" fill="#f4f6fb" rx="10"/>
+
+      <!-- 数値イメージ -->
+      <text x="170" y="30" text-anchor="middle" font-size="18" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">1.2345 × 10²⁰</text>
+      <text x="170" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">仮数部（1.2345）× 基数（10）の指数部（20）乗</text>
+
+      <!-- ビット列の箱 -->
+      <!-- 符号部 -->
+      <rect x="18" y="68" width="36" height="36" rx="5" fill="#dd5a3a" stroke="#bb3c1f" stroke-width="1.5"/>
+      <text x="36" y="81" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">符号</text>
+      <text x="36" y="97" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">0</text>
+
+      <!-- 指数部 -->
+      <rect x="60" y="68" width="100" height="36" rx="5" fill="#d9851f" stroke="#b06c18" stroke-width="1.5"/>
+      <text x="110" y="81" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">指数部（exponent）</text>
+      <text x="110" y="97" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">10010100</text>
+
+      <!-- 仮数部 -->
+      <rect x="166" y="68" width="156" height="36" rx="5" fill="#2e6de5" stroke="#1f4fc0" stroke-width="1.5"/>
+      <text x="244" y="81" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">仮数部（mantissa/fraction）</text>
+      <text x="244" y="97" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">10011110001011011…</text>
+
+      <!-- 矢印と説明 -->
+      <line x1="36" y1="104" x2="36" y2="118" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="36" y="130" text-anchor="middle" font-size="10" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">正(0)/負(1)</text>
+
+      <line x1="110" y1="104" x2="110" y2="118" stroke="#d9851f" stroke-width="2"/>
+      <text x="110" y="130" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">小数点の位置</text>
+      <text x="110" y="144" text-anchor="middle" font-size="10" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">（どこに動かすか）</text>
+
+      <line x1="244" y1="104" x2="244" y2="118" stroke="#2e6de5" stroke-width="2"/>
+      <text x="244" y="130" text-anchor="middle" font-size="10" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">有効数字の部分</text>
+      <text x="244" y="144" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">（数値の精度を決める）</text>
+
+      <!-- 丸め誤差の説明 -->
+      <rect x="18" y="158" width="304" height="40" rx="8" fill="#fce4dd"/>
+      <text x="170" y="175" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">⚠️ 仮数部のビット数には限りがある</text>
+      <text x="170" y="191" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">→ 表せない数値は丸められる（丸め誤差・桁落ち誤差）</text>
+    </svg>
+  </div>
+
+  <!-- 比較：固定小数点 vs 浮動小数点 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ 固定小数点数 vs 浮動小数点数</span>
+    <div class="compare-grid">
+      <div class="compare-cell cell-fixed">
+        <h4>固定小数点数</h4>
+        <p>小数点の位置は決まったまま動かない。整数・小数それぞれのビット数が固定。計算は速い＆誤差は少ない。でも扱える範囲が狭い。</p>
+      </div>
+      <div class="compare-cell cell-float">
+        <h4>浮動小数点数</h4>
+        <p>指数で小数点を動かすので超巨大・超極小な数もOK。ただし有効桁数に限りがあるので誤差が生じることがある。科学技術計算に使う。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「浮動小数点は誤差がない」→ 誤り</div>
+      <div class="tb">仮数部は有限ビットなので、循環小数など表せない数を丸める「丸め誤差」が発生する。お金の計算に浮動小数点を使うと問題になる理由がこれ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「固定小数点の方が広い範囲を扱える」→ 誤り</div>
+      <div class="tb">広い範囲（超大・超小の数）を扱えるのは浮動小数点。固定小数点は精度は高いが範囲が狭い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「指数部＝精度を決める部分」→ 誤り</div>
+      <div class="tb">精度（有効桁数）を決めるのは仮数部。指数部は「小数点をどこに置くか（範囲）」を決める。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">浮く（浮動）</span>小数点＝小数点が<strong>プカプカ浮いて</strong>自由に動く！<br><br>
+      「<span class="hl">指数</span>部＝点の<strong>居場所</strong>、<span class="hl">仮数</span>部＝数の<strong>中身</strong>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">指数→インデックス（位置情報）、仮数→仮の数（有効数字）</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

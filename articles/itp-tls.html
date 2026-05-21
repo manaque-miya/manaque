@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TLSとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="TLS（Transport Layer Security）を図解でわかりやすく解説。HTTPSでの通信暗号化のしくみ、SSLとの違い、公開鍵・共通鍵の使い分け、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-tls">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6e4a,#0a3d28);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(10,61,40,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b0e4cc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#1a6e4a;--cbg:#e0f5ec;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-blue{--c:#1e7fd4;--cbg:#e3f0fb;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6e4a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e7fd4;--fbg:#e3f0fb;}
+.f2{--fc:#1a6e4a;--fbg:#e0f5ec;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#4256b8;--fbg:#e4e7f7;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>TLS</b>とは？</h1>
+    <p>インターネット通信を暗号化し、盗聴・改ざん・なりすましを防ぐプロトコル。HTTPSの「S」はTLSが守っている。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true" style="flex-shrink:0">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="50" width="56" height="28" rx="5" fill="#e0f5ec" stroke="#1a6e4a" stroke-width="2"/>
+        <text x="36" y="66" text-anchor="middle" font-size="8" font-weight="900" fill="#1a6e4a" font-family="M PLUS Rounded 1c">ネットバンキング</text>
+        <text x="36" y="74" text-anchor="middle" font-size="7" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">https://...</text>
+        <circle cx="56" cy="52" r="7" fill="#ffd23f" stroke="#e0a800" stroke-width="1.5"/>
+        <text x="56" y="55" text-anchor="middle" font-size="8" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">🔒</text>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+      </svg>
+      <div class="scene-txt">
+        ネットバンキングで振り込み。URLの先頭が「https://」で鍵マークが表示されている。<br>
+        もしこれが「http://」だったら？通信内容（パスワード・口座番号）が丸見えになる。
+        <div class="scene-q">…「https」の「s」= TLSが守っている！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔐 TLSハンドシェイクのしくみ</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="ブラウザとサーバーがTLSで暗号化通信を確立するまでの流れ">
+      <!-- ブラウザ -->
+      <rect x="10" y="80" width="80" height="60" rx="10" fill="#e3f0fb" stroke="#1e7fd4" stroke-width="2"/>
+      <text x="50" y="106" text-anchor="middle" font-size="11" font-weight="900" fill="#1e7fd4" font-family="M PLUS Rounded 1c">ブラウザ</text>
+      <text x="50" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="#4a6e8c" font-family="M PLUS Rounded 1c">あなたのPC</text>
+      <!-- サーバー -->
+      <rect x="250" y="80" width="80" height="60" rx="10" fill="#e0f5ec" stroke="#1a6e4a" stroke-width="2"/>
+      <text x="290" y="106" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6e4a" font-family="M PLUS Rounded 1c">サーバー</text>
+      <text x="290" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">銀行・ECサイト</text>
+      <!-- ① Client Hello -->
+      <path d="M92 95 L248 95" stroke="#1e7fd4" stroke-width="1.5" marker-end="url(#tls1)"/>
+      <text x="170" y="89" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1e7fd4" font-family="M PLUS Rounded 1c">① 対応暗号方式を提示</text>
+      <!-- ② Server Hello + 証明書 -->
+      <path d="M248 108 L92 108" stroke="#1a6e4a" stroke-width="1.5" marker-end="url(#tls2)"/>
+      <text x="170" y="121" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1a6e4a" font-family="M PLUS Rounded 1c">② サーバー証明書を送付</text>
+      <!-- ③ 鍵交換 -->
+      <path d="M92 132 L248 132" stroke="#d9851f" stroke-width="1.5" marker-end="url(#tls3)"/>
+      <text x="170" y="148" text-anchor="middle" font-size="8.5" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">③ 共通鍵の素材を暗号化して送信</text>
+      <!-- ④ 暗号化通信 -->
+      <rect x="92" y="165" width="156" height="30" rx="8" fill="#e0f5ec" stroke="#1a6e4a" stroke-width="1.5"/>
+      <text x="170" y="184" text-anchor="middle" font-size="9" font-weight="900" fill="#1a6e4a" font-family="M PLUS Rounded 1c">④ 共通鍵で暗号化通信スタート</text>
+      <defs>
+        <marker id="tls1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0, 7 2.5, 0 5" fill="#1e7fd4"/></marker>
+        <marker id="tls2" markerWidth="7" markerHeight="5" refX="0" refY="2.5" orient="auto"><polygon points="7 0, 0 2.5, 7 5" fill="#1a6e4a"/></marker>
+        <marker id="tls3" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0, 7 2.5, 0 5" fill="#d9851f"/></marker>
+      </defs>
+    </svg>
+    <p style="font-size:12px;color:#48506a;font-weight:600;margin-top:8px;">最初は公開鍵暗号で安全に「共通鍵」を共有し、以降は高速な共通鍵暗号で通信する。「公開鍵で鍵を渡して共通鍵で話す」二段構えが特徴。</p>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-blue">
+    <span class="phead">📋 TLSが守る3つの性質</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">機密性（盗聴を防ぐ）</div>
+        <div class="fb">通信内容を暗号化。途中で盗み見されても解読できない。</div>
+      </div>
+      <div class="farrow">＋</div>
+      <div class="fstep f2">
+        <div class="fh">完全性（改ざんを防ぐ）</div>
+        <div class="fb">MACというコードで改ざんを検出。途中でデータが書き換えられたら即座にわかる。</div>
+      </div>
+      <div class="farrow">＋</div>
+      <div class="fstep f3">
+        <div class="fh">真正性（なりすましを防ぐ）</div>
+        <div class="fb">サーバー証明書（CA署名入り）で「本物のサイトである」ことを確認。偽サイトを見抜ける。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">SSL＝古い・TLS＝現在の標準</div>
+      <div class="tb">SSLはTLSの前身で現在は脆弱性のため使用禁止。「SSL/TLS」とまとめて呼ぶことも多いが、試験では「TLSが現在の標準」と覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「TLSで通信内容を暗号化するので送信者も隠れる」は誤り</div>
+      <div class="tb">TLSは通信内容（ペイロード）を暗号化するが、送信元IPアドレスは暗号化されない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">HTTPSのポート番号は443</div>
+      <div class="tb">HTTPは80番ポート。HTTPSは443番ポート。TLSで保護されているかどうかで使うポートが変わる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「HTTPS・通信暗号化・盗聴防止・鍵マーク」→ TLS。試験で「SSL」と出たら「TLSに置き換えられた古い方」。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">TLS＝「鍵（T）」「ロック（L）」「セーフ（S）」</span><br><br>
+      <span class="hl">「テレビ（T） ロック（L） 施錠（S）」</span><br>
+      テレビをロックして施錠した＝通信を守った！<br><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">HTTPSの「S」はTLSの「S（Secure）」ではなく「HTTP over TLS」の意味。でも「S＝安全＝TLS」で覚えてOK。</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

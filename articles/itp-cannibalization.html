@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>カニバリゼーションとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="カニバリゼーション（共食い）を自社製品同士の売上侵食として解説。新製品導入時のリスク、ブランド戦略との関係、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp-cannibalization">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c0392b,#7b1a10);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(123,26,16,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c0bb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red{--c:#c0392b;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-darkred{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c0392b;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c0392b;--fbg:#fce8e6;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💼 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>カニバリゼーション</b>とは？</h1>
+    <p>自社の新製品が、既存の自社製品の売上を食ってしまう「共食い」現象。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="4" fill="#7b1a10" opacity=".12"/>
+        <!-- 缶コーヒーA（古い） -->
+        <rect x="5" y="38" width="24" height="38" rx="5" fill="#d9851f"/>
+        <rect x="7" y="42" width="20" height="12" rx="2" fill="#ffd23f" opacity=".7"/>
+        <text x="17" y="55" text-anchor="middle" font-size="9" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">旧製品</text>
+        <!-- 缶コーヒーB（新しい） -->
+        <rect x="43" y="34" width="24" height="42" rx="5" fill="#c0392b"/>
+        <rect x="45" y="38" width="20" height="12" rx="2" fill="#f5b3ab" opacity=".7"/>
+        <text x="55" y="51" text-anchor="middle" font-size="9" font-weight="900" fill="#7b1a10" font-family="M PLUS Rounded 1c">新製品</text>
+        <!-- 矢印：共食いを示す -->
+        <path d="M30 55 Q36 48 43 55" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="4 3" marker-end="url(#rarr)"/>
+        <defs>
+          <marker id="rarr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+            <polygon points="0 0, 7 3.5, 0 7" fill="#c0392b"/>
+          </marker>
+        </defs>
+        <!-- 共食いアイコン -->
+        <circle cx="36" cy="24" r="13" fill="#fce8e6"/>
+        <text x="36" y="30" text-anchor="middle" font-size="16" font-family="sans-serif">🦀</text>
+      </svg>
+      <div class="scene-txt">
+        飲料メーカーAが新フレーバーのコーヒーを投入。売れ行きは好調！<br>
+        でもよく見ると<strong>既存フレーバーの売上がガクンと落ちていた</strong>。<br>
+        新製品が競合ではなく、<strong>自社の別製品の客を奪っていた</strong>。
+        <div class="scene-q">…これがカニバリゼーション（共食い）！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 SVG：カニバリゼーションの構造 -->
+  <div class="panel p-orange">
+    <span class="phead">📊 カニバリゼーションの構造</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="カニバリゼーションの構造：自社製品A・Bが同じ顧客層を奪い合う図">
+      <!-- 顧客プール -->
+      <ellipse cx="170" cy="110" rx="130" ry="60" fill="#e8f2fb" stroke="#1a6dba" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="170" y="78" text-anchor="middle" font-size="12" font-weight="900" fill="#1a6dba" font-family="M PLUS Rounded 1c">同じターゲット顧客層</text>
+      <!-- 旧製品 -->
+      <rect x="20" y="92" width="90" height="36" rx="10" fill="#d9851f"/>
+      <text x="65" y="106" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">既存製品A</text>
+      <text x="65" y="120" text-anchor="middle" font-size="10" font-weight="700" fill="#ffe0b2" font-family="M PLUS Rounded 1c">売上 ↓ 侵食される</text>
+      <!-- 新製品 -->
+      <rect x="230" y="92" width="90" height="36" rx="10" fill="#c0392b"/>
+      <text x="275" y="106" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">新製品B</text>
+      <text x="275" y="120" text-anchor="middle" font-size="10" font-weight="700" fill="#f5b3ab" font-family="M PLUS Rounded 1c">売上 ↑ 伸びる</text>
+      <!-- 共食いの矢印 -->
+      <path d="M230 110 Q170 90 110 110" stroke="#c0392b" stroke-width="3" fill="none" marker-end="url(#larr)"/>
+      <defs>
+        <marker id="larr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <polygon points="7 0, 0 3.5, 7 7" fill="#c0392b"/>
+        </marker>
+      </defs>
+      <rect x="134" y="78" width="72" height="22" rx="8" fill="#c0392b"/>
+      <text x="170" y="93" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">顧客を奪う（共食い）</text>
+      <!-- 競合不在の表示 -->
+      <text x="170" y="158" text-anchor="middle" font-size="11" font-weight="800" fill="#7b8594" font-family="M PLUS Rounded 1c">※競合他社には影響なし</text>
+      <text x="170" y="174" text-anchor="middle" font-size="11" font-weight="800" fill="#7b8594" font-family="M PLUS Rounded 1c">自社内で顧客が移動するだけ</text>
+      <!-- バッジ：会社全体では？ -->
+      <rect x="60" y="188" width="220" height="26" rx="10" fill="#ffd23f"/>
+      <text x="170" y="205" text-anchor="middle" font-size="11.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">会社全体の売上は増えない可能性大！</text>
+    </svg>
+  </div>
+
+  <!-- フロー：新製品導入時のリスク判断 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 新製品導入時のカニバリ判断フロー</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 新製品のターゲット顧客を確認</div><div class="fb">新製品は「既存製品と同じ顧客層」を狙っているか？→ YESならカニバリリスクあり。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② カニバリゼーションが起きるケース</div><div class="fb">同一企業の製品間で顧客が移動するだけ。市場全体のシェアが増えないのに、製品が増えてコストだけかかる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 意図的なカニバリの場合もある</div><div class="fb">市場を先に埋めて競合参入を防ぐ戦略（例：スマートフォンの機種展開）。意図的なら問題ない場合も。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-darkred">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「競合他社が売上を奪う」と混同しやすい</div>
+      <div class="tb">カニバリゼーションは<strong>自社製品同士</strong>の共食い。競合他社が奪うのは「競争」。出題では「自社の〜」という文言を確認。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「必ず悪いこと」ではない</div>
+      <div class="tb">市場先占（先にポジションを取る）のために意図的にカニバリを起こす戦略もある。「悪い現象」とは限らない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>自社の既存製品の売上を自社の新製品が侵食する</strong>」→ カニバリゼーション。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">カニがバリバリ食う</span>＝カニバリゼーション！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">カニ（canni）がバリバリ（balization）自社製品を食べる</span><br><br>
+    カニは<strong>自分の仲間（自社製品）</strong>まで食べてしまう。<br>
+    他の会社（競合）ではなく、<span class="hl">自分家族を食べる</span>のがポイント。</div>
+  </div>
+
+</div>
+</body>
+</html>

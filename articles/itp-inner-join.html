@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>内部結合（INNER JOIN）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="内部結合（INNER JOIN）をわかりやすく解説。両方のテーブルに存在するデータだけを取り出す仕組み、外部結合との違い、ITパスポートの試験頻出ポイントまで。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-inner-join">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6e4f,#0e3d2a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,61,42,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0e8d5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6e4f;}
+
+.tbl-wrap{overflow-x:auto;margin-top:8px;}
+table{border-collapse:collapse;width:100%;font-size:12px;}
+th{background:#2e8b4f;color:#fff;font-weight:900;padding:7px 10px;text-align:center;}
+td{padding:7px 10px;text-align:center;border-bottom:1px solid #e0e8f0;font-weight:600;color:#3c4456;}
+tr.match{background:#d4f0e2;}
+tr.nomatch{background:#f8f0f0;color:#aaa;}
+tr.nomatch td{text-decoration:line-through;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.cg-item{border-radius:12px;padding:11px 13px;}
+.cg-item h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.cg-item p{font-size:11.5px;line-height:1.7;font-weight:600;color:#48506a;}
+.cg-inner{background:#e2f3e5;}.cg-inner h4{color:#1a6e4f;}
+.cg-outer{background:#e7eefc;}.cg-outer h4{color:#2e4daa;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・データベース</span>
+    <h1><b>内部結合</b>（INNER JOIN）とは？</h1>
+    <p>2つのテーブルで「両方に存在するデータだけ」を取り出す結合。片方にしかないレコードは捨てられる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="50" width="28" height="32" rx="5" fill="#c0d8f5"/>
+        <rect x="42" y="50" width="28" height="32" rx="5" fill="#c0ecd5"/>
+        <rect x="8" y="50" width="28" height="8" rx="3" fill="#2e6de5"/>
+        <rect x="42" y="50" width="28" height="8" rx="3" fill="#2e8b4f"/>
+        <text x="22" y="57" text-anchor="middle" font-size="5.5" font-weight="900" fill="#fff" font-family="sans-serif">受注</text>
+        <text x="56" y="57" text-anchor="middle" font-size="5.5" font-weight="900" fill="#fff" font-family="sans-serif">商品</text>
+        <circle cx="39" cy="28" r="10" fill="#f9d0a0" stroke="#3a3f4a" stroke-width="1.5"/>
+        <text x="39" y="32" text-anchor="middle" font-size="8" font-weight="900" fill="#3a3f4a" font-family="sans-serif">🔗</text>
+        <path d="M22 82 L39 64 L56 82" stroke="#2e8b4f" stroke-width="2" fill="none"/>
+        <circle cx="39" cy="64" r="5" fill="#ffd23f" stroke="#e0a800" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        「受注テーブル」と「商品テーブル」を組み合わせて売上一覧を作りたい。でも廃番商品や未受注商品は一覧に出てきて欲しくない。
+        <div class="scene-q">「両方にある商品コードが一致するデータだけ」取り出す結合は？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：ベン図 -->
+  <div class="panel p-green">
+    <span class="phead">🔵 内部結合のイメージ（ベン図）</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="内部結合のベン図：2つの円の重なり部分だけが結果として取り出される">
+      <rect x="0" y="0" width="340" height="180" rx="14" fill="#f0f6f3"/>
+      <!-- 左の円 -->
+      <circle cx="140" cy="90" r="72" fill="#c0e0f8" opacity=".75" stroke="#2e6de5" stroke-width="2.5"/>
+      <!-- 右の円 -->
+      <circle cx="200" cy="90" r="72" fill="#c0ecd5" opacity=".75" stroke="#2e8b4f" stroke-width="2.5"/>
+      <!-- 重なり部分（ハイライト） -->
+      <clipPath id="rightClip">
+        <circle cx="200" cy="90" r="72"/>
+      </clipPath>
+      <circle cx="140" cy="90" r="72" fill="#ffd23f" opacity=".6" clip-path="url(#rightClip)"/>
+      <!-- 左ラベル -->
+      <text x="108" y="86" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">受注</text>
+      <text x="108" y="101" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">テーブル</text>
+      <!-- 右ラベル -->
+      <text x="232" y="86" text-anchor="middle" font-size="12" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">商品</text>
+      <text x="232" y="101" text-anchor="middle" font-size="12" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">テーブル</text>
+      <!-- 中央ラベル -->
+      <text x="170" y="83" text-anchor="middle" font-size="10.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">両方に</text>
+      <text x="170" y="96" text-anchor="middle" font-size="10.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">ある行だけ</text>
+      <text x="170" y="112" text-anchor="middle" font-size="9" font-weight="800" fill="#9a6b00" font-family="M PLUS Rounded 1c">← INNER JOIN →</text>
+      <!-- 凡例 -->
+      <rect x="10" y="155" width="12" height="12" rx="3" fill="#ffd23f" stroke="#e0a800" stroke-width="1"/>
+      <text x="26" y="165" font-size="10" font-weight="800" fill="#5c4500" font-family="M PLUS Rounded 1c">内部結合の結果（共通部分のみ）</text>
+    </svg>
+    <p style="margin-top:10px;">内部結合は<strong>「キーが一致するレコードだけ」</strong>を返す。一方のテーブルにしかないデータは結果に含まれない。</p>
+  </div>
+
+  <!-- テーブル例 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 具体例で確認</span>
+    <p>受注テーブルと商品テーブルを「商品コード」で内部結合すると…</p>
+    <div class="tbl-wrap" style="margin-top:10px;">
+      <table>
+        <tr><th colspan="4">結合前：受注テーブル（左）</th></tr>
+        <tr><th>受注ID</th><th>商品コード</th><th>数量</th><th>備考</th></tr>
+        <tr class="match"><td>001</td><td>A01</td><td>3</td><td>結合○</td></tr>
+        <tr class="match"><td>002</td><td>B02</td><td>1</td><td>結合○</td></tr>
+        <tr class="nomatch"><td>003</td><td>Z99</td><td>2</td><td>商品Tに無い</td></tr>
+      </table>
+    </div>
+    <div class="tbl-wrap" style="margin-top:8px;">
+      <table>
+        <tr><th colspan="3">結合後：INNER JOIN の結果</th></tr>
+        <tr><th>受注ID</th><th>商品コード</th><th>商品名</th></tr>
+        <tr class="match"><td>001</td><td>A01</td><td>ノート</td></tr>
+        <tr class="match"><td>002</td><td>B02</td><td>ペン</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:8px;">受注ID=003（商品コードZ99）は商品テーブルに存在しないため、<strong>内部結合の結果には現れない</strong>。</p>
+  </div>
+
+  <!-- 外部結合との比較 -->
+  <div class="panel p-orange">
+    <span class="phead">⚖️ 外部結合との違い</span>
+    <div class="compare-grid">
+      <div class="cg-item cg-inner">
+        <h4>内部結合（INNER JOIN）</h4>
+        <p>両方のテーブルにキーが存在する行だけを取り出す。片方にしかない行は<strong>消える</strong>。</p>
+      </div>
+      <div class="cg-item cg-outer">
+        <h4>外部結合（OUTER JOIN）</h4>
+        <p>片方にしかない行も<strong>NULLで補って残す</strong>。LEFT / RIGHT / FULL の3種類がある。</p>
+      </div>
+    </div>
+    <p style="margin-top:10px;">試験では「<strong>片方にしかない行が結果に含まれるか</strong>」で内部／外部を判断させる問題が頻出。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「結合したら全行が出る」と思い込む</div>
+      <div class="tb">内部結合は両方に存在する行だけ。一致しない行は<strong>消える</strong>。全行残したいなら外部結合（LEFT JOIN等）を使う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">LEFT JOINの結果と混同</div>
+      <div class="tb">LEFT JOIN は左テーブルの全行＋右テーブルの一致行（一致しない右列はNULL）。内部結合とは結果が異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「直積（CROSS JOIN）」と混同</div>
+      <div class="tb">直積は条件なしに全組み合わせを返す（行数＝A×B）。内部結合はキー一致の条件で絞り込む点が違う。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「内輪（内部）だけ参加」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">両方のテーブルにいる人＝内輪メンバーだけ集合！　片方にしかいない人は参加できない。</span><br><br>
+      INNER = <span class="hl">中（なか）だけ</span>、OUTER = <span class="hl">外（そと）も残す</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-inner-join</div>
+
+</div>
+</body>
+</html>

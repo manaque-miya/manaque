@@ -1,108 +1,188 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ステークホルダー管理とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ステークホルダー管理の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-stakeholder.html">
-<meta property="og:title" content="ステークホルダー管理とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ステークホルダー管理の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-stakeholder.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ステークホルダーとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ステークホルダー（利害関係者）の定義を解説。株主・顧客・従業員・地域社会など誰が含まれるか、ストックホルダーとの違い、ITパスポート頻出ポイントまで。">
+<link rel="canonical" href="https://manaque.jp/itp/itp-stakeholder">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#145c30);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,92,48,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8f0d8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-teal{--c:#1a8a7a;--cbg:#e0f5f2;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.sh-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.sh-cell{border-radius:12px;padding:10px 11px;}
+.sh-cell h4{font-size:12.5px;font-weight:900;margin-bottom:4px;}
+.sh-cell p{font-size:11.5px;line-height:1.65;color:#48506a;}
+.c-a{background:#e7eefc;}.c-a h4{color:#2e6de5;}
+.c-b{background:#e2f3e5;}.c-b h4{color:#2e8b4f;}
+.c-c{background:#fcefd9;}.c-c h4{color:#d9851f;}
+.c-d{background:#fce4dd;}.c-d h4{color:#dd5a3a;}
+.c-e{background:#e0f5f2;}.c-e h4{color:#1a8a7a;}
+.c-f{background:#f4f0fc;}.c-f h4{color:#6a48b8;}
+@media(max-width:400px){.sh-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#2e8b4f;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">ステークホルダー管理とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ステークホルダー管理</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <span class="lead">💼 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>ステークホルダー</b>とは？</h1>
+    <p>企業活動に関わる、あらゆる「利害関係者」のこと。株主だけじゃない。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true" style="flex-shrink:0;">
+        <!-- 中心：会社 -->
+        <circle cx="36" cy="44" r="14" fill="#2e8b4f"/>
+        <text x="36" y="48" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="sans-serif">会社</text>
+        <!-- 周囲：人たち -->
+        <circle cx="36" cy="10" r="7" fill="#2e6de5"/>
+        <text x="36" y="13" text-anchor="middle" font-size="6" font-weight="800" fill="#fff" font-family="sans-serif">株主</text>
+        <circle cx="64" cy="28" r="7" fill="#d9851f"/>
+        <text x="64" y="31" text-anchor="middle" font-size="6" font-weight="800" fill="#fff" font-family="sans-serif">顧客</text>
+        <circle cx="64" cy="60" r="7" fill="#dd5a3a"/>
+        <text x="64" y="63" text-anchor="middle" font-size="6" font-weight="800" fill="#fff" font-family="sans-serif">従業員</text>
+        <circle cx="36" cy="78" r="7" fill="#1a8a7a"/>
+        <text x="36" y="81" text-anchor="middle" font-size="6" font-weight="800" fill="#fff" font-family="sans-serif">地域</text>
+        <circle cx="8" cy="60" r="7" fill="#6a48b8"/>
+        <text x="8" y="63" text-anchor="middle" font-size="6" font-weight="800" fill="#fff" font-family="sans-serif">仕入先</text>
+        <circle cx="8" cy="28" r="7" fill="#9a4fb8"/>
+        <text x="8" y="31" text-anchor="middle" font-size="6" font-weight="800" fill="#fff" font-family="sans-serif">政府</text>
+        <!-- 線 -->
+        <line x1="36" y1="17" x2="36" y2="30" stroke="#9aa3b2" stroke-width="1.5"/>
+        <line x1="57" y1="32" x2="48" y2="37" stroke="#9aa3b2" stroke-width="1.5"/>
+        <line x1="57" y1="56" x2="48" y2="51" stroke="#9aa3b2" stroke-width="1.5"/>
+        <line x1="36" y1="71" x2="36" y2="58" stroke="#9aa3b2" stroke-width="1.5"/>
+        <line x1="15" y1="56" x2="24" y2="51" stroke="#9aa3b2" stroke-width="1.5"/>
+        <line x1="15" y1="32" x2="24" y2="37" stroke="#9aa3b2" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        あなたが働く会社を想像してほしい。お客さん、上司、株主、仕入れ先、近くに住む地域の人、行政…<br>
+        <strong>会社の活動によって影響を受けるすべての人・組織</strong>がステークホルダーだ。
+        <div class="scene-q">…「stake（利害）+ holder（持つ人）」＝利害関係者！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解（SVG） -->
+  <div class="panel p-green">
+    <span class="phead">🌐 ステークホルダーの種類</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="企業を中心に内部ステークホルダーと外部ステークホルダーが取り囲む図">
+      <!-- 外側の楕円 -->
+      <ellipse cx="170" cy="95" rx="158" ry="82" fill="#e9f5ec" stroke="#2e8b4f" stroke-width="2" stroke-dasharray="6 4"/>
+      <!-- 内側の楕円 -->
+      <ellipse cx="170" cy="95" rx="80" ry="48" fill="#2e8b4f" opacity="0.12" stroke="#2e8b4f" stroke-width="1.5"/>
+      <!-- 中心 -->
+      <rect x="140" y="78" width="60" height="34" rx="8" fill="#2e8b4f"/>
+      <text x="170" y="98" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">企業</text>
+      <!-- 内部ステークホルダーラベル -->
+      <text x="170" y="56" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">内部ステークホルダー</text>
+      <text x="170" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">従業員・役員・株主（内部）</text>
+      <!-- 外部ステークホルダーラベル -->
+      <text x="170" y="158" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">外部ステークホルダー</text>
+      <!-- 外部の各種 -->
+      <text x="35" y="52" text-anchor="middle" font-size="10" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">顧客</text>
+      <text x="305" y="52" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">仕入先</text>
+      <text x="18" y="100" text-anchor="middle" font-size="10" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">競合</text>
+      <text x="322" y="100" text-anchor="middle" font-size="10" font-weight="800" fill="#6a48b8" font-family="M PLUS Rounded 1c">政府</text>
+      <text x="35" y="148" text-anchor="middle" font-size="10" font-weight="800" fill="#1a8a7a" font-family="M PLUS Rounded 1c">地域社会</text>
+      <text x="305" y="148" text-anchor="middle" font-size="10" font-weight="800" fill="#9a4fb8" font-family="M PLUS Rounded 1c">金融機関</text>
+    </svg>
+
+    <!-- 種類グリッド -->
+    <div class="sh-grid">
+      <div class="sh-cell c-a"><h4>顧客・消費者</h4><p>製品やサービスを購入・利用する人。最も直接的な利害関係者。</p></div>
+      <div class="sh-cell c-b"><h4>従業員・役員</h4><p>社内で働く人。雇用・賃金・労働環境に関心を持つ内部関係者。</p></div>
+      <div class="sh-cell c-c"><h4>株主・投資家</h4><p>出資して企業を所有する人。配当・株価上昇が主な関心事。</p></div>
+      <div class="sh-cell c-d"><h4>仕入先・取引先</h4><p>原材料や部品を供給するパートナー。取引の継続が利害。</p></div>
+      <div class="sh-cell c-e"><h4>地域社会・NPO</h4><p>企業活動の影響を受ける地域住民・環境・非営利団体。</p></div>
+      <div class="sh-cell c-f"><h4>政府・規制機関</h4><p>法令・税・規制を通じて影響を与え、法令遵守を求める。</p></div>
+    </div>
+  </div>
+
+  <!-- フロー／詳細 -->
+  <div class="panel p-teal">
+    <span class="phead">✅ 試験で押さえるポイント</span>
+    <ul class="kimo-list">
+      <li>ステークホルダーは<strong>株主（ストックホルダー）だけでなく</strong>、広く利害関係者全体を指す。</li>
+      <li>プロジェクト管理では、プロジェクトに影響を与える・影響を受ける全員がステークホルダー。</li>
+      <li>CSR（企業の社会的責任）の文脈でも頻出。ステークホルダーへの責任を果たすことがCSR。</li>
+      <li>マルチステークホルダーアプローチ＝複数の利害関係者と協調して課題解決するアプローチ。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ストックホルダー（株主）との混同</div>
+      <div class="tb">ストックホルダーは「株（stock）を保有する人＝株主」だけ。ステークホルダーはもっと広い概念で顧客・従業員・地域社会なども含む。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「直接取引する相手だけ」ではない</div>
+      <div class="tb">地域住民や政府機関も、企業活動によって影響を受ければステークホルダー。直接のビジネス関係がなくてもよい。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">プロジェクトのステークホルダーは「プロジェクトメンバーだけ」ではない</div>
+      <div class="tb">プロジェクトによって影響を受けるエンドユーザーや経営層もステークホルダーに含まれる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「ステーキ（stake）を持ってる全員」</span>が利害関係者！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">stake＝利害・賭け金 → そのステーキを持ってる（holder）人全員がステークホルダー</span><br><br>
+      ストックホルダーとの区別：<span class="hl">「スト"ック"は株（stock）だけ」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ステーク（利害）＞ストック（株）：広さが違う</span>
+    </div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>大規模PMの自分。利用部門・経営層・ベンダー・規制当局…全部漏れなく対応せねば。「聞いてない」と完成後言われたくない！この管理プロセスは？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ステークホルダー管理の不足</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>リスク管理の失敗</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ リスク管理は不確実事象対応。「関係者の期待値を管理」がステークホルダー管理</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：ステークホルダー管理の不足</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 ステークホルダー管理とは何か</h2>
-<span class="kw">プロジェクト関係者を識別し期待値をコントロール</span>
-<p>ステークホルダー：プロジェクトに影響を与える・受ける個人・組織。識別→分析（影響度×関心度）→エンゲージメント計画→コミュニケーション管理のフローで進める。PMBOKの10知識エリアの1つ。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「影響度大・関心高→緊密に連携」「影響度大・関心低→情報提供」「影響度小・関心高→進捗共有」「影響度小・関心低→モニタリング」と対応レベルを変える。
-
-**覚え方** 🎯 ステークホルダー管理＝**関係者の期待値マップ**。**影響度×関心度の2軸4象限**で対応レベルを変える。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>【混同注意】ステークホルダー管理とコミュニケーション管理は別の知識エリア。ステークホルダー管理は「誰が関係者か・どう関与させるか」、コミュニケーション管理は「何をいつ誰に伝えるか」。試験頻出の2軸4象限では「影響度大×関心低」→情報提供（緊密連携ではない）が正解。「聞いていない」を防ぐのがこの管理の目的。PMBOKの10知識エリアの1つ。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>ステークホルダー管理＝**関係者の期待値マップ**。**影響度×関心度の2軸4象限**で対応レベルを変える。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>ステークホルダー管理はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

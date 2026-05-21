@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>交差検証（クロスバリデーション）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="交差検証（クロスバリデーション）をわかりやすく解説。機械学習モデルの精度を正しく評価するためにデータを分割して繰り返し検証する方法、過学習との関係、ホールドアウト法との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-cross-validation">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#cf4f86,#7a1a4a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,26,74,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f8d8ea;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cf4f86;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#cf4f86;--fbg:#fbe8f2;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.compare-row{display:flex;gap:10px;margin-top:8px;}
+.cr-cell{flex:1;border-radius:12px;padding:11px;}
+.cr-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.cr-cell ul{list-style:none;}
+.cr-cell li{font-size:11.5px;font-weight:600;line-height:1.7;padding-left:12px;position:relative;color:#48506a;}
+.cr-cell li::before{content:"•";position:absolute;left:0;}
+.cr-holdout{background:#e7eefc;}.cr-holdout h4{color:#2e6de5;}
+.cr-cv{background:#fbe3ee;}.cr-cv h4{color:#cf4f86;}
+@media(max-width:380px){.compare-row{flex-direction:column;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（AI・機械学習）</span>
+    <h1><b>交差検証</b>（クロスバリデーション）とは？</h1>
+    <p>データを複数に分割し、「学習データ」と「テストデータ」を交互に入れ替えて繰り返し評価することで、モデルの精度を正確に測る手法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="52" width="54" height="32" rx="7" fill="#f8d8ea"/>
+        <rect x="18" y="32" width="42" height="28" rx="8" fill="#cf4f86"/>
+        <circle cx="39" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M27 19 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="8" fill="#f4c89a"/>
+        <!-- データ分割の小イラスト -->
+        <rect x="17" y="57" width="10" height="22" rx="2" fill="#cf4f86" opacity=".7"/>
+        <rect x="29" y="57" width="10" height="22" rx="2" fill="#cf4f86" opacity=".7"/>
+        <rect x="41" y="57" width="10" height="22" rx="2" fill="#ffd23f"/>
+        <rect x="53" y="57" width="10" height="22" rx="2" fill="#cf4f86" opacity=".7"/>
+        <text x="22" y="72" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">学</text>
+        <text x="34" y="72" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">学</text>
+        <text x="46" y="72" text-anchor="middle" font-size="7" font-weight="900" fill="#7a1a4a" font-family="sans-serif">テ</text>
+        <text x="58" y="72" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">学</text>
+      </svg>
+      <div class="scene-txt">
+        AIモデルを作った。「学習データで試したら99%の精度！」でも実際のデータで試したら50%しか当たらない。<strong>過学習（暗記状態）</strong>になっていた。
+        <div class="scene-q">…本当の精度を正しく測るにはどうすれば？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：k分割交差検証 -->
+  <div class="panel p-pink">
+    <span class="phead">🔁 k分割交差検証（k-fold）の仕組み</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="k分割交差検証：データを4つに分割し、テスト用を順番に入れ替えながら4回検証する">
+      <!-- データブロック説明 -->
+      <text x="170" y="18" text-anchor="middle" font-size="11" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">全データを4つに分割（k=4の場合）</text>
+
+      <!-- 4回分の行 -->
+      <!-- 色の凡例 -->
+      <rect x="240" y="8" width="12" height="10" rx="2" fill="#cf4f86"/>
+      <text x="255" y="17" font-size="9" font-weight="700" fill="#2b3245" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="285" y="8" width="12" height="10" rx="2" fill="#ffd23f"/>
+      <text x="300" y="17" font-size="9" font-weight="700" fill="#2b3245" font-family="M PLUS Rounded 1c">テスト</text>
+
+      <!-- Round 1 -->
+      <text x="35" y="40" text-anchor="middle" font-size="10" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">第1回</text>
+      <rect x="58" y="28" width="60" height="20" rx="4" fill="#ffd23f" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="88" y="42" text-anchor="middle" font-size="9" font-weight="900" fill="#7a3a00" font-family="M PLUS Rounded 1c">テスト</text>
+      <rect x="122" y="28" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="152" y="42" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="186" y="28" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="216" y="42" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="250" y="28" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="280" y="42" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <text x="322" y="42" font-size="9" font-weight="700" fill="#2b3245" font-family="M PLUS Rounded 1c">→精度①</text>
+
+      <!-- Round 2 -->
+      <text x="35" y="78" text-anchor="middle" font-size="10" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">第2回</text>
+      <rect x="58" y="66" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="88" y="80" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="122" y="66" width="60" height="20" rx="4" fill="#ffd23f" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="152" y="80" text-anchor="middle" font-size="9" font-weight="900" fill="#7a3a00" font-family="M PLUS Rounded 1c">テスト</text>
+      <rect x="186" y="66" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="216" y="80" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="250" y="66" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="280" y="80" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <text x="322" y="80" font-size="9" font-weight="700" fill="#2b3245" font-family="M PLUS Rounded 1c">→精度②</text>
+
+      <!-- Round 3 -->
+      <text x="35" y="116" text-anchor="middle" font-size="10" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">第3回</text>
+      <rect x="58" y="104" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="88" y="118" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="122" y="104" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="152" y="118" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="186" y="104" width="60" height="20" rx="4" fill="#ffd23f" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="216" y="118" text-anchor="middle" font-size="9" font-weight="900" fill="#7a3a00" font-family="M PLUS Rounded 1c">テスト</text>
+      <rect x="250" y="104" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="280" y="118" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <text x="322" y="118" font-size="9" font-weight="700" fill="#2b3245" font-family="M PLUS Rounded 1c">→精度③</text>
+
+      <!-- Round 4 -->
+      <text x="35" y="154" text-anchor="middle" font-size="10" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">第4回</text>
+      <rect x="58" y="142" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="88" y="156" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="122" y="142" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="152" y="156" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="186" y="142" width="60" height="20" rx="4" fill="#f8d8ea" stroke="#cf4f86" stroke-width="1"/>
+      <text x="216" y="156" text-anchor="middle" font-size="9" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">学習</text>
+      <rect x="250" y="142" width="60" height="20" rx="4" fill="#ffd23f" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="280" y="156" text-anchor="middle" font-size="9" font-weight="900" fill="#7a3a00" font-family="M PLUS Rounded 1c">テスト</text>
+      <text x="322" y="156" font-size="9" font-weight="700" fill="#2b3245" font-family="M PLUS Rounded 1c">→精度④</text>
+
+      <!-- 結果 -->
+      <rect x="58" y="174" width="252" height="38" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="184" y="190" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">4回の精度を平均 → 最終評価</text>
+      <text x="184" y="206" text-anchor="middle" font-size="10" font-weight="700" fill="#4a8860" font-family="M PLUS Rounded 1c">全データが1回ずつテストに使われる</text>
+    </svg>
+  </div>
+
+  <!-- ホールドアウト法との比較 -->
+  <div class="panel p-orange">
+    <span class="phead">⚖️ ホールドアウト法との違い</span>
+    <div class="compare-row">
+      <div class="cr-cell cr-holdout">
+        <h4>ホールドアウト法</h4>
+        <ul>
+          <li>データを2分割（学習・テスト）</li>
+          <li>1回だけ評価</li>
+          <li>分割のしかたで結果が変わりやすい</li>
+          <li>データが少ないと評価が不安定</li>
+        </ul>
+      </div>
+      <div class="cr-cell cr-cv">
+        <h4>交差検証（k分割）</h4>
+        <ul>
+          <li>データをk個に分割</li>
+          <li>k回繰り返して平均</li>
+          <li>偏りなく全データを使える</li>
+          <li>計算コストはかかるが精度が高い</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:10px;">交差検証は<strong>データが少ないとき</strong>に特に有効。全データを無駄なく評価に使える。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">交差検証は「モデルの評価」の手法（学習の手法ではない）</div>
+      <div class="tb">交差検証はモデルが<strong>どれだけ汎化できているか（未知データへの対応力）を評価</strong>する手法。モデルの構造を変える学習アルゴリズム自体とは別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「k」は任意の数（一般的には5や10）</div>
+      <div class="tb">k=5の「5分割交差検証」や k=10の「10分割交差検証」が一般的。kを大きくするほど評価は安定するが計算コストが増える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">交差検証と過学習の関係</div>
+      <div class="tb">過学習（訓練データに過剰適合してテストデータに弱い状態）を<strong>検出するため</strong>に交差検証を使う。交差検証で精度が低い＝過学習または汎化不足のサイン。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「交差検証＝席替えしながら採点」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">席替え＝テスト担当を交互に入れ替える ／ 採点＝精度を評価</span><br><br>
+    「同じ人（データ）が学習役・テスト役を<span class="hl">交代しながら</span>全員採点される」<br>
+    → 1回の運に左右されない<span class="hl">公平な評価</span>になる。</div>
+  </div>
+
+</div>
+</body>
+</html>

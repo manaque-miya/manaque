@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>クリティカルパス法（CPM）とは？計算手順を図解 — ITパスポート</title>
+<meta name="description" content="クリティカルパス法（CPM）の計算手順をわかりやすく図解。最早結合点時刻・最遅結合点時刻・フロートの求め方、ITパスポート試験の計算問題の解き方まで解説。">
+<link rel="canonical" href="https://example.com/itp-critical-path-method">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e5eaa,#10274f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(16,39,79,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8ccf0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e5eaa;--cbg:#e0e9fa;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e5eaa;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.fstep .fformula{margin-top:6px;background:rgba(255,255,255,.7);border-radius:7px;padding:5px 8px;font-size:12.5px;font-weight:900;color:var(--fc);}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e5eaa;--fbg:#e0e9fa;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#c0392b;--fbg:#fce4dd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">📅 ITパスポート ｜ マネジメント系</span>
+    <h1><b>クリティカルパス法（CPM）</b>とは？</h1>
+    <p>「どこが一番ネック？」をネットワーク図と計算で特定する手法。最早・最遅・フロートの3つを求めてクリティカルパスを導く。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <div class="scene-txt">
+        システム開発プロジェクト。10個のタスクが複雑に依存している。<strong>どのタスクを遅らせてはいけないか、どこに余裕があるか</strong>を一目で分かるようにしたい。<br><br>
+        CPM（クリティカルパス法）は、全作業をネットワーク図に並べ、「最も早く始められる時刻」と「最も遅くても大丈夫な時刻」を計算し、<strong>フロート（余裕時間）＝0の経路</strong>を特定する手法。
+        <div class="scene-q">…3ステップの計算で「絶対に遅らせてはいけない経路」が見える！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：計算例 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔢 CPMの計算例（アロー図）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="CPM計算例のアロー図。ノード1から5まで複数の経路があり、クリティカルパスは1→2→4→5で合計15日">
+      <defs>
+        <marker id="arrcpm" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9aa3b2"/>
+        </marker>
+        <marker id="arrcpm2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#c0392b"/>
+        </marker>
+      </defs>
+
+      <!-- ノード描画（円＋ノード番号） -->
+      <!-- ①スタート -->
+      <circle cx="40" cy="100" r="22" fill="#4256b8" stroke="#fff" stroke-width="2"/>
+      <text x="40" y="96" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">① </text>
+      <text x="40" y="108" text-anchor="middle" font-size="9" font-weight="800" fill="#d0d8fa" font-family="M PLUS Rounded 1c">ET:0</text>
+      <text x="40" y="130" text-anchor="middle" font-size="9" font-weight="700" fill="#6a7abf" font-family="M PLUS Rounded 1c">LT:0</text>
+
+      <!-- ② -->
+      <circle cx="140" cy="55" r="22" fill="#c0392b" stroke="#fff" stroke-width="2"/>
+      <text x="140" y="51" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">②</text>
+      <text x="140" y="63" text-anchor="middle" font-size="9" font-weight="800" fill="#ffd0cc" font-family="M PLUS Rounded 1c">ET:5</text>
+      <text x="140" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">LT:5</text>
+
+      <!-- ③ -->
+      <circle cx="140" cy="155" r="22" fill="#4256b8" stroke="#fff" stroke-width="2"/>
+      <text x="140" y="151" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">③</text>
+      <text x="140" y="163" text-anchor="middle" font-size="9" font-weight="800" fill="#d0d8fa" font-family="M PLUS Rounded 1c">ET:4</text>
+      <text x="140" y="182" text-anchor="middle" font-size="9" font-weight="700" fill="#6a7abf" font-family="M PLUS Rounded 1c">LT:7</text>
+
+      <!-- ④ -->
+      <circle cx="240" cy="55" r="22" fill="#c0392b" stroke="#fff" stroke-width="2"/>
+      <text x="240" y="51" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">④</text>
+      <text x="240" y="63" text-anchor="middle" font-size="9" font-weight="800" fill="#ffd0cc" font-family="M PLUS Rounded 1c">ET:10</text>
+      <text x="240" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">LT:10</text>
+
+      <!-- ⑤ゴール -->
+      <circle cx="310" cy="100" r="22" fill="#2e8b4f" stroke="#fff" stroke-width="2"/>
+      <text x="310" y="96" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">⑤</text>
+      <text x="310" y="108" text-anchor="middle" font-size="9" font-weight="800" fill="#d0f0dc" font-family="M PLUS Rounded 1c">ET:15</text>
+
+      <!-- エッジ描画 -->
+      <!-- ①→②（クリティカル・5日） -->
+      <path d="M62 87 L118 67" stroke="#c0392b" stroke-width="3" marker-end="url(#arrcpm2)"/>
+      <text x="88" y="72" text-anchor="middle" font-size="11" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">5日</text>
+
+      <!-- ①→③（4日） -->
+      <path d="M62 113 L118 143" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrcpm)"/>
+      <text x="88" y="138" text-anchor="middle" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">4日</text>
+
+      <!-- ②→④（クリティカル・5日） -->
+      <path d="M162 55 L218 55" stroke="#c0392b" stroke-width="3" marker-end="url(#arrcpm2)"/>
+      <text x="190" y="50" text-anchor="middle" font-size="11" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">5日</text>
+
+      <!-- ③→④（3日） -->
+      <path d="M162 143 L218 68" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrcpm)"/>
+      <text x="200" y="115" text-anchor="middle" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">3日</text>
+
+      <!-- ④→⑤（クリティカル・5日） -->
+      <path d="M262 67 L290 85" stroke="#c0392b" stroke-width="3" marker-end="url(#arrcpm2)"/>
+      <text x="283" y="70" text-anchor="middle" font-size="11" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">5日</text>
+
+      <!-- ③→⑤（8日） -->
+      <path d="M162 155 L290 113" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrcpm)"/>
+      <text x="235" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">8日</text>
+
+      <!-- ラベル -->
+      <rect x="60" y="175" width="225" height="22" rx="8" fill="#fce4dd" stroke="#c0392b" stroke-width="1.5"/>
+      <text x="172" y="190" text-anchor="middle" font-size="10" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">🔴 クリティカルパス：①→②→④→⑤（計15日）</text>
+    </svg>
+    <p style="font-size:12px;color:#6a7080;margin-top:6px;font-weight:700;">ET＝最早結合点時刻 ／ LT＝最遅結合点時刻。ET＝LTのノードがクリティカルパス上にある。</p>
+  </div>
+
+  <!-- 計算手順フロー -->
+  <div class="panel p-green">
+    <span class="phead">📋 CPMの計算手順（3ステップ）</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 前向き計算（最早結合点時刻 ET を求める）</div>
+        <div class="fb">スタートから順に「最も早く到達できる時刻」を求める。合流するときは最大値を取る。</div>
+        <div class="fformula">ET＝前ノードのET ＋ 作業時間（複数あれば最大）</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 後ろ向き計算（最遅結合点時刻 LT を求める）</div>
+        <div class="fb">ゴールから逆向きに「最も遅くても間に合う時刻」を求める。分岐するときは最小値を取る。</div>
+        <div class="fformula">LT＝後ノードのLT － 作業時間（複数あれば最小）</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ フロート計算（余裕時間）</div>
+        <div class="fb">各作業のフロートを計算。フロート＝0の作業を順にたどるとクリティカルパスになる。</div>
+        <div class="fformula">フロート＝後ノードのLT － 前ノードのET － 作業時間</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ クリティカルパス特定</div>
+        <div class="fb">フロート＝0の作業をつなぐとクリティカルパス。その長さがプロジェクトの最短完了時間。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">前向き計算で「合流時は最小値」は誤り</div>
+      <div class="tb">前向き計算（ET）の合流は<strong>最大値</strong>。すべての前作業が終わってから次に進めるため。最小値にすると「まだ終わっていない作業がある」状態になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">後ろ向き計算で「分岐時は最大値」は誤り</div>
+      <div class="tb">後ろ向き計算（LT）の分岐は<strong>最小値</strong>。「どちらの経路にも間に合う最も遅い時刻」を求めるため。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">CPMとPERT（パート）の混同</div>
+      <div class="tb">CPMは作業時間が確定している場合。PERTは確率的（楽観・悲観・最頻値）で不確実な場合に使う。どちらもネットワーク図を使うが目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ガントチャートとの違い</div>
+      <div class="tb">ガントチャートは「各作業の開始・終了の棒グラフ」。CPM/PERTは「依存関係のネットワーク図」。依存関係を表現できるのはCPM/PERT。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">CPM手順は <span class="hl">「前（ET）・後（LT）・フロ（フロート）」</span><br>
+    → <span class="hl">「前後フロ（まえうしろフロ）」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">前向きでET（最早）→ 後ろ向きでLT（最遅）→ 差し引きでフロート → フロート0がクリティカル</span><br><br>
+    計算の向き：<span class="hl">「ET＝前から・LT＝後ろから」</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

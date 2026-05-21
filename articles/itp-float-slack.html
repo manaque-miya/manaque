@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>フロート（余裕時間）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="フロート（余裕時間）をわかりやすく解説。トータルフロートとフリーフロートの違い、クリティカルパスとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-float-slack">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6b4a,#0d3d28);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,40,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b6e0cc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6b4a;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6b4a;--fbg:#e5f5ed;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.deftable{width:100%;border-collapse:collapse;margin-top:8px;}
+.deftable th,.deftable td{font-size:12.5px;font-weight:700;padding:9px 11px;border:1.5px solid #d0d6e8;line-height:1.6;}
+.deftable th{background:#e4e7f7;color:#4256b8;text-align:left;}
+.deftable td{color:#3c4456;}
+.deftable tr:nth-child(even) td{background:#f6f8fd;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>フロート（余裕時間）</b>とは？</h1>
+    <p>プロジェクトのスケジュールで「遅れてもいい余裕」のこと。クリティカルパス上の作業は余裕ゼロ＝フロート0。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="82" rx="26" ry="4" fill="#0d3d28" opacity=".12"/>
+        <rect x="8" y="56" width="56" height="22" rx="6" fill="#c9e8d8"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#1a6b4a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5-9-13-9 q-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="22" y="60" width="28" height="12" rx="3" fill="#0d3d28" opacity=".4"/>
+      </svg>
+      <div class="scene-txt">
+        システム開発プロジェクトのPM。
+        工程Aは「最大3日遅れても全体の完了日は変わらない」と判明。<br><br>
+        「じゃあAは2日ズラして別チームの人を充てよう」と判断した。
+        <div class="scene-q">…この"3日の余裕"を何と呼ぶ？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：フロートの概念 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 フロートのイメージ図</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="フロートの概念図：余裕時間がある作業とクリティカルパスの比較">
+      <!-- 背景 -->
+      <rect width="340" height="200" fill="#f4f6fb" rx="10"/>
+      <!-- 時間軸ラベル -->
+      <text x="18" y="22" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">日数 →</text>
+      <line x1="18" y1="28" x2="322" y2="28" stroke="#c2c8d8" stroke-width="1.5"/>
+      <!-- 目盛り -->
+      <text x="18" y="42" font-size="9" fill="#9aa3b2" font-family="M PLUS Rounded 1c">0</text>
+      <text x="93" y="42" font-size="9" fill="#9aa3b2" font-family="M PLUS Rounded 1c">5</text>
+      <text x="168" y="42" font-size="9" fill="#9aa3b2" font-family="M PLUS Rounded 1c">10</text>
+      <text x="243" y="42" font-size="9" fill="#9aa3b2" font-family="M PLUS Rounded 1c">15</text>
+      <text x="310" y="42" font-size="9" fill="#9aa3b2" font-family="M PLUS Rounded 1c">20</text>
+
+      <!-- 作業A（余裕あり） -->
+      <text x="18" y="66" font-size="11" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">作業A</text>
+      <rect x="18" y="70" width="120" height="22" rx="5" fill="#2e8b4f"/>
+      <text x="78" y="85" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">実作業（8日）</text>
+      <!-- フロート部分 -->
+      <rect x="138" y="70" width="45" height="22" rx="5" fill="#b6e0cc" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="160" y="85" text-anchor="middle" font-size="9" font-weight="900" fill="#1a6b4a" font-family="M PLUS Rounded 1c">余裕3日</text>
+      <!-- フロートの矢印 -->
+      <line x1="138" y1="103" x2="183" y2="103" stroke="#2e8b4f" stroke-width="1.5"/>
+      <polygon points="183,99 183,107 189,103" fill="#2e8b4f"/>
+      <polygon points="138,99 138,107 132,103" fill="#2e8b4f"/>
+      <text x="160" y="115" text-anchor="middle" font-size="9" font-weight="800" fill="#1a6b4a" font-family="M PLUS Rounded 1c">フロート</text>
+
+      <!-- 作業B（クリティカル） -->
+      <text x="18" y="138" font-size="11" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">作業B</text>
+      <rect x="18" y="142" width="270" height="22" rx="5" fill="#dd5a3a"/>
+      <text x="153" y="157" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">クリティカルパス（18日）余裕ゼロ</text>
+
+      <!-- 最終バー -->
+      <rect x="18" y="175" width="270" height="8" rx="3" fill="#e4e7f7"/>
+      <line x1="288" y1="168" x2="288" y2="188" stroke="#4256b8" stroke-width="2" stroke-dasharray="3 2"/>
+      <text x="295" y="183" font-size="9" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">完了日</text>
+    </svg>
+    <p style="margin-top:10px;">作業Aは実作業8日で済んでも、次の工程の<strong>最遅開始日まで3日の余裕</strong>がある。
+    この余裕がフロート。作業Bはフロートが0＝これを1日でも遅らせると全体が遅れる（クリティカルパス）。</p>
+  </div>
+
+  <!-- フロー：2種類のフロート -->
+  <div class="panel p-green">
+    <span class="phead">🗂️ トータルフロート vs フリーフロート</span>
+    <table class="deftable">
+      <tr>
+        <th>種類</th>
+        <th>定義</th>
+        <th>影響範囲</th>
+      </tr>
+      <tr>
+        <td><strong>トータルフロート</strong></td>
+        <td>後続作業の最遅開始日まで遅らせられる最大日数</td>
+        <td>後続作業のフロートを消費（共有）</td>
+      </tr>
+      <tr>
+        <td><strong>フリーフロート</strong></td>
+        <td>後続作業の最早開始日まで遅らせられる日数</td>
+        <td>後続作業に一切影響なし（独立）</td>
+      </tr>
+    </table>
+    <p style="margin-top:10px;font-size:12.5px;">試験では主に「フロート（余裕時間）＝トータルフロート」の意味で問われることが多い。</p>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">クリティカルパスの作業はフロート＝0</div>
+      <div class="tb">「クリティカルパス上の作業にも余裕がある」は誤り。フロートが0の作業の連なりがクリティカルパスになる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">フロートが大きい＝重要度が低いではない</div>
+      <div class="tb">フロートが大きくても、その作業自体は必要。ただし「遅らせる融通がきく」というだけ。リソース最適化に使う情報。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「フリーフロートを使い切っても後続に影響なし」</div>
+      <div class="tb">フリーフロートの範囲内なら後続作業の開始日は変わらない。トータルフロートとの違いを問う問題が頻出。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">フロ（風呂）の余裕</span>＝入浴時間は30分あるけど20分で出ても大丈夫→10分の<strong>フロート</strong>！<br><br>
+      クリティカルパス＝<span class="hl">ギリギリ入浴</span>→1秒でも遅れたら電車に乗り遅れる＝フロート0
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

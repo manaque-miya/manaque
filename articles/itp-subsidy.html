@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>補助金・助成金とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="補助金と助成金の違いを徹底解説。返済不要・審査あり・使途限定など試験頻出ポイントをSVG図解と無理やりゴロで記憶に刻む。">
+<link rel="canonical" href="https://example.com/itp-subsidy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a7f5a,#0e4a33);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,74,51,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e8d4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#1a7f5a;--cbg:#d9f5eb;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a7f5a;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.ccard{border-radius:12px;padding:13px 12px;}
+.ccard h4{font-size:13px;font-weight:900;margin-bottom:8px;}
+.ccard ul{list-style:none;}
+.ccard li{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.ccard li::before{content:"・";position:absolute;left:0;}
+.card-hojo{background:#d9f5eb;}.card-hojo h4{color:#1a7f5a;}
+.card-josho{background:#e7eefc;}.card-josho h4{color:#2e6de5;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a7f5a;--fbg:#eef8f4;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#4256b8;--fbg:#eaecf9;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>補助金・助成金</b>とは？</h1>
+    <p>国・自治体から受け取れる「返さなくていいお金」。でも使い道は決まっている。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#0e4a33" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="7" fill="#c8e6da"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#1a7f5a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#e8f5ee"/>
+        <!-- お金袋 -->
+        <circle cx="54" cy="44" r="10" fill="#ffd23f" stroke="#e0a800" stroke-width="1.5"/>
+        <text x="54" y="48" text-anchor="middle" font-size="10" font-weight="900" fill="#5c4500">¥</text>
+      </svg>
+      <div class="scene-txt">
+        中小企業の社長Aさん。ITシステムを導入したいが資金が足りない。商工会議所の担当者から「IT導入<strong>補助金</strong>が使えますよ」と聞いた。でも「それって借金？」と不安に…。
+        <div class="scene-q">→ 補助金は返済不要。でも申請が必要で、使い道も限られている。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：補助金 vs 助成金 -->
+  <div class="panel p-blue">
+    <span class="phead">📊 補助金 vs 助成金 — 何が違う？</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="補助金と助成金の比較図">
+      <!-- 背景 -->
+      <rect x="0" y="0" width="340" height="220" rx="14" fill="#f5f7fc"/>
+      <!-- 補助金ボックス -->
+      <rect x="12" y="24" width="148" height="178" rx="12" fill="#d9f5eb" stroke="#1a7f5a" stroke-width="2"/>
+      <text x="86" y="50" text-anchor="middle" font-size="15" font-weight="900" fill="#1a7f5a" font-family="M PLUS Rounded 1c">補助金</text>
+      <text x="86" y="68" text-anchor="middle" font-size="10" fill="#2e7d55" font-family="M PLUS Rounded 1c">（例：IT導入補助金）</text>
+      <!-- 補助金の特徴 -->
+      <rect x="22" y="78" width="128" height="22" rx="6" fill="#1a7f5a"/>
+      <text x="86" y="93" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">返済不要 ✓</text>
+      <rect x="22" y="106" width="128" height="22" rx="6" fill="#fff" stroke="#1a7f5a" stroke-width="1.5"/>
+      <text x="86" y="121" text-anchor="middle" font-size="11" font-weight="700" fill="#1a7f5a" font-family="M PLUS Rounded 1c">審査あり・競争率高</text>
+      <rect x="22" y="134" width="128" height="22" rx="6" fill="#fff" stroke="#1a7f5a" stroke-width="1.5"/>
+      <text x="86" y="149" text-anchor="middle" font-size="11" font-weight="700" fill="#1a7f5a" font-family="M PLUS Rounded 1c">使途指定あり</text>
+      <rect x="22" y="162" width="128" height="22" rx="6" fill="#fff" stroke="#1a7f5a" stroke-width="1.5"/>
+      <text x="86" y="177" text-anchor="middle" font-size="11" font-weight="700" fill="#1a7f5a" font-family="M PLUS Rounded 1c">後払い（精算払い）</text>
+      <!-- 助成金ボックス -->
+      <rect x="180" y="24" width="148" height="178" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="254" y="50" text-anchor="middle" font-size="15" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">助成金</text>
+      <text x="254" y="68" text-anchor="middle" font-size="10" fill="#2e6de5" font-family="M PLUS Rounded 1c">（例：雇用調整助成金）</text>
+      <!-- 助成金の特徴 -->
+      <rect x="190" y="78" width="128" height="22" rx="6" fill="#2e6de5"/>
+      <text x="254" y="93" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">返済不要 ✓</text>
+      <rect x="190" y="106" width="128" height="22" rx="6" fill="#fff" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="254" y="121" text-anchor="middle" font-size="11" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">要件さえ満たせばOK</text>
+      <rect x="190" y="134" width="128" height="22" rx="6" fill="#fff" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="254" y="149" text-anchor="middle" font-size="11" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">使途指定あり</text>
+      <rect x="190" y="162" width="128" height="22" rx="6" fill="#fff" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="254" y="177" text-anchor="middle" font-size="11" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">後払い（精算払い）</text>
+      <!-- VS -->
+      <circle cx="170" cy="113" r="16" fill="#4256b8"/>
+      <text x="170" y="118" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">VS</text>
+    </svg>
+    <div class="compare-grid">
+      <div class="ccard card-hojo">
+        <h4>補助金のポイント</h4>
+        <ul>
+          <li>競争入札型（採択率に限り）</li>
+          <li>IT・設備投資・事業に使う</li>
+          <li>国・経済産業省系が多い</li>
+        </ul>
+      </div>
+      <div class="ccard card-josho">
+        <h4>助成金のポイント</h4>
+        <ul>
+          <li>要件充足型（審査より要件）</li>
+          <li>雇用・人材育成系が多い</li>
+          <li>厚生労働省系が多い</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：補助金を使うまでの流れ -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ 補助金を使うまでの流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 公募・申請</div><div class="fb">国や自治体が募集を告知。申請書類（事業計画など）を提出。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 審査・採択</div><div class="fb">書類審査を経て採択（合格）。競争率が高いため事前準備が肝心。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 事業実施（立替払い）</div><div class="fb">採択後に自分の資金で先に支払いを行う（後払い精算）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 実績報告 → 入金</div><div class="fb">完了後に報告書を提出し、審査を経て補助金が入金される。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「返済不要＝借りた金と同じ」は×</div>
+      <div class="tb">借入金（融資）は返済義務あり。補助金・助成金は<strong>返済不要</strong>。試験では「融資と補助金」の違いで引っかける問題が頻出。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「先にお金がもらえる」は×</div>
+      <div class="tb">多くの補助金・助成金は<strong>後払い精算</strong>。先に自分で費用を支払い、あとで精算する仕組み。手元資金がないと使えない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「使い道は自由」は×</div>
+      <div class="tb">補助金・助成金には<strong>使途（何に使うか）の指定</strong>がある。自由に使えるわけではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">補助金 ≠ 税金の免除</div>
+      <div class="tb">補助金は「もらう」もの。税額控除や減価償却とは別の仕組み。ごちゃ混ぜにしない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">補助金は<span class="hl">「審査に通った人だけもらえるご褒美」</span>、<br>
+    助成金は<span class="hl">「条件さえ満たせばもらえる給付」</span><br><br>
+    共通点：<span class="hl">返さなくてOK・後払い・使途縛り</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">「補助」→ 競争して勝ち取る／「助成」→ 要件で自動認定</span></div>
+  </div>
+
+</div>
+</body>
+</html>

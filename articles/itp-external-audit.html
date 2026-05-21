@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>外部監査とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="外部監査と内部監査の違いをわかりやすく解説。独立した第三者が行う客観的チェック。ITパスポート試験のひっかけポイントと覚え方ゴロ付き。">
+<link rel="canonical" href="https://example.com/itp-external-audit">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a7a5c,#0d4a36);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,74,54,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e8d8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#1a7a5c;--cbg:#e0f2ec;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a7a5c;}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px;}
+.compare-table th{padding:8px 10px;font-weight:900;text-align:center;}
+.compare-table td{padding:8px 10px;font-weight:600;line-height:1.6;border-top:1px solid #e0e4ee;}
+.compare-table .th-ext{background:#e0f2ec;color:#1a7a5c;border-radius:8px 0 0 0;}
+.compare-table .th-int{background:#e4e7f7;color:#4256b8;}
+.compare-table .th-cat{background:#f4f6fb;color:#48506a;}
+@media(max-width:480px){.compare-table{font-size:11px;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a7a5c;--fbg:#eef8f4;}
+.f2{--fc:#4256b8;--fbg:#eef0fb;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>外部監査</b>とは？</h1>
+    <p>組織の外にいる独立した第三者が、業務やシステムの<br>適切さを客観的にチェックする仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="58" width="48" height="22" rx="6" fill="#b8d8d0"/>
+        <rect x="18" y="38" width="36" height="28" rx="8" fill="#1a7a5c"/>
+        <circle cx="36" cy="22" r="13" fill="#f0d5b5"/>
+        <path d="M24 19 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#555"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f0d5b5"/>
+        <!-- 虫眼鏡 -->
+        <circle cx="50" cy="55" r="6" fill="none" stroke="#ffd23f" stroke-width="2"/>
+        <line x1="55" y1="60" x2="59" y2="64" stroke="#ffd23f" stroke-width="2" stroke-linecap="round"/>
+        <!-- 社外バッジ -->
+        <rect x="10" y="30" width="22" height="10" rx="4" fill="#ffd23f"/>
+        <text x="21" y="39" text-anchor="middle" font-size="7" font-weight="900" fill="#5c4500" font-family="sans-serif">社外</text>
+      </svg>
+      <div class="scene-txt">
+        A社はシステムのセキュリティに問題がないか確認したい。しかし社内の人間がチェックしても「身内に甘い」評価になるかもしれない。そこで<strong>外部の専門機関</strong>に依頼してチェックしてもらうことにした。
+        <div class="scene-q">…この「外部の第三者によるチェック」が外部監査。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔍 外部監査 vs 内部監査</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="外部監査と内部監査の比較図">
+      <!-- 会社ボックス -->
+      <rect x="100" y="80" width="140" height="80" rx="12" fill="#f4f6fb" stroke="#4256b8" stroke-width="2"/>
+      <text x="170" y="110" text-anchor="middle" font-size="13" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">対象組織</text>
+      <text x="170" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#7a82a0" font-family="M PLUS Rounded 1c">（業務・システム）</text>
+
+      <!-- 内部監査（右内側） -->
+      <rect x="108" y="142" width="124" height="26" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="1.5"/>
+      <text x="170" y="158" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">内部監査部門（社内）</text>
+      <path d="M170 142 L170 125" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#int)"/>
+      <defs>
+        <marker id="int" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#4256b8"/>
+        </marker>
+        <marker id="ext" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#1a7a5c"/>
+        </marker>
+      </defs>
+
+      <!-- 外部監査（左外） -->
+      <rect x="10" y="30" width="76" height="50" rx="10" fill="#e0f2ec" stroke="#1a7a5c" stroke-width="2"/>
+      <text x="48" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#1a7a5c" font-family="M PLUS Rounded 1c">外部監査機関</text>
+      <text x="48" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#2e8b6f" font-family="M PLUS Rounded 1c">（独立・第三者）</text>
+      <path d="M86 55 L100 100" stroke="#1a7a5c" stroke-width="2.5" marker-end="url(#ext)"/>
+      <text x="82" y="80" text-anchor="start" font-size="10" font-weight="900" fill="#1a7a5c" font-family="M PLUS Rounded 1c">客観的</text>
+      <text x="82" y="93" text-anchor="start" font-size="10" font-weight="700" fill="#1a7a5c" font-family="M PLUS Rounded 1c">チェック</text>
+
+      <!-- 独立バッジ -->
+      <rect x="14" y="85" width="68" height="20" rx="7" fill="#ffd23f"/>
+      <text x="48" y="98" text-anchor="middle" font-size="10" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">利害関係なし</text>
+
+      <!-- 右側ラベル -->
+      <rect x="256" y="30" width="76" height="50" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="294" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">外部監査例</text>
+      <text x="294" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#b07030" font-family="M PLUS Rounded 1c">会計監査・IT監査</text>
+      <path d="M256 55 L240 100" stroke="#d9851f" stroke-width="2" stroke-dasharray="5 3"/>
+    </svg>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="th-cat">項目</th>
+          <th class="th-ext">外部監査</th>
+          <th class="th-int">内部監査</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>誰が行う</td>
+          <td>外部の独立した第三者</td>
+          <td>社内の監査部門</td>
+        </tr>
+        <tr>
+          <td>客観性</td>
+          <td>高い（利害なし）</td>
+          <td>やや低い（身内）</td>
+        </tr>
+        <tr>
+          <td>主な目的</td>
+          <td>信頼性・法令遵守の確認</td>
+          <td>業務効率・リスク管理</td>
+        </tr>
+        <tr>
+          <td>コスト</td>
+          <td>高い</td>
+          <td>低い</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- フロー・詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 外部監査の主な種類</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">会計監査（財務監査）</div><div class="fb">公認会計士や監査法人が財務諸表の正確さを確認。上場企業では義務。「数字の嘘がないか」を第三者が証明する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">IT監査（情報システム監査）</div><div class="fb">情報システムが適切に整備・運用されているかをチェック。セキュリティ・信頼性・有効性が主な観点。ITパスポートでよく問われる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">業務監査</div><div class="fb">法令遵守・内部統制が機能しているかを確認。不正・ミスが起きにくい仕組みになっているかを外部目線でチェックする。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「内部監査＝ダメな監査」ではない</div>
+      <div class="tb">内部監査は業務改善・リスク管理に有効。外部監査よりレベルが低いのではなく、目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">外部監査＝常に正しいとは限らない</div>
+      <div class="tb">外部監査の特徴は「独立性・客観性」であって「全てを保証する」ではない。できることの範囲がある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">情報システム監査 vs セキュリティ監査</div>
+      <div class="tb">情報システム監査は「システム全体」。セキュリティ監査は「セキュリティに特化」。問題文で対象範囲をよく確認する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>第三者・独立・客観的</strong>」が出てきたら → <strong>外部監査</strong>。「<strong>社内・内部統制</strong>」なら → <strong>内部監査</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">外（そと）の目＝外部監査</span><br>
+    「家族の料理にケチつけにくいから<span class="hl">外（そと）の食べログ</span>に頼む」<br><br>
+    外部監査＝<span class="hl">赤の他人がジャッジ</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">身内だとバレない嘘も、赤の他人には通じない</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-external-audit</div>
+
+</div>
+</body>
+</html>

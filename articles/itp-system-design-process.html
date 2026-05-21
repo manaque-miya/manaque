@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>システム設計プロセスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="システム設計プロセスを要件定義・外部設計・内部設計の流れで解説。ウォーターフォール開発の工程・各工程の役割・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-system-design-process">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e6db0,#0d3d6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8dff5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#7b4fa8;--fbg:#f3edfb;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+.f5{--fc:#dd5a3a;--fbg:#fdf0ec;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>システム設計プロセス</b>とは？</h1>
+    <p>「何を作るか」から「どう作るか」へ。段階的に具体化していく開発の設計工程。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#c8d8ee"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#1e6db0"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 18 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="7" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="10" y="60" width="52" height="3" rx="1" fill="#4a8fc5"/>
+        <rect x="10" y="66" width="36" height="3" rx="1" fill="#4a8fc5"/>
+      </svg>
+      <div class="scene-txt">
+        新しい社内システムを作ることになったあなたの会社。上司から「まず<strong>要件定義</strong>をして、その後に<strong>設計工程</strong>に入る」と言われた。
+        <div class="scene-q">…設計工程って、具体的に何をどの順番でやるの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：設計プロセス全体像 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔷 設計プロセスの全体像</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="システム設計プロセス：要件定義・外部設計・内部設計・プログラム設計の流れ">
+      <!-- 上から下への矢印付きフロー -->
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#8a91a0"/>
+        </marker>
+      </defs>
+      <!-- ボックス1 -->
+      <rect x="20" y="10" width="300" height="38" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="170" y="25" text-anchor="middle" font-size="12" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">①要件定義</text>
+      <text x="170" y="41" text-anchor="middle" font-size="10.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">「何を作るか」を決める（ユーザーの要望・業務要件）</text>
+      <!-- 矢印 -->
+      <line x1="170" y1="50" x2="170" y2="62" stroke="#8a91a0" stroke-width="2" marker-end="url(#arr)"/>
+      <!-- ボックス2 -->
+      <rect x="20" y="64" width="300" height="38" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="79" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">②外部設計（概要設計）</text>
+      <text x="170" y="95" text-anchor="middle" font-size="10.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">「外から見た動き」を決める（画面・帳票・機能）</text>
+      <!-- 矢印 -->
+      <line x1="170" y1="104" x2="170" y2="116" stroke="#8a91a0" stroke-width="2" marker-end="url(#arr)"/>
+      <!-- ボックス3 -->
+      <rect x="20" y="118" width="300" height="38" rx="10" fill="#f3edfb" stroke="#7b4fa8" stroke-width="2"/>
+      <text x="170" y="133" text-anchor="middle" font-size="12" font-weight="900" fill="#5c2e8a" font-family="M PLUS Rounded 1c">③内部設計（詳細設計）</text>
+      <text x="170" y="149" text-anchor="middle" font-size="10.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">「内部の仕組み」を決める（データ構造・処理ロジック）</text>
+      <!-- 矢印 -->
+      <line x1="170" y1="158" x2="170" y2="170" stroke="#8a91a0" stroke-width="2" marker-end="url(#arr)"/>
+      <!-- ボックス4 -->
+      <rect x="20" y="172" width="300" height="24" rx="8" fill="#fdf4e4" stroke="#d9851f" stroke-width="2"/>
+      <text x="170" y="188" text-anchor="middle" font-size="11" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">④プログラム設計 → プログラミング → テスト</text>
+    </svg>
+  </div>
+
+  <!-- 各工程フロー -->
+  <div class="panel p-green">
+    <span class="phead">📋 各工程の役割</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 要件定義</div>
+        <div class="fb">ユーザーや発注者が「何をしたいか」を聞き出し、システムに必要な機能・性能・制約を文書化する。<strong>「何を作るか」</strong>を決める工程。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 外部設計（概要設計）</div>
+        <div class="fb">利用者から見えるシステムの姿を設計する。画面レイアウト・帳票・データの入出力・機能一覧など。<strong>「どう見えるか・何ができるか」</strong>を決める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 内部設計（詳細設計）</div>
+        <div class="fb">システムの内部構造を設計する。データベース構造・処理ロジック・モジュール分割など。<strong>「内部でどう動かすか」</strong>を決める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ プログラム設計・実装・テスト</div>
+        <div class="fb">内部設計をもとに、実際にコードを書いて動かし、動作確認（テスト）を行う。テストは単体→結合→システム→受入の順に行う。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">外部設計と内部設計の順番を逆にする問題</div>
+      <div class="tb">外部（見える部分）を先に固め、次に内部（仕組み）を設計する。「内部→外部」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「要件定義＝設計」と混同しやすい</div>
+      <div class="tb">要件定義は「何を作るか」を決めるフェーズ。「どう作るか」の設計工程とは別。要件定義は設計の前工程。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">外部設計の成果物を問われる問題</div>
+      <div class="tb">外部設計では<strong>画面設計・帳票設計・インタフェース仕様</strong>が作られる。データベース構造は内部設計。混同注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「概要設計＝外部設計」「詳細設計＝内部設計」</div>
+      <div class="tb">別の言い方をされることがある。概要設計と外部設計、詳細設計と内部設計はそれぞれ同義として押さえる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「外」から見て「内」を作る</span>＝外部設計→内部設計<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「服を選んでから（外部）、下着を決める（内部）」と同じ順番！</span><br><br>
+    全体の順は<span class="hl">よ・が・い</span>で覚える：<br>
+    <span style="font-size:13px;font-weight:900;color:#7a5200;">よ（要件定義）→ が（外部設計）→ い（内部設計）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

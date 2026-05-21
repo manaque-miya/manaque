@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>変更管理委員会（CCB）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="変更管理委員会（CCB）をわかりやすく解説。プロジェクトの変更要求を審議・承認する組織の役割、変更管理プロセスの流れ、構成管理との違いまで。ITパスポート試験対策。">
+<link rel="canonical" href="https://manaque.com/itp/itp-change-control-board">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6fb0,#0d3d6b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,107,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8ddf5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#1a6fb0;--cbg:#dbeafa;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6fb0;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6fb0;--fbg:#dbeafa;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+.f5{--fc:#dd5a3a;--fbg:#fce4dd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>変更管理委員会（CCB）</b>とは？</h1>
+    <p>プロジェクトの途中で「仕様を変えたい」が出たとき、それを審議・承認する専門組織。勝手に変えると全員が混乱する——だから委員会が裁く。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="24" rx="6" fill="#c8d8ef"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#1a6fb0"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-6-9-13-9 q-7 0-13 9z" fill="#2b3245"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8-5 v5 h-16z" fill="#fff"/>
+        <!-- 書類アイコン -->
+        <rect x="42" y="55" width="18" height="22" rx="2" fill="#fff"/>
+        <line x1="45" y1="61" x2="57" y2="61" stroke="#1a6fb0" stroke-width="1.5"/>
+        <line x1="45" y1="65" x2="57" y2="65" stroke="#1a6fb0" stroke-width="1.5"/>
+        <line x1="45" y1="69" x2="53" y2="69" stroke="#1a6fb0" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        開発も佳境の頃、営業担当が「やっぱりログイン画面に顔認証を追加してほしい！」と言ってきた。開発リーダーは「じゃあ勝手に変えよう」とは言えず、<strong>変更要求書を作成して委員会に提出</strong>。
+        <div class="scene-q">この「変更を審議・承認する委員会」って何？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：CCBの構成 -->
+  <div class="panel p-indigo">
+    <span class="phead">🏛️ CCBの役割と構成</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="CCBの構成：プロジェクトマネージャー・品質保証担当・利害関係者から成る委員会が変更要求を審議し承認か却下を判定する">
+      <!-- CCB外枠 -->
+      <rect x="90" y="10" width="160" height="100" rx="14" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="170" y="32" text-anchor="middle" font-size="13" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">CCB</text>
+      <text x="170" y="48" text-anchor="middle" font-size="10.5" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">変更管理委員会</text>
+      <!-- 委員 -->
+      <rect x="100" y="58" width="44" height="36" rx="8" fill="#4256b8"/>
+      <text x="122" y="73" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">PM</text>
+      <text x="122" y="85" text-anchor="middle" font-size="8" font-weight="700" fill="#c8d0f0" font-family="M PLUS Rounded 1c">マネージャー</text>
+      <rect x="148" y="58" width="44" height="36" rx="8" fill="#4256b8"/>
+      <text x="170" y="73" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">QA</text>
+      <text x="170" y="85" text-anchor="middle" font-size="8" font-weight="700" fill="#c8d0f0" font-family="M PLUS Rounded 1c">品質保証</text>
+      <rect x="196" y="58" width="44" height="36" rx="8" fill="#4256b8"/>
+      <text x="218" y="73" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">利害</text>
+      <text x="218" y="85" text-anchor="middle" font-size="8" font-weight="700" fill="#c8d0f0" font-family="M PLUS Rounded 1c">関係者</text>
+      <!-- 変更要求→CCB -->
+      <rect x="10" y="50" width="72" height="34" rx="8" fill="#dbeafa" stroke="#1a6fb0" stroke-width="2"/>
+      <text x="46" y="64" text-anchor="middle" font-size="10" font-weight="800" fill="#1a6fb0" font-family="M PLUS Rounded 1c">変更要求</text>
+      <text x="46" y="77" text-anchor="middle" font-size="9" font-weight="700" fill="#1a6fb0" font-family="M PLUS Rounded 1c">（CR）</text>
+      <line x1="82" y1="67" x2="90" y2="67" stroke="#1a6fb0" stroke-width="2" marker-end="url(#arr1)"/>
+      <defs>
+        <marker id="arr1" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <polygon points="0 0,7 3.5,0 7" fill="#1a6fb0"/>
+        </marker>
+        <marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <polygon points="0 0,7 3.5,0 7" fill="#2e8b4f"/>
+        </marker>
+        <marker id="arr3" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <polygon points="0 0,7 3.5,0 7" fill="#dd5a3a"/>
+        </marker>
+      </defs>
+      <!-- CCB→承認 -->
+      <line x1="170" y1="110" x2="130" y2="150" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arr2)"/>
+      <rect x="90" y="152" width="76" height="34" rx="8" fill="#eef8f1" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="128" y="167" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">✓ 承認</text>
+      <text x="128" y="180" text-anchor="middle" font-size="9" font-weight="700" fill="#4a7a5c" font-family="M PLUS Rounded 1c">変更を実施</text>
+      <!-- CCB→却下 -->
+      <line x1="170" y1="110" x2="210" y2="150" stroke="#dd5a3a" stroke-width="2" marker-end="url(#arr3)"/>
+      <rect x="174" y="152" width="76" height="34" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="212" y="167" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">✗ 却下</text>
+      <text x="212" y="180" text-anchor="middle" font-size="9" font-weight="700" fill="#9a4a38" font-family="M PLUS Rounded 1c">変更なし</text>
+      <!-- 影響分析 -->
+      <rect x="90" y="198" width="160" height="32" rx="8" fill="#fff6da" stroke="#e0a800" stroke-width="1.5"/>
+      <text x="170" y="218" text-anchor="middle" font-size="10.5" font-weight="800" fill="#9a6b00" font-family="M PLUS Rounded 1c">審議前に「影響分析」を必ず実施</text>
+    </svg>
+  </div>
+
+  <!-- 変更管理プロセスのフロー -->
+  <div class="panel p-green">
+    <span class="phead">🗂️ 変更管理のプロセス（5ステップ）</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 変更要求（CR）の提起</div><div class="fb">誰でも提出できる。「仕様を変えてほしい」を書類化。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 影響分析</div><div class="fb">スコープ・コスト・スケジュール・品質にどう影響するか評価する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ CCBによる審議・承認 ／ 却下</div><div class="fb">委員会が影響分析をもとに承認か却下を判定。承認済みのみ実施へ。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 変更の実施</div><div class="fb">承認された変更を実装する。構成管理ツールで記録も残す。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f5"><div class="fh">⑤ 検証・クローズ</div><div class="fb">変更が正しく反映されたか確認し、変更要求をクローズ。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「PM一人で承認できる」はNG</div>
+      <div class="tb">CCBはPMだけでなく、品質保証・利害関係者など複数メンバーで構成する。PMが独断で変更を承認するのはCCBの原則に反する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">構成管理委員会との混同</div>
+      <div class="tb">構成管理（CM）はソフトウェアのバージョン・成果物を管理すること。CCBは<strong>変更の承認可否を判定する組織</strong>。構成管理のツールや台帳はCCBの判定後に更新される、という関係。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">変更要求は「誰でも出せる」</div>
+      <div class="tb">CCBが承認する側。変更要求（CR）を出すのは開発者でも顧客でもOK。「CCBが要求を出す」と書かれたら誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「変更要求を<strong>審議・承認する組織</strong>」→ CCB。「ソフトウェアのバージョンを管理する仕組み」→ 構成管理（CM）。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">C</span>hange（変更）を<span class="hl">C</span>heck（審議）する<span class="hl">B</span>oss（委員会）＝<span class="hl">CCB</span>！<br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">「変更は勝手にやっちゃダメ、ボスの許可をもらえ」</span><br><br>
+    変更要求 → <span class="hl">影響分析</span> → <span class="hl">CCBが裁く</span> → 実施<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">この順番を絶対に入れ替えない</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-change-control-board</div>
+
+</div>
+</body>
+</html>

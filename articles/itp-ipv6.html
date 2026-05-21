@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IPv6とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="IPv6をIPv4との違い・128ビットアドレス・アドレス枯渇問題の解決策として解説。試験に出るひっかけポイントと無理やりゴロで確実に覚える。">
+<link rel="canonical" href="https://example.com/itp-ipv6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0a5dbf,#062e75);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(6,46,117,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8daff;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#0a5dbf;--cbg:#dce9fb;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0a5dbf;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#dd5a3a;--fbg:#fef0ec;}
+.f2{--fc:#0a5dbf;--fbg:#dce9fb;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.compare-card{border-radius:12px;padding:12px;}
+.compare-card h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.compare-card ul{list-style:none;}
+.compare-card li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.compare-card li::before{content:"・";position:absolute;left:0;}
+.card-v4{background:#fce4dd;}.card-v4 h4{color:#bb3c1f;}
+.card-v6{background:#dce9fb;}.card-v6 h4{color:#0a5dbf;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🌐 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>IPv6</b>とは？</h1>
+    <p>インターネットの住所（IPアドレス）の新規格。IPv4の枯渇問題を128ビットで解決した次世代プロトコル。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="20" rx="5" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="8" fill="#0a5dbf"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="40" y="55" width="20" height="14" rx="2" fill="#48506a"/>
+        <rect x="42" y="57" width="16" height="10" rx="1" fill="#7bc8f5"/>
+      </svg>
+      <div class="scene-txt">
+        ネットワーク担当のあなた。スマートフォン・IoT機器が爆発的に増えて「<strong>IPアドレスが足りない！</strong>」と上司に報告。「うちはIPv6に移行済みだから大丈夫」と返ってきた。
+        <div class="scene-q">…IPv6って何が違うの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：IPv4 vs IPv6 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 IPv4 vs IPv6 比較図</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="IPv4とIPv6のアドレス空間の比較">
+      <!-- IPv4ブロック -->
+      <rect x="10" y="20" width="145" height="80" rx="12" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="82" y="45" text-anchor="middle" font-size="14" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">IPv4</text>
+      <text x="82" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">32ビット</text>
+      <text x="82" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">約43億アドレス</text>
+      <!-- バツマーク -->
+      <text x="82" y="116" text-anchor="middle" font-size="13" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">⚠️ 枯渇問題！</text>
+
+      <!-- 矢印 -->
+      <text x="170" y="72" text-anchor="middle" font-size="20" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">→</text>
+
+      <!-- IPv6ブロック -->
+      <rect x="185" y="20" width="145" height="80" rx="12" fill="#dce9fb" stroke="#0a5dbf" stroke-width="2"/>
+      <text x="257" y="45" text-anchor="middle" font-size="14" font-weight="900" fill="#0a5dbf" font-family="M PLUS Rounded 1c">IPv6</text>
+      <text x="257" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">128ビット</text>
+      <text x="257" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">約340澗アドレス</text>
+      <!-- チェックマーク -->
+      <text x="257" y="116" text-anchor="middle" font-size="13" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">✅ 実質無限！</text>
+
+      <!-- 下段の説明 -->
+      <rect x="10" y="140" width="320" height="48" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="1.5"/>
+      <text x="170" y="158" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">アドレス表記の違い</text>
+      <text x="170" y="175" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">IPv4: 192.168.1.1（10進数）　IPv6: 2001:db8::1（16進数・コロン区切り）</text>
+    </svg>
+
+    <div class="compare-grid">
+      <div class="compare-card card-v4">
+        <h4>IPv4（旧規格）</h4>
+        <ul>
+          <li>32ビット</li>
+          <li>10進数・ドット区切り</li>
+          <li>約43億アドレス</li>
+          <li>2011年ごろ枯渇</li>
+        </ul>
+      </div>
+      <div class="compare-card card-v6">
+        <h4>IPv6（新規格）</h4>
+        <ul>
+          <li>128ビット</li>
+          <li>16進数・コロン区切り</li>
+          <li>約340澗アドレス</li>
+          <li>実質無限に近い</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：なぜIPv6が必要か -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ IPv6が必要になった流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① IPv4の枯渇</div><div class="fb">スマホ・IoTが急増し、32ビット（約43億）では全デバイスに割り振れなくなった。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② IPv6の登場</div><div class="fb">128ビットに拡張。「2001:db8::1」のような16進数コロン区切り表記に変わった。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ IPv4とIPv6の共存</div><div class="fb">現在は移行期。IPv4とIPv6を同時に使う「デュアルスタック」構成が多い。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「IPv6は128ビット」を「128バイト」と混同しやすい</div>
+      <div class="tb">正しくは<strong>128ビット</strong>。バイトに換算すると16バイト。ビット単位で覚えること。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">IPv4の「32ビット」と混同しやすい</div>
+      <div class="tb">IPv4=<strong>32ビット</strong>、IPv6=<strong>128ビット</strong>。試験では数字を入れ替えた選択肢が出る。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">IPv6が「全置き換え」ではない点を見落とす</div>
+      <div class="tb">現在はIPv4とIPv6が<strong>共存（デュアルスタック）</strong>。「IPv4が廃止された」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「NAT」との関係</div>
+      <div class="tb">NATはIPv4の枯渇をしのぐ一時策。IPv6はNATなしで直接アドレスを割り当てられる。根本解決策がIPv6。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">イッパイ(6)ロクに振る</span> = IPv6！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">IPv「6」→ 「128」ビット → 16進数コロン区切り</span><br><br>
+    <span class="hl">4は32・6は128</span>（倍倍倍でどんどん増える！）<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">4 → 32ビット ／ 6 → 128ビット（4×32=128で覚える）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

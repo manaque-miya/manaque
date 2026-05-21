@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>インスペクション（ソフトウェアレビュー）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="インスペクションをわかりやすく解説。ソフトウェア開発での形式的レビュー手法、ウォークスルー・ピアレビューとの違い、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-inspection">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5a3fa0,#2a1a60);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(42,26,96,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d5c8f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#5a3fa0;--cbg:#ede8f8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5a3fa0;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#5a3fa0;--fbg:#ede8f8;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+.f5{--fc:#dd5a3a;--fbg:#fdf0ec;}
+
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.role-item{border-radius:11px;padding:10px 12px;}
+.role-item h4{font-size:12px;font-weight:900;margin-bottom:4px;}
+.role-item p{font-size:11px;line-height:1.65;font-weight:600;color:#48506a;}
+.r1{background:#ede8f8;}.r1 h4{color:#5a3fa0;}
+.r2{background:#e7eefc;}.r2 h4{color:#2e6de5;}
+.r3{background:#e2f3e5;}.r3 h4{color:#2e8b4f;}
+.r4{background:#fcefd9;}.r4 h4{color:#d9851f;}
+@media(max-width:480px){.role-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.review-compare{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+.rc-item{border-radius:11px;padding:10px 13px;display:flex;gap:8px;align-items:flex-start;}
+.rc-badge{font-size:10.5px;font-weight:900;padding:4px 8px;border-radius:8px;white-space:nowrap;flex-shrink:0;}
+.rc-desc{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.rc-ins{background:#ede8f8;}.rc-ins .rc-badge{background:#5a3fa0;color:#fff;}
+.rc-walk{background:#e7eefc;}.rc-walk .rc-badge{background:#2e6de5;color:#fff;}
+.rc-peer{background:#e2f3e5;}.rc-peer .rc-badge{background:#2e8b4f;color:#fff;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・開発プロセス</span>
+    <h1><b>インスペクション</b>とは？</h1>
+    <p>成果物（仕様書・コード等）を複数人が役割分担して厳密に点検する、最もフォーマルなソフトウェアレビュー手法。司会・記録係・欠陥検出担当が明確に分かれる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- 会議テーブル -->
+        <ellipse cx="39" cy="68" rx="26" ry="8" fill="#c0c8d8"/>
+        <!-- 3人 -->
+        <circle cx="18" cy="48" r="8" fill="#f4c89a"/>
+        <rect x="12" y="55" width="12" height="12" rx="3" fill="#5a3fa0"/>
+        <circle cx="39" cy="48" r="8" fill="#f4c89a"/>
+        <rect x="33" y="55" width="12" height="12" rx="3" fill="#2e6de5"/>
+        <circle cx="60" cy="48" r="8" fill="#f4c89a"/>
+        <rect x="54" y="55" width="12" height="12" rx="3" fill="#2e8b4f"/>
+        <!-- ドキュメント -->
+        <rect x="28" y="60" width="22" height="14" rx="2" fill="#fff" stroke="#9aa3b2" stroke-width="1"/>
+        <line x1="31" y1="64" x2="47" y2="64" stroke="#9aa3b2" stroke-width="1"/>
+        <line x1="31" y1="67" x2="47" y2="67" stroke="#9aa3b2" stroke-width="1"/>
+        <line x1="31" y1="70" x2="41" y2="70" stroke="#9aa3b2" stroke-width="1"/>
+        <!-- 虫眼鏡 -->
+        <circle cx="56" cy="26" r="9" fill="none" stroke="#dd5a3a" stroke-width="2.5"/>
+        <line x1="62" y1="32" x2="68" y2="38" stroke="#dd5a3a" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div class="scene-txt">
+        設計書を完成させたチーム。「リリース後に問題が出ると修正コストが10倍になる」と先輩に言われ、正式なレビュー会議を開くことにした。司会・記録係・担当読み上げ役に分かれてチェックする。
+        <div class="scene-q">この「役割分担した形式的な点検会議」を何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：役割図 -->
+  <div class="panel p-purple">
+    <span class="phead">👥 インスペクションの構造</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="インスペクションの役割構造：モデレータ・作成者・リーダー・記録係・レビュアが成果物を囲んでレビューする">
+      <rect x="0" y="0" width="340" height="200" rx="14" fill="#f0ebfc"/>
+      <!-- 中央：成果物 -->
+      <rect x="120" y="75" width="100" height="50" rx="10" fill="#fff" stroke="#5a3fa0" stroke-width="2.5"/>
+      <text x="170" y="96" text-anchor="middle" font-size="11" font-weight="900" fill="#2a1a60" font-family="M PLUS Rounded 1c">成果物</text>
+      <text x="170" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#5a3fa0" font-family="M PLUS Rounded 1c">（仕様書・コード等）</text>
+      <!-- モデレータ（上） -->
+      <circle cx="170" cy="28" r="16" fill="#5a3fa0"/>
+      <text x="170" y="26" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">モデレータ</text>
+      <text x="170" y="37" text-anchor="middle" font-size="8.5" font-weight="700" fill="#e8d8ff" font-family="M PLUS Rounded 1c">（司会進行）</text>
+      <line x1="170" y1="44" x2="170" y2="73" stroke="#5a3fa0" stroke-width="1.8" stroke-dasharray="4 3"/>
+      <!-- 作成者（左） -->
+      <circle cx="36" cy="100" r="16" fill="#2e6de5"/>
+      <text x="36" y="98" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">作成者</text>
+      <text x="36" y="109" text-anchor="middle" font-size="8.5" font-weight="700" fill="#c8dcff" font-family="M PLUS Rounded 1c">（説明役）</text>
+      <line x1="52" y1="100" x2="118" y2="100" stroke="#2e6de5" stroke-width="1.8" stroke-dasharray="4 3"/>
+      <!-- リーダー（右） -->
+      <circle cx="304" cy="100" r="16" fill="#2e8b4f"/>
+      <text x="304" y="98" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">リーダー</text>
+      <text x="304" y="109" text-anchor="middle" font-size="8.5" font-weight="700" fill="#c8e8d0" font-family="M PLUS Rounded 1c">（読み上げ）</text>
+      <line x1="288" y1="100" x2="222" y2="100" stroke="#2e8b4f" stroke-width="1.8" stroke-dasharray="4 3"/>
+      <!-- 記録係（左下） -->
+      <circle cx="68" cy="168" r="16" fill="#d9851f"/>
+      <text x="68" y="166" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">記録係</text>
+      <text x="68" y="177" text-anchor="middle" font-size="8.5" font-weight="700" fill="#ffe8c0" font-family="M PLUS Rounded 1c">（欠陥を記録）</text>
+      <line x1="82" y1="157" x2="128" y2="127" stroke="#d9851f" stroke-width="1.8" stroke-dasharray="4 3"/>
+      <!-- レビュアー（右下） -->
+      <circle cx="272" cy="168" r="16" fill="#dd5a3a"/>
+      <text x="272" y="166" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">レビュアー</text>
+      <text x="272" y="177" text-anchor="middle" font-size="8.5" font-weight="700" fill="#ffd8cc" font-family="M PLUS Rounded 1c">（欠陥検出）</text>
+      <line x1="258" y1="157" x2="212" y2="127" stroke="#dd5a3a" stroke-width="1.8" stroke-dasharray="4 3"/>
+    </svg>
+    <div class="role-grid" style="margin-top:8px;">
+      <div class="role-item r1"><h4>モデレータ（司会）</h4><p>会議を進行。中立的立場でレビューを管理する。</p></div>
+      <div class="role-item r2"><h4>作成者</h4><p>成果物の説明を行う。ただし自分で欠陥を見つける役ではない。</p></div>
+      <div class="role-item r3"><h4>リーダー（読み上げ担当）</h4><p>成果物を声に出して読む。読む行為が欠陥発見を促す。</p></div>
+      <div class="role-item r4"><h4>記録係・レビュアー</h4><p>欠陥を記録・検出する専門担当。</p></div>
+    </div>
+  </div>
+
+  <!-- インスペクション手順 -->
+  <div class="panel p-green">
+    <span class="phead">📋 インスペクションの実施手順</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 計画・準備</div><div class="fb">レビュー対象・参加者・チェックリストを準備。各自が事前に成果物を読み込む。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② キックオフ・概要説明</div><div class="fb">作成者が成果物の背景・目的を参加者に説明する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ インスペクション会議（欠陥検出）</div><div class="fb">リーダーが読み上げ、レビュアーが欠陥を指摘。記録係がすべて記録する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 修正・フォローアップ</div><div class="fb">指摘された欠陥を作成者が修正。モデレータが修正を確認し完了。</div></div>
+    </div>
+  </div>
+
+  <!-- 3手法の比較 -->
+  <div class="panel p-orange">
+    <span class="phead">⚖️ レビュー手法の比較</span>
+    <div class="review-compare">
+      <div class="rc-item rc-ins">
+        <span class="rc-badge">インスペクション</span>
+        <span class="rc-desc">最もフォーマル。<strong>役割が明確に分かれ</strong>、チェックリストを使い、結果を記録・追跡する。</span>
+      </div>
+      <div class="rc-item rc-walk">
+        <span class="rc-badge">ウォークスルー</span>
+        <span class="rc-desc">作成者主導で成果物を「歩いて」説明する。インスペクションより<strong>インフォーマル</strong>。役割の分担は緩い。</span>
+      </div>
+      <div class="rc-item rc-peer">
+        <span class="rc-badge">ピアレビュー</span>
+        <span class="rc-desc">同僚（ピア）が互いにレビューし合う。最もカジュアルで日常的。役割分担はほぼなし。</span>
+      </div>
+    </div>
+    <p style="margin-top:10px;">フォーマル度：<strong>インスペクション ＞ ウォークスルー ＞ ピアレビュー</strong></p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「インスペクション＝テスト実行」ではない</div>
+      <div class="tb">インスペクションは<strong>静的レビュー</strong>。実際にプログラムを動かすテスト（動的テスト）ではない。ドキュメントやコードを目視で点検する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「作成者が主導」ではない</div>
+      <div class="tb">インスペクションの司会は<strong>モデレータ</strong>。作成者は説明役であり、自分で欠陥を発見・修正する役割は会議では担わない（修正は会議後）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ウォークスルー」と混同</div>
+      <div class="tb">ウォークスルーは作成者が主導して説明する手法。インスペクションは独立したモデレータが進行し、役割が厳格に分かれる点が異なる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「工場の品質検査」がインスペクション</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">工場検査官（モデレータ）が仕切る。ライン作業員（作成者）は説明するだけ。専門検査員（レビュアー）が欠陥を探す。全員役割分担。</span><br><br>
+      インスペクション＝<span class="hl">役割バラバラ、記録あり、最フォーマル</span><br>
+      ウォークスルー＝<span class="hl">作者が先頭に立って歩く（主導）</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-inspection</div>
+
+</div>
+</body>
+</html>

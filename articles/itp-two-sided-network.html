@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>両面ネットワーク（ツーサイドネットワーク）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="両面ネットワーク（ツーサイドネットワーク）をメルカリ・YouTube等の実例で解説。売り手と買い手が互いを引き寄せる「ネットワーク外部性」のしくみと試験ポイントまで。">
+<link rel="canonical" href="https://example.com/itp-two-sided-network">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7b2f9e,#3d1060);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(61,16,96,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d9c4ed;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7b2f9e;--cbg:#f0e4fb;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7b2f9e;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7b2f9e;--fbg:#f8f0fc;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💜 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>両面ネットワーク</b>（ツーサイドネットワーク）とは？</h1>
+    <p>「売る側」と「買う側」の2グループが互いを呼び込む。片方が増えるともう片方も増える、プラットフォームの魔法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="80" height="92" viewBox="0 0 80 92" aria-hidden="true">
+        <ellipse cx="40" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- 人物A（左） -->
+        <circle cx="22" cy="22" r="11" fill="#f4c89a"/>
+        <rect x="12" y="32" width="20" height="16" rx="5" fill="#7b2f9e"/>
+        <!-- 人物B（右） -->
+        <circle cx="58" cy="22" r="11" fill="#f4c89a"/>
+        <rect x="48" y="32" width="20" height="16" rx="5" fill="#2e6de5"/>
+        <!-- 中央プラットフォーム -->
+        <rect x="26" y="54" width="28" height="22" rx="7" fill="#ffd23f"/>
+        <text x="40" y="69" text-anchor="middle" font-size="11" font-weight="900" fill="#5c4500" font-family="sans-serif">APP</text>
+        <!-- 矢印 -->
+        <path d="M22 49 Q22 56 28 58" stroke="#7b2f9e" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+        <path d="M58 49 Q58 56 52 58" stroke="#2e6de5" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#48506a"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="scene-txt">
+        メルカリを思い浮かべよう。<strong>「売りたい人（出品者）」</strong>が増えると商品が充実して<strong>「買いたい人（購入者）」</strong>が増える。購入者が増えると売れやすくなるので出品者がさらに増える。
+        <div class="scene-q">…2つのグループが互いを引き寄せる＝これが両面ネットワーク！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：両面ネットワークの構造 -->
+  <div class="panel p-blue">
+    <span class="phead">🔷 両面ネットワークの構造</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="両面ネットワーク：売り手グループとプラットフォームと買い手グループが互いに引き合う図">
+      <!-- 左：売り手 -->
+      <rect x="10" y="60" width="90" height="100" rx="14" fill="#f0e4fb" stroke="#7b2f9e" stroke-width="2"/>
+      <text x="55" y="88" text-anchor="middle" font-size="11" font-weight="900" fill="#7b2f9e" font-family="M PLUS Rounded 1c">売り手</text>
+      <text x="55" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#7b2f9e" font-family="M PLUS Rounded 1c">出品者</text>
+      <text x="55" y="115" text-anchor="middle" font-size="10" font-weight="700" fill="#5a3d6b" font-family="M PLUS Rounded 1c">広告主</text>
+      <text x="55" y="127" text-anchor="middle" font-size="10" font-weight="700" fill="#5a3d6b" font-family="M PLUS Rounded 1c">開発者</text>
+      <text x="55" y="143" text-anchor="middle" font-size="22" font-family="sans-serif">🛒</text>
+      <!-- 右：買い手 -->
+      <rect x="240" y="60" width="90" height="100" rx="14" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="285" y="88" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">買い手</text>
+      <text x="285" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">購入者</text>
+      <text x="285" y="115" text-anchor="middle" font-size="10" font-weight="700" fill="#4a6ab8" font-family="M PLUS Rounded 1c">視聴者</text>
+      <text x="285" y="127" text-anchor="middle" font-size="10" font-weight="700" fill="#4a6ab8" font-family="M PLUS Rounded 1c">ユーザー</text>
+      <text x="285" y="143" text-anchor="middle" font-size="22" font-family="sans-serif">👛</text>
+      <!-- 中央：プラットフォーム -->
+      <rect x="115" y="70" width="110" height="80" rx="14" fill="#ffd23f" stroke="#e0a800" stroke-width="2.5"/>
+      <text x="170" y="98" text-anchor="middle" font-size="12" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">プラット</text>
+      <text x="170" y="114" text-anchor="middle" font-size="12" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">フォーム</text>
+      <text x="170" y="138" text-anchor="middle" font-size="10" font-weight="700" fill="#9a7300" font-family="M PLUS Rounded 1c">メルカリ/YouTube</text>
+      <!-- 双方向矢印 -->
+      <path d="M100 105 L115 105" stroke="#7b2f9e" stroke-width="2.5" marker-end="url(#arrp)"/>
+      <path d="M115 115 L100 115" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arrb)"/>
+      <path d="M225 105 L240 105" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arrb)"/>
+      <path d="M240 115 L225 115" stroke="#7b2f9e" stroke-width="2.5" marker-end="url(#arrp)"/>
+      <!-- ラベル -->
+      <text x="107" y="99" text-anchor="middle" font-size="9" font-weight="800" fill="#7b2f9e" font-family="M PLUS Rounded 1c">集まる</text>
+      <text x="107" y="128" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">集まる</text>
+      <text x="233" y="99" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">集まる</text>
+      <text x="233" y="128" text-anchor="middle" font-size="9" font-weight="800" fill="#7b2f9e" font-family="M PLUS Rounded 1c">集まる</text>
+      <!-- 外部性ラベル -->
+      <text x="170" y="185" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">ネットワーク外部性 = 使う人が増えると価値も増す</text>
+      <text x="170" y="202" text-anchor="middle" font-size="10" font-weight="700" fill="#7a8498" font-family="M PLUS Rounded 1c">片方のグループが増えると、もう片方の価値も上がる</text>
+      <defs>
+        <marker id="arrp" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7b2f9e"/></marker>
+        <marker id="arrb" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2e6de5"/></marker>
+      </defs>
+    </svg>
+    <p>出品者（売り手）が増える → 品揃えが豊富になる → 購入者（買い手）が増える → 売れやすくなる → 出品者がさらに増える。この<strong>プラス循環</strong>が両面ネットワークの本質。</p>
+  </div>
+
+  <!-- 実例フロー -->
+  <div class="panel p-green">
+    <span class="phead">📱 実例で整理：主な両面ネットワーク</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">メルカリ</div><div class="fb">出品者（売り手）↔ 購入者（買い手）。商品が増えると購入者が増え、購入者が増えると出品が増える。</div></div>
+      <div class="farrow">▼ 同じ構造</div>
+      <div class="fstep f2"><div class="fh">YouTube</div><div class="fb">クリエイター（動画投稿側）↔ 視聴者（消費側）。動画が増えると視聴者が増え、視聴者が増えると収益化でクリエイターが増える。</div></div>
+      <div class="farrow">▼ 同じ構造</div>
+      <div class="fstep f3"><div class="fh">クレジットカード（Visa/JCB）</div><div class="fb">加盟店（使える店）↔ カード会員。使える店が多いと会員が増え、会員が多いと加盟店が増える。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ネットワーク外部性」との混同</div>
+      <div class="tb">ネットワーク外部性は「ユーザーが増えると一人ひとりの価値が増す」という一般概念。両面ネットワークはその<strong>特定パターン</strong>（2グループが互いに価値を高め合う）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">プラットフォームが「仲介業者」と違う点</div>
+      <div class="tb">仲介業者は在庫を持ったり買い取ったりする。プラットフォームは「場を提供するだけ」。メルカリは商品を持たない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「2グループ」が必須</div>
+      <div class="tb">SNS（Twitterなど）は同じ種類のユーザー同士。これは両面ネットワークではなく<strong>片面（シングルサイド）ネットワーク外部性</strong>。両面は必ず異なる2グループ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「両面」= 表と裏。コインに表と裏があるように、プラットフォームには売り手面と買い手面がある</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">表（売り手）↔ プラットフォーム（コイン本体）↔ 裏（買い手）</span><br><br>
+    <span class="hl">「両」「面」 → 両面テープ</span> ＝ <strong>2つの面でくっつける</strong>＝両面ネットワーク<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">売り手と買い手を「くっつける」のがプラットフォームの役割</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-two-sided-network</div>
+
+</div>
+</body>
+</html>

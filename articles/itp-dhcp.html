@@ -1,106 +1,183 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>DHCPとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="DHCPの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-dhcp.html">
-<meta property="og:title" content="DHCPとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="DHCPの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-dhcp.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DHCPとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="DHCPをわかりやすく解説。IPアドレスを自動割り当てするプロトコルのしくみ・DNSとの違い・固定IPとの使い分け・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-dhcp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#e57d2e,#8a3e12);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(138,62,18,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f8dfc0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange2{--c:#e57d2e;--cbg:#fce8d5;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#e57d2e;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#e57d2e;--fbg:#fce8d5;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.abbr-box{background:#fce8d5;border-radius:12px;padding:12px 14px;margin-top:10px;}
+.abbr-box p{font-size:12.5px;font-weight:700;color:#6b3a10;line-height:1.8;}
+.abbr-box b{color:#e57d2e;font-size:14px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">DHCPとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">DHCP</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>新人社員の自分。出社して会社Wi-Fiにつなぐだけでネットができる！IPアドレス設定とか何もしてない…誰が割り当ててくれてるの？？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>DHCP</b>とは？</h1>
+    <p>ネットワークに接続した機器に IPアドレスを自動で割り当てるプロトコル。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>DHCP</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>DNS</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ DNSは名前解決（ドメイン→IP）。「接続時にIPを自動配布」はDHCPの仕事</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="4.5" fill="#1a2a4a" opacity=".10"/>
+        <rect x="8" y="56" width="56" height="26" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#e57d2e"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- WiFiアイコン -->
+        <text x="36" y="75" text-anchor="middle" font-size="14">📶</text>
+      </svg>
+      <div class="scene-txt">
+        カフェに入ってノートPCでWi-Fiに接続した。設定は何もしていないのに、すぐにネットが使えた。<strong>「あれ、IPアドレスって自動でどうやって決まったの？」</strong>
+        <div class="scene-q">…裏でDHCPが動いているからです。</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：DHCP</strong></p>
-</div>
+  <!-- DHCP のしくみ図解 -->
+  <div class="panel p-orange2">
+    <span class="phead">📡 DHCPのしくみ（図解）</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="DHCPのDORAシーケンス：PC（クライアント）がDHCPサーバーにIPアドレスを要求して受け取る4ステップの流れ">
+      <!-- クライアント -->
+      <rect x="20" y="30" width="80" height="50" rx="8" fill="#eef3fd" stroke="#2e6de5" stroke-width="2"/>
+      <text x="60" y="54" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">PC</text>
+      <text x="60" y="70" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7fa8" font-family="M PLUS Rounded 1c">クライアント</text>
+      <!-- サーバー -->
+      <rect x="240" y="30" width="80" height="50" rx="8" fill="#fce8d5" stroke="#e57d2e" stroke-width="2"/>
+      <text x="280" y="50" text-anchor="middle" font-size="11.5" font-weight="900" fill="#e57d2e" font-family="M PLUS Rounded 1c">DHCP</text>
+      <text x="280" y="65" text-anchor="middle" font-size="11.5" font-weight="900" fill="#e57d2e" font-family="M PLUS Rounded 1c">サーバー</text>
+      <!-- D: Discover -->
+      <line x1="100" y1="108" x2="240" y2="108" stroke="#2e6de5" stroke-width="2" marker-end="url(#blueArr)"/>
+      <rect x="120" y="90" width="100" height="22" rx="5" fill="#e7eefc"/>
+      <text x="170" y="105" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">① Discover「誰かいる？」</text>
+      <!-- O: Offer -->
+      <line x1="240" y1="128" x2="100" y2="128" stroke="#e57d2e" stroke-width="2" marker-end="url(#orangeArr)"/>
+      <rect x="120" y="130" width="100" height="22" rx="5" fill="#fce8d5"/>
+      <text x="170" y="145" text-anchor="middle" font-size="10" font-weight="900" fill="#e57d2e" font-family="M PLUS Rounded 1c">② Offer「このIP使っていいよ」</text>
+      <!-- R: Request -->
+      <line x1="100" y1="163" x2="240" y2="163" stroke="#2e8b4f" stroke-width="2" marker-end="url(#greenArr)"/>
+      <rect x="120" y="165" width="100" height="22" rx="5" fill="#e2f3e5"/>
+      <text x="170" y="180" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">③ Request「そのIPをください」</text>
+      <!-- A: Acknowledge -->
+      <line x1="240" y1="200" x2="100" y2="200" stroke="#d9851f" stroke-width="2" marker-end="url(#darkOrangeArr)"/>
+      <rect x="120" y="202" width="100" height="15" rx="5" fill="#fcefd9"/>
+      <text x="170" y="213" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">④ Ack「割り当て確定！」</text>
+      <defs>
+        <marker id="blueArr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#2e6de5"/></marker>
+        <marker id="orangeArr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#e57d2e"/></marker>
+        <marker id="greenArr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#2e8b4f"/></marker>
+        <marker id="darkOrangeArr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#d9851f"/></marker>
+      </defs>
+    </svg>
+    <div class="abbr-box">
+      <p><b>D</b>iscover → <b>O</b>ffer → <b>R</b>equest → <b>A</b>ck ＝ 頭文字で「<b>DORA</b>（ドラ）」と覚える</p>
+    </div>
+  </div>
 
-<div class="card">
-<h2>📘 DHCPとは何か</h2>
-<span class="kw">IPアドレスを自動で配る</span>
-<p>Dynamic Host Configuration Protocol。ネットワークに接続した端末に対して、IPアドレス・サブネットマスク・デフォルトゲートウェイなどを自動的に割り当てるプロトコル。</p>
-</div>
+  <!-- DHCPが割り当てる情報フロー -->
+  <div class="panel p-green">
+    <span class="phead">📋 DHCPが割り当てる情報</span>
+    <div class="flow">
+      <div class="fstep f2"><div class="fh">IPアドレス</div><div class="fb">ネットワーク上のその機器の住所番号。例：192.168.1.10</div></div>
+      <div class="farrow">＋</div>
+      <div class="fstep f3"><div class="fh">サブネットマスク</div><div class="fb">ネットワークの範囲を示す。例：255.255.255.0</div></div>
+      <div class="farrow">＋</div>
+      <div class="fstep f1"><div class="fh">デフォルトゲートウェイ</div><div class="fb">外部ネットワーク（インターネット）への出口となるルータのIPアドレス。</div></div>
+      <div class="farrow">＋</div>
+      <div class="fstep f4"><div class="fh">DNSサーバのアドレス</div><div class="fb">ドメイン名→IPアドレスに変換するサーバの場所。これがないとURLでアクセスできない。</div></div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「手動でIPを設定しなくてもつながる」のはDHCPのおかげ。ルーターがDHCPサーバーとして機能することが多い。試験では「接続するだけでインターネットが使える仕組みは？」という形で出る。答えはDHCP。</p>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">DHCPとDNSを混同しやすい</div>
+      <div class="tb">DHCP＝「<strong>IPアドレスを自動で割り当てる</strong>」プロトコル。DNS＝「<strong>ドメイン名をIPアドレスに変換する</strong>」プロトコル。DHCPはDNSの情報も配布するが、役割は別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「固定IPにするとDHCPは不要」→ 正確には△</div>
+      <div class="tb">サーバー・プリンタなど固定IPが必要な機器はDHCPを使わない設定にする。ただしネットワーク上のDHCPサーバ自体は他の機器のために動いている。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「DHCPはIPを永久に貸す」→ ×</div>
+      <div class="tb">DHCPはIPアドレスを<strong>リース（貸し出し）</strong>する。リース期間が過ぎると返却・再割り当てされる。IPが固定されるわけではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>IPアドレスを自動割り当て</strong>」が出たら → 迷わず<strong>DHCP</strong>。</div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>DNSはドメイン名をIPアドレスに変換する名前解決サービス。DHCPはIPアドレスそのものを割り当てる。どちらもネット接続に必要で混同しやすい。</p>
-</div>
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">DHCP</span>＝「<span class="hl">デカイ・はんこ・チャンと・押す</span>」<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">→ DHCPサーバが機器にIPの「はんこ（番号）」をチャンと押して（割り当て）くれる</span><br><br>
+    DORAの順番：「<span class="hl">どら焼きを発見→大盛り欲しい→要求→OK！</span>」<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Discover→Offer→Request→Acknowledge</span></div>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>DHCP＝**IP配るおっさん**。受付で「はい君は192.168.1.5ね」と番号札を渡してくれる。</p></div>
-</div>
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>DHCPはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
 </div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

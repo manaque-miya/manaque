@@ -1,106 +1,199 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Kubernetes（コンテナオーケストレーション）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="Kubernetes（コンテナオーケストレーション）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-kubernetes.html">
-<meta property="og:title" content="Kubernetes（コンテナオーケストレーション）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="Kubernetes（コンテナオーケストレーション）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-kubernetes.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kubernetesとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="Kubernetesをコンテナの「自動管理システム」として丁寧に解説。Dockerとの違い、ひっかけポイント、試験に出る用語まで。ITパスポート対策。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-kubernetes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6b9e,#0d3a6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,58,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#5bc8f5 56%,#5bc8f5 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8dcf5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1a6b9e;--cbg:#e0f0fa;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6b9e;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6b9e;--fbg:#e0f0fa;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">Kubernetes（コンテナオーケストレーション）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">Kubernetes（コンテナオーケストレーション）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>大規模サービスのSREの自分。「Dockerコンテナが数百個→自動再起動・スケール・更新を一元管理」したい。Docker？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>Kubernetes</b>とは？</h1>
+    <p>コンテナを自動で増やし・直し・並べる「コンテナ管理の司令塔」。大量のコンテナをひとりで面倒みる。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>Kubernetes（クーバネティス）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>Docker</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ Dockerはコンテナ作成実行。「大量コンテナの自動オーケストレーション」がKubernetes</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#0d3a6e" opacity=".1"/>
+        <rect x="8" y="48" width="62" height="36" rx="8" fill="#1a6b9e"/>
+        <rect x="14" y="54" width="14" height="14" rx="3" fill="#5bc8f5"/>
+        <rect x="32" y="54" width="14" height="14" rx="3" fill="#5bc8f5"/>
+        <rect x="50" y="54" width="14" height="14" rx="3" fill="#5bc8f5"/>
+        <rect x="14" y="72" width="14" height="8" rx="2" fill="#fff" opacity=".4"/>
+        <rect x="32" y="72" width="14" height="8" rx="2" fill="#fff" opacity=".4"/>
+        <rect x="50" y="72" width="14" height="8" rx="2" fill="#fff" opacity=".4"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        サービスが急に人気になり、Webアプリのコンテナが100個必要に。手動で起動・監視・壊れたら再起動……人間がやるには限界。<br>
+        「<strong>Kubernetes（K8s）を使えばコンテナを自動で管理できる！</strong>」とエンジニアが叫んだ。
+        <div class="scene-q">…Kubernetesって何者？</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：Kubernetes（クーバネティス）</strong></p>
-</div>
+  <!-- 図解：Kubernetesの構造 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔧 Kubernetesの全体像</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="Kubernetesクラスタの構造：マスターノードとワーカーノードの関係">
+      <!-- クラスタ背景 -->
+      <rect x="10" y="10" width="320" height="220" rx="16" fill="#e4e7f7" stroke="#4256b8" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="170" y="30" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">Kubernetesクラスタ</text>
+      <!-- マスターノード -->
+      <rect x="20" y="38" width="120" height="70" rx="10" fill="#4256b8"/>
+      <text x="80" y="58" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">マスターノード</text>
+      <text x="80" y="74" text-anchor="middle" font-size="10" font-weight="700" fill="#c5ccf0" font-family="M PLUS Rounded 1c">（司令塔）</text>
+      <text x="80" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#e8eaf8" font-family="M PLUS Rounded 1c">スケジューリング</text>
+      <text x="80" y="104" text-anchor="middle" font-size="10" font-weight="700" fill="#e8eaf8" font-family="M PLUS Rounded 1c">障害検知・自動復旧</text>
+      <!-- 矢印 -->
+      <path d="M140 73 L160 73" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr)"/>
+      <path d="M140 73 L160 140" stroke="#9aa3b2" stroke-width="2"/>
+      <path d="M140 73 L160 195" stroke="#9aa3b2" stroke-width="2"/>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <!-- ワーカーノード3つ -->
+      <rect x="160" y="48" width="155" height="44" rx="8" fill="#e0f0fa" stroke="#1a6b9e" stroke-width="1.5"/>
+      <text x="237" y="66" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6b9e" font-family="M PLUS Rounded 1c">ワーカーノード 1</text>
+      <rect x="168" y="72" width="30" height="12" rx="3" fill="#5bc8f5"/>
+      <rect x="202" y="72" width="30" height="12" rx="3" fill="#5bc8f5"/>
+      <rect x="236" y="72" width="30" height="12" rx="3" fill="#5bc8f5"/>
+      <text x="183" y="82" text-anchor="middle" font-size="8" font-weight="700" fill="#0d3a6e" font-family="M PLUS Rounded 1c">Pod</text>
+      <text x="217" y="82" text-anchor="middle" font-size="8" font-weight="700" fill="#0d3a6e" font-family="M PLUS Rounded 1c">Pod</text>
+      <text x="251" y="82" text-anchor="middle" font-size="8" font-weight="700" fill="#0d3a6e" font-family="M PLUS Rounded 1c">Pod</text>
 
-<div class="card">
-<h2>📘 Kubernetes（コンテナオーケストレーション）とは何か</h2>
-<span class="kw">コンテナの「自動配置・自動復旧・スケール管理」基盤</span>
-<p>Kubernetes（K8s）：コンテナの配置・スケールアウト・障害時の自動再起動・ローリングアップデートを自動管理するオーケストレーションプラットフォーム。Googleが開発しオープンソース化。コンテナ運用の事実上の標準。</p>
-</div>
+      <rect x="160" y="118" width="155" height="44" rx="8" fill="#eef8f1" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="237" y="136" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ワーカーノード 2</text>
+      <rect x="168" y="140" width="30" height="12" rx="3" fill="#7ec89a"/>
+      <rect x="202" y="140" width="30" height="12" rx="3" fill="#7ec89a"/>
+      <text x="183" y="150" text-anchor="middle" font-size="8" font-weight="700" fill="#1a4a2a" font-family="M PLUS Rounded 1c">Pod</text>
+      <text x="217" y="150" text-anchor="middle" font-size="8" font-weight="700" fill="#1a4a2a" font-family="M PLUS Rounded 1c">Pod</text>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>主要概念：Pod（コンテナの最小デプロイ単位）・Node（Podが動くサーバー）・Cluster（Node群）・Service（Pod間通信）・Deployment（Pod数の管理）。AWS EKS・Azure AKS・GKEなどのマネージドKubernetesサービスが普及。</p>
-</div>
+      <rect x="160" y="174" width="155" height="44" rx="8" fill="#fdf4e4" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="237" y="192" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">ワーカーノード 3</text>
+      <rect x="168" y="196" width="30" height="12" rx="3" fill="#f5c070"/>
+      <rect x="202" y="196" width="30" height="12" rx="3" fill="#f5c070"/>
+      <rect x="236" y="196" width="30" height="12" rx="3" fill="#f5c070"/>
+      <text x="183" y="206" text-anchor="middle" font-size="8" font-weight="700" fill="#7a4a00" font-family="M PLUS Rounded 1c">Pod</text>
+      <text x="217" y="206" text-anchor="middle" font-size="8" font-weight="700" fill="#7a4a00" font-family="M PLUS Rounded 1c">Pod</text>
+      <text x="251" y="206" text-anchor="middle" font-size="8" font-weight="700" fill="#7a4a00" font-family="M PLUS Rounded 1c">Pod</text>
+    </svg>
+    <p style="font-size:12px;color:#48506a;margin-top:8px;font-weight:600;">※ Pod＝コンテナの最小実行単位。Kubernetesはマスターノードがワーカーに指示を出し、Podを自動で配置・管理する。</p>
+  </div>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>Docker＝「コンテナを作って動かす」。Kubernetes＝「大量のコンテナを管理・自動化する」。Dockerで作ったコンテナをKubernetesで運用するという上下関係。</p>
-</div>
+  <!-- フロー：Kubernetesの主な機能 -->
+  <div class="panel p-green">
+    <span class="phead">⚙️ Kubernetesの主な3機能</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① オートスケーリング — 自動で増減</div>
+        <div class="fb">アクセスが増えたら自動でコンテナを追加。空いたら減らす。手動操作ゼロ。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 自己修復（セルフヒーリング）— 壊れたら自動で直す</div>
+        <div class="fb">コンテナが落ちたら即座に別のノードで再起動。サービスが止まらない。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ ロールアウト／ロールバック — 更新も自動で安全に</div>
+        <div class="fb">新バージョンを少しずつ配信（ローリングアップデート）。失敗したら自動で旧版に戻す。</div>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**Docker（作る）／Kubernetes（管理する）**。K8s＝**Kからsまで8文字**の略。Pod・Node・Cluster構成。</p></div>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">DockerとKubernetesは「別物」</div>
+      <div class="tb">Dockerは<strong>コンテナを作る</strong>ツール。Kubernetesは<strong>コンテナを管理・運用する</strong>ツール。「コンテナを作る＝Kubernetes」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「仮想マシン管理ツール」と混同しない</div>
+      <div class="tb">KubernetesはVMではなく<strong>コンテナ</strong>を管理する。VMを束ねるのはVMwareなど別製品。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「K8s」は略称</div>
+      <div class="tb">「K8s」（ケーエイツ）はKubernetesの略称。間に8文字あるから「8」。試験で出る別名。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">Kubernetesだけではサービスは動かない</div>
+      <div class="tb">コンテナイメージ（Dockerなど）が別途必要。Kubernetesはあくまで「管理の仕組み」。</div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>Kubernetes（コンテナオーケストレーション）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「クーベ、手を抜いて！」</span>＝ K8s（クーベネティス）が手を抜いてくれる（自動管理）！<br><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">クーベ＝Kubernetes ／ 手を抜く＝コンテナ管理を自動化</span><br><br>
+    さらに区別：<span class="hl">Docker＝コンテナを「作る」</span> ／ <span class="hl">K8s＝コンテナを「育てる」</span></div>
+  </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+  <div class="foot">ITパスポート 詳細解説 ／ itp-kubernetes</div>
+
+</div>
+</body>
+</html>

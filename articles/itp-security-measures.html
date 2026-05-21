@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>セキュリティ対策とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="セキュリティ対策の3層（技術・人的・物理）をわかりやすく解説。ファイアウォール・パスワード管理・入退室管理の役割と、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-security-measures">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c0392b,#7b0000);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(120,0,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f8d0cd;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-purple{--c:#7b3fa0;--cbg:#f0e6f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c0392b;}
+
+.layer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.lcell{border-radius:12px;padding:10px 9px;}
+.lcell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.lcell ul{list-style:none;}
+.lcell li{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.lcell li::before{content:"・";position:absolute;left:0;}
+.ltech{background:#e7eefc;}.ltech h4{color:#2e6de5;}
+.lhuman{background:#e2f3e5;}.lhuman h4{color:#2e8b4f;}
+.lphys{background:#fcefd9;}.lphys h4{color:#d9851f;}
+@media(max-width:480px){.layer-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c0392b;--fbg:#fdf0ee;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ セキュリティ</span>
+    <h1><b>セキュリティ対策</b>とは？</h1>
+    <p>技術・人的・物理の3層で情報資産を守る。1層だけでは守れない、多重防御の考え方。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="14" y="62" width="50" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="20" y="42" width="38" height="28" rx="8" fill="#c0392b"/>
+        <circle cx="39" cy="24" r="14" fill="#f4c89a"/>
+        <path d="M26 20 a13 12 0 0 1 26 0 q-5-9-13-9-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="35" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 43 l8 5 l8-5 v5 h-16z" fill="#fff"/>
+        <rect x="22" y="52" width="10" height="10" rx="2" fill="#ffd23f"/>
+        <path d="M26 54 v4 M24 56 h4" stroke="#c0392b" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        情報システム部のあなた。上司から「社内の情報セキュリティを見直せ」と指示が来た。ウイルス対策ソフトを入れれば十分？　それとも他にもやることがある？
+        <div class="scene-q">…セキュリティ対策ってウイルス対策だけじゃないの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3層の図解 -->
+  <div class="panel p-purple">
+    <span class="phead">🛡️ セキュリティ対策の3層</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="セキュリティ対策の3層：技術的・人的・物理的対策の関係">
+      <!-- 外側の盾 -->
+      <path d="M170 15 L310 65 L310 135 Q310 190 170 210 Q30 190 30 135 L30 65 Z" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2.5"/>
+      <!-- 中間 -->
+      <path d="M170 35 L280 75 L280 135 Q280 175 170 192 Q60 175 60 135 L60 75 Z" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <!-- 内側 -->
+      <path d="M170 55 L250 88 L250 133 Q250 162 170 176 Q90 162 90 133 L90 88 Z" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <!-- ラベル：物理 -->
+      <text x="170" y="47" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">物理的対策（外層）</text>
+      <!-- ラベル：人的 -->
+      <text x="170" y="80" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">人的対策（中層）</text>
+      <!-- ラベル：技術 -->
+      <text x="170" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">技術的対策（内層）</text>
+      <!-- 情報資産バッジ -->
+      <rect x="130" y="128" width="80" height="30" rx="10" fill="#4256b8" stroke="#fff" stroke-width="2"/>
+      <text x="170" y="148" text-anchor="middle" font-size="11" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">情報資産</text>
+    </svg>
+    <div class="layer-grid">
+      <div class="lcell ltech"><h4>技術的対策</h4><ul><li>ファイアウォール</li><li>ウイルス対策ソフト</li><li>アクセス制御</li><li>暗号化</li></ul></div>
+      <div class="lcell lhuman"><h4>人的対策</h4><ul><li>セキュリティ教育</li><li>誓約書の締結</li><li>パスワード管理ルール</li><li>内部不正防止</li></ul></div>
+      <div class="lcell lphys"><h4>物理的対策</h4><ul><li>入退室管理</li><li>鍵・施錠</li><li>監視カメラ</li><li>クリアデスク</li></ul></div>
+    </div>
+  </div>
+
+  <!-- PDCA フロー -->
+  <div class="panel p-green">
+    <span class="phead">🔄 セキュリティ対策の運用サイクル</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① リスク評価 — 何を守るか決める</div><div class="fb">情報資産を洗い出し、脅威と脆弱性を評価して優先順位を付ける。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 対策実施 — 3層で手を打つ</div><div class="fb">技術・人的・物理の3層を組み合わせ、多重防御を構築する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 監査・見直し — 穴を塞ぐ</div><div class="fb">定期的に監査し、新たな脅威や変化に合わせて対策をアップデートする。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「技術的対策だけで十分」は誤り</div>
+      <div class="tb">どれだけ強力な技術対策を入れても、<strong>人が不注意にパスワードを漏らせば意味がない</strong>。3層すべてが必要。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ファイアウォールは「外部からの不正接続を防ぐ」もの</div>
+      <div class="tb">ファイアウォールはウイルスを除去する機能はない。ウイルス除去は<strong>ウイルス対策ソフト（アンチウイルス）</strong>の役割。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">物理的対策を忘れがち</div>
+      <div class="tb">「セキュリティ対策＝ソフトウェア」と思い込むと入退室管理や施錠を選べない。試験では<strong>物理的対策の事例</strong>もよく出る。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">選択肢の対策が「ソフト・設定」→技術的、「教育・ルール」→人的、「鍵・カメラ」→物理的。<strong>どの層か</strong>を素早く分類できると解ける。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      セキュリティ対策は<span class="hl">「ギ・ジン・ブツ」</span>の3枚盾！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">技（ぎ）術 ／ 人（じん）的 ／ 物（ぶつ）理</span><br><br>
+      <span class="hl">技、人、物</span> — 全部使わないと<span class="hl">守れない！</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">1層だけ ＝ 穴あき盾 ＝ アウト</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,192 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>マイクロサービスアーキテクチャとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="マイクロサービスアーキテクチャの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-microservices.html">
-<meta property="og:title" content="マイクロサービスアーキテクチャとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="マイクロサービスアーキテクチャの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-microservices.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>マイクロサービスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="マイクロサービスアーキテクチャをモノリシックとの比較でわかりやすく解説。独立デプロイ・障害分離・スケールの利点、ITパスポート試験のひっかけポイントと無理やりゴロ付き。">
+<link rel="canonical" href="https://manaque.com/itp/itp-microservices">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#145c31);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,92,49,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c4ebd3;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+.compare-table th{padding:8px;font-weight:900;font-size:12px;text-align:center;}
+.compare-table td{padding:8px 10px;vertical-align:top;font-weight:600;line-height:1.6;color:#3c4456;border-top:1px solid #e4e7f2;}
+.th-mono{background:#fce4dd;color:#bb3c1f;border-radius:8px 8px 0 0;}
+.th-micro{background:#e2f3e5;color:#216b3b;border-radius:8px 8px 0 0;}
+.th-item{background:#f4f6fb;color:#4256b8;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">マイクロサービスアーキテクチャとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">マイクロサービスアーキテクチャ</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>マイクロサービス</b>とは？</h1>
+    <p>アプリケーションを「小さな独立したサービス」の集まりとして設計するアーキテクチャ。各サービスは独立して開発・デプロイ・スケールができる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="58" width="58" height="26" rx="6" fill="#e2f3e5"/>
+        <!-- 3つの小ブロック -->
+        <rect x="14" y="62" width="16" height="16" rx="4" fill="#2e8b4f"/>
+        <rect x="34" y="62" width="16" height="16" rx="4" fill="#2e6de5"/>
+        <rect x="54" y="62" width="16" height="16" rx="4" fill="#d9851f"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#2e8b4f"/>
+      </svg>
+      <div class="scene-txt">
+        大手ECサイトのDさんのチーム。「商品検索」の機能を改修する際、昔は全機能が一体になったシステムを全部テストしてリリースしていた。今は「検索サービスだけ」を改修して独立リリースできる。
+        <div class="scene-q">…これがマイクロサービスが生んだ「独立して動かせる」世界。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：モノリシック vs マイクロサービス -->
+  <div class="panel p-green">
+    <span class="phead">🏗️ モノリシック vs マイクロサービス</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="モノリシック（一体型）とマイクロサービス（分割型）のアーキテクチャ比較図">
+      <rect x="0" y="0" width="340" height="220" rx="12" fill="#f4f6fb"/>
+      <!-- モノリシック左 -->
+      <text x="83" y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">モノリシック</text>
+      <rect x="20" y="30" width="126" height="140" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <rect x="30" y="42" width="106" height="24" rx="6" fill="#dd5a3a" opacity=".7"/>
+      <text x="83" y="58" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">商品検索</text>
+      <rect x="30" y="72" width="106" height="24" rx="6" fill="#dd5a3a" opacity=".7"/>
+      <text x="83" y="88" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">注文管理</text>
+      <rect x="30" y="102" width="106" height="24" rx="6" fill="#dd5a3a" opacity=".7"/>
+      <text x="83" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">決済</text>
+      <rect x="30" y="132" width="106" height="24" rx="6" fill="#dd5a3a" opacity=".7"/>
+      <text x="83" y="148" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ユーザー管理</text>
+      <text x="83" y="184" text-anchor="middle" font-size="10" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">全部がくっついている</text>
+      <text x="83" y="198" text-anchor="middle" font-size="10" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">1つ直すと全体リリース</text>
+
+      <!-- マイクロサービス右 -->
+      <text x="258" y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">マイクロサービス</text>
+      <rect x="194" y="32" width="54" height="28" rx="7" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="221" y="50" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">商品検索</text>
+      <rect x="268" y="32" width="54" height="28" rx="7" fill="#eef3fd" stroke="#2e6de5" stroke-width="2"/>
+      <text x="295" y="50" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">注文管理</text>
+      <rect x="194" y="72" width="54" height="28" rx="7" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="221" y="90" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">決済</text>
+      <rect x="268" y="72" width="54" height="28" rx="7" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="295" y="90" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">ユーザー</text>
+      <!-- API通信線 -->
+      <line x1="248" y1="46" x2="268" y2="46" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="221" y1="60" x2="221" y2="72" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="248" y1="86" x2="268" y2="86" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <text x="258" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#216b3b" font-family="M PLUS Rounded 1c">各サービスが独立</text>
+      <text x="258" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#216b3b" font-family="M PLUS Rounded 1c">APIで連携</text>
+      <text x="258" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#216b3b" font-family="M PLUS Rounded 1c">1つだけ更新可能</text>
+    </svg>
+  </div>
+
+  <!-- フロー：マイクロサービスの利点 -->
+  <div class="panel p-indigo">
+    <span class="phead">✅ マイクロサービスの主な利点</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 独立デプロイ（部分リリース）</div>
+        <div class="fb">「決済サービスだけ更新」が可能。全体を止めなくていいので、リリース頻度を上げられる。継続的デリバリー（CD）と相性が良い。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 障害の局所化（影響範囲を絞る）</div>
+        <div class="fb">「注文サービス」が落ちても「商品検索」は動き続ける。モノリシックなら全体が止まる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 独立スケール（必要な部分だけ増強）</div>
+        <div class="fb">「決済サービスだけ」繁忙期にサーバーを増やせる。全体を増強する無駄がない。コスト効率が高い。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">モノリシックアーキテクチャと混同する</div>
+      <div class="tb">モノリシックは「全機能が一体のアプリ」。マイクロサービスは「機能ごとに独立した小サービスに分割」。正反対の設計思想。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">マイクロサービスは常に優れている？</div>
+      <div class="tb">小規模システムでは複雑になりすぎて逆にコストがかかる。「サービス間の通信管理・監視・テスト」が増える。大規模・頻繁な変更が必要な場合に効果的。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">コンテナ・DockerとAPIの混同</div>
+      <div class="tb">マイクロサービスはアーキテクチャの<strong>設計思想</strong>。コンテナ（Docker）はそれを実現する技術の一つ。「マイクロサービス＝Docker」ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SOA（サービス指向アーキテクチャ）との混同</div>
+      <div class="tb">SOAもサービスに分割する考え方だが、マイクロサービスはより<strong>小さく・軽量・独立性が高い</strong>。SOAは大きめのサービス単位で分割する。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">マイクロ</span>サービス ＝ <span class="hl">マイ（自分だけの）クロ（小さい）</span>サービス<br>
+    「<strong>マイ（自分）の小っちゃいサービスが集まって一つのアプリ</strong>」<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">小さい・独立・バラバラ → これがマイクロサービス</span><br><br>
+    <span class="hl">モノリシック＝大きな一枚岩 ／ マイクロ＝小石の集まり</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>モノリス解体担当のアーキテクトの自分。「ユーザー管理・決済・在庫・通知を独立サービスに分割→個別デプロイ・スケール」する設計。これって？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>マイクロサービスアーキテクチャ</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>モノリシックアーキテクチャ</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ モノリスは全機能1アプリ統合。「機能単位の小サービス分割」がマイクロサービス</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：マイクロサービスアーキテクチャ</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 マイクロサービスアーキテクチャとは何か</h2>
-<span class="kw">機能単位の小サービスに分割→独立デプロイ可能</span>
-<p>マイクロサービスのメリット：各サービスを独立してデプロイ・スケールできる・技術スタックを自由に選べる・障害が他サービスに波及しにくい。デメリット：サービス間通信の複雑さ・分散トランザクション・監視・デプロイ管理のオーバーヘッド。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>マイクロサービスはコンテナ（Docker）・オーケストレーション（Kubernetes）・API ゲートウェイ・サービスメッシュと組み合わせて実装される。AWS Lambda等のサーバーレスもマイクロサービスの一形態。
-
-**覚え方** 🎯 **モノリス＝1枚岩（重・固）／マイクロサービス＝小さく分割（軽・柔）**。**Docker+Kubernetes**が定番ツール。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>【混同注意】マイクロサービス≠常に正解。分割により通信複雑化・分散トランザクション・監視コスト増のデメリットがある。サーバーレス（AWS Lambda等）はマイクロサービスの一形態だが、マイクロサービス全体≠サーバーレス。API GatewayはマイクロサービスへのSingle Entry Pointで、各サービスへ直接外部公開はしない。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**モノリス＝1枚岩（重・固）／マイクロサービス＝小さく分割（軽・柔）**。**Docker+Kubernetes**が定番ツール。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>マイクロサービスアーキテクチャはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

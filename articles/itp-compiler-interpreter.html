@@ -1,108 +1,209 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>コンパイラ・インタプリタとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="コンパイラ・インタプリタの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-compiler-interpreter.html">
-<meta property="og:title" content="コンパイラ・インタプリタとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="コンパイラ・インタプリタの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-compiler-interpreter.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>コンパイラとインタプリタとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="コンパイラとインタプリタをわかりやすく解説。プログラムの翻訳方法の違い、それぞれの長所と短所、実行速度の違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-compiler-interpreter">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e7c3a,#0f4a1a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(15,74,26,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0e8c8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e7c3a;}
+
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.vs-cell{border-radius:12px;padding:12px;}
+.vs-cell h4{font-size:13px;font-weight:900;margin-bottom:8px;}
+.vs-cell ul{list-style:none;}
+.vs-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:14px;position:relative;}
+.vs-cell li::before{content:"▶";position:absolute;left:0;font-size:9px;top:2px;}
+.vc1{background:#eef3fd;}.vc1 h4{color:#2e6de5;}.vc1 li::before{color:#2e6de5;}
+.vc2{background:#e2f3e5;}.vc2 h4{color:#2e7c3a;}.vc2 li::before{color:#2e7c3a;}
+@media(max-width:420px){.vs-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#2e7c3a;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">コンパイラ・インタプリタとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">コンパイラ・インタプリタ</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>コンパイラ</b>と<b>インタプリタ</b>とは？</h1>
+    <p>人間が書いたプログラム（ソースコード）をコンピュータが理解できる言語に翻訳する2つの方式。「まとめて翻訳」か「1行ずつ通訳」かの違い。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="55" width="56" height="26" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="25" rx="9" fill="#2e7c3a"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 18 a12 11 0 0 1 24 0 q-4-8-12-8-8 0-12 8z" fill="#3a4a2a"/>
+        <rect x="28" y="33" width="16" height="7" fill="#f4c89a"/>
+        <!-- 吹き出し 左（コード） -->
+        <rect x="0" y="4" width="28" height="20" rx="3" fill="#eef3fd" stroke="#2e6de5" stroke-width="1.5"/>
+        <polygon points="14,24 10,30 20,24" fill="#eef3fd" stroke="#2e6de5" stroke-width="1" stroke-linejoin="round"/>
+        <text x="14" y="14" text-anchor="middle" font-size="7" font-weight="900" fill="#2e6de5">print</text>
+        <text x="14" y="22" text-anchor="middle" font-size="7" font-weight="700" fill="#4a6ab0">("hello")</text>
+        <!-- 吹き出し 右（機械語） -->
+        <rect x="44" y="4" width="28" height="20" rx="3" fill="#e2f3e5" stroke="#2e7c3a" stroke-width="1.5"/>
+        <polygon points="58,24 54,30 64,24" fill="#e2f3e5" stroke="#2e7c3a" stroke-width="1" stroke-linejoin="round"/>
+        <text x="58" y="14" text-anchor="middle" font-size="7" font-weight="900" fill="#2e7c3a">01101</text>
+        <text x="58" y="22" text-anchor="middle" font-size="7" font-weight="700" fill="#4a8a5a">10010</text>
+      </svg>
+      <div class="scene-txt">
+        プログラミングを始めた同期が「え、なんでCは速くてPythonはちょっと遅いの？」と聞いてきた。「Cはコンパイラ方式で事前に全部機械語に変換するから速いんだよ。Pythonはインタプリタ方式で1行ずつ変換しながら動くから少し遅い」と説明した。
+        <div class="scene-q">…コンパイラとインタプリタ、どちらがどんな特徴？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔄 2つの翻訳方式の違い</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="コンパイラは全文を一括翻訳してから実行、インタプリタは1行ずつ翻訳しながら実行">
+      <!-- コンパイラ側 -->
+      <rect x="10" y="10" width="150" height="205" rx="14" fill="#eef3fd" stroke="#2e6de5" stroke-width="2"/>
+      <text x="85" y="34" text-anchor="middle" font-size="13" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">コンパイラ</text>
+      <!-- ソースコード -->
+      <rect x="20" y="44" width="130" height="40" rx="8" fill="#c8d8f8" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="85" y="62" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">ソースコード（全体）</text>
+      <text x="85" y="77" text-anchor="middle" font-size="10" font-weight="700" fill="#4a6ab0" font-family="M PLUS Rounded 1c">まとめてコンパイル</text>
+      <!-- 矢印 -->
+      <text x="85" y="102" text-anchor="middle" font-size="20" fill="#2e6de5">↓</text>
+      <!-- 実行ファイル -->
+      <rect x="20" y="110" width="130" height="40" rx="8" fill="#4256b8" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="85" y="128" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">機械語（実行ファイル）</text>
+      <text x="85" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#c8d8f8" font-family="M PLUS Rounded 1c">一括変換済み</text>
+      <!-- 矢印 -->
+      <text x="85" y="168" text-anchor="middle" font-size="20" fill="#2e6de5">↓</text>
+      <!-- 実行 -->
+      <rect x="30" y="173" width="110" height="32" rx="8" fill="#2e6de5"/>
+      <text x="85" y="193" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">高速実行！</text>
+
+      <!-- インタプリタ側 -->
+      <rect x="180" y="10" width="150" height="205" rx="14" fill="#eef8f1" stroke="#2e7c3a" stroke-width="2"/>
+      <text x="255" y="34" text-anchor="middle" font-size="13" font-weight="900" fill="#2e7c3a" font-family="M PLUS Rounded 1c">インタプリタ</text>
+      <!-- 1行ずつ -->
+      <rect x="190" y="44" width="130" height="22" rx="6" fill="#b0d8c0" stroke="#2e7c3a" stroke-width="1.5"/>
+      <text x="255" y="59" text-anchor="middle" font-size="10" font-weight="900" fill="#0f4a1a" font-family="M PLUS Rounded 1c">1行目を読む → 実行</text>
+      <text x="255" y="79" text-anchor="middle" font-size="14" fill="#2e7c3a">↓</text>
+      <rect x="190" y="86" width="130" height="22" rx="6" fill="#b0d8c0" stroke="#2e7c3a" stroke-width="1.5"/>
+      <text x="255" y="101" text-anchor="middle" font-size="10" font-weight="900" fill="#0f4a1a" font-family="M PLUS Rounded 1c">2行目を読む → 実行</text>
+      <text x="255" y="121" text-anchor="middle" font-size="14" fill="#2e7c3a">↓</text>
+      <rect x="190" y="128" width="130" height="22" rx="6" fill="#b0d8c0" stroke="#2e7c3a" stroke-width="1.5"/>
+      <text x="255" y="143" text-anchor="middle" font-size="10" font-weight="900" fill="#0f4a1a" font-family="M PLUS Rounded 1c">3行目を読む → 実行</text>
+      <text x="255" y="163" text-anchor="middle" font-size="14" fill="#2e7c3a">↓</text>
+      <!-- 実行 -->
+      <rect x="200" y="170" width="110" height="35" rx="8" fill="#2e7c3a"/>
+      <text x="255" y="188" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">1行ずつ実行</text>
+      <text x="255" y="200" text-anchor="middle" font-size="10" font-weight="700" fill="#a0e0b0" font-family="M PLUS Rounded 1c">（移植性が高い）</text>
+    </svg>
+    <div class="vs-grid">
+      <div class="vs-cell vc1">
+        <h4>コンパイラ</h4>
+        <ul>
+          <li>ソース全体を事前に機械語に変換</li>
+          <li>実行速度が速い</li>
+          <li>エラーは実行前に一括検出</li>
+          <li>C・C++・Java（コンパイル）</li>
+        </ul>
+      </div>
+      <div class="vs-cell vc2">
+        <h4>インタプリタ</h4>
+        <ul>
+          <li>1行ずつ読んで翻訳しながら実行</li>
+          <li>実行速度はやや遅い</li>
+          <li>エラーは実行時にその場で発生</li>
+          <li>Python・JavaScript・Ruby</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 使い分けのポイント</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">コンパイラ方式が向いている場面</div><div class="fb">速度が命のゲームや組み込みシステム、大量データ処理。C/C++など。ソースを配布せず実行ファイルのみ配布できる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">インタプリタ方式が向いている場面</div><div class="fb">開発速度重視・スクリプト処理・プロトタイピング。PythonやJavaScriptなど。OS/環境が変わっても動かしやすい（移植性が高い）。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「Javaはどちら？」問題</div>
+      <div class="tb">Javaはコンパイラで一度「バイトコード」に変換し、JVM（Java仮想機械）がインタプリタ的に実行する<strong>中間方式</strong>。「コンパイラのみ」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「速い＝コンパイラ」を押さえる</div>
+      <div class="tb">コンパイラは事前変換済みなので実行が速い。インタプリタは変換しながら動くので遅い。この速度差が定番出題。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">アセンブラと混同しやすい</div>
+      <div class="tb">アセンブラはアセンブリ言語→機械語への変換ツール。コンパイラ・インタプリタは高水準言語（人間が読める言語）を変換するもの。対象言語のレベルが違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>プログラム全体を一括変換・速い</strong>」→ コンパイラ。「<strong>1行ずつ変換しながら実行・移植性高い</strong>」→ インタプリタ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">コンパイラ＝「コンビニ弁当（事前製造）」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">コンパイラ → コン（コンビニ）パイラ → 事前に全部作ってある → すぐ食べられる（速い）！</span><br><br>
+    <span class="hl">インタプリタ＝「その場で作る料理（注文後調理）」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">インタプリタ → イン（院）タプリタ → 院内調理 → 注文してから1品ずつ作る（遅い）！</span></div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>プログラミング学習中の自分。「Cは実行前に全体を機械語に翻訳、Pythonは1行ずつ実行」と教科書に。これって何の違い？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>コンパイラとインタプリタの違い</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>どちらも実行速度は同じ</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ コンパイラの方が実行速度は速い。「実行前に一括翻訳」がコンパイラ</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：コンパイラとインタプリタの違い</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 コンパイラ・インタプリタとは何か</h2>
-<span class="kw">一括翻訳 vs 行ごと実行</span>
-<p>コンパイラ：ソースコード全体を実行前に機械語へ一括翻訳。実行が速いが翻訳（コンパイル）に時間がかかる（C・Java等）。インタプリタ：1行ずつ解釈しながら実行（Python・JavaScript等）。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「実行速度重視→コンパイラ型」「開発・テストのしやすさ→インタプリタ型」という使い分けが基本。試験では「どちらの方式か」を問われる。
-
-**覚え方** 🎯 **コンパイラ＝事前翻訳（C/Java）→速いが準備に時間／インタプリタ＝即興翻訳（Python/JS）→遅いが手軽**。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「コンパイラ＝実行が速い」「インタプリタ＝開発が楽」と丸暗記しがち。注意点は、Javaは一度バイトコードにコンパイルしJVM上でインタプリタ実行するハイブリッド型で「純粋なコンパイラ型」とは言い切れない点。試験では「実行前に一括変換→コンパイラ」の定義で判断すること。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**コンパイラ＝事前翻訳（C/Java）→速いが準備に時間／インタプリタ＝即興翻訳（Python/JS）→遅いが手軽**。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>コンパイラ・インタプリタはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

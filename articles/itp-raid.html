@@ -1,108 +1,205 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>RAID5とRAID6の比較とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="RAID5とRAID6の比較の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-raid.html">
-<meta property="og:title" content="RAID5とRAID6の比較とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="RAID5とRAID6の比較の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-raid.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RAIDとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="RAID（0・1・5）をわかりやすく解説。ストライピング・ミラーリング・パリティの違い、耐障害性と速度のトレードオフ、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-raid">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#e65100,#bf360c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(191,54,12,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffcc80 56%,#ffcc80 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ffccbc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1565c0;--cbg:#e3f2fd;}
+.p-orange{--c:#e65100;--cbg:#fff3e0;}
+.p-green{--c:#2e7d32;--cbg:#e8f5e9;}
+.p-red{--c:#c62828;--cbg:#ffebee;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#e65100;}
+
+.raid-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;}
+.raid-card{border-radius:12px;padding:12px 10px;text-align:center;}
+.raid-card h4{font-size:16px;font-weight:900;margin-bottom:4px;}
+.raid-card .sub{font-size:10.5px;font-weight:700;margin-bottom:6px;}
+.raid-card ul{list-style:none;text-align:left;}
+.raid-card li{font-size:10.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.raid-card li::before{content:"・";position:absolute;left:0;}
+.card0{background:#e3f2fd;}.card0 h4{color:#1565c0;}.card0 .sub{color:#42a5f5;}
+.card1{background:#e8f5e9;}.card1 h4{color:#2e7d32;}.card1 .sub{color:#66bb6a;}
+.card5{background:#fff3e0;}.card5 h4{color:#e65100;}.card5 .sub{color:#ffa726;}
+@media(max-width:480px){.raid-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#ffebee;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#b71c1c;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a2424;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">RAID5とRAID6の比較とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">RAID5とRAID6の比較</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💾 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>RAID</b>とは？</h1>
+    <p>複数のHDDを束ねて「速くする・壊れても大丈夫にする」技術。0・1・5の違いが試験の核心。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a237e" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="37" width="44" height="28" rx="8" fill="#e65100"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- ドライブアイコン -->
+        <rect x="44" y="56" width="16" height="11" rx="2" fill="#5d4037"/>
+        <rect x="46" y="58" width="12" height="7" rx="1" fill="#8d6e63"/>
+      </svg>
+      <div class="scene-txt">
+        サーバ管理者のあなた。「ディスクが1台壊れてもサービスを止めたくない。でもできれば速くもしたい」と上司に言われた。ディスクを何台か組み合わせる構成を検討している。
+        <div class="scene-q">…RAIDの「0・1・5」どれを選ぶ？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-orange">
+    <span class="phead">🗄️ RAID 0 / 1 / 5 の構造</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="RAID0はストライピング、RAID1はミラーリング、RAID5はパリティによる構成図">
+      <rect width="340" height="210" fill="#f8f9ff" rx="12"/>
+      <!-- RAID0 -->
+      <text x="55" y="22" text-anchor="middle" font-size="13" font-weight="900" fill="#1565c0" font-family="M PLUS Rounded 1c">RAID 0</text>
+      <text x="55" y="36" text-anchor="middle" font-size="9" font-weight="700" fill="#42a5f5" font-family="M PLUS Rounded 1c">ストライピング</text>
+      <rect x="10" y="45" width="30" height="140" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+      <rect x="50" y="45" width="30" height="140" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+      <text x="25" y="120" text-anchor="middle" font-size="9" font-weight="800" fill="#1565c0" font-family="M PLUS Rounded 1c">A</text>
+      <text x="65" y="120" text-anchor="middle" font-size="9" font-weight="800" fill="#1565c0" font-family="M PLUS Rounded 1c">B</text>
+      <!-- データを分割して書き込む矢印 -->
+      <text x="10" y="55" font-size="7" font-weight="700" fill="#42a5f5" font-family="M PLUS Rounded 1c">分割書込</text>
+      <text x="10" y="195" font-size="7.5" font-weight="700" fill="#c62828" font-family="M PLUS Rounded 1c">✗耐障害性なし</text>
+      <text x="10" y="205" font-size="7.5" font-weight="700" fill="#2e7d32" font-family="M PLUS Rounded 1c">◎高速</text>
+
+      <!-- RAID1 -->
+      <text x="175" y="22" text-anchor="middle" font-size="13" font-weight="900" fill="#2e7d32" font-family="M PLUS Rounded 1c">RAID 1</text>
+      <text x="175" y="36" text-anchor="middle" font-size="9" font-weight="700" fill="#66bb6a" font-family="M PLUS Rounded 1c">ミラーリング</text>
+      <rect x="130" y="45" width="30" height="140" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+      <rect x="170" y="45" width="30" height="140" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+      <text x="145" y="120" text-anchor="middle" font-size="9" font-weight="800" fill="#2e7d32" font-family="M PLUS Rounded 1c">A</text>
+      <text x="185" y="120" text-anchor="middle" font-size="9" font-weight="800" fill="#2e7d32" font-family="M PLUS Rounded 1c">A</text>
+      <text x="158" y="30" text-anchor="middle" font-size="7" font-weight="700" fill="#66bb6a" font-family="M PLUS Rounded 1c">同じ内容</text>
+      <line x1="160" y1="45" x2="160" y2="45" stroke="#66bb6a" stroke-width="1"/>
+      <text x="130" y="195" font-size="7.5" font-weight="700" fill="#2e7d32" font-family="M PLUS Rounded 1c">◎1台故障OK</text>
+      <text x="130" y="205" font-size="7.5" font-weight="700" fill="#e65100" font-family="M PLUS Rounded 1c">△容量50%</text>
+
+      <!-- RAID5 -->
+      <text x="302" y="22" text-anchor="middle" font-size="13" font-weight="900" fill="#e65100" font-family="M PLUS Rounded 1c">RAID 5</text>
+      <text x="302" y="36" text-anchor="middle" font-size="9" font-weight="700" fill="#ffa726" font-family="M PLUS Rounded 1c">パリティ付き</text>
+      <rect x="258" y="45" width="22" height="140" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+      <rect x="284" y="45" width="22" height="140" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+      <rect x="310" y="45" width="22" height="140" rx="5" fill="#fff8e1" stroke="#ffa726" stroke-width="2"/>
+      <text x="269" y="102" text-anchor="middle" font-size="8" font-weight="800" fill="#e65100" font-family="M PLUS Rounded 1c">A</text>
+      <text x="295" y="102" text-anchor="middle" font-size="8" font-weight="800" fill="#e65100" font-family="M PLUS Rounded 1c">B</text>
+      <text x="321" y="102" text-anchor="middle" font-size="8" font-weight="800" fill="#f57c00" font-family="M PLUS Rounded 1c">P</text>
+      <text x="269" y="140" text-anchor="middle" font-size="8" font-weight="800" fill="#e65100" font-family="M PLUS Rounded 1c">P</text>
+      <text x="295" y="140" text-anchor="middle" font-size="8" font-weight="800" fill="#e65100" font-family="M PLUS Rounded 1c">C</text>
+      <text x="321" y="140" text-anchor="middle" font-size="8" font-weight="800" fill="#e65100" font-family="M PLUS Rounded 1c">D</text>
+      <text x="258" y="195" font-size="7" font-weight="700" fill="#2e7d32" font-family="M PLUS Rounded 1c">◎1台故障OK</text>
+      <text x="258" y="205" font-size="7" font-weight="700" fill="#2e7d32" font-family="M PLUS Rounded 1c">○容量効率良い</text>
+    </svg>
+
+    <div class="raid-grid">
+      <div class="raid-card card0">
+        <h4>RAID 0</h4>
+        <div class="sub">ストライピング</div>
+        <ul>
+          <li>データを分割して複数台に並列書込</li>
+          <li>速度：最速</li>
+          <li>耐障害性：なし（1台壊れたら全滅）</li>
+          <li>用途：速さ最優先</li>
+        </ul>
+      </div>
+      <div class="raid-card card1">
+        <h4>RAID 1</h4>
+        <div class="sub">ミラーリング</div>
+        <ul>
+          <li>同じデータを2台に複製</li>
+          <li>速度：普通</li>
+          <li>耐障害性：1台故障OK</li>
+          <li>容量：半分に</li>
+        </ul>
+      </div>
+      <div class="raid-card card5">
+        <h4>RAID 5</h4>
+        <div class="sub">パリティ付き</div>
+        <ul>
+          <li>データ+誤り訂正(パリティ)を分散</li>
+          <li>速度：読取が速い</li>
+          <li>耐障害性：1台故障OK</li>
+          <li>3台以上必要</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">RAID 0は「安全」ではない</div>
+      <div class="tb">0は速さだけ。1台でも壊れると全データ消失。「RAID＝安全」と思い込まないこと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">RAID 1は容量が2倍にならない</div>
+      <div class="tb">同じデータを2台に書くので実使用容量は半分。2台あっても容量は1台分。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">RAID 5は最低3台必要</div>
+      <div class="tb">パリティ（誤り訂正情報）を分散するため3台以上必要。2台では動かない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">RAIDはバックアップの代替ではない</div>
+      <div class="tb">誤って削除したデータや、ウイルス被害はRAIDで守れない。バックアップとは別物。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「0はゼロ（安全ゼロ）、1はイチコピー、5はゴールド（バランス最高）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">0＝速いが壊れたら全滅 ／ 1＝鏡コピー ／ 5＝パリティで賢く守る</span><br><br>
+      <span class="hl">「RAID：ライド（乗り物）のエンジン増設」</span><br>
+      <span style="font-size:12px;font-weight:800;color:#7a5800;">複数ディスクを「一台に見せる」のがRAIDの本質！</span>
+    </div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>ストレージ設計者の自分。「6台RAIDで2台同時故障してもデータ失わず継続稼働」したい。RAID5？RAID6？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>RAID6</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>RAID5</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ RAID5は1台故障まで（パリティ1種）。「2台同時故障耐」がRAID6（ダブルパリティ）</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：RAID6</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 RAID5とRAID6の比較とは何か</h2>
-<span class="kw">RAID5=1台故障まで、RAID6=2台同時故障まで対応</span>
-<p>RAID5：ストライピング＋分散パリティ。最低3台から構成。1台が故障してもパリティから復元可能。ディスク台数をNとすると実効容量は（N-1）台分。RAID6：ダブルパリティ。最低4台から構成。2台同時故障まで耐える。実効容量は（N-2）台分。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>RAID選択の指針：RAID5→コストと冗長性のバランスで最も普及。RAID6→重要度の高いデータや大容量ディスク（復元中の追故障リスクが高い）の場合に選択。RAID1→完全ミラーリング（1台分の容量しか使えないが復元が即時）。
-
-**覚え方** 🎯 **RAID5＝1台故障まで（パリティ1種）／RAID6＝2台故障まで（ダブルパリティ）**。コストvs可用性。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>【混同注意】RAID5は1台故障まで、RAID6は2台同時故障まで耐える。実効容量はRAID5がN-1台分、RAID6がN-2台分。「6台RAID6＝4台分の容量」。RAID5で2台同時故障するとデータ消失。「RAID6なら何台故障してもOK」は誤り。台数と耐障害数をセットで覚える。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**RAID5＝1台故障まで（パリティ1種）／RAID6＝2台故障まで（ダブルパリティ）**。コストvs可用性。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>RAID5とRAID6の比較はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

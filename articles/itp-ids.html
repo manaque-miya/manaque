@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IDS（侵入検知システム）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="IDS（侵入検知システム）をわかりやすく解説。ファイアウォール・IPSとの違い、不正侵入の検知方法2種、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-ids">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#8b1a1a,#5c0e0e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(92,14,14,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f0cece;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-dark{--c:#5c0e0e;--cbg:#fde8e8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#8b1a1a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#8b1a1a;--fbg:#fde8e8;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.detect-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.detect-cell{border-radius:12px;padding:12px;}
+.detect-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.detect-cell p{font-size:11.5px;line-height:1.7;color:#48506a;}
+.dc-sig{background:#fde8e8;}.dc-sig h4{color:#8b1a1a;}
+.dc-ano{background:#e4e7f7;}.dc-ano h4{color:#4256b8;}
+@media(max-width:480px){.detect-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>IDS</b>（侵入検知システム）とは？</h1>
+    <p>ネットワークやシステムへの不正侵入をリアルタイムで検知し、管理者に警告するセキュリティシステム。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="30" rx="9" fill="#8b1a1a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- alert bell icon -->
+        <path d="M31 47 q0 -5 5 -5 q5 0 5 5 l1 6 h-12z" fill="#ffd23f"/>
+        <circle cx="36" cy="55" r="1.5" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        社内ネットワークの管理者であるあなた。ファイアウォールは設置済みだが、「ファイアウォールをすり抜けた攻撃は気づけない」という問題があった。<br><br>
+        上司が言った。「<strong>IDS</strong>を入れよう。怪しい通信が来たら即座にアラートが鳴る」。
+        <div class="scene-q">…ファイアウォールと何が違うの？「検知」するだけ？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：ネットワーク上の位置 -->
+  <div class="panel p-dark">
+    <span class="phead">🔍 IDSがネットワーク上でやること</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="IDSのネットワーク上の位置と動作の図解">
+      <!-- Internet -->
+      <rect x="10" y="80" width="60" height="40" rx="8" fill="#f0d0d0" stroke="#8b1a1a" stroke-width="2"/>
+      <text x="40" y="98" text-anchor="middle" font-size="11" font-weight="900" fill="#8b1a1a" font-family="M PLUS Rounded 1c">インター</text>
+      <text x="40" y="113" text-anchor="middle" font-size="11" font-weight="900" fill="#8b1a1a" font-family="M PLUS Rounded 1c">ネット</text>
+
+      <!-- arrow -->
+      <line x1="70" y1="100" x2="90" y2="100" stroke="#8b1a1a" stroke-width="2" marker-end="url(#arr1)"/>
+      <defs>
+        <marker id="arr1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <polygon points="0 0, 7 3.5, 0 7" fill="#8b1a1a"/>
+        </marker>
+        <marker id="arr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <polygon points="0 0, 7 3.5, 0 7" fill="#4256b8"/>
+        </marker>
+      </defs>
+
+      <!-- Firewall -->
+      <rect x="90" y="76" width="56" height="48" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="118" y="97" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">ファイア</text>
+      <text x="118" y="112" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">ウォール</text>
+      <text x="118" y="126" text-anchor="middle" font-size="9.5" font-weight="700" fill="#7a8ac8" font-family="M PLUS Rounded 1c">通過を遮断</text>
+
+      <!-- arrow -->
+      <line x1="146" y1="100" x2="162" y2="100" stroke="#4256b8" stroke-width="2" marker-end="url(#arr2)"/>
+      <text x="154" y="92" text-anchor="middle" font-size="9" font-weight="700" fill="#8b1a1a" font-family="M PLUS Rounded 1c">すり抜け？</text>
+
+      <!-- IDS -->
+      <rect x="162" y="70" width="70" height="60" rx="8" fill="#fde8e8" stroke="#8b1a1a" stroke-width="3"/>
+      <text x="197" y="92" text-anchor="middle" font-size="14" font-weight="900" fill="#8b1a1a" font-family="M PLUS Rounded 1c">IDS</text>
+      <text x="197" y="108" text-anchor="middle" font-size="10" font-weight="700" fill="#8b1a1a" font-family="M PLUS Rounded 1c">不正を検知</text>
+      <text x="197" y="122" text-anchor="middle" font-size="10" font-weight="700" fill="#8b1a1a" font-family="M PLUS Rounded 1c">→警告通知</text>
+
+      <!-- alert arrow up -->
+      <line x1="197" y1="70" x2="197" y2="44" stroke="#ffd23f" stroke-width="2.5" stroke-dasharray="4 3"/>
+      <text x="197" y="38" text-anchor="middle" font-size="10.5" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">🔔 管理者に警告！</text>
+
+      <!-- arrow -->
+      <line x1="232" y1="100" x2="252" y2="100" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arr3)"/>
+      <defs>
+        <marker id="arr3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <polygon points="0 0, 7 3.5, 0 7" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+
+      <!-- Internal network -->
+      <rect x="252" y="76" width="78" height="48" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="291" y="97" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">社内ネット</text>
+      <text x="291" y="112" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ワーク</text>
+
+      <!-- label below -->
+      <text x="170" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">IDSはFWをすり抜けた通信を「見張り」、怪しければ警告する</text>
+      <text x="170" y="188" text-anchor="middle" font-size="11" font-weight="700" fill="#8b1a1a" font-family="M PLUS Rounded 1c">※自分では通信を止めない（止めるのはIPSの役割）</text>
+    </svg>
+  </div>
+
+  <!-- 検知方式2種 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔬 IDSの2つの検知方式</span>
+    <div class="detect-grid">
+      <div class="detect-cell dc-sig">
+        <h4>シグネチャ型（不正検知型）</h4>
+        <p>既知の攻撃パターン（シグネチャ）と照合して一致したら検知。既知攻撃に強いが、新種には無力。</p>
+      </div>
+      <div class="detect-cell dc-ano">
+        <h4>アノマリ型（異常検知型）</h4>
+        <p>「正常な状態」を学習し、それから外れた通信を検知。新種攻撃にも対応できるが誤検知が多い。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDS vs IPS vs FW -->
+  <div class="panel p-orange">
+    <span class="phead">📋 IDS・IPS・ファイアウォールの違い</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">IDS（Intrusion Detection System）</div>
+        <div class="fb">不正侵入を<strong>検知して警告</strong>するだけ。通信を止める機能はない。「見張り番」。</div>
+      </div>
+      <div class="farrow">vs</div>
+      <div class="fstep f2">
+        <div class="fh">IPS（Intrusion Prevention System）</div>
+        <div class="fb">不正侵入を検知した上で、通信を<strong>自動的に遮断・防御</strong>する。IDSの進化版。「見張り＋自動阻止」。</div>
+      </div>
+      <div class="farrow">vs</div>
+      <div class="fstep f3">
+        <div class="fh">ファイアウォール</div>
+        <div class="fb">あらかじめ決めたルール（IPアドレス・ポート番号）に基づいて通信を<strong>許可・拒否</strong>する。「関所」。中身の内容は見ない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">IDSは不正通信を「遮断」するという誤解</div>
+      <div class="tb">IDSは<strong>検知して警告するだけ</strong>。自動遮断はしない。遮断もするのはIPS。ITパスポートでは「何をするシステムか」を正確に問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ファイアウォールがあればIDSは不要という誤解</div>
+      <div class="tb">ファイアウォールは「通過許可ルール」で動く。ルールをすり抜けた通信の中身は見ない。IDSはそのすり抜けた通信の<strong>内容を監視</strong>する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「不正を<strong>検知・警告</strong>」→ IDS。「不正を<strong>自動遮断</strong>」→ IPS。「通信ルールで<strong>許可・拒否</strong>」→ ファイアウォール。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">IDS</span> ＝「<strong>異常だ！知らせる！</strong>」（I＝異常、D＝だ、S＝知らせる）<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">→ 自分では止めない。叫ぶだけ。</span><br><br>
+      <span class="hl">IPS</span> ＝「<strong>異常だ！防ぐ！止める！</strong>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">→ IDSのDをPrevention（防止）に強化したのがIPS</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

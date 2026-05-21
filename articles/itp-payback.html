@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>回収期間法とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="回収期間法（ペイバック法）を計算例つきで図解解説。NPV法・IRR法との違い、時間価値を考慮しない弱点、ITパスポート試験の計算問題の解き方まで。">
+<link rel="canonical" href="https://example.com/itp-payback">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6b4ac8,#3c1f8a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(60,31,138,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d8d0f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#6b4ac8;--cbg:#e8e2f8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6b4ac8;}
+
+.calc-box{background:#e8e2f8;border-radius:12px;padding:14px 16px;margin-top:10px;}
+.calc-box h4{font-size:13px;font-weight:900;color:#3c1f8a;margin-bottom:8px;}
+.calc-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.calc-table th{background:#6b4ac8;color:#fff;font-weight:900;padding:7px 10px;text-align:center;}
+.calc-table td{padding:7px 10px;text-align:center;font-weight:700;border-bottom:1px solid #d4caf0;}
+.calc-table tr:last-child td{border-bottom:none;}
+.calc-table .highlight{background:#ffd23f;font-weight:900;color:#3c1f8a;}
+.calc-formula{background:#3c1f8a;color:#fff;border-radius:10px;padding:10px 14px;margin-top:10px;font-size:13px;font-weight:800;text-align:center;line-height:1.7;}
+
+.method-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;}
+.mc-cell{border-radius:11px;padding:10px 9px;}
+.mc-cell h4{font-size:12px;font-weight:900;margin-bottom:5px;}
+.mc-cell p{font-size:11px;font-weight:600;line-height:1.6;color:#48506a;}
+.mc-payback{background:#e8e2f8;}.mc-payback h4{color:#6b4ac8;}
+.mc-npv{background:#e2f3e5;}.mc-npv h4{color:#2e8b4f;}
+.mc-irr{background:#e7eefc;}.mc-irr h4{color:#2e6de5;}
+@media(max-width:480px){.method-compare{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6b4ac8;--fbg:#e8e2f8;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系 / 投資評価</span>
+    <h1><b>回収期間法</b>とは？</h1>
+    <p>投資した金額を、毎年の利益（キャッシュフロー）で<strong>何年で回収できるか</strong>を計算する投資評価手法。シンプルさが最大の武器。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#6b4ac8"/>
+        <circle cx="36" cy="21" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 電卓 -->
+        <rect x="44" y="50" width="20" height="28" rx="3" fill="#fff" stroke="#6b4ac8" stroke-width="1.5"/>
+        <rect x="46" y="53" width="16" height="6" rx="1" fill="#d8d0f5"/>
+        <rect x="46" y="62" width="4" height="4" rx="1" fill="#6b4ac8"/>
+        <rect x="52" y="62" width="4" height="4" rx="1" fill="#6b4ac8"/>
+        <rect x="58" y="62" width="4" height="4" rx="1" fill="#6b4ac8"/>
+        <rect x="46" y="68" width="4" height="4" rx="1" fill="#6b4ac8"/>
+        <rect x="52" y="68" width="4" height="4" rx="1" fill="#6b4ac8"/>
+        <rect x="58" y="68" width="4" height="4" rx="1" fill="#9a7ee0"/>
+      </svg>
+      <div class="scene-txt">
+        IT部門長が「新システムに1000万円投資したいが、何年で元が取れるか？」と上司に聞かれた。毎年200万円のコスト削減になる見込みだ。
+        <div class="scene-q">…何年で投資を回収できる？（答えは5年）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：回収期間法の仕組み -->
+  <div class="panel p-purple">
+    <span class="phead">📊 回収期間法の計算図解</span>
+    <svg width="100%" viewBox="0 0 340 195" role="img" aria-label="回収期間法のキャッシュフロー積み上げグラフ。5年で元が取れる様子">
+      <!-- 軸 -->
+      <line x1="50" y1="150" x2="310" y2="150" stroke="#c2c8d8" stroke-width="2"/>
+      <line x1="50" y1="20" x2="50" y2="155" stroke="#c2c8d8" stroke-width="2"/>
+      <!-- 0ライン（マイナスがある場合） -->
+      <line x1="50" y1="100" x2="310" y2="100" stroke="#dd5a3a" stroke-width="1" stroke-dasharray="4 3" opacity=".5"/>
+      <text x="30" y="104" font-size="9.5" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">0円</text>
+      <!-- 初期投資：-1000万円（赤棒） -->
+      <rect x="60" y="100" width="30" height="50" fill="#dd5a3a" rx="3"/>
+      <text x="75" y="165" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">0年</text>
+      <text x="75" y="95" text-anchor="middle" font-size="9" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">-1000万</text>
+      <!-- 各年の累積回収（緑棒） -->
+      <!-- 1年後 -800万 -->
+      <rect x="103" y="100" width="30" height="40" fill="#d8d0f5" rx="3"/>
+      <text x="118" y="165" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">1年</text>
+      <!-- 2年後 -600万 -->
+      <rect x="146" y="100" width="30" height="30" fill="#b8a8e8" rx="3"/>
+      <text x="161" y="165" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">2年</text>
+      <!-- 3年後 -400万 -->
+      <rect x="189" y="100" width="30" height="20" fill="#9a80d8" rx="3"/>
+      <text x="204" y="165" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">3年</text>
+      <!-- 4年後 -200万 -->
+      <rect x="232" y="100" width="30" height="10" fill="#7d5cc8" rx="3"/>
+      <text x="247" y="165" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">4年</text>
+      <!-- 5年後 0万（回収完了） -->
+      <rect x="275" y="95" width="30" height="5" fill="#2e8b4f" rx="3"/>
+      <text x="290" y="165" text-anchor="middle" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">5年</text>
+      <!-- 回収完了バッジ -->
+      <rect x="255" y="72" width="72" height="22" rx="7" fill="#2e8b4f"/>
+      <text x="291" y="87" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">回収完了!</text>
+      <line x1="291" y1="94" x2="291" y2="98" stroke="#2e8b4f" stroke-width="2"/>
+      <!-- グラフタイトル -->
+      <text x="170" y="185" text-anchor="middle" font-size="10.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">1000万円投資 ÷ 200万円/年 ＝ 5年で回収</text>
+    </svg>
+
+    <div class="calc-box">
+      <h4>計算例：1000万円投資、毎年200万円の利益</h4>
+      <table class="calc-table">
+        <tr><th>年</th><th>年間キャッシュフロー</th><th>累積回収額</th><th>未回収残高</th></tr>
+        <tr><td>0年目</td><td>−1,000万円（投資）</td><td>0万円</td><td>−1,000万円</td></tr>
+        <tr><td>1年目</td><td>+200万円</td><td>200万円</td><td>−800万円</td></tr>
+        <tr><td>2年目</td><td>+200万円</td><td>400万円</td><td>−600万円</td></tr>
+        <tr><td>3年目</td><td>+200万円</td><td>600万円</td><td>−400万円</td></tr>
+        <tr><td>4年目</td><td>+200万円</td><td>800万円</td><td>−200万円</td></tr>
+        <tr class="highlight"><td>5年目</td><td>+200万円</td><td>1,000万円</td><td>0円（回収完了）</td></tr>
+      </table>
+      <div class="calc-formula">回収期間 ＝ 初期投資額 ÷ 年間キャッシュフロー<br>1,000万円 ÷ 200万円 ＝ <strong>5年</strong></div>
+    </div>
+  </div>
+
+  <!-- 投資評価手法の比較 -->
+  <div class="panel p-green">
+    <span class="phead">📋 投資評価手法3種の比較</span>
+    <div class="method-compare">
+      <div class="mc-cell mc-payback">
+        <h4>回収期間法</h4>
+        <p>何年で回収？<br>シンプル・直感的<br>時間価値を考慮しない<br>長期の収益性が見えない</p>
+      </div>
+      <div class="mc-cell mc-npv">
+        <h4>NPV法</h4>
+        <p>正味現在価値<br>将来のCFを割引計算<br>時間価値を考慮する<br>絶対額で判断</p>
+      </div>
+      <div class="mc-cell mc-irr">
+        <h4>IRR法</h4>
+        <p>内部収益率<br>収益率（%）で比較<br>時間価値を考慮する<br>複数案件の比較に有効</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 使う場面フロー -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ 回収期間法を使う判断フロー</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 複数の投資案件を比較したい</div><div class="fb">案件AとBで「どちらを先に採用するか」を決める場面などで使う。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 回収期間を計算して比較（短い方が有利）</div><div class="fb">回収期間が短い = 早く元が取れる = リスクが低い、という判断に使う。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ ただし長期収益性はNPV・IRRで別途確認</div><div class="fb">回収期間法は「いつ回収できるか」しか見ない。長期でどれだけ儲かるかはNPVやIRRで評価が必要。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">時間価値を考慮しない</div>
+      <div class="tb">回収期間法は将来の1円と現在の1円を同じ価値として計算する。お金の時間的価値（割引）を考慮するのはNPV法・IRR法。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">回収後の収益を無視する</div>
+      <div class="tb">回収期間法は「元が取れるまでの期間」しか見ない。回収後に何十億円の収益が出ても評価に反映されない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「回収期間が長い方が良い」は誤り</div>
+      <div class="tb">回収期間は<strong>短い方が優れた投資案件</strong>。長いほどリスクが高い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">NPV法との混同</div>
+      <div class="tb">NPV（正味現在価値）法は将来のCFを割引率で現在価値に換算する手法。回収期間法とは計算方法が全く異なる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「回収＝借金返済の年数」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">100万円の借金 ÷ 毎年20万円の返済 ＝ 5年で完済 → 回収期間法と全く同じ計算！</span><br><br>
+      弱点の覚え方：<span class="hl">「回収法は近眼」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">回収期間より先の未来が見えない（時間価値も見えない）</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

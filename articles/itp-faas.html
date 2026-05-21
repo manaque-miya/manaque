@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FaaS（サーバーレス）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="FaaS（Function as a Service）とサーバーレスをわかりやすく解説。使った分だけ課金・サーバー管理不要の仕組みをITパスポート試験向けに図解。覚え方ゴロ付き。">
+<link rel="canonical" href="https://example.com/itp-faas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d9851f,#7a3e00);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,62,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#fff083 56%,#fff083 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fde3b8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9851f;}
+
+.layers{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+.layer-row{display:flex;align-items:stretch;gap:6px;}
+.layer-label{width:90px;flex-shrink:0;border-radius:10px;padding:8px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;font-weight:900;}
+.layer-content{flex:1;border-radius:10px;padding:8px 10px;font-size:11.5px;font-weight:600;line-height:1.65;color:#3c4456;}
+.l-dev{background:#e0f2ec;color:#1a7a5c;}
+.l-pf{background:#e7eefc;color:#2e6de5;}
+.l-iaas{background:#f0ecff;color:#5a3dbd;}
+.l-faas{background:#fcefd9;color:#d9851f;border:2.5px solid #d9851f;}
+@media(max-width:480px){.layer-label{width:70px;font-size:10px;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d9851f;--fbg:#fdf4e4;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・クラウド</span>
+    <h1><b>FaaS</b>（サーバーレス）とは？</h1>
+    <p>関数（Function）を単位にクラウドで実行。<br>サーバーの管理は一切不要。使った分だけ課金。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="58" width="48" height="22" rx="6" fill="#f0d4a8"/>
+        <rect x="18" y="38" width="36" height="28" rx="8" fill="#d9851f"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 19 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#5a4020"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 雷マーク（イベント） -->
+        <polygon points="48,55 52,55 49,62 54,62 46,72 49,64 44,64" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        スタートアップのエンジニアが新サービスを作りたい。でもサーバーの設定・維持・監視に時間を取られたくない。「<strong>コードを書くだけで、あとはクラウドが勝手に動かしてくれる</strong>」仕組みはないか？
+        <div class="scene-q">…それが FaaS（Function as a Service）。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-orange">
+    <span class="phead">☁️ FaaSの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="FaaSのイベント駆動実行の仕組み図">
+      <!-- イベント発火 -->
+      <rect x="10" y="60" width="70" height="40" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="45" y="78" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">イベント</text>
+      <text x="45" y="93" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4a6acd" font-family="M PLUS Rounded 1c">（HTTP・タイマー等）</text>
+      <line x1="80" y1="80" x2="110" y2="80" stroke="#d9851f" stroke-width="2.5" marker-end="url(#aev)"/>
+      <defs>
+        <marker id="aev" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#d9851f"/>
+        </marker>
+        <marker id="adb" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+
+      <!-- FaaSボックス（強調） -->
+      <rect x="110" y="50" width="120" height="60" rx="14" fill="#fcefd9" stroke="#d9851f" stroke-width="3"/>
+      <text x="170" y="75" text-anchor="middle" font-size="13" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">FaaS</text>
+      <text x="170" y="92" text-anchor="middle" font-size="10.5" font-weight="700" fill="#9a5010" font-family="M PLUS Rounded 1c">関数（Function）を実行</text>
+      <text x="170" y="104" text-anchor="middle" font-size="9" font-weight="700" fill="#b07040" font-family="M PLUS Rounded 1c">サーバー管理はクラウド側</text>
+
+      <!-- 結果 -->
+      <line x1="230" y1="80" x2="260" y2="80" stroke="#2e8b4f" stroke-width="2.5" marker-end="url(#adb)"/>
+      <rect x="260" y="60" width="70" height="40" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="295" y="78" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">結果</text>
+      <text x="295" y="93" text-anchor="middle" font-size="9.5" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">（DB保存・通知等）</text>
+
+      <!-- ポイント説明 -->
+      <rect x="30" y="125" width="280" height="54" rx="12" fill="#fff6e0" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="170" y="143" text-anchor="middle" font-size="11" font-weight="900" fill="#9a5010" font-family="M PLUS Rounded 1c">▶ 実行時だけ起動・課金（待機中は0円）</text>
+      <text x="170" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#9a5010" font-family="M PLUS Rounded 1c">▶ スケーリングも自動（急増してもOK）</text>
+      <text x="170" y="174" text-anchor="middle" font-size="11" font-weight="700" fill="#9a5010" font-family="M PLUS Rounded 1c">▶ OS・ミドルウェア管理は不要</text>
+    </svg>
+
+    <div class="layers">
+      <div class="layer-row">
+        <div class="layer-label l-dev">開発者がやること</div>
+        <div class="layer-content" style="background:#fcefd9;">コードを書いてデプロイするだけ</div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-label" style="background:#fce4dd;color:#dd5a3a;">クラウドがやること</div>
+        <div class="layer-content" style="background:#fff4f2;">サーバー起動・スケーリング・OS管理・セキュリティパッチ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー・詳細：XaaS比較 -->
+  <div class="panel p-indigo">
+    <span class="phead">☁️ クラウドサービスの種類と比較</span>
+    <div class="layers">
+      <div class="layer-row">
+        <div class="layer-label l-faas" style="background:#fcefd9;color:#d9851f;border:2px solid #d9851f;">FaaS</div>
+        <div class="layer-content" style="background:#fdf4e4;">コード（関数）単位で実行。サーバー管理ゼロ。使った分だけ課金。</div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-label l-dev">SaaS</div>
+        <div class="layer-content" style="background:#e0f2ec;">アプリをそのまま使う（Gmail等）。開発不要。</div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-label l-pf">PaaS</div>
+        <div class="layer-content" style="background:#eef3fd;">開発環境・実行環境が提供。OS・ミドルウェア管理不要。</div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-label l-iaas">IaaS</div>
+        <div class="layer-content" style="background:#f0ecff;">インフラ（VM・ストレージ）を提供。OS以上は自分で管理。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「サーバーレス＝サーバーが存在しない」は誤り</div>
+      <div class="tb">物理的にはサーバーが存在する。「開発者がサーバーを意識・管理しなくてよい」という意味。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">PaaSとの混同に注意</div>
+      <div class="tb">PaaSはアプリ全体を動かすプラットフォーム。FaaSは「関数（Function）単位」での実行が特徴。粒度がより細かい。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">常時動かすシステムには不向き</div>
+      <div class="tb">FaaSはイベント発生時だけ起動する設計。常時稼働・長時間処理には向かない（実行時間に制限がある）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>関数単位・イベント駆動・使った分だけ課金・サーバー管理不要</strong>」が出たら → <strong>FaaS</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">FaaS＝「ファース（Fast）」</span><br>
+    「<span class="hl">呼ばれた時だけ爆速起動・終わったら消える</span>」<br><br>
+    タクシーではなく<span class="hl">Uber</span>：<br>
+    <span class="hl">呼ぶ（イベント）→ 来る（起動）→ 料金（実行分だけ）→ 消える</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">車（サーバー）を持たなくてもいい＝サーバーレス</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-faas</div>
+
+</div>
+</body>
+</html>

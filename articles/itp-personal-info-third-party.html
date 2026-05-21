@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>個人情報の第三者提供とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="個人情報保護法における第三者提供のルールを解説。本人同意が必要なケース・不要なケース（オプトアウト・委託・共同利用）の違い、試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-personal-info-third-party">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2563b0,#133569);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(19,53,105,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563b0;--cbg:#e0ecff;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2563b0;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2563b0;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#cf4f86;--fbg:#fbe3ee;}
+
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.case-card{border-radius:12px;padding:12px 11px;}
+.case-card h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.case-card ul{list-style:none;}
+.case-card li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.case-card li::before{content:"・";position:absolute;left:0;}
+.card-ok{background:#e2f3e5;}.card-ok h4{color:#2e8b4f;}
+.card-ng{background:#fce4dd;}.card-ng h4{color:#dd5a3a;}
+@media(max-width:480px){.case-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>個人情報の第三者提供</b></h1>
+    <p>他の会社や人に個人情報を渡すとき、「本人の同意」は必ずいるのか？例外はあるのか？を整理する。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#2563b0"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 17 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 書類を持つ腕 -->
+        <rect x="40" y="52" width="20" height="13" rx="3" fill="#fff" stroke="#2563b0" stroke-width="1.5"/>
+        <rect x="43" y="55" width="14" height="2" rx="1" fill="#2563b0"/>
+        <rect x="43" y="59" width="10" height="2" rx="1" fill="#9aa3b2"/>
+      </svg>
+      <div class="scene-txt">
+        ネット通販で買い物をしたあなた。後日、見知らぬDM広告会社からダイレクトメールが届いた。<br>
+        「あれ、住所教えた覚えないけど…どこから？」
+        <div class="scene-q">→ これって個人情報の第三者提供にあたる？同意なしにOK？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：第三者提供の構造 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 第三者提供とは何か</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="個人情報の第三者提供の構造図：本人→事業者→第三者">
+      <!-- 本人 -->
+      <rect x="10" y="60" width="80" height="80" rx="14" fill="#e0ecff" stroke="#2563b0" stroke-width="2"/>
+      <circle cx="50" cy="82" r="12" fill="#f4c89a"/>
+      <path d="M40 78 a10 9 0 0 1 20 0 q-4 -8 -10 -8 q-6 0 -10 8z" fill="#3a3f4a"/>
+      <rect x="43" y="91" width="14" height="7" fill="#f4c89a"/>
+      <path d="M43 98 l7 4 l7 -4 v4 h-14z" fill="#2563b0"/>
+      <text x="50" y="148" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">本人</text>
+
+      <!-- 矢印：本人→事業者 -->
+      <path d="M92 100 L128 100" stroke="#2563b0" stroke-width="2.5" marker-end="url(#arr1)"/>
+      <text x="110" y="92" text-anchor="middle" font-size="10" font-weight="700" fill="#2563b0" font-family="M PLUS Rounded 1c">個人情報</text>
+      <text x="110" y="104" text-anchor="middle" font-size="10" font-weight="700" fill="#2563b0" font-family="M PLUS Rounded 1c">を提供</text>
+      <defs>
+        <marker id="arr1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2563b0"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#dd5a3a"/>
+        </marker>
+      </defs>
+
+      <!-- 事業者 -->
+      <rect x="130" y="50" width="80" height="100" rx="14" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <rect x="148" y="68" width="44" height="32" rx="6" fill="#4256b8"/>
+      <rect x="153" y="73" width="12" height="8" rx="2" fill="#fff" opacity=".7"/>
+      <rect x="169" y="73" width="18" height="4" rx="1" fill="#fff" opacity=".5"/>
+      <rect x="169" y="80" width="13" height="3" rx="1" fill="#fff" opacity=".4"/>
+      <text x="170" y="115" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">個人情報</text>
+      <text x="170" y="129" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">取扱事業者</text>
+
+      <!-- 矢印：事業者→第三者（NG） -->
+      <path d="M212 100 L248 100" stroke="#dd5a3a" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#arr2)"/>
+      <text x="230" y="88" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">原則</text>
+      <text x="230" y="100" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">禁止！</text>
+
+      <!-- 第三者 -->
+      <rect x="250" y="60" width="80" height="80" rx="14" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <rect x="268" y="76" width="44" height="28" rx="5" fill="#dd5a3a"/>
+      <rect x="274" y="81" width="32" height="4" rx="1" fill="#fff" opacity=".7"/>
+      <rect x="274" y="88" width="24" height="3" rx="1" fill="#fff" opacity=".5"/>
+      <text x="290" y="120" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">第三者</text>
+      <text x="290" y="133" text-anchor="middle" font-size="10" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">（別の会社 等）</text>
+    </svg>
+    <p>個人情報は本人から預かったもの。事業者が<strong>別の会社（第三者）に渡す場合は原則、本人の同意が必要</strong>。</p>
+  </div>
+
+  <!-- フロー：同意なしでOKな例外 -->
+  <div class="panel p-green">
+    <span class="phead">📋 例外：同意なしでOKなケース</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 法令に基づく場合</div>
+        <div class="fb">警察・裁判所などの公的機関が法律に基づいて要請した場合。例：犯罪捜査への協力。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 委託・共同利用（＝第三者扱いにならない）</div>
+        <div class="fb">業務委託先（例：配送会社）や、あらかじめ公表した共同利用先は「第三者」にあたらない。同意不要。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ オプトアウト制度（書面で事前届出）</div>
+        <div class="fb">本人が「拒否できる」仕組みを設け、個人情報保護委員会に届け出た場合。本人が止めない限り提供可。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 生命・財産保護で本人の同意が取れない場合</div>
+        <div class="fb">災害・緊急時など、本人が意識不明等で同意取得が困難な場合。</div>
+      </div>
+    </div>
+    <div class="case-grid">
+      <div class="case-card card-ok">
+        <h4>同意なしでOK</h4>
+        <ul>
+          <li>警察の捜査協力（法令）</li>
+          <li>配送業者に住所渡す（委託）</li>
+          <li>オプトアウト届出済み</li>
+          <li>生命保護・緊急時</li>
+        </ul>
+      </div>
+      <div class="case-card card-ng">
+        <h4>同意が必要（NG）</h4>
+        <ul>
+          <li>広告会社への無断提供</li>
+          <li>取引先への勝手な紹介</li>
+          <li>グループ会社でも同意なし</li>
+          <li>オプトアウト届出なし</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「委託先＝第三者」と勘違い</div>
+      <div class="tb">業務委託先（例：印刷会社・配送会社）は「第三者」に<strong>あたらない</strong>。同意なしでOK。試験でよく問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">グループ会社なら同意不要？</div>
+      <div class="tb">グループ会社でも別法人なら<strong>第三者あつかい</strong>。共同利用として公表していれば例外になるが、何も手続きしていなければ同意が必要。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">オプトアウト＝何もしなくてOK ではない</div>
+      <div class="tb">オプトアウトは「届出＋公表」が必須。届出なしに「拒否できるから大丈夫」は違法。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「個人情報」の定義との混同</div>
+      <div class="tb">個人情報は「生存する個人を特定できる情報」。死者の情報は含まれない点も試験で問われる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      第三者に渡すなら<span class="hl">「まず聞け（本人同意）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">例外4つ：<strong>法令／委託・共同／オプトアウト／緊急</strong></span><br><br>
+      <span class="hl">「委託先は他人じゃない」</span>← これだけ暗記！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">配送会社に住所を渡すのは委託 → 同意不要</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

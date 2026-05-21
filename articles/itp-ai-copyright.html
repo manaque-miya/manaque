@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>生成AIと著作権とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="生成AIと著作権の関係をITパスポート試験向けに解説。学習データの著作権・生成物の著作権・無断利用リスクの3点、試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/kaisetsu/itp-ai-copyright">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7b4bb8,#4a1f80);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(74,31,128,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dac8f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7b4bb8;--cbg:#f0ebfb;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7b4bb8;}
+
+.cr-grid{display:grid;grid-template-columns:1fr;gap:9px;margin-top:10px;}
+.cr-item{border-radius:12px;padding:12px 14px;border-left:5px solid var(--lc);}
+.cr-item h4{font-size:13px;font-weight:900;color:var(--lc);margin-bottom:4px;}
+.cr-item p{font-size:12.5px;font-weight:600;line-height:1.75;color:#48506a;}
+.cri1{--lc:#b82e2e;background:#fce8e8;}
+.cri2{--lc:#7b4bb8;background:#f0ebfb;}
+.cri3{--lc:#d9851f;background:#fdf4e4;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#b82e2e;--fbg:#fce8e8;}
+.f2{--fc:#7b4bb8;--fbg:#f5f0fc;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系 / AI・法務</span>
+    <h1><b>生成AIと著作権</b>とは？</h1>
+    <p>AIが作った文章・絵は誰のもの？学習データは勝手に使える？2つの問いが試験の核心。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#4a1f80" opacity=".12"/>
+        <!-- 本・著作物 -->
+        <rect x="8" y="40" width="24" height="34" rx="3" fill="#7b4bb8"/>
+        <rect x="10" y="42" width="20" height="30" rx="2" fill="#fff"/>
+        <line x1="14" y1="47" x2="26" y2="47" stroke="#c8a8e8" stroke-width="1.5"/>
+        <line x1="14" y1="51" x2="26" y2="51" stroke="#c8a8e8" stroke-width="1.5"/>
+        <line x1="14" y1="55" x2="22" y2="55" stroke="#c8a8e8" stroke-width="1.5"/>
+        <!-- 矢印（AIへ） -->
+        <path d="M33 57 L40 57" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr)"/>
+        <!-- AI ボックス -->
+        <rect x="40" y="46" width="24" height="20" rx="5" fill="#2e6de5"/>
+        <text x="52" y="60" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="sans-serif">AI</text>
+        <!-- 生成物（下矢印） -->
+        <path d="M52 67 L52 74" stroke="#9aa3b2" stroke-width="2"/>
+        <rect x="40" y="74" width="24" height="8" rx="3" fill="#ffd23f"/>
+        <text x="52" y="81" text-anchor="middle" font-size="7" font-weight="900" fill="#5c4500" font-family="sans-serif">生成物</text>
+        <!-- 著作権マーク -->
+        <circle cx="36" cy="20" r="12" fill="#f0ebfb" stroke="#7b4bb8" stroke-width="2"/>
+        <text x="36" y="25" text-anchor="middle" font-size="13" font-weight="900" fill="#7b4bb8" font-family="sans-serif">©</text>
+      </svg>
+      <div class="scene-txt">
+        デザイナーのあなた、画像生成AIで仕事のイラストを作成した。<br>
+        後から「うちの著作物を学習に使ったはずだ」と連絡が来た——<br>
+        <div class="scene-q">学習データの著作権・生成物の権利帰属、どちらも問題になりうる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：2つの著作権問題 -->
+  <div class="panel p-blue">
+    <span class="phead">🔬 著作権問題の2つのポイント</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="生成AIと著作権：学習データの問題と生成物の問題">
+      <!-- 左：学習データ側 -->
+      <rect x="5" y="10" width="148" height="140" rx="14" fill="#fce8e8" stroke="#b82e2e" stroke-width="2"/>
+      <text x="79" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#b82e2e" font-family="M PLUS Rounded 1c">① 学習データ問題</text>
+      <text x="79" y="56" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">著作物を無断で</text>
+      <text x="79" y="72" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">学習に使ってよいか？</text>
+      <rect x="18" y="85" width="122" height="52" rx="9" fill="#fff"/>
+      <text x="79" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">日本：情報解析目的は</text>
+      <text x="79" y="117" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">一定条件で許容</text>
+      <text x="79" y="131" text-anchor="middle" font-size="9.5" font-weight="600" fill="#b82e2e" font-family="M PLUS Rounded 1c">（著作権法30条の4）</text>
+      <!-- 右：生成物側 -->
+      <rect x="187" y="10" width="148" height="140" rx="14" fill="#f0ebfb" stroke="#7b4bb8" stroke-width="2"/>
+      <text x="261" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#7b4bb8" font-family="M PLUS Rounded 1c">② 生成物の権利</text>
+      <text x="261" y="56" text-anchor="middle" font-size="10.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">AIが作った著作物は</text>
+      <text x="261" y="72" text-anchor="middle" font-size="10.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">誰のもの？</text>
+      <rect x="200" y="85" width="122" height="52" rx="9" fill="#fff"/>
+      <text x="261" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">人間の創作性がなければ</text>
+      <text x="261" y="117" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">著作権は発生しない</text>
+      <text x="261" y="131" text-anchor="middle" font-size="9.5" font-weight="600" fill="#7b4bb8" font-family="M PLUS Rounded 1c">（AIのみの生成物）</text>
+    </svg>
+    <div class="cr-grid">
+      <div class="cr-item cri1">
+        <h4>① 学習データの著作権</h4>
+        <p>他人の著作物（小説・絵・音楽）を無断でAI学習に使うと著作権侵害になりうる。日本では情報解析目的は一定条件で許容（著作権法30条の4）されているが、商用利用・大量複製は争議になる場合がある。</p>
+      </div>
+      <div class="cr-item cri2">
+        <h4>② 生成物の著作権</h4>
+        <p>AIが自律的に生成した文章・画像には著作権が発生しないのが現在の日本の考え方。ただし、人間が創作的に関与した部分には権利が生じる可能性がある。</p>
+      </div>
+      <div class="cr-item cri3">
+        <h4>③ 既存著作物との類似問題</h4>
+        <p>生成物が既存の著作物に「酷似」していた場合、著作権侵害になりうる。AIが学習データをそのまま再現するリスクを「記憶・再現問題」という。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー -->
+  <div class="panel p-indigo">
+    <span class="phead">🗺️ 生成AIを業務利用するときの確認フロー</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 学習データのライセンスを確認</div><div class="fb">使用するAIサービスが「どんなデータで学習したか」を確認。商用利用禁止データを学習したAIは業務利用に不適切な場合がある。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 生成物の利用規約を確認</div><div class="fb">各AIサービスの利用規約で「生成物の商用利用可否・権利帰属」が異なる。必ず規約を読む。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 既存著作物との類似チェック</div><div class="fb">生成物が既存の著作物に酷似していないか確認。そのまま使うと侵害リスク。修正・差別化が必要。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「AIが作ったから著作権フリー」は間違い</div>
+      <div class="tb">AIの生成物自体には著作権が発生しにくいが、「学習元の著作物」への権利侵害は別の問題。フリーとは言い切れない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">日本の著作権法はAI学習を全面的に認めているわけではない</div>
+      <div class="tb">「情報解析」目的は一定条件で許容されているが、商用目的・著作権者の明示的拒否がある場合は適用外になりうる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">生成物に人間が手を加えると権利関係が変わる</div>
+      <div class="tb">AIが生成した素材に人間が創作的な編集・加工をすれば、その部分に著作権が発生しうる。全自動生成と人間関与では扱いが異なる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">学習データ</span>は他人の畑、<span class="hl">生成物</span>は誰の作物？<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">畑（データ）に勝手に入ると侵害／作物（生成物）は人が育てなければ権利なし</span><br><br>
+      著作権の<span class="hl">2大問題</span>：<span class="hl">学</span>習データ ＋ <span class="hl">生</span>成物<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「学」んで「生」む＝著作権2点セット</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-ai-copyright</div>
+
+</div>
+</body>
+</html>

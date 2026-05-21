@@ -1,106 +1,205 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SCMとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="SCMの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-scm.html">
-<meta property="og:title" content="SCMとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="SCMの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-scm.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SCM（サプライチェーンマネジメント）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="SCM（サプライチェーンマネジメント）を仕入れ・製造・物流・販売の一連の流れを管理する仕組みとして解説。ERP・CRMとの違い、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-scm">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a7a5e,#0d4a38);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,74,56,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e8d8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#1a7a5e;--cbg:#d8f0e8;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-teal{--c:#0e7c86;--cbg:#daf3f5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a7a5e;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d9851f;--fbg:#fdf4e4;}
+.f2{--fc:#1a7a5e;--fbg:#eef8f4;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+.f4{--fc:#0e7c86;--fbg:#eef9fa;}
+.f5{--fc:#cf4f86;--fbg:#fbe3ee;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">SCMとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">SCM</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>製造業の経営者の自分。「原材料の調達→工場の製造→倉庫→物流→小売」の流れを可視化して、ムダな在庫を減らしたい。何のシステムが必要？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>SCM</b>（サプライチェーンマネジメント）とは？</h1>
+    <p>仕入れ・製造・物流・販売まで、モノの流れを丸ごと一本管理する仕組み。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>SCM</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ERP</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ERPは全社業務の統合。「調達から販売までのモノの流れの管理」はSCM</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#0d4a38" opacity=".1"/>
+        <rect x="8" y="60" width="62" height="24" rx="5" fill="#c8e6dc"/>
+        <rect x="14" y="42" width="20" height="22" rx="4" fill="#1a7a5e"/>
+        <rect x="44" y="42" width="20" height="22" rx="4" fill="#2e6de5"/>
+        <rect x="16" y="46" width="6" height="6" rx="1" fill="#fff"/>
+        <rect x="25" y="46" width="6" height="6" rx="1" fill="#fff"/>
+        <rect x="16" y="55" width="6" height="6" rx="1" fill="#fff"/>
+        <rect x="25" y="55" width="6" height="6" rx="1" fill="#fff"/>
+        <rect x="46" y="46" width="6" height="6" rx="1" fill="#fff"/>
+        <rect x="55" y="46" width="6" height="6" rx="1" fill="#fff"/>
+        <rect x="46" y="55" width="6" height="6" rx="1" fill="#fff"/>
+        <rect x="55" y="55" width="6" height="6" rx="1" fill="#fff"/>
+        <rect x="29" y="58" width="20" height="28" rx="3" fill="#d9851f"/>
+        <circle cx="35" cy="72" r="5" fill="#a86010"/>
+        <circle cx="57" cy="78" r="5" fill="#555"/>
+        <circle cx="21" cy="78" r="5" fill="#555"/>
+        <circle cx="39" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M26 16 a13 12 0 0 1 26 0 q-5 -10 -13 -10 q-8 0 -13 10z" fill="#3a3f4a"/>
+        <rect x="31" y="32" width="16" height="8" fill="#f4c89a"/>
+      </svg>
+      <div class="scene-txt">
+        スポーツ用品メーカーの社員。「春の新作シューズが売り場に届くのが遅い、製造工場の在庫が余っている、なのに店頭では欠品…」こんなバラバラな状態を、<strong>全体をつなげて一気に解決</strong>しようとした。
+        <div class="scene-q">…この仕組み全体を管理することを何という？</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：SCM</strong></p>
-</div>
+  <!-- 図解：チェーンの流れ -->
+  <div class="panel p-teal">
+    <span class="phead">🔗 サプライチェーンの全体像</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="サプライチェーン：原材料調達→製造→物流→卸売→小売→顧客の流れ">
+      <!-- 背景帯 -->
+      <rect x="10" y="80" width="320" height="40" rx="8" fill="#daf3f5"/>
+      <!-- ノード -->
+      <rect x="10" y="68" width="48" height="44" rx="8" fill="#0e7c86"/>
+      <text x="34" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">原材料</text>
+      <text x="34" y="101" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">調達</text>
 
-<div class="card">
-<h2>📘 SCMとは何か</h2>
-<span class="kw">供給網全体管理</span>
-<p>Supply Chain Management。調達→製造→物流→販売の全工程を一元管理し在庫削減・納期短縮を実現するシステム。</p>
-</div>
+      <text x="62" y="97" text-anchor="middle" font-size="16" fill="#0e7c86" font-weight="900">▶</text>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「サプライチェーン全体の可視化・最適化」がSCMの特徴。ERPが全社業務統合、SCMは特にモノの流れに特化。</p>
-</div>
+      <rect x="72" y="68" width="48" height="44" rx="8" fill="#1a7a5e"/>
+      <text x="96" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">製造</text>
+      <text x="96" y="101" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">工場</text>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>ERPとSCMは補完関係。ERPが「社内の全業務データ統合」なのに対し、SCMは「調達先から顧客まで含むモノの流れの管理」。</p>
-</div>
+      <text x="124" y="97" text-anchor="middle" font-size="16" fill="#0e7c86" font-weight="900">▶</text>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>SCM＝**Supply Chain（供給の鎖）の Management**。**鎖の輪をひとつなぎに**して、原材料からお客の手元まで見える化。</p></div>
-</div>
+      <rect x="134" y="68" width="48" height="44" rx="8" fill="#2e6de5"/>
+      <text x="158" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">物流</text>
+      <text x="158" y="101" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">配送</text>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>SCMはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
+      <text x="186" y="97" text-anchor="middle" font-size="16" fill="#0e7c86" font-weight="900">▶</text>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+      <rect x="196" y="68" width="48" height="44" rx="8" fill="#d9851f"/>
+      <text x="220" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">卸売</text>
+      <text x="220" y="101" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">倉庫</text>
+
+      <text x="248" y="97" text-anchor="middle" font-size="16" fill="#0e7c86" font-weight="900">▶</text>
+
+      <rect x="258" y="68" width="48" height="44" rx="8" fill="#cf4f86"/>
+      <text x="282" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">小売</text>
+      <text x="282" y="101" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">店舗</text>
+
+      <text x="310" y="97" text-anchor="middle" font-size="16" fill="#0e7c86" font-weight="900">▶</text>
+
+      <!-- 顧客 -->
+      <circle cx="328" cy="90" r="10" fill="#f4c89a"/>
+      <path d="M318 112 q10 -10 20 0" stroke="#3a3f4a" stroke-width="2" fill="none"/>
+
+      <!-- SCMの帯ラベル -->
+      <rect x="10" y="128" width="320" height="22" rx="6" fill="#0e7c86" opacity=".85"/>
+      <text x="170" y="143" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">SCM：この全体を一元管理・最適化</text>
+
+      <!-- 情報の逆流を示す矢印 -->
+      <path d="M310 58 Q170 30 30 58" stroke="#ffd23f" stroke-width="2" stroke-dasharray="5 3" fill="none" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <polygon points="0 0, 7 3.5, 0 7" fill="#ffd23f"/>
+        </marker>
+      </defs>
+      <text x="170" y="26" text-anchor="middle" font-size="10" font-weight="800" fill="#9a6b00" font-family="M PLUS Rounded 1c">販売情報・需要予測を上流に共有（情報の逆流）</text>
+    </svg>
+    <p style="font-size:12px;color:#48506a;margin-top:8px;font-weight:600;">モノの流れ（川上→川下）と、情報の流れ（川下→川上）の<strong>両方</strong>を管理するのがポイント。</p>
+  </div>
+
+  <!-- フロー詳細 -->
+  <div class="panel p-blue">
+    <span class="phead">📋 SCMが解決する3つの課題</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 在庫の最適化</div><div class="fb">各拠点でバラバラに抱えていた在庫を一元把握。過剰在庫・欠品をなくす。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 納期の短縮・リードタイム削減</div><div class="fb">製造→物流→販売のスケジュールを全体で同期させ、ムダな待ち時間を減らす。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 需要変動への対応（ブルウィップ効果の防止）</div><div class="fb">小売の需要が少し変動すると、上流に行くほど発注が大きく揺れる現象（ブルウィップ効果）をデータ共有で抑える。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ERPと混同しやすい</div>
+      <div class="tb">ERP（企業資源計画）は<strong>企業内部</strong>の経営資源（人・モノ・金・情報）を一元管理するシステム。SCMは<strong>企業をまたいだサプライチェーン全体</strong>を管理する点が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">CRMと混同しやすい</div>
+      <div class="tb">CRM（顧客関係管理）は<strong>顧客との関係</strong>を管理するシステム。SCMはモノの流れを管理する。対象が全然違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「SCM＝物流管理」だけではない</div>
+      <div class="tb">物流だけでなく、<strong>調達・製造・販売・情報共有まで含む全体最適化</strong>がSCMの本質。物流管理はその一部にすぎない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「仕入れから販売まで」「複数企業をまたいで」「全体最適」→ <strong>SCM</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">スーパーの陳列棚（S）、コンクリート工場（C）、まで管理（M）</span>＝SCM<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Supply Chain Management＝川上から川下まで「鎖（チェーン）」でつなぐ</span><br><br>
+    <span class="hl">「S（仕入れ）C（作って）M（持ってく）」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">仕入れ→製造→持ってく（物流・販売）の全体＝SCM</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-scm</div>
+
+</div>
+</body>
+</html>

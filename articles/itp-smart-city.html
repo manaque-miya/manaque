@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>スマートシティとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="スマートシティをIoT・AI・データ活用の観点でわかりやすく解説。スーパーシティとの違い、Society5.0との関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-smart-city">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#1e8f6e,#0b4d3c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(11,77,60,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b2ddd1;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-teal{--c:#1e8f6e;--cbg:#d8f3ec;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1e8f6e;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e8f6e;--fbg:#d8f3ec;}
+.f2{--fc:#1b6ca8;--fbg:#ddeef8;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#4256b8;--fbg:#eaecf8;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#d9851f;font-weight:900;}
+.tag-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.tag-card{border-radius:11px;padding:10px 12px;background:#d8f3ec;}
+.tag-card h4{font-size:12.5px;font-weight:900;color:#1e8f6e;margin-bottom:4px;}
+.tag-card p{font-size:11.5px;font-weight:600;line-height:1.6;color:#48506a;}
+@media(max-width:480px){.tag-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>スマートシティ</b>とは？</h1>
+    <p>IoT・AI・ビッグデータを使って都市全体を最適化し、住民の生活課題を継続的に解決する「データで動く街」のこと。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#0b4d3c" opacity=".1"/>
+        <!-- ビル群 -->
+        <rect x="6" y="44" width="16" height="34" rx="3" fill="#1e8f6e"/>
+        <rect x="9" y="48" width="4" height="4" rx="1" fill="#b2ddd1"/>
+        <rect x="15" y="48" width="4" height="4" rx="1" fill="#b2ddd1"/>
+        <rect x="9" y="56" width="4" height="4" rx="1" fill="#b2ddd1"/>
+        <rect x="15" y="56" width="4" height="4" rx="1" fill="#b2ddd1"/>
+        <rect x="26" y="34" width="20" height="44" rx="3" fill="#4256b8"/>
+        <rect x="29" y="38" width="5" height="5" rx="1" fill="#c5cbf0"/>
+        <rect x="37" y="38" width="5" height="5" rx="1" fill="#c5cbf0"/>
+        <rect x="29" y="47" width="5" height="5" rx="1" fill="#c5cbf0"/>
+        <rect x="37" y="47" width="5" height="5" rx="1" fill="#c5cbf0"/>
+        <rect x="29" y="56" width="5" height="5" rx="1" fill="#c5cbf0"/>
+        <rect x="37" y="56" width="5" height="5" rx="1" fill="#c5cbf0"/>
+        <rect x="50" y="50" width="14" height="28" rx="3" fill="#d9851f"/>
+        <rect x="53" y="54" width="3" height="3" rx="1" fill="#fcefd9"/>
+        <rect x="58" y="54" width="3" height="3" rx="1" fill="#fcefd9"/>
+        <!-- Wi-Fiシグナル -->
+        <path d="M34 14 a16 12 0 0 1 4 0" stroke="#1e8f6e" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M30 10 a22 18 0 0 1 12 0" stroke="#1e8f6e" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="36" cy="18" r="3" fill="#1e8f6e"/>
+        <!-- 地面 -->
+        <rect x="0" y="78" width="72" height="4" rx="2" fill="#b2ddd1"/>
+      </svg>
+      <div class="scene-txt">
+        朝、信号機がリアルタイムの渋滞データをもとに青の時間を自動調整。ゴミ収集車はセンサーで満杯のゴミ箱だけを回り、エネルギーは需要予測で無駄なく配分される。
+        <div class="scene-q">…こんな「データで最適化された街」の仕組みを何と呼ぶ？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🏙️ スマートシティの構成要素</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="スマートシティの構成要素：IoTセンサー・データ基盤・AI分析・サービス提供の4層構造">
+      <!-- 背景 -->
+      <rect x="10" y="10" width="320" height="200" rx="14" fill="#f0f2fb"/>
+      <!-- 層1: IoTセンサー -->
+      <rect x="20" y="20" width="300" height="38" rx="9" fill="#1e8f6e"/>
+      <text x="170" y="36" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">① IoT センサー層</text>
+      <text x="170" y="51" text-anchor="middle" font-size="10" font-weight="700" fill="#b2ddd1" font-family="M PLUS Rounded 1c">交通・エネルギー・環境・医療などのデータを収集</text>
+      <!-- 矢印 -->
+      <polygon points="165,62 175,62 170,70" fill="#7a87cc"/>
+      <!-- 層2: データ基盤 -->
+      <rect x="20" y="72" width="300" height="38" rx="9" fill="#4256b8"/>
+      <text x="170" y="88" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">② データ基盤・クラウド層</text>
+      <text x="170" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#c5cbf0" font-family="M PLUS Rounded 1c">都市OSがデータを統合・蓄積・管理する</text>
+      <!-- 矢印 -->
+      <polygon points="165,114 175,114 170,122" fill="#7a87cc"/>
+      <!-- 層3: AI分析 -->
+      <rect x="20" y="124" width="300" height="38" rx="9" fill="#1b6ca8"/>
+      <text x="170" y="140" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">③ AI分析・最適化層</text>
+      <text x="170" y="155" text-anchor="middle" font-size="10" font-weight="700" fill="#aed0e8" font-family="M PLUS Rounded 1c">AIがパターンを学習し、需要予測・異常検知を行う</text>
+      <!-- 矢印 -->
+      <polygon points="165,166 175,166 170,174" fill="#7a87cc"/>
+      <!-- 層4: サービス提供 -->
+      <rect x="20" y="176" width="300" height="26" rx="9" fill="#d9851f"/>
+      <text x="170" y="188" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">④ 市民サービス提供層</text>
+      <text x="170" y="197" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fcefd9" font-family="M PLUS Rounded 1c">交通最適化・省エネ・医療・防災・行政手続き</text>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 スマートシティの主な活用分野</span>
+    <div class="tag-grid">
+      <div class="tag-card">
+        <h4>🚗 交通・モビリティ</h4>
+        <p>信号制御・自動運転・渋滞予測・公共交通の最適化</p>
+      </div>
+      <div class="tag-card" style="background:#ddeef8;">
+        <h4 style="color:#1b6ca8;">⚡ エネルギー</h4>
+        <p>スマートグリッド・再生可能エネルギーの需給調整</p>
+      </div>
+      <div class="tag-card" style="background:#fcefd9;">
+        <h4 style="color:#d9851f;">🏥 医療・福祉</h4>
+        <p>遠隔診療・見守りセンサー・高齢者支援サービス</p>
+      </div>
+      <div class="tag-card" style="background:#e4e7f7;">
+        <h4 style="color:#4256b8;">🏛️ 行政・防災</h4>
+        <p>デジタル行政手続き・ハザードマップ・災害警報</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 試験のキモ -->
+  <div class="panel p-orange">
+    <span class="phead">⭐ 試験のキモ</span>
+    <ul class="kimo-list">
+      <li>スマートシティは <strong>IoT・AI・ビッグデータ</strong> の3技術が中核。3つまとめて覚える。</li>
+      <li>「<strong>Society 5.0</strong>（社会課題をサイバー空間と現実空間の融合で解決）」の具体的な実現形態がスマートシティ。</li>
+      <li><strong>スーパーシティ</strong>は「複数の先端技術を一括導入する特区制度」。スマートシティの上位概念ではなく、政策・制度面の話。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">スマートシティ＝「省エネだけ」と思ってしまう</div>
+      <div class="tb">省エネ（スマートグリッド）はあくまで一部。<strong>交通・医療・行政・防災など都市全体</strong>の最適化が本体。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">スーパーシティと混同しやすい</div>
+      <div class="tb">スーパーシティは日本の<strong>国家戦略特区制度</strong>（2020年改正）。スマートシティの概念とは別レイヤーの話。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">スマートファクトリーと混同しやすい</div>
+      <div class="tb">スマートファクトリーは<strong>工場内</strong>の製造プロセス最適化。スマートシティは<strong>都市全体</strong>が対象。スコープが全然違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>都市全体・住民サービス・IoT+AI</strong>」のキーワードが揃ったら → スマートシティ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「街まるごとスマホ化」</span>＝ スマートシティ<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">センサーで感じて（IoT）・頭で考えて（AI）・最速で動く（サービス）</span><br><br>
+      <span class="hl">Society5.0</span>の「現実のすべてをデジタルが最適化する」世界を、<br>街スケールで実現したもの。
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

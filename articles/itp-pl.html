@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>損益計算書（P/L）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="損益計算書（P/L・PL）をわかりやすく解説。売上・費用・利益の構造、5段階の利益（売上総利益〜当期純利益）の計算順序。貸借対照表との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-pl">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c4692a,#7a3510);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,53,16,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c9a8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-orange{--c:#c4692a;--cbg:#fcefd9;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c4692a;}
+
+/* 5段階利益テーブル */
+.profit-stack{display:flex;flex-direction:column;gap:4px;margin-top:6px;}
+.ps-row{display:flex;align-items:stretch;gap:0;border-radius:9px;overflow:hidden;}
+.ps-label{width:44%;padding:10px 12px;font-size:12.5px;font-weight:900;display:flex;align-items:center;}
+.ps-eq{width:6%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#9aa3b2;background:#f4f6fb;}
+.ps-detail{width:50%;padding:9px 11px;font-size:11px;font-weight:600;line-height:1.6;color:#48506a;background:#f9fafc;display:flex;align-items:center;}
+.pl1{background:#fff3e0;}.pl1 .ps-label{color:#c4692a;}
+.pl2{background:#fff8e6;}.pl2 .ps-label{color:#d9851f;}
+.pl3{background:#fefce8;}.pl3 .ps-label{color:#b8a000;}
+.pl4{background:#f0faf4;}.pl4 .ps-label{color:#2e8b4f;}
+.pl5{background:#e7f0fd;}.pl5 .ps-label{color:#2e6de5;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系（会計）</span>
+    <h1><b>損益計算書（P/L）</b>とは？</h1>
+    <p>「1年間でいくら稼ぎ、いくら使い、いくら残ったか」を5段階の利益で見せる財務諸表。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-orange">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#7a3510" opacity=".1"/>
+        <!-- 書類 -->
+        <rect x="12" y="48" width="54" height="36" rx="7" fill="#fcefd9" stroke="#c4692a" stroke-width="2"/>
+        <line x1="20" y1="60" x2="58" y2="60" stroke="#c4692a" stroke-width="1.5"/>
+        <line x1="20" y1="68" x2="50" y2="68" stroke="#d9851f" stroke-width="1.5"/>
+        <line x1="20" y1="76" x2="44" y2="76" stroke="#2e8b4f" stroke-width="2.5"/>
+        <!-- 人物 -->
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="35" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 44 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        新卒で入社した会社の決算説明会。社長が「今期の<strong>営業利益</strong>は前年比20%増です！」と発表。「売上は上がってるけど経常利益はなぜ少ないの？」を理解するには損益計算書の構造を知るしかない。
+        <div class="scene-q">…利益には5種類ある。それを順番に理解するのがP/Lの肝！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：P/Lの構造 -->
+  <div class="panel p-blue">
+    <span class="phead">📊 5段階の利益の構造（イメージ）</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="損益計算書の5段階利益の構造図：売上から順次費用を引いて利益を計算する流れ">
+      <!-- 売上高 -->
+      <rect x="20" y="10" width="300" height="32" rx="8" fill="#fff3e0" stroke="#c4692a" stroke-width="2"/>
+      <text x="170" y="31" text-anchor="middle" font-size="13" font-weight="900" fill="#c4692a" font-family="M PLUS Rounded 1c">売上高（いくら売ったか）</text>
+
+      <!-- マイナス矢印1 -->
+      <text x="22" y="58" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">− 売上原価（仕入・製造コスト）</text>
+      <line x1="170" y1="42" x2="170" y2="52" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+      <!-- 売上総利益（粗利） -->
+      <rect x="30" y="60" width="280" height="28" rx="7" fill="#fff8e6" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="170" y="79" text-anchor="middle" font-size="12" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">売上総利益（粗利）</text>
+
+      <!-- マイナス矢印2 -->
+      <text x="32" y="104" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">− 販売費・一般管理費（人件費・広告費など）</text>
+      <line x1="170" y1="88" x2="170" y2="98" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+      <!-- 営業利益 -->
+      <rect x="40" y="106" width="260" height="28" rx="7" fill="#fefce8" stroke="#b8a000" stroke-width="1.5"/>
+      <text x="170" y="125" text-anchor="middle" font-size="12" font-weight="900" fill="#b8a000" font-family="M PLUS Rounded 1c">営業利益（本業の儲け）</text>
+
+      <!-- ±矢印3 -->
+      <text x="42" y="150" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">± 営業外収益・費用（利息収支など）</text>
+      <line x1="170" y1="134" x2="170" y2="144" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+      <!-- 経常利益 -->
+      <rect x="50" y="152" width="240" height="28" rx="7" fill="#f0faf4" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="170" y="171" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">経常利益（通常の活動の儲け）</text>
+
+      <!-- ±矢印4 -->
+      <text x="52" y="196" font-size="10" font-weight="900" fill="#9aa3b2" font-family="M PLUS Rounded 1c">± 特別損益（設備売却損益など一時的）</text>
+      <line x1="170" y1="180" x2="170" y2="190" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+      <!-- 当期純利益 -->
+      <rect x="60" y="198" width="220" height="28" rx="7" fill="#e7f0fd" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="217" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">当期純利益（最終的な手残り）</text>
+    </svg>
+  </div>
+
+  <!-- 5段階の利益まとめ -->
+  <div class="panel p-green">
+    <span class="phead">📋 5つの利益をまとめて確認</span>
+    <div class="profit-stack">
+      <div class="ps-row pl1">
+        <div class="ps-label">売上高<br><span style="font-size:10px;font-weight:700;">（Revenue）</span></div>
+        <div class="ps-eq">=</div>
+        <div class="ps-detail">商品・サービスを販売した金額の合計</div>
+      </div>
+      <div class="ps-row pl2">
+        <div class="ps-label">① 売上総利益<br><span style="font-size:10px;font-weight:700;">（粗利）</span></div>
+        <div class="ps-eq">=</div>
+        <div class="ps-detail">売上高 − 売上原価</div>
+      </div>
+      <div class="ps-row pl3">
+        <div class="ps-label">② 営業利益<br><span style="font-size:10px;font-weight:700;">（本業の儲け）</span></div>
+        <div class="ps-eq">=</div>
+        <div class="ps-detail">売上総利益 − 販売費・一般管理費</div>
+      </div>
+      <div class="ps-row pl4">
+        <div class="ps-label">③ 経常利益<br><span style="font-size:10px;font-weight:700;">（通常活動全体）</span></div>
+        <div class="ps-eq">=</div>
+        <div class="ps-detail">営業利益 ± 営業外収益・費用</div>
+      </div>
+      <div class="ps-row pl5">
+        <div class="ps-label">④ 当期純利益<br><span style="font-size:10px;font-weight:700;">（最終手残り）</span></div>
+        <div class="ps-eq">=</div>
+        <div class="ps-detail">経常利益 ± 特別損益 − 法人税等</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">貸借対照表（B/S）との混同</div>
+      <div class="tb">P/Lは「1年間の経営成績（フロー）」。B/Sは「決算日時点の財産状況（ストック）」。P/Lは動画、B/Sは写真のイメージ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「営業利益」と「経常利益」の混同</div>
+      <div class="tb">営業利益は<strong>本業だけ</strong>の利益。経常利益は本業＋金利収支など<strong>通常の財務活動も含む</strong>。「本業が儲かっているか」を見たいなら営業利益に注目。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「当期純利益」の「純」の意味</div>
+      <div class="tb">「純」は「一切のコスト・税金を全部引いた後の純粋な残り」という意味。法人税も引いた<strong>最終的な手残り</strong>が当期純利益。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「1年間の収益・費用・利益」が問われたら → P/L（損益計算書）。「資産・負債・純資産」が問われたら → B/S（貸借対照表）。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">利益5段階は<span class="hl">「うっとおしい経営、完全に終わる」</span><br>
+    <span style="font-size:13px;font-weight:700;color:#9a6b00;">う（売上総）／とお（営業）／し（経常）／け（特別損益後）／お（当期純）</span><br><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">上から順番に「引いていく」だけ！<br>P/L＝Profit &amp; Loss（利益と損失）</span></div>
+  </div>
+
+</div>
+</body>
+</html>

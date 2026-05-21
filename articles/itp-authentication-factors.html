@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>認証の3要素とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="認証の3要素（知識・所持・生体）をわかりやすく解説。多要素認証との違い、試験のひっかけポイント、強引なゴロで記憶に刻む。">
+<link rel="canonical" href="https://example.com/itp-authentication-factors">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e7a5a,#0d3d2e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,46,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e0d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1e7a5a;--cbg:#dcf0e8;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1e7a5a;}
+
+.factor-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:10px;}
+.factor-card{border-radius:14px;padding:14px 10px;text-align:center;}
+.factor-card .fnum{font-size:22px;font-weight:900;margin-bottom:4px;}
+.factor-card .fname{font-size:13px;font-weight:900;margin-bottom:6px;}
+.factor-card .fex{font-size:11px;font-weight:600;line-height:1.6;color:#48506a;}
+.fc-shichi{background:#e7eefc;}.fc-shichi .fnum{color:#2e6de5;}.fc-shichi .fname{color:#1f4ba8;}
+.fc-mochi{background:#e2f3e5;}.fc-mochi .fnum{color:#2e8b4f;}.fc-mochi .fname{color:#216b3b;}
+.fc-bio{background:#fce4dd;}.fc-bio .fnum{color:#dd5a3a;}.fc-bio .fname{color:#bb3c1f;}
+@media(max-width:440px){.factor-grid{grid-template-columns:1fr;}}
+
+.multi-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap;}
+.multi-tag{border-radius:10px;padding:8px 12px;font-size:12px;font-weight:900;color:#fff;}
+.multi-plus{font-size:18px;font-weight:900;color:#4256b8;}
+.multi-eq{font-size:14px;font-weight:900;color:#9aa3b2;}
+.multi-res{background:#4256b8;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:900;color:#fff;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px;}
+.compare-table th{background:#1e7a5a;color:#fff;font-weight:900;padding:8px 10px;text-align:left;}
+.compare-table td{padding:9px 10px;border-bottom:1px solid #e2e8f0;font-weight:600;color:#3c4456;line-height:1.6;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table tr:nth-child(even) td{background:#f4f8f6;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>認証の3要素</b>とは？</h1>
+    <p>「本人かどうか確かめる」ための3つの軸。知識・所持・生体を組み合わせるほど安全になる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="60" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#1e7a5a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="9" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- スマホ -->
+        <rect x="28" y="56" width="20" height="32" rx="4" fill="#fff"/>
+        <rect x="30" y="60" width="16" height="20" rx="2" fill="#b8e0d0"/>
+        <circle cx="38" cy="85" r="2" fill="#1e7a5a"/>
+        <!-- 鍵マーク -->
+        <circle cx="52" cy="65" r="8" fill="#ffd23f" opacity=".9"/>
+        <text x="52" y="69" text-anchor="middle" font-size="10" fill="#9a6b00">🔑</text>
+      </svg>
+      <div class="scene-txt">
+        会社の機密システムにログインしようとするあなた。パスワードを入れたら「SMSに送った6桁コードも入力してください」と表示された。しかもスキャンするとスマホで指紋認証も求められた。
+        <div class="scene-q">…これって3要素すべて使ってる！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：3要素 -->
+  <div class="panel p-green">
+    <span class="phead">🔐 認証の3要素</span>
+    <svg width="100%" viewBox="0 0 320 170" role="img" aria-label="認証の3要素：知識・所持・生体の3つの柱">
+      <!-- 土台 -->
+      <rect x="10" y="140" width="300" height="18" rx="6" fill="#1e7a5a"/>
+      <text x="160" y="153" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">本人確認（認証）</text>
+      <!-- 柱1：知識 -->
+      <rect x="18" y="50" width="82" height="90" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="59" y="78" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">知識</text>
+      <text x="59" y="93" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">Something</text>
+      <text x="59" y="105" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">you KNOW</text>
+      <text x="59" y="120" text-anchor="middle" font-size="8.5" font-weight="600" fill="#4a6ab0" font-family="M PLUS Rounded 1c">PW・PIN・</text>
+      <text x="59" y="132" text-anchor="middle" font-size="8.5" font-weight="600" fill="#4a6ab0" font-family="M PLUS Rounded 1c">秘密の質問</text>
+      <!-- 鍵アイコン -->
+      <circle cx="59" cy="30" r="18" fill="#2e6de5"/>
+      <text x="59" y="35" text-anchor="middle" font-size="16" font-family="sans-serif">🔑</text>
+      <!-- 柱2：所持 -->
+      <rect x="119" y="50" width="82" height="90" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="160" y="78" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">所持</text>
+      <text x="160" y="93" text-anchor="middle" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Something</text>
+      <text x="160" y="105" text-anchor="middle" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">you HAVE</text>
+      <text x="160" y="120" text-anchor="middle" font-size="8.5" font-weight="600" fill="#4a8a60" font-family="M PLUS Rounded 1c">ICカード・</text>
+      <text x="160" y="132" text-anchor="middle" font-size="8.5" font-weight="600" fill="#4a8a60" font-family="M PLUS Rounded 1c">スマホ・トークン</text>
+      <!-- スマホアイコン -->
+      <circle cx="160" cy="30" r="18" fill="#2e8b4f"/>
+      <text x="160" y="35" text-anchor="middle" font-size="16" font-family="sans-serif">📱</text>
+      <!-- 柱3：生体 -->
+      <rect x="220" y="50" width="82" height="90" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="261" y="78" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">生体</text>
+      <text x="261" y="93" text-anchor="middle" font-size="9" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">Something</text>
+      <text x="261" y="105" text-anchor="middle" font-size="9" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">you ARE</text>
+      <text x="261" y="120" text-anchor="middle" font-size="8.5" font-weight="600" fill="#9a5040" font-family="M PLUS Rounded 1c">指紋・顔・</text>
+      <text x="261" y="132" text-anchor="middle" font-size="8.5" font-weight="600" fill="#9a5040" font-family="M PLUS Rounded 1c">虹彩・静脈</text>
+      <!-- 指紋アイコン -->
+      <circle cx="261" cy="30" r="18" fill="#dd5a3a"/>
+      <text x="261" y="35" text-anchor="middle" font-size="16" font-family="sans-serif">👆</text>
+    </svg>
+
+    <div class="factor-grid">
+      <div class="factor-card fc-shichi">
+        <div class="fnum">知</div>
+        <div class="fname">知識認証</div>
+        <div class="fex">本人だけが<strong>知っている</strong>情報で認証。パスワード・暗証番号・秘密の質問など。</div>
+      </div>
+      <div class="factor-card fc-mochi">
+        <div class="fnum">所</div>
+        <div class="fname">所持認証</div>
+        <div class="fex">本人だけが<strong>持っている</strong>モノで認証。ICカード・スマホ・ワンタイムトークンなど。</div>
+      </div>
+      <div class="factor-card fc-bio">
+        <div class="fnum">生</div>
+        <div class="fname">生体認証</div>
+        <div class="fex">本人の<strong>身体的特徴</strong>で認証。指紋・顔・虹彩・声・静脈など。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 多要素認証 -->
+  <div class="panel p-orange">
+    <span class="phead">🔒 多要素認証（MFA）のしくみ</span>
+    <p>3要素のうち<strong>2種類以上を組み合わせる</strong>のが多要素認証（MFA）。同じ種類を2つ使っても多要素認証にはならない。</p>
+    <div class="multi-row">
+      <span class="multi-tag" style="background:#2e6de5;">パスワード<br><small>知識</small></span>
+      <span class="multi-plus">＋</span>
+      <span class="multi-tag" style="background:#2e8b4f;">SMSコード<br><small>所持</small></span>
+      <span class="multi-eq">＝</span>
+      <span class="multi-res">2要素認証<br><small>（MFA）</small></span>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;color:#7a6040;font-weight:700;">⚠️ パスワード＋秘密の質問は「知識＋知識」= 同じ種類。多要素認証ではない。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「2種類使えば多要素認証」は間違い</div>
+      <div class="tb">パスワード（知識）＋秘密の質問（知識）は同じ要素の2回使い。異なる「種類」の要素を組み合わせて初めて多要素認証になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「生体認証 = 最も安全」は必ずしも正しくない</div>
+      <div class="tb">生体認証は変更できない（パスワードと違い、漏れたら替えがきかない）というデメリットもある。「組み合わせが重要」と押さえる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ワンタイムパスワード（OTP）は「所持」</div>
+      <div class="tb">SMSで届くコードやトークンが生成するOTPは「所持（スマホを持っているから受け取れる）」に分類。知識ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「二段階認証」≠「二要素認証」</div>
+      <div class="tb">二段階認証はログインを2ステップに分けること（同じ要素でもOK）。二要素認証は異なる要素を2つ使うこと。厳密には別物。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      認証の3要素は<span class="hl">「知・所・生」</span><br>
+      <span style="font-size:13px;font-weight:700;color:#9a6b00;">「<strong>ちしょ生（地所生）</strong> 〜知ってる・持ってる・生まれ持った」</span><br><br>
+      Something you <span class="hl">KNOW（知）</span>・<span class="hl">HAVE（所）</span>・<span class="hl">ARE（生）</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「知ってる・持ってる・そのままの自分」で本人確認！</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

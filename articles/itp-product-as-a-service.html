@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>プロダクトアズアサービスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="プロダクトアズアサービス（Product as a Service）を図解でわかりやすく解説。モノを売るのではなくサービスとして提供するビジネスモデル、サブスクリプションとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-product-as-a-service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#be185d,#6b0f35);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,15,53,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f0b8d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563a8;--cbg:#deeaf8;}
+.p-pink{--c:#be185d;--cbg:#fce7f3;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#be185d;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+.cg-item{border-radius:11px;padding:12px;background:var(--cgb);border-top:4px solid var(--cgc);}
+.cg-item h4{font-size:13px;font-weight:900;color:var(--cgc);margin-bottom:6px;}
+.cg-item ul{list-style:none;}
+.cg-item li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.cg-item li::before{content:"・";position:absolute;left:0;}
+.cg1{--cgc:#6b7280;--cgb:#f3f4f6;}
+.cg2{--cgc:#be185d;--cgb:#fce7f3;}
+@media(max-width:400px){.compare-grid{grid-template-columns:1fr;}}
+
+.example-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.ex-item{border-radius:11px;padding:11px 14px;background:var(--eb);border-left:5px solid var(--ec);}
+.ex-item .eh{font-size:13px;font-weight:900;color:var(--ec);margin-bottom:3px;}
+.ex-item .ed{font-size:12px;font-weight:600;line-height:1.75;color:#48506a;}
+.ei1{--ec:#be185d;--eb:#fce7f3;}
+.ei2{--ec:#2563a8;--eb:#deeaf8;}
+.ei3{--ec:#2e8b4f;--eb:#e2f3e5;}
+.ei4{--ec:#d9851f;--eb:#fcefd9;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#be185d;--fbg:#fce7f3;}
+.f2{--fc:#2563a8;--fbg:#deeaf8;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ ストラテジ系・ビジネスモデル</span>
+    <h1><b>プロダクトアズアサービス</b>とは？</h1>
+    <p>製品（モノ）を「売り切り」でなく<strong>サービスとして提供</strong>し続けるビジネスモデル——所有から利用へ。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#c5d4e8"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#be185d"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        工場でコピー機を使いたい。昔は「300万円で購入」が当たり前だった。<br>
+        でも今は「月額2万円、印刷1枚◯円」で使え、故障したらすぐ修理に来てくれる。<br>
+        コピー機は「買うモノ」から「使うサービス」に変わった。
+        <div class="scene-q">→ 製品をサービスとして提供する——それが<strong>プロダクトアズアサービス（PaaS）</strong>。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 売り切り vs PaaS 対比 -->
+  <div class="panel p-pink">
+    <span class="phead">🔄 「売り切り」vs「プロダクトアズアサービス」</span>
+    <svg width="100%" viewBox="0 0 340 170" role="img" aria-label="売り切りモデルとプロダクトアズアサービスモデルの対比図">
+      <!-- 売り切り -->
+      <rect x="10" y="20" width="148" height="135" rx="12" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+      <text x="84" y="44" text-anchor="middle" font-size="12" font-weight="900" fill="#374151" font-family="M PLUS Rounded 1c">売り切りモデル</text>
+      <!-- メーカー→顧客（矢印） -->
+      <rect x="20" y="56" width="52" height="26" rx="6" fill="#fff" stroke="#6b7280" stroke-width="1.5"/>
+      <text x="46" y="69" text-anchor="middle" font-size="10" font-weight="700" fill="#374151" font-family="M PLUS Rounded 1c">メーカー</text>
+      <text x="46" y="79" text-anchor="middle" font-size="9" fill="#6b7280" font-family="M PLUS Rounded 1c">（製品を作る）</text>
+      <path d="M72 69 L90 69" stroke="#6b7280" stroke-width="2" marker-end="url(#arr2)"/>
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <path d="M0 0 L7 3 L0 6 Z" fill="#6b7280"/>
+        </marker>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <path d="M0 0 L7 3 L0 6 Z" fill="#be185d"/>
+        </marker>
+      </defs>
+      <text x="80" y="62" text-anchor="middle" font-size="9" fill="#6b7280" font-family="M PLUS Rounded 1c">売却</text>
+      <rect x="90" y="56" width="52" height="26" rx="6" fill="#fff" stroke="#6b7280" stroke-width="1.5"/>
+      <text x="116" y="69" text-anchor="middle" font-size="10" font-weight="700" fill="#374151" font-family="M PLUS Rounded 1c">顧客</text>
+      <text x="116" y="79" text-anchor="middle" font-size="9" fill="#6b7280" font-family="M PLUS Rounded 1c">（所有する）</text>
+      <text x="84" y="108" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="M PLUS Rounded 1c">取引は一回限り</text>
+      <text x="84" y="125" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="M PLUS Rounded 1c">故障は顧客の責任</text>
+      <text x="84" y="142" text-anchor="middle" font-size="10" font-weight="700" fill="#6b7280" font-family="M PLUS Rounded 1c">買い替え需要が必要</text>
+
+      <!-- PaaS -->
+      <rect x="182" y="20" width="148" height="135" rx="12" fill="#fce7f3" stroke="#be185d" stroke-width="2"/>
+      <text x="256" y="44" text-anchor="middle" font-size="12" font-weight="900" fill="#9d174d" font-family="M PLUS Rounded 1c">プロダクトアズアサービス</text>
+      <rect x="192" y="56" width="52" height="26" rx="6" fill="#fff" stroke="#be185d" stroke-width="1.5"/>
+      <text x="218" y="69" text-anchor="middle" font-size="10" font-weight="700" fill="#9d174d" font-family="M PLUS Rounded 1c">提供者</text>
+      <text x="218" y="79" text-anchor="middle" font-size="9" fill="#be185d" font-family="M PLUS Rounded 1c">（製品を所有）</text>
+      <path d="M244 66 L260 66" stroke="#be185d" stroke-width="2" marker-end="url(#arr3)"/>
+      <path d="M262 72 L246 72" stroke="#be185d" stroke-width="2" marker-end="url(#arr3)"/>
+      <text x="252" y="60" text-anchor="middle" font-size="8" fill="#be185d" font-family="M PLUS Rounded 1c">使用権</text>
+      <text x="252" y="82" text-anchor="middle" font-size="8" fill="#be185d" font-family="M PLUS Rounded 1c">料金</text>
+      <rect x="262" y="56" width="52" height="26" rx="6" fill="#fff" stroke="#be185d" stroke-width="1.5"/>
+      <text x="288" y="69" text-anchor="middle" font-size="10" font-weight="700" fill="#9d174d" font-family="M PLUS Rounded 1c">顧客</text>
+      <text x="288" y="79" text-anchor="middle" font-size="9" fill="#be185d" font-family="M PLUS Rounded 1c">（使う）</text>
+      <text x="256" y="108" text-anchor="middle" font-size="10" font-weight="700" fill="#9d174d" font-family="M PLUS Rounded 1c">継続的な関係</text>
+      <text x="256" y="125" text-anchor="middle" font-size="10" font-weight="700" fill="#9d174d" font-family="M PLUS Rounded 1c">故障は提供者が対応</text>
+      <text x="256" y="142" text-anchor="middle" font-size="10" font-weight="700" fill="#9d174d" font-family="M PLUS Rounded 1c">利用量に応じた収益</text>
+    </svg>
+  </div>
+
+  <!-- 具体例 -->
+  <div class="panel p-green">
+    <span class="phead">💡 具体例（身近なプロダクトアズアサービス）</span>
+    <ul class="example-list">
+      <li class="ex-item ei1">
+        <div class="eh">コピー機・複合機</div>
+        <div class="ed">月額固定＋印刷枚数課金。機器は提供会社が所有し、保守も込み。</div>
+      </li>
+      <li class="ex-item ei2">
+        <div class="eh">航空機エンジン（Power by the Hour）</div>
+        <div class="ed">エンジンメーカーが機器を保有し、稼働時間に応じて課金。整備も込みで航空会社に提供。</div>
+      </li>
+      <li class="ex-item ei3">
+        <div class="eh">タイヤ（Tires as a Service）</div>
+        <div class="ed">タイヤメーカーが走行距離に応じて課金。摩耗したら自動で交換に来る。</div>
+      </li>
+      <li class="ex-item ei4">
+        <div class="eh">農機具・建設機械</div>
+        <div class="ed">高価な機械を売り切らず、稼働時間・作業量に応じて課金するサービス型に転換。</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「サブスクリプション」と同じ？</div>
+      <div class="tb">サブスクリプションは月額定額で<strong>使い放題</strong>。プロダクトアズアサービスは利用量（時間・枚数・距離）に応じた課金も含む概念で<strong>より広い</strong>。同じ場合もあるが、イコールではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「IaaS」のPaaSと混同しやすい</div>
+      <div class="tb">クラウドサービスの「PaaS（Platform as a Service）」は全く別物。プロダクトアズアサービスは<strong>物理的な製品</strong>をサービス化するビジネスモデルの話。略語が一緒なので要注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「売る」から「貸す」ではなく「提供し続ける」</div>
+      <div class="tb">単なるレンタルとの違いは<strong>メンテナンス・アップグレードが込み</strong>であること。提供者が製品の状態に責任を持ち続ける点が本質。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「製品を所有させずに使用権を提供」「利用量に応じた課金」「保守込み」が出たら → <strong>プロダクトアズアサービス</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「モノ売るな、サービス売れ」</span>＝Product as a Service！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">コピー機は「買う時代」終わり→「使った分だけ払う時代」へ</span><br><br>
+      クラウドPaaSとの混同防止：<span class="hl">「物理モノ＝プロダクトアズアサービス」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「触れる機械が月額で使える」→ プロダクトアズアサービス（ビジネスモデル）</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

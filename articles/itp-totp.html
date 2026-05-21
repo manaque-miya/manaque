@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TOTP（時刻同期ワンタイムパスワード）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="TOTPとは何か、仕組み・使われ方・HOTPとの違い、ITパスポート試験のひっかけポイントまで図解でわかりやすく解説。">
+<link rel="canonical" href="https://example.com/itp-totp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a7abf,#0e3f6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,63,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8dcf3;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1a7abf;--cbg:#e0f0fb;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a7abf;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a7abf;--fbg:#e8f4fd;}
+.f2{--fc:#4256b8;--fbg:#edf0fc;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>TOTP</b>とは？</h1>
+    <p>時刻を使って「30秒で使い捨て」のパスワードを生成する、スマホ認証の仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <rect x="14" y="8" width="44" height="74" rx="7" fill="#1a7abf"/>
+        <rect x="18" y="14" width="36" height="58" rx="4" fill="#e8f4fd"/>
+        <rect x="24" y="24" width="24" height="16" rx="3" fill="#fff" stroke="#1a7abf" stroke-width="1.5"/>
+        <text x="36" y="36" text-anchor="middle" font-size="11" font-weight="900" fill="#1a7abf" font-family="M PLUS Rounded 1c">482391</text>
+        <rect x="22" y="46" width="28" height="4" rx="2" fill="#c8dcf3"/>
+        <rect x="22" y="54" width="28" height="4" rx="2" fill="#c8dcf3"/>
+        <circle cx="36" cy="78" r="3" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        ネットバンクにログインしようとしたら「認証アプリの6桁コードを入力してください」と表示。スマホのGoogle Authenticatorを開くと、<strong>30秒ごとに変わる数字</strong>が表示されている。
+        <div class="scene-q">…このワンタイムパスワード、どうやって生成してるの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 仕組み図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔑 TOTPの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="TOTPの仕組み：共通の秘密鍵と現在時刻をハッシュ計算して同じコードを生成">
+      <!-- サーバー側 -->
+      <rect x="10" y="30" width="100" height="140" rx="12" fill="#e0f0fb" stroke="#1a7abf" stroke-width="2"/>
+      <text x="60" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#0e3f6e" font-family="M PLUS Rounded 1c">サーバー</text>
+      <rect x="22" y="62" width="76" height="24" rx="6" fill="#1a7abf"/>
+      <text x="60" y="79" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">秘密鍵（共有）</text>
+      <rect x="22" y="92" width="76" height="24" rx="6" fill="#4256b8"/>
+      <text x="60" y="109" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">現在時刻</text>
+      <rect x="22" y="122" width="76" height="24" rx="6" fill="#2e8b4f"/>
+      <text x="60" y="139" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">→ OTP生成</text>
+      <text x="60" y="162" text-anchor="middle" font-size="18" font-weight="900" fill="#1a7abf" font-family="M PLUS Rounded 1c">482391</text>
+
+      <!-- 矢印 -->
+      <path d="M120 100 L220 100" stroke="#9aa3b2" stroke-width="2.5" marker-end="url(#arr)"/>
+      <text x="170" y="93" text-anchor="middle" font-size="10" font-weight="800" fill="#9aa3b2" font-family="M PLUS Rounded 1c">一致すれば認証OK</text>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+
+      <!-- スマホ側 -->
+      <rect x="230" y="30" width="100" height="140" rx="12" fill="#e0f0fb" stroke="#1a7abf" stroke-width="2"/>
+      <text x="280" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#0e3f6e" font-family="M PLUS Rounded 1c">認証アプリ</text>
+      <rect x="242" y="62" width="76" height="24" rx="6" fill="#1a7abf"/>
+      <text x="280" y="79" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">秘密鍵（共有）</text>
+      <rect x="242" y="92" width="76" height="24" rx="6" fill="#4256b8"/>
+      <text x="280" y="109" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">現在時刻</text>
+      <rect x="242" y="122" width="76" height="24" rx="6" fill="#2e8b4f"/>
+      <text x="280" y="139" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">→ OTP生成</text>
+      <text x="280" y="162" text-anchor="middle" font-size="18" font-weight="900" fill="#1a7abf" font-family="M PLUS Rounded 1c">482391</text>
+    </svg>
+    <p style="font-size:12.5px;color:#48506a;margin-top:10px;line-height:1.8;font-weight:600;">
+      <strong>秘密鍵（事前に共有）＋現在時刻</strong>をハッシュ計算すると、サーバーもスマホも同じ数値が出る。<br>
+      時刻が変わると答えも変わる → 30秒ごとに使い捨ての数値が自動更新される。
+    </p>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🔄 TOTP認証の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 初回登録：秘密鍵を共有</div><div class="fb">サービスがQRコードを表示 → スマホの認証アプリで読み取り → 秘密鍵を双方で保持。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② ログイン：IDとパスワードを入力</div><div class="fb">通常の第1要素認証（知識）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 6桁コードを入力（30秒以内）</div><div class="fb">認証アプリが表示する数字を入力。30秒ごとに変わるため、傍受されても使い捨て。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 一致確認 → ログイン成功</div><div class="fb">サーバー側でも同じ計算をして値が一致すればOK。ネットワーク送信ゼロで検証できる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">HOTPと混同しやすい</div>
+      <div class="tb">HOTPはカウンタ（使用回数）ベース、TOTPは<strong>時刻</strong>ベース。T＝Time（時刻）と覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「通信で毎回パスワードを送る」は誤り</div>
+      <div class="tb">TOTPはサーバーとスマホが<strong>それぞれ独立して計算</strong>する。パスワード自体をネットワーク送信するわけではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「毎回ランダムに変わる」は正確ではない</div>
+      <div class="tb">ランダムではなく<strong>時刻＋秘密鍵のハッシュ</strong>で決定的に計算される。「時刻同期」が名前の由来。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">多要素認証（MFA）の1要素</div>
+      <div class="tb">TOTPはあくまで認証要素の1つ。「所持（スマホ）」の証明として、「知識（パスワード）」と組み合わせて多要素認証を構成する。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">T（時計）OTP</span>＝<strong>時計がチクタク刻むたびにパスワードも変わる！</strong><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">T＝Time（時刻）／30秒で使い捨て／傍受しても次には使えない</span><br><br>
+      ゴロ：<span class="hl">「とっとと変わる（TOTP）、時計みながら」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">TOTPの「T」は「Time（時刻）」→ 時刻が変わればコードも変わる</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-totp</div>
+
+</div>
+</body>
+</html>

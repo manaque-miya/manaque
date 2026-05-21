@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>フォールトトレランスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="フォールトトレランスをわかりやすく解説。障害が起きても止まらないシステムの仕組み、フォールトアボイダンスとの違い、多重化・冗長化の具体例をSVG図解で紹介。ITパスポート試験対策。">
+<link rel="canonical" href="https://example.com/itp-fault-tolerance">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6e3c,#0c3d21);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(12,61,33,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#7eff9e 56%,#7eff9e 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b0d9be;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#1a6e3c;--cbg:#dff3e6;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6e3c;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.ccard{border-radius:13px;padding:13px;}
+.ccard h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.ccard p{font-size:12px;line-height:1.75;font-weight:600;color:#48506a;}
+.ccard-green{background:#dff3e6;}.ccard-green h4{color:#1a6e3c;}
+.ccard-orange{background:#fcefd9;}.ccard-orange h4{color:#d9851f;}
+@media(max-width:420px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>フォールトトレランス</b>とは？</h1>
+    <p>障害が発生しても動き続ける。壊れても止まらない設計思想。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="4" fill="#1a2a1a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="20" rx="5" fill="#c6d8cc"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#1a6e3c"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 17 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f2a"/>
+        <rect x="28" y="31" width="16" height="7" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- サーバーアイコン -->
+        <rect x="40" y="55" width="24" height="7" rx="2" fill="#1a6e3c"/>
+        <circle cx="59" cy="58" r="1.5" fill="#7eff9e"/>
+        <rect x="40" y="64" width="24" height="7" rx="2" fill="#2e8b4f"/>
+        <circle cx="59" cy="67" r="1.5" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        夜中2時、本番サーバーのディスク1台が突然クラッシュ！<br>
+        でも…サービスは普通に動いている。<strong>なぜ止まらないの？</strong>
+        <div class="scene-q">→ それがフォールトトレランスの力。<br>壊れてもサービスを続ける仕組みがあるから。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：多重化のしくみ -->
+  <div class="panel p-blue">
+    <span class="phead">🔩 多重化で「壊れても止まらない」を実現</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="フォールトトレランスの多重化図：2台のサーバーが並列に動き、1台が故障しても継続稼働">
+      <!-- ユーザー -->
+      <circle cx="170" cy="24" r="16" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <circle cx="165" cy="18" r="4" fill="#2e6de5"/>
+      <circle cx="175" cy="18" r="4" fill="#2e6de5"/>
+      <text x="170" y="50" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">ユーザー</text>
+      <!-- 分岐線 -->
+      <line x1="170" y1="52" x2="170" y2="70" stroke="#aab0bd" stroke-width="2"/>
+      <line x1="170" y1="70" x2="95" y2="88" stroke="#aab0bd" stroke-width="2"/>
+      <line x1="170" y1="70" x2="245" y2="88" stroke="#aab0bd" stroke-width="2"/>
+      <!-- サーバーA（正常） -->
+      <rect x="52" y="88" width="86" height="54" rx="10" fill="#dff3e6" stroke="#1a6e3c" stroke-width="2.5"/>
+      <rect x="62" y="97" width="66" height="10" rx="3" fill="#1a6e3c"/>
+      <rect x="62" y="111" width="66" height="10" rx="3" fill="#2e8b4f"/>
+      <circle cx="122" cy="102" r="3" fill="#7eff9e"/>
+      <circle cx="122" cy="116" r="3" fill="#7eff9e"/>
+      <text x="95" y="156" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6e3c" font-family="M PLUS Rounded 1c">サーバー A</text>
+      <text x="95" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">✓ 稼働中</text>
+      <!-- サーバーB（故障） -->
+      <rect x="202" y="88" width="86" height="54" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2.5" stroke-dasharray="5 3"/>
+      <rect x="212" y="97" width="66" height="10" rx="3" fill="#dd5a3a"/>
+      <rect x="212" y="111" width="66" height="10" rx="3" fill="#f4a090"/>
+      <text x="245" y="156" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">サーバー B</text>
+      <text x="245" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">✕ 故障</text>
+      <!-- バツ印 -->
+      <line x1="220" y1="96" x2="270" y2="146" stroke="#dd5a3a" stroke-width="3" opacity=".5"/>
+      <line x1="270" y1="96" x2="220" y2="146" stroke="#dd5a3a" stroke-width="3" opacity=".5"/>
+      <!-- 継続稼働バッジ -->
+      <rect x="85" y="186" width="170" height="40" rx="12" fill="#1a6e3c"/>
+      <text x="170" y="202" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">B が壊れても A が引き継ぐ</text>
+      <text x="170" y="218" text-anchor="middle" font-size="12" font-weight="900" fill="#7eff9e" font-family="M PLUS Rounded 1c">サービスは止まらない！</text>
+    </svg>
+    <p>フォールトトレランスは<strong>「障害が発生することを前提」</strong>に設計する考え方。サーバーやディスクを多重化（冗長化）し、1つが壊れても残りで稼働を継続する。</p>
+  </div>
+
+  <!-- フォールトアボイダンスとの比較 -->
+  <div class="panel p-orange">
+    <span class="phead">⚖️ フォールトアボイダンスとの違い</span>
+    <p>よく試験で対比して出る2つの考え方。混同注意！</p>
+    <div class="compare-grid">
+      <div class="ccard ccard-green">
+        <h4>フォールトトレランス</h4>
+        <p>障害は起きる前提。起きても<strong>止まらない</strong>設計。<br>例：RAID、クラスタリング、冗長電源</p>
+      </div>
+      <div class="ccard ccard-orange">
+        <h4>フォールトアボイダンス</h4>
+        <p>障害を<strong>未然に防ぐ</strong>設計。<br>例：高品質な部品、定期メンテ、事前テスト</p>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;">「<strong>トレランス</strong>＝tolerance（耐える・許容する）」で覚えると混同しない。障害を<strong>耐える</strong>のがトレランス、障害を<strong>避ける</strong>のがアボイダンス。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「故障しないシステム」ではない</div>
+      <div class="tb">フォールトトレランスは「故障ゼロ」を目指すのではなく、「故障しても止まらない」を目指す。「障害が起きても継続」という表現が正解。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">フォールバックと混同しやすい</div>
+      <div class="tb">フォールバックは「障害発生時に縮退（機能を絞って）して継続」する手法の一つ。フォールトトレランスは「概念・設計思想」であり、フォールバックはその実現手段のひとつ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">冗長化＝フォールトトレランスではない</div>
+      <div class="tb">冗長化（RAID・クラスタリング等）はフォールトトレランスを実現するための<strong>手段</strong>。概念と手段を区別して答えること。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「耐えるトレ」</span>で フォールトトレランス！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">ト<span style="font-size:14px;color:#5c4500;">レ</span>ランス ＝ 耐<span style="font-size:14px;color:#5c4500;">ト</span>レ ＝ 障害を「耐え忍んで継続」</span><br><br>
+      フォールトア<span class="hl">ボイ</span>ダンス ＝ ボイ（ボイコット）＝ <span class="hl">拒否・回避</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">障害を"拒否（避ける）"のがアボイダンス</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

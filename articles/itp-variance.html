@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>分散とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="分散（統計）の意味・求め方をわかりやすく解説。標準偏差との違い、データのばらつきを表す指標、ITパスポート試験の計算問題のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-variance">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2d5bb5,#0e2764);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,39,100,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0d2f7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2d5bb5;--cbg:#dde5f8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2d5bb5;}
+
+.formula-box{background:#eef3fd;border:2px solid #2d5bb5;border-radius:14px;padding:16px 18px;margin:12px 0;text-align:center;}
+.formula-box .fml-title{font-size:11px;font-weight:900;color:#2d5bb5;margin-bottom:8px;}
+.formula-box .fml-main{font-size:18px;font-weight:900;color:#0e2764;line-height:1.8;}
+.formula-box .fml-note{font-size:11px;font-weight:700;color:#6272a0;margin-top:6px;line-height:1.7;}
+
+.calc-step{background:#f4f6fc;border-radius:12px;padding:12px 14px;margin-bottom:8px;}
+.calc-step:last-child{margin-bottom:0;}
+.calc-step .cs-head{font-size:12.5px;font-weight:900;color:#2d5bb5;margin-bottom:5px;}
+.calc-step .cs-body{font-size:13px;font-weight:700;color:#3c4456;line-height:1.75;}
+.calc-step .cs-body .num{font-size:14px;font-weight:900;color:#0e2764;background:#dde5f8;border-radius:4px;padding:1px 6px;}
+
+.comp-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12.5px;}
+.comp-table th{background:#4256b8;color:#fff;font-weight:900;padding:8px 10px;text-align:center;}
+.comp-table th:first-child{border-radius:8px 0 0 0;}
+.comp-table th:last-child{border-radius:0 8px 0 0;}
+.comp-table td{padding:8px 10px;text-align:center;font-weight:700;border-bottom:1px solid #e4e7f7;}
+.comp-table tr:nth-child(odd) td{background:#f4f6fc;}
+.comp-table tr:nth-child(even) td{background:#fff;}
+.comp-table .left-col{text-align:left;color:#1f4ba8;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（統計）</span>
+    <h1><b>分散</b>とは？</h1>
+    <p>データのばらつき度合いを数値で表す指標。「平均からどれだけ離れているか」の二乗平均。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#0e2764" opacity=".1"/>
+        <rect x="10" y="58" width="52" height="22" rx="6" fill="#c0d2f7"/>
+        <rect x="14" y="36" width="44" height="30" rx="9" fill="#2d5bb5"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 棒グラフ的な点のばらつき -->
+        <circle cx="20" cy="30" r="3" fill="#ffd23f"/>
+        <circle cx="28" cy="22" r="3" fill="#ffd23f"/>
+        <circle cx="36" cy="28" r="3" fill="#ffd23f"/>
+        <circle cx="44" cy="20" r="3" fill="#ffd23f"/>
+        <circle cx="52" cy="26" r="3" fill="#ffd23f"/>
+        <line x1="18" y1="35" x2="54" y2="35" stroke="#ffd23f" stroke-width="1.5" stroke-dasharray="2 2"/>
+      </svg>
+      <div class="scene-txt">
+        クラスのテストの点数を見てみると、A組は「50・60・70・80・90点」、B組は「65・68・70・72・75点」。平均はどちらも70点。でもA組はバラバラ、B組はみんな似ている。この<strong>「ばらつきの大きさ」</strong>を数値で表せないか？
+        <div class="scene-q">…そのための指標を何と呼ぶ？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：分散の概念 -->
+  <div class="panel p-blue">
+    <span class="phead">📊 分散のイメージ（ばらつきの大きさ）</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="分散の概念：ばらつきが大きいデータと小さいデータの比較">
+      <!-- 左：ばらつき大 -->
+      <text x="85" y="20" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">ばらつき大（分散が大）</text>
+      <!-- 平均線 -->
+      <line x1="20" y1="120" x2="150" y2="120" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <text x="155" y="124" font-size="9" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">平均</text>
+      <!-- データ点 -->
+      <circle cx="30" cy="75" r="6" fill="#dd5a3a" opacity=".8"/>
+      <circle cx="55" cy="145" r="6" fill="#dd5a3a" opacity=".8"/>
+      <circle cx="80" cy="60" r="6" fill="#dd5a3a" opacity=".8"/>
+      <circle cx="105" cy="155" r="6" fill="#dd5a3a" opacity=".8"/>
+      <circle cx="130" cy="70" r="6" fill="#dd5a3a" opacity=".8"/>
+      <!-- 差分の矢印 -->
+      <line x1="30" y1="75" x2="30" y2="120" stroke="#dd5a3a" stroke-width="1.5"/>
+      <line x1="55" y1="145" x2="55" y2="120" stroke="#dd5a3a" stroke-width="1.5"/>
+      <line x1="80" y1="60" x2="80" y2="120" stroke="#dd5a3a" stroke-width="1.5"/>
+      <line x1="105" y1="155" x2="105" y2="120" stroke="#dd5a3a" stroke-width="1.5"/>
+      <line x1="130" y1="70" x2="130" y2="120" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="85" y="170" text-anchor="middle" font-size="10" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">差が大きい → 分散が大</text>
+
+      <!-- 右：ばらつき小 -->
+      <text x="255" y="20" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ばらつき小（分散が小）</text>
+      <line x1="190" y1="120" x2="320" y2="120" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <text x="325" y="124" font-size="9" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">平均</text>
+      <circle cx="200" cy="110" r="6" fill="#2e8b4f" opacity=".8"/>
+      <circle cx="225" cy="128" r="6" fill="#2e8b4f" opacity=".8"/>
+      <circle cx="250" cy="115" r="6" fill="#2e8b4f" opacity=".8"/>
+      <circle cx="275" cy="125" r="6" fill="#2e8b4f" opacity=".8"/>
+      <circle cx="300" cy="112" r="6" fill="#2e8b4f" opacity=".8"/>
+      <line x1="200" y1="110" x2="200" y2="120" stroke="#2e8b4f" stroke-width="1.5"/>
+      <line x1="225" y1="128" x2="225" y2="120" stroke="#2e8b4f" stroke-width="1.5"/>
+      <line x1="250" y1="115" x2="250" y2="120" stroke="#2e8b4f" stroke-width="1.5"/>
+      <line x1="275" y1="125" x2="275" y2="120" stroke="#2e8b4f" stroke-width="1.5"/>
+      <line x1="300" y1="112" x2="300" y2="120" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="255" y="170" text-anchor="middle" font-size="10" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">差が小さい → 分散が小</text>
+    </svg>
+
+    <!-- 公式 -->
+    <div class="formula-box">
+      <div class="fml-title">▼ 分散の公式</div>
+      <div class="fml-main">分散 ＝ （各データ − 平均）² の合計 ÷ データ数</div>
+      <div class="fml-note">※二乗するのは「マイナスとプラスが打ち消し合わないようにするため」</div>
+    </div>
+  </div>
+
+  <!-- 計算手順 -->
+  <div class="panel p-indigo">
+    <span class="phead">🧮 計算手順（具体例：2・4・6・8・10）</span>
+    <div class="calc-step">
+      <div class="cs-head">① 平均を求める</div>
+      <div class="cs-body">（2＋4＋6＋8＋10）÷ 5 ＝ <span class="num">6</span></div>
+    </div>
+    <div class="calc-step">
+      <div class="cs-head">② 各データから平均を引いて二乗する</div>
+      <div class="cs-body">
+        (2−6)²＝16　　(4−6)²＝4　　(6−6)²＝0　　(8−6)²＝4　　(10−6)²＝16
+      </div>
+    </div>
+    <div class="calc-step">
+      <div class="cs-head">③ 二乗の合計をデータ数で割る</div>
+      <div class="cs-body">（16＋4＋0＋4＋16）÷ 5 ＝ <span class="num">分散 ＝ 8</span></div>
+    </div>
+    <div class="calc-step" style="background:#ddf3ec;">
+      <div class="cs-head" style="color:#2e8b4f;">④ 標準偏差はその平方根</div>
+      <div class="cs-body">標準偏差 ＝ √8 ≒ <span class="num" style="background:#ddf3ec;color:#0d4f3f;">2.83</span>（分散と同じ単位に戻したもの）</div>
+    </div>
+  </div>
+
+  <!-- 分散 vs 標準偏差 -->
+  <div class="panel p-green">
+    <span class="phead">📋 分散 vs 標準偏差</span>
+    <table class="comp-table">
+      <thead>
+        <tr><th>指標</th><th>計算</th><th>単位</th><th>使い方</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="left-col">分散</td>
+          <td>偏差の二乗平均</td>
+          <td>元の単位²<br>（例：点²）</td>
+          <td>ばらつきの大小比較</td>
+        </tr>
+        <tr>
+          <td class="left-col">標準偏差</td>
+          <td>分散の√（平方根）</td>
+          <td>元と同じ<br>（例：点）</td>
+          <td>ばらつきを実感値で把握</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「分散が大きい＝データが良い」ではない</div>
+      <div class="tb">品質管理では分散が小さいほど安定している（製品のばらつきが少ない）。「分散が大きい＝問題あり」の場合も多い。大きい＝良いとは限らない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">分散 vs 標準偏差の混同</div>
+      <div class="tb">分散は「二乗した単位（cm²、点²）」、標準偏差は「元の単位（cm、点）」。試験に「標準偏差を求めよ」と出たら<strong>分散の平方根を取ること</strong>。分散を答えてはいけない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">平均が同じでも分散は違う</div>
+      <div class="tb">試験頻出。「平均が等しい2つのデータのばらつきの違いを表すには？」→ 分散（または標準偏差）を使う。平均はばらつきを表さない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">二乗する理由を問われる</div>
+      <div class="tb">偏差（各データ−平均）は+と−が混在する。そのまま足すと0になってしまう。<strong>二乗してすべてプラスにする</strong>ことで「離れている度合い」を正しく合計できる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      分散の計算ゴロ：<br>
+      <span class="hl">「引いて（偏差）・二乗して・足して・割る」</span><br>
+      <span style="font-size:13px;font-weight:800;color:#9a6b00;">ひ→に→た→わ（「火に炊いた話」）</span><br><br>
+      分散と標準偏差の区別：<br>
+      <span class="hl">「分散は二乗のまま」</span>＝単位が違う（違和感あり）<br>
+      <span class="hl">「標準偏差は√でリセット」</span>＝単位が元に戻る（実感できる）
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

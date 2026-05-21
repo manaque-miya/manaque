@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>オープンデータとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="オープンデータを「誰でも無償・再利用・再配布できる公開データ」として解説。政府統計・CC0ライセンス・活用例、ITパスポート試験のポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp-open-data">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+/* ヒーロー */
+.hero{background:linear-gradient(155deg,#1a6fb8,#0d3a7a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,58,122,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c2d8f7;}
+
+/* パネル共通 */
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1a6fb8;--cbg:#e2eef8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+/* シーン */
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6fb8;}
+
+/* 3条件ボックス */
+.cond-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;}
+.cond-cell{border-radius:12px;padding:10px 9px;text-align:center;}
+.cond-cell .icon{font-size:20px;margin-bottom:4px;}
+.cond-cell h4{font-size:12px;font-weight:900;margin-bottom:3px;}
+.cond-cell p{font-size:10.5px;font-weight:600;line-height:1.6;color:#48506a;}
+.cc1{background:#e2eef8;}.cc1 h4{color:#1a6fb8;}
+.cc2{background:#e2f3e5;}.cc2 h4{color:#2e8b4f;}
+.cc3{background:#fcefd9;}.cc3 h4{color:#d9851f;}
+@media(max-width:440px){.cond-grid{grid-template-columns:1fr;}}
+
+/* 活用例リスト */
+.use-list{list-style:none;margin-top:6px;}
+.use-list li{font-size:13px;font-weight:600;line-height:1.85;color:#3c4456;padding-left:22px;position:relative;margin-bottom:4px;}
+.use-list li::before{content:"▶";position:absolute;left:0;color:#1a6fb8;font-weight:900;font-size:11px;top:3px;}
+
+/* フロー */
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6fb8;--fbg:#e8f2fc;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+/* ひっかけ */
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+/* 覚え方 */
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>オープンデータ</b>とは？</h1>
+    <p>政府・自治体・企業が保有するデータを「誰でも・無償で・再利用・再配布できる形式」で公開すること。社会全体の活用を前提にする。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="62" width="58" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="16" y="40" width="46" height="30" rx="9" fill="#1a6fb8"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- 地図ピン風アイコン -->
+        <circle cx="52" cy="62" r="8" fill="#ffd23f" stroke="#e0a800" stroke-width="1.5"/>
+        <circle cx="52" cy="60" r="3" fill="#5c4500"/>
+        <line x1="52" y1="63" x2="52" y2="70" stroke="#e0a800" stroke-width="2"/>
+      </svg>
+      <div class="scene-txt">
+        スタートアップのあなた。「地元の混雑する道路を避けるアプリ」を作りたい。<br>
+        国土交通省のサイトを見ると、道路交通センサスのデータがCSVで無料公開されていた。ライセンス表記は「CC BY」（出典明記で商用可）。
+        <div class="scene-q">…無料で使えるこのデータは何というの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：オープンデータの3つの条件 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔺 オープンデータの3つの条件</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="オープンデータの3条件：無償・再利用可・再配布可を示す図">
+      <!-- 中心バッジ -->
+      <rect x="105" y="56" width="130" height="48" rx="14" fill="#1a6fb8"/>
+      <text x="170" y="78" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">オープンデータ</text>
+      <text x="170" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#ffd23f" font-family="M PLUS Rounded 1c">3つの条件を満たす</text>
+      <!-- 左の円（無償） -->
+      <circle cx="48" cy="80" r="38" fill="#e2eef8" stroke="#1a6fb8" stroke-width="2"/>
+      <text x="48" y="72" text-anchor="middle" font-size="10" font-weight="900" fill="#1a6fb8" font-family="M PLUS Rounded 1c">① 無償</text>
+      <text x="48" y="86" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">誰でも</text>
+      <text x="48" y="99" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">コストゼロ</text>
+      <!-- 右上の円（再利用可） -->
+      <circle cx="292" cy="50" r="38" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="292" y="42" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">② 再利用可</text>
+      <text x="292" y="56" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">商用・加工</text>
+      <text x="292" y="69" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">OK</text>
+      <!-- 右下の円（再配布可） -->
+      <circle cx="292" cy="120" r="38" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="292" y="112" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">③ 再配布可</text>
+      <text x="292" y="126" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">他者への</text>
+      <text x="292" y="139" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">配布OK</text>
+      <!-- 連結線 -->
+      <line x1="86" y1="80" x2="105" y2="80" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="235" y1="80" x2="254" y2="60" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="235" y1="90" x2="254" y2="110" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+    <div class="cond-grid">
+      <div class="cond-cell cc1"><div class="icon">🔓</div><h4>① 無償・無制限</h4><p>アクセス・利用に費用がかからない</p></div>
+      <div class="cond-cell cc2"><div class="icon">🔄</div><h4>② 再利用可</h4><p>加工・商用利用を含む二次利用が可能</p></div>
+      <div class="cond-cell cc3"><div class="icon">📤</div><h4>③ 再配布可</h4><p>他者への共有・配布が認められる</p></div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ オープンデータの主な提供元と活用例</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">提供元：国・自治体・研究機関</div><div class="fb">国土交通省の道路データ・気象庁の気象データ・e-Stat（政府統計の総合窓口）・地理院地図など。CC BY・CC0等のライセンスで公開。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">活用例：アプリ・サービス開発</div><div class="fb">地域の渋滞回避アプリ・観光案内アプリ・不動産価格比較・防災マップ。公共データを無料で使い民間サービスを作れる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">官民データ活用推進基本法（2016年）</div><div class="fb">国・地方公共団体にオープンデータの推進を義務付けた法律。企業・個人の活用も促進。（→ 詳細は itp-open-data-law）</div></div>
+    </div>
+    <p style="margin-top:10px;">代表的なライセンス：<strong>CC BY</strong>（出典明記で商用可）、<strong>CC0</strong>（著作権放棄・何でもOK）、<strong>政府標準利用規約</strong>（日本の官公庁データ向け）。</p>
+    <ul class="use-list" style="margin-top:6px;">
+      <li>e-Stat（統計局）：人口・経済・労働の統計データ</li>
+      <li>国土数値情報：地形・施設・交通網のGISデータ</li>
+      <li>DATA.GO.JP：政府のオープンデータポータル</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「無料公開＝オープンデータ」は誤り</div>
+      <div class="tb">無料公開でも<strong>再利用・再配布が禁止</strong>されているデータはオープンデータではない。3条件（無償・再利用・再配布）をすべて満たす必要がある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">個人情報との混同</div>
+      <div class="tb">オープンデータは<strong>個人が特定できない</strong>非個人情報が対象。個人情報をオープンデータとして公開することは原則不可（個人情報保護法の対象）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ビッグデータと混同しやすい</div>
+      <div class="tb">ビッグデータは「大量・高速・多様なデータ全般」の概念。オープンデータは「公開・利用条件が自由なデータ」。規模でなくライセンスが定義する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「誰でも・無償・再利用・再配布可」の4キーワードが揃ったら → <strong>オープンデータ</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「オープン＝鍵なし・タダ・自由に使い回せる」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">無償（タダ）＋再利用可（使い回し）＋再配布可（配り回し）の3点セット。</span><br><br>
+    <span class="hl">「ただで使え、ただで配れ、ただで改造せよ」＝オープンデータ</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ただ（無償）＋使え（再利用）＋配れ（再配布）→ 3つそろって初めてオープン</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

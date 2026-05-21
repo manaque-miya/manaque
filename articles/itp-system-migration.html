@@ -1,108 +1,208 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>システム移行（パラレル・一斉・段階）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="システム移行（パラレル・一斉・段階）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-system-migration.html">
-<meta property="og:title" content="システム移行（パラレル・一斉・段階）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="システム移行（パラレル・一斉・段階）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-system-migration.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>システム移行とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="システム移行の4つの方式（一斉・段階的・並行・パイロット）をわかりやすく図解。各方式のリスク・メリット・ITパスポート試験のひっかけポイントを解説。">
+<link rel="canonical" href="https://example.com/itp-system-migration">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2a7a6a,#145048);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,80,72,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8dcd8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2a7a6a;}
+
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.mcard{border-radius:12px;padding:12px 11px;border:2px solid var(--mc);}
+.mcard h4{font-size:12.5px;font-weight:900;color:var(--mc);margin-bottom:5px;}
+.mcard .mtag{display:inline-block;background:var(--mc);color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:8px;margin-bottom:5px;}
+.mcard p{font-size:11.5px;line-height:1.7;color:#48506a;font-weight:600;}
+.mcard .risk{font-size:11px;color:#dd5a3a;font-weight:800;margin-top:5px;}
+.card-a{--mc:#2e6de5;background:#eef3fd;}
+.card-b{--mc:#2e8b4f;background:#eef8f1;}
+.card-c{--mc:#d9851f;background:#fdf4e4;}
+.card-d{--mc:#7b4fa8;background:#f3edfb;}
+@media(max-width:480px){.mgrid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">システム移行（パラレル・一斉・段階）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">システム移行（パラレル・一斉・段階）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>システム移行</b>とは？</h1>
+    <p>古いシステムから新しいシステムへ切り替える際の方式と、リスクのコントロール術。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 旧システム（左）→ 新システム（右）のイメージ -->
+        <rect x="4" y="40" width="28" height="22" rx="5" fill="#9aa3b2"/>
+        <text x="18" y="55" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">旧</text>
+        <line x1="34" y1="51" x2="40" y2="51" stroke="#ffd23f" stroke-width="2.5" marker-end="url(#a2)"/>
+        <defs><marker id="a2" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><polygon points="0 0,6 2.5,0 5" fill="#ffd23f"/></marker></defs>
+        <rect x="42" y="40" width="28" height="22" rx="5" fill="#2a7a6a"/>
+        <text x="56" y="55" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">新</text>
+        <!-- 人物 -->
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 18 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="7" fill="#f4c89a"/>
+        <rect x="10" y="62" width="52" height="20" rx="6" fill="#c8d8ee"/>
+      </svg>
+      <div class="scene-txt">
+        会社が20年使ってきた基幹システムを新しくリプレイスすることになった。担当者として「どうやって切り替えるか」を検討することに。
+        <div class="scene-q">…一気に変える？少しずつ変える？両方動かす？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：移行方式の比較 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔷 移行方式の4タイプ（図解）</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="システム移行の4方式：一斉移行・段階的移行・並行移行・パイロット移行の比較図">
+      <!-- 一斉移行 -->
+      <rect x="10" y="10" width="150" height="70" rx="10" fill="#eef3fd" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="85" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">① 一斉移行</text>
+      <!-- 旧→新の一気切り替え -->
+      <rect x="20" y="35" width="50" height="16" rx="4" fill="#9aa3b2"/>
+      <text x="45" y="47" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">旧</text>
+      <line x1="73" y1="43" x2="83" y2="43" stroke="#2e6de5" stroke-width="2"/>
+      <polygon points="83,40 90,43 83,46" fill="#2e6de5"/>
+      <rect x="93" y="35" width="50" height="16" rx="4" fill="#2e6de5"/>
+      <text x="118" y="47" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">新（全社）</text>
+      <text x="85" y="72" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a6a8a" font-family="M PLUS Rounded 1c">コスト低・リスク高</text>
+
+      <!-- 段階的移行 -->
+      <rect x="180" y="10" width="150" height="70" rx="10" fill="#eef8f1" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="255" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">② 段階的移行</text>
+      <rect x="190" y="35" width="30" height="14" rx="3" fill="#2e8b4f"/>
+      <text x="205" y="46" text-anchor="middle" font-size="7.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">新①</text>
+      <rect x="225" y="35" width="30" height="14" rx="3" fill="#2e8b4f"/>
+      <text x="240" y="46" text-anchor="middle" font-size="7.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">新②</text>
+      <rect x="260" y="35" width="30" height="14" rx="3" fill="#2e8b4f"/>
+      <text x="275" y="46" text-anchor="middle" font-size="7.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">新③</text>
+      <text x="255" y="70" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a6a8a" font-family="M PLUS Rounded 1c">リスク分散・コスト増</text>
+
+      <!-- 並行移行 -->
+      <rect x="10" y="100" width="150" height="70" rx="10" fill="#fdf4e4" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="85" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">③ 並行移行</text>
+      <rect x="20" y="125" width="50" height="14" rx="3" fill="#9aa3b2"/>
+      <text x="45" y="136" text-anchor="middle" font-size="7.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">旧（同時稼動）</text>
+      <rect x="83" y="125" width="50" height="14" rx="3" fill="#d9851f"/>
+      <text x="108" y="136" text-anchor="middle" font-size="7.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">新（同時稼動）</text>
+      <text x="85" y="162" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a6a8a" font-family="M PLUS Rounded 1c">安全・コスト最大</text>
+
+      <!-- パイロット移行 -->
+      <rect x="180" y="100" width="150" height="70" rx="10" fill="#f3edfb" stroke="#7b4fa8" stroke-width="1.5"/>
+      <text x="255" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#5c2e8a" font-family="M PLUS Rounded 1c">④ パイロット移行</text>
+      <rect x="190" y="125" width="40" height="14" rx="3" fill="#7b4fa8"/>
+      <text x="210" y="136" text-anchor="middle" font-size="7.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">一部先行</text>
+      <line x1="233" y1="132" x2="243" y2="132" stroke="#7b4fa8" stroke-width="2"/>
+      <polygon points="243,129 250,132 243,135" fill="#7b4fa8"/>
+      <rect x="253" y="125" width="40" height="14" rx="3" fill="#2e8b4f"/>
+      <text x="273" y="136" text-anchor="middle" font-size="7.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">全社展開</text>
+      <text x="255" y="162" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a6a8a" font-family="M PLUS Rounded 1c">検証後に全展開</text>
+    </svg>
+  </div>
+
+  <!-- 各方式の詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 4方式の特徴まとめ</span>
+    <div class="mgrid">
+      <div class="mcard card-a">
+        <div class="mtag">一斉移行</div>
+        <h4>全システムを一気に切替</h4>
+        <p>ある日を境に旧→新へ全面切替。期間は短くコストも低い。</p>
+        <div class="risk">▲ 失敗時の影響が全社に及ぶ</div>
+      </div>
+      <div class="mcard card-b">
+        <div class="mtag">段階的移行</div>
+        <h4>機能・部門ごとに順次切替</h4>
+        <p>業務領域や拠点ごとに順番に移行。問題が起きても影響が限定的。</p>
+        <div class="risk">▲ 旧新が混在する期間がある</div>
+      </div>
+      <div class="mcard card-c">
+        <div class="mtag">並行移行</div>
+        <h4>旧・新を同時稼動させる</h4>
+        <p>一定期間、旧システムと新システムを両方動かして結果を照合する。最も安全。</p>
+        <div class="risk">▲ 二重運用でコスト・負荷が大</div>
+      </div>
+      <div class="mcard card-d">
+        <div class="mtag">パイロット移行</div>
+        <h4>一部拠点で先行して検証</h4>
+        <p>特定の部門・拠点だけ先に新システムへ移行し、問題がなければ全社展開。</p>
+        <div class="risk">▲ 先行部門に負荷が集中する</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「最もリスクが低い」移行方式を聞く問題</div>
+      <div class="tb">旧と新を同時稼動させる<strong>並行移行</strong>が最もリスクが低い（失敗しても旧に戻せる）。コストが最高・リスクが最低。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">パイロット移行と段階的移行を混同しやすい</div>
+      <div class="tb">パイロット＝「先行して<strong>検証</strong>してから全社展開」。段階的＝「機能や部門を<strong>分割して順番に</strong>移行」。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">移行テスト・移行リハーサルも問われる</div>
+      <div class="tb">本番移行の前に、移行作業をそのまま試す<strong>移行リハーサル</strong>を行う。本番で失敗しないための練習。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「並行」は"保険"の移行</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">旧と新を並べて走らせる＝保険をかけながら移行するから最安全</span><br><br>
+    4方式の特徴は<span class="hl">い・だん・なら・パイ</span>で：<br>
+    <span style="font-size:13px;font-weight:900;color:#7a5200;">い（一斉：速い）・だん（段階：分割）・なら（並行：保険）・パイ（パイロット：お試し）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>基幹系移行PMの自分。「ミッションクリティカルだから旧と新を並行稼働して問題なければ旧停止」と決定。この移行方式の名前は？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>パラレル移行（並行稼働移行）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>一斉移行（カットオーバー）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 一斉は決めた日に全面切替。「新旧並行で安全確認」がパラレル</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：パラレル移行（並行稼働移行）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 システム移行（パラレル・一斉・段階）とは何か</h2>
-<span class="kw">パラレル=新旧並行、一斉=一気に切替、段階=少しずつ</span>
-<p>パラレル移行：新旧並行稼働→問題なければ旧を停止。リスク低・コスト高。一斉移行：決めた日時に全面切り替え。リスク高・コスト低。段階移行：機能・部署・地域ごとに段階的に移行。リスク中・期間長。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「ミッションクリティカルなシステム→パラレル移行」「小規模・単純なシステム→一斉移行」の使い分けが試験頻出シナリオ。パラレル移行はデータの二重管理が課題。
-
-**覚え方** 🎯 **パラレル＝並行（安全・高コスト）／一斉＝全切替（リスク・低コスト）／段階＝少しずつ**。重要度で使い分け。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「パラレル移行＝安全だがコスト高」「一斉移行＝リスク高だがコスト低」の逆転を間違えやすい。また「段階移行」を「パラレル移行」と混同しないこと。段階移行は並行稼働せず順に切り替えていく点が異なる。重要度の高いシステム→パラレルが原則。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**パラレル＝並行（安全・高コスト）／一斉＝全切替（リスク・低コスト）／段階＝少しずつ**。重要度で使い分け。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>システム移行（パラレル・一斉・段階）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

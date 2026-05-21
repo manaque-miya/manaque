@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ベンチャーキャピタルとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ベンチャーキャピタル（VC）をわかりやすく解説。スタートアップへの投資の仕組み、エンジェル投資家・クラウドファンディングとの違い、IPOとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-venture-capital">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c3aed,#3b1a7a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(59,26,122,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d5c8f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7c3aed;--cbg:#ede9fb;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c3aed;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c3aed;--fbg:#ede9fb;}
+.f2{--fc:#2e6de5;--fbg:#e7eefc;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>ベンチャーキャピタル</b>とは？</h1>
+    <p>成長が期待できる未上場のスタートアップ企業に出資し、上場（IPO）や売却で大きなリターンを狙う投資会社・ファンドのこと。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <!-- 人物A（起業家） -->
+        <circle cx="22" cy="22" r="10" fill="#f4c89a"/>
+        <rect x="12" y="32" width="20" height="22" rx="4" fill="#7c3aed"/>
+        <text x="22" y="68" text-anchor="middle" font-size="7" font-weight="900" fill="#3b1a7a" font-family="sans-serif">起業家</text>
+        <!-- 人物B（VC） -->
+        <circle cx="56" cy="22" r="10" fill="#f4c89a"/>
+        <rect x="46" y="32" width="20" height="22" rx="4" fill="#2e6de5"/>
+        <text x="56" y="68" text-anchor="middle" font-size="7" font-weight="900" fill="#1f4ba8" font-family="sans-serif">VC</text>
+        <!-- お金の矢印 -->
+        <path d="M36 42 L44 42" stroke="#ffd23f" stroke-width="2.5" marker-end="url(#a2)"/>
+        <defs><marker id="a2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#ffd23f"/></marker></defs>
+        <text x="39" y="38" text-anchor="middle" font-size="7" fill="#9a6b00" font-weight="900" font-family="sans-serif">出資</text>
+        <!-- 株 -->
+        <path d="M44 50 L36 50" stroke="#dd5a3a" stroke-width="2" stroke-dasharray="2 1"/>
+        <text x="39" y="58" text-anchor="middle" font-size="7" fill="#dd5a3a" font-weight="900" font-family="sans-serif">株式</text>
+        <!-- リターン -->
+        <text x="39" y="82" text-anchor="middle" font-size="8" fill="#2e8b4f" font-weight="900" font-family="sans-serif">IPO→利益</text>
+      </svg>
+      <div class="scene-txt">
+        AIスタートアップを立ち上げた。銀行融資は受けられない。でも開発費が必要。そこへ「うちが出資しましょう。株式をもらう代わりに資金を出します」と言う会社が現れた。
+        <div class="scene-q">→ これがベンチャーキャピタル（VC）。融資ではなく"出資"。返済不要・代わりに株をもらう。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：VCの仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">💰 ベンチャーキャピタルの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="ベンチャーキャピタルの仕組み：投資家→VCファンド→スタートアップ→IPO→リターン">
+      <!-- 投資家 -->
+      <rect x="8" y="60" width="64" height="44" rx="8" fill="#ede9fb" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="40" y="78" text-anchor="middle" font-size="10" font-weight="900" fill="#3b1a7a" font-family="M PLUS Rounded 1c">機関投資家</text>
+      <text x="40" y="94" text-anchor="middle" font-size="10" font-weight="900" fill="#3b1a7a" font-family="M PLUS Rounded 1c">個人富裕層</text>
+      <!-- 矢印：出資 -->
+      <line x1="72" y1="82" x2="98" y2="82" stroke="#7c3aed" stroke-width="2" marker-end="url(#a3)"/>
+      <defs><marker id="a3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5z" fill="#7c3aed"/></marker></defs>
+      <text x="85" y="75" text-anchor="middle" font-size="8" font-weight="900" fill="#7c3aed" font-family="M PLUS Rounded 1c">出資</text>
+      <!-- VCファンド -->
+      <rect x="100" y="50" width="72" height="64" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="136" y="74" text-anchor="middle" font-size="11" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">VC</text>
+      <text x="136" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">ファンド</text>
+      <text x="136" y="106" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">審査・支援</text>
+      <!-- 矢印：投資 -->
+      <line x1="172" y1="82" x2="198" y2="82" stroke="#2e6de5" stroke-width="2" marker-end="url(#a4)"/>
+      <defs><marker id="a4" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5z" fill="#2e6de5"/></marker></defs>
+      <text x="185" y="75" text-anchor="middle" font-size="8" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">投資</text>
+      <!-- スタートアップ -->
+      <rect x="200" y="50" width="72" height="64" rx="10" fill="#eef8f1" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="236" y="74" text-anchor="middle" font-size="10" font-weight="900" fill="#164d2a" font-family="M PLUS Rounded 1c">スタート</text>
+      <text x="236" y="90" text-anchor="middle" font-size="10" font-weight="900" fill="#164d2a" font-family="M PLUS Rounded 1c">アップ</text>
+      <text x="236" y="106" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">未上場企業</text>
+      <!-- 矢印：IPO -->
+      <line x1="272" y1="82" x2="296" y2="82" stroke="#d9851f" stroke-width="2" marker-end="url(#a5)"/>
+      <defs><marker id="a5" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5z" fill="#d9851f"/></marker></defs>
+      <!-- IPO -->
+      <rect x="298" y="60" width="34" height="44" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="315" y="79" text-anchor="middle" font-size="9" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">IPO</text>
+      <text x="315" y="95" text-anchor="middle" font-size="8" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">上場</text>
+      <!-- リターンの矢印（下） -->
+      <path d="M315 104 L315 160 L136 160 L136 114" stroke="#ffd23f" stroke-width="2" stroke-dasharray="4 2" fill="none" marker-end="url(#a6)"/>
+      <defs><marker id="a6" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5z" fill="#ffd23f"/></marker></defs>
+      <text x="220" y="175" text-anchor="middle" font-size="10" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">株式売却 → 大きなリターン</text>
+    </svg>
+    <p>VCは「融資ではなく出資」。返済義務なし。代わりに株式を取得し、上場や売却時に利益を得る仕組み。</p>
+  </div>
+
+  <!-- フロー：VC投資の流れ -->
+  <div class="panel p-green">
+    <span class="phead">📈 VC投資の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① スタートアップへの出資（株式取得）</div><div class="fb">VCは資金を提供する代わりにスタートアップの株式を取得。経営支援・人脈提供もする。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② スタートアップが成長・上場（IPO）</div><div class="fb">スタートアップが株式上場（IPO）または買収（M&A）されることで株価が上昇する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ VCが株式を売却してリターンを得る</div><div class="fb">保有株を市場で売却。投資額の数倍〜数十倍になることも。ファンドの投資家にも分配される。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">エンジェル投資家と混同しやすい</div>
+      <div class="tb">エンジェル投資家は「個人」がスタートアップに出資する人。VCは「会社・ファンド（複数の投資家の資金を集めた組織）」。個人か組織かが違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「融資（お金を貸す）」ではなく「出資（株主になる）」</div>
+      <div class="tb">銀行融資は返済義務あり・利息あり。VCの出資は返済不要・代わりに株式を取得。失敗したら出資金は戻らない（リスクを共有）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">クラウドファンディングと混同しやすい</div>
+      <div class="tb">クラウドファンディングは「一般の人から少額ずつ資金を集める仕組み」。VCはプロの投資機関が大口で出資する点が違う。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">ベンチャーキャピタル＝「賭けて育てる金持ち組織」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ベン→弁当（食料供給）　キャピ→キャピキャピ（若い）　タル→足りない</span><br><br>
+    <span class="hl">「育てる」</span>のがVC！<br>
+    お金を<span class="hl">「貸す」</span>のではなく<span class="hl">「出す」</span>→返さなくていい代わりに株主になる</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-venture-capital</div>
+
+</div>
+</body>
+</html>

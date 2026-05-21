@@ -1,108 +1,231 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ゼロデイ攻撃とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ゼロデイ攻撃の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-zero-day.html">
-<meta property="og:title" content="ゼロデイ攻撃とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ゼロデイ攻撃の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-zero-day.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ゼロデイ攻撃とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ゼロデイ攻撃をわかりやすく解説。パッチが当たる前の脆弱性を突く攻撃の仕組み・なぜ防ぎにくいのか・対策・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-zero-day">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2b3245,#111827);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(10,10,30,.35);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8cfe0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-dark{--c:#2b3245;--cbg:#e6e8ee;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#dd5a3a;}
+
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;}
+.tl-item{display:flex;gap:14px;align-items:flex-start;position:relative;}
+.tl-dot{width:36px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;}
+.tl-circle{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex-shrink:0;}
+.tl-line{width:3px;height:100%;min-height:24px;background:#e0e4ee;flex-grow:1;}
+.tl-body{padding:4px 0 20px;flex:1;}
+.tl-h{font-size:13.5px;font-weight:900;color:#2b3245;margin-bottom:3px;}
+.tl-p{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.c-danger{background:#dd5a3a;}
+.c-warn{background:#d9851f;}
+.c-ok{background:#2e8b4f;}
+.c-gray{background:#9aa3b2;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.countermeasure{background:#eef8f1;border-radius:11px;padding:11px 13px;margin-bottom:8px;border-left:4px solid #2e8b4f;}
+.countermeasure:last-child{margin-bottom:0;}
+.countermeasure .ch{font-size:13px;font-weight:900;color:#2e8b4f;margin-bottom:3px;}
+.countermeasure .cb{font-size:12px;font-weight:600;line-height:1.75;color:#2d4a38;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">ゼロデイ攻撃とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ゼロデイ攻撃</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔐 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>ゼロデイ攻撃</b>とは？</h1>
+    <p>脆弱性が発見されてから修正パッチが出るまでの「無防備な日数ゼロ」の隙を突く攻撃。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 人物 -->
+        <rect x="12" y="60" width="54" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="18" y="38" width="42" height="30" rx="8" fill="#2b3245"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5-9-13-9 q-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 41 l8 5 l8-5 v5 h-16z" fill="#fff"/>
+        <!-- 警告 -->
+        <polygon points="52,56 64,56 58,44" fill="#ffd23f"/>
+        <text x="58" y="54" text-anchor="middle" font-size="8" font-weight="900" fill="#5c4500" font-family="sans-serif">!</text>
+      </svg>
+      <div class="scene-txt">
+        ある日、OSの重大な脆弱性が攻撃者に発見された。ベンダーはまだ脆弱性の存在すら知らない。修正パッチは存在しない。攻撃者はその穴を使ってマルウェアを配布し始めた。<br>
+        ベンダーがパッチを配布したのは2週間後。でもその間に何万台ものPCが感染していた。
+        <div class="scene-q">→ 対策ゼロの日数 ＝ ゼロデイ。それを突くのがゼロデイ攻撃。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：タイムライン -->
+  <div class="panel p-dark">
+    <span class="phead">📅 ゼロデイ攻撃の時系列（タイムライン）</span>
+    <svg width="100%" viewBox="0 0 340 80" role="img" aria-label="脆弱性発見から修正パッチ適用までの時系列。発見・攻撃開始・ベンダー認知・パッチ配布・適用完了の5ポイント">
+      <!-- 横線 -->
+      <line x1="20" y1="36" x2="320" y2="36" stroke="#c0c8d8" stroke-width="3"/>
+      <!-- ポイント1：脆弱性発見（攻撃者が先に知る） -->
+      <circle cx="40" cy="36" r="8" fill="#dd5a3a"/>
+      <text x="40" y="18" text-anchor="middle" font-size="8.5" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">脆弱性</text>
+      <text x="40" y="28" text-anchor="middle" font-size="8.5" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">発見</text>
+      <text x="40" y="54" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">（攻撃者）</text>
+
+      <!-- ゼロデイ区間の強調 -->
+      <rect x="40" y="28" width="160" height="16" rx="0" fill="#ffd23f" opacity=".35"/>
+      <text x="120" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">← この期間がゼロデイ（防御手段ゼロ）→</text>
+
+      <!-- ポイント2：攻撃開始 -->
+      <circle cx="80" cy="36" r="8" fill="#c0392b"/>
+      <text x="80" y="18" text-anchor="middle" font-size="8.5" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">攻撃</text>
+      <text x="80" y="28" text-anchor="middle" font-size="8.5" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">開始</text>
+
+      <!-- ポイント3：ベンダー認知 -->
+      <circle cx="140" cy="36" r="8" fill="#d9851f"/>
+      <text x="140" y="18" text-anchor="middle" font-size="8.5" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">ベンダー</text>
+      <text x="140" y="28" text-anchor="middle" font-size="8.5" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">認知</text>
+
+      <!-- ポイント4：パッチ配布 -->
+      <circle cx="200" cy="36" r="8" fill="#4256b8"/>
+      <text x="200" y="18" text-anchor="middle" font-size="8.5" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">パッチ</text>
+      <text x="200" y="28" text-anchor="middle" font-size="8.5" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">配布</text>
+
+      <!-- ポイント5：適用完了 -->
+      <circle cx="300" cy="36" r="8" fill="#2e8b4f"/>
+      <text x="300" y="18" text-anchor="middle" font-size="8.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">適用</text>
+      <text x="300" y="28" text-anchor="middle" font-size="8.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">完了</text>
+      <text x="300" y="54" text-anchor="middle" font-size="8" font-weight="700" fill="#216b3b" font-family="M PLUS Rounded 1c">（ようやく安全）</text>
+    </svg>
+
+    <div class="timeline" style="margin-top:12px;">
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-circle c-danger">①</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-h">攻撃者が脆弱性を発見・悪用開始</div>
+          <div class="tl-p">ベンダーより先に脆弱性を見つけた攻撃者が悪用を開始。パッチは存在しないため、防御側にできることがほぼない。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-circle c-warn">②</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-h">ベンダーが脆弱性を認知・修正作業開始</div>
+          <div class="tl-p">報告やインシデント発生で脆弱性が判明。修正パッチの開発に数日〜数週間かかることもある。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-circle c-ok">③</div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-h">パッチ配布・ユーザが適用して初めて安全に</div>
+          <div class="tl-p">パッチが配布されても、ユーザが適用しなければ意味がない。自動更新や迅速な適用が重要。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 対策 -->
+  <div class="panel p-green">
+    <span class="phead">🛡️ ゼロデイ攻撃への対策</span>
+    <div class="countermeasure">
+      <div class="ch">WAF（Webアプリケーションファイアウォール）の導入</div>
+      <div class="cb">パッチが出るまでの間、悪意あるトラフィックをフィルタリングして被害を軽減する。パッチ待ちの「つなぎ」として有効。</div>
+    </div>
+    <div class="countermeasure">
+      <div class="ch">最小権限の原則（Least Privilege）</div>
+      <div class="cb">攻撃を受けても影響範囲を最小化する。管理者権限で動かさない・アクセス権を必要最小限にすることで被害拡大を防ぐ。</div>
+    </div>
+    <div class="countermeasure">
+      <div class="ch">迅速なパッチ適用（脆弱性管理）</div>
+      <div class="cb">パッチが出たら即適用。自動更新を有効にしてゼロデイの窓口を素早く閉じる。</div>
+    </div>
+    <div class="countermeasure">
+      <div class="ch">ネットワーク分離・多層防御</div>
+      <div class="cb">一か所突破されても横展開されないよう、ネットワークを分割して被害の連鎖を止める。</div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ゼロデイ＝0日で攻撃する」ではない</div>
+      <div class="tb">「防御手段が0日間しかない（存在しない）」状態で行われる攻撃。時間の速さの話ではなく、<strong>パッチが存在しない期間</strong>を突く攻撃。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「既知の脆弱性」の攻撃とは違う</div>
+      <div class="tb">パッチが存在しすでに公表されている脆弱性を突くのは「未パッチ攻撃」。ゼロデイは<strong>まだパッチが存在しない</strong>脆弱性を突く点が本質。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ウイルス対策ソフトで防げる」は誤り</div>
+      <div class="tb">シグネチャ（定義ファイル）が存在しない新種の脅威のため、従来型のウイルス対策ソフトでは検知・防御が困難。これがゼロデイの怖さ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>修正パッチが存在しない脆弱性を突く攻撃</strong>」→ ゼロデイ攻撃。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      「<span class="hl">ゼロ（0）日間</span>しか猶予がない」＝ 修正パッチがない日数<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">パッチが出る前から攻撃される ＝ 防御手段ゼロの日を狙われる</span><br><br>
+      「<span class="hl">ゼロデイは穴が開いた日</span>から攻撃が来る」<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">穴（脆弱性）を塞ぐ（パッチ）前に攻撃 → 防ぎようがない</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-zero-day ／ HTML+SVG（文字はすべてテキスト）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>情シス担当の自分。朝の脅威情報メルマガで「昨日発見されたWebサーバの脆弱性が悪用中、パッチ未公開」と読んだ。修正版がまだ出てないのに攻撃が始まってる…どうすれば？？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ゼロデイ攻撃</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>標的型攻撃</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 標的型は対象が特定企業。ゼロデイは「パッチが間に合っていない」という時間軸の問題</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：ゼロデイ攻撃</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 ゼロデイ攻撃とは何か</h2>
-<span class="kw">パッチなし脆弱性</span>
-<p>パッチが提供される前（対策ゼロ日）の脆弱性を突く攻撃。発見即悪用されるため事前防御が困難。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「パッチが存在しない」「修正プログラム未公開の段階で攻撃」という記述があればゼロデイ攻撃で確定。
-
-**覚え方** 🎯 ゼロデイ＝**対策が出てから0日**。パッチ職人が間に合う前に攻撃される徒競走。先手必勝のずるい攻撃。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「ゼロデイ」をパッチ適用後0日と誤解しやすいが、正確には「パッチが存在しない0日目」を突く攻撃。標的型攻撃・DoS攻撃と混同するひっかけが頻出。「修正プログラムが公開された直後」はゼロデイではなくNデイ攻撃。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>ゼロデイ＝**対策が出てから0日**。パッチ職人が間に合う前に攻撃される徒競走。先手必勝のずるい攻撃。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>ゼロデイ攻撃はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

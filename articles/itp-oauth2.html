@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OAuth 2.0 とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="OAuth 2.0をわかりやすく解説。「Googleでログイン」の仕組みで使われる認可の委任フレームワーク。認証（OpenID Connect）との違い、アクセストークンの役割をITパスポート向けに説明。">
+<link rel="canonical" href="https://example.com/itp-oauth2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#e53a1e,#7a1a0a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,26,10,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c8c0;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#e53a1e;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#e53a1e;--fbg:#fdf0ed;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#2e6de5;--fbg:#eef3fd;}
+.f5{--fc:#4256b8;--fbg:#eef0fb;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔑 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>OAuth 2.0</b> とは？</h1>
+    <p>「Googleでログイン」ボタンの裏で動く、パスワードを渡さずに"権限だけ貸す"仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="50" width="62" height="36" rx="8" fill="#e7eefc"/>
+        <rect x="16" y="58" width="46" height="22" rx="4" fill="#2e6de5"/>
+        <text x="39" y="73" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Googleでログイン</text>
+        <circle cx="39" cy="23" r="15" fill="#f4c89a"/>
+        <path d="M26 19 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="30" y="36" width="18" height="8" fill="#f4c89a"/>
+        <path d="M30 44 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        新しいアプリを使おうとしたら「Googleアカウントでログイン」と表示された。ボタンを押すとGoogleの画面になり「このアプリに〇〇へのアクセスを許可しますか？」と聞かれる。
+        <div class="scene-q">…パスワードをアプリに渡さず、権限だけ委任する — これがOAuth 2.0。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：OAuth 2.0の登場人物 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔺 OAuth 2.0 の4つの登場人物</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="OAuth2.0の登場人物：リソースオーナー・クライアント・認可サーバ・リソースサーバの関係図">
+      <!-- リソースオーナー（ユーザ） -->
+      <rect x="10" y="10" width="90" height="54" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="55" y="30" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">リソース</text>
+      <text x="55" y="43" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">オーナー</text>
+      <text x="55" y="57" text-anchor="middle" font-size="9" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">（ユーザ本人）</text>
+      <!-- クライアント -->
+      <rect x="125" y="10" width="90" height="54" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="170" y="30" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">クライアント</text>
+      <text x="170" y="43" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">アプリ</text>
+      <text x="170" y="57" text-anchor="middle" font-size="9" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">（使いたいアプリ）</text>
+      <!-- 認可サーバ -->
+      <rect x="10" y="148" width="90" height="54" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="55" y="168" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">認可</text>
+      <text x="55" y="181" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">サーバ</text>
+      <text x="55" y="195" text-anchor="middle" font-size="9" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">（Googleなど）</text>
+      <!-- リソースサーバ -->
+      <rect x="240" y="148" width="90" height="54" rx="10" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="285" y="168" text-anchor="middle" font-size="10" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">リソース</text>
+      <text x="285" y="181" text-anchor="middle" font-size="10" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">サーバ</text>
+      <text x="285" y="195" text-anchor="middle" font-size="9" font-weight="700" fill="#a3316a" font-family="M PLUS Rounded 1c">（データの保管場所）</text>
+      <!-- 矢印 -->
+      <!-- ユーザ→クライアント：ログイン要求 -->
+      <line x1="100" y1="37" x2="124" y2="37" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="112" y="32" text-anchor="middle" font-size="8" fill="#2e6de5" font-family="M PLUS Rounded 1c">①認可要求</text>
+      <!-- クライアント→認可サーバ -->
+      <line x1="170" y1="64" x2="55" y2="148" stroke="#d9851f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="98" y="108" text-anchor="middle" font-size="8" fill="#d9851f" font-family="M PLUS Rounded 1c">②認可コード要求</text>
+      <!-- 認可サーバ→クライアント：トークン -->
+      <line x1="100" y1="175" x2="125" y2="64" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="122" y="140" text-anchor="middle" font-size="8" fill="#2e8b4f" font-family="M PLUS Rounded 1c">③アクセス<br/>トークン</text>
+      <!-- クライアント→リソースサーバ：トークンでAPI呼出 -->
+      <line x1="215" y1="37" x2="285" y2="148" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="265" y="90" text-anchor="middle" font-size="8" fill="#4256b8" font-family="M PLUS Rounded 1c">④トークンで<br/>データ取得</text>
+    </svg>
+    <p style="font-size:12.5px;font-weight:600;color:#48506a;margin-top:8px;">アクセストークン＝「駐車場の一時券」。本人の代わりにアプリが使えるが、期限つきで権限は限定的。パスワードそのものを渡さないのがポイント。</p>
+  </div>
+
+  <!-- フロー -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ OAuth 2.0 の認可フロー（Authorization Code Flow）</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① ユーザがアプリで「Googleでログイン」をタップ</div>
+        <div class="fb">クライアントアプリがGoogleの認可サーバにリダイレクト。スコープ（要求権限）を提示。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② Googleの同意画面でユーザが「許可」</div>
+        <div class="fb">「このアプリにカレンダーの読み取りを許可しますか？」→ ユーザが許可ボタンを押す。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 認可コードをアプリに渡す</div>
+        <div class="fb">一時的な認可コードが発行される。有効期間は数分だけ。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ アクセストークンに交換</div>
+        <div class="fb">アプリが認可コードとクライアントシークレットを認可サーバに送り、アクセストークンを受け取る。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f5">
+        <div class="fh">⑤ アクセストークンでAPIを呼び出す</div>
+        <div class="fb">トークンをリソースサーバに提示してデータを取得。パスワードは一切渡っていない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">OAuth 2.0は「認可」であり「認証」ではない</div>
+      <div class="tb">OAuth 2.0は「このアプリに〇〇する権限を委任する」仕組み（認可）。「本人確認」（認証）はOpenID ConnectがOAuth 2.0の上に追加する。試験で「本人認証のプロトコル」と聞かれたらSAMLやOpenID Connectが正解になる場合がある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">アクセストークンはパスワードではない</div>
+      <div class="tb">トークンは限られた権限・期間だけ有効。パスワードそのものを第三者アプリに渡す古い方法（Basic認証の使い回し）とは別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SAML 2.0と混同しやすい</div>
+      <div class="tb">SAMLは主に企業のシングルサインオン（SSO）で使われるXMLベースのプロトコル。OAuth 2.0はAPIへの権限委任が主目的。「企業内SSO→SAML、外部APIへの権限委任→OAuth 2.0」と使い分けを覚える。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      OAuth ＝「<span class="hl">お鍵（おかぎ）を代理に渡す</span>」<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">パスワードという「マスターキー」は渡さず、「合鍵（トークン）」だけ貸す。</span><br><br>
+      「<span class="hl">OAuth＝認可（許可）</span>」「<span class="hl">OpenID Connect＝認証（本人確認）</span>」<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">認証はOpenIDが「追加」する、OAuth単体では本人確認できない！</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

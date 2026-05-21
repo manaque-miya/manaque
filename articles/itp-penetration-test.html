@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ペネトレーションテストとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ペネトレーションテスト（侵入テスト）を目的・手順・脆弱性診断との違いで図解解説。ホワイトボックス・ブラックボックスの区別、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-penetration-test">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2a2a4a,#0a0a1e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(10,10,30,.35);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b0b8d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-dark{--c:#2a2a4a;--cbg:#e2e3ec;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2a2a4a;}
+
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.cmp-card{border-radius:12px;padding:12px 11px;}
+.cmp-card h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.cmp-card ul{list-style:none;}
+.cmp-card li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:14px;position:relative;}
+.cmp-card li::before{content:"・";position:absolute;left:0;}
+.card-pen{background:#e2e3ec;}.card-pen h4{color:#2a2a4a;}
+.card-vuln{background:#e2f3e5;}.card-vuln h4{color:#2e8b4f;}
+@media(max-width:480px){.compare-row{grid-template-columns:1fr;}}
+
+.test-type-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.tt-card{border-radius:12px;padding:12px 11px;}
+.tt-card h4{font-size:13px;font-weight:900;margin-bottom:5px;}
+.tt-card p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.tt-black{background:#2a2a4a;}.tt-black h4{color:#ffd23f;}
+.tt-black p{color:#b0b8d0;}
+.tt-white{background:#e7eefc;}.tt-white h4{color:#2e6de5;}
+@media(max-width:480px){.test-type-row{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2a2a4a;--fbg:#e8e8f0;}
+.f2{--fc:#2e6de5;--fbg:#e7f0fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ セキュリティ / システム評価</span>
+    <h1><b>ペネトレーションテスト</b>とは？</h1>
+    <p>許可を得た上で、<strong>実際に攻撃者の手口でシステムへの侵入を試みる</strong>セキュリティ評価手法。「本当に侵入できるか」を実証することで隠れた弱点を発見する。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#2a2a4a"/>
+        <circle cx="36" cy="21" r="14" fill="#f4c89a"/>
+        <!-- フード -->
+        <path d="M23 15 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#1a1a2a"/>
+        <path d="M22 15 q0 8 4 12 q4 -6 10 -6 q6 0 10 6 q4 -4 4 -12 q-5 3 -14 3 q-9 0 -14 -3z" fill="#1a1a2a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- ノートPC -->
+        <rect x="42" y="52" width="22" height="16" rx="2" fill="#333" stroke="#555" stroke-width="1"/>
+        <rect x="44" y="54" width="18" height="11" rx="1" fill="#00ff41" opacity=".7"/>
+        <text x="53" y="62" text-anchor="middle" font-size="6" font-weight="900" fill="#000" font-family="monospace">&gt;_</text>
+        <rect x="38" y="68" width="28" height="3" rx="1" fill="#555"/>
+      </svg>
+      <div class="scene-txt">
+        セキュリティ担当者が「うちのシステムは本当に安全か確かめたい」と思い、専門業者に依頼した。業者は実際の攻撃者と同じ手口でシステムに侵入を試みた。
+        <div class="scene-q">…この評価手法を何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ペネトレーションテストの構造 -->
+  <div class="panel p-dark">
+    <span class="phead">🔐 ペネトレーションテストの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="ペネトレーションテストの仕組み。攻撃者役（テスター）がシステムへの侵入を試みる様子">
+      <!-- 背景 -->
+      <rect x="10" y="10" width="320" height="180" rx="12" fill="#1a1a2a"/>
+      <!-- テスター（左） -->
+      <rect x="25" y="70" width="70" height="60" rx="8" fill="#2a2a4a" stroke="#ffd23f" stroke-width="2"/>
+      <text x="60" y="93" text-anchor="middle" font-size="10" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">テスター</text>
+      <text x="60" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#b0b8d0" font-family="M PLUS Rounded 1c">（承認済みの</text>
+      <text x="60" y="121" text-anchor="middle" font-size="9" font-weight="700" fill="#b0b8d0" font-family="M PLUS Rounded 1c">攻撃者役）</text>
+      <!-- 攻撃矢印 -->
+      <path d="M97 98 L168 98" stroke="#dd5a3a" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="166,93 174,98 166,103" fill="#dd5a3a"/>
+      <text x="133" y="90" text-anchor="middle" font-size="9" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">侵入を試みる</text>
+      <text x="133" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="#7a8090" font-family="M PLUS Rounded 1c">（許可された攻撃）</text>
+      <!-- ターゲットシステム（右） -->
+      <rect x="175" y="55" width="140" height="90" rx="8" fill="#1e2a40" stroke="#2e6de5" stroke-width="2"/>
+      <text x="245" y="82" text-anchor="middle" font-size="10" font-weight="900" fill="#7eb3f5" font-family="M PLUS Rounded 1c">ターゲットシステム</text>
+      <!-- サーバーアイコン群 -->
+      <rect x="188" y="90" width="35" height="14" rx="3" fill="#2e6de5" opacity=".8"/>
+      <text x="205" y="101" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">Webサーバ</text>
+      <rect x="228" y="90" width="30" height="14" rx="3" fill="#4256b8" opacity=".8"/>
+      <text x="243" y="101" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">DB</text>
+      <rect x="262" y="90" width="40" height="14" rx="3" fill="#1a5fc8" opacity=".8"/>
+      <text x="282" y="101" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">ネットワーク</text>
+      <rect x="188" y="110" width="114" height="14" rx="3" fill="#2a3a5a" opacity=".8"/>
+      <text x="245" y="121" text-anchor="middle" font-size="8" font-weight="700" fill="#7eb3f5" font-family="M PLUS Rounded 1c">脆弱性を実際に突く→発見→報告</text>
+      <!-- 承認バッジ -->
+      <rect x="80" y="18" width="180" height="22" rx="8" fill="#2e8b4f" opacity=".9"/>
+      <text x="170" y="33" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">事前に書面で許可を取ってから実施</text>
+      <!-- 結果矢印 -->
+      <path d="M175 140 L130 160 L70 160 L70 135" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 3" fill="none"/>
+      <polygon points="65,137 70,128 75,137" fill="#2e8b4f"/>
+      <text x="130" y="175" text-anchor="middle" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">脆弱性レポートを提出</text>
+    </svg>
+
+    <!-- ペネトレーションテスト vs 脆弱性診断 -->
+    <div class="compare-row" style="margin-top:12px;">
+      <div class="cmp-card card-pen">
+        <h4>ペネトレーションテスト</h4>
+        <ul>
+          <li>実際に侵入を試みる</li>
+          <li>攻撃成功/失敗を実証</li>
+          <li>高スキル・高コスト</li>
+          <li>「どこまで侵入できるか」</li>
+          <li>特定のシナリオで深く検証</li>
+        </ul>
+      </div>
+      <div class="cmp-card card-vuln">
+        <h4>脆弱性診断（スキャン）</h4>
+        <ul>
+          <li>ツールで脆弱性を列挙</li>
+          <li>実際に攻撃はしない</li>
+          <li>広く・速く・低コスト</li>
+          <li>「どんな脆弱性があるか」</li>
+          <li>網羅的に弱点を探す</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- テストの種類（ホワイト・ブラック） -->
+  <div class="panel p-green">
+    <span class="phead">🎭 テストの種類：ホワイトボックス vs ブラックボックス</span>
+    <div class="test-type-row">
+      <div class="tt-card tt-black">
+        <h4>ブラックボックステスト</h4>
+        <p>内部構造・情報なしで攻撃。実際の外部攻撃者を模倣。Webサービスの外側からの侵入を試みる。</p>
+      </div>
+      <div class="tt-card tt-white">
+        <h4>ホワイトボックステスト</h4>
+        <p>設計書・ソースコード等の内部情報を持って実施。内部犯・情報漏えい後のシナリオを模倣。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 実施フロー -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ ペネトレーションテストの実施フロー</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 事前合意・スコープ定義（必須）</div><div class="fb">「どのシステムを、いつ、どの範囲まで攻撃してよいか」を書面で合意。無許可でやると不正アクセス禁止法違反。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 情報収集・偵察フェーズ</div><div class="fb">ターゲットのIPアドレス・サービス・OSバージョン等を調査。攻撃の準備段階。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 実際の侵入テスト実施</div><div class="fb">脆弱性を実際に突いて侵入を試みる。成功した場合はどこまで権限昇格できるか確認。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ レポート提出・修正対応</div><div class="fb">発見された脆弱性・侵入経路・リスク評価を報告書にまとめて依頼者に提出。改修後に再テストも行う。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">許可なしで実施するのは犯罪</div>
+      <div class="tb">ペネトレーションテストは「事前に許可を得た上で」実施する。許可なしに同じことをすると<strong>不正アクセス禁止法</strong>に抵触する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">脆弱性診断との混同</div>
+      <div class="tb">脆弱性診断はツールで弱点を洗い出すだけ。ペネトレーションテストは<strong>実際に侵入を試みる</strong>点が違う。「実証」するかどうかが分岐点。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ウイルスを検知するテスト」は誤り</div>
+      <div class="tb">ウイルス検知はアンチウイルスソフトの機能。ペネトレーションテストはシステムへの<strong>不正侵入経路</strong>を確認するもの。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「攻撃者の立場で侵入を試みる」「実際に攻撃してセキュリティを評価する」という記述が出たら→<strong>ペネトレーションテスト</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「ぺ（ネトレーション）→ 穴を突く（penerate）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">penetrate＝「貫通する・侵入する」が語源。穴（脆弱性）に本当に刺さるか確かめるテスト！</span><br><br>
+      脆弱性診断との区別：<span class="hl">ペネトレ＝実際に刺す / 診断＝穴があるか見るだけ</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「穴があるか調べる（診断）」 vs 「穴に刺さるか実証する（ペネトレ）」</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

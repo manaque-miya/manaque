@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>マルチコアプロセッサとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="マルチコアプロセッサをわかりやすく解説。シングルコアとの違い、コア数と性能の関係、マルチスレッドとの混同ポイント、ITパスポート試験の頻出問題まで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-multicore">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e6fa8,#0d3560);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,53,96,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#cce0f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-teal{--c:#1a8c7a;--cbg:#dff5f1;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e6fa8;--fbg:#e8f3fa;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>マルチコアプロセッサ</b>とは？</h1>
+    <p>1つのチップの中に「頭脳（コア）」を複数搭載し、複数の作業を同時にこなせるCPUのこと。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="20" rx="5" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="8" fill="#1e6fa8"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 16 a12 12 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="28" y="31" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 39 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- laptop screen -->
+        <rect x="42" y="52" width="20" height="14" rx="2" fill="#48506a"/>
+        <rect x="44" y="54" width="16" height="10" rx="1" fill="#7ab8e8"/>
+        <!-- CPU chip icon -->
+        <rect x="46" y="56" width="4" height="4" fill="#fff" opacity=".7"/>
+        <rect x="52" y="56" width="4" height="4" fill="#fff" opacity=".7"/>
+        <rect x="46" y="62" width="4" height="4" fill="#ffd23f" opacity=".8"/>
+        <rect x="52" y="62" width="4" height="4" fill="#ffd23f" opacity=".8"/>
+      </svg>
+      <div class="scene-txt">
+        動画を変換しながら、Excelも動かして、ブラウザで調べ物もしている。パソコンが固まらずサクサク動く……それは<strong>CPUの中に複数のコアが入っている</strong>おかげ。
+        <div class="scene-q">…この仕組みを何と呼ぶ？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-teal">
+    <span class="phead">🔷 シングルコア vs マルチコア</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="シングルコアとマルチコアの比較図">
+      <!-- シングルコア -->
+      <rect x="10" y="20" width="140" height="180" rx="12" fill="#f0f4f8" stroke="#1a8c7a" stroke-width="2"/>
+      <text x="80" y="42" text-anchor="middle" font-size="13" font-weight="900" fill="#1a8c7a" font-family="M PLUS Rounded 1c">シングルコア</text>
+      <rect x="35" y="55" width="90" height="60" rx="8" fill="#1a8c7a"/>
+      <text x="80" y="82" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">コア 1つ</text>
+      <text x="80" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#cdf0e8" font-family="M PLUS Rounded 1c">処理は1列</text>
+      <!-- タスク列 -->
+      <rect x="30" y="130" width="100" height="20" rx="5" fill="#a0d4c5"/>
+      <text x="80" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#0d3d2e" font-family="M PLUS Rounded 1c">タスクA → B → C（順番待ち）</text>
+      <text x="80" y="180" text-anchor="middle" font-size="11" font-weight="600" fill="#5a7070" font-family="M PLUS Rounded 1c">1つずつ順番に処理</text>
+
+      <!-- マルチコア -->
+      <rect x="190" y="20" width="140" height="180" rx="12" fill="#f0f4f8" stroke="#2e6de5" stroke-width="2"/>
+      <text x="260" y="42" text-anchor="middle" font-size="13" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">マルチコア（例：4コア）</text>
+      <!-- 4つのコア -->
+      <rect x="200" y="52" width="55" height="38" rx="6" fill="#2e6de5"/>
+      <text x="228" y="68" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">コア①</text>
+      <text x="228" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#b8d0f8" font-family="M PLUS Rounded 1c">タスクA</text>
+      <rect x="264" y="52" width="55" height="38" rx="6" fill="#2e6de5"/>
+      <text x="292" y="68" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">コア②</text>
+      <text x="292" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#b8d0f8" font-family="M PLUS Rounded 1c">タスクB</text>
+      <rect x="200" y="98" width="55" height="38" rx="6" fill="#4272d4"/>
+      <text x="228" y="114" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">コア③</text>
+      <text x="228" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#b8d0f8" font-family="M PLUS Rounded 1c">タスクC</text>
+      <rect x="264" y="98" width="55" height="38" rx="6" fill="#4272d4"/>
+      <text x="292" y="114" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">コア④</text>
+      <text x="292" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#b8d0f8" font-family="M PLUS Rounded 1c">タスクD</text>
+      <text x="260" y="175" text-anchor="middle" font-size="11" font-weight="600" fill="#5a7070" font-family="M PLUS Rounded 1c">4つのタスクを同時に処理</text>
+    </svg>
+    <p>マルチコアプロセッサは<strong>1つのCPUパッケージ（チップ）の中</strong>にコアを複数内蔵している。デュアルコア（2）・クアッドコア（4）・オクタコア（8）などがある。</p>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 コア数と用途の関係</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">コア数が増えると「並列処理」が得意になる</div>
+        <div class="fb">動画編集・3Dレンダリング・科学計算など、複数の重い処理を同時に走らせる作業で効果大。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">ただし「1本の処理が速くなる」わけではない</div>
+        <div class="fb">コアを増やしても、1つのコアのクロック周波数（処理速度）は変わらない。並列化できない処理はコアが増えても恩恵が少ない。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">スマホにも搭載されている</div>
+        <div class="fb">現代のスマートフォンCPU（SoC）も多くが8コア以上。電力効率コアと高性能コアを組み合わせる設計も一般的。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">マルチスレッドと混同しやすい</div>
+      <div class="tb">マルチスレッドは「1つのコアで複数の処理を<strong>切り替えながら</strong>実行する」ソフトウェア的手法。マルチコアは<strong>物理的に複数の頭脳</strong>を持つ、ハードウェア的な話。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">マルチプロセッサと混同しやすい</div>
+      <div class="tb">マルチプロセッサは「<strong>複数のCPUチップ</strong>を搭載する」サーバー構成。マルチコアは1チップ内に複数コアを入れること。レベルが違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">コア数が多いほど何でも速い？ → ×</div>
+      <div class="tb">並列化できないアプリはコアが余るだけで速くならない。「コア数 ＝ 万能高速化」は誤り。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「マルチ」＝「複数の脳みそ」が1チップに詰め込まれた</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">マルチコア → マルチ（多い）× コア（核＝処理の核心部分）</span><br><br>
+      <span class="hl">「マルコ（マルチコア）は多コ（多コア）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">マ・ル・コ ＝ 多・ル・コア ＝ 多いコアが1チップ</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

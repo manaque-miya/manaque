@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ワーム（Worm）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="コンピュータウイルスの一種「ワーム」をわかりやすく解説。ウイルス・トロイの木馬との違い、自己増殖・ネットワーク感染のしくみ、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-worm">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c0392b,#6e1010);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(110,16,16,.26);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ffc8c0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red{--c:#c0392b;--cbg:#fde8e6;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-dark{--c:#4a4e5e;--cbg:#eaebef;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c0392b;}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px;}
+.compare-table th{background:#4a4e5e;color:#fff;padding:8px 10px;text-align:center;font-weight:900;}
+.compare-table td{padding:8px 10px;border-bottom:1px solid #e8eaf0;text-align:center;font-weight:700;color:#48506a;line-height:1.6;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table tr:nth-child(even) td{background:#f4f6fb;}
+.tag-worm{background:#fde8e6;color:#c0392b;border-radius:6px;padding:2px 8px;}
+.tag-virus{background:#fcefd9;color:#a8650f;border-radius:6px;padding:2px 8px;}
+.tag-trojan{background:#e7eefc;color:#1f4ba8;border-radius:6px;padding:2px 8px;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c0392b;--fbg:#fdf0ef;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#4a4e5e;--fbg:#f0f1f4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>ワーム</b>（Worm）とは？</h1>
+    <p>宿主ファイルを必要とせず、ネットワークを通じて<strong>自力で増殖・拡散</strong>するマルウェア。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#4a0a0a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#f0b8b4"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#c0392b"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="29" y="32" width="14" height="8" fill="#f4c89a"/>
+        <path d="M29 40 l7 5 l7 -5 v5 h-14z" fill="#fff"/>
+        <rect x="26" y="62" width="20" height="12" rx="2" fill="#8b1a1a"/>
+        <text x="36" y="73" text-anchor="middle" font-size="7" font-weight="900" fill="#ffc8c0" font-family="sans-serif">⚠ ⚠ ⚠</text>
+      </svg>
+      <div class="scene-txt">
+        社内の1台のPCが外部から攻撃を受けた。翌朝、ネットワーク上の別のPCも次々に感染。「誰も変なファイルを開いていない」のに、なぜか社内全体に広まっていた……
+        <div class="scene-q">…これって、どんなマルウェア？</div>
+      </div>
+    </div>
+    <p style="margin-top:10px;">感染したPCが自動的にネットワーク上の他のPCを探し、<strong>自力でコピーを送り込む</strong>のがワームの特徴。ユーザーの操作なしに広がる。</p>
+  </div>
+
+  <!-- 図解SVG：自己増殖のしくみ -->
+  <div class="panel p-blue">
+    <span class="phead">🔄 ワームの自己増殖・拡散のしくみ</span>
+    <svg width="100%" viewBox="0 0 320 200" role="img" aria-label="ワームの感染拡大：1台から自動的に複数台に広がるしくみ">
+      <!-- ネットワーク線 -->
+      <line x1="80" y1="80" x2="160" y2="120" stroke="#e8aaaa" stroke-width="2"/>
+      <line x1="80" y1="80" x2="160" y2="40" stroke="#e8aaaa" stroke-width="2"/>
+      <line x1="160" y1="120" x2="240" y2="155" stroke="#e8aaaa" stroke-width="2"/>
+      <line x1="160" y1="120" x2="240" y2="85" stroke="#e8aaaa" stroke-width="2"/>
+      <line x1="160" y1="40" x2="240" y2="15" stroke="#e8aaaa" stroke-width="2"/>
+      <!-- 最初の感染PC -->
+      <rect x="40" y="58" width="80" height="44" rx="10" fill="#c0392b"/>
+      <text x="80" y="77" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="sans-serif">感染PC①</text>
+      <text x="80" y="92" text-anchor="middle" font-size="10" font-weight="700" fill="#ffc8c0" font-family="sans-serif">ワーム侵入</text>
+      <!-- 拡散先 -->
+      <rect x="132" y="18" width="66" height="38" rx="8" fill="#fde8e6" stroke="#c0392b" stroke-width="2"/>
+      <text x="165" y="33" text-anchor="middle" font-size="10" font-weight="900" fill="#c0392b" font-family="sans-serif">PC②</text>
+      <text x="165" y="48" text-anchor="middle" font-size="9" font-weight="700" fill="#c0392b" font-family="sans-serif">自動感染</text>
+
+      <rect x="132" y="100" width="66" height="38" rx="8" fill="#fde8e6" stroke="#c0392b" stroke-width="2"/>
+      <text x="165" y="115" text-anchor="middle" font-size="10" font-weight="900" fill="#c0392b" font-family="sans-serif">PC③</text>
+      <text x="165" y="130" text-anchor="middle" font-size="9" font-weight="700" fill="#c0392b" font-family="sans-serif">自動感染</text>
+
+      <rect x="212" y="0" width="66" height="34" rx="8" fill="#fde8e6" stroke="#c0392b" stroke-width="1.5"/>
+      <text x="245" y="13" text-anchor="middle" font-size="9" font-weight="900" fill="#c0392b" font-family="sans-serif">PC⑤</text>
+      <text x="245" y="26" text-anchor="middle" font-size="8" font-weight="700" fill="#c0392b" font-family="sans-serif">さらに拡散</text>
+
+      <rect x="212" y="68" width="66" height="34" rx="8" fill="#fde8e6" stroke="#c0392b" stroke-width="1.5"/>
+      <text x="245" y="81" text-anchor="middle" font-size="9" font-weight="900" fill="#c0392b" font-family="sans-serif">PC④</text>
+      <text x="245" y="94" text-anchor="middle" font-size="8" font-weight="700" fill="#c0392b" font-family="sans-serif">さらに拡散</text>
+
+      <rect x="212" y="135" width="66" height="34" rx="8" fill="#fde8e6" stroke="#c0392b" stroke-width="1.5"/>
+      <text x="245" y="148" text-anchor="middle" font-size="9" font-weight="900" fill="#c0392b" font-family="sans-serif">PC⑥</text>
+      <text x="245" y="161" text-anchor="middle" font-size="8" font-weight="700" fill="#c0392b" font-family="sans-serif">さらに拡散</text>
+
+      <!-- 自動増殖ラベル -->
+      <rect x="60" y="155" width="200" height="24" rx="8" fill="#c0392b"/>
+      <text x="160" y="171" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="sans-serif">ユーザー操作なしに自動で増殖・拡散</text>
+    </svg>
+  </div>
+
+  <!-- ウイルス・トロイの木馬との比較 -->
+  <div class="panel p-dark">
+    <span class="phead">⚖️ ウイルス・トロイの木馬との違い</span>
+    <table class="compare-table">
+      <tr>
+        <th>種類</th>
+        <th>宿主ファイル</th>
+        <th>自己増殖</th>
+        <th>感染経路</th>
+      </tr>
+      <tr>
+        <td><span class="tag-worm">ワーム</span></td>
+        <td>不要</td>
+        <td>✅ 自力で増殖</td>
+        <td>ネットワーク経由・自動</td>
+      </tr>
+      <tr>
+        <td><span class="tag-virus">ウイルス</span></td>
+        <td>必要</td>
+        <td>✅ 宿主を利用</td>
+        <td>感染ファイルを開く</td>
+      </tr>
+      <tr>
+        <td><span class="tag-trojan">トロイの木馬</span></td>
+        <td>自身が偽装</td>
+        <td>❌ 増殖しない</td>
+        <td>ユーザーが自分で実行</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- フロー：感染の流れ -->
+  <div class="panel p-orange">
+    <span class="phead">📋 ワーム感染・拡散の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 脆弱性を突いて侵入</div><div class="fb">OSやソフトウェアのセキュリティホールを悪用し、ユーザーの操作なしに侵入する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 自分自身をコピーして別のPCに送信</div><div class="fb">ネットワーク上の他のPCのIPアドレスを探索し、<strong>自動でコピーを送り込む</strong>。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ ネットワーク帯域の大量消費・被害拡大</div><div class="fb">増殖のための大量通信でネットワークが重くなる。さらにDDoS攻撃や情報窃取に悪用されることも。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red" style="--c:#c0392b;--cbg:#fde8e6;">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「宿主ファイルが必要」はウイルス、不要がワーム</div>
+      <div class="tb">ウイルスは他のファイルに寄生（宿主が必要）。ワームは単体で動き、宿主ファイルなしに自力で広がる。試験で「宿主ファイルが不要」と出たらワーム。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「自己増殖する」＝ワーム or ウイルス（どちらも）</div>
+      <div class="tb">トロイの木馬だけは自己増殖しない。「増殖しない」「ユーザーが自分で実行してしまう」という記述はトロイの木馬の特徴。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">マルウェアの総称と個別の種類を混同しない</div>
+      <div class="tb">ウイルス・ワーム・トロイの木馬はすべて<strong>マルウェア（悪意あるソフトウェア）</strong>の一種。「ウイルス＝全部」ではなく、ウイルスはマルウェアの中の一種類。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      ワームは<span class="hl">「ミミズ（worm）が地面をひとりでのたくる」</span>！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">宿主（土）なしで自力で動く＝宿主ファイル不要で自己増殖</span><br><br>
+      ウイルス＝<span class="hl">宿主に寄生する風邪ウイルス</span>（人（ファイル）がいないと動けない）<br>
+      ワーム＝<span class="hl">ひとり歩きするミミズ</span>（ネットワークを自力でのたくって増える）<br>
+      トロイ＝<span class="hl">木馬の兵士</span>（自分では動かない・ユーザーが引き込む）
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-worm ／ HTML+SVG</div>
+
+</div>
+</body>
+</html>

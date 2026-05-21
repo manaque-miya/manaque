@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>COSO・内部統制フレームワークとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="COSOフレームワークと内部統制の5要素をわかりやすく解説。統制環境・リスク評価・統制活動・情報伝達・モニタリングの関係、J-SOXとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-coso">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#145c2e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,92,46,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0e8cc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.comp-item{border-radius:12px;padding:11px 12px;}
+.comp-item h4{font-size:12.5px;font-weight:900;margin-bottom:4px;}
+.comp-item p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.ci1{background:#dce9f8;}.ci1 h4{color:#1a5fa8;}
+.ci2{background:#e2f3e5;}.ci2 h4{color:#2e8b4f;}
+.ci3{background:#fcefd9;}.ci3 h4{color:#d9851f;}
+.ci4{background:#fce4dd;}.ci4 h4{color:#dd5a3a;}
+.ci5{background:#ede4fa;}.ci5 h4{color:#7c4dbd;}
+@media(max-width:480px){.comp-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a5fa8;--fbg:#dce9f8;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>COSO</b>・内部統制フレームワークとは？</h1>
+    <p>会社が不正・ミス・損失を防ぐために整備する「5つのしかけ」。COSOは世界標準の内部統制の枠組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#0a2a12" opacity=".1"/>
+        <rect x="8" y="60" width="62" height="25" rx="7" fill="#a8d8b4"/>
+        <rect x="14" y="38" width="50" height="30" rx="9" fill="#2e8b4f"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#2a3a2a"/>
+        <rect x="30" y="34" width="18" height="8" fill="#f4c89a"/>
+        <path d="M30 42 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+        <!-- 書類 -->
+        <rect x="44" y="55" width="20" height="16" rx="2" fill="#fff" stroke="#2e8b4f" stroke-width="1.5"/>
+        <line x1="47" y1="60" x2="61" y2="60" stroke="#2e8b4f" stroke-width="1"/>
+        <line x1="47" y1="64" x2="61" y2="64" stroke="#2e8b4f" stroke-width="1"/>
+        <line x1="47" y1="68" x2="55" y2="68" stroke="#2e8b4f" stroke-width="1"/>
+      </svg>
+      <div class="scene-txt">
+        経理担当のあなた。「同じ人が発注も支払承認も両方やっていいの？」と疑問を持った。横領が起きやすいことに気づいた。
+        <div class="scene-q">これを防ぐ「職務分掌」は内部統制の一部。COSOはその全体設計図。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：COSO 5要素 -->
+  <div class="panel p-green">
+    <span class="phead">🏗️ COSOの5つの構成要素</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="COSOフレームワーク：統制環境を土台に5要素が積み重なるピラミッド">
+      <!-- 土台（統制環境） -->
+      <rect x="20" y="140" width="300" height="34" rx="8" fill="#2e8b4f"/>
+      <text x="170" y="162" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">① 統制環境（土台：風土・倫理観）</text>
+      <!-- 2段 -->
+      <rect x="45" y="105" width="250" height="30" rx="7" fill="#4caf73"/>
+      <text x="170" y="125" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">② リスク評価（リスクを洗い出す）</text>
+      <!-- 3段 -->
+      <rect x="70" y="72" width="200" height="28" rx="6" fill="#6ecf95"/>
+      <text x="170" y="91" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">③ 統制活動（職務分掌・承認）</text>
+      <!-- 4段 -->
+      <rect x="95" y="42" width="150" height="26" rx="5" fill="#97ddb0"/>
+      <text x="170" y="60" text-anchor="middle" font-size="11.5" font-weight="900" fill="#145c2e" font-family="M PLUS Rounded 1c">④ 情報と伝達</text>
+      <!-- 頂点 -->
+      <rect x="120" y="14" width="100" height="24" rx="5" fill="#c4f0d5"/>
+      <text x="170" y="31" text-anchor="middle" font-size="11" font-weight="900" fill="#145c2e" font-family="M PLUS Rounded 1c">⑤ モニタリング</text>
+    </svg>
+    <div class="comp-grid">
+      <div class="comp-item ci1"><h4>① 統制環境</h4><p>「正直にやろう」という組織の倫理観・風土・経営姿勢。全ての土台。</p></div>
+      <div class="comp-item ci2"><h4>② リスク評価</h4><p>不正・ミス・損失の原因となるリスクを識別し、大きさを評価する。</p></div>
+      <div class="comp-item ci3"><h4>③ 統制活動</h4><p>リスクに対応する具体的な手続き（承認・職務分掌・照合など）。</p></div>
+      <div class="comp-item ci4"><h4>④ 情報と伝達</h4><p>必要な情報が正確・適時に伝わる仕組み。報告ラインの整備。</p></div>
+      <div class="comp-item ci5"><h4>⑤ モニタリング</h4><p>内部統制が機能しているかを継続的に確認・改善する活動。</p></div>
+    </div>
+  </div>
+
+  <!-- フロー：J-SOXとの関係 -->
+  <div class="panel p-blue">
+    <span class="phead">🔗 COSO → J-SOXの流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">COSO（米国）</div><div class="fb">1992年に米国で策定された内部統制の国際標準フレームワーク。5つの構成要素を定義。</div></div>
+      <div class="farrow">▼ 日本が参考にして</div>
+      <div class="fstep f2"><div class="fh">J-SOX（金融商品取引法）</div><div class="fb">日本版SOX法。上場企業に内部統制報告書の作成・監査を義務付け。COSOの考え方を採用。</div></div>
+      <div class="farrow">▼ 実務での適用</div>
+      <div class="fstep f3"><div class="fh">業務プロセスの文書化・評価</div><div class="fb">各業務のリスクと統制活動を文書化し、外部監査人が評価する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">COSO ≠ 内部監査</div>
+      <div class="tb">COSOは「内部統制の設計フレームワーク（考え方の枠組み）」。内部監査は「統制が機能しているか検証する活動」。COSOは枠組み、内部監査は確認作業。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「統制環境」が最重要の理由</div>
+      <div class="tb">他の4要素はすべて「統制環境（風土・倫理観）」の上に成り立つ。トップが不正を容認する雰囲気では、どんなルールも機能しない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">COSOの要素数「5つ」を問われる</div>
+      <div class="tb">「3つ」「4つ」「6つ」は誤り。<strong>5つ</strong>（統制環境・リスク評価・統制活動・情報と伝達・モニタリング）が正解。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「統・リ・統・情・モ」</span>＝とりとうじょうも！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">統制環境→リスク評価→統制活動→情報と伝達→モニタリング</span><br><br>
+      ゴロ：<span class="hl">「鳥豆上も（とりとうじょうも）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">と＝統制環境 ／ り＝リスク評価 ／ とう＝統制活動 ／ じょう＝情報と伝達 ／ も＝モニタリング</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

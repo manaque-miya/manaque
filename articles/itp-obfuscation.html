@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>難読化とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="難読化（コード難読化）をわかりやすく解説。ソースコードを人間が読みにくい形に変換してリバースエンジニアリングを防ぐ技術。暗号化・圧縮との違いとITパスポート試験のひっかけポイント。">
+<link rel="canonical" href="https://example.com/itp-obfuscation">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#5a3e8a,#2e1d4e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(46,29,78,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#cfc0f0;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#5a3e8a;--cbg:#ece4f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5a3e8a;}
+.code-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+@media(max-width:420px){.code-compare{grid-template-columns:1fr;}}
+.code-box{border-radius:10px;padding:10px 12px;}
+.code-box .cb-head{font-size:11px;font-weight:900;margin-bottom:6px;}
+.code-box pre{font-family:monospace;font-size:11px;line-height:1.65;white-space:pre-wrap;word-break:break-all;}
+.cb-before{background:#eef8f4;}.cb-before .cb-head{color:#2e8b4f;}
+.cb-after{background:#ece4f7;}.cb-after .cb-head{color:#5a3e8a;}
+.compare-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.compare-table th,.compare-table td{font-size:12px;font-weight:700;padding:8px 10px;border:1.5px solid #e0e5ef;text-align:center;}
+.compare-table th{background:#f0f3fa;color:#2b3245;font-weight:900;}
+.compare-table td.yes{color:#2e8b4f;font-weight:900;}
+.compare-table td.no{color:#dd5a3a;font-weight:900;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#5a3e8a;--fbg:#f4effe;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🛡️ ITパスポート ｜ テクノロジ系</span>
+    <h1><b>難読化</b>（コード難読化）とは？</h1>
+    <p>ソースコードを"わざと読みにくく"変えて、解析・コピーをされにくくする技術。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="50" width="62" height="36" rx="8" fill="#ece4f7"/>
+        <rect x="14" y="56" width="50" height="24" rx="4" fill="#5a3e8a"/>
+        <text x="39" y="67" text-anchor="middle" font-size="7" fill="#cfc0f0" font-family="monospace">a=b(c,d);e=f</text>
+        <text x="39" y="76" text-anchor="middle" font-size="7" fill="#cfc0f0" font-family="monospace">(g,h);i(j);</text>
+        <circle cx="39" cy="23" r="15" fill="#f4c89a"/>
+        <path d="M26 19 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="30" y="36" width="18" height="8" fill="#f4c89a"/>
+        <path d="M30 44 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        競合他社があなたの会社のスマホアプリを分解して（リバースエンジニアリング）、ロジックをパクろうとしている。APKファイルを展開すればJavaコードが覗けてしまう。
+        <div class="scene-q">…そこでコードを"わざと読みにくく"変換して解析を困難にする — これが難読化。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：難読化の前後 -->
+  <div class="panel p-purple">
+    <span class="phead">🔍 難読化 前後のコード比較</span>
+    <svg width="100%" viewBox="0 0 340 130" role="img" aria-label="難読化前後のコード比較図">
+      <!-- 左：変換前 -->
+      <rect x="5" y="10" width="148" height="110" rx="10" fill="#eef8f4" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="79" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">変換前（読める）</text>
+      <text x="15" y="46" font-size="9.5" fill="#2e8b4f" font-family="monospace">function calcPrice(</text>
+      <text x="15" y="59" font-size="9.5" fill="#2e8b4f" font-family="monospace">  price, tax) {</text>
+      <text x="15" y="72" font-size="9.5" fill="#2e8b4f" font-family="monospace">  return price *</text>
+      <text x="15" y="85" font-size="9.5" fill="#2e8b4f" font-family="monospace">    (1 + tax);</text>
+      <text x="15" y="98" font-size="9.5" fill="#2e8b4f" font-family="monospace">}</text>
+      <!-- 矢印 -->
+      <text x="170" y="68" text-anchor="middle" font-size="20" fill="#5a3e8a">→</text>
+      <text x="170" y="84" text-anchor="middle" font-size="9" font-weight="900" fill="#5a3e8a" font-family="M PLUS Rounded 1c">難読化</text>
+      <!-- 右：変換後 -->
+      <rect x="188" y="10" width="148" height="110" rx="10" fill="#ece4f7" stroke="#5a3e8a" stroke-width="2"/>
+      <text x="262" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#5a3e8a" font-family="M PLUS Rounded 1c">変換後（読みにくい）</text>
+      <text x="196" y="46" font-size="9" fill="#5a3e8a" font-family="monospace">var _0x3f=function(</text>
+      <text x="196" y="59" font-size="9" fill="#5a3e8a" font-family="monospace">_0x1a,_0x2b){</text>
+      <text x="196" y="72" font-size="9" fill="#5a3e8a" font-family="monospace">return _0x1a*</text>
+      <text x="196" y="85" font-size="9" fill="#5a3e8a" font-family="monospace">(0x1+_0x2b);};</text>
+      <text x="196" y="98" font-size="9" fill="#5a3e8a" font-family="monospace">// 動作は同じ</text>
+    </svg>
+    <p style="font-size:13px;font-weight:700;color:#48506a;margin-top:8px;">変数名・関数名を意味のない文字列に置き換えるのが基本。コードの実行は同じ結果になるが、人間が読んでも意味がわからない状態にする。</p>
+  </div>
+
+  <!-- フロー/詳細：難読化の手法 -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ 難読化の主な手法</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① リネーミング（識別子の置き換え）</div>
+        <div class="fb">「calcPrice」→「_0x3f」のように、変数・関数・クラス名を無意味な文字列に置き換える。最も基本的な難読化。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 制御フローの複雑化</div>
+        <div class="fb">if文やループを複雑なジャンプ・ダミー分岐に変換し、処理の流れを追いにくくする。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 文字列の暗号化・分割</div>
+        <div class="fb">文字列リテラルをBase64エンコードや分割代入に変換。プレーンなキーワードを検索できなくする。</div>
+      </div>
+    </div>
+    <p style="font-size:12.5px;font-weight:700;color:#48506a;margin-top:12px;">難読化後も<strong>実行結果は同一</strong>。機能は変わらず「読みにくさ」だけ上げる。</p>
+    <!-- 比較表：難読化・暗号化・圧縮 -->
+    <table class="compare-table" style="margin-top:12px;">
+      <tr><th>手法</th><th>実行可能</th><th>元に戻せる</th><th>ファイルサイズ</th><th>目的</th></tr>
+      <tr><td style="font-weight:900;color:#5a3e8a;">難読化</td><td class="yes">◯</td><td class="yes">△（困難）</td><td>増減様々</td><td>解析防止</td></tr>
+      <tr><td style="font-weight:900;color:#2e6de5;">暗号化</td><td class="no">×（鍵必要）</td><td class="yes">◯（鍵で復号）</td><td>増加</td><td>秘密保護</td></tr>
+      <tr><td style="font-weight:900;color:#2e8b4f;">圧縮</td><td class="no">×（展開必要）</td><td class="yes">◯（可逆）</td><td>減少</td><td>サイズ削減</td></tr>
+    </table>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">難読化は「暗号化」ではない</div>
+      <div class="tb">暗号化は鍵なしでは内容を取り出せない。難読化は解析が難しいだけで、時間をかければ解析できる。「難読化すれば完全に保護できる」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">難読化しても動作は同じ</div>
+      <div class="tb">難読化後のコードは元のコードと「完全に同じ動作」をする。処理が変わる・バグが増えるというのは誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">圧縮との違いに注意</div>
+      <div class="tb">圧縮の目的はファイルサイズの削減で可逆変換。難読化は解析防止が目的で、ファイルサイズは減らないことが多い。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      難読化＝「<span class="hl">ナンドクカ（なんだこりゃ）」</span>ってなるコード<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">読む人を「なんどく（なんどく＝難読）か！？」と叫ばせる変換</span><br><br>
+      「<span class="hl">動くけど読めない</span>」＝難読化<br>
+      「<span class="hl">鍵がないと開かない</span>」＝暗号化<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">試験で「解析防止」→難読化、「秘密保護」→暗号化！</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,195 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>説明可能なAI（XAI）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="説明可能なAI（XAI）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-xai.html">
-<meta property="og:title" content="説明可能なAI（XAI）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="説明可能なAI（XAI）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-xai.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>説明可能なAI（XAI）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="説明可能なAI（XAI）をわかりやすく解説。なぜAIがその答えを出したか説明できる仕組み・ブラックボックス問題との違い・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-xai">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e6de5,#19357f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#4256b8;--fbg:#edeef8;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">説明可能なAI（XAI）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">説明可能なAI（XAI）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>説明可能なAI（XAI）</b>とは？</h1>
+    <p>AIがなぜその答えを出したか、人間が理解できる形で「理由」を示してくれるAI。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="60" width="54" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="18" y="38" width="42" height="30" rx="8" fill="#2e6de5"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5-9-13-9 q-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 41 l8 5 l8-5 v5 h-16z" fill="#fff"/>
+        <!-- ？マーク吹き出し -->
+        <rect x="44" y="10" width="26" height="20" rx="6" fill="#ffd23f"/>
+        <text x="57" y="25" text-anchor="middle" font-size="13" font-weight="900" fill="#5c4500" font-family="sans-serif">？</text>
+        <polygon points="44,22 50,28 50,22" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        融資審査システムがAIで自動判断。あなたの融資申請は「否決」に。担当者に理由を聞いても「AIが決めたので説明できません」と言われた。<br>
+        <strong>これがブラックボックス問題。</strong>なぜNGか分からないと、誤りを修正することも信頼することもできない。
+        <div class="scene-q">→ AIに「説明責任」を持たせる仕組みが XAI（説明可能なAI）。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ブラックボックスvs XAI -->
+  <div class="panel p-indigo">
+    <span class="phead">🔍 ブラックボックスAI vs 説明可能AI（XAI）</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="ブラックボックスAIはINPUTからOUTPUTだけが出る。XAIはINPUT・理由・OUTPUTの3つが出る比較図">
+      <!-- 左：ブラックボックスAI -->
+      <rect x="8" y="14" width="148" height="192" rx="14" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="82" y="36" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">ブラックボックスAI</text>
+      <!-- INPUT -->
+      <rect x="24" y="46" width="116" height="32" rx="8" fill="#fff" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="82" y="67" text-anchor="middle" font-size="11" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">INPUT（データ）</text>
+      <text x="82" y="88" text-anchor="middle" font-size="18" fill="#9aa3b2">▼</text>
+      <!-- 黒い箱 -->
+      <rect x="24" y="96" width="116" height="44" rx="8" fill="#2b3245"/>
+      <text x="82" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#aab0bd" font-family="M PLUS Rounded 1c">謎の処理</text>
+      <text x="82" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#6a7080" font-family="M PLUS Rounded 1c">（理由はない）</text>
+      <text x="82" y="150" text-anchor="middle" font-size="18" fill="#9aa3b2">▼</text>
+      <!-- OUTPUT -->
+      <rect x="24" y="158" width="116" height="32" rx="8" fill="#fff" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="82" y="179" text-anchor="middle" font-size="11" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">OUTPUT（答えだけ）</text>
+
+      <!-- 右：XAI -->
+      <rect x="184" y="14" width="148" height="192" rx="14" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="258" y="36" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">XAI（説明可能なAI）</text>
+      <!-- INPUT -->
+      <rect x="200" y="46" width="116" height="32" rx="8" fill="#fff" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="258" y="67" text-anchor="middle" font-size="11" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">INPUT（データ）</text>
+      <text x="258" y="88" text-anchor="middle" font-size="18" fill="#9aa3b2">▼</text>
+      <!-- 透明な箱 -->
+      <rect x="200" y="96" width="116" height="44" rx="8" fill="#c6e8d2" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="258" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">処理＋理由を生成</text>
+      <text x="258" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">（根拠が見える）</text>
+      <text x="258" y="150" text-anchor="middle" font-size="18" fill="#9aa3b2">▼</text>
+      <!-- OUTPUT + 理由 -->
+      <rect x="200" y="158" width="116" height="32" rx="8" fill="#fff" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="258" y="174" text-anchor="middle" font-size="11" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">答え＋</text>
+      <text x="258" y="186" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">「なぜか」の説明</text>
+    </svg>
+  </div>
+
+  <!-- XAIが必要な場面・詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 XAIが重要な場面と技術</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 高リスク判断（医療・金融・法務）</div>
+        <div class="fb">がん診断・融資審査・採用判断など、人の人生に関わる場面では「なぜそう判断したか」が法的・倫理的に必要。EU AI法でも高リスクAIへの説明要求あり。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② AI偏りの発見と修正</div>
+        <div class="fb">AIが差別的な判断をしていないか確認するには、根拠が見えなければ検証できない。XAIは「どの特徴が判断に影響したか」を可視化して、バイアス（偏り）の修正を可能にする。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 人間の信頼獲得と受け入れ</div>
+        <div class="fb">「理由が分かるAI」は現場スタッフが納得して使える。説明できないAIは「本当に正しいの？」と疑われ、現場での活用が進まない。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 代表的なXAI手法（参考）</div>
+        <div class="fb">LIME（局所的な近似モデルで理由を説明）・SHAP（各特徴量の影響度を数値化）・注意機構（どこに注目したかを可視化）など。ITパスポートでは手法名より「目的と概念」を問われる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「精度が高いAI＝XAI」ではない</div>
+      <div class="tb">精度と説明可能性は別の概念。ディープラーニングは精度は高いがブラックボックスになりやすい。XAIは精度より「理由を示せるか」が本質。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ハルシネーション対策」と混同しやすい</div>
+      <div class="tb">ハルシネーション（生成AIの嘘）はXAIとは別問題。XAIは「なぜその答えを出したか」を説明する仕組み。ハルシネーション抑制は精度・品質の問題。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「自動化バイアス」との混同</div>
+      <div class="tb">自動化バイアスは「AIの出力を無批判に信じすぎる人間の心理」。XAIはAI側の説明責任。主語が違う（AI側 vs 人間側）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「AIが<strong>なぜその判断をしたか</strong>分かるようにする」→ XAI（説明可能なAI）。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">X（バツ）がついた理由を説明してくれるAI</span> ＝ XAI<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">X＝Explainable（説明できる）/ AI＝人工知能</span><br><br>
+      「<span class="hl">エックスAI</span>は<span class="hl">エグい説明</span>をしてくれる」<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">エグい＝びっくりするくらい詳しく理由を話す → 説明可能</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-xai ／ HTML+SVG（文字はすべてテキスト）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>金融AI担当の自分。「融資AI却下の理由を申請者・担当に説明可能にしたい」。生成AI？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>説明可能なAI（XAI：Explainable AI）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>生成AI（Generative AI）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 生成AIは新規生成。「AI判断根拠の説明技術」がXAI</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：説明可能なAI（XAI：Explainable AI）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 説明可能なAI（XAI）とは何か</h2>
-<span class="kw">AIがなぜそう判断したかを人間に説明できる・ブラックボックス解消</span>
-<p>XAI（Explainable AI）はAIの予測・判断の根拠を人間が理解できる形で提示する技術群。主なアプローチ：LIME（個別予測の局所的近似）・SHAP（各特徴量の寄与度を定量化）・注意機構の可視化（自然言語処理のどの単語に着目したか）。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>XAIの必要性：EU AI Actでは高リスクAIに説明責任が義務付けられる。金融・医療・雇用でAIが不利益な判断をした場合、影響を受けた人には説明を求める権利がある。「ブラックボックスAI」への社会的不信を解消し、AIの適切な活用を促進するために重要。
-
-**覚え方** 🎯 XAI＝**eXplainable AI＝説明可能AI**。**LIME・SHAP**が手法。ブラックボックス解消、EU AI Actで義務化。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>ひっかけ：XAIは「生成AI」ではなく「AIの判断根拠を人間に説明する技術」の総称。LIMEは局所近似、SHAPは特徴量ごとの寄与度定量化。「説明可能＝精度が高い」は誤りで、説明可能性と精度はトレードオフになる場合がある。EU AI Actの高リスクAIにはXAIが義務付けられる。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>XAI＝**eXplainable AI＝説明可能AI**。**LIME・SHAP**が手法。ブラックボックス解消、EU AI Actで義務化。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>説明可能なAI（XAI）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

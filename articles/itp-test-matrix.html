@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>テストマトリクスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="テストマトリクスをわかりやすく図解。テスト項目の網羅性を確保するための表の作り方、デシジョンテーブルとの違い、ITパスポートのひっかけポイントまで解説。">
+<link rel="canonical" href="https://example.com/itp-test-matrix">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7040b8,#3b1880);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(59,24,128,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d0c0f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7040b8;--cbg:#e8defa;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7040b8;}
+
+/* テーブル */
+.matrix-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px;}
+.matrix-table th{background:#7040b8;color:#fff;font-weight:900;padding:8px 6px;text-align:center;font-family:"M PLUS Rounded 1c",sans-serif;}
+.matrix-table td{border:1px solid #c8b8e8;padding:7px 6px;text-align:center;font-weight:700;color:#3c4456;font-family:"M PLUS Rounded 1c",sans-serif;}
+.matrix-table tr:nth-child(even) td{background:#f4f0fb;}
+.matrix-table tr:nth-child(odd) td{background:#faf8ff;}
+.matrix-table td.ok{background:#e2f3e5;color:#2e8b4f;font-weight:900;}
+.matrix-table td.ng{background:#fce4dd;color:#dd5a3a;font-weight:900;}
+.matrix-table td.head{background:#e8defa;color:#7040b8;font-weight:900;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7040b8;--fbg:#f0e8fc;}
+.f2{--fc:#2a5da8;--fbg:#ddeef9;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🛠️ ITパスポート ｜ テクノロジ系</span>
+    <h1><b>テストマトリクス</b>とは？</h1>
+    <p>テスト対象（機能・条件）を縦横の表に並べ、「どの組み合わせを試したか」を一目で把握する手法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="62" height="26" rx="6" fill="#c8b8e8"/>
+        <rect x="14" y="38" width="50" height="28" rx="9" fill="#7040b8"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- ノート（チェックリスト） -->
+        <rect x="40" y="56" width="22" height="20" rx="2" fill="#f8f0ff"/>
+        <line x1="43" y1="62" x2="59" y2="62" stroke="#7040b8" stroke-width="1.5"/>
+        <line x1="43" y1="67" x2="59" y2="67" stroke="#7040b8" stroke-width="1.5"/>
+        <line x1="43" y1="72" x2="53" y2="72" stroke="#7040b8" stroke-width="1.5"/>
+        <text x="41" y="63" font-size="5" fill="#2e8b4f" font-weight="900">✓</text>
+        <text x="41" y="68" font-size="5" fill="#2e8b4f" font-weight="900">✓</text>
+      </svg>
+      <div class="scene-txt">
+        新しいECサイトのテストを担当したあなた。「ブラウザ（Chrome・Safari・Firefox）×OS（Windows・Mac・iOS）」の全組み合わせを表にして、<strong>どれをテスト済みか</strong>一目でわかるようにした。<br>
+        テスト漏れなし、報告もラクラク。
+        <div class="scene-q">…この「組み合わせを表にする手法」の名前は？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- マトリクス図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">📋 テストマトリクスの例</span>
+    <svg width="100%" viewBox="0 0 340 60" role="img" aria-label="テストマトリクスの概念図：ブラウザ×OSの組み合わせ表">
+      <rect x="0" y="0" width="340" height="60" rx="10" fill="#e8defa"/>
+      <text x="170" y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#7040b8" font-family="M PLUS Rounded 1c">縦軸（テスト条件A）× 横軸（テスト条件B）の全組み合わせを表に</text>
+      <text x="170" y="42" text-anchor="middle" font-size="11" font-weight="800" fill="#4a3080" font-family="M PLUS Rounded 1c">各セルに「✅ OK／❌ NG／— 未実施」を記録 → テスト漏れを即発見</text>
+    </svg>
+    <table class="matrix-table" style="margin-top:12px;">
+      <tr>
+        <th>ブラウザ＼OS</th>
+        <th>Windows</th>
+        <th>Mac</th>
+        <th>iOS</th>
+        <th>Android</th>
+      </tr>
+      <tr>
+        <td class="head">Chrome</td>
+        <td class="ok">✅ OK</td>
+        <td class="ok">✅ OK</td>
+        <td class="ok">✅ OK</td>
+        <td class="ng">❌ NG</td>
+      </tr>
+      <tr>
+        <td class="head">Safari</td>
+        <td>— 未</td>
+        <td class="ok">✅ OK</td>
+        <td class="ok">✅ OK</td>
+        <td>— 未</td>
+      </tr>
+      <tr>
+        <td class="head">Firefox</td>
+        <td class="ok">✅ OK</td>
+        <td class="ok">✅ OK</td>
+        <td>— 未</td>
+        <td>— 未</td>
+      </tr>
+    </table>
+    <p style="margin-top:10px;font-size:12px;color:#7040b8;font-weight:800;">↑ このような表で「どのセルが未実施か」「NGがどこか」が一目でわかる</p>
+  </div>
+
+  <!-- フロー/詳細：作り方 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ テストマトリクスの作り方</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① テスト対象の「軸」を決める</div>
+        <div class="fb">縦と横に何を並べるか決める。例：縦＝機能（ログイン・検索・カート）、横＝デバイス（PC・スマホ・タブレット）</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 全組み合わせのセルを作る</div>
+        <div class="fb">縦×横の全セルに「テスト項目番号」か「実施予定」を入れる。これが「テスト設計の完了」を意味する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ テスト結果を埋める</div>
+        <div class="fb">実施したセルに OK・NG・未実施を記録。空欄や NG が残っていれば「テスト漏れ」「不具合あり」が一目でわかる。</div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;color:#48506a;font-weight:700;">目的は「網羅性の確認」。抜けが見えること＝テストマトリクスの存在価値。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">デシジョンテーブルとの違い</div>
+      <div class="tb">デシジョンテーブルは「条件の組み合わせ→動作を整理する表」（論理的な正しさを検証）。テストマトリクスは「何を・どの環境でテストしたかを管理する表」（網羅性の確認）。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">テストマトリクス＝全組み合わせを実施する？</div>
+      <div class="tb">必ずしも全組み合わせを実施するわけではない。<strong>「どこをテストすべきか見える化」</strong>が目的。実施優先度を絞るための判断材料にもなる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「直交表」との混同に注意</div>
+      <div class="tb">直交表は組み合わせを<strong>統計的に最小化</strong>するテスト設計手法（全組み合わせをカバーしつつ件数を減らす）。テストマトリクスとは別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「テスト項目を<strong>縦横の表</strong>に整理」「<strong>漏れがないか確認</strong>」「<strong>環境×機能</strong>の組み合わせ」→ テストマトリクス一択。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「マトリクス＝マス目のチェックシート」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">縦横のマス＝全組み合わせ。埋まってないマスがテスト漏れ！</span><br><br>
+      <span class="hl">「マト（的）を外すな！マトリクスで網羅」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">テスト漏れ＝的（まと）を外すこと。マトリクスで全セルを「的」にして撃ち抜く！</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IT投資とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="IT投資を「ITに使うお金の判断・管理」として解説。ROI・TCO・ポートフォリオ管理、IT投資の分類（戦略・情報・業務）、試験のひっかけポイントと無理やりゴロまで。">
+<link rel="canonical" href="https://mana-quest.com/itp/itp-it-investment">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c07a10,#7a4a00);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,74,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#fff176 56%,#fff176 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5dcab;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#c07a10;--cbg:#fdf0d9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c07a10;}
+
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:8px;}
+.icard{border-radius:12px;padding:12px 10px;}
+.icard .ih{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.icard .ib{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+.ic-s{background:#fdf0d9;}.ic-s .ih{color:#c07a10;}
+.ic-i{background:#e7eefc;}.ic-i .ih{color:#2e6de5;}
+.ic-o{background:#e2f3e5;}.ic-o .ih{color:#2e8b4f;}
+@media(max-width:480px){.three-col{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c07a10;--fbg:#fdf0d9;}
+.f2{--fc:#2e6de5;--fbg:#e7eefc;}
+.f3{--fc:#2e8b4f;--fbg:#e2f3e5;}
+.f4{--fc:#dd5a3a;--fbg:#fce4dd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#c07a10;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ ストラテジ系</span>
+    <h1><b>IT投資</b>とは？</h1>
+    <p>ITに使うお金を「何に・いくら・なぜ」判断する経営活動。<br>費用ではなく"投資"＝リターンを意識して使う。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#f5dca0"/>
+        <rect x="14" y="36" width="44" height="26" rx="8" fill="#c07a10"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 16 a12 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 円グラフ風アイコン -->
+        <circle cx="52" cy="66" r="10" fill="#fff" stroke="#c07a10" stroke-width="1.5"/>
+        <path d="M52 56 a10 10 0 0 1 10 10 l-10 0 z" fill="#c07a10"/>
+        <path d="M52 56 a10 10 0 0 0 -7 3 l7 7 z" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        予算会議。IT部門長が「新しいERPシステム導入に5000万円かかりますが、業務効率化で年間2000万円のコスト削減が見込めます。<strong>3年以内に回収できます。</strong>」と提案。<br>
+        役員が「ROIは？TCOは？他の案とどう比較した？」と問い返す。
+        <div class="scene-q">この議論全体が IT投資管理 の現場だ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：IT投資の3分類 -->
+  <div class="panel p-orange">
+    <span class="phead">IT投資の3つの目的分類</span>
+    <svg width="100%" viewBox="0 0 340 130" role="img" aria-label="IT投資の3分類：戦略的投資・情報系投資・業務系投資">
+      <!-- 矢印型の流れ -->
+      <rect x="10" y="30" width="96" height="70" rx="10" fill="#fdf0d9" stroke="#c07a10" stroke-width="2"/>
+      <text x="58" y="58" text-anchor="middle" font-size="12" font-weight="900" fill="#8a5000" font-family="M PLUS Rounded 1c">戦略的投資</text>
+      <text x="58" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#b07030" font-family="M PLUS Rounded 1c">競争優位を</text>
+      <text x="58" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#b07030" font-family="M PLUS Rounded 1c">生み出す</text>
+      <text x="58" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c08040" font-family="M PLUS Rounded 1c">DX・新サービス</text>
+
+      <rect x="122" y="30" width="96" height="70" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="58" text-anchor="middle" font-size="12" font-weight="900" fill="#1a3a8a" font-family="M PLUS Rounded 1c">情報系投資</text>
+      <text x="170" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#4060a0" font-family="M PLUS Rounded 1c">意思決定を</text>
+      <text x="170" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#4060a0" font-family="M PLUS Rounded 1c">支える</text>
+      <text x="170" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5070b0" font-family="M PLUS Rounded 1c">BI・分析基盤</text>
+
+      <rect x="234" y="30" width="96" height="70" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="282" y="58" text-anchor="middle" font-size="12" font-weight="900" fill="#1a5030" font-family="M PLUS Rounded 1c">業務系投資</text>
+      <text x="282" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#3a7040" font-family="M PLUS Rounded 1c">業務を効率化</text>
+      <text x="282" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#3a7040" font-family="M PLUS Rounded 1c">・省力化する</text>
+      <text x="282" y="100" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4a8050" font-family="M PLUS Rounded 1c">ERP・RPA</text>
+
+      <!-- ラベル -->
+      <text x="170" y="18" text-anchor="middle" font-size="11" font-weight="900" fill="#6a4000" font-family="M PLUS Rounded 1c">← 攻めのIT投資 ───────── 守りのIT投資 →</text>
+    </svg>
+    <div class="three-col">
+      <div class="icard ic-s"><div class="ih">戦略的</div><div class="ib">新規ビジネス・差別化。効果測定は難しいが重要度は最高。</div></div>
+      <div class="icard ic-i"><div class="ih">情報系</div><div class="ib">データ分析・経営管理。意思決定の質を上げる。</div></div>
+      <div class="icard ic-o"><div class="ih">業務系</div><div class="ib">既存業務の効率化。ROI計算しやすい。</div></div>
+    </div>
+  </div>
+
+  <!-- IT投資評価の流れ -->
+  <div class="panel p-green">
+    <span class="phead">IT投資評価の流れ（ROI・TCO）</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① TCO（総所有コスト）を把握</div><div class="fb">導入費用だけでなく、運用・保守・教育・廃棄まで含めた「全体コスト」を計算。「買う金額」＝TCOではない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 期待効果を数値化</div><div class="fb">業務削減時間・売上増加・ミス減少数を金額換算。定性効果（顧客満足度など）も補足。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ ROI（投資対効果）を算出</div><div class="fb">ROI＝（効果－投資額）÷ 投資額 × 100。プラスで回収可能・高いほど優先度アップ。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ ポートフォリオで優先順位を決定</div><div class="fb">複数の投資候補を比較し、戦略的重要度・ROI・リスクを総合判断して予算配分。</div></div>
+    </div>
+  </div>
+
+  <!-- 試験のキモ -->
+  <div class="panel" style="--c:#c07a10;border-top:5px solid #c07a10;">
+    <span class="phead" style="background:#fdf0d9;color:#c07a10;">試験のキモ</span>
+    <ul class="kimo-list">
+      <li><strong>TCO</strong>＝導入コスト＋運用・保守コスト（廃棄まで含む）。「総所有コスト」。</li>
+      <li><strong>ROI</strong>＝（効果－コスト）÷ コスト × 100（%）。投資対効果。</li>
+      <li>IT投資は「費用」ではなく「投資」＝<strong>リターン（効果）を見込んで使う</strong>点が核心。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">TCO＝導入費用だけではない</div>
+      <div class="tb">TCOは「Total Cost of Ownership＝総所有コスト」。導入費用だけでなく、運用・保守・サポート・廃棄まで含む。試験で「TCOとは何か」が問われたら「全ライフサイクルのコスト」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ROIの計算式の分子</div>
+      <div class="tb">ROI＝（効果額－投資額）÷ 投資額。分子は「効果額そのもの」ではなく「効果額から投資額を引いた純利益」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">IT投資は経営判断</div>
+      <div class="tb">IT部門だけで決めるのではなく、経営層（ITガバナンス）が優先順位を判断する。IT投資管理はITガバナンスの重要な構成要素。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">TCO</span>＝「<span class="hl">全部</span>（Total）コスト」＝<span class="hl">捨てる</span>まで！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        T＝Total（全部）C＝Cost O＝Ownership（所有）<br>
+        「買う・使う・<strong>捨てる</strong>」まで全部足す＝TCO
+      </span><br><br>
+      <span class="hl">ROI</span>＝「<span class="hl">儲け</span>÷<span class="hl">元手</span>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        Return（儲け）÷ Investment（元手）×100<br>
+        「元手100万で200万稼いだ→ROI 100%」
+      </span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

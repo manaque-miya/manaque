@@ -1,108 +1,213 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>デジタルツインとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="デジタルツインの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-digital-twin.html">
-<meta property="og:title" content="デジタルツインとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="デジタルツインの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-digital-twin.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>デジタルツインとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="デジタルツインをわかりやすく解説。現実世界をデジタル空間に再現する仕組み・IoTとの関係・シミュレーション活用、VRやメタバースとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-digital-twin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0097a7,#005662);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(0,86,98,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a0dde6;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-teal{--c:#0097a7;--cbg:#d4f0f4;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#1a7a4a;--cbg:#d9f0e6;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0097a7;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#0097a7;--fbg:#e4f7f9;}
+.f2{--fc:#4256b8;--fbg:#eef0fb;}
+.f3{--fc:#1a7a4a;--fbg:#eef8f1;}
+
+.usecases{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.uc{border-radius:11px;padding:10px;background:#e4f7f9;border-left:4px solid #0097a7;}
+.uc h4{font-size:12px;font-weight:900;color:#0097a7;margin-bottom:4px;}
+.uc p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+@media(max-width:400px){.usecases{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">デジタルツインとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">デジタルツイン</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🌐 ITパスポート ｜ テクノロジ系・IoT・AI</span>
+    <h1><b>デジタルツイン</b>とは？</h1>
+    <p>現実の物体・設備・都市をセンサーデータで丸ごとデジタル空間に再現し、リアルタイムで監視・シミュレーションする技術。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="4" fill="#005662" opacity=".1"/>
+        <circle cx="36" cy="18" r="12" fill="#f4c89a"/>
+        <path d="M24 14 a12 11 0 0 1 24 0 q-4 -8 -12 -8 q-8 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="27" y="28" width="18" height="8" fill="#f4c89a"/>
+        <rect x="14" y="36" width="44" height="26" rx="9" fill="#0097a7"/>
+        <rect x="10" y="62" width="52" height="18" rx="6" fill="#b0d8de"/>
+        <!-- 現実の機械 -->
+        <rect x="16" y="42" width="14" height="14" rx="2" fill="#fff" opacity=".8"/>
+        <circle cx="23" cy="49" r="4" fill="#005662" opacity=".8"/>
+        <!-- デジタルコピー（右） -->
+        <rect x="42" y="42" width="14" height="14" rx="2" fill="#ffd23f" opacity=".9"/>
+        <circle cx="49" cy="49" r="4" fill="#005662" opacity=".8"/>
+        <!-- 双方向矢印 -->
+        <path d="M31 49 L40 49" stroke="#fff" stroke-width="1.5"/>
+        <path d="M34 47 L31 49 L34 51" fill="none" stroke="#fff" stroke-width="1.2"/>
+        <path d="M37 47 L40 49 L37 51" fill="none" stroke="#fff" stroke-width="1.2"/>
+      </svg>
+      <div class="scene-txt">
+        大型工場の製造ラインを管理するエンジニア。現場に行かなくても、画面上の3D空間に工場全体がリアルタイムで再現されている。センサーが異常を検知すると画面でも即座に赤く点灯し、「このまま動かすとどこで壊れるか」をシミュレーションで事前に試せる。
+        <div class="scene-q">…この「現実の完全なデジタルコピー」が <strong>デジタルツイン（双子）</strong>。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔄 デジタルツインの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="現実世界とデジタル空間の双方向データ連携の仕組み">
+      <rect x="4" y="8" width="332" height="184" rx="14" fill="#f2f4fc" stroke="#c5cce8" stroke-width="1.5"/>
+      <!-- 現実世界 -->
+      <rect x="14" y="22" width="130" height="152" rx="12" fill="#e4f7f9" stroke="#0097a7" stroke-width="2"/>
+      <text x="79" y="44" text-anchor="middle" font-size="12" font-weight="900" fill="#0097a7" font-family="M PLUS Rounded 1c">【現実世界】</text>
+      <!-- 工場 -->
+      <rect x="24" y="52" width="40" height="30" rx="4" fill="#0097a7"/>
+      <rect x="30" y="58" width="8" height="18" fill="#a0dde6"/>
+      <rect x="42" y="58" width="8" height="18" fill="#a0dde6"/>
+      <rect x="54" y="62" width="6" height="14" fill="#a0dde6"/>
+      <text x="44" y="96" text-anchor="middle" font-size="9.5" font-weight="700" fill="#005662" font-family="M PLUS Rounded 1c">工場・設備</text>
+      <!-- センサー -->
+      <circle cx="79" cy="68" r="10" fill="#ffd23f" stroke="#d9a000" stroke-width="1.5"/>
+      <text x="79" y="72" text-anchor="middle" font-size="8" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">IoT</text>
+      <text x="79" y="90" text-anchor="middle" font-size="9.5" font-weight="700" fill="#005662" font-family="M PLUS Rounded 1c">センサー</text>
+      <!-- 都市 -->
+      <rect x="100" y="52" width="36" height="30" rx="4" fill="#0097a7"/>
+      <rect x="104" y="58" width="8" height="18" fill="#a0dde6"/>
+      <rect x="116" y="62" width="8" height="14" fill="#a0dde6"/>
+      <text x="118" y="96" text-anchor="middle" font-size="9.5" font-weight="700" fill="#005662" font-family="M PLUS Rounded 1c">都市・建物</text>
+      <text x="79" y="130" text-anchor="middle" font-size="10" font-weight="900" fill="#0097a7" font-family="M PLUS Rounded 1c">温度・振動・位置など</text>
+      <text x="79" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#3a8090" font-family="M PLUS Rounded 1c">リアルタイムデータ収集</text>
+      <text x="79" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#3a8090" font-family="M PLUS Rounded 1c">故障・異常を即検知</text>
+      <!-- 双方向矢印（中央） -->
+      <path d="M144 86 L196 86" stroke="#4256b8" stroke-width="3" marker-end="url(#ar)"/>
+      <path d="M196 106 L144 106" stroke="#1a7a4a" stroke-width="3" marker-end="url(#ar2)"/>
+      <text x="170" y="76" text-anchor="middle" font-size="9" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">データ送信</text>
+      <text x="170" y="122" text-anchor="middle" font-size="9" font-weight="800" fill="#1a7a4a" font-family="M PLUS Rounded 1c">制御・最適化</text>
+      <defs>
+        <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 Z" fill="#4256b8"/>
+        </marker>
+        <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 Z" fill="#1a7a4a"/>
+        </marker>
+      </defs>
+      <!-- デジタル空間 -->
+      <rect x="196" y="22" width="132" height="152" rx="12" fill="#eef0fb" stroke="#4256b8" stroke-width="2"/>
+      <text x="262" y="44" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">【デジタル空間】</text>
+      <!-- デジタルコピー（3Dグリッド表現） -->
+      <rect x="206" y="52" width="40" height="30" rx="4" fill="#4256b8" opacity=".7"/>
+      <rect x="212" y="58" width="8" height="18" fill="#8aacf5"/>
+      <rect x="224" y="58" width="8" height="18" fill="#8aacf5"/>
+      <rect x="236" y="62" width="6" height="14" fill="#8aacf5"/>
+      <text x="226" y="96" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">仮想モデル</text>
+      <rect x="256" y="52" width="36" height="30" rx="4" fill="#4256b8" opacity=".7"/>
+      <rect x="260" y="58" width="8" height="18" fill="#8aacf5"/>
+      <rect x="272" y="62" width="8" height="14" fill="#8aacf5"/>
+      <text x="274" y="96" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">シミュレーション</text>
+      <text x="262" y="130" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">故障予測・最適化</text>
+      <text x="262" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#5c70d0" font-family="M PLUS Rounded 1c">「あと◯日で壊れる」</text>
+      <text x="262" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#5c70d0" font-family="M PLUS Rounded 1c">を事前に予測できる</text>
+    </svg>
+    <div class="usecases">
+      <div class="uc"><h4>製造業</h4><p>機械の故障予測・生産ライン最適化</p></div>
+      <div class="uc"><h4>都市計画</h4><p>交通流シミュレーション・防災訓練</p></div>
+      <div class="uc"><h4>医療</h4><p>手術の仮想訓練・薬剤反応予測</p></div>
+      <div class="uc"><h4>建設・不動産</h4><p>BIM（建築情報モデリング）での設計検証</p></div>
+    </div>
+  </div>
+
+  <!-- フロー・詳細 -->
+  <div class="panel p-green">
+    <span class="phead">⚙️ デジタルツインが動く3ステップ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① データ収集（IoTセンサー）</div><div class="fb">現実の機械・設備に取り付けたIoTセンサーが温度・振動・位置・稼働状況などをリアルタイムで収集し続ける。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② デジタル空間に再現（仮想モデル）</div><div class="fb">収集データをもとに、デジタル空間上で現実と同じ状態を常時反映した3Dモデル・数値モデルを維持する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ シミュレーション → 現実にフィードバック</div><div class="fb">「このまま動かしたら？」「部品を交換したら？」をデジタル空間で試し、最適解を現実の制御に反映する。現実に手をつける前に失敗できる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「VR（仮想現実）」と混同しやすい</div>
+      <div class="tb">VRは体験のための仮想空間。デジタルツインは<strong>現実をリアルタイムで反映した分析・制御用のコピー</strong>。現実データとのリンクが本質。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「メタバース」と混同しやすい</div>
+      <div class="tb">メタバースは人々が活動するバーチャル空間。デジタルツインは現実の物理システムを<strong>管理・最適化するため</strong>の技術。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「シミュレーション」だけではない</div>
+      <div class="tb">シミュレーションは仮の数字で試すもの。デジタルツインは<strong>現実のリアルタイムデータ</strong>を使って動くモデルである点が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「現実の物体・設備をリアルタイムでデジタル空間に再現し分析する」→ 迷わず<strong>デジタルツイン</strong>。IoTセンサーとセットで登場することが多い。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「ツイン＝双子。現実とデジタルがそっくりの双子」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">TWIN ＝ 双子 ＝ 現実の完全なコピーをデジタルに作る技術</span><br><br>
+    <span class="hl">デジ</span>（出来事を）<span class="hl">タル</span>（足している）<span class="hl">ツイン</span>（双子センサー）<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">現実 ＋ IoTセンサー ＝ リアルタイムのデジタルコピー</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-digital-twin</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>工場DX担当の自分。「生産ラインをセンサーでリアルタイム計測→3D仮想空間に正確再現→故障予測」する手法。シミュレーション？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>デジタルツイン（実物と同期した仮想複製による予測・分析）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>シミュレーション（過去データや仮定条件で動作を模擬する）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ シミュは事前模擬。「実物とリアルタイム同期」がデジタルツイン</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：デジタルツイン（実物と同期した仮想複製による予測・分析）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 デジタルツインとは何か</h2>
-<span class="kw">物理資産のリアルタイム仮想複製モデル</span>
-<p>デジタルツインは物理的な実体（機械・建物・都市等）をリアルタイムのセンサーデータで仮想空間に複製するモデル。故障予測・設計最適化・トレーニングに活用される。製造・スマートシティ・航空宇宙で採用が進む。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>試験では「デジタルツイン＝リアルタイム連動が特徴」として問われる。IoT×AI×クラウドの組み合わせで実現される技術として位置づけられる。シミュレーションとの違いは「実物との同期性の有無」。
-
-**覚え方** 🎯 デジタルツイン＝**実物の双子（Twin）が仮想空間でリアルタイム稼働**。IoT+AI+クラウドの結晶。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>シミュレーションとの混同に注意。通常のシミュレーションは仮想モデルで予測するだけだが、デジタルツインはリアルタイムのセンサーデータで実物と常時同期する点が本質的な違い。試験では「IoTセンサーでリアルタイム連動」「実物との同期」という記述がデジタルツインの識別ポイント。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>デジタルツイン＝**実物の双子（Twin）が仮想空間でリアルタイム稼働**。IoT+AI+クラウドの結晶。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>デジタルツインはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

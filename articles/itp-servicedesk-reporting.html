@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>サービスデスクのレポーティングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="サービスデスクのレポーティングをわかりやすく解説。KPI・報告内容・改善サイクルへの活用・ひっかけポイントまでITパスポート試験対策に完全対応。">
+<link rel="canonical" href="https://example.com/itp-servicedesk-reporting">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c5cc5,#3a1a80);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(58,26,128,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d4c8f4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-purple{--c:#7c5cc5;--cbg:#ece7f8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c5cc5;}
+
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.kpi-item{border-radius:12px;padding:12px;border-left:4px solid var(--kc);background:var(--kbg);}
+.kpi-item .kh{font-size:12.5px;font-weight:900;color:var(--kc);margin-bottom:5px;}
+.kpi-item .kb{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.kpi-item .kv{font-size:20px;font-weight:900;color:var(--kc);display:block;margin-bottom:3px;}
+.ki-1{--kc:#2e6de5;--kbg:#eef3fd;}
+.ki-2{--kc:#2e8b4f;--kbg:#eef8f1;}
+.ki-3{--kc:#d9851f;--kbg:#fdf4e4;}
+.ki-4{--kc:#cf4f86;--kbg:#fce8f2;}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c5cc5;--fbg:#f0ecfd;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>サービスデスクの<br>レポーティング</b>とは？</h1>
+    <p>サービスデスクの対応状況をデータで集計・報告し、サービス改善につなげる活動。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="85" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#7c5cc5"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M22 16 a13 12 0 0 1 28 0 q-5 -9 -14 -9 q-9 0 -14 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- グラフアイコン -->
+        <rect x="42" y="56" width="22" height="20" rx="3" fill="#fff" stroke="#7c5cc5" stroke-width="1.5"/>
+        <rect x="45" y="68" width="4" height="6" fill="#7c5cc5"/>
+        <rect x="51" y="64" width="4" height="10" fill="#7c5cc5"/>
+        <rect x="57" y="60" width="4" height="14" fill="#7c5cc5"/>
+      </svg>
+      <div class="scene-txt">
+        サービスデスクの月次会議。上司が「<strong>今月の問い合わせ件数・平均解決時間・未解決率</strong>のレポートを出してくれ」と言った。このデータをまとめ、どこを改善するか議論する——これがレポーティング。
+        <div class="scene-q">「記録して・集計して・報告して・改善する」サイクルの起点！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI図解 -->
+  <div class="panel p-purple">
+    <span class="phead">📊 主なレポーティング指標（KPI）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="サービスデスクの主要KPI：件数・解決時間・解決率・満足度">
+      <!-- バーグラフ背景 -->
+      <rect x="10" y="10" width="320" height="170" rx="12" fill="#f0ecfd" stroke="#c0b0e8" stroke-width="1.5"/>
+      <text x="170" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">今月のサービスデスク実績レポート</text>
+      <!-- 棒1：受付件数 -->
+      <rect x="28" y="140" width="40" height="0" fill="#2e6de5" rx="4"/>
+      <rect x="28" y="60" width="40" height="80" fill="#2e6de5" rx="4"/>
+      <text x="48" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">450件</text>
+      <text x="48" y="158" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">受付件数</text>
+      <!-- 棒2：平均解決時間 -->
+      <rect x="90" y="140" width="40" height="0" fill="#2e8b4f" rx="4"/>
+      <rect x="90" y="85" width="40" height="55" fill="#2e8b4f" rx="4"/>
+      <text x="110" y="77" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6b38" font-family="M PLUS Rounded 1c">2.3h</text>
+      <text x="110" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4a8f60" font-family="M PLUS Rounded 1c">平均解決時間</text>
+      <!-- 棒3：一次解決率 -->
+      <rect x="152" y="140" width="40" height="0" fill="#d9851f" rx="4"/>
+      <rect x="152" y="50" width="40" height="90" fill="#d9851f" rx="4"/>
+      <text x="172" y="42" text-anchor="middle" font-size="11" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">78%</text>
+      <text x="172" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">一次解決率</text>
+      <!-- 棒4：未解決率 -->
+      <rect x="214" y="140" width="40" height="0" fill="#cf4f86" rx="4"/>
+      <rect x="214" y="115" width="40" height="25" fill="#cf4f86" rx="4"/>
+      <text x="234" y="107" text-anchor="middle" font-size="11" font-weight="900" fill="#a3316a" font-family="M PLUS Rounded 1c">8%</text>
+      <text x="234" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">未解決率</text>
+      <!-- 棒5：満足度 -->
+      <rect x="276" y="140" width="40" height="0" fill="#7c5cc5" rx="4"/>
+      <rect x="276" y="70" width="40" height="70" fill="#7c5cc5" rx="4"/>
+      <text x="296" y="62" text-anchor="middle" font-size="11" font-weight="900" fill="#4a2a9a" font-family="M PLUS Rounded 1c">4.2/5</text>
+      <text x="296" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#7c5cc5" font-family="M PLUS Rounded 1c">利用者満足度</text>
+      <!-- 横ライン -->
+      <line x1="18" y1="140" x2="322" y2="140" stroke="#c0b0e8" stroke-width="1" stroke-dasharray="4 3"/>
+    </svg>
+    <div class="kpi-grid">
+      <div class="kpi-item ki-1">
+        <span class="kv">受付件数</span>
+        <div class="kh">月・週・日の問い合わせ件数</div>
+        <div class="kb">増減トレンドから課題を把握する</div>
+      </div>
+      <div class="kpi-item ki-2">
+        <span class="kv">解決時間</span>
+        <div class="kh">平均対応・解決時間</div>
+        <div class="kb">SLAの目標値と比較して評価する</div>
+      </div>
+      <div class="kpi-item ki-3">
+        <span class="kv">一次解決率</span>
+        <div class="kh">エスカレーションせず解決した割合</div>
+        <div class="kb">高いほどデスクの能力が高い</div>
+      </div>
+      <div class="kpi-item ki-4">
+        <span class="kv">利用者満足度</span>
+        <div class="kh">対応後のアンケート結果</div>
+        <div class="kb">サービス品質の最終評価指標</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 改善サイクルへの活用 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ レポーティング→改善サイクル</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① データ収集</div><div class="fb">問い合わせ件数・対応時間・解決率・満足度などを記録・集計する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② レポート作成・報告</div><div class="fb">管理者・IT部門・経営層へ定期的に報告。数値の変化・SLA達成状況をまとめる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 問題・傾向の分析</div><div class="fb">「同じ問い合わせが多い」「解決時間が長い原因は何か」など根本原因を探る。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 改善アクション</div><div class="fb">FAQ整備・担当者スキルアップ・ツール改善などを実施し、次のサイクルへ。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「記録するだけ」ではない</div>
+      <div class="tb">レポーティングの目的は記録ではなく<strong>改善につなげること</strong>。集計して終わりではなく、分析→アクションまでがセット。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SLAと混同しやすい</div>
+      <div class="tb">SLAは<strong>事前に合意した品質目標</strong>。レポーティングは<strong>その達成状況を事後に計測・報告</strong>する活動。目標設定と実績測定の違い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「誰に」報告するかが重要</div>
+      <div class="tb">試験では「管理者・IT部門・経営層へ定期報告する」という<strong>報告の対象・目的</strong>が問われる。利用者へ公開するものではない点に注意。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「レポ（記録）→ 分（分析）→ 改（改善）＝レポ分改！」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">レポ＝レポーティング（集計・報告） ／ 分＝分析 ／ 改＝改善</span><br><br>
+      <span class="hl">「数えてまとめて直す → これがレポーティング」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">通知表をもらって弱点を直すのと同じ。数字なしに改善なし！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-servicedesk-reporting</div>
+
+</div>
+</body>
+</html>

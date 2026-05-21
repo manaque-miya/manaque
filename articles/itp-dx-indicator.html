@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DX推進指標とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="DX推進指標をわかりやすく解説。経産省が定めた企業のDX達成度を測るモノサシ、成熟度レベルの5段階、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-dx-indicator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e6bb0,#0a3060);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(10,48,96,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d5f4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1e6bb0;--cbg:#e0eefa;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1e6bb0;}
+
+.level-stack{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
+.level-item{border-radius:11px;padding:11px 14px;display:flex;align-items:center;gap:10px;}
+.level-num{font-size:18px;font-weight:900;min-width:28px;text-align:center;}
+.level-body{}
+.level-body .lh{font-size:13px;font-weight:900;margin-bottom:2px;}
+.level-body .lb{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.lv0{background:#f0f2f7;}.lv0 .level-num{color:#9aa3b2;}.lv0 .lh{color:#6a7080;}
+.lv1{background:#fcefd9;}.lv1 .level-num{color:#d9851f;}.lv1 .lh{color:#b07010;}
+.lv2{background:#e4e7f7;}.lv2 .level-num{color:#4256b8;}.lv2 .lh{color:#2a3a96;}
+.lv3{background:#daf2eb;}.lv3 .level-num{color:#0f7a5a;}.lv3 .lh{color:#086045;}
+.lv4{background:#ffd23f22;border:2px solid #e0a800;}.lv4 .level-num{color:#9a6b00;}.lv4 .lh{color:#7a5500;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e6bb0;--fbg:#e8f2fb;}
+.f2{--fc:#4256b8;--fbg:#edf0fc;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>DX推進指標</b>とは？</h1>
+    <p>「うちの会社、どこまでDXできてる？」を測るための、経産省が作った公式モノサシ。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="82" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="56" width="52" height="26" rx="8" fill="#c8dff4"/>
+        <rect x="16" y="62" width="40" height="18" rx="5" fill="#1e6bb0"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M24 16 a13 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- クリップボード -->
+        <rect x="14" y="60" width="22" height="16" rx="2" fill="#fff" stroke="#1e6bb0" stroke-width="1"/>
+        <rect x="16" y="63" width="18" height="2" rx="1" fill="#7ab0d8"/>
+        <rect x="16" y="67" width="14" height="2" rx="1" fill="#7ab0d8"/>
+        <rect x="16" y="71" width="10" height="2" rx="1" fill="#7ab0d8"/>
+      </svg>
+      <div class="scene-txt">
+        「わが社はDXを推進します！」と社長が宣言。でも、「どこまで進んでいるか？」「何を達成したらDXできたと言えるのか？」が誰にもわからない。<br>
+        <strong>「感覚」でDXを語るのではなく、客観的に測れる指標が必要だ。</strong>
+        <div class="scene-q">→ そのために経産省が作ったのが「DX推進指標」！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：DX推進指標のレベル -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 DX成熟度レベル（5段階）</span>
+    <svg width="100%" viewBox="0 0 340 130" role="img" aria-label="DX推進指標の成熟度：レベル0〜4の5段階ピラミッド">
+      <!-- ピラミッド状の積み重ね -->
+      <!-- レベル4（頂点） -->
+      <polygon points="170,8 230,35 110,35" fill="#ffd23f" stroke="#e0a800" stroke-width="2"/>
+      <text x="170" y="26" text-anchor="middle" font-size="11" font-weight="900" fill="#7a5500" font-family="M PLUS Rounded 1c">Lv.4 全社変革・新市場創出</text>
+      <!-- レベル3 -->
+      <polygon points="108,37 232,37 252,67 88,67" fill="#daf2eb" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="170" y="55" text-anchor="middle" font-size="11" font-weight="900" fill="#0f6a48" font-family="M PLUS Rounded 1c">Lv.3 定量的管理・全社展開</text>
+      <!-- レベル2 -->
+      <polygon points="86,69 254,69 278,100 62,100" fill="#e4e7f7" stroke="#4256b8" stroke-width="1.5"/>
+      <text x="170" y="87" text-anchor="middle" font-size="11" font-weight="900" fill="#2a3a96" font-family="M PLUS Rounded 1c">Lv.2 一部部門で実践・横展開中</text>
+      <!-- レベル1 -->
+      <polygon points="60,102 280,102 310,128 30,128" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="170" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#b07010" font-family="M PLUS Rounded 1c">Lv.1 個別最適・散発的な取り組み</text>
+    </svg>
+    <div class="level-stack">
+      <div class="level-item lv0"><span class="level-num">0</span><div class="level-body"><div class="lh">未着手・現状認識なし</div><div class="lb">DXの必要性すら認識していない状態。</div></div></div>
+      <div class="level-item lv1"><span class="level-num">1</span><div class="level-body"><div class="lh">一部で取り組みあり（散発的）</div><div class="lb">特定の部署が個別に動いているが、全社的な戦略はない。</div></div></div>
+      <div class="level-item lv2"><span class="level-num">2</span><div class="level-body"><div class="lh">横展開・部門間連携あり</div><div class="lb">成功事例を横展開し始め、複数部門で取り組んでいる。</div></div></div>
+      <div class="level-item lv3"><span class="level-num">3</span><div class="level-body"><div class="lh">全社展開・定量的管理</div><div class="lb">全社でDXが進み、数値で進捗を管理できている。</div></div></div>
+      <div class="level-item lv4"><span class="level-num">4</span><div class="level-body"><div class="lh">事業変革・新市場の創出</div><div class="lb">DXによって既存市場を変革したり、新たな事業を生み出せている。</div></div></div>
+    </div>
+  </div>
+
+  <!-- フロー：DX推進指標の使い方 -->
+  <div class="panel p-green">
+    <span class="phead">🔄 DX推進指標の使い方</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 自己診断シートで現状を測る</div><div class="fb">経産省が公開する自己診断ツールを使い、「経営・ガバナンス・ITシステム・データ活用」など複数の視点で自社のDX度を採点する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 現在のレベルと課題を把握</div><div class="fb">「うちはレベル1、データ活用が弱い」など、客観的な数値で弱点が見える化される。主観的な「やってる感」をなくせる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ DIPAにデータ提出→ベンチマーク比較</div><div class="fb">IPA（独立行政法人情報処理推進機構）に診断データを提出することで、他社との比較（ベンチマーク）ができ、業界平均との差を知れる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「DX推進指標」と「DX認定制度」は別物</div>
+      <div class="tb">DX推進指標は「自己診断して現状把握するためのツール」。DX認定制度は「国がDX推進に向けた基本的な取り組みをしていると認定する制度」。目的がまったく違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">作成は「経産省」、診断データを集めるのは「IPA」</div>
+      <div class="tb">DX推進指標は経済産業省が策定。データ収集・分析・ベンチマークサービスを提供するのはIPA（独立行政法人情報処理推進機構）。主体を混同しない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">義務ではなく任意の自己診断ツール</div>
+      <div class="tb">DX推進指標は法的な義務ではなく、企業が自発的に使う自己診断ツール。強制・罰則はない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">DX推進指標 ＝「DXの通知表」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">通知表＝0〜4点で自分の成績（DX達成度）を測る</span><br><br>
+      <span class="hl">「推進してるかどうか、指標で測れ」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">作ったのは経産省、集めるのはIPA、測るのは自分！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-dx-indicator</div>
+
+</div>
+</body>
+</html>

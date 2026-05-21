@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>カスタマージャーニーマップとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="カスタマージャーニーマップをわかりやすく解説。顧客の行動・感情・接点を時系列で見える化する手法、ペルソナとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-customer-journey-map">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c3aed,#4c1d95);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(124,58,237,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ddd6fe;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-purple{--c:#7c3aed;--cbg:#ede9fe;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c3aed;}
+
+/* ジャーニーマップ表 */
+.jmap{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:10px;}
+.jmap th{background:#7c3aed;color:#fff;font-weight:900;padding:7px 6px;text-align:center;}
+.jmap td{border:1.5px solid #e0d9f8;padding:7px 6px;text-align:center;font-weight:600;color:#48506a;vertical-align:top;line-height:1.6;}
+.jmap tr:nth-child(even) td{background:#f8f6ff;}
+.jmap .row-head{background:#ede9fe;font-weight:900;color:#4c1d95;text-align:left;padding-left:8px;}
+.emo-up{color:#2e8b4f;font-size:16px;}
+.emo-mid{color:#d9851f;font-size:16px;}
+.emo-down{color:#dd5a3a;font-size:16px;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c3aed;--fbg:#f5f3ff;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🗺️ ITパスポート ｜ ストラテジ系</span>
+    <h1><b>カスタマー<br>ジャーニーマップ</b>とは？</h1>
+    <p>顧客が商品・サービスと出会い、購入し、使い続けるまでの「旅（ジャーニー）」を、行動・感情・接点ごとに表に見える化するツール。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-hidden="true" style="flex-shrink:0;">
+        <ellipse cx="36" cy="86" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="60" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="30" rx="9" fill="#7c3aed"/>
+        <circle cx="36" cy="21" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        新しいフィットネスアプリのサービス改善チーム。「なぜユーザーが3か月で辞めるのか？」を分析するため、<strong>「SNSで知る→無料登録→初回使用→継続or解約」</strong>の各ステップでユーザーが何を感じているかを1枚の表に整理した。
+        <div class="scene-q">…この「旅の見える化ツール」は何と呼ぶ？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：マップのイメージ -->
+  <div class="panel p-blue">
+    <span class="phead">🗺️ カスタマージャーニーマップの構造</span>
+    <svg width="100%" viewBox="0 0 340 60" role="img" aria-label="カスタマージャーニーマップ：認知→検討→購入→利用→推奨の5ステージを時系列で表す">
+      <rect x="0" y="15" width="340" height="8" rx="4" fill="#ede9fe"/>
+      <circle cx="34" cy="19" r="16" fill="#7c3aed"/>
+      <text x="34" y="23" text-anchor="middle" font-size="8.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">認知</text>
+      <circle cx="102" cy="19" r="16" fill="#6d28d9"/>
+      <text x="102" y="23" text-anchor="middle" font-size="8.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">検討</text>
+      <circle cx="170" cy="19" r="16" fill="#5b21b6"/>
+      <text x="170" y="23" text-anchor="middle" font-size="8.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">購入</text>
+      <circle cx="238" cy="19" r="16" fill="#4c1d95"/>
+      <text x="238" y="23" text-anchor="middle" font-size="8.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">利用</text>
+      <circle cx="306" cy="19" r="16" fill="#ffd23f"/>
+      <text x="306" y="23" text-anchor="middle" font-size="8.5" font-weight="900" fill="#4c1d95" font-family="M PLUS Rounded 1c">推奨</text>
+      <text x="170" y="52" text-anchor="middle" font-size="9.5" font-weight="900" fill="#7c3aed" font-family="M PLUS Rounded 1c">← 時系列で「旅」を追う →</text>
+    </svg>
+    <table class="jmap">
+      <tr>
+        <th style="width:22%">記録する項目</th>
+        <th>認知</th>
+        <th>検討</th>
+        <th>購入</th>
+        <th>利用</th>
+      </tr>
+      <tr>
+        <td class="row-head">行動</td>
+        <td>SNSで広告を見る</td>
+        <td>口コミを調べる</td>
+        <td>申し込みする</td>
+        <td>毎日使う</td>
+      </tr>
+      <tr>
+        <td class="row-head">感情</td>
+        <td><span class="emo-mid">😐</span><br>ちょっと気になる</td>
+        <td><span class="emo-up">😊</span><br>良さそう！</td>
+        <td><span class="emo-up">😄</span><br>やってみよう</td>
+        <td><span class="emo-down">😟</span><br>続かない…</td>
+      </tr>
+      <tr>
+        <td class="row-head">接点</td>
+        <td>Instagram広告</td>
+        <td>レビューサイト</td>
+        <td>公式サイト</td>
+        <td>アプリ画面</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 作り方のフロー -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 作成の流れ（3ステップ）</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① ペルソナを決める</div><div class="fb">「誰の旅か」を決める仮想の顧客像（ペルソナ）を設定する。30代会社員・スマホで注文派、など具体的なキャラクターを作る。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② ステージ（段階）を横軸に並べる</div><div class="fb">認知→検討→購入→利用→推奨など、顧客の旅の段階を時系列で横軸に。ビジネスによって段階は異なる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 行動・感情・接点を埋めて課題を発見</div><div class="fb">各ステージで顧客が何をして、何を感じているかを記入。感情が下がるポイント＝改善すべき箇所（ペインポイント）が浮かびあがる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ペルソナと混同しやすい</div>
+      <div class="tb">ペルソナは「誰か（仮想顧客像）」を定義するもの。ジャーニーマップはそのペルソナが<strong>どう旅するか（行動・感情の時系列）</strong>を描くもの。セットで使うが別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">CX（カスタマーエクスペリエンス）と混同しやすい</div>
+      <div class="tb">CXは体験の<strong>概念・考え方</strong>。ジャーニーマップはCXを分析・設計するための<strong>可視化ツール</strong>。「CXを高めるためにジャーニーマップを使う」という関係。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「購入の瞬間だけ」描くものではない</div>
+      <div class="tb">購入前（認知・検討）から購入後（利用・推奨）まで<strong>全行程</strong>を描く。一部だけ描いても「旅」にならない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「顧客の<strong>行動・感情・接点を時系列で見える化</strong>する表・図」→ カスタマージャーニーマップ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「旅（ジャーニー）を地図（マップ）に書く」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">お客様の旅＝出会い→買う→使い続けるの全行程を1枚の地図に描く</span><br><br>
+      <span class="hl">「カスタマーが泣いてる顔を探す表」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">感情が下がるポイント（😟）＝改善すべき課題の発見が目的</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,210 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>2進数・16進数とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="2進数・16進数の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-binary-hex.html">
-<meta property="og:title" content="2進数・16進数とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="2進数・16進数の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-binary-hex.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2進数と16進数とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="2進数と16進数の相互変換をわかりやすく解説。4ビットごとに16進1桁に対応する変換ルール、A〜Fの対応表、ITパスポート試験の計算問題の解き方まで。">
+<link rel="canonical" href="https://example.com/itp-binary-hex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#8b4f1a,#4f2a09);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(79,42,9,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f0cfa0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-amber{--c:#8b4f1a;--cbg:#faecd8;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#8b4f1a;}
+
+/* 対応表 */
+.hex-table{width:100%;border-collapse:collapse;margin-top:10px;}
+.hex-table th{background:#4256b8;color:#fff;font-size:12px;font-weight:900;padding:8px;text-align:center;}
+.hex-table td{font-size:13px;font-weight:700;padding:7px 8px;border:1px solid #e4e7f7;text-align:center;color:#3c4456;font-family:monospace;}
+.hex-table tr:nth-child(even) td{background:#f5f6fc;}
+.hex-table td.hx{color:#8b4f1a;font-weight:900;font-size:16px;}
+.hex-table td.bin{color:#2e6de5;font-size:13px;}
+.hex-table td.dec{color:#2e8b4f;font-size:13px;}
+.hex-alpha td.hx{background:#faecd8;}
+
+/* 変換ステップ */
+.conv-block{background:#f5f6fc;border-radius:14px;padding:14px 16px;margin-top:10px;}
+.conv-block .cb-head{font-size:12px;font-weight:900;color:#4256b8;margin-bottom:10px;font-family:"M PLUS Rounded 1c",sans-serif;}
+.bit-row{display:flex;gap:4px;justify-content:center;margin-bottom:8px;flex-wrap:wrap;}
+.bit-group{display:flex;gap:3px;padding:8px 10px;border-radius:10px;border:2px solid var(--bg);}
+.bit-group.g1{--bg:#2e6de5;background:#e7eefc;}
+.bit-group.g2{--bg:#d9851f;background:#fcefd9;}
+.bit-group.g3{--bg:#2e8b4f;background:#e2f3e5;}
+.bit-group.g4{--bg:#8b4f1a;background:#faecd8;}
+.bit-cell{width:24px;height:28px;border-radius:5px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;font-family:monospace;color:#2b3245;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.hex-result{display:flex;gap:12px;justify-content:center;margin-top:6px;}
+.hex-digit{text-align:center;}
+.hex-digit .hd{font-size:24px;font-weight:900;font-family:monospace;}
+.hex-digit .hl{font-size:10px;font-weight:700;color:#8a91a0;font-family:"M PLUS Rounded 1c",sans-serif;}
+.hd1{color:#2e6de5;}.hd2{color:#d9851f;}.hd3{color:#2e8b4f;}.hd4{color:#8b4f1a;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.trap-item .tb code{font-family:monospace;font-size:13px;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">2進数・16進数とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">2進数・16進数</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>2進数と16進数</b>とは？</h1>
+    <p>16進数はコンピュータの「省略記法」。2進数4桁がそのまま16進数1桁に対応する。変換表を覚えれば瞬殺。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-amber">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-txt">
+      プログラムのエラーログに「0xFF3A」という値が出てきた。「FFって何？」と思ったら、16進数でF＝15、F＝15……全部1の8ビット（255）と同じ意味。16進数を知れば、長い2進数を短く読めるようになる。
+      <div class="scene-q">…2進数4桁＝16進数1桁。これだけで「0xから始まる数」が読める！</div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：16進数の対応表 -->
+  <div class="panel p-indigo">
+    <span class="phead">📋 2進数・16進数・10進数 対応表</span>
+    <table class="hex-table">
+      <tr><th>16進数</th><th>2進数（4桁）</th><th>10進数</th><th>16進数</th><th>2進数（4桁）</th><th>10進数</th></tr>
+      <tr><td class="hx">0</td><td class="bin">0000</td><td class="dec">0</td><td class="hx">8</td><td class="bin">1000</td><td class="dec">8</td></tr>
+      <tr><td class="hx">1</td><td class="bin">0001</td><td class="dec">1</td><td class="hx">9</td><td class="bin">1001</td><td class="dec">9</td></tr>
+      <tr><td class="hx">2</td><td class="bin">0010</td><td class="dec">2</td><td class="hx hex-alpha">A</td><td class="bin">1010</td><td class="dec">10</td></tr>
+      <tr class="hex-alpha"><td class="hx">3</td><td class="bin">0011</td><td class="dec">3</td><td class="hx">B</td><td class="bin">1011</td><td class="dec">11</td></tr>
+      <tr><td class="hx">4</td><td class="bin">0100</td><td class="dec">4</td><td class="hx hex-alpha">C</td><td class="bin">1100</td><td class="dec">12</td></tr>
+      <tr class="hex-alpha"><td class="hx">5</td><td class="bin">0101</td><td class="dec">5</td><td class="hx">D</td><td class="bin">1101</td><td class="dec">13</td></tr>
+      <tr><td class="hx">6</td><td class="bin">0110</td><td class="dec">6</td><td class="hx hex-alpha">E</td><td class="bin">1110</td><td class="dec">14</td></tr>
+      <tr class="hex-alpha"><td class="hx">7</td><td class="bin">0111</td><td class="dec">7</td><td class="hx">F</td><td class="bin">1111</td><td class="dec">15</td></tr>
+    </table>
+    <p style="font-size:12px;font-weight:700;color:#8a91a0;margin-top:8px;">★ A〜F は10〜15に対応。2進数で4桁（0000〜1111）＝16種類ちょうど対応する。</p>
+  </div>
+
+  <!-- フロー/詳細：変換手順SVG -->
+  <div class="panel p-blue">
+    <span class="phead">🔄 変換手順（4ビット区切りがコツ）</span>
+
+    <svg width="100%" viewBox="0 0 340 140" role="img" aria-label="2進数1010 1111を16進数AFに変換する図解">
+      <!-- 2進数8桁を4桁ずつ区切る -->
+      <text x="170" y="22" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">2進数：1010 1111 を16進数に変換</text>
+
+      <!-- グループ1：1010 -->
+      <rect x="50" y="35" width="100" height="40" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="100" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">左4桁</text>
+      <text x="100" y="68" text-anchor="middle" font-size="18" font-weight="900" fill="#2e6de5" font-family="monospace">1010</text>
+
+      <!-- グループ2：1111 -->
+      <rect x="190" y="35" width="100" height="40" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="240" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">右4桁</text>
+      <text x="240" y="68" text-anchor="middle" font-size="18" font-weight="900" fill="#d9851f" font-family="monospace">1111</text>
+
+      <!-- 変換矢印 -->
+      <line x1="100" y1="78" x2="100" y2="96" stroke="#2e6de5" stroke-width="2" marker-end="url(#da)"/>
+      <line x1="240" y1="78" x2="240" y2="96" stroke="#d9851f" stroke-width="2" marker-end="url(#db)"/>
+      <defs>
+        <marker id="da" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto">
+          <path d="M0,0 L3.5,6 L7,0 z" fill="#2e6de5"/>
+        </marker>
+        <marker id="db" markerWidth="7" markerHeight="7" refX="3.5" refY="6" orient="auto">
+          <path d="M0,0 L3.5,6 L7,0 z" fill="#d9851f"/>
+        </marker>
+      </defs>
+
+      <!-- 16進数結果 -->
+      <rect x="66" y="100" width="68" height="32" rx="8" fill="#2e6de5"/>
+      <text x="100" y="121" text-anchor="middle" font-size="20" font-weight="900" fill="#fff" font-family="monospace">A</text>
+
+      <rect x="206" y="100" width="68" height="32" rx="8" fill="#d9851f"/>
+      <text x="240" y="121" text-anchor="middle" font-size="20" font-weight="900" fill="#fff" font-family="monospace">F</text>
+
+      <text x="170" y="120" text-anchor="middle" font-size="20" font-weight="900" fill="#8a91a0" font-family="monospace"> </text>
+      <text x="170" y="115" text-anchor="middle" font-size="16" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">→ AF</text>
+    </svg>
+
+    <div class="conv-block">
+      <div class="cb-head">2進数 10101111 を4桁ずつ区切って変換</div>
+      <div class="bit-row">
+        <div class="bit-group g1">
+          <div class="bit-cell">1</div>
+          <div class="bit-cell">0</div>
+          <div class="bit-cell">1</div>
+          <div class="bit-cell">0</div>
+        </div>
+        <div class="bit-group g2">
+          <div class="bit-cell">1</div>
+          <div class="bit-cell">1</div>
+          <div class="bit-cell">1</div>
+          <div class="bit-cell">1</div>
+        </div>
+      </div>
+      <div class="hex-result">
+        <div class="hex-digit"><div class="hd hd1">A</div><div class="hl">1010→10→A</div></div>
+        <div class="hex-digit"><div class="hd hd2">F</div><div class="hl">1111→15→F</div></div>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:#48506a;font-weight:700;margin-top:10px;">逆変換（16進数 → 2進数）も同じ。1桁の16進数を4桁の2進数に置き換えるだけ。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">A〜Fの数値を忘れる</div>
+      <div class="tb">A＝10、B＝11、C＝12、D＝13、E＝14、F＝15。「<strong>Aから10、Fまで5つ増える</strong>」で数える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">4ビット区切りを崩す</div>
+      <div class="tb">2進数 → 16進数は必ず「右から4ビットずつ」区切る。左端が4ビット未満なら0でパディングする。<code>110</code> → <code>0110</code> → <code>6</code>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「0x」記法の意味</div>
+      <div class="tb">プログラム中の<code>0xFF</code>は「16進数のFF」。プレフィックス「0x」は単なる目印。値は<code>11111111</code>（2進数）＝255（10進数）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「4桁↔1桁」の対応を表で見つける。A〜Fは対応表の下半分（10〜15）。問題文に「16進数」とあれば<strong>0x表記や英字混じり</strong>が目印。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「4ビットで1文字、A（10）からF（15）まで6文字」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">2進数4桁＝16進数1桁。A=10、B=11…F=15</span><br><br>
+      「<span class="hl">いちまるいちまる</span>（1010）＝A（エー＝10）」<br>
+      「<span class="hl">いちいちいちいち</span>（1111）＝F（エフ＝15）」<br>
+      覚えたら変換は対応表を当てはめるだけ！
+    </div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>プログラム勉強中の自分。デバッグ画面に「0xFF」表示。これって10進だといくつ？2進数4桁で1桁って関係も曖昧…</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>255（F=15、16×15＋15＝255）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>512</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 0xFFは255、0x100が256。512は0x200</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：255（F=15、16×15＋15＝255）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 2進数・16進数とは何か</h2>
-<span class="kw">16進数は0〜9とA〜F、2進数4桁で1桁</span>
-<p>2進数：0と1のみで表す（コンピュータの基本）。16進数：0〜9とA〜Fで表す（A=10, F=15）。2進数4桁＝16進数1桁の関係（例：1010=A、1111=F）。「0x」は16進数表記の目印。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>変換の流れ：2進数「1010 1100」→4桁ずつ区切り→「1010=A、1100=C」→16進数「0xAC」→10進数は10×16＋12＝172。試験ではどちらか一方向の変換が出る。
-
-**覚え方** 🎯 **2進数4桁＝16進数1桁**の対応。**FF＝16×16-1＝255**（バイトの最大値）。0xはhex（16進）のサイン。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>混同注意：「16進数のA〜Fは10〜15」を忘れ「A=1、B=2」と誤解しやすい。また2進数4桁→16進数1桁の変換で「左揃えで区切る」を忘れ桁がずれる。0xFFは255（＝2の8乗-1）で「バイトの最大値」として頻出。bpsとBpsの混同とは別問題なので注意。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**2進数4桁＝16進数1桁**の対応。**FF＝16×16-1＝255**（バイトの最大値）。0xはhex（16進）のサイン。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>2進数・16進数はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

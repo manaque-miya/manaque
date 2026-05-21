@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JavaScriptとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="JavaScriptをわかりやすく解説。Webブラウザで動くスクリプト言語の仕組み、Java・TypeScriptとの違い、クライアントサイドvsサーバサイド、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-javascript">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b8960c,#6b5500);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,85,0,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#fff 56%,#fff 92%,transparent 92%);color:#2b3245;}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fef3c7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-yellow{--c:#b8960c;--cbg:#fef9e0;}
+.p-blue{--c:#1e6ab0;--cbg:#e0edf8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-purple{--c:#5c35b8;--cbg:#ede8f9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b8960c;}
+
+.lang-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.lang-card{border-radius:12px;padding:10px 10px;text-align:center;}
+.lang-card h4{font-size:12px;font-weight:900;margin-bottom:6px;}
+.lang-card p{font-size:10.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.lc-js{background:#fef9e0;border:2px solid #b8960c;}.lc-js h4{color:#b8960c;}
+.lc-java{background:#e0edf8;}.lc-java h4{color:#1e6ab0;}
+.lc-ts{background:#ede8f9;}.lc-ts h4{color:#5c35b8;}
+@media(max-width:440px){.lang-compare{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6b5500;--fbg:#fef9e0;}
+.f2{--fc:#b8960c;--fbg:#fffce8;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>JavaScript</b>とは？</h1>
+    <p>Webブラウザの中で動く「動きをつけるための言語」。クリックしたら変化・ポップアップ・バリデーションなど、ページをインタラクティブにする。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-yellow">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="62" width="58" height="22" rx="6" fill="#fef3c7"/>
+        <rect x="16" y="40" width="46" height="30" rx="9" fill="#b8960c"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- JS バッジ -->
+        <rect x="44" y="56" width="22" height="18" rx="4" fill="#ffd23f"/>
+        <text x="55" y="69" text-anchor="middle" font-size="11" font-weight="900" fill="#6b5500" font-family="sans-serif">JS</text>
+      </svg>
+      <div class="scene-txt">
+        ネットショッピングで「カートに入れる」ボタンを押した瞬間、ページが更新されずに「1品追加されました！」とポップアップが出る。フォームで電話番号を入力中に「数字のみ入力してください」とリアルタイムで警告が出る。
+        <div class="scene-q">…これら全部、ブラウザの中でJavaScriptが動いている。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：JSの動く場所 -->
+  <div class="panel p-blue">
+    <span class="phead">🖥️ JavaScriptが動く場所（クライアントサイド）</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="ブラウザ内でJavaScriptが動くクライアントサイドと、Node.jsで動くサーバサイドの図">
+      <!-- ブラウザ枠 -->
+      <rect x="10" y="14" width="200" height="180" rx="14" fill="#e9f2fb" stroke="#1e6ab0" stroke-width="2"/>
+      <rect x="10" y="14" width="200" height="28" rx="14" fill="#1e6ab0"/>
+      <rect x="10" y="30" width="200" height="12" fill="#1e6ab0"/>
+      <circle cx="28" cy="28" r="6" fill="#ff6b6b"/>
+      <circle cx="44" cy="28" r="6" fill="#ffd23f"/>
+      <circle cx="60" cy="28" r="6" fill="#6bcb77"/>
+      <text x="110" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">Webブラウザ（クライアントサイド）</text>
+      <!-- HTML -->
+      <rect x="24" y="54" width="76" height="40" rx="8" fill="#fff" stroke="#e0e4ed" stroke-width="1.5"/>
+      <text x="62" y="72" text-anchor="middle" font-size="10.5" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">HTML</text>
+      <text x="62" y="86" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">ページ構造</text>
+      <!-- CSS -->
+      <rect x="110" y="54" width="76" height="40" rx="8" fill="#fff" stroke="#e0e4ed" stroke-width="1.5"/>
+      <text x="148" y="72" text-anchor="middle" font-size="10.5" font-weight="900" fill="#1e6ab0" font-family="M PLUS Rounded 1c">CSS</text>
+      <text x="148" y="86" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">見た目・デザイン</text>
+      <!-- JS (強調) -->
+      <rect x="24" y="110" width="162" height="50" rx="10" fill="#ffd23f" stroke="#b8960c" stroke-width="2"/>
+      <text x="105" y="132" text-anchor="middle" font-size="13" font-weight="900" fill="#6b5500" font-family="M PLUS Rounded 1c">JavaScript</text>
+      <text x="105" y="150" text-anchor="middle" font-size="10" font-weight="700" fill="#8a6500" font-family="M PLUS Rounded 1c">動き・インタラクション</text>
+      <!-- サーバ枠 -->
+      <rect x="230" y="14" width="100" height="180" rx="14" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="280" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">サーバサイド</text>
+      <rect x="248" y="56" width="64" height="48" rx="8" fill="#fff" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="280" y="78" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Node.js</text>
+      <text x="280" y="93" text-anchor="middle" font-size="8.5" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">JSをサーバで動かす</text>
+      <text x="280" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">Python / Java等</text>
+      <text x="280" y="152" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">も動く</text>
+      <!-- 通信矢印 -->
+      <line x1="210" y1="130" x2="228" y2="130" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="4 3"/>
+      <polygon points="228,127 232,130 228,133" fill="#9aa3b2"/>
+    </svg>
+    <p>本来JavaScriptは「ブラウザ（クライアント）の中で動く言語」。HTMLがページの骨格、CSSが見た目、JavaScriptが動きを担当する。</p>
+  </div>
+
+  <!-- 比較：JavaScript vs Java vs TypeScript -->
+  <div class="panel p-purple">
+    <span class="phead">⚖️ 混同しやすい言語との比較</span>
+    <div class="lang-compare">
+      <div class="lang-card lc-js">
+        <h4>JavaScript</h4>
+        <p>ブラウザで動く動的スクリプト。型定義が緩い。HTMLに組み込んでそのまま動く。</p>
+      </div>
+      <div class="lang-card lc-java">
+        <h4>Java</h4>
+        <p>名前は似てるが別物。コンパイルが必要な静的型言語。業務システム・Android開発に多用。</p>
+      </div>
+      <div class="lang-card lc-ts">
+        <h4>TypeScript</h4>
+        <p>JavaScriptに型を追加した言語。大規模開発向け。最終的にJSに変換される。</p>
+      </div>
+    </div>
+
+    <svg width="100%" viewBox="0 0 340 80" role="img" aria-label="JavaScriptとJavaは名前が似ているだけで全く別の言語という図">
+      <rect x="10" y="14" width="140" height="52" rx="12" fill="#fef9e0" stroke="#b8960c" stroke-width="2"/>
+      <text x="80" y="37" text-anchor="middle" font-size="12" font-weight="900" fill="#b8960c" font-family="M PLUS Rounded 1c">JavaScript</text>
+      <text x="80" y="55" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8a6500" font-family="M PLUS Rounded 1c">ブラウザのスクリプト言語</text>
+      <text x="170" y="44" text-anchor="middle" font-size="16" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">≠</text>
+      <rect x="190" y="14" width="140" height="52" rx="12" fill="#e0edf8" stroke="#1e6ab0" stroke-width="2"/>
+      <text x="260" y="37" text-anchor="middle" font-size="12" font-weight="900" fill="#1e6ab0" font-family="M PLUS Rounded 1c">Java</text>
+      <text x="260" y="55" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0e3468" font-family="M PLUS Rounded 1c">コンパイル型の汎用言語</text>
+    </svg>
+  </div>
+
+  <!-- フロー：JSが動く仕組み -->
+  <div class="panel p-green">
+    <span class="phead">⚙️ ブラウザでJavaScriptが動く流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① HTMLファイルをブラウザが受け取る</div><div class="fb">Webサーバからブラウザにページのデータが届く。HTMLの中に&lt;script&gt;タグでJSが埋め込まれている。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② ブラウザのJSエンジンがコードを実行</div><div class="fb">ブラウザ内蔵のJavaScriptエンジン（ChromeはV8）がコードを解釈・実行。コンパイル不要でそのまま動く。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ DOM操作でページを動的に変える</div><div class="fb">JSはDOM（Document Object Model）を通じてHTMLの要素を書き換える。ページ再読み込みなしにコンテンツを変更できる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「JavaとJavaScriptは同じ」は完全に誤り</div>
+      <div class="tb">名前が似ているだけで開発元・用途・動作方式がすべて異なる別の言語。Javaはコンパイル型・オブジェクト指向の汎用言語。JavaScriptはインタープリタ型のスクリプト言語。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「サーバサイドでは動かない」は誤り</div>
+      <div class="tb">Node.jsの登場でサーバサイドでも動く。ただしITパスポートの文脈では「主にブラウザ（クライアントサイド）で動く」と覚えておく。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">コンパイルが必要かどうか</div>
+      <div class="tb">JavaScriptはインタープリタ型（コンパイル不要・そのまま実行）。Javaはコンパイルが必要（ソースコード→バイトコード→実行）。動作方式の違いも問われる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「Java＝島、JavaScript＝島のスクリプト（台本）」は偶然の名前の一致！</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">JavaScript＝ジャバがつくだけのネーミング。別物と割り切る。</span><br><br>
+      ゴロ：<span class="hl">「JS＝ページに"じ（動）さ（作）"す（する）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ページを「動作させる」言語＝JavaScript。HTMLが骨・CSSが皮・JSが筋肉（動かす）。</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

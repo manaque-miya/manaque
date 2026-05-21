@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>アンゾフの成長マトリクスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="アンゾフの成長マトリクスを市場浸透・市場開拓・製品開発・多角化の4戦略でわかりやすく解説。既存・新規の組み合わせ、試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-ansoff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e6de5,#19357f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.matrix-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+.mcell{border-radius:12px;padding:13px 12px;}
+.mcell h4{font-size:13px;font-weight:900;margin-bottom:5px;}
+.mcell p{font-size:11.5px;line-height:1.65;color:#48506a;}
+.mcell .risk{font-size:10.5px;font-weight:800;margin-top:6px;padding:3px 8px;border-radius:6px;display:inline-block;}
+.cell-a{background:#e7eefc;}.cell-a h4{color:#2e6de5;}.cell-a .risk{background:#c3d5f8;color:#1a4ba8;}
+.cell-b{background:#e2f3e5;}.cell-b h4{color:#2e8b4f;}.cell-b .risk{background:#b8e4c3;color:#1a6035;}
+.cell-c{background:#fcefd9;}.cell-c h4{color:#d9851f;}.cell-c .risk{background:#f8deb4;color:#9a5800;}
+.cell-d{background:#fbe3ee;}.cell-d h4{color:#cf4f86;}.cell-d .risk{background:#f7c3d8;color:#9a2060;}
+.matrix-label{display:flex;justify-content:space-between;font-size:11px;font-weight:900;color:#8a91a0;margin-top:4px;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#cf4f86;--fbg:#fdf0f5;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>アンゾフの成長マトリクス</b>とは？</h1>
+    <p>「製品」と「市場」が新規か既存かで、4つの成長戦略に分類するフレームワーク。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#2e6de5"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M22 16 a14 13 0 0 1 28 0 q-6-10-14-10-8 0-14 10z" fill="#3a3f4a"/>
+        <rect x="27" y="32" width="18" height="9" fill="#f4c89a"/>
+        <path d="M27 41 l9 6 l9-6 v6 h-18z" fill="#fff"/>
+        <rect x="40" y="55" width="22" height="14" rx="2" fill="#48506a"/>
+        <rect x="42" y="57" width="18" height="10" rx="1" fill="#acd0f5"/>
+      </svg>
+      <div class="scene-txt">
+        中堅メーカーの事業企画担当のあなた。「来期の成長戦略を考えたい」という社長の一言から、<strong>今の製品をそのまま売るか、新製品を作るか、新市場に出るか</strong>を整理することになった。
+        <div class="scene-q">…そんなときに使う"4マス"の整理フレームは？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 4つの戦略マトリクス</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="アンゾフの成長マトリクス：製品と市場の新規・既存の組み合わせ4戦略">
+      <!-- 背景 -->
+      <rect x="10" y="40" width="320" height="210" rx="8" fill="#f0f2f8"/>
+      <!-- 軸ラベル -->
+      <text x="175" y="18" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">市場</text>
+      <text x="100" y="30" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">既存</text>
+      <text x="255" y="30" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">新規</text>
+      <text x="22" y="135" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c" transform="rotate(-90,22,135)">製品</text>
+      <text x="30" y="100" text-anchor="middle" font-size="10" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">既存</text>
+      <text x="30" y="200" text-anchor="middle" font-size="10" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">新規</text>
+      <!-- セル①市場浸透 -->
+      <rect x="45" y="42" width="135" height="95" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="112" y="70" text-anchor="middle" font-size="13" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">①市場浸透</text>
+      <text x="112" y="88" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">既存製品 × 既存市場</text>
+      <text x="112" y="105" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">シェア拡大・販促強化</text>
+      <text x="112" y="122" text-anchor="middle" font-size="9" font-weight="800" fill="#1a4ba8" font-family="M PLUS Rounded 1c">▶ リスク最小</text>
+      <!-- セル②市場開拓 -->
+      <rect x="190" y="42" width="135" height="95" rx="6" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="257" y="70" text-anchor="middle" font-size="13" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">②市場開拓</text>
+      <text x="257" y="88" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">既存製品 × 新規市場</text>
+      <text x="257" y="105" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">新地域・新顧客層へ</text>
+      <text x="257" y="122" text-anchor="middle" font-size="9" font-weight="800" fill="#1a6035" font-family="M PLUS Rounded 1c">▶ リスク中</text>
+      <!-- セル③製品開発 -->
+      <rect x="45" y="148" width="135" height="95" rx="6" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="112" y="176" text-anchor="middle" font-size="13" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">③製品開発</text>
+      <text x="112" y="194" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">新規製品 × 既存市場</text>
+      <text x="112" y="211" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">既存客に新製品を投入</text>
+      <text x="112" y="228" text-anchor="middle" font-size="9" font-weight="800" fill="#9a5800" font-family="M PLUS Rounded 1c">▶ リスク中</text>
+      <!-- セル④多角化 -->
+      <rect x="190" y="148" width="135" height="95" rx="6" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="257" y="176" text-anchor="middle" font-size="13" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">④多角化</text>
+      <text x="257" y="194" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">新規製品 × 新規市場</text>
+      <text x="257" y="211" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">まったく新しい事業へ</text>
+      <text x="257" y="228" text-anchor="middle" font-size="9" font-weight="800" fill="#9a2060" font-family="M PLUS Rounded 1c">▶ リスク最大</text>
+      <!-- 中央の十字線 -->
+      <line x1="45" y1="145" x2="325" y2="145" stroke="#c0c8dc" stroke-width="1.5"/>
+      <line x1="188" y1="42" x2="188" y2="243" stroke="#c0c8dc" stroke-width="1.5"/>
+    </svg>
+    <div class="matrix-grid">
+      <div class="mcell cell-a"><h4>①市場浸透</h4><p>今売っているものを、今の客に「もっと」売る。値下げ・広告強化・頻度UP。</p><span class="risk">リスク最小</span></div>
+      <div class="mcell cell-b"><h4>②市場開拓</h4><p>今の製品のまま、まだ手を付けていない地域・層に売りに行く。</p><span class="risk">リスク中</span></div>
+      <div class="mcell cell-c"><h4>③製品開発</h4><p>顔なじみのお客様に、新しい製品を買ってもらう。既存の信頼関係を活かす。</p><span class="risk">リスク中</span></div>
+      <div class="mcell cell-d"><h4>④多角化</h4><p>製品も市場もゼロから。リスクが最も高い反面、大きな成長チャンスがある。</p><span class="risk">リスク最大</span></div>
+    </div>
+    <div class="matrix-label"><span>←既存市場…新規市場→</span><span>↑既存製品…新規製品↓</span></div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 戦略選択の考え方（リスク順）</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① まず市場浸透（リスク最小）</div><div class="fb">現状の延長線。広告費・値引き・営業強化でシェアを伸ばす。最初に検討すべき手。</div></div>
+      <div class="farrow">▼ うまくいかなければ</div>
+      <div class="fstep f2"><div class="fh">② 市場開拓 or 製品開発（リスク中）</div><div class="fb">どちらか片方が「新規」になる。まだ実績のある軸（製品または市場）を持ちながら攻める。</div></div>
+      <div class="farrow">▼ さらに大きく打って出るなら</div>
+      <div class="fstep f3"><div class="fh">③ 多角化（リスク最大）</div><div class="fb">製品も市場も両方新しい。成功すれば大きいが、失敗すれば大きい損失。慎重な判断が必要。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「市場開拓」と「製品開発」を逆に覚えやすい</div>
+      <div class="tb">市場開拓＝<strong>製品はそのまま・市場が新しい</strong>。製品開発＝<strong>市場はそのまま・製品が新しい</strong>。"開拓"は「行き先（市場）を新しく開く」と覚えると逆にならない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「多角化＝一番リスクが小さい」という引っかけ</div>
+      <div class="tb">両方新しい＝ノウハウゼロ＝リスク最大。「どの戦略がリスクが最も高いか」は頻出。答えは<strong>多角化</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">PPM（プロダクト・ポートフォリオ・マネジメント）と混同</div>
+      <div class="tb">PPMは「市場成長率 × 市場シェア」で製品ラインナップを評価するフレーム。アンゾフは<strong>成長戦略の方向性</strong>を決めるフレーム。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">問題文に<strong>「成長戦略」「製品×市場の新旧」「4つの方向性」</strong>が出たら → 迷わず<strong>アンゾフの成長マトリクス</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">浸（しん）・拓（たく）・開（かい）・多（た）</span> で「しんたくかいた」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        浸＝市場浸透　拓＝市場開拓　開＝製品開発　多＝多角化
+      </span><br><br>
+      リスク順は「<span class="hl">浸→拓＝開→多</span>」で小→大。<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        ※ 「多（た）」が一番ヤバい＝リスク最大。「多」いほど危ない！
+      </span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

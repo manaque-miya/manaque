@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ソフトウェア品質とは？SQuaREの8特性を図解 — ITパスポート 詳細解説</title>
+<meta name="description" content="ソフトウェア品質のSQuaRE（ISO/IEC 25010）8特性をわかりやすく図解。機能適合性・性能効率性・使用性・信頼性・セキュリティ・保守性・移植性・互換性の違い、ITパスポート頻出ポイントまで。">
+<link rel="canonical" href="itp-software-quality">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#4338ca,#1e1b4b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(30,27,75,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:27px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c7d2fe;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-indigo{--c:#4338ca;--cbg:#e0e7ff;}
+.p-blue{--c:#0369a1;--cbg:#e0f2fe;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#b91c1c;--cbg:#fee2e2;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#4338ca;}
+
+.q8grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+.q8card{border-radius:12px;padding:10px 11px;background:var(--bg);border-left:4px solid var(--bc);}
+.q8card .qh{font-size:12.5px;font-weight:900;color:var(--bc);margin-bottom:4px;}
+.q8card .qs{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.q8card .qex{font-size:10.5px;font-weight:700;color:#9aa3b2;margin-top:3px;}
+@media(max-width:480px){.q8grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fee2e2;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#b91c1c;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7f1d1d;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:12px 14px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:13.5px;font-weight:900;color:var(--fc);margin-bottom:3px;}
+.fstep .fb{font-size:12px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:4px 0;}
+.f1{--fc:#4338ca;--fbg:#eef2ff;}
+.f2{--fc:#0369a1;--fbg:#f0f9ff;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1>ソフトウェア<b>品質</b>とは？</h1>
+    <p>「良いソフト」の条件を定めた国際規格 SQuaRE の8特性。試験では各特性の定義と事例が問われる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-indigo">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#4338ca"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- チェックリスト -->
+        <rect x="38" y="50" width="18" height="18" rx="2" fill="#374151"/>
+        <text x="43" y="58" font-size="7" fill="#4ade80" font-family="sans-serif">✓</text>
+        <text x="43" y="66" font-size="7" fill="#4ade80" font-family="sans-serif">✓</text>
+      </svg>
+      <div class="scene-txt">
+        新しいアプリをリリースした。機能は動く。でも「遅い」「使いにくい」「他のシステムと連携できない」と苦情が続出。機能だけ合っていれば品質OKじゃないの？
+        <div class="scene-q">…品質には「機能以外の8つの軸」がある！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8特性 図解 -->
+  <div class="panel p-blue">
+    <span class="phead">📋 SQuaRE の8品質特性</span>
+    <svg width="100%" viewBox="0 0 340 80" role="img" aria-label="ソフトウェア品質8特性を示すメダルアイコン列">
+      <!-- 中央タイトル帯 -->
+      <rect x="0" y="25" width="340" height="30" rx="6" fill="#e0e7ff"/>
+      <text x="170" y="45" text-anchor="middle" font-size="13" font-weight="900" fill="#4338ca" font-family="M PLUS Rounded 1c">ISO/IEC 25010 — SQuaRE の8特性</text>
+      <!-- アイコン列 -->
+      <circle cx="21" cy="14" r="12" fill="#4338ca"/><text x="21" y="18" text-anchor="middle" font-size="10" fill="#fff" font-family="M PLUS Rounded 1c">機</text>
+      <circle cx="63" cy="14" r="12" fill="#0369a1"/><text x="63" y="18" text-anchor="middle" font-size="10" fill="#fff" font-family="M PLUS Rounded 1c">性</text>
+      <circle cx="105" cy="14" r="12" fill="#2e8b4f"/><text x="105" y="18" text-anchor="middle" font-size="10" fill="#fff" font-family="M PLUS Rounded 1c">使</text>
+      <circle cx="147" cy="14" r="12" fill="#d97706"/><text x="147" y="18" text-anchor="middle" font-size="10" fill="#fff" font-family="M PLUS Rounded 1c">信</text>
+      <circle cx="189" cy="14" r="12" fill="#b91c1c"/><text x="189" y="18" text-anchor="middle" font-size="10" fill="#fff" font-family="M PLUS Rounded 1c">セ</text>
+      <circle cx="231" cy="14" r="12" fill="#0f766e"/><text x="231" y="18" text-anchor="middle" font-size="10" fill="#fff" font-family="M PLUS Rounded 1c">保</text>
+      <circle cx="273" cy="14" r="12" fill="#7c3aed"/><text x="273" y="18" text-anchor="middle" font-size="10" fill="#fff" font-family="M PLUS Rounded 1c">移</text>
+      <circle cx="315" cy="14" r="12" fill="#c026d3"/><text x="315" y="18" text-anchor="middle" font-size="10" fill="#fff" font-family="M PLUS Rounded 1c">互</text>
+      <!-- ラベル -->
+      <text x="21" y="67" text-anchor="middle" font-size="7.5" font-weight="700" fill="#4338ca" font-family="M PLUS Rounded 1c">機能</text>
+      <text x="21" y="76" text-anchor="middle" font-size="7.5" font-weight="700" fill="#4338ca" font-family="M PLUS Rounded 1c">適合性</text>
+      <text x="63" y="67" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0369a1" font-family="M PLUS Rounded 1c">性能</text>
+      <text x="63" y="76" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0369a1" font-family="M PLUS Rounded 1c">効率性</text>
+      <text x="105" y="67" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">使用性</text>
+      <text x="105" y="76" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">（UX）</text>
+      <text x="147" y="67" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d97706" font-family="M PLUS Rounded 1c">信頼性</text>
+      <text x="147" y="76" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d97706" font-family="M PLUS Rounded 1c">（可用性）</text>
+      <text x="189" y="67" text-anchor="middle" font-size="7.5" font-weight="700" fill="#b91c1c" font-family="M PLUS Rounded 1c">セキュ</text>
+      <text x="189" y="76" text-anchor="middle" font-size="7.5" font-weight="700" fill="#b91c1c" font-family="M PLUS Rounded 1c">リティ</text>
+      <text x="231" y="67" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0f766e" font-family="M PLUS Rounded 1c">保守性</text>
+      <text x="231" y="76" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0f766e" font-family="M PLUS Rounded 1c">（修正）</text>
+      <text x="273" y="67" text-anchor="middle" font-size="7.5" font-weight="700" fill="#7c3aed" font-family="M PLUS Rounded 1c">移植性</text>
+      <text x="273" y="76" text-anchor="middle" font-size="7.5" font-weight="700" fill="#7c3aed" font-family="M PLUS Rounded 1c">（環境）</text>
+      <text x="315" y="67" text-anchor="middle" font-size="7.5" font-weight="700" fill="#c026d3" font-family="M PLUS Rounded 1c">互換性</text>
+      <text x="315" y="76" text-anchor="middle" font-size="7.5" font-weight="700" fill="#c026d3" font-family="M PLUS Rounded 1c">（連携）</text>
+    </svg>
+    <div class="q8grid" style="margin-top:14px;">
+      <div class="q8card" style="--bg:#eef2ff;--bc:#4338ca;">
+        <div class="qh">機能適合性</div>
+        <div class="qs">要求された機能を正確に果たすか。</div>
+        <div class="qex">例：正しく計算できる</div>
+      </div>
+      <div class="q8card" style="--bg:#e0f2fe;--bc:#0369a1;">
+        <div class="qh">性能効率性</div>
+        <div class="qs">CPU・メモリを適切に使い、速く動くか。</div>
+        <div class="qex">例：1000件/秒処理できる</div>
+      </div>
+      <div class="q8card" style="--bg:#d1fae5;--bc:#2e8b4f;">
+        <div class="qh">使用性（ユーザビリティ）</div>
+        <div class="qs">使いやすい・学習しやすい・ミスしにくいか。</div>
+        <div class="qex">例：初めてでも迷わない</div>
+      </div>
+      <div class="q8card" style="--bg:#fef3c7;--bc:#d97706;">
+        <div class="qh">信頼性</div>
+        <div class="qs">障害が少なく、起きても回復が速いか。</div>
+        <div class="qex">例：年間稼働率99.9%</div>
+      </div>
+      <div class="q8card" style="--bg:#fee2e2;--bc:#b91c1c;">
+        <div class="qh">セキュリティ</div>
+        <div class="qs">不正アクセス・情報漏えいを防げるか。</div>
+        <div class="qex">例：認証・暗号化が機能</div>
+      </div>
+      <div class="q8card" style="--bg:#ccfbf1;--bc:#0f766e;">
+        <div class="qh">保守性</div>
+        <div class="qs">バグ修正・機能追加が容易か。</div>
+        <div class="qex">例：コードが読みやすい</div>
+      </div>
+      <div class="q8card" style="--bg:#ede9fe;--bc:#7c3aed;">
+        <div class="qh">移植性</div>
+        <div class="qs">異なる環境（OS・ハード）に移せるか。</div>
+        <div class="qex">例：WindowsでもMacでも動く</div>
+      </div>
+      <div class="q8card" style="--bg:#fdf4ff;--bc:#c026d3;">
+        <div class="qh">互換性</div>
+        <div class="qs">他のシステムと連携・共存できるか。</div>
+        <div class="qex">例：既存DBとAPI連携OK</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細：品質の確保プロセス -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ ソフトウェア品質の確保プロセス</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 品質要件の定義</div><div class="fb">「どの特性をどのレベルで満たすか」を数値目標で決める（例：応答時間1秒以内・稼働率99.9%以上）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 品質の作り込み（設計・実装）</div><div class="fb">設計段階でレビュー・インスペクションを実施。バグを早期に潰す（後で直すほど高コスト）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 品質の測定・評価（テスト）</div><div class="fb">単体→結合→システム→受入テストで段階的に確認。品質指標が基準を満たしたらリリース。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「機能要件」と「品質特性」は別物</div>
+      <div class="tb">機能要件＝「何をするか」（計算する・表示する）。品質特性＝「どのように実現するか」（速く・安全に・使いやすく）。試験では「非機能要件＝品質特性」と出ることも多い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「信頼性」と「可用性」は別特性</div>
+      <div class="tb">旧規格（ISO 9126）では可用性は信頼性の副特性だったが、現行のSQuaRE（ISO 25010）では整理されている。試験では「稼働し続ける能力」＝信頼性として出題される場合が多い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「保守性」と「移植性」の違い</div>
+      <div class="tb">保守性＝「同じ環境でバグ修正・機能追加しやすいか」。移植性＝「別の環境（OS・ハード）に移せるか」。場所を変えるかどうかで判断する。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「機・性・使・信・セ・保・移・互」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">「機性使い信じて・セキュリティ保険・移動互換」</span><br>
+    機能→性能→使用→信頼→<span class="hl">セキュ</span>→保守→移植→互換<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ISO/IEC 25010 ＝ SQuaRE（スクエア）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

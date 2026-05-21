@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SQLのDMLとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="SQLのDML（データ操作言語）をわかりやすく解説。SELECT・INSERT・UPDATE・DELETE の4命令、DDL・DCLとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-sql-dml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#4256b8,#1c2460);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(28,36,96,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0c8f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#4256b8;}
+
+.dml-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px;}
+.dml-card{border-radius:12px;padding:12px 11px;border:2px solid var(--dc);}
+.dml-card .dc-cmd{font-size:15px;font-weight:900;color:var(--dc);margin-bottom:4px;font-family:monospace;}
+.dml-card .dc-name{font-size:11px;font-weight:900;color:var(--dc);margin-bottom:5px;}
+.dml-card .dc-desc{font-size:11.5px;font-weight:600;color:#48506a;line-height:1.6;}
+.dml-card .dc-ex{font-size:10.5px;font-weight:700;color:#8a91a0;margin-top:5px;font-family:monospace;background:#f4f6fb;border-radius:5px;padding:3px 6px;}
+.d-select{--dc:#2e6de5;background:#eef3fd;}
+.d-insert{--dc:#2e8b4f;background:#eef8f1;}
+.d-update{--dc:#d9851f;background:#fdf4e4;}
+.d-delete{--dc:#dd5a3a;background:#fde4e0;}
+
+.sql-cat-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.sql-cat{border-radius:10px;padding:10px 12px;flex:1;min-width:120px;}
+.sql-cat .sc-title{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.sql-cat .sc-cmds{font-size:11.5px;font-weight:700;font-family:monospace;color:#48506a;line-height:1.8;}
+.sc-dml{background:#e4e7f7;}.sc-dml .sc-title{color:#4256b8;}
+.sc-ddl{background:#e2f3e5;}.sc-ddl .sc-title{color:#2e8b4f;}
+.sc-dcl{background:#fcefd9;}.sc-dcl .sc-title{color:#d9851f;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+@media(max-width:480px){.dml-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1>SQLの <b>DML</b>とは？</h1>
+    <p>データベースのデータを「操作」するSQL命令の総称。SELECT（検索）・INSERT（追加）・UPDATE（更新）・DELETE（削除）の4本柱。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-indigo">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="18" width="58" height="48" rx="6" fill="#c0c8f0"/>
+        <rect x="14" y="22" width="50" height="6" rx="2" fill="#2e6de5"/>
+        <rect x="14" y="31" width="50" height="5" rx="2" fill="#fff" opacity=".8"/>
+        <rect x="14" y="39" width="50" height="5" rx="2" fill="#fff" opacity=".6"/>
+        <rect x="14" y="47" width="50" height="5" rx="2" fill="#fff" opacity=".4"/>
+        <rect x="14" y="55" width="30" height="5" rx="2" fill="#fff" opacity=".3"/>
+        <!-- 人物 -->
+        <circle cx="39" cy="77" r="8" fill="#f4c89a"/>
+        <rect x="32" y="84" width="14" height="6" rx="3" fill="#4256b8"/>
+      </svg>
+      <div class="scene-txt">
+        ECサイトのシステム担当になったあなた。「商品テーブルから価格1000円以上を取得したい」「新商品を追加したい」「在庫数を更新したい」…これらをSQLで書くとき、全部 DML を使う。
+        <div class="scene-q">…DML の「M」って何の略？どんな命令が含まれる？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-blue">
+    <span class="phead">📊 DMLの4命令</span>
+    <svg width="100%" viewBox="0 0 340 150" role="img" aria-label="DMLの4命令SELECT・INSERT・UPDATE・DELETEの図解">
+      <!-- テーブルイメージ -->
+      <rect x="120" y="30" width="100" height="90" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="170" y="48" text-anchor="middle" font-size="10" font-weight="900" fill="#1c2460" font-family="M PLUS Rounded 1c">商品テーブル</text>
+      <line x1="120" y1="52" x2="220" y2="52" stroke="#4256b8" stroke-width="1.5"/>
+      <rect x="124" y="55" width="92" height="14" rx="3" fill="#c0c8f0"/>
+      <text x="170" y="65" text-anchor="middle" font-size="8.5" fill="#1c2460" font-family="M PLUS Rounded 1c">ID:001 りんご ¥120</text>
+      <rect x="124" y="72" width="92" height="14" rx="3" fill="#d8ddf0"/>
+      <text x="170" y="82" text-anchor="middle" font-size="8.5" fill="#1c2460" font-family="M PLUS Rounded 1c">ID:002 みかん ¥80</text>
+      <rect x="124" y="89" width="92" height="14" rx="3" fill="#c0c8f0"/>
+      <text x="170" y="99" text-anchor="middle" font-size="8.5" fill="#1c2460" font-family="M PLUS Rounded 1c">ID:003 ぶどう ¥250</text>
+      <rect x="124" y="106" width="92" height="10" rx="3" fill="#e8eaf5" stroke-dasharray="3 2" stroke="#8892c8"/>
+
+      <!-- SELECT -->
+      <rect x="2" y="25" width="70" height="26" rx="7" fill="#2e6de5"/>
+      <text x="37" y="42" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">SELECT 検索</text>
+      <path d="M72 38 L120 70" stroke="#2e6de5" stroke-width="1.8" stroke-dasharray="4 2" marker-end="url(#arr2)"/>
+
+      <!-- INSERT -->
+      <rect x="2" y="62" width="70" height="26" rx="7" fill="#2e8b4f"/>
+      <text x="37" y="79" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">INSERT 追加</text>
+      <path d="M72 75 L120 108" stroke="#2e8b4f" stroke-width="1.8" stroke-dasharray="4 2" marker-end="url(#arr3)"/>
+
+      <!-- UPDATE -->
+      <rect x="268" y="25" width="70" height="26" rx="7" fill="#d9851f"/>
+      <text x="303" y="42" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">UPDATE 更新</text>
+      <path d="M268 38 L220 75" stroke="#d9851f" stroke-width="1.8" stroke-dasharray="4 2" marker-end="url(#arr4)"/>
+
+      <!-- DELETE -->
+      <rect x="268" y="62" width="70" height="26" rx="7" fill="#dd5a3a"/>
+      <text x="303" y="79" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">DELETE 削除</text>
+      <path d="M268 75 L220 90" stroke="#dd5a3a" stroke-width="1.8" stroke-dasharray="4 2" marker-end="url(#arr5)"/>
+
+      <text x="170" y="140" text-anchor="middle" font-size="10" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">DML = Data Manipulation Language（データ操作言語）</text>
+
+      <defs>
+        <marker id="arr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L0 6 L6 3 z" fill="#2e6de5"/></marker>
+        <marker id="arr3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L0 6 L6 3 z" fill="#2e8b4f"/></marker>
+        <marker id="arr4" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L0 6 L6 3 z" fill="#d9851f"/></marker>
+        <marker id="arr5" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L0 6 L6 3 z" fill="#dd5a3a"/></marker>
+      </defs>
+    </svg>
+    <div class="dml-grid">
+      <div class="dml-card d-select">
+        <div class="dc-cmd">SELECT</div>
+        <div class="dc-name">検索・取得</div>
+        <div class="dc-desc">条件を指定してデータを取り出す。最もよく使う命令。</div>
+        <div class="dc-ex">SELECT * FROM 商品 WHERE 価格 > 100</div>
+      </div>
+      <div class="dml-card d-insert">
+        <div class="dc-cmd">INSERT</div>
+        <div class="dc-name">追加・挿入</div>
+        <div class="dc-desc">新しいデータ（行）をテーブルに追加する。</div>
+        <div class="dc-ex">INSERT INTO 商品 VALUES(...)</div>
+      </div>
+      <div class="dml-card d-update">
+        <div class="dc-cmd">UPDATE</div>
+        <div class="dc-name">更新・変更</div>
+        <div class="dc-desc">既存データの値を書き換える。条件で対象を絞る。</div>
+        <div class="dc-ex">UPDATE 商品 SET 価格=150 WHERE ID=1</div>
+      </div>
+      <div class="dml-card d-delete">
+        <div class="dc-cmd">DELETE</div>
+        <div class="dc-name">削除</div>
+        <div class="dc-desc">条件に合う行をテーブルから削除する。</div>
+        <div class="dc-ex">DELETE FROM 商品 WHERE ID=3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DDL・DCLとの分類 -->
+  <div class="panel p-green">
+    <span class="phead">📂 SQL命令の3分類</span>
+    <div class="sql-cat-row">
+      <div class="sql-cat sc-dml">
+        <div class="sc-title">DML（データ操作）</div>
+        <div class="sc-cmds">SELECT<br>INSERT<br>UPDATE<br>DELETE</div>
+      </div>
+      <div class="sql-cat sc-ddl">
+        <div class="sc-title">DDL（定義）</div>
+        <div class="sc-cmds">CREATE<br>ALTER<br>DROP<br>TRUNCATE</div>
+      </div>
+      <div class="sql-cat sc-dcl">
+        <div class="sc-title">DCL（制御）</div>
+        <div class="sc-cmds">GRANT<br>REVOKE<br>COMMIT<br>ROLLBACK</div>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;font-weight:700;color:#3c4456;">DDL＝テーブルの<strong>構造</strong>を操作（作る・消す）。DML＝テーブルの<strong>中身（データ）</strong>を操作。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">DDLと混同しやすい</div>
+      <div class="tb">CREATE・DROP・ALTER はテーブルの<strong>構造定義</strong>を変える DDL。<br>SELECT・INSERT などデータ自体を動かすのが <strong>DML</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">TRUNCATEはDMLではない</div>
+      <div class="tb">全行削除の TRUNCATE は DDL の仲間。DELETEと似ているが分類が違う点に注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「テーブルの<strong>データ（中身）</strong>を扱う命令」→ <strong>DML</strong><br>「テーブルの<strong>構造（設計）</strong>を変える命令」→ DDL</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      DMLの4命令は<span class="hl">「捜し（SELECT）・入れ（INSERT）・更新（UPDATE）・消す（DELETE）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">略すと 捜・入・更・消 → 「捜索隊、入って更地に消えた」</span><br><br>
+      DDL（構造）とDML（中身）<br>
+      D<span class="hl">D</span>L = <span class="hl">D</span>efine（定義・設計図）<br>
+      D<span class="hl">M</span>L = <span class="hl">M</span>anipulate（データを動かす）
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

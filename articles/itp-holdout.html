@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ホールドアウト法とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="機械学習のホールドアウト法の意味・仕組みを図解で解説。訓練データとテストデータの分割、交差検証との違い、過学習との関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.jp/itp/itp-holdout">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c47e1f,#6e3e00);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(110,62,0,.26);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffe09a 56%,#ffe09a 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5dec7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-amber{--c:#c47e1f;--cbg:#fcefd9;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1a6e3c;--cbg:#e0f5ea;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-purple{--c:#5c2fa8;--cbg:#f0e8fb;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c47e1f;}
+
+.data-bar{margin:12px 0;}
+.bar-label{font-size:12px;font-weight:900;color:#48506a;margin-bottom:5px;}
+.bar-track{display:flex;height:42px;border-radius:12px;overflow:hidden;border:2px solid #e0e0e0;}
+.bar-train{background:#2e6de5;display:flex;align-items:center;justify-content:center;flex:7;}
+.bar-test{background:#dd5a3a;display:flex;align-items:center;justify-content:center;flex:3;}
+.bar-text{font-size:11px;font-weight:900;color:#fff;white-space:nowrap;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#1a6e3c;--fbg:#eef8f1;}
+.f3{--fc:#dd5a3a;--fbg:#fef0ec;}
+.f4{--fc:#c47e1f;--fbg:#fdf4e4;}
+
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.comp-card{border-radius:14px;padding:13px;border:2px solid var(--cc);}
+.comp-card .ch{font-size:13px;font-weight:900;color:var(--cc);margin-bottom:6px;}
+.comp-card .cb{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.card-hold{--cc:#c47e1f;background:#fcefd9;}
+.card-cv{--cc:#5c2fa8;background:#f0e8fb;}
+@media(max-width:480px){.comp-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系 ／ AI・機械学習</span>
+    <h1><b>ホールドアウト法</b>とは？</h1>
+    <p>データを「学習用」と「テスト用」に分けて、AIモデルの実力を正しく測る評価手法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-amber">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#6e3e00" opacity=".12"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#f5dec7"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#c47e1f"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <!-- exam paper -->
+        <rect x="42" y="62" width="18" height="14" rx="2" fill="#fff" opacity=".8"/>
+        <line x1="44" y1="66" x2="58" y2="66" stroke="#c47e1f" stroke-width="1"/>
+        <line x1="44" y1="70" x2="58" y2="70" stroke="#c47e1f" stroke-width="1"/>
+      </svg>
+      <div class="scene-txt">
+        AIを開発しているあなた。1000件の画像データでモデルを作った。学習に使った画像を「テスト」に使ったら<strong>正解率99%！</strong>…でも新しい画像を見せたら<strong>正解率50%</strong>だった。
+        <div class="scene-q">→ これを防ぐために「テスト用のデータを最初から別に取っておく」のがホールドアウト法！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：データ分割 -->
+  <div class="panel p-blue">
+    <span class="phead">📊 ホールドアウト法のデータ分割（図解）</span>
+    <div class="data-bar">
+      <div class="bar-label">全データ（例：1000件）を最初に分割する</div>
+      <div class="bar-track">
+        <div class="bar-train"><span class="bar-text">訓練データ 70〜80%（学習に使う）</span></div>
+        <div class="bar-test"><span class="bar-text">テストデータ 20〜30%（評価専用）</span></div>
+      </div>
+    </div>
+    <p style="font-size:12.5px;color:#dd5a3a;font-weight:700;">テストデータは学習中には一切使わない。最後の「本番試験」専用。</p>
+
+    <div class="flow" style="margin-top:12px;">
+      <div class="fstep f1"><div class="fh">① 全データをランダムに分割（事前）</div><div class="fb">テストデータを「封印」しておく。この時点でテストデータは絶対に見ない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 訓練データだけでモデルを学習</div><div class="fb">AIは訓練データのパターンを学ぶ。テストデータは引き続き非公開。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 「封印」したテストデータで評価</div><div class="fb">初めて見るデータに対する正解率を測る＝実際の性能に近い評価が得られる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 正解率・F値などで性能を判断</div><div class="fb">テストデータの評価が高ければ「未知のデータにも対応できる」モデルと判断できる。</div></div>
+    </div>
+  </div>
+
+  <!-- 交差検証との比較 -->
+  <div class="panel p-purple">
+    <span class="phead">🔀 ホールドアウト法 vs 交差検証（k-分割）</span>
+    <div class="comp-grid">
+      <div class="comp-card card-hold">
+        <div class="ch">ホールドアウト法</div>
+        <div class="cb">分割：1回だけ<br>処理が速い<br>データ量が多い時向き<br>分割の偏りに弱い</div>
+      </div>
+      <div class="comp-card card-cv">
+        <div class="ch">交差検証（k-fold）</div>
+        <div class="cb">分割：k回繰り返す<br>処理が遅い（k倍）<br>データが少ない時向き<br>偏りを平均化できる</div>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;color:#48506a;">どちらも「学習に使ったデータを評価に使わない」原則は同じ。データ量が少ないときは交差検証の方が安定した評価ができる。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">学習データとテストデータは同じものを使ってよい？ → NG</div>
+      <div class="tb">学習に使ったデータをそのままテストに使うと「答えを見てからテストする」状態になり、実際の性能より高く見えてしまう（<strong>過学習・オーバーフィッティング</strong>の見逃し）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">テストデータは「学習の途中で」使う？ → NG</div>
+      <div class="tb">テストデータは<strong>最後の評価のみ</strong>に使う。学習中に「テストデータを見ながらモデルを調整」すると、テストデータに特化してしまい公正な評価にならない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ホールドアウト」と「バリデーション」の混同</div>
+      <div class="tb">訓練データをさらに「訓練」と「検証（バリデーション）」に分けることもある（3分割）。バリデーションはハイパーパラメータ調整用。テストは最終評価専用。試験では3分割の用途の違いも問われることがある。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「ホールドアウト＝答え合わせ用を最初に箱に入れて、蓋を閉める（ホールド）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">答え合わせのプリントを<strong>授業前から引き出しに lock する</strong> → 授業が終わってから初めて出す</span><br><br>
+      学習中は <span class="hl">絶対に引き出しを開けない</span> ＝ それがホールドアウト！
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

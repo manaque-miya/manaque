@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>コンバージョン率とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="コンバージョン率（CVR）の意味・計算式をわかりやすく解説。クリック率（CTR）との違い、ECサイトやWebマーケティングでの使われ方、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-conversion-rate">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d9851f,#7a4200);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,66,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#fffde0 56%,#fffde0 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fcd9a0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9851f;}
+
+/* 計算式ボックス */
+.formula-box{background:#fdf4e4;border-radius:14px;border:2px solid #d9851f;padding:16px;margin-top:8px;text-align:center;}
+.formula-main{font-size:16px;font-weight:900;color:#7a4200;line-height:1.7;}
+.formula-sub{font-size:12px;font-weight:700;color:#9a6b00;margin-top:6px;}
+.formula-ex{background:#fff;border-radius:10px;padding:10px;margin-top:10px;font-size:13px;font-weight:700;color:#48506a;line-height:1.7;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#4256b8;--fbg:#e4e7f7;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+/* 比較テーブル */
+.cmp-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.cmp-table th{background:#d9851f;color:#fff;font-size:12px;font-weight:900;padding:8px;text-align:center;}
+.cmp-table td{font-size:12px;font-weight:700;padding:8px;border-bottom:1px solid #e0e5f0;color:#3c4456;text-align:center;vertical-align:middle;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table tr:nth-child(even) td{background:#fdf4e4;}
+.cmp-hl{background:#e7eefc!important;font-weight:900;color:#1f4ba8!important;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>コンバージョン率</b>とは？</h1>
+    <p>サイト訪問者のうち「目的の行動（購入・申し込みなど）」を完了した人の割合。Webマーケティングの核心指標。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-orange">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4.5" fill="#7a4200" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="22" rx="6" fill="#fcd9a0"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#d9851f"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="27" y="31" width="18" height="8" fill="#f4c89a"/>
+        <!-- ショッピングカートアイコン -->
+        <rect x="38" y="60" width="20" height="12" rx="2" fill="#7a4200"/>
+        <circle cx="41" cy="74" r="2.5" fill="#fcd9a0"/>
+        <circle cx="54" cy="74" r="2.5" fill="#fcd9a0"/>
+        <path d="M38 62 l-5 -6" stroke="#7a4200" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        ECサイトを運営するあなた。1万人がサイトを訪問したが、実際に商品を買ったのは200人。「<strong>訪問者に対して実際に買ってくれた人の割合</strong>」をどう測る？
+        <div class="scene-q">…このWebサイトの「成果率」を示す指標は何？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：コンバージョンのファネル -->
+  <div class="panel p-blue">
+    <span class="phead">📊 コンバージョンのファネル（漏斗）</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="Webマーケティングのコンバージョンファネル：広告表示→クリック→訪問→購入">
+      <!-- ファネル形状 -->
+      <!-- 広告表示 -->
+      <polygon points="30,20 310,20 270,70 70,70" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="170" y="50" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">広告表示 100,000回</text>
+
+      <!-- クリック -->
+      <polygon points="70,75 270,75 238,125 102,125" fill="#eef3fd" stroke="#4256b8" stroke-width="1.5"/>
+      <text x="170" y="105" text-anchor="middle" font-size="12" font-weight="900" fill="#3040a0" font-family="M PLUS Rounded 1c">クリック 5,000回</text>
+      <text x="310" y="105" text-anchor="middle" font-size="10" font-weight="700" fill="#6880cc" font-family="M PLUS Rounded 1c">CTR 5%</text>
+
+      <!-- 訪問（サイト到達） -->
+      <polygon points="102,130 238,130 215,178 125,178" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="170" y="158" text-anchor="middle" font-size="12" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">サイト訪問 1,000人</text>
+
+      <!-- 購入（CV発生） -->
+      <polygon points="125,183 215,183 200,218 140,218" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="170" y="205" text-anchor="middle" font-size="12" font-weight="900" fill="#7a4200" font-family="M PLUS Rounded 1c">購入（CV） 20件</text>
+
+      <!-- CVR バッジ -->
+      <rect x="220" y="193" width="110" height="30" rx="10" fill="#d9851f"/>
+      <text x="275" y="212" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">CVR＝2%</text>
+    </svg>
+
+    <!-- 計算式 -->
+    <div class="formula-box">
+      <div class="formula-main">コンバージョン率（CVR）＝<br>コンバージョン数 ÷ 訪問者数 × 100（%）</div>
+      <div class="formula-sub">※コンバージョン＝購入・申し込み・会員登録など「目標の行動」</div>
+      <div class="formula-ex">
+        例：サイト訪問1,000人 → 購入20件<br>
+        CVR ＝ 20 ÷ 1,000 × 100 ＝ <strong>2%</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細：CTRとCVRの違い -->
+  <div class="panel p-green">
+    <span class="phead">📋 CTR（クリック率）との違い</span>
+    <table class="cmp-table">
+      <tr>
+        <th>指標</th>
+        <th>英語</th>
+        <th>分子</th>
+        <th>分母</th>
+        <th>意味</th>
+      </tr>
+      <tr>
+        <td><strong>CTR</strong></td>
+        <td>Click Through Rate</td>
+        <td>クリック数</td>
+        <td>広告表示回数</td>
+        <td>広告を見て<br>クリックした率</td>
+      </tr>
+      <tr class="">
+        <td class="cmp-hl"><strong>CVR</strong></td>
+        <td class="cmp-hl">Conversion Rate</td>
+        <td class="cmp-hl">CV数<br>（購入等）</td>
+        <td class="cmp-hl">訪問者数</td>
+        <td class="cmp-hl">訪問して<br>目標達成した率</td>
+      </tr>
+    </table>
+    <p style="font-size:12px;color:#3c4456;margin-top:8px;font-weight:700;">CTRは「広告の訴求力」、CVRは「サイト・商品の成約力」を測る指標。それぞれ改善策が異なる。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">CTR（クリック率）と混同する</div>
+      <div class="tb">CTRは「広告を見た人のうちクリックした割合」。CVRは「訪問した人のうち購入などの目標を達成した割合」。分母が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「コンバージョン＝購入」とだけ思い込む</div>
+      <div class="tb">コンバージョンは<strong>サイトの目標によって変わる</strong>。購入・会員登録・資料請求・問い合わせなど、何を「成果」と定義するかで変わる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「CVRが高い＝訪問者が多い」は誤り</div>
+      <div class="tb">CVRは割合なので、訪問者数とは無関係。10人訪問して5人購入すればCVR 50%、1万人訪問して100人購入はCVR 1%。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>訪問者数に対する購入・申込の割合</strong>」→ コンバージョン率。「<strong>広告表示に対するクリックの割合</strong>」→ クリック率（CTR）。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      コンバージョン率＝<span class="hl">「コンバー（転んで）ジョン（上に）・率＝ゴロンと転んで買った人の割合」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「ゴロンと転んで（来店して）実際に買った（CV）÷ 来た人」</span><br><br>
+      CTRとCVRの違いは<span class="hl">「C<strong>T</strong>R＝<strong>Tap</strong>（クリック）、C<strong>V</strong>R＝<strong>Victory</strong>（勝利＝成約）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">T＝タップ（クリック）した率、V＝ビクトリー（目標達成）した率</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

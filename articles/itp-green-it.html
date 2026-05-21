@@ -1,108 +1,218 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>グリーンITとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="グリーンITの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-green-it.html">
-<meta property="og:title" content="グリーンITとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="グリーンITの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-green-it.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>グリーンITとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="グリーンITをわかりやすく解説。ITの省エネ化とITによる社会の省エネ化の2方向、データセンターのPUE、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-green-it">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#15803d,#052e16);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(5,46,22,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#bbf7d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-green{--c:#15803d;--cbg:#dcfce7;}
+.p-teal{--c:#0d9488;--cbg:#ccfbf1;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#15803d;}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.twocell{border-radius:13px;padding:13px 12px;}
+.twocell h4{font-size:13px;font-weight:900;margin-bottom:7px;text-align:center;}
+.twocell ul{list-style:none;}
+.twocell li{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.twocell li::before{content:"・";position:absolute;left:0;}
+.tc-a{background:#dcfce7;}.tc-a h4{color:#15803d;}
+.tc-b{background:#d1fae5;}.tc-b h4{color:#059669;}
+@media(max-width:400px){.two-col{grid-template-columns:1fr;}}
+
+.pue-box{background:#f0fdf4;border-radius:13px;padding:14px 15px;margin-top:10px;border:2px solid #15803d;}
+.pue-box .ph{font-size:13px;font-weight:900;color:#15803d;margin-bottom:8px;}
+.pue-box .pf{font-size:18px;font-weight:900;color:#052e16;text-align:center;background:#dcfce7;padding:8px 12px;border-radius:9px;margin-bottom:8px;}
+.pue-box .pd{font-size:12px;font-weight:600;line-height:1.8;color:#48506a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#15803d;--fbg:#f0fdf4;}
+.f2{--fc:#0d9488;--fbg:#f0fdfa;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">グリーンITとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">グリーンIT</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系・ストラテジ系</span>
+    <h1><b>グリーンIT</b>とは？</h1>
+    <p>ITの消費電力を減らすだけでなく、ITで社会全体の省エネを実現する2方向の取り組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#0a1a0a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="26" rx="7" fill="#bbf7d0"/>
+        <rect x="14" y="34" width="44" height="30" rx="9" fill="#15803d"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-6 -9 -13 -9 q-7 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 葉っぱアイコン -->
+        <path d="M52 10 Q64 10 64 22 Q64 30 52 32 Q40 30 40 22 Q40 10 52 10Z" fill="#15803d" opacity="0.8"/>
+        <line x1="52" y1="32" x2="48" y2="38" stroke="#15803d" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        会社のIT部門が「サーバーの電気代が毎月100万円以上かかっている」と問題になっている。省エネ型サーバーへの切り替えと、クラウド化で電力消費を半減させる計画が始まった。
+        <div class="scene-q">…これがグリーンITの「ITを緑化する」側面！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：グリーンITの2方向 -->
+  <div class="panel p-teal">
+    <span class="phead">♻️ グリーンITの2つの方向</span>
+    <svg width="100%" viewBox="0 0 340 196" role="img" aria-label="グリーンITの2方向：IT機器自体の省エネ化と、ITを使って社会全体を省エネする取り組み">
+      <!-- 中央アイコン -->
+      <circle cx="170" cy="98" r="34" fill="#dcfce7" stroke="#15803d" stroke-width="3"/>
+      <text x="170" y="92" text-anchor="middle" font-size="12" font-weight="900" fill="#15803d" font-family="M PLUS Rounded 1c">グリーン</text>
+      <text x="170" y="108" text-anchor="middle" font-size="12" font-weight="900" fill="#15803d" font-family="M PLUS Rounded 1c">IT</text>
+
+      <!-- 左：ITの省エネ化 -->
+      <rect x="8" y="54" width="118" height="88" rx="14" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+      <text x="67" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#052e16" font-family="M PLUS Rounded 1c">方向①</text>
+      <text x="67" y="98" text-anchor="middle" font-size="11" font-weight="900" fill="#15803d" font-family="M PLUS Rounded 1c">ITを</text>
+      <text x="67" y="113" text-anchor="middle" font-size="11" font-weight="900" fill="#15803d" font-family="M PLUS Rounded 1c">グリーン化</text>
+      <text x="67" y="130" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6b8a70" font-family="M PLUS Rounded 1c">IT機器自体の省エネ</text>
+
+      <!-- 右：ITで省エネ -->
+      <rect x="214" y="54" width="118" height="88" rx="14" fill="#ccfbf1" stroke="#0d9488" stroke-width="2"/>
+      <text x="273" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#134e4a" font-family="M PLUS Rounded 1c">方向②</text>
+      <text x="273" y="98" text-anchor="middle" font-size="11" font-weight="900" fill="#0d9488" font-family="M PLUS Rounded 1c">ITで社会を</text>
+      <text x="273" y="113" text-anchor="middle" font-size="11" font-weight="900" fill="#0d9488" font-family="M PLUS Rounded 1c">グリーン化</text>
+      <text x="273" y="130" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a9a8a" font-family="M PLUS Rounded 1c">ITで社会の省エネ</text>
+
+      <!-- 矢印 -->
+      <line x1="126" y1="98" x2="136" y2="98" stroke="#15803d" stroke-width="2"/>
+      <polygon points="136,94 144,98 136,102" fill="#15803d"/>
+      <line x1="214" y1="98" x2="204" y2="98" stroke="#0d9488" stroke-width="2"/>
+      <polygon points="204,94 196,98 204,102" fill="#0d9488"/>
+
+      <!-- 下部説明 -->
+      <rect x="8" y="155" width="324" height="32" rx="9" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+      <text x="170" y="175" text-anchor="middle" font-size="10.5" font-weight="900" fill="#15803d" font-family="M PLUS Rounded 1c">両方セットで「グリーンIT」— IT自体と社会の両方を環境に優しくする</text>
+    </svg>
+
+    <div class="two-col">
+      <div class="twocell tc-a">
+        <h4>① ITをグリーン化</h4>
+        <ul>
+          <li>省エネサーバー・PC導入</li>
+          <li>データセンターの冷却効率化</li>
+          <li>クラウド化で機器を共有</li>
+          <li>不要機器の適切な廃棄（e-waste）</li>
+        </ul>
+      </div>
+      <div class="twocell tc-b">
+        <h4>② ITで社会をグリーン化</h4>
+        <ul>
+          <li>テレワークで通勤CO₂削減</li>
+          <li>スマートグリッド（電力最適化）</li>
+          <li>物流の最適化でトラック削減</li>
+          <li>ペーパーレス化</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUEの説明 -->
+  <div class="panel p-blue">
+    <span class="phead">📊 データセンターのPUEとは</span>
+    <div class="pue-box">
+      <div class="ph">PUE（Power Usage Effectiveness）＝電力使用効率</div>
+      <div class="pf">PUE ＝ データセンター全体の消費電力 ÷ IT機器の消費電力</div>
+      <div class="pd">
+        理想値は<strong>1.0（IT機器だけで動く）</strong>。実際はサーバー冷却・照明・UPSなどの分が加わりPUE＞1になる。<br>
+        PUE＝1.2 → IT機器消費の1.2倍の電力を使っている。<strong>数値が小さいほど効率的</strong>。<br>
+        グリーンITの指標として試験に頻出。
+      </div>
+    </div>
+  </div>
+
+  <!-- 施策フロー -->
+  <div class="panel p-orange">
+    <span class="phead">🏢 企業がとるグリーンIT施策の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 現状把握 — IT機器の消費電力・CO₂を計測</div><div class="fb">サーバー・PC・ネットワーク機器の電力使用量を見える化する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② IT機器の省エネ化 — 機器更新・仮想化・クラウド</div><div class="fb">古いサーバーを省エネ型に、複数サーバーを仮想化で統合。クラウド活用でハードウェア削減。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 社会への展開 — ITで業務プロセス自体を変える</div><div class="fb">テレワーク推進・ペーパーレス化・会議のオンライン化でCO₂排出を根本から削減。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「IT機器の省エネだけ」と思いがち</div>
+      <div class="tb">グリーンITは「ITを省エネにする」と「<strong>ITで社会を省エネにする</strong>」の2方向がある。片方だけ問われた場合でも、もう一方の存在を忘れずに。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「SDGs・CSR」と混同しやすい</div>
+      <div class="tb">SDGsは国連の持続可能な開発目標（幅広い）。CSRは企業の社会的責任（幅広い）。グリーンITは<strong>IT分野の環境負荷低減</strong>に特化した概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">PUEの数字の方向を間違えやすい</div>
+      <div class="tb">PUEは<strong>小さい方が良い</strong>（1.0が理想）。大きい数値ほど無駄な電力消費が多い。「大きいほど良い」に引っかからないこと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「IT機器の消費電力削減」または「ITを使って社会全体のCO₂を削減する」→ どちらも<strong>グリーンIT</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">グリーンIT</span>＝<span class="hl">「緑（エコ）」×「IT」</span>の2通り！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">①「ITを緑にする」（機器を省エネ）＋②「ITで緑にする」（社会を省エネ）</span><br><br>
+    PUEは<span class="hl">「P（ぷっ）Uい（臭い）E（エネ無駄！）」</span>→ 小さいほど臭くない（エコ）！</div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>データセンター管理者の私。「サーバの電気代がエグい！」と上司から削減指示。仮想化・冷却効率化・再エネ導入で対応。この一連の取り組みの名前は？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>グリーンIT</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>DX（デジタルトランスフォーメーション）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ DXはビジネス変革。「IT機器の省エネ・環境負荷低減」はグリーンIT</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：グリーンIT</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 グリーンITとは何か</h2>
-<span class="kw">IT機器の省エネ・環境負荷低減</span>
-<p>ITの省エネ・環境負荷低減（グリーンby IT）と、ITを使った社会全体の省エネ実現（グリーンof IT）の2つの側面がある。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>PUE（電力使用効率）がデータセンターのエネルギー効率指標として使われる。PUEが1に近いほど効率的。
-
-**覚え方** 🎯 グリーンIT＝**ITの省エネ・環境配慮**。**by IT（IT自体が省エネ）／of IT（ITで社会を省エネ）**の2方向。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「グリーンIT」と「グリーンof IT」の混同に注意。**by IT**はIT機器自体の省エネ、**of IT**はITを活用して社会全体のCO2削減を実現すること。試験では「サーバ仮想化による電力削減」はby IT、「スマートグリッドへのIT活用」はof ITと区別して問われる。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>グリーンIT＝**ITの省エネ・環境配慮**。**by IT（IT自体が省エネ）／of IT（ITで社会を省エネ）**の2方向。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>グリーンITはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

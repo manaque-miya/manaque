@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>クッキー（Cookie）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="クッキー（Cookie）の仕組みをわかりやすく解説。ブラウザに保存される小さなデータの役割、セッション管理・ログイン維持の仕組み、セキュリティリスクとひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-cookie">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d97706,#92400e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(92,40,14,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fde8c7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-amber{--c:#d97706;--cbg:#fef3c7;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d97706;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#d97706;--fbg:#fef3c7;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>クッキー（Cookie）</b>とは？</h1>
+    <p>Webサーバーがブラウザに預ける"小さなメモ"。ログイン状態やカート情報を覚えておくために使う仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-amber">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="58" width="58" height="26" rx="6" fill="#fde8c7"/>
+        <rect x="16" y="38" width="46" height="28" rx="9" fill="#d97706"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M26 18 a13 13 0 0 1 26 0 q-6 -10 -13 -10 q-7 0 -13 10z" fill="#3a3f4a"/>
+        <rect x="30" y="33" width="18" height="8" fill="#f4c89a"/>
+        <path d="M30 41 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+        <!-- laptop -->
+        <rect x="42" y="55" width="24" height="16" rx="2" fill="#48506a"/>
+        <rect x="44" y="57" width="20" height="12" rx="1" fill="#acd0f5"/>
+        <!-- cookie icon on screen -->
+        <circle cx="54" cy="63" r="5" fill="#d97706"/>
+        <circle cx="52" cy="61" r="1.2" fill="#fff"/>
+        <circle cx="55" cy="64" r="1.2" fill="#fff"/>
+        <circle cx="57" cy="61" r="1.2" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        ショッピングサイトを開いたら「おかえり、田中さん！」と表示され、カートにも昨日入れた商品が残っていた。<br>
+        ブラウザを一度閉じたのに、なぜサイトはあなたを覚えているの？
+        <div class="scene-q">…それがクッキーの仕事！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：Cookie の仕組み -->
+  <div class="panel p-blue">
+    <span class="phead">🍪 Cookieの仕組み（SVG図解）</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="CookieのやりとりをブラウザとWebサーバー間で示した図">
+      <!-- ブラウザ -->
+      <rect x="10" y="20" width="100" height="70" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="60" y="45" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">ブラウザ</text>
+      <rect x="20" y="52" width="80" height="28" rx="5" fill="#fff" stroke="#c0cce8" stroke-width="1.5"/>
+      <text x="60" y="67" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">Cookieを保存</text>
+      <text x="60" y="77" text-anchor="middle" font-size="9" font-weight="600" fill="#9aa3b2" font-family="M PLUS Rounded 1c">（端末に保存）</text>
+
+      <!-- サーバー -->
+      <rect x="230" y="20" width="100" height="70" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="280" y="45" text-anchor="middle" font-size="12" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">Webサーバー</text>
+      <rect x="240" y="52" width="80" height="28" rx="5" fill="#fff" stroke="#e8c89a" stroke-width="1.5"/>
+      <text x="280" y="67" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">Set-Cookieを</text>
+      <text x="280" y="77" text-anchor="middle" font-size="9" font-weight="600" fill="#9aa3b2" font-family="M PLUS Rounded 1c">ヘッダで送信</text>
+
+      <!-- ① 初回アクセス →  -->
+      <line x1="110" y1="38" x2="230" y2="38" stroke="#2e6de5" stroke-width="1.8" marker-end="url(#arr1)"/>
+      <text x="170" y="33" text-anchor="middle" font-size="10" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">① リクエスト</text>
+      <defs>
+        <marker id="arr1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0 0 L7 3.5 L0 7 Z" fill="#2e6de5"/>
+        </marker>
+        <marker id="arr2" markerWidth="7" markerHeight="7" refX="1" refY="3.5" orient="auto">
+          <path d="M7 0 L0 3.5 L7 7 Z" fill="#d9851f"/>
+        </marker>
+        <marker id="arr3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0 0 L7 3.5 L0 7 Z" fill="#2e8b4f"/>
+        </marker>
+        <marker id="arr4" markerWidth="7" markerHeight="7" refX="1" refY="3.5" orient="auto">
+          <path d="M7 0 L0 3.5 L7 7 Z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+
+      <!-- ② Cookie を発行 ← -->
+      <line x1="230" y1="58" x2="110" y2="58" stroke="#d9851f" stroke-width="1.8" marker-end="url(#arr2)"/>
+      <text x="170" y="53" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">② Cookie を発行</text>
+
+      <!-- ③ 次回アクセス → Cookie を添付 -->
+      <line x1="110" y1="140" x2="230" y2="140" stroke="#2e8b4f" stroke-width="1.8" marker-end="url(#arr3)"/>
+      <text x="170" y="133" text-anchor="middle" font-size="10" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">③ 次回：Cookie を添付して送信</text>
+
+      <!-- ④ 本人確認 ← -->
+      <line x1="230" y1="158" x2="110" y2="158" stroke="#2e8b4f" stroke-width="1.8" marker-end="url(#arr4)"/>
+      <text x="170" y="173" text-anchor="middle" font-size="10" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">④「前回の続き」を返す</text>
+
+      <!-- ブラウザ側の保存ボックス -->
+      <rect x="10" y="185" width="100" height="45" rx="8" fill="#fff" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="60" y="202" text-anchor="middle" font-size="10" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">Cookie の中身例</text>
+      <text x="60" y="215" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">session_id=abc123</text>
+      <text x="60" y="225" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">有効期限: 30日後</text>
+
+      <!-- サーバー側の説明 -->
+      <rect x="230" y="185" width="100" height="45" rx="8" fill="#fff" stroke="#d9851f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="280" y="202" text-anchor="middle" font-size="10" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">サーバー側照合</text>
+      <text x="280" y="215" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">session_id を検索</text>
+      <text x="280" y="225" text-anchor="middle" font-size="9" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">→ 田中さんと判明！</text>
+    </svg>
+  </div>
+
+  <!-- フロー：種類と使い道 -->
+  <div class="panel p-green">
+    <span class="phead">📋 Cookieの種類と使い道</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">セッションCookie（期限なし）</div>
+        <div class="fb">ブラウザを閉じると消える。ログイン中の"今のセッション"を管理。例：ネットバンキングのログイン状態。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">永続Cookie（有効期限あり）</div>
+        <div class="fb">指定した日時まで残る。「次回もログイン状態を保つ」「買い物かごを残す」などに使う。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">サードパーティCookie</div>
+        <div class="fb">別ドメインが発行するCookie。広告会社が複数サイトをまたいで行動を追跡するために使用。近年プライバシー保護で規制強化中。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">Secure属性・HttpOnly属性</div>
+        <div class="fb">Secure＝HTTPS通信時のみ送信。HttpOnly＝JavaScriptからアクセス禁止（XSS対策）。セキュリティを高める設定。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「Cookieはサーバー側に保存される」→ ×</div>
+      <div class="tb">Cookieは<strong>クライアント（ブラウザ）側</strong>に保存される。サーバーが発行してブラウザに渡す。サーバー側に保存されるのはセッション情報。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「Cookieとキャッシュは同じ」→ ×</div>
+      <div class="tb">キャッシュはHTMLや画像ファイルを保存してページ表示を速くするもの。Cookieはユーザー識別情報を保存するもの。目的がまったく違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「Cookieを盗まれてもパスワードが漏れなければ安全」→ ×</div>
+      <div class="tb">セッションIDが入ったCookieを盗まれると、パスワードなしでなりすましが可能（セッションハイジャック）。Cookieは立派な認証情報。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「ブラウザが覚えておく小さなデータ」「Webサーバーが発行」「ログイン状態の維持」→ すべて<strong>Cookie</strong>の話。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「クッキーはお店からもらうスタンプカード」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">お店（サーバー）がスタンプカード（Cookie）を作って → あなた（ブラウザ）が財布に入れて保管 → 次に来たとき見せる</span><br><br>
+      <span class="hl">ク</span>ライアント側に保存 ＝ <span class="hl">ク</span>ッキー<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「ク」が2つ：クライアント＋クッキー、両方「ク」で一致！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-cookie</div>
+
+</div>
+</body>
+</html>

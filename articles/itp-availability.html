@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>可用性・稼働率とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="可用性（アベイラビリティ）と稼働率の計算式をわかりやすく解説。MTBF・MTTRとの関係、直列・並列システムの稼働率計算、試験頻出のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-availability">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0e6e8c,#063a4e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(6,58,78,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#9ed8ea;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-teal{--c:#0e6e8c;--cbg:#d9f0f8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0e6e8c;}
+
+.formula-box{background:#f4f8fb;border:2px solid #0e6e8c;border-radius:14px;padding:14px 16px;margin-top:8px;text-align:center;}
+.formula-box .flabel{font-size:11px;font-weight:900;color:#0e6e8c;margin-bottom:6px;}
+.formula-box .fmain{font-size:18px;font-weight:900;color:#063a4e;line-height:1.4;}
+.formula-box .fsub{font-size:12px;font-weight:700;color:#4a7a90;margin-top:6px;}
+
+.timeline-wrap{margin-top:12px;}
+.timeline-label{font-size:12px;font-weight:900;color:#48506a;margin-bottom:4px;}
+.timeline-bar{display:flex;height:24px;border-radius:8px;overflow:hidden;width:100%;}
+.bar-ok{background:#0e6e8c;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;}
+.bar-ng{background:#dd5a3a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;}
+.timeline-legends{display:flex;gap:16px;margin-top:6px;}
+.leg{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:#48506a;}
+.leg-dot{width:12px;height:12px;border-radius:3px;}
+
+.sys-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.sys-card{border-radius:14px;padding:14px 12px;border:2px solid var(--sc);background:var(--sbg);}
+.sys-card .sh{font-size:13px;font-weight:900;color:var(--sc);margin-bottom:6px;}
+.sys-card .sb{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.sys-card .sf{font-size:11px;font-weight:900;color:var(--sc);margin-top:6px;background:rgba(255,255,255,.7);border-radius:6px;padding:4px 8px;text-align:center;}
+@media(max-width:440px){.sys-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.kv-list{list-style:none;margin-top:8px;}
+.kv-list li{display:flex;gap:8px;font-size:13px;font-weight:600;color:#3c4456;padding:7px 0;border-bottom:1px solid #e8edf5;line-height:1.5;}
+.kv-list li:last-child{border-bottom:none;}
+.kv-list .kv-key{font-weight:900;color:#0e6e8c;min-width:60px;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>可用性・稼働率</b>とは？</h1>
+    <p>「システムが使えている時間の割合」を数値で表す。稼働率の計算は試験の頻出問題。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="60" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#0e6e8c"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="9" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 画面 -->
+        <rect x="18" y="56" width="36" height="24" rx="3" fill="#fff"/>
+        <rect x="20" y="58" width="32" height="16" rx="2" fill="#9ed8ea"/>
+        <!-- エラー表示 -->
+        <circle cx="36" cy="66" r="5" fill="#dd5a3a"/>
+        <text x="36" y="69" text-anchor="middle" font-size="7" font-weight="900" fill="#fff">!</text>
+      </svg>
+      <div class="scene-txt">
+        オンラインショップを運営するあなた。先月、サーバが2回ダウンして合計4時間使えなかった。上司に「可用性を報告して」と言われたが…
+        <div class="scene-q">…稼働率ってどうやって計算するの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 稼働率の計算式 -->
+  <div class="panel p-teal">
+    <span class="phead">📊 稼働率の計算式と基本概念</span>
+
+    <div class="formula-box">
+      <div class="flabel">稼働率（アベイラビリティ）の公式</div>
+      <div class="fmain">稼働率 ＝ MTBF ÷ （MTBF ＋ MTTR）</div>
+      <div class="fsub">＝ 稼働時間 ÷ 総稼働時間（稼働＋停止）</div>
+    </div>
+
+    <ul class="kv-list" style="margin-top:14px;">
+      <li><span class="kv-key">MTBF</span>平均故障間隔（Mean Time Between Failures）。故障と故障の間の平均稼働時間。<strong>大きいほど良い</strong>。</li>
+      <li><span class="kv-key">MTTR</span>平均修復時間（Mean Time To Repair）。故障してから修復するまでの平均時間。<strong>小さいほど良い</strong>。</li>
+      <li><span class="kv-key">例</span>MTBF=90時間・MTTR=10時間 → 稼働率 = 90÷(90+10) = <strong>0.9（90%）</strong></li>
+    </ul>
+
+    <div class="timeline-wrap">
+      <div class="timeline-label">時間軸イメージ（MTBF＝90h・MTTR＝10h・1サイクル）</div>
+      <div class="timeline-bar">
+        <div class="bar-ok" style="flex:9;">稼働 90h（MTBF）</div>
+        <div class="bar-ng" style="flex:1;">停止 10h</div>
+      </div>
+      <div class="timeline-legends">
+        <div class="leg"><div class="leg-dot" style="background:#0e6e8c;"></div>稼働中（MTBF）</div>
+        <div class="leg"><div class="leg-dot" style="background:#dd5a3a;"></div>停止中（MTTR）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 直列・並列システム -->
+  <div class="panel p-green">
+    <span class="phead">⚙️ 直列・並列システムの稼働率</span>
+    <svg width="100%" viewBox="0 0 320 160" role="img" aria-label="直列システムと並列システムの稼働率比較図">
+      <!-- 直列システム -->
+      <text x="10" y="20" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">直列（すべてOKで動く）</text>
+      <line x1="10" y1="45" x2="50" y2="45" stroke="#2e8b4f" stroke-width="2.5"/>
+      <rect x="50" y="33" width="60" height="24" rx="6" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="80" y="49" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">機器A 0.9</text>
+      <line x1="110" y1="45" x2="150" y2="45" stroke="#2e8b4f" stroke-width="2.5"/>
+      <rect x="150" y="33" width="60" height="24" rx="6" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="180" y="49" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">機器B 0.9</text>
+      <line x1="210" y1="45" x2="250" y2="45" stroke="#2e8b4f" stroke-width="2.5"/>
+      <rect x="250" y="30" width="64" height="30" rx="8" fill="#2e8b4f"/>
+      <text x="282" y="48" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">0.9×0.9</text>
+      <text x="282" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">＝0.81（低下）</text>
+
+      <!-- 並列システム -->
+      <text x="10" y="100" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">並列（どちらかOKで動く）</text>
+      <line x1="10" y1="128" x2="40" y2="128" stroke="#2e6de5" stroke-width="2.5"/>
+      <line x1="40" y1="120" x2="40" y2="136" stroke="#2e6de5" stroke-width="2"/>
+      <line x1="40" y1="120" x2="60" y2="120" stroke="#2e6de5" stroke-width="1.5"/>
+      <line x1="40" y1="136" x2="60" y2="136" stroke="#2e6de5" stroke-width="1.5"/>
+      <rect x="60" y="112" width="60" height="18" rx="5" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="90" y="125" text-anchor="middle" font-size="10" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">機器A 0.9</text>
+      <rect x="60" y="128" width="60" height="18" rx="5" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="90" y="141" text-anchor="middle" font-size="10" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">機器B 0.9</text>
+      <line x1="120" y1="120" x2="140" y2="120" stroke="#2e6de5" stroke-width="1.5"/>
+      <line x1="120" y1="136" x2="140" y2="136" stroke="#2e6de5" stroke-width="1.5"/>
+      <line x1="140" y1="120" x2="140" y2="136" stroke="#2e6de5" stroke-width="2"/>
+      <line x1="140" y1="128" x2="160" y2="128" stroke="#2e6de5" stroke-width="2.5"/>
+      <rect x="222" y="113" width="92" height="30" rx="8" fill="#2e6de5"/>
+      <text x="268" y="128" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">1-(0.1×0.1)</text>
+      <text x="268" y="155" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">＝0.99（向上！）</text>
+    </svg>
+
+    <div class="sys-grid" style="margin-top:14px;">
+      <div class="sys-card" style="--sc:#2e8b4f;--sbg:#e2f3e5;">
+        <div class="sh">直列システム</div>
+        <div class="sb">すべての機器が正常でないと動かない。<strong>1台でも故障したら全体が止まる</strong>。稼働率は「積（掛け算）」で下がる。</div>
+        <div class="sf">稼働率 ＝ A × B × C …</div>
+      </div>
+      <div class="sys-card" style="--sc:#2e6de5;--sbg:#e7eefc;">
+        <div class="sh">並列システム（冗長化）</div>
+        <div class="sb">どれか1台が動いていれば全体が動く。<strong>全部故障しないと止まらない</strong>。稼働率は「全滅確率を引く」で上がる。</div>
+        <div class="sf">稼働率 ＝ 1 − (停止率A × 停止率B)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">MTBFとMTTRを逆に覚えている</div>
+      <div class="tb">MTBF（故障と故障の<strong>間</strong>＝稼働時間）・MTTR（修復<strong>時間</strong>）。「B=Between（間）」「R=Repair（修復）」で覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">並列の稼働率計算の公式ミス</div>
+      <div class="tb">「1 − (1−A)×(1−B)」が正しい。（1−A）は「機器Aの停止率」。両方止まる確率を1から引く。単純にA×Bで掛けたら直列になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「可用性が高い ≠ 処理が速い」</div>
+      <div class="tb">可用性はシステムが「使える時間の割合」の話。処理速度（スループット）や応答時間（レスポンスタイム）とは別の概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">冗長化しても完全には防げない</div>
+      <div class="tb">並列にしても稼働率は1.0にはならない（100%の可用性は存在しない）。自然災害・電源断など全体に影響するリスクは残る。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">MTBF は「待ちBF（ビーフ）」＝次の故障まで待つ時間</span><br>
+      <span style="font-size:13px;font-weight:700;color:#9a6b00;">「MTBFのBはBetween（間）＝稼働し続けた時間」</span><br><br>
+      稼働率の公式は<span class="hl">「MTBF ÷ 全部（MTBF＋MTTR）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「ビーフ（MTBF）を全部（MTBF+MTTR）で割る！」</span><br><br>
+      並列の稼働率は<span class="hl">「1から、全滅確率を引く」</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

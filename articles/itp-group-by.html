@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GROUP BY句とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="SQLのGROUP BY句を図解で解説。グループ集計の仕組み、HAVING句との違い、WHERE句との組み合わせ、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.jp/itp/itp-group-by">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6e3c,#0e3c22);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,60,34,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#6bffb8 56%,#6bffb8 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e8cf;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-green{--c:#1a6e3c;--cbg:#e0f5ea;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-purple{--c:#7b40c8;--cbg:#f0e8fb;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6e3c;}
+
+.table-wrap{overflow-x:auto;margin:10px 0;}
+table{border-collapse:collapse;width:100%;font-size:12.5px;font-weight:600;}
+th{background:#1a6e3c;color:#fff;padding:7px 10px;text-align:left;}
+td{padding:6px 10px;border-bottom:1px solid #e0e8ee;color:#3c4456;}
+tr:nth-child(even) td{background:#f4f9f6;}
+.td-green{background:#d4f0e2 !important;font-weight:900;color:#0e4c28;}
+
+.code-box{background:#1e2736;border-radius:12px;padding:14px 16px;font-family:monospace;font-size:13px;line-height:1.9;color:#c9d8f0;margin:10px 0;}
+.kw{color:#7ec8e3;font-weight:900;}
+.fn{color:#ffd700;}
+.cm{color:#6e8a9a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#1a6e3c;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系 ／ データベース</span>
+    <h1>SQL の <b>GROUP BY</b> 句とは？</h1>
+    <p>行をグループにまとめて、集計関数（COUNT・SUM・AVG）と組み合わせる SQL の核心。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#0e3c22" opacity=".12"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#b8e8cf"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#1a6e3c"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+      </svg>
+      <div class="scene-txt">
+        社内の売上データベースを担当しているあなた。上司に「<strong>部署ごとの売上合計</strong>を出してほしい」と頼まれた。テーブルには 1000 行のデータがある。
+        <div class="scene-q">→ 「部署ごと」にまとめて合計する＝これが GROUP BY の出番！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：GROUP BY の仕組み -->
+  <div class="panel p-blue">
+    <span class="phead">📊 GROUP BY の仕組み（図解）</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="GROUP BY句でバラバラの行を部署ごとにグループ化し集計する流れ">
+      <!-- 左：元テーブル -->
+      <rect x="10" y="10" width="130" height="220" rx="10" fill="#f0f4fc" stroke="#b0bcd8" stroke-width="1.5"/>
+      <text x="75" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">元データ（バラバラ）</text>
+      <!-- 行データ -->
+      <rect x="20" y="35" width="110" height="18" rx="4" fill="#e7eefc"/>
+      <text x="75" y="47" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">部署 ｜ 売上</text>
+      <rect x="20" y="57" width="110" height="16" rx="3" fill="#fff"/>
+      <text x="75" y="68" text-anchor="middle" font-size="10" fill="#48506a" font-family="M PLUS Rounded 1c">営業 ｜ 50万</text>
+      <rect x="20" y="76" width="110" height="16" rx="3" fill="#f4f9f6"/>
+      <text x="75" y="87" text-anchor="middle" font-size="10" fill="#48506a" font-family="M PLUS Rounded 1c">技術 ｜ 80万</text>
+      <rect x="20" y="95" width="110" height="16" rx="3" fill="#fff"/>
+      <text x="75" y="106" text-anchor="middle" font-size="10" fill="#48506a" font-family="M PLUS Rounded 1c">営業 ｜ 60万</text>
+      <rect x="20" y="114" width="110" height="16" rx="3" fill="#f4f9f6"/>
+      <text x="75" y="125" text-anchor="middle" font-size="10" fill="#48506a" font-family="M PLUS Rounded 1c">技術 ｜ 40万</text>
+      <rect x="20" y="133" width="110" height="16" rx="3" fill="#fff"/>
+      <text x="75" y="144" text-anchor="middle" font-size="10" fill="#48506a" font-family="M PLUS Rounded 1c">総務 ｜ 30万</text>
+      <rect x="20" y="152" width="110" height="16" rx="3" fill="#f4f9f6"/>
+      <text x="75" y="163" text-anchor="middle" font-size="10" fill="#48506a" font-family="M PLUS Rounded 1c">営業 ｜ 70万</text>
+      <text x="75" y="186" text-anchor="middle" font-size="11" fill="#9aa3b2" font-family="M PLUS Rounded 1c">…（多数の行）</text>
+      <!-- 矢印 -->
+      <path d="M145 120 L175 120" stroke="#1a6e3c" stroke-width="2.5" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 Z" fill="#1a6e3c"/>
+        </marker>
+      </defs>
+      <rect x="148" y="106" width="40" height="28" rx="6" fill="#1a6e3c"/>
+      <text x="168" y="118" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">GROUP</text>
+      <text x="168" y="130" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">BY</text>
+      <!-- 右：結果 -->
+      <rect x="198" y="10" width="132" height="220" rx="10" fill="#eef8f1" stroke="#1a6e3c" stroke-width="2"/>
+      <text x="264" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6e3c" font-family="M PLUS Rounded 1c">集計結果（3行）</text>
+      <rect x="208" y="35" width="112" height="18" rx="4" fill="#c0e8d0"/>
+      <text x="264" y="47" text-anchor="middle" font-size="10" font-weight="700" fill="#0e4c28" font-family="M PLUS Rounded 1c">部署 ｜ 合計</text>
+      <rect x="208" y="57" width="112" height="22" rx="5" fill="#a8dfc0"/>
+      <text x="264" y="72" text-anchor="middle" font-size="11" font-weight="900" fill="#0e4c28" font-family="M PLUS Rounded 1c">営業 ｜ 180万</text>
+      <rect x="208" y="83" width="112" height="22" rx="5" fill="#c0e8d0"/>
+      <text x="264" y="98" text-anchor="middle" font-size="11" font-weight="900" fill="#0e4c28" font-family="M PLUS Rounded 1c">技術 ｜ 120万</text>
+      <rect x="208" y="109" width="112" height="22" rx="5" fill="#a8dfc0"/>
+      <text x="264" y="124" text-anchor="middle" font-size="11" font-weight="900" fill="#0e4c28" font-family="M PLUS Rounded 1c">総務 ｜  30万</text>
+    </svg>
+    <p style="font-size:12px;color:#6e8a9a;margin-top:6px;">バラバラな行を「同じ部署」でまとめ、合計・件数などを一気に計算する。</p>
+  </div>
+
+  <!-- SQL 構文フロー -->
+  <div class="panel p-green">
+    <span class="phead">📝 SQL の書き方（実行順序）</span>
+    <div class="code-box">
+      <span class="kw">SELECT</span>   部署, <span class="fn">SUM</span>(売上) <span class="cm">-- ③ 出力列を選ぶ</span><br>
+      <span class="kw">FROM</span>     売上テーブル <span class="cm">-- ① テーブルを指定</span><br>
+      <span class="kw">WHERE</span>    年度 = 2024 <span class="cm">-- ② 行を絞る（集計前）</span><br>
+      <span class="kw">GROUP BY</span> 部署 <span class="cm">-- ④ グループ化</span><br>
+      <span class="kw">HAVING</span>   <span class="fn">SUM</span>(売上) &gt;= 100 <span class="cm">-- ⑤ グループを絞る（集計後）</span><br>
+      <span class="kw">ORDER BY</span> <span class="fn">SUM</span>(売上) <span class="cm">-- ⑥ 並び替え</span>;
+    </div>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">WHERE ＝「集計の前」に行を絞る</div><div class="fb">「2024年のデータだけ使う」などの条件。集計関数（SUM・COUNT）は使えない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">GROUP BY ＝ 行をグループにまとめる</div><div class="fb">指定した列の値が同じ行をまとめる。複数列を指定することも可能（GROUP BY 部署, 年）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">HAVING ＝「集計の後」にグループを絞る</div><div class="fb">「合計が100万以上のグループだけ残す」など。集計関数を条件に使える＝WHERE と違う点。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">WHERE と HAVING の混同</div>
+      <div class="tb">WHERE は集計<strong>前</strong>の行フィルタ（SUM などは書けない）。HAVING は集計<strong>後</strong>のグループフィルタ（SUM などが書ける）。試験では「どちらを書けるか」が頻出。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SELECT に書ける列は GROUP BY した列だけ</div>
+      <div class="tb">GROUP BY 部署 なら SELECT に書けるのは「部署」と集計関数だけ。「氏名」を SELECT に書くとエラー＝1グループに複数の氏名があり一意にならないため。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">実行順序の誤解</div>
+      <div class="tb">SQL は「書く順」と「実行順」が違う。実行順は FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY。WHERE を GROUP BY の後に書けばよい、は誤り。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「グルーピー（GROUP BY）は集合後しか入れない（HAVING）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">グルービーな人はコンサート（集計）のあとにVIP室（HAVING）に入る。<br>入口（WHERE）で止めるのは普通の人だけ。</span><br><br>
+      WHERE ＝ <span class="hl">集計「前」のふるい</span>（集計関数 NG）<br>
+      HAVING ＝ <span class="hl">集計「後」のふるい</span>（集計関数 OK）
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>不可逆圧縮とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="不可逆圧縮（ロッシー圧縮）をわかりやすく解説。JPEGやMP3の仕組み、可逆圧縮との違い、圧縮率と品質のトレードオフ、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-lossy-compression">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b45309,#6b2e08);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,46,8,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fcd7aa;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-amber{--c:#b45309;--cbg:#fdf0d5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b45309;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.cg-cell{border-radius:12px;padding:11px 10px;}
+.cg-cell h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.cg-cell ul{list-style:none;}
+.cg-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.cg-cell li::before{content:"・";position:absolute;left:0;}
+.cg-lossy{background:#fdf0d5;}.cg-lossy h4{color:#b45309;}
+.cg-lossless{background:#e2f3e5;}.cg-lossless h4{color:#2e8b4f;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#b45309;--fbg:#fdf5e6;}
+.f2{--fc:#dd5a3a;--fbg:#fce8e2;}
+.f3{--fc:#4256b8;--fbg:#eef0fc;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>不可逆圧縮</b>とは？</h1>
+    <p>圧縮すると元に戻せない——小さくする代わりに、データの一部を捨てる圧縮方式。JPEG・MP3はこれ。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-amber">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- スマホ -->
+        <rect x="20" y="30" width="38" height="55" rx="7" fill="#b45309"/>
+        <rect x="24" y="36" width="30" height="38" rx="3" fill="#fde8c0"/>
+        <!-- 写真っぽい矩形 -->
+        <rect x="26" y="38" width="26" height="18" rx="2" fill="#4256b8"/>
+        <circle cx="34" cy="44" r="4" fill="#ffd23f"/>
+        <path d="M26 54 Q36 44 52 54 L52 56 L26 56 Z" fill="#2e8b4f"/>
+        <!-- ファイルサイズ表示 -->
+        <text x="39" y="82" text-anchor="middle" font-size="7.5" font-weight="900" fill="#b45309" font-family="monospace">5MB→0.3MB</text>
+        <circle cx="39" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M27 18 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="32" y="32" width="14" height="7" fill="#f4c89a"/>
+        <path d="M32 39 l7 4 l7 -4 v4 h-14z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        旅行の写真を SNS に投稿しようとしたら「5MBは大きすぎる」と表示。JPEGで保存し直したら0.3MBに。でも<strong>元の5MBファイルは戻ってこない</strong>。
+        <div class="scene-q">…このように「元に戻せない圧縮」を何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 SVG：可逆 vs 不可逆 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔬 可逆圧縮 vs 不可逆圧縮</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="可逆圧縮は元に戻せる、不可逆圧縮は元に戻せない比較図">
+      <!-- 可逆圧縮（上段） -->
+      <rect x="10" y="20" width="80" height="36" rx="7" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="50" y="33" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">元データ</text>
+      <text x="50" y="48" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">100KB</text>
+      <!-- 矢印→ -->
+      <text x="108" y="42" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">圧縮</text>
+      <line x1="93" y1="38" x2="130" y2="38" stroke="#2e8b4f" stroke-width="1.8" marker-end="url(#ag)"/>
+      <defs>
+        <marker id="ag" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#2e8b4f"/></marker>
+        <marker id="ab" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#2e8b4f"/></marker>
+        <marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><polygon points="0 0,6 3,0 6" fill="#dd5a3a"/></marker>
+      </defs>
+      <rect x="132" y="20" width="70" height="36" rx="7" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="167" y="33" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">圧縮後</text>
+      <text x="167" y="48" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">40KB（ZIP）</text>
+      <!-- 矢印← -->
+      <text x="225" y="32" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">展開</text>
+      <line x1="210" y1="38" x2="248" y2="38" stroke="#2e8b4f" stroke-width="1.8" marker-end="url(#ab)"/>
+      <rect x="250" y="20" width="80" height="36" rx="7" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="290" y="33" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">元データ</text>
+      <text x="290" y="48" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">100KB（完全復元）</text>
+      <!-- ラベル -->
+      <text x="170" y="70" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">可逆圧縮（ZIP・PNG）→ 完全に元に戻せる</text>
+
+      <!-- 不可逆圧縮（下段） -->
+      <rect x="10" y="110" width="80" height="36" rx="7" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="50" y="123" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">元データ</text>
+      <text x="50" y="138" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">5MB</text>
+      <text x="108" y="132" text-anchor="middle" font-size="9" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">圧縮</text>
+      <line x1="93" y1="128" x2="130" y2="128" stroke="#dd5a3a" stroke-width="1.8" marker-end="url(#ar)"/>
+      <rect x="132" y="110" width="70" height="36" rx="7" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="167" y="123" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">圧縮後</text>
+      <text x="167" y="138" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">0.3MB（JPEG）</text>
+      <!-- 戻れないバツ印 -->
+      <line x1="210" y1="120" x2="248" y2="140" stroke="#dd5a3a" stroke-width="2.5"/>
+      <line x1="248" y1="120" x2="210" y2="140" stroke="#dd5a3a" stroke-width="2.5"/>
+      <rect x="250" y="110" width="80" height="36" rx="7" fill="#f7f7f7" stroke="#c2c8d8" stroke-width="1.5"/>
+      <text x="290" y="123" text-anchor="middle" font-size="10" font-weight="900" fill="#c2c8d8" font-family="M PLUS Rounded 1c">元データ</text>
+      <text x="290" y="138" text-anchor="middle" font-size="9" fill="#c2c8d8" font-family="M PLUS Rounded 1c">戻れない！</text>
+      <!-- ラベル -->
+      <text x="170" y="162" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">不可逆圧縮（JPEG・MP3）→ 元に戻せない</text>
+      <text x="170" y="178" text-anchor="middle" font-size="10" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">人間が気づきにくい部分を"捨てて"小さくする</text>
+    </svg>
+    <div class="compare-grid">
+      <div class="cg-cell cg-lossy"><h4>不可逆圧縮（ロッシー）</h4><ul><li>JPEG（画像）</li><li>MP3・AAC（音楽）</li><li>MPEG（動画）</li><li>圧縮率が高い</li><li>元データは消える</li></ul></div>
+      <div class="cg-cell cg-lossless"><h4>可逆圧縮（ロスレス）</h4><ul><li>ZIP・LZH（汎用）</li><li>PNG（画像）</li><li>FLAC（音楽）</li><li>圧縮率は低め</li><li>完全に元に戻せる</li></ul></div>
+    </div>
+  </div>
+
+  <!-- フロー：なぜ「人間が気づかない」のか -->
+  <div class="panel p-orange">
+    <span class="phead">🎯 なぜ「捨てても気づかない」のか</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 人間の知覚には限界がある</div><div class="fb">目は細かい色の差、耳は小さな音の変化をほぼ感知できない。その「感じない部分」を捨てる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 捨てた情報は永久に失われる</div><div class="fb">圧縮後のファイルには「捨てた情報」が入っていない。何度解凍しても元には戻らない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 圧縮と品質はトレードオフ</div><div class="fb">圧縮率を上げるほど品質が下がる（JPEGの低品質保存でモザイクが出るのはこのため）。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「圧縮したら元に戻せる」は不可逆には当てはまらない</div>
+      <div class="tb">ZIPは戻せるが JPEG は戻せない。「圧縮＝戻せる」と思い込みやすいが、不可逆圧縮は<strong>一方通行</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">PNGは「不可逆」ではない</div>
+      <div class="tb">PNG は可逆圧縮。JPEG と PNG を混同しやすいが、PNGは元データを完全に保持する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「プログラムファイルに不可逆圧縮を使う」は危険</div>
+      <div class="tb">テキスト・プログラムのデータは1ビットでも変わると動かなくなる。<strong>可逆圧縮（ZIP等）</strong>を使う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「元に戻せない」「JPEG・MP3・MPEG」→ <strong>不可逆圧縮</strong>。「完全復元できる」「ZIP・PNG」→ 可逆圧縮。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">不可逆＝ふか（深く）潜ったら浮いてこない</span><br>
+      一度圧縮したら<span class="hl">深海</span>（元データは永遠に深海に沈む）。<br><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">JPEG・MP3・MPEG ＝ 深海（不可逆） ／ ZIP・PNG ＝ 水面（可逆）</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-lossy-compression</div>
+
+</div>
+</body>
+</html>

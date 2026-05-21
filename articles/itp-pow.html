@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PoW（プルーフオブワーク）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="PoW（Proof of Work）の仕組みを図解で解説。ビットコインのマイニング・ブロックチェーンでの役割、PoS（プルーフオブステーク）との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-pow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c07a00,#6b4000);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,64,0,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5d9a0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-amber{--c:#c07a00;--cbg:#fdf0d5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c07a00;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c07a00;--fbg:#fdf0d5;}
+.f2{--fc:#d9851f;--fbg:#fcefd9;}
+.f3{--fc:#4256b8;--fbg:#eef3fd;}
+.f4{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+/* PoW vs PoS 比較 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.cbox{border-radius:12px;padding:12px;}
+.cbox-pow{background:#fdf0d5;border:2.5px solid #c07a00;}
+.cbox-pos{background:#e2f3e5;border:2.5px solid #2e8b4f;}
+.cbox .ch{font-size:13px;font-weight:900;margin-bottom:6px;}
+.cbox-pow .ch{color:#c07a00;}
+.cbox-pos .ch{color:#2e8b4f;}
+.cbox ul{list-style:none;padding:0;}
+.cbox li{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:14px;position:relative;margin-bottom:3px;}
+.cbox li::before{content:"•";position:absolute;left:0;font-weight:900;}
+.cbox-pow li::before{color:#c07a00;}
+.cbox-pos li::before{color:#2e8b4f;}
+@media(max-width:400px){.compare{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">⛏️ ITパスポート ｜ テクノロジ系・ブロックチェーン</span>
+    <h1><b>PoW（プルーフオブワーク）</b>とは？</h1>
+    <p>「大量の計算をこなした＝信頼できる」と証明することで、ブロックチェーンの不正を防ぐ合意形成の仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-amber">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-hidden="true">
+        <ellipse cx="36" cy="87" rx="28" ry="4.5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="60" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#c07a00"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- コイン -->
+        <circle cx="52" cy="60" r="9" fill="#ffd23f" stroke="#c07a00" stroke-width="1.5"/>
+        <text x="52" y="63" text-anchor="middle" font-size="8" font-weight="900" fill="#6b4000" font-family="sans-serif">₿</text>
+      </svg>
+      <div class="scene-txt">
+        ビットコインで送金が承認されるとき、世界中のコンピュータが一斉に<strong>難しい計算問題を競い合って解く</strong>。最初に解いた人が「このブロックは正しい」と証明し、報酬（ビットコイン）をもらう。
+        <div class="scene-q">…この「計算競争で信頼を証明する仕組み」がPoW！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：PoWの仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">⛏️ PoW（マイニング）の仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="PoWのマイニング競争の仕組み：複数のノードが計算競争し、最初に解いたノードがブロックを追加してビットコインを得る">
+      <!-- 送金要求 -->
+      <rect x="10" y="10" width="80" height="36" rx="8" fill="#fdf0d5" stroke="#c07a00" stroke-width="2"/>
+      <text x="50" y="27" text-anchor="middle" font-size="10" font-weight="900" fill="#c07a00" font-family="M PLUS Rounded 1c">送金要求</text>
+      <text x="50" y="40" text-anchor="middle" font-size="9" font-weight="700" fill="#6b4000" font-family="M PLUS Rounded 1c">（トランザクション）</text>
+      <path d="M90 28 L115 28" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrp)"/>
+      <!-- 計算競争 -->
+      <rect x="115" y="10" width="100" height="55" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="165" y="30" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">世界中のノードが</text>
+      <text x="165" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">計算問題を競争</text>
+      <text x="165" y="57" text-anchor="middle" font-size="9" font-weight="700" fill="#7d8acd" font-family="M PLUS Rounded 1c">（ハッシュ計算）</text>
+      <!-- ノード群 -->
+      <circle cx="50" cy="110" r="18" fill="#fdf0d5" stroke="#c07a00" stroke-width="1.5"/>
+      <text x="50" y="107" text-anchor="middle" font-size="8" font-weight="900" fill="#c07a00" font-family="M PLUS Rounded 1c">ノード</text>
+      <text x="50" y="118" text-anchor="middle" font-size="8" font-weight="700" fill="#c07a00" font-family="M PLUS Rounded 1c">A</text>
+      <circle cx="115" cy="110" r="18" fill="#fdf0d5" stroke="#c07a00" stroke-width="1.5"/>
+      <text x="115" y="107" text-anchor="middle" font-size="8" font-weight="900" fill="#c07a00" font-family="M PLUS Rounded 1c">ノード</text>
+      <text x="115" y="118" text-anchor="middle" font-size="8" font-weight="700" fill="#c07a00" font-family="M PLUS Rounded 1c">B</text>
+      <circle cx="180" cy="110" r="18" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="180" y="105" text-anchor="middle" font-size="7.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ノードC</text>
+      <text x="180" y="116" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">（最初に解！）</text>
+      <circle cx="245" cy="110" r="18" fill="#fdf0d5" stroke="#c07a00" stroke-width="1.5"/>
+      <text x="245" y="107" text-anchor="middle" font-size="8" font-weight="900" fill="#c07a00" font-family="M PLUS Rounded 1c">ノード</text>
+      <text x="245" y="118" text-anchor="middle" font-size="8" font-weight="700" fill="#c07a00" font-family="M PLUS Rounded 1c">D</text>
+      <!-- 線 -->
+      <path d="M165 65 L50 92" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <path d="M165 65 L115 92" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <path d="M165 65 L180 92" stroke="#2e8b4f" stroke-width="2"/>
+      <path d="M165 65 L245 92" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- 結果 -->
+      <rect x="120" y="145" width="110" height="40" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="175" y="162" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ブロック追加 ＋</text>
+      <text x="175" y="176" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ビットコイン報酬 ₿</text>
+      <path d="M180 128 L175 145" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arrg)"/>
+      <defs>
+        <marker id="arrp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9aa3b2"/>
+        </marker>
+        <marker id="arrg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- PoW vs PoS比較 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ PoW vs PoS（プルーフオブステーク）</span>
+    <div class="compare">
+      <div class="cbox cbox-pow">
+        <div class="ch">⛏️ PoW（作業証明）</div>
+        <ul>
+          <li>大量の計算で証明</li>
+          <li>消費電力が大きい</li>
+          <li>計算力の多いほど有利</li>
+          <li>代表例：ビットコイン</li>
+        </ul>
+      </div>
+      <div class="cbox cbox-pos">
+        <div class="ch">💰 PoS（保有証明）</div>
+        <ul>
+          <li>暗号資産の保有量で証明</li>
+          <li>消費電力が少ない</li>
+          <li>多く保有するほど有利</li>
+          <li>代表例：イーサリアム（移行後）</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12px;color:#8a91a0;font-weight:700;">※ PoWの「Proof of Work」＝「仕事（計算作業）をやったことの証明」という意味。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">PoSと混同しやすい</div>
+      <div class="tb">PoW＝<strong>計算量（作業）</strong>で証明、PoS＝<strong>保有量（資産）</strong>で証明。「Proof of Work（仕事）」vs「Proof of Stake（賭け）」と語源で覚えると◎。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「マイニング＝PoW」を忘れやすい</div>
+      <div class="tb">ビットコインの<strong>マイニング（採掘）＝PoWの計算競争</strong>のこと。難しいハッシュ計算を解くことでブロックを承認し、新しいコインを得る。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「51%攻撃」との関係</div>
+      <div class="tb">PoWでは全計算力の<strong>51%以上を一者が持つと不正ブロックを作れる</strong>（51%攻撃）。計算資源の集中がリスクになる点も試験で問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>大量の計算・マイニング・作業の証明</strong>」→ 迷わず<strong>PoW（Proof of Work）</strong>。「保有量で権利」→ PoS。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">PoW＝「パワー（P・o・W）で殴る」</span>計算競争！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Work（仕事量・計算力）をパワーで証明 → PoW</span><br><br>
+    <span class="hl">PoW</span>＝<span class="hl">プリン（P）美味しい（o）渡す（W）ために</span>ハードに計算する！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">（報酬のビットコインを得るために大量計算するイメージ）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-pow</div>
+
+</div>
+</body>
+</html>

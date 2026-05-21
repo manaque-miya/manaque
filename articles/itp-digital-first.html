@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>デジタルファーストとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="デジタルファーストをわかりやすく解説。行政手続きなどをデジタルで完結させる原則・DXとの関係・アナログ手続きとの違い・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-digital-first">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0f7fd4,#0a4a88);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(10,74,136,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#bdd8f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-skyblue{--c:#0f7fd4;--cbg:#d8edfb;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0f7fd4;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#0f7fd4;--fbg:#d8edfb;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.three-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.tbox{border-radius:12px;padding:10px;}
+.tbox h4{font-size:12px;font-weight:900;margin-bottom:5px;text-align:center;}
+.tbox p{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;text-align:center;}
+.tb1{background:#d8edfb;}.tb1 h4{color:#0f7fd4;}
+.tb2{background:#e2f3e5;}.tb2 h4{color:#2e8b4f;}
+.tb3{background:#fcefd9;}.tb3 h4{color:#d9851f;}
+@media(max-width:480px){.three-box{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>デジタルファースト</b>とは？</h1>
+    <p>行政手続き・サービスをデジタルで完結させることを「第一の選択肢」とする原則。紙・窓口への依存をなくす。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="4.5" fill="#1a2a4a" opacity=".10"/>
+        <rect x="8" y="56" width="56" height="26" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#0f7fd4"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- スマホアイコン -->
+        <rect x="40" y="62" width="18" height="14" rx="3" fill="#0a4a88"/>
+        <rect x="42" y="64" width="14" height="10" rx="1" fill="#bdd8f8"/>
+      </svg>
+      <div class="scene-txt">
+        引っ越しの手続きをしようとしたら、「まず窓口に来て、紙の書類に書いて、印鑑を持ってきてください」と言われた。<strong>「スマホで全部できないの？」</strong>
+        <div class="scene-q">…「できるようにする」を目指す原則がデジタルファーストです。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3原則の図解 -->
+  <div class="panel p-skyblue">
+    <span class="phead">📋 デジタルファーストの3原則（図解）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="デジタルファーストの3原則：デジタルファースト・ワンスオンリー・コネクテッドワンストップの図解">
+      <!-- 背景 -->
+      <rect x="5" y="10" width="330" height="180" rx="10" fill="#d8edfb" opacity=".5"/>
+      <!-- 中央のバナー -->
+      <rect x="80" y="20" width="180" height="36" rx="8" fill="#0a4a88"/>
+      <text x="170" y="36" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">デジタルファーストの3原則</text>
+      <text x="170" y="50" text-anchor="middle" font-size="9" font-weight="700" fill="#bdd8f8" font-family="M PLUS Rounded 1c">（デジタル手続法 2019年）</text>
+      <!-- 原則1 -->
+      <rect x="15" y="68" width="92" height="112" rx="10" fill="#0f7fd4"/>
+      <text x="61" y="90" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">①</text>
+      <text x="61" y="106" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">デジタル</text>
+      <text x="61" y="121" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ファースト</text>
+      <text x="61" y="140" text-anchor="middle" font-size="8.5" font-weight="700" fill="#bdd8f8" font-family="M PLUS Rounded 1c">個々の手続きを</text>
+      <text x="61" y="153" text-anchor="middle" font-size="8.5" font-weight="700" fill="#bdd8f8" font-family="M PLUS Rounded 1c">デジタルで</text>
+      <text x="61" y="166" text-anchor="middle" font-size="8.5" font-weight="700" fill="#bdd8f8" font-family="M PLUS Rounded 1c">完結させる</text>
+      <!-- 原則2 -->
+      <rect x="124" y="68" width="92" height="112" rx="10" fill="#2e8b4f"/>
+      <text x="170" y="90" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">②</text>
+      <text x="170" y="106" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ワンスオン</text>
+      <text x="170" y="121" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">リー</text>
+      <text x="170" y="140" text-anchor="middle" font-size="8.5" font-weight="700" fill="#a8d8b6" font-family="M PLUS Rounded 1c">一度提出した</text>
+      <text x="170" y="153" text-anchor="middle" font-size="8.5" font-weight="700" fill="#a8d8b6" font-family="M PLUS Rounded 1c">情報は再提出</text>
+      <text x="170" y="166" text-anchor="middle" font-size="8.5" font-weight="700" fill="#a8d8b6" font-family="M PLUS Rounded 1c">不要にする</text>
+      <!-- 原則3 -->
+      <rect x="233" y="68" width="92" height="112" rx="10" fill="#d9851f"/>
+      <text x="279" y="90" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">③</text>
+      <text x="279" y="104" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">コネクテッド</text>
+      <text x="279" y="119" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ワンストップ</text>
+      <text x="279" y="138" text-anchor="middle" font-size="8.5" font-weight="700" fill="#f8d9a8" font-family="M PLUS Rounded 1c">複数の手続きを</text>
+      <text x="279" y="151" text-anchor="middle" font-size="8.5" font-weight="700" fill="#f8d9a8" font-family="M PLUS Rounded 1c">一か所で</text>
+      <text x="279" y="164" text-anchor="middle" font-size="8.5" font-weight="700" fill="#f8d9a8" font-family="M PLUS Rounded 1c">まとめて完結</text>
+    </svg>
+    <div class="three-box">
+      <div class="tbox tb1"><h4>デジタルファースト</h4><p>手続きをデジタルだけで完結できる状態にする</p></div>
+      <div class="tbox tb2"><h4>ワンスオンリー</h4><p>同じ情報を何度も提出しなくていい</p></div>
+      <div class="tbox tb3"><h4>コネクテッドワンストップ</h4><p>複数の手続きを1か所でまとめてできる</p></div>
+    </div>
+  </div>
+
+  <!-- デジタルファーストの実例フロー -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 引っ越しで見る「理想のデジタルファースト」</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">転出届・転入届をオンライン申請</div><div class="fb">窓口に行かずスマホで手続き完了。これが「デジタルファースト」の実例。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">住民票の情報は自動で連携（ワンスオンリー）</div><div class="fb">電力会社・学校・銀行など各所に同じ住所を何度も提出しなくてすむ。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">関連手続きをまとめて処理（ワンストップ）</div><div class="fb">マイナポータルなど1つのポータルで引っ越し関連の全手続きが完結する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「DXと同じこと」→ ×（別概念）</div>
+      <div class="tb">DX（デジタルトランスフォーメーション）はビジネス全体を変革する広い概念。デジタルファーストは「手続きの入口をデジタルにする」という<strong>より具体的・特定の原則</strong>。日本では主に行政手続きで使われる言葉。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「デジタルを選べる選択肢の一つ」→ ×</div>
+      <div class="tb">デジタルファーストは「デジタルが<strong>第一の選択肢（＝原則）</strong>」であること。デジタルと紙が同等に選べるのとは意味が違う。「紙も使えるようにする」のは補足であり例外扱い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ワンスオンリー＝1回しか手続きできない」→ ×</div>
+      <div class="tb">ワンスオンリーは「<strong>一度提出した情報を繰り返し提出しなくてすむ</strong>」という意味。手続きの回数を制限する概念ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>行政手続き・デジタルで完結・第一の選択肢</strong>」が出たら → 迷わず<strong>デジタルファースト</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">「<span class="hl">デジタルが一番手（ファースト）</span>」<br>
+    → 紙が後ろ・デジタルが先頭打者<br><br>
+    3原則は「<span class="hl">デジ・ワン・ワン</span>」<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">デジタルファースト / ワンスオンリー / コネクテッドワンストップ</span><br>
+    → 「<span class="hl">デジタルは1番・ワンワンと叫ぶ犬</span>」で「デジ・ワン・ワン」</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

@@ -1,106 +1,186 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>トランザクションとACIDとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="トランザクションとACIDの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-acid.html">
-<meta property="og:title" content="トランザクションとACIDとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="トランザクションとACIDの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-acid.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ACID特性とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="データベースのACID特性（原子性・一貫性・独立性・永続性）をわかりやすく解説。銀行振込の例で4つを理解。トランザクション管理の試験ポイントと覚え方ゴロ。">
+<link rel="canonical" href="https://example.com/itp-acid">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e7aad,#0c3d5a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(12,61,90,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d8f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1e7aad;--cbg:#d9eef8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1e7aad;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.acid-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.acid-card{border-radius:14px;padding:13px 12px;}
+.acid-card .ac-label{font-size:22px;font-weight:900;margin-bottom:2px;}
+.acid-card .ac-name{font-size:13px;font-weight:900;margin-bottom:6px;}
+.acid-card .ac-desc{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.acid-card .ac-ex{font-size:11.5px;font-weight:700;margin-top:6px;padding:5px 8px;border-radius:7px;}
+.ac1{background:#d9eef8;}.ac1 .ac-label{color:#0c5a8a;}.ac1 .ac-name{color:#1e7aad;}.ac1 .ac-ex{background:#b8d8f0;color:#0c3d5a;}
+.ac2{background:#e2f3e5;}.ac2 .ac-label{color:#145c30;}.ac2 .ac-name{color:#2e8b4f;}.ac2 .ac-ex{background:#c0e8d0;color:#0a3a1a;}
+.ac3{background:#fcefd9;}.ac3 .ac-label{color:#7a4a00;}.ac3 .ac-name{color:#c07a10;}.ac3 .ac-ex{background:#f5d9a8;color:#5a3400;}
+.ac4{background:#ede0f8;}.ac4 .ac-label{color:#4a1880;}.ac4 .ac-name{color:#7b3fb5;}.ac4 .ac-ex{background:#d8c4f0;color:#2e0a5c;}
+@media(max-width:480px){.acid-grid{grid-template-columns:1fr;}}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">トランザクションとACIDとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">トランザクションとACID</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>銀行システム担当の自分。「送金中：A口座引落OK→B入金失敗→両方取消！」この「全か無か」を保証する特性は？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（データベース）</span>
+    <h1>データベースの<b>ACID特性</b>とは？</h1>
+    <p>トランザクションを「安全・確実・正しく」処理するための4つの性質。<br>A・C・I・D の頭文字をとったデータベース管理の鉄則。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>原子性（Atomicity）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>一貫性（Consistency）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 一貫性はDBビジネスルール上の矛盾なし。「全部成功か全部失敗」を保証するのは原子性</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="20" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="30" rx="8" fill="#1e7aad"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 18 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 銀行ATMっぽいアイコン -->
+        <rect x="38" y="52" width="22" height="16" rx="3" fill="#fff" stroke="#1e7aad" stroke-width="1.5"/>
+        <rect x="41" y="55" width="8" height="5" rx="1" fill="#1e7aad"/>
+        <rect x="52" y="55" width="5" height="3" rx="1" fill="#b8d8f0"/>
+        <rect x="41" y="62" width="16" height="2" rx="1" fill="#b8d8f0"/>
+      </svg>
+      <div class="scene-txt">
+        スマホで銀行振込。「Aさんの口座から10,000円 → Bさんの口座へ」と処理中に<strong>サーバーがクラッシュ</strong>した。<br>
+        Aさんから引き落としだけされてBさんに届かない…なんてことが起きたら大問題！
+        <div class="scene-q">…これを防ぐのがACID特性！</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：原子性（Atomicity）</strong></p>
-</div>
+  <!-- ACID4特性の図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔑 ACID特性の4つ</span>
+    <svg width="100%" viewBox="0 0 340 60" role="img" aria-label="ACIDの4文字それぞれの頭文字と意味">
+      <rect x="5" y="10" width="76" height="40" rx="10" fill="#d9eef8" stroke="#1e7aad" stroke-width="2"/>
+      <text x="43" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#0c5a8a" font-family="M PLUS Rounded 1c">A</text>
+      <text x="43" y="44" text-anchor="middle" font-size="9.5" font-weight="800" fill="#1e7aad" font-family="M PLUS Rounded 1c">原子性</text>
 
-<div class="card">
-<h2>📘 トランザクションとACIDとは何か</h2>
-<span class="kw">原子性・一貫性・独立性・永続性の4特性セット</span>
-<p>ACID特性：A（原子性：全部成功か全部ロールバックか）・C（一貫性：トランザクション前後でDB制約を満たす）・I（独立性：同時実行トランザクションが互いに干渉しない）・D（永続性：コミットされたデータは障害後も消えない）。</p>
-</div>
+      <rect x="90" y="10" width="76" height="40" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="128" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#145c30" font-family="M PLUS Rounded 1c">C</text>
+      <text x="128" y="44" text-anchor="middle" font-size="9.5" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">一貫性</text>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>トランザクションのライフサイクル：BEGIN→処理→COMMIT（確定）またはROLLBACK（取り消し）。NoSQLはACIDより結果整合性（Eventual Consistency）を優先することが多い。</p>
-</div>
+      <rect x="175" y="10" width="76" height="40" rx="10" fill="#fcefd9" stroke="#c07a10" stroke-width="2"/>
+      <text x="213" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#7a4a00" font-family="M PLUS Rounded 1c">I</text>
+      <text x="213" y="44" text-anchor="middle" font-size="9.5" font-weight="800" fill="#c07a10" font-family="M PLUS Rounded 1c">独立性</text>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>原子性（Atomic）＝「分割不可の1つの処理として扱う」。一貫性（Consistent）＝「処理前後でルール違反がない」。両者の違いは「処理の不可分性」か「データの整合性」か。</p>
-</div>
+      <rect x="260" y="10" width="76" height="40" rx="10" fill="#ede0f8" stroke="#7b3fb5" stroke-width="2"/>
+      <text x="298" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#4a1880" font-family="M PLUS Rounded 1c">D</text>
+      <text x="298" y="44" text-anchor="middle" font-size="9.5" font-weight="800" fill="#7b3fb5" font-family="M PLUS Rounded 1c">永続性</text>
+    </svg>
+    <div class="acid-grid">
+      <div class="acid-card ac1">
+        <div class="ac-label">A</div>
+        <div class="ac-name">Atomicity（原子性）</div>
+        <div class="ac-desc">トランザクション内の処理は「全部完了」か「全部なかったこと」のどちらかのみ。途中で止まれない。</div>
+        <div class="ac-ex">振込：引落しとも入金とも、両方成功か両方キャンセルかのどちらか。</div>
+      </div>
+      <div class="acid-card ac2">
+        <div class="ac-label">C</div>
+        <div class="ac-name">Consistency（一貫性）</div>
+        <div class="ac-desc">処理の前後でデータが整合した状態を保つ。残高がマイナスになるなど、ルール違反の状態にならない。</div>
+        <div class="ac-ex">振込後も口座の合計金額は変わらない。</div>
+      </div>
+      <div class="acid-card ac3">
+        <div class="ac-label">I</div>
+        <div class="ac-name">Isolation（独立性・隔離性）</div>
+        <div class="ac-desc">同時に複数のトランザクションが動いても、お互いに干渉しない。処理中のデータを他から見えなくする。</div>
+        <div class="ac-ex">自分の振込処理中、他人が同じ口座を操作しても影響しない。</div>
+      </div>
+      <div class="acid-card ac4">
+        <div class="ac-label">D</div>
+        <div class="ac-name">Durability（永続性）</div>
+        <div class="ac-desc">コミット（完了確定）したデータは、障害が起きても消えずに残る。ログに記録され、復元できる。</div>
+        <div class="ac-ex">「振込完了」になったら、サーバーが落ちても記録は残る。</div>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**ACID＝Atomicity（原子性）・Consistency（一貫性）・Isolation（独立性）・Durability（永続性）**。**全か無か・整合性・干渉なし・消えない**の4本柱。</p></div>
-</div>
+  <!-- トランザクション管理 -->
+  <div class="panel p-green">
+    <span class="phead">🔧 トランザクション管理の仕組み</span>
+    <p><strong>コミット（COMMIT）</strong>：トランザクション全処理が成功したら「確定」。データに反映される。</p>
+    <p><strong>ロールバック（ROLLBACK）</strong>：途中でエラーが起きたら「すべてを元に戻す」。これが原子性（A）を実現する仕組み。</p>
+    <p style="margin-top:10px;font-size:12.5px;color:#48506a;font-weight:700;">💡 ACID特性はDBMS（データベース管理システム）が自動で保証する。開発者が手動で実装するものではない。</p>
+  </div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>トランザクションとACIDはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">I（独立性）は「隔離性」とも呼ぶ</div>
+      <div class="tb">Isolation＝独立性＝隔離性。どちらも正しい訳語。試験では「独立性」と「隔離性」を同じ意味として扱う。「分離性」と書く場合もある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「原子性」の「原子」はatomから</div>
+      <div class="tb">「原子（atom）＝それ以上分割できないもの」→ トランザクションも分割できない（全部 or ゼロ）という意味。化学の原子と同じ語源。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">一貫性は「整合性」ともいう</div>
+      <div class="tb">Consistency＝一貫性＝整合性。「処理の前後でルールが守られた状態」を意味する。「データが変わらない」ではなく「ルールに違反しない」こと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ACIDと「BASE」の混同に注意</div>
+      <div class="tb">NoSQLなど分散DBはBASE特性（Basically Available, Soft state, Eventually consistent）を採用する場合がある。ACIDと対比して出題されることも。</div>
+    </div>
+  </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「ACIDは銀行振込の4つの安全装置」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+    A（原子性）＝ 全部やるか全部やめるか「あっちもこっちもないわー」<br>
+    C（一貫性）＝ 残高がおかしくならない「ちゃんとしとけ」<br>
+    I（独立性）＝ 他の処理に邪魔されない「いっさいかんしょうするな」<br>
+    D（永続性）＝ 確定したら消えない「どんなことがあっても残す」</span><br><br>
+    語呂：<span class="hl">「あっちゃん（A）、せっかち（C）、いつも（I）、独立（I）、どっしり（D）」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">A＝原子性 C＝一貫性 I＝独立性 D＝永続性</span></div>
+  </div>
+
+</div>
+</body>
+</html>

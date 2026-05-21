@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>量子鍵配送（QKD）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="量子鍵配送（QKD）を光子の偏光状態で解説。盗聴が物理的に検出できる理由、従来暗号との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-quantum-key-distribution">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a237e,#283593);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(26,35,126,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#80d8ff 56%,#80d8ff 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c5cae9;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1565c0;--cbg:#e3f2fd;}
+.p-indigo{--c:#283593;--cbg:#e8eaf6;}
+.p-green{--c:#2e7d32;--cbg:#e8f5e9;}
+.p-red{--c:#c62828;--cbg:#ffebee;}
+.p-orange{--c:#e65100;--cbg:#fff3e0;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1565c0;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1565c0;--fbg:#e3f2fd;}
+.f2{--fc:#283593;--fbg:#e8eaf6;}
+.f3{--fc:#2e7d32;--fbg:#e8f5e9;}
+.f4{--fc:#e65100;--fbg:#fff3e0;}
+
+.trap-item{background:#ffebee;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#b71c1c;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a2424;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔐 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>量子鍵配送（QKD）</b>とは？</h1>
+    <p>光の粒（光子）を使って暗号鍵を配る技術。盗聴されたら必ずバレる、物理法則が守る次世代セキュリティ。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a237e" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#c5cae9"/>
+        <rect x="14" y="37" width="44" height="28" rx="8" fill="#1565c0"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 光子ビーム -->
+        <circle cx="58" cy="50" r="5" fill="#80d8ff" opacity=".9"/>
+        <circle cx="62" cy="46" r="3" fill="#80d8ff" opacity=".6"/>
+        <circle cx="65" cy="42" r="2" fill="#80d8ff" opacity=".4"/>
+      </svg>
+      <div class="scene-txt">
+        政府機関どうしで極秘データをやり取りしたい。でも「量子コンピュータが出たら従来の暗号は解けてしまう」という話が出た。そこで担当者が提案したのが「光子1個に鍵を乗せて送る」方式。
+        <div class="scene-q">…これって、何という技術？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔆 量子鍵配送の仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="量子鍵配送の仕組み：送信者アリスが光子を送り、受信者ボブが測定。盗聴者イブが測定すると状態が変化してバレる">
+      <!-- 背景 -->
+      <rect width="340" height="200" fill="#f8f9ff" rx="12"/>
+      <!-- アリス -->
+      <rect x="10" y="70" width="70" height="60" rx="10" fill="#1565c0"/>
+      <text x="45" y="97" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">アリス</text>
+      <text x="45" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#90caf9" font-family="M PLUS Rounded 1c">送信者</text>
+      <text x="45" y="124" text-anchor="middle" font-size="9" font-weight="600" fill="#90caf9" font-family="M PLUS Rounded 1c">光子を送る</text>
+      <!-- ボブ -->
+      <rect x="260" y="70" width="70" height="60" rx="10" fill="#2e7d32"/>
+      <text x="295" y="97" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ボブ</text>
+      <text x="295" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#a5d6a7" font-family="M PLUS Rounded 1c">受信者</text>
+      <text x="295" y="124" text-anchor="middle" font-size="9" font-weight="600" fill="#a5d6a7" font-family="M PLUS Rounded 1c">光子を測定</text>
+      <!-- 量子チャネル（光子の矢印） -->
+      <line x1="80" y1="100" x2="260" y2="100" stroke="#80d8ff" stroke-width="2.5" stroke-dasharray="8 4"/>
+      <!-- 光子（小円）-->
+      <circle cx="130" cy="100" r="6" fill="#29b6f6"/>
+      <text x="130" y="103" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">↕</text>
+      <circle cx="170" cy="100" r="6" fill="#29b6f6"/>
+      <text x="170" y="103" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">↗</text>
+      <circle cx="210" cy="100" r="6" fill="#29b6f6"/>
+      <text x="210" y="103" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">→</text>
+      <text x="170" y="88" text-anchor="middle" font-size="9" font-weight="700" fill="#1565c0" font-family="M PLUS Rounded 1c">量子チャネル（光ファイバー等）</text>
+      <!-- 盗聴者イブ -->
+      <rect x="145" y="138" width="50" height="38" rx="8" fill="#c62828"/>
+      <text x="170" y="154" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">イブ</text>
+      <text x="170" y="167" text-anchor="middle" font-size="9" font-weight="700" fill="#ffcdd2" font-family="M PLUS Rounded 1c">盗聴者</text>
+      <path d="M170 138 L170 118" stroke="#c62828" stroke-width="2" stroke-dasharray="3 2"/>
+      <!-- バレる説明 -->
+      <text x="10" y="185" font-size="9" font-weight="800" fill="#c62828" font-family="M PLUS Rounded 1c">⚠ 測定すると光子の状態が変化 → 盗聴が必ずバレる（量子力学の原理）</text>
+    </svg>
+    <p style="font-size:12.5px;line-height:1.85;color:#3c4456;margin-top:10px;">
+      量子鍵配送（QKD: Quantum Key Distribution）は、<strong>光子（光の粒）の量子状態</strong>を使って暗号鍵を配送する技術。量子力学の「測定すると状態が変わる」という原理を利用するため、<strong>盗聴すると必ず痕跡が残る</strong>のが最大の特徴。
+    </p>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 QKDの手順（BB84プロトコル）</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① アリスが光子を送る</div>
+        <div class="fb">ランダムな偏光方向（↕↗→↘）で光子を1個ずつ送る。各光子の偏光が「鍵の0か1」に対応。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② ボブが測定する</div>
+        <div class="fb">ランダムに測定基底を選んで光子を測定。同じ基底で測れた部分だけが有効な鍵ビットになる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 公開チャネルで基底を照合</div>
+        <div class="fb">どの基底を使ったかを（鍵の値は言わずに）公開チャネルで確認。一致した部分だけ残す。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 盗聴チェック → 共有鍵が完成</div>
+        <div class="fb">サンプルを比較してエラー率が低ければ盗聴なし。鍵を確定して暗号通信に使う。</div>
+      </div>
+    </div>
+    <p style="font-size:12px;line-height:1.8;color:#48506a;margin-top:12px;background:#e8f5e9;border-radius:8px;padding:10px;">
+      <strong>なぜ安全？</strong> 量子力学の「不確定性原理（観測すると状態が変わる）」により、盗聴者が光子を測定した時点で光子の状態が変化し、ボブ側でエラー率が上昇 → 盗聴を検出できる。
+    </p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「量子暗号」＝「量子コンピュータによる暗号解読」ではない</div>
+      <div class="tb">量子鍵配送はデータを<strong>守る技術</strong>。量子コンピュータは既存暗号を<strong>解く脅威</strong>。方向が逆。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「鍵を暗号化して送る」わけではない</div>
+      <div class="tb">鍵そのものを光子の量子状態に乗せて配送する。暗号文のように暗号化した鍵を送るのとは原理が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「盗聴が不可能」ではなく「盗聴が検出できる」</div>
+      <div class="tb">物理的に盗聴できないのではなく、盗聴すると必ずエラーが増えてバレる仕組み。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">PKI・RSAとの違い</div>
+      <div class="tb">RSAなどの公開鍵暗号は数学的困難性に基づく。QKDは物理法則（量子力学）に基づく。より根本的な安全性。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「光子（コウシ）が鍵を配る」→「光子鍵（コウシカギ）配送」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">量子＝光子 ／ 測定すると変化する ／ だから盗聴がバレる</span><br><br>
+      盗聴者は<span class="hl">「触ったら変わる」</span>光の粒を止められない。<br>
+      <span style="font-size:12px;font-weight:800;color:#7a5800;">Q（量子）＝「壊れるから盗めない鍵」と覚える！</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

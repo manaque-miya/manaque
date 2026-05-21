@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>バッファオーバーフローとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="バッファオーバーフローをわかりやすく解説。メモリのあふれる仕組み、攻撃の手口、スタック破壊・スタックスマッシングとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-buffer-overflow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5c3498,#2e1560);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(46,21,96,.3);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:27px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d4b8ff;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-purple{--c:#5c3498;--cbg:#ede5f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5c3498;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#dd5a3a;--fbg:#fdf0ed;}
+.f3{--fc:#5c3498;--fbg:#f2edfc;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.counter-tip{background:#ede5f7;border-radius:11px;padding:11px 13px;margin-top:10px;font-size:12.5px;font-weight:700;color:#3c2870;line-height:1.75;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔐 ITパスポート ｜ セキュリティ系</span>
+    <h1><b>バッファオーバーフロー</b>とは？</h1>
+    <p>決められたメモリ領域（バッファ）を超えてデータを書き込み、プログラムを乗っ取る攻撃手法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#5c3498"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-6 -9 -13 -9 q-7 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- コップから溢れるアイコン -->
+        <rect x="48" y="58" width="16" height="12" rx="2" fill="#2e6de5" opacity=".7"/>
+        <ellipse cx="56" cy="58" rx="8" ry="3" fill="#2e6de5"/>
+        <path d="M44 58 q-4 2 -3 6" stroke="#2e6de5" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        Webアプリのフォームに、通常は20文字以内のはずの入力欄に、攻撃者が1000文字のデータを送り込んだ。プログラムがクラッシュし、最終的に管理者権限で任意のコードが実行された。
+        <div class="scene-q">…これ、バッファオーバーフロー攻撃？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：バッファと溢れの仕組み -->
+  <div class="panel p-purple">
+    <span class="phead">📦 バッファが溢れる仕組み</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="バッファオーバーフローの仕組み：正常時は20文字のバッファに収まるが、攻撃時は超過したデータが隣接メモリを上書きする図">
+      <!-- 正常時 -->
+      <text x="80" y="20" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">【正常時】</text>
+      <rect x="10" y="28" width="140" height="38" rx="6" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="80" y="44" text-anchor="middle" font-size="10.5" font-weight="800" fill="#216b3b" font-family="M PLUS Rounded 1c">バッファ（20文字分）</text>
+      <rect x="14" y="50" width="60" height="12" rx="3" fill="#2e8b4f"/>
+      <text x="44" y="60" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">入力データ（10文字）</text>
+      <rect x="76" y="50" width="70" height="12" rx="3" fill="#c5e8d0"/>
+      <text x="111" y="60" text-anchor="middle" font-size="9" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">空き領域</text>
+      <rect x="152" y="28" width="60" height="38" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="182" y="44" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">隣の</text>
+      <text x="182" y="57" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">メモリ</text>
+      <text x="182" y="67" text-anchor="middle" font-size="9" font-weight="600" fill="#5a7bbf" font-family="M PLUS Rounded 1c">無事</text>
+
+      <!-- 攻撃時 -->
+      <text x="80" y="108" text-anchor="middle" font-size="12" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">【攻撃時：大量データ送り込み】</text>
+      <rect x="10" y="116" width="140" height="38" rx="6" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2.5"/>
+      <text x="80" y="132" text-anchor="middle" font-size="10.5" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">バッファ（20文字分）</text>
+      <rect x="14" y="138" width="136" height="12" rx="3" fill="#dd5a3a"/>
+      <text x="82" y="148" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">入力データ（50文字以上）　→　溢れる！</text>
+
+      <!-- 溢れ矢印 -->
+      <path d="M150 148 L168 148" stroke="#dd5a3a" stroke-width="3"/>
+      <polygon points="168,144 168,152 176,148" fill="#dd5a3a"/>
+
+      <rect x="152" y="116" width="60" height="38" rx="6" fill="#ffd23f" stroke="#e0a800" stroke-width="2.5"/>
+      <text x="182" y="133" text-anchor="middle" font-size="9.5" font-weight="900" fill="#7a5500" font-family="M PLUS Rounded 1c">隣のメモリ</text>
+      <text x="182" y="148" text-anchor="middle" font-size="9.5" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">上書き！</text>
+
+      <!-- 結果 -->
+      <rect x="220" y="116" width="110" height="38" rx="6" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="275" y="133" text-anchor="middle" font-size="10" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">プログラムの</text>
+      <text x="275" y="148" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">制御奪取・暴走</text>
+
+      <text x="170" y="185" text-anchor="middle" font-size="11" font-weight="800" fill="#5c3498" font-family="M PLUS Rounded 1c">溢れたデータで「戻りアドレス」を書き換え</text>
+      <text x="170" y="200" text-anchor="middle" font-size="11" font-weight="800" fill="#5c3498" font-family="M PLUS Rounded 1c">→ 攻撃者の任意コードが実行される</text>
+    </svg>
+    <div class="counter-tip">バッファ ＝ メモリ上の「一時置き場」。容量チェックをしないプログラムが狙われる。</div>
+  </div>
+
+  <!-- 攻撃の流れ -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ バッファオーバーフロー攻撃の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 脆弱なプログラムを探す</div><div class="fb">入力値のサイズチェックをしていないプログラム（C言語の gets関数 など）を探す。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② バッファを超える大量データを送る</div><div class="fb">用意した悪意あるデータ（シェルコードなど）を含む大量の入力をフォームやネットワークパケットで送り込む。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 戻りアドレスを書き換えてコード実行</div><div class="fb">溢れたデータが「関数の戻りアドレス」を上書き。プログラムが攻撃者の仕込んだコードを実行してしまう。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">SQLインジェクションと混同しやすい</div>
+      <div class="tb">SQLインジェクションは「DBへの不正なSQL文挿入」。バッファオーバーフローは「メモリ領域の溢れによるコード実行」。狙う場所が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">クロスサイトスクリプティング（XSS）と混同しやすい</div>
+      <div class="tb">XSSは「Webページにスクリプトを埋め込んで閲覧者のブラウザで実行させる」攻撃。バッファオーバーフローは「サーバー側のメモリ」を狙う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">対策を問う問題</div>
+      <div class="tb">「入力値の長さチェック（バリデーション）」「バッファサイズの確認」「セキュアな関数の使用（strncpy等）」「ASLR（アドレス空間ランダム化）」が対策として問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「メモリ」「バッファ」「溢れ」「大量データを入力」が問題文にあれば → <strong>バッファオーバーフロー</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">バッファ（お風呂）に水を入れすぎて</span>床まで溢れた！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">バッファ＝お風呂（決まった容量の入れ物）<br>
+    オーバーフロー＝水が溢れて隣の部屋（メモリ）を水浸しに</span><br><br>
+    <span class="hl">溢れた水が隣人（プログラム）を操る</span>＝制御奪取！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「容量チェックしないプログラムの穴」が狙われる</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

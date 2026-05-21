@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IMAP（アイマップ）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="IMAP（Internet Message Access Protocol）をわかりやすく解説。POP3・SMTPとの違い、メールをサーバで管理する仕組み、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-imap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6b4fb8,#3a2572);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(58,37,114,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d8ccf5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#6b4fb8;--cbg:#ede8f8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6b4fb8;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6b4fb8;--fbg:#ede8f8;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.compare-cell{border-radius:12px;padding:12px;}
+.compare-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.compare-cell ul{list-style:none;}
+.compare-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.compare-cell li::before{content:"・";position:absolute;left:0;}
+.cc-imap{background:#ede8f8;}.cc-imap h4{color:#6b4fb8;}
+.cc-pop{background:#e7eefc;}.cc-pop h4{color:#2e6de5;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・ネットワーク</span>
+    <h1><b>IMAP</b>（アイマップ）とは？</h1>
+    <p>メールをサーバ上で管理し、複数のデバイスから同じ受信箱を操作できるメール受信プロトコル。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="30" rx="9" fill="#6b4fb8"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- envelope icon -->
+        <rect x="25" y="47" width="22" height="15" rx="2" fill="#fff" opacity=".3"/>
+        <polyline points="25,47 36,56 47,47" fill="none" stroke="#fff" stroke-width="1.5" opacity=".8"/>
+      </svg>
+      <div class="scene-txt">
+        スマホとPC両方でメールを確認しているあなた。スマホで読んだメールがPCでも「既読」になっていて、どちらでも同じ受信箱が見えていることに気づいた。<br><br>
+        友人が教えてくれた。「それって<strong>IMAP</strong>の仕組みだよ。メールがサーバに残ってるから、どの端末からも同じメールが見られるんだ」。
+        <div class="scene-q">…POP3とは何が違うの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：IMAPの仕組み -->
+  <div class="panel p-purple">
+    <span class="phead">📬 IMAPの仕組み（サーバで管理）</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="IMAPとPOP3の動作比較図">
+      <!-- IMAP section -->
+      <text x="85" y="18" text-anchor="middle" font-size="13" font-weight="900" fill="#6b4fb8" font-family="M PLUS Rounded 1c">IMAP</text>
+
+      <!-- Mail server -->
+      <rect x="30" y="26" width="110" height="60" rx="10" fill="#ede8f8" stroke="#6b4fb8" stroke-width="2.5"/>
+      <text x="85" y="48" text-anchor="middle" font-size="11" font-weight="900" fill="#6b4fb8" font-family="M PLUS Rounded 1c">メールサーバ</text>
+      <rect x="42" y="55" width="86" height="12" rx="3" fill="#6b4fb8" opacity=".3"/>
+      <text x="85" y="65" text-anchor="middle" font-size="9.5" font-weight="700" fill="#3a2572" font-family="M PLUS Rounded 1c">メールはここに保存</text>
+      <text x="85" y="78" text-anchor="middle" font-size="9.5" font-weight="700" fill="#3a2572" font-family="M PLUS Rounded 1c">削除しない</text>
+
+      <!-- double arrows to devices -->
+      <line x1="85" y1="86" x2="50" y2="118" stroke="#6b4fb8" stroke-width="2" stroke-dasharray="4 3"/>
+      <line x1="85" y1="86" x2="85" y2="118" stroke="#6b4fb8" stroke-width="2" stroke-dasharray="4 3"/>
+      <line x1="85" y1="86" x2="120" y2="118" stroke="#6b4fb8" stroke-width="2" stroke-dasharray="4 3"/>
+
+      <!-- devices -->
+      <rect x="20" y="118" width="58" height="34" rx="6" fill="#ede8f8" stroke="#6b4fb8" stroke-width="1.5"/>
+      <text x="49" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#3a2572" font-family="M PLUS Rounded 1c">PC</text>
+      <text x="49" y="146" text-anchor="middle" font-size="9.5" font-weight="600" fill="#7a6aa8" font-family="M PLUS Rounded 1c">同じ受信箱</text>
+
+      <rect x="56" y="118" width="58" height="34" rx="6" fill="#ede8f8" stroke="#6b4fb8" stroke-width="1.5"/>
+      <text x="85" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#3a2572" font-family="M PLUS Rounded 1c">スマホ</text>
+      <text x="85" y="146" text-anchor="middle" font-size="9.5" font-weight="600" fill="#7a6aa8" font-family="M PLUS Rounded 1c">同じ受信箱</text>
+
+      <rect x="92" y="118" width="58" height="34" rx="6" fill="#ede8f8" stroke="#6b4fb8" stroke-width="1.5"/>
+      <text x="121" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#3a2572" font-family="M PLUS Rounded 1c">タブレット</text>
+      <text x="121" y="146" text-anchor="middle" font-size="9.5" font-weight="600" fill="#7a6aa8" font-family="M PLUS Rounded 1c">同じ受信箱</text>
+
+      <text x="85" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#6b4fb8" font-family="M PLUS Rounded 1c">どの端末も同じ状態を反映</text>
+
+      <!-- POP3 section -->
+      <text x="255" y="18" text-anchor="middle" font-size="13" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">POP3（比較）</text>
+
+      <!-- Mail server POP -->
+      <rect x="200" y="26" width="110" height="60" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2.5"/>
+      <text x="255" y="48" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">メールサーバ</text>
+      <text x="255" y="68" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1a3a8a" font-family="M PLUS Rounded 1c">ダウンロード後</text>
+      <text x="255" y="80" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1a3a8a" font-family="M PLUS Rounded 1c">サーバから削除</text>
+
+      <!-- arrow to one device -->
+      <line x1="255" y1="86" x2="255" y2="118" stroke="#2e6de5" stroke-width="2.5"/>
+      <polygon points="249,118 261,118 255,126" fill="#2e6de5"/>
+
+      <!-- single device -->
+      <rect x="216" y="126" width="78" height="34" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="255" y="140" text-anchor="middle" font-size="10" font-weight="700" fill="#1a3a8a" font-family="M PLUS Rounded 1c">PCにダウンロード</text>
+      <text x="255" y="154" text-anchor="middle" font-size="9.5" font-weight="600" fill="#5a7bbf" font-family="M PLUS Rounded 1c">他の端末では見れない</text>
+
+      <text x="255" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">1台だけに紐づく</text>
+    </svg>
+  </div>
+
+  <!-- メールプロトコル3種の整理 -->
+  <div class="panel p-indigo">
+    <span class="phead">📋 メールプロトコル3種の整理</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">IMAP（Internet Message Access Protocol）</div>
+        <div class="fb">メールを<strong>サーバ上で管理</strong>。複数端末から同じ受信箱を参照・操作できる。既読・削除もサーバに反映。Gmailなど現代のWebメールはこれが主流。</div>
+      </div>
+      <div class="farrow">vs</div>
+      <div class="fstep f2">
+        <div class="fh">POP3（Post Office Protocol 3）</div>
+        <div class="fb">メールを<strong>端末にダウンロード</strong>し、サーバから削除する（デフォルト設定の場合）。1台での閲覧を想定。複数端末で使うと同期されない。</div>
+      </div>
+      <div class="farrow">＋</div>
+      <div class="fstep f3">
+        <div class="fh">SMTP（Simple Mail Transfer Protocol）</div>
+        <div class="fb">メールを<strong>送信</strong>するプロトコル。IMAP・POP3は受信専用。「送る」はSMTP、「受け取る」はIMAPまたはPOP3と役割が完全に分かれている。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAP vs POP3比較 -->
+  <div class="panel p-orange">
+    <span class="phead">🔍 IMAP vs POP3 どちらを選ぶ？</span>
+    <div class="compare-grid">
+      <div class="compare-cell cc-imap">
+        <h4>IMAPを選ぶとき</h4>
+        <ul>
+          <li>複数デバイス（PC・スマホ・タブレット）で同じメールを見たい</li>
+          <li>どこからでもアクセスしたい</li>
+          <li>サーバに保存したままにしたい</li>
+          <li>Gmail・Outlookなど現代のメール</li>
+        </ul>
+      </div>
+      <div class="compare-cell cc-pop">
+        <h4>POP3を選ぶとき</h4>
+        <ul>
+          <li>1台のPCだけで管理したい</li>
+          <li>サーバの容量を節約したい</li>
+          <li>オフラインでも読み返したい</li>
+          <li>古いメーラーを使っている</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">IMAPもメールを「ダウンロード」する、という誤解</div>
+      <div class="tb">IMAPは<strong>サーバ上のメールを参照・操作</strong>する。POP3がダウンロードして端末に保存するのとは異なる。IMAPの本体はあくまでサーバにある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">IMAPでメール送信もできる、という誤解</div>
+      <div class="tb">IMAPは<strong>受信（参照）専用</strong>。送信は必ず<strong>SMTP</strong>を使う。「IMAP/SMTP」「POP3/SMTP」というように受信と送信のプロトコルは分かれている。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">POP3でも設定次第でサーバに残せる</div>
+      <div class="tb">POP3はデフォルトでダウンロード後に削除するが、「サーバにコピーを残す」設定もできる。ただしサーバ同期の仕組みはないため、複数端末の<strong>状態一致はできない</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>サーバで管理・複数端末で同期</strong>」→ IMAP。「<strong>端末にダウンロード</strong>」→ POP3。「<strong>送信</strong>するプロトコル」→ SMTP。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">IMAP</span> ＝「<strong>アイ（I）いつでもどこでもMAP（地図）で見る</strong>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">→ サーバが地図の本体。どの端末も同じ地図を見ている。</span><br><br>
+      <span class="hl">POP3</span> ＝「<strong>ポップして（取り出して）端末に貼り付け</strong>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">→ サーバからPOP（弾き出す）して、その端末だけのもの。</span><br><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">送信は必ず <span style="background:#fff;border-radius:4px;padding:0 4px;">SMTP</span> ＝「すんごいメール転送プロトコル」</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

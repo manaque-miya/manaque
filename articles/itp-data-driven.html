@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>データドリブン経営とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="データドリブン経営を「勘より数字で決める経営」として解説。データ活用の流れ、DXとのつながり、カン・経験主義との違い、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-data-driven">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0e7490,#0c4a6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(12,74,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#bae6fd;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-teal{--c:#0e7490;--cbg:#e0f2fe;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0e7490;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#0e7490;--fbg:#e0f2fe;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fcefd9;}
+
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.cr-cell{border-radius:12px;padding:12px;}
+.cr-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.cr-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.cr-old{background:#f5f5f5;border:2px dashed #9aa3b2;}.cr-old h4{color:#6b7591;}
+.cr-new{background:#e0f2fe;border:2px solid #0e7490;}.cr-new h4{color:#0e7490;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系・経営</span>
+    <h1><b>データドリブン経営</b>とは？</h1>
+    <p>「社長の勘」ではなく「データの証拠」で判断・行動する経営スタイル。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- グラフ画面 -->
+        <rect x="8" y="20" width="62" height="48" rx="5" fill="#0c4a6e"/>
+        <rect x="12" y="24" width="54" height="40" rx="3" fill="#e0f2fe"/>
+        <!-- 棒グラフ -->
+        <rect x="18" y="46" width="8" height="14" rx="2" fill="#0e7490"/>
+        <rect x="30" y="40" width="8" height="20" rx="2" fill="#0e7490"/>
+        <rect x="42" y="34" width="8" height="26" rx="2" fill="#0e7490"/>
+        <rect x="54" y="44" width="8" height="16" rx="2" fill="#0e7490" opacity=".5"/>
+        <!-- 折れ線 -->
+        <polyline points="22,46 34,42 46,36 58,44" stroke="#ffd23f" stroke-width="2" fill="none"/>
+        <!-- 人物 -->
+        <circle cx="39" cy="78" r="8" fill="#f4c89a"/>
+        <path d="M29 88 Q39 82 49 88" stroke="#6b7591" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        新商品を出すか迷う会議。「なんとなく売れそう」という感覚論を却下し、<strong>「先月の購買データと顧客属性を分析してから決めよう」</strong>と言ったマーケター。
+        <div class="scene-q">これがデータドリブン——でも何がそんなにいいの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：データドリブンの循環 -->
+  <div class="panel p-teal">
+    <span class="phead">🔄 データドリブンの循環</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="データドリブン経営の循環：データ収集→分析→意思決定→実行→データ収集">
+      <!-- 中心ラベル -->
+      <circle cx="170" cy="100" r="42" fill="#0c4a6e"/>
+      <text x="170" y="96" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">データ</text>
+      <text x="170" y="113" text-anchor="middle" font-size="12" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">ドリブン</text>
+      <!-- 4つの外円 -->
+      <circle cx="170" cy="24" r="22" fill="#e0f2fe" stroke="#0e7490" stroke-width="2"/>
+      <text x="170" y="21" text-anchor="middle" font-size="10" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">データ</text>
+      <text x="170" y="35" text-anchor="middle" font-size="10" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">収集</text>
+      <circle cx="290" cy="100" r="22" fill="#eef8f1" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="290" y="97" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">分析</text>
+      <text x="290" y="111" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">解釈</text>
+      <circle cx="170" cy="176" r="22" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="170" y="173" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">意思</text>
+      <text x="170" y="187" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">決定</text>
+      <circle cx="50" cy="100" r="22" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="50" y="97" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">実行</text>
+      <text x="50" y="111" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">改善</text>
+      <!-- 円弧矢印（時計回り） -->
+      <path d="M192 26 Q240 30 268 78" stroke="#9aa3b2" stroke-width="2" fill="none" stroke-dasharray="5 3" marker-end="url(#arC)"/>
+      <path d="M287 122 Q280 158 200 173" stroke="#9aa3b2" stroke-width="2" fill="none" stroke-dasharray="5 3" marker-end="url(#arC)"/>
+      <path d="M140 174 Q80 168 62 122" stroke="#9aa3b2" stroke-width="2" fill="none" stroke-dasharray="5 3" marker-end="url(#arC)"/>
+      <path d="M52 78 Q58 44 148 26" stroke="#9aa3b2" stroke-width="2" fill="none" stroke-dasharray="5 3" marker-end="url(#arC)"/>
+      <defs><marker id="arC" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9aa3b2"/></marker></defs>
+    </svg>
+    <p style="font-size:12.5px;font-weight:600;color:#48506a;margin-top:8px;">データを集め→分析し→それをもとに判断→実行した結果がまたデータに。この<strong>サイクルを高速で回す</strong>ことが競争力になる。</p>
+  </div>
+
+  <!-- フロー：経営への活用 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ データドリブン経営の実践フロー</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① データを収集・蓄積</div><div class="fb">顧客の購買履歴・Web行動・センサーデータなどを収集。データレイクやデータウェアハウスに蓄積する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 分析・可視化</div><div class="fb">BIツールや統計分析でデータから傾向・パターンを読み取る。グラフや可視化で誰でも理解できる形に。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 意思決定に活用</div><div class="fb">「感覚ではなくデータが示す事実」で判断。A/Bテストで施策を検証してから全展開する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 実行・フィードバック</div><div class="fb">実行した結果をデータ化し①に戻す。PDCAサイクルをデータで高速化する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「データを持つこと＝データドリブン」ではない</div>
+      <div class="tb">データを収集・蓄積しているだけでは意味がない。<strong>意思決定・行動にデータを活用</strong>して初めてデータドリブンといえる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">DXとの違い</div>
+      <div class="tb">DX（デジタルトランスフォーメーション）はビジネスモデル・組織全体の変革。データドリブン経営はそのなかの<strong>「意思決定のアプローチ」</strong>の一つ。DXの手段であってイコールではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ビッグデータとの違い</div>
+      <div class="tb">ビッグデータは「大量・高速・多様なデータ」のこと（データの性質）。データドリブンは「データで動く経営の姿勢」（経営スタイル）。別の概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">勘と経験を全否定しているわけではない</div>
+      <div class="tb">データドリブンは勘を否定するのではなく、<strong>勘にデータの裏付けを加える</strong>考え方。試験では「データを活用した意思決定」という点を押さえる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「データが運転（ドライブ）する経営」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Data-Driven ＝ データが"ドライバー"（運転手）</span><br><br>
+    人間は助手席。<span class="hl">「感覚よりデータに道案内させる」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">収集→分析→判断→実行→また収集 のループが本体</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

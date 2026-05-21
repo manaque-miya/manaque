@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ITコンプライアンスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ITコンプライアンスを「法令・規則をITで守ること」と一言でわかる形で解説。IT統制・ITガバナンスとの違い、試験のひっかけポイント、無理やりゴロまで。">
+<link rel="canonical" href="https://mana-quest.com/itp/itp-it-compliance">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e6fba,#0d3a6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,58,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8dff5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e6fba;--fbg:#e3f0fb;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#4256b8;--fbg:#eaecf8;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#d9851f;font-weight:900;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ ストラテジ系</span>
+    <h1><b>ITコンプライアンス</b>とは？</h1>
+    <p>ITの使い方で「法律・ルールを守ること」。<br>守らないと会社ごと信頼を失う。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#c8d8ea"/>
+        <rect x="14" y="36" width="44" height="26" rx="8" fill="#1e6fba"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 16 a12 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 書類イコン -->
+        <rect x="42" y="54" width="18" height="22" rx="2" fill="#fff" stroke="#1e6fba" stroke-width="1.5"/>
+        <line x1="45" y1="60" x2="57" y2="60" stroke="#1e6fba" stroke-width="1.2"/>
+        <line x1="45" y1="64" x2="57" y2="64" stroke="#1e6fba" stroke-width="1.2"/>
+        <line x1="45" y1="68" x2="53" y2="68" stroke="#1e6fba" stroke-width="1.2"/>
+        <!-- チェックマーク -->
+        <circle cx="57" cy="70" r="5" fill="#2e8b4f"/>
+        <path d="M54 70 l2 2 l4 -4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="scene-txt">
+        社員のAさん。業務でお客さんの個人情報をパソコンに保存している。<br>
+        上司から「<strong>個人情報保護法を守った管理方法</strong>にしてください」と指示が来た。<br>
+        USBで持ち出さない、パスワードをかける、アクセスログを残す……。
+        <div class="scene-q">これが ITコンプライアンス の実践だ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ITコンプライアンスの構造 -->
+  <div class="panel p-indigo">
+    <span class="phead">ITコンプライアンスの構造</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="ITコンプライアンスの構造図：法令・社内規定・倫理の3層とIT活動の関係">
+      <!-- 外枠：法令・規制 -->
+      <rect x="10" y="10" width="320" height="200" rx="14" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="170" y="32" text-anchor="middle" font-size="13" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">法令・規制（外部ルール）</text>
+      <text x="170" y="47" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6070a0" font-family="M PLUS Rounded 1c">個人情報保護法 ／ 不正競争防止法 ／ 著作権法</text>
+
+      <!-- 中枠：社内規定 -->
+      <rect x="30" y="56" width="280" height="118" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="74" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">社内規定・ポリシー（内部ルール）</text>
+      <text x="170" y="88" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">情報セキュリティポリシー ／ システム利用規程</text>
+
+      <!-- 内枠：IT活動 -->
+      <rect x="55" y="98" width="230" height="64" rx="10" fill="#fff" stroke="#1e6fba" stroke-width="1.8"/>
+      <text x="170" y="118" text-anchor="middle" font-size="12" font-weight="900" fill="#1e6fba" font-family="M PLUS Rounded 1c">IT活動（実際の業務）</text>
+      <text x="170" y="134" text-anchor="middle" font-size="10.5" font-weight="700" fill="#3a5580" font-family="M PLUS Rounded 1c">システム操作・データ管理・メール送受信</text>
+      <text x="170" y="150" text-anchor="middle" font-size="10.5" font-weight="700" fill="#3a5580" font-family="M PLUS Rounded 1c">ネットワーク利用・クラウド活用</text>
+
+      <!-- ラベル -->
+      <text x="170" y="188" text-anchor="middle" font-size="11.5" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">すべての層のルールに従って IT を使う ＝ ITコンプライアンス</text>
+    </svg>
+  </div>
+
+  <!-- フロー：ITコンプライアンス違反が起きると -->
+  <div class="panel p-green">
+    <span class="phead">ITコンプライアンス違反が起きると…</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 違反発生（例：個人情報の無断持ち出し）</div><div class="fb">USBで顧客データを持ち出す、業務システムに不正アクセスするなど。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 発覚・調査</div><div class="fb">アクセスログの調査、当事者へのヒアリング、監査機関への報告義務が発生。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 信頼・ビジネスへの打撃</div><div class="fb">報道・行政処分・損害賠償。顧客離れ・株価下落・業務停止にも発展。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 再発防止</div><div class="fb">規程の見直し・社員教育・技術的対策（アクセス制御・ログ管理）を整備。</div></div>
+    </div>
+  </div>
+
+  <!-- 試験のキモ -->
+  <div class="panel p-orange">
+    <span class="phead">試験のキモ</span>
+    <ul class="kimo-list">
+      <li><strong>「ITコンプライアンス」</strong>は「IT×法令遵守」＝ITを使う場面で法律・社内規定を守ること。</li>
+      <li>個人情報保護・著作権・不正アクセス禁止など、<strong>具体的な法令とセット</strong>で理解する。</li>
+      <li>IT統制（内部統制の一部）・ITガバナンス（経営レベルの方針）とは<strong>レベルが違う</strong>。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">IT統制と混同しやすい</div>
+      <div class="tb">IT統制は「業務プロセスのリスクをITで管理・制御する仕組み」（内部統制の一部）。コンプライアンスより範囲が広く、不正防止や業務効率化も含む。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ITガバナンスと混同しやすい</div>
+      <div class="tb">ITガバナンスは「経営層がITを使う方向性を決め、組織全体で推進する仕組み」。コンプライアンスは実務レベル、ガバナンスは経営レベル。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>法律・規則を守って IT を使う</strong>」という文脈が出たら → ITコンプライアンス。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「コン」</span>で<span class="hl">「コン」</span>と叩かれる前に守れ！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">コン＝コンプライアンス（compliance）＝「準拠・遵守」の意味。<br>
+      「コンコン」と監査に叩かれる前に、法律・ルールに従ってITを使う。</span><br><br>
+      IT＋<span class="hl">コン</span>プライアンス＝<span class="hl">コン</span>トロールできてる会社
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

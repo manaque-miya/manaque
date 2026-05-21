@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>データベースのビューとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="データベースのビュー（仮想テーブル）の仕組み・目的・3つのメリットをわかりやすく解説。実テーブルとの違い、アクセス制御・SQL簡略化・論理的独立性、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-database-view">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#7c3aed,#4c1d95);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(124,58,237,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ddd6fe;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7c3aed;--cbg:#ede9fe;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c3aed;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c3aed;--fbg:#f3eeff;}
+.f2{--fc:#2e6de5;--fbg:#e7eefc;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ①ヒーロー -->
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ テクノロジ系</span>
+    <h1>データベースの<b>ビュー</b>とは？</h1>
+    <p>実テーブルの"必要な部分だけ"を見せる仮想テーブル。データは持たず、参照するたびに実テーブルへSELECTが実行される。</p>
+  </div>
+
+  <!-- ②こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4.5" fill="#4c1d95" opacity=".12"/>
+        <rect x="10" y="58" width="52" height="20" rx="6" fill="#c4b5fd"/>
+        <rect x="16" y="37" width="40" height="27" rx="9" fill="#7c3aed"/>
+        <circle cx="36" cy="21" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="38" y="53" width="18" height="14" rx="2" fill="#ffd23f" opacity=".9"/>
+        <line x1="40" y1="60" x2="54" y2="60" stroke="#9a6b00" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        社員テーブルには氏名・住所・給与・役職など個人情報が全部入っている。営業部のスタッフには「氏名・部署・連絡先」だけ見せたい。給与列は絶対に見せたくない。
+        <div class="scene-q">そこで「ビュー」を使う！必要な列だけ切り出した仮想テーブルを作れる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③図解（SVG）：ビューの仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">ビューの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="社員実テーブルからSELECTでビューを作成し、給与列は非表示になる図">
+      <!-- 実テーブル -->
+      <rect x="8" y="20" width="130" height="130" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <rect x="8" y="20" width="130" height="24" rx="10" fill="#4256b8"/>
+      <text x="73" y="37" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">社員テーブル（実体）</text>
+      <text x="22" y="56" font-size="9" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">ID</text>
+      <text x="42" y="56" font-size="9" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">名前</text>
+      <text x="74" y="56" font-size="9" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">給与★</text>
+      <text x="110" y="56" font-size="9" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">部署</text>
+      <line x1="14" y1="60" x2="132" y2="60" stroke="#c2c8d8" stroke-width="1"/>
+      <text x="22" y="74" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">001</text>
+      <text x="42" y="74" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">田中</text>
+      <text x="74" y="74" font-size="9" fill="#dd5a3a" font-family="M PLUS Rounded 1c">350万</text>
+      <text x="110" y="74" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">営業</text>
+      <text x="22" y="90" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">002</text>
+      <text x="42" y="90" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">佐藤</text>
+      <text x="74" y="90" font-size="9" fill="#dd5a3a" font-family="M PLUS Rounded 1c">420万</text>
+      <text x="110" y="90" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">人事</text>
+      <text x="22" y="106" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">003</text>
+      <text x="42" y="106" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">鈴木</text>
+      <text x="74" y="106" font-size="9" fill="#dd5a3a" font-family="M PLUS Rounded 1c">280万</text>
+      <text x="110" y="106" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">営業</text>
+      <text x="73" y="140" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">データは実テーブルにある</text>
+      <!-- 矢印とSELECT -->
+      <line x1="140" y1="90" x2="174" y2="90" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrv)"/>
+      <defs>
+        <marker id="arrv" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5z" fill="#7c3aed"/></marker>
+      </defs>
+      <rect x="136" y="72" width="42" height="14" rx="4" fill="#ede9fe"/>
+      <text x="157" y="83" text-anchor="middle" font-size="8" font-weight="900" fill="#4c1d95" font-family="M PLUS Rounded 1c">SELECT</text>
+      <!-- ビュー（仮想テーブル） -->
+      <rect x="176" y="20" width="150" height="130" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="6 3"/>
+      <rect x="176" y="20" width="150" height="24" rx="10" fill="#7c3aed"/>
+      <text x="251" y="37" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">社員ビュー（仮想）</text>
+      <text x="196" y="56" font-size="9" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">ID</text>
+      <text x="222" y="56" font-size="9" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">名前</text>
+      <text x="272" y="56" font-size="9" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">部署</text>
+      <line x1="182" y1="60" x2="320" y2="60" stroke="#c4b5fd" stroke-width="1"/>
+      <text x="196" y="74" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">001</text>
+      <text x="222" y="74" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">田中</text>
+      <text x="272" y="74" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">営業</text>
+      <text x="196" y="90" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">002</text>
+      <text x="222" y="90" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">佐藤</text>
+      <text x="272" y="90" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">人事</text>
+      <text x="196" y="106" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">003</text>
+      <text x="222" y="106" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">鈴木</text>
+      <text x="272" y="106" font-size="9" fill="#3c4456" font-family="M PLUS Rounded 1c">営業</text>
+      <text x="251" y="140" text-anchor="middle" font-size="9" font-weight="700" fill="#4c1d95" font-family="M PLUS Rounded 1c">給与列は非表示（実データに影響なし）</text>
+      <!-- 破線の注釈 -->
+      <text x="170" y="168" text-anchor="middle" font-size="10" font-weight="900" fill="#7c3aed" font-family="M PLUS Rounded 1c">破線枠＝データを持たない仮想テーブル</text>
+    </svg>
+    <p>ビューはSELECT文の定義だけが保存される。データ本体は実テーブルにある。ビューを通じて参照するたびに、裏でSELECTが実行される。</p>
+  </div>
+
+  <!-- ④フロー／詳細：3つのメリット -->
+  <div class="panel p-green">
+    <span class="phead">ビューの3つのメリット</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① アクセス制御（セキュリティ）</div>
+        <div class="fb">給与・個人情報など見せたくない列を除いたビューを作り、一般ユーザーにはビューだけアクセスさせる。実テーブルへの直接アクセスを禁止できる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 複雑なSQLの簡略化</div>
+        <div class="fb">複数テーブルを結合した複雑なSELECT文をビューとして登録しておけば、毎回書き直す必要なし。ビュー名だけで参照できる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 論理的なデータ構造の独立性</div>
+        <div class="fb">実テーブルの物理的な構造が変わっても、ビューさえ修正すれば利用者側のSQLは変更不要。アプリ側に「使いやすいテーブル像」を見せ続けられる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ビューにデータが保存されている」は誤り</div>
+      <div class="tb">ビューはSELECT文の定義だけを持つ<strong>仮想テーブル</strong>。データ本体は実テーブルにある。ビューを削除してもデータは消えない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">更新（UPDATE/INSERT）できないビューもある</div>
+      <div class="tb">単純なビューは更新可能なこともあるが、集計関数や複数テーブル結合を含むビューは更新できないことが多い。試験では「ビューは読み取り専用」として扱われやすい。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">インデックスと混同しやすい</div>
+      <div class="tb">インデックスは「<strong>検索を速くする索引</strong>」。ビューは「<strong>特定の列・行だけ見せる仮想テーブル</strong>」。目的が全く違う。</div>
+    </div>
+  </div>
+
+  <!-- ⑥覚え方 -->
+  <div class="oboe">
+    <div class="oh">覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      ビューは<span class="hl">「覗き穴（窓）」</span>。テーブルという部屋に窓を開ける。<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">見える部分だけが「ビュー」。部屋（実テーブル）の中身は変わらない</span><br><br>
+      <span class="hl">窓を割っても（ビューを削除しても）部屋（実テーブル）のデータは消えない！</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ビューは仮想＝データなし・参照のたびに実テーブルを見に行く</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

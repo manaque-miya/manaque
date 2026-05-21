@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>スーパーアプリとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="スーパーアプリを図解で解説。1つのアプリに決済・SNS・ショッピングが集結する仕組み、WeChat・LINEとの比較、ITパスポート試験頻出のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-super-app">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c3aed,#4c1d95);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(76,29,149,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ddd6fe;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7c3aed;--cbg:#ede9fe;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c3aed;}
+
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.feat{border-radius:11px;padding:10px 11px;display:flex;align-items:center;gap:8px;}
+.feat-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.feat-txt h5{font-size:12px;font-weight:900;margin-bottom:2px;}
+.feat-txt p{font-size:11px;font-weight:600;line-height:1.5;color:#48506a;}
+@media(max-width:480px){.feature-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c3aed;--fbg:#f5f3ff;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>スーパーアプリ</b>とは？</h1>
+    <p>1つのアプリで何でもできる「アプリの百貨店」。決済・SNS・ショッピングが1か所に集まる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#4c1d95" opacity=".1"/>
+        <!-- スマホ -->
+        <rect x="16" y="18" width="40" height="66" rx="7" fill="#2b2b3a" stroke="#7c3aed" stroke-width="2"/>
+        <rect x="19" y="24" width="34" height="50" rx="4" fill="#f5f3ff"/>
+        <!-- アイコングリッド -->
+        <rect x="22" y="27" width="12" height="12" rx="3" fill="#7c3aed"/>
+        <rect x="36" y="27" width="12" height="12" rx="3" fill="#2e6de5"/>
+        <rect x="22" y="41" width="12" height="12" rx="3" fill="#1a7f5a"/>
+        <rect x="36" y="41" width="12" height="12" rx="3" fill="#d9851f"/>
+        <rect x="22" y="55" width="12" height="12" rx="3" fill="#dd5a3a"/>
+        <rect x="36" y="55" width="12" height="12" rx="3" fill="#cf4f86"/>
+        <!-- テキスト文字（アイコン内） -->
+        <text x="28" y="36" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">💬</text>
+        <text x="42" y="36" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">¥</text>
+        <text x="28" y="50" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">🛒</text>
+        <text x="42" y="50" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">🗺</text>
+        <text x="28" y="64" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">🎵</text>
+        <text x="42" y="64" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">✈</text>
+      </svg>
+      <div class="scene-txt">
+        中国に出張したBさん。現地の人はスマホ1台（WeChat）で、<strong>友人へのメッセージ・コンビニでの支払い・タクシーの呼び出し・ECサイトでの買い物</strong>をすべてこなしている。
+        <div class="scene-q">→ これがスーパーアプリ。1つのアプリが「すべての入口」になっている。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解 -->
+  <div class="panel p-blue">
+    <span class="phead">📱 スーパーアプリの構造</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="スーパーアプリの構造図：中心に1つのアプリがあり、周囲に複数のミニアプリが接続されている">
+      <!-- 背景 -->
+      <rect x="0" y="0" width="340" height="240" rx="14" fill="#f5f3ff"/>
+      <!-- 中心：スーパーアプリ -->
+      <circle cx="170" cy="120" r="46" fill="#7c3aed" stroke="#4c1d95" stroke-width="2.5"/>
+      <text x="170" y="113" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">スーパー</text>
+      <text x="170" y="129" text-anchor="middle" font-size="13" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">アプリ</text>
+      <text x="170" y="144" text-anchor="middle" font-size="10" fill="#ddd6fe" font-family="M PLUS Rounded 1c">（1つのアプリ）</text>
+      <!-- ミニアプリ群（周囲に配置） -->
+      <!-- 上 -->
+      <line x1="170" y1="74" x2="170" y2="46" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 3"/>
+      <rect x="136" y="14" width="68" height="32" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="170" y="34" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">💬 メッセージ</text>
+      <!-- 右上 -->
+      <line x1="207" y1="87" x2="238" y2="58" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 3"/>
+      <rect x="234" y="32" width="72" height="32" rx="8" fill="#d9f5eb" stroke="#1a7f5a" stroke-width="1.5"/>
+      <text x="270" y="52" text-anchor="middle" font-size="11" font-weight="800" fill="#1a7f5a" font-family="M PLUS Rounded 1c">¥ 決済</text>
+      <!-- 右 -->
+      <line x1="216" y1="120" x2="248" y2="120" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 3"/>
+      <rect x="246" y="104" width="72" height="32" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="282" y="124" text-anchor="middle" font-size="11" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">🛒 EC</text>
+      <!-- 右下 -->
+      <line x1="207" y1="153" x2="238" y2="182" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 3"/>
+      <rect x="234" y="176" width="72" height="32" rx="8" fill="#fbe3ee" stroke="#cf4f86" stroke-width="1.5"/>
+      <text x="270" y="196" text-anchor="middle" font-size="11" font-weight="800" fill="#cf4f86" font-family="M PLUS Rounded 1c">🚕 配車</text>
+      <!-- 左下 -->
+      <line x1="133" y1="153" x2="102" y2="182" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 3"/>
+      <rect x="24" y="176" width="80" height="32" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="1.5"/>
+      <text x="64" y="196" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">🎵 音楽</text>
+      <!-- 左 -->
+      <line x1="124" y1="120" x2="92" y2="120" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 3"/>
+      <rect x="18" y="104" width="76" height="32" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="56" y="124" text-anchor="middle" font-size="11" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">✈ 旅行</text>
+      <!-- 左上 -->
+      <line x1="133" y1="87" x2="102" y2="58" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4 3"/>
+      <rect x="22" y="32" width="82" height="32" rx="8" fill="#fff" stroke="#9aa3b2" stroke-width="1.5"/>
+      <text x="63" y="52" text-anchor="middle" font-size="11" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">📰 ニュース</text>
+    </svg>
+    <p style="margin-top:10px;">スーパーアプリはそれ自体が「プラットフォーム」となり、外部事業者が提供する<strong>ミニアプリ（小程序）</strong>をその中で動かすことができる。ユーザーは1つのログイン・1つの決済情報で、あらゆるサービスを利用できる。</p>
+  </div>
+
+  <!-- フロー：スーパーアプリが生まれる理由 -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ なぜスーパーアプリが強いのか</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① ユーザーをロックイン</div><div class="fb">日常のすべてが1アプリで完結 → 他のアプリに移る理由がなくなる（乗り換えコストが高い）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② データの一元集約</div><div class="fb">購買・移動・コミュニケーションのデータが1か所に集まる → パーソナライズ広告・AIへの活用が容易。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ プラットフォームビジネス</div><div class="fb">ミニアプリを提供する企業から手数料を取る「場」のビジネスモデルが成立。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「複数アプリを1画面にまとめたもの」は×</div>
+      <div class="tb">スーパーアプリは<strong>1つのアプリが複数サービスを内包</strong>する仕組み。アプリを束ねるランチャー画面とは別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">日本のLINEは「スーパーアプリ」か？</div>
+      <div class="tb">LINEもスーパーアプリの方向に進化中（LINE Pay・LINEショッピングなど）。試験では「WeChat（微信）」が代表例として頻出。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「アプリストア（App Store）」との混同</div>
+      <div class="tb">アプリストアはアプリを配布する場所。スーパーアプリはアプリの<strong>中で</strong>ミニアプリが動く。OSの外に出ない点が違う。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「1アプリで全部やる」＝スーパーアプリ</span><br>
+    スーパー（超・全部）＋アプリ<br><br>
+    代表例：<span class="hl">WeChat（微信）</span>　メッセージ・決済・EC・配車…全部入り<br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">「スーパーマーケット＝何でも売ってる」と同じ感覚で覚える</span></div>
+  </div>
+
+</div>
+</body>
+</html>

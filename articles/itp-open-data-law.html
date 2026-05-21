@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>官民データ活用推進基本法とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="官民データ活用推進基本法（2016年施行）をわかりやすく解説。国・自治体へのオープンデータ公開義務、デジタル手続の原則、ITパスポート試験のポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp-open-data-law">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+/* ヒーロー */
+.hero{background:linear-gradient(155deg,#3a6e3a,#1a3a1a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(26,58,26,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c6e4c6;}
+
+/* パネル共通 */
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-darkgreen{--c:#3a6e3a;--cbg:#e2f0e2;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+/* シーン */
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#3a6e3a;}
+
+/* 柱ボックス */
+.pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.pcell{border-radius:12px;padding:11px 12px;}
+.pcell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.pcell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.pc1{background:#e2f0e2;}.pc1 h4{color:#3a6e3a;}
+.pc2{background:#e4e7f7;}.pc2 h4{color:#4256b8;}
+.pc3{background:#fcefd9;}.pc3 h4{color:#d9851f;}
+.pc4{background:#fde8f2;}.pc4 h4{color:#c03070;}
+@media(max-width:440px){.pillar-grid{grid-template-columns:1fr;}}
+
+/* フロー */
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#3a6e3a;--fbg:#e8f4e8;}
+.f2{--fc:#4256b8;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+/* ひっかけ */
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+/* 覚え方 */
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系・法律</span>
+    <h1><b>官民データ活用<br>推進基本法</b>とは？</h1>
+    <p>2016年施行。国・自治体・民間が持つデータを社会全体で活用し、デジタル社会を推進するための法律。オープンデータ化を国と自治体の義務にした。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-darkgreen">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="62" width="58" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="16" y="40" width="46" height="30" rx="9" fill="#3a6e3a"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- 書類アイコン -->
+        <rect x="44" y="55" width="22" height="26" rx="3" fill="#fff" stroke="#3a6e3a" stroke-width="2"/>
+        <line x1="48" y1="63" x2="62" y2="63" stroke="#3a6e3a" stroke-width="1.5"/>
+        <line x1="48" y1="69" x2="62" y2="69" stroke="#3a6e3a" stroke-width="1.5"/>
+        <line x1="48" y1="75" x2="56" y2="75" stroke="#3a6e3a" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        市役所の担当者のあなた。「うちの市の統計データ、ネットで公開してほしい」という市民の声が届いた。<br>
+        上司に確認すると「官民データ活用推進基本法により、地方自治体にはオープンデータ化が努力義務として定められています」と言われた。
+        <div class="scene-q">…国と自治体にオープンデータを義務付けた法律とは？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔺 法律の全体像</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="官民データ活用推進基本法の全体像：国・自治体・民間が基本法のもとでデータを活用する図">
+      <!-- 法律バナー -->
+      <rect x="30" y="10" width="280" height="44" rx="12" fill="#3a6e3a"/>
+      <text x="170" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">官民データ活用推進基本法（2016年）</text>
+      <text x="170" y="46" text-anchor="middle" font-size="10" font-weight="800" fill="#ffd23f" font-family="M PLUS Rounded 1c">データ活用によるデジタル社会の実現</text>
+      <!-- 矢印 -->
+      <line x1="170" y1="54" x2="170" y2="70" stroke="#9aa3b2" stroke-width="2"/>
+      <polygon points="170,76 165,66 175,66" fill="#9aa3b2"/>
+      <!-- 3者 -->
+      <rect x="10" y="80" width="96" height="50" rx="10" fill="#e2f0e2" stroke="#3a6e3a" stroke-width="2"/>
+      <text x="58" y="100" text-anchor="middle" font-size="10.5" font-weight="900" fill="#3a6e3a" font-family="M PLUS Rounded 1c">国</text>
+      <text x="58" y="116" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">オープンデータ化</text>
+      <text x="58" y="128" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">義務（強制）</text>
+
+      <rect x="122" y="80" width="96" height="50" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="170" y="100" text-anchor="middle" font-size="10.5" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">地方自治体</text>
+      <text x="170" y="116" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">オープンデータ化</text>
+      <text x="170" y="128" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">努力義務</text>
+
+      <rect x="234" y="80" width="96" height="50" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="282" y="100" text-anchor="middle" font-size="10.5" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">民間企業</text>
+      <text x="282" y="116" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">データ活用</text>
+      <text x="282" y="128" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">促進・支援</text>
+      <!-- 接続線 -->
+      <line x1="58" y1="76" x2="58" y2="80" stroke="#9aa3b2" stroke-width="1.5"/>
+      <line x1="170" y1="76" x2="170" y2="80" stroke="#9aa3b2" stroke-width="1.5"/>
+      <line x1="282" y1="76" x2="282" y2="80" stroke="#9aa3b2" stroke-width="1.5"/>
+      <!-- 目標バナー -->
+      <rect x="30" y="148" width="280" height="36" rx="10" fill="#ffd23f"/>
+      <text x="170" y="162" text-anchor="middle" font-size="10.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">めざすゴール：「デジタル社会の実現」</text>
+      <text x="170" y="178" text-anchor="middle" font-size="10" font-weight="800" fill="#5c4500" font-family="M PLUS Rounded 1c">行政手続のオンライン化 ／ 官民データ流通の活性化</text>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 法律の4つの柱</span>
+    <div class="pillar-grid">
+      <div class="pcell pc1"><h4>① オープンデータ化</h4><p>国は義務・地方自治体は努力義務として、保有データを機械可読な形式で公開する。</p></div>
+      <div class="pcell pc2"><h4>② デジタル手続の原則</h4><p>行政手続をオンラインで完結できるよう、デジタルファーストを原則とする。</p></div>
+      <div class="pcell pc3"><h4>③ 官民データ流通の促進</h4><p>民間企業がデータを活用してサービスを作れる環境を整備。フィンテック・スマートシティ等。</p></div>
+      <div class="pcell pc4"><h4>④ 個人データの保護</h4><p>活用を進めながら、個人情報の適切な保護とのバランスを保つ。</p></div>
+    </div>
+    <div class="flow" style="margin-top:10px;">
+      <div class="fstep f1"><div class="fh">国・自治体のデータ公開</div><div class="fb">統計・地理・交通データなどをCC BY等のライセンスで機械可読形式（CSV・JSON等）で公開。誰でも無料で利用可能。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">民間・スタートアップが活用</div><div class="fb">公開データをベースにサービスを開発。地域課題解決アプリ・防災マップ・スマートシティへの応用。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">デジタル社会の推進</div><div class="fb">データ活用による行政効率化・産業活性化・国民の利便性向上。後のデジタル庁設置（2021年）にもつながる流れ。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">国と自治体で義務の強さが違う</div>
+      <div class="tb">国（行政機関等）は<strong>義務（強制）</strong>。地方自治体は<strong>努力義務（尽力するが強制ではない）</strong>。この差が試験でよく問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">個人情報保護法と混同しやすい</div>
+      <div class="tb">個人情報保護法は「個人情報の取扱いを規制する法律」。官民データ活用推進基本法は「データ活用を推進する法律」。前者は規制、後者は推進が目的。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「すべてのデータが公開義務」は誤り</div>
+      <div class="tb">個人情報・国家機密など公開が不適切なデータを除き、公開可能なデータをオープン化する。機密情報まで公開を強制する法律ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「国・自治体のオープンデータ化義務・努力義務・2016年施行」が問われたら → <strong>官民データ活用推進基本法</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「官（カン）民（ミン）2016（イチロク）年に手（て）を組んだ」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">官（国・自治体）と民（企業・国民）がデータで手を組む法律、2016年施行。</span><br><br>
+    <span class="hl">国＝義務 ／ 自治体＝努力義務</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「国はやらなきゃダメ、自治体はがんばって」と覚える。</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

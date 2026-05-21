@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>データポータビリティ権とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="データポータビリティ権を「自分のデータを持ち歩く権利」として解説。GDPRとの関係、忘れられる権利との違い、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-data-portability">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#059669,#064e3b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(6,78,59,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:27px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a7f3d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#059669;--cbg:#d1fae5;}
+.p-teal{--c:#0e7490;--cbg:#e0f2fe;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#059669;}
+
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.rg-cell{border-radius:12px;padding:12px;}
+.rg-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.rg-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.rg-port{background:#d1fae5;border:2px solid #059669;}.rg-port h4{color:#059669;}
+.rg-forget{background:#fce4dd;border:2px solid #dd5a3a;}.rg-forget h4{color:#dd5a3a;}
+.rg-access{background:#e0f2fe;border:2px solid #0e7490;}.rg-access h4{color:#0e7490;}
+.rg-correct{background:#fcefd9;border:2px solid #d9851f;}.rg-correct h4{color:#d9851f;}
+@media(max-width:480px){.rights-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#059669;--fbg:#d1fae5;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fcefd9;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系・個人情報保護</span>
+    <h1><b>データポータビリティ権</b>とは？</h1>
+    <p>「自分のデータを自分で持ち歩き、別のサービスへ引っ越せる権利」。データは私のもの。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- SNSサービスA -->
+        <rect x="5" y="15" width="28" height="24" rx="5" fill="#059669" opacity=".8"/>
+        <text x="19" y="25" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">SNS</text>
+        <text x="19" y="36" text-anchor="middle" font-size="8" font-weight="700" fill="#a7f3d0" font-family="M PLUS Rounded 1c">サービスA</text>
+        <!-- 人物（ユーザー）-->
+        <circle cx="39" cy="54" r="8" fill="#f4c89a"/>
+        <path d="M30 65 Q39 60 48 65" stroke="#6b7591" stroke-width="2" fill="none"/>
+        <!-- データをコピー・移動 -->
+        <rect x="14" y="42" width="14" height="10" rx="2" fill="#059669" opacity=".6"/>
+        <text x="21" y="50" text-anchor="middle" font-size="7" fill="#fff" font-family="M PLUS Rounded 1c">data</text>
+        <line x1="28" y1="47" x2="46" y2="47" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="3 2" marker-end="url(#arP)"/>
+        <defs><marker id="arP" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9aa3b2"/></marker></defs>
+        <!-- SNSサービスB -->
+        <rect x="45" y="15" width="28" height="24" rx="5" fill="#2e6de5" opacity=".8"/>
+        <text x="59" y="25" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">SNS</text>
+        <text x="59" y="36" text-anchor="middle" font-size="8" font-weight="700" fill="#bae6fd" font-family="M PLUS Rounded 1c">サービスB</text>
+        <rect x="46" y="42" width="14" height="10" rx="2" fill="#2e6de5" opacity=".6"/>
+        <text x="53" y="50" text-anchor="middle" font-size="7" fill="#fff" font-family="M PLUS Rounded 1c">data</text>
+        <!-- 引っ越しイメージ -->
+        <text x="39" y="80" text-anchor="middle" font-size="8" font-weight="700" fill="#059669" font-family="M PLUS Rounded 1c">引っ越し！</text>
+      </svg>
+      <div class="scene-txt">
+        SNSサービスAに10年分の投稿履歴がある。<strong>「このデータを持ったまま別サービスに移りたい」</strong>と思ったユーザーが、データをダウンロードして新サービスにインポートできる——これがデータポータビリティ権。
+        <div class="scene-q">なぜこの「権利」が必要なの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：データポータビリティの仕組み -->
+  <div class="panel p-green">
+    <span class="phead">🚚 データポータビリティの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="データポータビリティ：ユーザーが事業者にデータ提供を要求し、機械読取可能な形式で受け取り、別サービスへ転送できる">
+      <!-- ユーザー -->
+      <circle cx="50" cy="90" r="30" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+      <circle cx="50" cy="78" r="10" fill="#f4c89a"/>
+      <path d="M35 100 Q50 93 65 100" stroke="#6b7591" stroke-width="1.5" fill="none"/>
+      <text x="50" y="114" text-anchor="middle" font-size="10" font-weight="900" fill="#059669" font-family="M PLUS Rounded 1c">ユーザー</text>
+      <!-- 要求矢印 -->
+      <line x1="80" y1="75" x2="130" y2="60" stroke="#059669" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arP2)"/>
+      <text x="106" y="63" text-anchor="middle" font-size="9" font-weight="700" fill="#059669" font-family="M PLUS Rounded 1c">①要求</text>
+      <defs><marker id="arP2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,6 Z" fill="#059669"/></marker></defs>
+      <!-- 事業者A -->
+      <rect x="132" y="30" width="76" height="52" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">事業者A</text>
+      <text x="170" y="68" text-anchor="middle" font-size="9" fill="#4256b8" font-family="M PLUS Rounded 1c">（元のサービス）</text>
+      <!-- 受け渡し矢印 -->
+      <line x1="80" y1="105" x2="130" y2="118" stroke="#059669" stroke-width="2" marker-end="url(#arP3)"/>
+      <text x="100" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="#059669" font-family="M PLUS Rounded 1c">②データ</text>
+      <defs><marker id="arP3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,6 Z" fill="#059669"/></marker></defs>
+      <!-- データ形式 -->
+      <rect x="132" y="112" width="76" height="40" rx="8" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+      <text x="170" y="130" text-anchor="middle" font-size="10" font-weight="900" fill="#059669" font-family="M PLUS Rounded 1c">機械読取可能</text>
+      <text x="170" y="145" text-anchor="middle" font-size="9" fill="#4a9060" font-family="M PLUS Rounded 1c">CSV / JSON等</text>
+      <!-- 矢印→事業者B -->
+      <line x1="208" y1="132" x2="256" y2="132" stroke="#d9851f" stroke-width="2" marker-end="url(#arP4)"/>
+      <text x="232" y="126" text-anchor="middle" font-size="9" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">③転送</text>
+      <defs><marker id="arP4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,6 Z" fill="#d9851f"/></marker></defs>
+      <!-- 事業者B -->
+      <rect x="258" y="107" width="76" height="50" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="296" y="128" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">事業者B</text>
+      <text x="296" y="144" text-anchor="middle" font-size="9" fill="#9a6b00" font-family="M PLUS Rounded 1c">（新しいサービス）</text>
+    </svg>
+    <p style="font-size:12.5px;font-weight:600;color:#48506a;margin-top:8px;">ユーザーは①データ提供を要求→事業者は②機械読取可能な形式で渡す義務→③ユーザーが別サービスへ転送できる。</p>
+  </div>
+
+  <!-- フロー：GDPR上のデータ権利の整理 -->
+  <div class="panel p-teal">
+    <span class="phead">🔐 GDPRの主なデータ権利（4つ）</span>
+    <div class="rights-grid">
+      <div class="rg-cell rg-port">
+        <h4>データポータビリティ権</h4>
+        <p>自分のデータを<strong>持ち出して他社へ転送</strong>できる。CSV/JSON等で提供を要求可能。</p>
+      </div>
+      <div class="rg-cell rg-forget">
+        <h4>忘れられる権利（消去権）</h4>
+        <p>自分のデータを<strong>削除する</strong>よう要求できる。「存在を消す」権利。</p>
+      </div>
+      <div class="rg-cell rg-access">
+        <h4>アクセス権（開示請求）</h4>
+        <p>事業者が<strong>どんなデータを持っているか</strong>を確認できる。</p>
+      </div>
+      <div class="rg-cell rg-correct">
+        <h4>訂正権</h4>
+        <p>誤っているデータを<strong>正しく修正する</strong>よう要求できる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「忘れられる権利」と混同しやすい</div>
+      <div class="tb">忘れられる権利＝<strong>削除を求める</strong>権利。データポータビリティ権＝<strong>持ち出して移動できる</strong>権利。削除と移動は全く別の権利。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">GDPRは「EU」の法律</div>
+      <div class="tb">GDPRはEUの個人情報保護規則。日本の個人情報保護法とは別物。ただし日本企業もEU向けサービスを提供する場合は対象になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「機械読取可能な形式」がポイント</div>
+      <div class="tb">PDFや印刷物ではなく、<strong>CSV・JSONなどシステムが読み込める形式</strong>で提供することが条件。人間だけが読める形式はNG。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">日本の改正個人情報保護法にも類似規定</div>
+      <div class="tb">2022年改正で日本にも「利用停止等の要求権」が強化されたが、ポータビリティ権そのものはまだGDPRほど整備されていない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「ポータブル＝持ち運べる」＝データも持ち運べる権利</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">携帯電話番号の「MNP（持ち運び）」と同じ発想</span><br><br>
+    忘れられる権利との違いは<span class="hl">「消すか・持ち出すか」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">忘れ＝消去 ／ ポータビリティ＝引っ越し</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ステークホルダーエンゲージメントとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ステークホルダーエンゲージメントの意味・目的を解説。利害関係者をどう巻き込むか、プロジェクト成功のための関与戦略、マネジメントとの違いまで。">
+<link rel="canonical" href="https://manaque.jp/itp/itp-stakeholder-engagement">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a8a7a,#0d5248);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,82,72,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0eae4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-teal{--c:#1a8a7a;--cbg:#e0f5f2;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a8a7a;}
+
+.engage-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.engage-cell{border-radius:12px;padding:11px 12px;}
+.engage-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.engage-cell p{font-size:11.5px;line-height:1.65;color:#48506a;}
+.eg-a{background:#e0f5f2;}.eg-a h4{color:#1a8a7a;}
+.eg-b{background:#e7eefc;}.eg-b h4{color:#2e6de5;}
+.eg-c{background:#e2f3e5;}.eg-c h4{color:#2e8b4f;}
+.eg-d{background:#fcefd9;}.eg-d h4{color:#d9851f;}
+@media(max-width:400px){.engage-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a8a7a;--fbg:#e8f8f6;}
+.f2{--fc:#2e6de5;--fbg:#edf3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <span class="lead">💼 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>ステークホルダー<br>エンゲージメント</b>とは？</h1>
+    <p>利害関係者を「ただ知らせる」のではなく、積極的に関与・巻き込む活動のこと。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true" style="flex-shrink:0;">
+        <!-- プロジェクトマネージャー -->
+        <circle cx="36" cy="18" r="11" fill="#1a8a7a"/>
+        <text x="36" y="22" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">PM</text>
+        <!-- 矢印3方向 -->
+        <line x1="36" y1="29" x2="18" y2="48" stroke="#1a8a7a" stroke-width="2"/>
+        <line x1="36" y1="29" x2="36" y2="50" stroke="#1a8a7a" stroke-width="2"/>
+        <line x1="36" y1="29" x2="54" y2="48" stroke="#1a8a7a" stroke-width="2"/>
+        <!-- 吹き出し付き人 -->
+        <circle cx="18" cy="58" r="9" fill="#2e6de5"/>
+        <text x="18" y="62" text-anchor="middle" font-size="6" font-weight="900" fill="#fff" font-family="sans-serif">経営層</text>
+        <circle cx="36" cy="60" r="9" fill="#d9851f"/>
+        <text x="36" y="64" text-anchor="middle" font-size="6" font-weight="900" fill="#fff" font-family="sans-serif">現場</text>
+        <circle cx="54" cy="58" r="9" fill="#dd5a3a"/>
+        <text x="54" y="62" text-anchor="middle" font-size="6" font-weight="900" fill="#fff" font-family="sans-serif">顧客</text>
+        <!-- 双方向矢印 -->
+        <text x="36" y="83" text-anchor="middle" font-size="8" font-weight="900" fill="#1a8a7a" font-family="sans-serif">双方向の対話</text>
+      </svg>
+      <div class="scene-txt">
+        新システム導入プロジェクト。PMが報告書を送るだけでなく、<strong>経営層・現場・顧客それぞれと定期的に対話</strong>し、意見を聞き、不安を解消する。<br>
+        一方通行の通知ではなく、<strong>相互作用と関与</strong>を生み出すのがエンゲージメント。
+        <div class="scene-q">…「巻き込む」「引き込む」ことがエンゲージメントの本質！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解（SVG） -->
+  <div class="panel p-teal">
+    <span class="phead">🤝 エンゲージメントの4段階</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="通知→相談→参加→協働の4段階のエンゲージメントレベル図">
+      <!-- 4つの段階を左から右に -->
+      <!-- 通知 -->
+      <rect x="8" y="30" width="72" height="60" rx="10" fill="#e0f5f2" stroke="#1a8a7a" stroke-width="1.5"/>
+      <text x="44" y="57" text-anchor="middle" font-size="13" font-weight="900" fill="#1a8a7a" font-family="M PLUS Rounded 1c">通知</text>
+      <text x="44" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#5aaa9a" font-family="M PLUS Rounded 1c">情報を</text>
+      <text x="44" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#5aaa9a" font-family="M PLUS Rounded 1c">伝える</text>
+      <text x="44" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="sans-serif">一方向</text>
+      <!-- 矢印 -->
+      <text x="88" y="65" text-anchor="middle" font-size="16" fill="#9aa3b2" font-family="sans-serif">→</text>
+      <!-- 相談 -->
+      <rect x="98" y="30" width="72" height="60" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="134" y="57" text-anchor="middle" font-size="13" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">相談</text>
+      <text x="134" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">意見を</text>
+      <text x="134" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">聞く</text>
+      <text x="134" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="sans-serif">双方向</text>
+      <!-- 矢印 -->
+      <text x="178" y="65" text-anchor="middle" font-size="16" fill="#9aa3b2" font-family="sans-serif">→</text>
+      <!-- 参加 -->
+      <rect x="188" y="30" width="72" height="60" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="224" y="57" text-anchor="middle" font-size="13" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">参加</text>
+      <text x="224" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#c08020" font-family="M PLUS Rounded 1c">意思決定</text>
+      <text x="224" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#c08020" font-family="M PLUS Rounded 1c">に関わる</text>
+      <text x="224" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#8a91a0" font-family="sans-serif">共同作業</text>
+      <!-- 矢印 -->
+      <text x="268" y="65" text-anchor="middle" font-size="16" fill="#9aa3b2" font-family="sans-serif">→</text>
+      <!-- 協働 -->
+      <rect x="278" y="22" width="55" height="76" rx="10" fill="#2e8b4f" stroke="#1a6c37" stroke-width="2"/>
+      <text x="305" y="57" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">協働</text>
+      <text x="305" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#c8f0d8" font-family="M PLUS Rounded 1c">共に</text>
+      <text x="305" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#c8f0d8" font-family="M PLUS Rounded 1c">解決する</text>
+      <text x="305" y="112" text-anchor="middle" font-size="9" font-weight="800" fill="#ffd23f" font-family="sans-serif">最高関与</text>
+      <!-- 底部説明 -->
+      <text x="170" y="145" text-anchor="middle" font-size="10" font-weight="900" fill="#48506a" font-family="M PLUS Rounded 1c">関与レベルが高いほど、合意形成と信頼が生まれる</text>
+    </svg>
+
+    <div class="engage-grid">
+      <div class="engage-cell eg-a"><h4>関係者の特定</h4><p>誰がステークホルダーかをリストアップ。プロジェクト開始時の最初のステップ。</p></div>
+      <div class="engage-cell eg-b"><h4>関心・影響力の把握</h4><p>各ステークホルダーの関心事と影響力を分析。対応の優先順位を決める。</p></div>
+      <div class="engage-cell eg-c"><h4>計画的なコミュニケーション</h4><p>誰に・何を・いつ・どう伝えるかを計画。一方通行でなく双方向が基本。</p></div>
+      <div class="engage-cell eg-d"><h4>継続的なモニタリング</h4><p>関係者の意見・態度の変化を監視し、対応を調整し続ける。</p></div>
+    </div>
+  </div>
+
+  <!-- フロー／詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🔄 プロジェクト内のエンゲージメントプロセス</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① ステークホルダーの特定</div>
+        <div class="fb">プロジェクトに関わる・影響を受けるすべての人・組織を洗い出す。スポンサー・顧客・エンドユーザー・部門長・規制機関など。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 分析と優先度づけ（インタレスト/影響力マトリクス）</div>
+        <div class="fb">「影響力が高い × 関心が高い」人を最重点として関与戦略を組む。全員に同じ対応をしない。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ エンゲージメント計画の策定</div>
+        <div class="fb">各関係者へのコミュニケーション頻度・手段・内容を明文化する。「ステークホルダーエンゲージメント計画書」として文書化。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 実施・モニタリング・改善</div>
+        <div class="fb">計画に沿って実施。関係者の反応・態度の変化を継続観察し、必要に応じて計画を見直す。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「通知するだけ」はエンゲージメントではない</div>
+      <div class="tb">一方的に情報を送るのは「情報提供」。エンゲージメントは<strong>双方向の対話と関与</strong>を含む。関係者の意見を受け取ることが必須。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ステークホルダーマネジメントとの違い</div>
+      <div class="tb">マネジメントはプロセス全体（特定・計画・管理）を指す。エンゲージメントはその中の「関与・巻き込み」という<strong>行為・活動</strong>に焦点を当てた言葉。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">全員を同レベルで巻き込む必要はない</div>
+      <div class="tb">影響力と関心の高さに応じて関与の深さを変える。全員に高いレベルのエンゲージメントをかけるのはコスト過剰。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「エン（gage）がけて巻き込め！」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">engage＝かみ合う・巻き込む。歯車が「エンゲージ（かみ合う）」するように、関係者を巻き込んで回す</span><br><br>
+      通知との違いを覚える：<span class="hl">「一方通行＝ラジオ・双方向＝エンゲージメント」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ラジオは聴衆に「通知」するだけ。エンゲージメントは双方向の会話</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ワンタイムパスワード（OTP）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ワンタイムパスワード（OTP）の仕組み・使い捨ての理由・二要素認証との関係・リプレイ攻撃対策まで、ITパスポート試験向けにわかりやすく解説。">
+<link rel="canonical" href="https://example.com/itp-otp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#cf4f86,#7a1a48);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,26,72,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c3d8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cf4f86;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#cf4f86;--fbg:#fbe3ee;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#e2f6ee;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.compare-row{display:flex;gap:10px;margin-top:10px;}
+.compare-cell{flex:1;border-radius:12px;padding:11px 10px;}
+.compare-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.compare-cell p{font-size:11.5px;line-height:1.7;font-weight:600;color:#48506a;}
+.cell-static{background:#fce4dd;} .cell-static h4{color:#dd5a3a;}
+.cell-otp{background:#e2f3e5;} .cell-otp h4{color:#2e8b4f;}
+@media(max-width:480px){.compare-row{flex-direction:column;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ セキュリティ系</span>
+    <h1><b>ワンタイムパスワード</b>とは？</h1>
+    <p>1回しか使えない使い捨てパスワード。盗まれても次には使えないから、なりすましに強い。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-pink">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-hidden="true">
+        <ellipse cx="36" cy="87" rx="28" ry="4" fill="#7a1a48" opacity=".1"/>
+        <rect x="18" y="28" width="36" height="54" rx="6" fill="#f5c3d8"/>
+        <rect x="22" y="32" width="28" height="40" rx="3" fill="#fff"/>
+        <circle cx="36" cy="76" r="3.5" fill="#cf4f86"/>
+        <text x="36" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#cf4f86" font-family="sans-serif">739</text>
+        <text x="36" y="64" text-anchor="middle" font-size="8" font-weight="700" fill="#9aa3b2" font-family="sans-serif">あと29秒</text>
+      </svg>
+      <div class="scene-txt">
+        ネットバンキングにログインしようとした瞬間、スマホに「739281」という6桁の数字がSMSで届く。
+        30秒以内に入力しないと無効になる……これが<strong>ワンタイムパスワード（OTP）</strong>。
+        <div class="scene-q">…なぜ30秒で消えるの？　盗まれても無意味だから！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解（SVG）：OTPの仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">🔐 OTPの仕組みフロー</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="ワンタイムパスワードのフロー図">
+      <!-- ユーザ -->
+      <circle cx="40" cy="60" r="22" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <circle cx="40" cy="52" r="9" fill="#4256b8"/>
+      <path d="M24 72 q16 -10 32 0" fill="#4256b8"/>
+      <text x="40" y="95" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">ユーザ</text>
+      <!-- 矢印1 -->
+      <path d="M65 60 L120 60" stroke="#4256b8" stroke-width="2" marker-end="url(#arr2)"/>
+      <text x="92" y="52" text-anchor="middle" font-size="9" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">ID＋固定PW</text>
+      <defs>
+        <marker id="arr2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0 0 L7 3.5 L0 7 Z" fill="#4256b8"/>
+        </marker>
+        <marker id="arr3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0 0 L7 3.5 L0 7 Z" fill="#cf4f86"/>
+        </marker>
+        <marker id="arr4" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+          <path d="M0 0 L7 3.5 L0 7 Z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+      <!-- サーバ -->
+      <rect x="120" y="35" width="72" height="52" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="156" y="58" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">認証</text>
+      <text x="156" y="72" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">サーバ</text>
+      <!-- 矢印2：OTP発行 -->
+      <path d="M156 87 L156 130" stroke="#cf4f86" stroke-width="2" marker-end="url(#arr3)"/>
+      <text x="165" y="115" font-size="9" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">OTP生成</text>
+      <!-- スマホ -->
+      <rect x="130" y="132" width="52" height="38" rx="5" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="156" y="151" text-anchor="middle" font-size="13" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">739281</text>
+      <text x="156" y="164" text-anchor="middle" font-size="8" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">SMS・アプリで受取</text>
+      <!-- 矢印3：入力 -->
+      <path d="M130 151 L75 120" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arr4)"/>
+      <text x="90" y="130" font-size="9" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">OTP入力</text>
+      <!-- 矢印4：認証OK -->
+      <path d="M192 61 L280 61" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arr4)"/>
+      <text x="236" y="52" text-anchor="middle" font-size="9" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">認証OK</text>
+      <rect x="280" y="44" width="56" height="34" rx="7" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="308" y="58" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ログイン</text>
+      <text x="308" y="71" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">成功</text>
+    </svg>
+
+    <!-- 静的PW vs OTP比較 -->
+    <div class="compare-row">
+      <div class="compare-cell cell-static">
+        <h4>静的パスワード（普通のPW）</h4>
+        <p>毎回同じ → 一度盗まれると何度でも使われる。フィッシング・盗聴に弱い。</p>
+      </div>
+      <div class="compare-cell cell-otp">
+        <h4>OTP（ワンタイム）</h4>
+        <p>1回使ったら無効 → 盗まれても次には使えない。リプレイ攻撃を無効化。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細：OTPの種類 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ OTPの主な方式</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">時刻同期型（TOTP）</div>
+        <div class="fb">サーバとデバイスが同じ時刻を使い、30秒ごとに番号を生成。Google Authenticatorが代表例。</div>
+      </div>
+      <div class="farrow">他にも</div>
+      <div class="fstep f2">
+        <div class="fh">チャレンジレスポンス型</div>
+        <div class="fb">サーバから「チャレンジ（乱数）」を受け取り、それを元にOTPを生成して返す。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">SMS・メール送信型</div>
+        <div class="fb">サーバが毎回ランダムな番号を生成しSMSやメールで送る。スマホ所持が「認証要素」になる。</div>
+      </div>
+      <div class="farrow">▼ どの方式でも</div>
+      <div class="fstep f4">
+        <div class="fh">二要素認証（2FA）の一部として使われる</div>
+        <div class="fb">「知っているもの（PW）＋持っているもの（スマホ）」の2要素が揃って初めて認証。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">OTPだけで二要素認証になるわけではない</div>
+      <div class="tb">OTPは「持っているもの」の要素の一つ。固定パスワードと組み合わせて初めて二要素認証になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「使い捨て＝安全」ではない</div>
+      <div class="tb">OTPを入力する直前に盗まれた（フィッシングサイトが即時使用）場合は突破される。万能ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">トークンとOTPの混同</div>
+      <div class="tb">「トークン」はOTPを生成するデバイス（ハードウェアトークン）またはソフトウェアのこと。OTPそのものではない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      OTP ＝ <span class="hl">「おちゃ（O）たべ（T）ぱっ（P）」</span> と飲み干したら捨てる！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">One（一回）Time（だけ）Password（パスワード）＝ 飲んだら使い捨て</span><br><br>
+      盗まれても<span class="hl">「もう賞味期限切れ！」</span>＝リプレイ攻撃が無意味に！
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-otp</div>
+
+</div>
+</body>
+</html>

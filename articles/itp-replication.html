@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>レプリケーションとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="レプリケーション（複製・同期）をわかりやすく解説。データベースの冗長化・バックアップとの違い・マスター/スレーブの仕組み。ITパスポート試験のひっかけポイントと覚え方ゴロ。">
+<link rel="canonical" href="https://example.com/itp-replication">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#4256b8,#1e2b70);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(30,43,112,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8d2f5;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#4256b8;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#4256b8;--fbg:#eef0fc;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>レプリケーション</b>とは？</h1>
+    <p>データを別の場所に「リアルタイムでコピーし続ける」技術。障害が起きても止まらないシステムの要。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- サーバー2台 -->
+        <rect x="8" y="48" width="26" height="32" rx="4" fill="#4256b8"/>
+        <rect x="11" y="52" width="20" height="6" rx="2" fill="#8fa0e8"/>
+        <rect x="11" y="61" width="20" height="6" rx="2" fill="#8fa0e8"/>
+        <rect x="11" y="70" width="5" height="5" rx="1" fill="#ffd23f"/>
+        <rect x="44" y="48" width="26" height="32" rx="4" fill="#2e8b4f"/>
+        <rect x="47" y="52" width="20" height="6" rx="2" fill="#7ecf97"/>
+        <rect x="47" y="61" width="20" height="6" rx="2" fill="#7ecf97"/>
+        <rect x="47" y="70" width="5" height="5" rx="1" fill="#ffd23f"/>
+        <!-- 矢印 -->
+        <path d="M34 62 L44 62" stroke="#ffd23f" stroke-width="2.5" marker-end="url(#ar)"/>
+        <polygon points="44,59 50,62 44,65" fill="#ffd23f"/>
+        <!-- 人 -->
+        <circle cx="39" cy="24" r="12" fill="#f4c89a"/>
+        <path d="M28 20 a11 10 0 0 1 22 0 q-4 -8 -11 -8 q-7 0 -11 8z" fill="#3a3f4a"/>
+      </svg>
+      <div class="scene-txt">
+        社内システムの管理者のあなた。「万が一メインのDBサーバーが落ちても、サービスが止まらないようにしたい」と上司に言われた。<br>同じデータを別のサーバーに常に複製しておけばいい？
+        <div class="scene-q">…それが「レプリケーション」の発想！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- レプリケーション構成SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🖥️ レプリケーションの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="マスターサーバーからスレーブサーバーへのレプリケーション図">
+      <!-- マスター -->
+      <rect x="20" y="30" width="100" height="80" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="70" y="58" text-anchor="middle" font-size="13" font-weight="900" fill="#1e2b70" font-family="M PLUS Rounded 1c">マスター</text>
+      <text x="70" y="74" text-anchor="middle" font-size="11" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">DBサーバー</text>
+      <rect x="32" y="82" width="76" height="18" rx="4" fill="#4256b8"/>
+      <text x="70" y="95" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">書き込み・読み取り</text>
+      <!-- スレーブ1 -->
+      <rect x="220" y="10" width="100" height="75" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="270" y="38" text-anchor="middle" font-size="13" font-weight="900" fill="#145e30" font-family="M PLUS Rounded 1c">スレーブ1</text>
+      <text x="270" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">DBサーバー</text>
+      <rect x="232" y="62" width="76" height="14" rx="4" fill="#2e8b4f"/>
+      <text x="270" y="73" text-anchor="middle" font-size="9.5" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">読み取り専用</text>
+      <!-- スレーブ2 -->
+      <rect x="220" y="100" width="100" height="75" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="270" y="128" text-anchor="middle" font-size="13" font-weight="900" fill="#145e30" font-family="M PLUS Rounded 1c">スレーブ2</text>
+      <text x="270" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">DBサーバー</text>
+      <rect x="232" y="152" width="76" height="14" rx="4" fill="#2e8b4f"/>
+      <text x="270" y="163" text-anchor="middle" font-size="9.5" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">読み取り専用</text>
+      <!-- 矢印マスター→スレーブ1 -->
+      <line x1="120" y1="55" x2="218" y2="45" stroke="#4256b8" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="218,42 225,45 218,48" fill="#4256b8"/>
+      <text x="170" y="44" text-anchor="middle" font-size="9.5" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">自動同期</text>
+      <!-- 矢印マスター→スレーブ2 -->
+      <line x1="120" y1="90" x2="218" y2="138" stroke="#4256b8" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="218,135 225,138 218,141" fill="#4256b8"/>
+      <text x="170" y="126" text-anchor="middle" font-size="9.5" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">自動同期</text>
+      <!-- フェイルオーバー説明 -->
+      <rect x="50" y="128" width="100" height="32" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="100" y="142" text-anchor="middle" font-size="9.5" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">障害発生時</text>
+      <text x="100" y="155" text-anchor="middle" font-size="9" font-weight="700" fill="#a8650f" font-family="M PLUS Rounded 1c">スレーブが昇格して継続</text>
+    </svg>
+    <p>マスターサーバーへの書き込みが、リアルタイムでスレーブサーバーにも反映される。マスターが落ちてもスレーブが即座に引き継げるため、サービスを止めずに運用できる。</p>
+  </div>
+
+  <!-- フロー詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗂️ レプリケーションの目的3つ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 可用性の向上（止まらない）</div>
+        <div class="fb">マスターが障害で停止しても、スレーブに切り替えてサービスを継続できる（フェイルオーバー）。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 負荷分散（速くする）</div>
+        <div class="fb">読み取りクエリをスレーブに分散させることで、マスターへの集中を防ぎ、全体のパフォーマンスを上げる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ バックアップとの組み合わせ</div>
+        <div class="fb">スレーブはリアルタイムのコピー。定期バックアップとは役割が違う。バックアップは「過去のある時点のデータ」を戻すためのもの。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「レプリケーション＝バックアップ」は誤り</div>
+      <div class="tb">レプリケーションはリアルタイム同期であり、<strong>過去のデータを保存する機能ではない</strong>。誤ってデータを削除したらスレーブにも即反映される。バックアップは別に取る必要がある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「スレーブへの書き込みはできる」は誤り（基本構成では）</div>
+      <div class="tb">基本的なレプリケーション構成では、スレーブは<strong>読み取り専用</strong>。書き込みはマスターのみに行う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ミラーリングとの混同</div>
+      <div class="tb">ミラーリングはディスクレベルで同じ内容を2台に書く技術（RAID1など）。レプリケーションはDB/アプリレベルの複製。目的・レイヤーが異なる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「レプリ＝replicate（複製）＝コピー機がずっと動いてる」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">→ 書いたら即コピー・止まらない・バックアップじゃない</span><br><br>
+      ゴロ：<span class="hl">「れ（レプリ）は、ライブでコピーリレー」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">ライブ＝リアルタイム／コピー＝複製／リレー＝障害時に引き継ぐ</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-replication</div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,232 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>サービスデスクの種類（1次・2次）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="サービスデスクの種類（1次・2次）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-service-desk.html">
-<meta property="og:title" content="サービスデスクの種類（1次・2次）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="サービスデスクの種類（1次・2次）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-service-desk.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>サービスデスクとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="サービスデスクをわかりやすく解説。ITILにおける役割・ヘルプデスクとの違い・4種類の形態・ひっかけポイントまでITパスポート試験対策に完全対応。">
+<link rel="canonical" href="https://example.com/itp-service-desk">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e9e6e,#0f6040);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(15,96,64,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0ead6;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px;}
+.type-item{border-radius:12px;padding:11px 13px;border:2px solid var(--tc);}
+.type-item h4{font-size:12.5px;font-weight:900;color:var(--tc);margin-bottom:5px;}
+.type-item p{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.ti-1{--tc:#2e6de5;background:#eef3fd;}
+.ti-2{--tc:#2e8b4f;background:#eef8f1;}
+.ti-3{--tc:#d9851f;background:#fdf4e4;}
+.ti-4{--tc:#4256b8;background:#eceef8;}
+@media(max-width:480px){.type-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#4256b8;--fbg:#eceef8;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">サービスデスクの種類（1次・2次）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">サービスデスクの種類（1次・2次）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>サービスデスク</b>とは？</h1>
+    <p>ITサービスの「唯一の窓口（SPOC）」。利用者とITサービスをつなぐ最前線の問い合わせ受付組織。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="85" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#2e9e6e"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M22 16 a13 12 0 0 1 28 0 q-5 -9 -14 -9 q-9 0 -14 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- ヘッドセット -->
+        <path d="M48 60 a10 10 0 0 0 0 16" stroke="#2e9e6e" stroke-width="2" fill="none"/>
+        <circle cx="48" cy="60" r="3" fill="#2e9e6e"/>
+        <circle cx="48" cy="76" r="3" fill="#2e9e6e"/>
+      </svg>
+      <div class="scene-txt">
+        会社のパソコンが突然フリーズ。どこに連絡すればいいか分からず困っているあなた。「<strong>サービスデスク</strong>に電話して」と教えてもらい連絡すると、1本の電話で問題が解決した。
+        <div class="scene-q">IT部門への問い合わせを一手に引き受ける窓口が「サービスデスク」！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：サービスデスクの役割 -->
+  <div class="panel p-indigo">
+    <span class="phead">🏢 サービスデスクの構造</span>
+    <svg width="100%" viewBox="0 0 340 250" role="img" aria-label="利用者からサービスデスクを通じてIT部門へつながる図">
+      <!-- 利用者側 -->
+      <rect x="10" y="20" width="90" height="210" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="55" y="42" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">利用者</text>
+      <!-- ユーザーアイコン×3 -->
+      <circle cx="30" cy="72" r="10" fill="#f4c89a"/>
+      <rect x="20" y="84" width="20" height="14" rx="4" fill="#2e6de5"/>
+      <circle cx="55" cy="72" r="10" fill="#f4c89a"/>
+      <rect x="45" y="84" width="20" height="14" rx="4" fill="#2e6de5"/>
+      <circle cx="80" cy="72" r="10" fill="#f4c89a"/>
+      <rect x="70" y="84" width="20" height="14" rx="4" fill="#2e6de5"/>
+      <!-- 問い合わせ内容 -->
+      <rect x="14" y="108" width="82" height="20" rx="6" fill="#fff" stroke="#2e6de5" stroke-width="1"/>
+      <text x="55" y="122" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">故障・質問・申請</text>
+      <rect x="14" y="132" width="82" height="20" rx="6" fill="#fff" stroke="#2e6de5" stroke-width="1"/>
+      <text x="55" y="146" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">電話・メール・Web</text>
+
+      <!-- 矢印：利用者→デスク -->
+      <path d="M102 125 L130 125" stroke="#4256b8" stroke-width="2.5" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#4256b8"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+
+      <!-- サービスデスク中央 -->
+      <rect x="130" y="60" width="80" height="130" rx="12" fill="#4256b8"/>
+      <text x="170" y="85" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">サービス</text>
+      <text x="170" y="101" text-anchor="middle" font-size="12" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">デスク</text>
+      <text x="170" y="120" text-anchor="middle" font-size="10" font-weight="800" fill="#c0c8f0" font-family="M PLUS Rounded 1c">SPOC</text>
+      <text x="170" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="#c0c8f0" font-family="M PLUS Rounded 1c">(唯一の窓口)</text>
+      <!-- ヘッドセットSVG -->
+      <path d="M152 155 a18 18 0 0 1 36 0" stroke="#ffd23f" stroke-width="2.5" fill="none"/>
+      <circle cx="152" cy="155" r="5" fill="#ffd23f"/>
+      <circle cx="188" cy="155" r="5" fill="#ffd23f"/>
+      <rect x="165" y="171" width="10" height="7" rx="2" fill="#ffd23f"/>
+
+      <!-- 矢印：デスク→IT部門 -->
+      <path d="M212 125 L238 125" stroke="#2e8b4f" stroke-width="2.5" marker-end="url(#arr2)"/>
+
+      <!-- IT部門 -->
+      <rect x="238" y="20" width="92" height="210" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="284" y="42" text-anchor="middle" font-size="11.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">IT部門</text>
+      <rect x="246" y="56" width="76" height="22" rx="7" fill="#fff" stroke="#2e8b4f" stroke-width="1"/>
+      <text x="284" y="71" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">インフラチーム</text>
+      <rect x="246" y="84" width="76" height="22" rx="7" fill="#fff" stroke="#2e8b4f" stroke-width="1"/>
+      <text x="284" y="99" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">開発チーム</text>
+      <rect x="246" y="112" width="76" height="22" rx="7" fill="#fff" stroke="#2e8b4f" stroke-width="1"/>
+      <text x="284" y="127" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">セキュリティ</text>
+      <rect x="246" y="140" width="76" height="22" rx="7" fill="#fff" stroke="#2e8b4f" stroke-width="1"/>
+      <text x="284" y="155" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">運用チーム</text>
+    </svg>
+    <p style="margin-top:10px;font-size:12.5px;line-height:1.85;color:#48506a;font-weight:600;">サービスデスクは利用者が「どこに連絡すればいいか」を考えなくて済む<strong>一本化された入口</strong>。内部で適切な部署に振り分ける役割も担う。</p>
+  </div>
+
+  <!-- 4種類の形態 -->
+  <div class="panel p-green">
+    <span class="phead">📌 サービスデスクの4形態</span>
+    <div class="type-grid">
+      <div class="type-item ti-1">
+        <h4>ローカル型</h4>
+        <p>各拠点に設置。拠点ごとに担当者がいる。対応は速いがコスト高。</p>
+      </div>
+      <div class="type-item ti-2">
+        <h4>集中型</h4>
+        <p>1か所に集約。効率が高くコスト削減できる。最も一般的な形態。</p>
+      </div>
+      <div class="type-item ti-3">
+        <h4>バーチャル型</h4>
+        <p>複数拠点が連携し、1つに見せる。24時間対応に使われる。</p>
+      </div>
+      <div class="type-item ti-4">
+        <h4>フォロー・ザ・サン型</h4>
+        <p>時差を利用して世界中の拠点が24時間継続対応。グローバル企業向け。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 対応フロー -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ サービスデスクの対応フロー</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① インシデント受付</div><div class="fb">利用者からの問い合わせ・障害報告を一次受付する。電話・メール・チャット等。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 一次対応・解決</div><div class="fb">FAQ・ナレッジベースを使い、その場で解決できる問題は即対応。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ エスカレーション</div><div class="fb">解決できない場合は専門チームに引き継ぐ（エスカレーション）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ クローズ・記録</div><div class="fb">解決後、利用者に確認して案件をクローズ。記録をナレッジとして蓄積する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ヘルプデスクと混同しやすい</div>
+      <div class="tb">ヘルプデスクは<strong>障害・質問への対応</strong>が中心。サービスデスクはそれに加え<strong>申請・サービス提供まで担う</strong>より広い概念。ITILではサービスデスクを使う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SPOC（唯一の窓口）がキーワード</div>
+      <div class="tb">試験では「Single Point of Contact」＝<strong>唯一の窓口</strong>という概念が問われる。利用者が複数部署に連絡するのではなく、<strong>1か所に集約</strong>することがポイント。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「担当者＝直接解決する人」ではない</div>
+      <div class="tb">サービスデスクは<strong>受付・調整・エスカレーション</strong>が主な役割。全問題を自分で解決するわけではない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「サービス（す）デスク（で）＝ 窓口ス　デン（全部）一本化」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">ス＝すべての問い合わせ ／ デン＝電話1本でOK</span><br><br>
+      サービスデスク＝<span class="hl">IT版「なんでも受付カウンター」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">コンビニのレジみたいに、どこに行けばいいか迷わない。全部そこへ！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-service-desk</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>サービスデスク運用の自分。「ヘルプデスクが解決できない技術問題→ネットワーク技術者へエスカレ」。これって何次サポート？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>2次サポート（L2）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>1次サポート（L1）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 1次は初期問い合わせFAQ対応。「専門チームへのエスカレーション先」が2次サポート</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：2次サポート（L2）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 サービスデスクの種類（1次・2次）とは何か</h2>
-<span class="kw">1次=一般問い合わせ対応、2次=専門技術者にエスカレーション</span>
-<p>サービスデスクの階層：1次サポート（L1）：電話・メールでユーザーの問い合わせを受け付けてFAQ・マニュアルで解決。解決率が低い問題は2次へ。2次サポート（L2）：ネットワーク・サーバー・アプリ等の専門チームが対応。3次（L3）：ベンダー・開発者に問題提起。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>サービスデスクのKPI：FCR（初回解決率：First Contact Resolution）・AHT（平均処理時間）・エスカレーション率。フォロー・ザ・サン：時差を利用した24時間対応（複数国のサービスデスクを連携）。
-
-**覚え方** 🎯 **L1（一次窓口・FAQ対応）→L2（専門チーム）→L3（ベンダー）**の階層エスカレ。**FCR（初回解決率）**が重要KPI。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「ヘルプデスク＝2次サポート」は誤り。ヘルプデスクは通常1次（L1）に相当しFAQ・マニュアルで対応。解決不能案件をL2（専門技術者）へエスカレーション。FCR（初回解決率）はL1の品質KPI。「フォロー・ザ・サン」は時差活用の24時間対応手法で1次専用ではない。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**L1（一次窓口・FAQ対応）→L2（専門チーム）→L3（ベンダー）**の階層エスカレ。**FCR（初回解決率）**が重要KPI。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>サービスデスクの種類（1次・2次）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

@@ -1,108 +1,206 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>トランザクションとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="トランザクションの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-transaction.html">
-<meta property="og:title" content="トランザクションとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="トランザクションの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-transaction.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>トランザクションとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="トランザクションとACID特性（原子性・一貫性・独立性・永続性）を図解で解説。コミット・ロールバックの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-transaction">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0e7c5c,#064a38);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(6,74,56,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a8d8c8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#0e7c5c;--cbg:#e0f7f1;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-teal{--c:#1a8a9a;--cbg:#e0f4f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0e7c5c;}
+
+.acid-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.acid-cell{border-radius:12px;padding:12px;}
+.acid-cell h4{font-size:13px;font-weight:900;margin-bottom:5px;}
+.acid-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.ac1{background:#e0f7f1;}.ac1 h4{color:#0e7c5c;}
+.ac2{background:#e4e7f7;}.ac2 h4{color:#4256b8;}
+.ac3{background:#fcefd9;}.ac3 h4{color:#d9851f;}
+.ac4{background:#fce4dd;}.ac4 h4{color:#dd5a3a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#0e7c5c;--fbg:#e8faf5;}
+.f2{--fc:#4256b8;--fbg:#edf0fc;}
+.f2ok{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2ng{--fc:#dd5a3a;--fbg:#fdf0ed;}
+
+.branch{display:flex;gap:10px;margin-top:5px;}
+.branch-item{flex:1;border-radius:11px;padding:11px 10px;border:2px solid var(--bc);}
+.branch-item .bh{font-size:13px;font-weight:900;color:var(--bc);margin-bottom:4px;}
+.branch-item .bb{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.b-ok{--bc:#2e8b4f;background:#eef8f1;}
+.b-ng{--bc:#dd5a3a;background:#fdf0ed;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">トランザクションとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">トランザクション</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>トランザクション</b>とは？</h1>
+    <p>「全部成功か、全部なかったことか」を保証する、DBの一連の処理のまとまり。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <rect x="4" y="20" width="30" height="50" rx="6" fill="#e0f7f1" stroke="#0e7c5c" stroke-width="2"/>
+        <text x="19" y="42" text-anchor="middle" font-size="9" font-weight="900" fill="#0e7c5c" font-family="M PLUS Rounded 1c">A口座</text>
+        <text x="19" y="56" text-anchor="middle" font-size="10" font-weight="900" fill="#0e7c5c" font-family="M PLUS Rounded 1c">¥10万</text>
+        <path d="M36 45 L56 45" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arr2)"/>
+        <text x="46" y="40" text-anchor="middle" font-size="9" font-weight="800" fill="#9aa3b2" font-family="M PLUS Rounded 1c">送金</text>
+        <defs>
+          <marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#9aa3b2"/>
+          </marker>
+        </defs>
+        <rect x="38" y="20" width="30" height="50" rx="6" fill="#e0f7f1" stroke="#0e7c5c" stroke-width="2"/>
+        <text x="53" y="42" text-anchor="middle" font-size="9" font-weight="900" fill="#0e7c5c" font-family="M PLUS Rounded 1c">B口座</text>
+        <text x="53" y="56" text-anchor="middle" font-size="10" font-weight="900" fill="#0e7c5c" font-family="M PLUS Rounded 1c">¥5万</text>
+        <text x="36" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">途中でエラー？</text>
+      </svg>
+      <div class="scene-txt">
+        A口座から3万円をB口座に送金中、処理の途中でサーバーがクラッシュ。「Aから引いた」けど「Bに足していない」という<strong>中途半端な状態</strong>になったら大問題。
+        <div class="scene-q">…どうやってデータの整合性を守る？</div>
+      </div>
+    </div>
+    <p>これを防ぐために<strong>トランザクション</strong>がある。「全部成功」か「全部なかったこと（ロールバック）」にする。</p>
+  </div>
+
+  <!-- ACID特性 -->
+  <div class="panel p-indigo">
+    <span class="phead">🧪 ACID特性（4つの保証）</span>
+    <svg width="100%" viewBox="0 0 340 80" role="img" aria-label="ACID特性：Atomicity（原子性）Consistency（一貫性）Isolation（独立性）Durability（永続性）">
+      <rect x="10" y="10" width="70" height="60" rx="10" fill="#e0f7f1" stroke="#0e7c5c" stroke-width="2"/>
+      <text x="45" y="38" text-anchor="middle" font-size="22" font-weight="900" fill="#0e7c5c" font-family="M PLUS Rounded 1c">A</text>
+      <text x="45" y="58" text-anchor="middle" font-size="9" font-weight="800" fill="#0e7c5c" font-family="M PLUS Rounded 1c">原子性</text>
+      <rect x="90" y="10" width="70" height="60" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="125" y="38" text-anchor="middle" font-size="22" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">C</text>
+      <text x="125" y="58" text-anchor="middle" font-size="9" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">一貫性</text>
+      <rect x="170" y="10" width="70" height="60" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="205" y="38" text-anchor="middle" font-size="22" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">I</text>
+      <text x="205" y="58" text-anchor="middle" font-size="9" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">独立性</text>
+      <rect x="250" y="10" width="70" height="60" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="285" y="38" text-anchor="middle" font-size="22" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">D</text>
+      <text x="285" y="58" text-anchor="middle" font-size="9" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">永続性</text>
+    </svg>
+    <div class="acid-grid">
+      <div class="acid-cell ac1">
+        <h4>A：原子性（Atomicity）</h4>
+        <p>全部完了するか、全部なかったことになるか。中途半端はあり得ない。</p>
+      </div>
+      <div class="acid-cell ac2">
+        <h4>C：一貫性（Consistency）</h4>
+        <p>処理の前後でDB内のデータが矛盾しない状態を保つ。</p>
+      </div>
+      <div class="acid-cell ac3">
+        <h4>I：独立性（Isolation）</h4>
+        <p>複数のトランザクションが同時に動いても、互いに影響を与えない。</p>
+      </div>
+      <div class="acid-cell ac4">
+        <h4>D：永続性（Durability）</h4>
+        <p>コミット済みの変更はクラッシュが起きても消えない。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- コミット・ロールバックの流れ -->
+  <div class="panel p-teal">
+    <span class="phead">🔄 コミットとロールバック</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">トランザクション開始</div><div class="fb">一連の処理（例：A口座から引く → B口座に足す）をまとめて実行開始。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">全処理を実行</div><div class="fb">DBへの変更はまだ「仮」の状態。確定されていない。</div></div>
+    </div>
+    <div class="branch" style="margin-top:8px;">
+      <div class="branch-item b-ok">
+        <div class="bh">✅ 全部成功 → コミット</div>
+        <div class="bb">変更をDBに確定。永続的に保存される。</div>
+      </div>
+      <div class="branch-item b-ng">
+        <div class="bh">❌ 途中でエラー → ロールバック</div>
+        <div class="bb">変更をすべて取り消し、開始前の状態に戻す。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「コミット」と「保存」を混同しやすい</div>
+      <div class="tb">コミットはトランザクションの確定操作。ファイルの「上書き保存」とは別の概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ロールバック＝削除」は誤り</div>
+      <div class="tb">ロールバックはトランザクション開始前の状態への<strong>復元</strong>。データを削除するのではなく、変更をなかったことにする。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ACID の I（独立性）の意味</div>
+      <div class="tb">「隔離性」とも呼ぶ。並行して動く別のトランザクションの途中の変更が見えないようにする性質。試験では「分離性」表記も。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">トランザクション＝DBだけの話ではない</div>
+      <div class="tb">広義には「一連の処理の塊」全般を指す（ATMの一取引など）。ただし試験問題では主にDB文脈で出る。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      ACID は<span class="hl">「ア・シ・ド（酸）」</span>で覚える！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">A（原子性）・C（一貫性）・I（独立性）・D（永続性）</span><br><br>
+      ゴロ：<span class="hl">「全か無か、原子の掟」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">A（Atomicity）＝全か無か、が一番大事！口頭で「全か無か」と言えたら正解</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-transaction</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>銀行のATM画面に向かう私。「A口座から1万引いて、B口座に1万足す」最中にシステム停止！えええ、引かれただけで足されてなかったらどうなる？？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>トランザクション管理で両方とも取り消す（ロールバック）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>完了した処理だけを確定させる</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 中途半端だとデータ整合性が壊れる。だから「全か無か」の管理が必要</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：トランザクション管理で両方とも取り消す（ロールバック）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 トランザクションとは何か</h2>
-<span class="kw">一連の処理を一括で成功か失敗か</span>
-<p>複数の処理をひとまとまりとして扱い、全部成功（コミット）か全部失敗（ロールバック）かのどちらかにする仕組み。ACID特性（原子性・一貫性・独立性・永続性）を保証する。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「振込の途中で失敗→両方取り消す」がトランザクションの典型例。「一部だけ完了」を防ぐことでデータの整合性を守る。
-
-**覚え方** 🎯 トランザクション＝**「全か無か」の運命共同体**。コミット（確定）かロールバック（巻き戻し）の二択。ACIDの特性で守る。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「コミット＝取り消し」「ロールバック＝確定」と逆に覚えるミスが最多。ACID特性の「A（原子性）」だけがトランザクション固有と混同しやすいが、C・I・Dも同様に問われる。「一部だけ成功を許容する」は誤り——全件成功か全件失敗かのどちらかのみ。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>トランザクション＝**「全か無か」の運命共同体**。コミット（確定）かロールバック（巻き戻し）の二択。ACIDの特性で守る。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>トランザクションはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>先入先出法（FIFO）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="先入先出法（FIFO）を在庫評価・キューの2つの視点でわかりやすく解説。後入先出法（LIFO）との違い、ITパスポート試験のひっかけポイントをSVG図解で紹介。">
+<link rel="canonical" href="https://example.com/itp-fifo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b85e00,#6b3400);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,52,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffce7a 56%,#ffce7a 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5d7a8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-orange{--c:#b85e00;--cbg:#fcefd9;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1a6e3c;--cbg:#dff3e6;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b85e00;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.ccard{border-radius:13px;padding:13px;}
+.ccard h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.ccard p{font-size:12px;line-height:1.75;font-weight:600;color:#48506a;}
+.ccard-orange{background:#fcefd9;}.ccard-orange h4{color:#b85e00;}
+.ccard-blue{background:#e7eefc;}.ccard-blue h4{color:#2e6de5;}
+@media(max-width:420px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.calc-box{background:#fdf4e4;border-radius:13px;padding:14px;margin-top:10px;}
+.calc-box .ch{font-size:13px;font-weight:900;color:#b85e00;margin-bottom:8px;}
+.calc-row{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:#48506a;padding:5px 0;border-bottom:1px dashed #f0d9b0;}
+.calc-row:last-child{border-bottom:none;font-weight:900;color:#b85e00;font-size:13px;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系（会計）／テクノロジ系（データ構造）</span>
+    <h1><b>先入先出法（FIFO）</b>とは？</h1>
+    <p>先に入れたものを先に出す。在庫評価にも、データ処理の順番にも登場する基本原則。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-orange">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="82" rx="26" ry="4" fill="#6b3400" opacity=".1"/>
+        <rect x="8" y="56" width="54" height="20" rx="5" fill="#e8d4bc"/>
+        <rect x="14" y="34" width="42" height="28" rx="9" fill="#b85e00"/>
+        <circle cx="36" cy="19" r="12" fill="#f4c89a"/>
+        <path d="M25 16 a11 10 0 0 1 22 0 q-5 -8 -11 -8 q-6 0 -11 8z" fill="#4a2010"/>
+        <rect x="29" y="29" width="14" height="7" fill="#f4c89a"/>
+        <!-- 棚のイメージ -->
+        <rect x="38" y="54" width="22" height="6" rx="2" fill="#6b3400"/>
+        <rect x="38" y="62" width="22" height="6" rx="2" fill="#b85e00" opacity=".7"/>
+        <rect x="38" y="70" width="22" height="6" rx="2" fill="#ffce7a"/>
+      </svg>
+      <div class="scene-txt">
+        コンビニの牛乳棚。古い在庫を<strong>奥から押し出して手前に</strong>、新しいものは奥に置く。お客さんは手前（古い方）から取る。<strong>先に入ったものが先に出る</strong>。
+        <div class="scene-q">→ これがFIFO（先入先出）の直感的なイメージ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：FIFOとLIFOの違い -->
+  <div class="panel p-orange">
+    <span class="phead">📦 FIFO と LIFO の違い</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="FIFOとLIFOの比較図：FIFOは最初に入れた100円が最初に出る。LIFOは最後に入れた150円が最初に出る。">
+      <!-- FIFO側 -->
+      <text x="85" y="20" text-anchor="middle" font-size="13" font-weight="900" fill="#b85e00" font-family="M PLUS Rounded 1c">FIFO（先入先出）</text>
+      <!-- 入庫矢印 -->
+      <text x="85" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">← 入庫</text>
+      <!-- ボックス群（左が先・右が後） -->
+      <rect x="10" y="52" width="44" height="36" rx="6" fill="#fcefd9" stroke="#b85e00" stroke-width="2"/>
+      <text x="32" y="67" text-anchor="middle" font-size="11" font-weight="900" fill="#b85e00" font-family="M PLUS Rounded 1c">①</text>
+      <text x="32" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#6b3400" font-family="M PLUS Rounded 1c">100円</text>
+      <rect x="58" y="52" width="44" height="36" rx="6" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="80" y="67" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">②</text>
+      <text x="80" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#6b3400" font-family="M PLUS Rounded 1c">120円</text>
+      <rect x="106" y="52" width="44" height="36" rx="6" fill="#fcefd9" stroke="#e8a860" stroke-width="1.5"/>
+      <text x="128" y="67" text-anchor="middle" font-size="11" font-weight="900" fill="#e8a860" font-family="M PLUS Rounded 1c">③</text>
+      <text x="128" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#6b3400" font-family="M PLUS Rounded 1c">150円</text>
+      <!-- 出庫矢印 -->
+      <text x="24" y="102" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">出庫 →</text>
+      <!-- 「①が出る」バッジ -->
+      <rect x="10" y="110" width="154" height="28" rx="8" fill="#b85e00"/>
+      <text x="87" y="120" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">最初の①100円が先に出る</text>
+      <text x="87" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#ffce7a" font-family="M PLUS Rounded 1c">在庫評価＝古い単価から計算</text>
+
+      <!-- 仕切り -->
+      <line x1="176" y1="14" x2="176" y2="170" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- LIFO側 -->
+      <text x="258" y="20" text-anchor="middle" font-size="13" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">LIFO（後入先出）</text>
+      <text x="258" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">← 入庫</text>
+      <rect x="183" y="52" width="44" height="36" rx="6" fill="#e7eefc" stroke="#7090d0" stroke-width="1.5"/>
+      <text x="205" y="67" text-anchor="middle" font-size="11" font-weight="900" fill="#7090d0" font-family="M PLUS Rounded 1c">①</text>
+      <text x="205" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#2e4a8a" font-family="M PLUS Rounded 1c">100円</text>
+      <rect x="231" y="52" width="44" height="36" rx="6" fill="#e7eefc" stroke="#4a70c0" stroke-width="1.5"/>
+      <text x="253" y="67" text-anchor="middle" font-size="11" font-weight="900" fill="#4a70c0" font-family="M PLUS Rounded 1c">②</text>
+      <text x="253" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#2e4a8a" font-family="M PLUS Rounded 1c">120円</text>
+      <rect x="279" y="52" width="44" height="36" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="2.5"/>
+      <text x="301" y="67" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">③</text>
+      <text x="301" y="81" text-anchor="middle" font-size="10" font-weight="700" fill="#2e4a8a" font-family="M PLUS Rounded 1c">150円</text>
+      <text x="297" y="102" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">出庫 →</text>
+      <rect x="183" y="110" width="154" height="28" rx="8" fill="#2e6de5"/>
+      <text x="260" y="120" text-anchor="middle" font-size="10" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">最後の③150円が先に出る</text>
+      <text x="260" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#b0cfff" font-family="M PLUS Rounded 1c">在庫評価＝新しい単価から計算</text>
+
+      <!-- 下部まとめ -->
+      <rect x="10" y="156" width="320" height="40" rx="10" fill="#f4f6fb" stroke="#c2c8d8" stroke-width="1.5"/>
+      <text x="170" y="172" text-anchor="middle" font-size="11" font-weight="800" fill="#3c4456" font-family="M PLUS Rounded 1c">日本の会計では後入先出法は廃止済み</text>
+      <text x="170" y="188" text-anchor="middle" font-size="11" font-weight="700" fill="#5d7090" font-family="M PLUS Rounded 1c">現在は先入先出法・移動平均法などが主流</text>
+    </svg>
+  </div>
+
+  <!-- データ構造のキュー -->
+  <div class="panel p-green">
+    <span class="phead">🖥️ IT分野での FIFO：キュー（Queue）</span>
+    <p>プログラムのデータ構造でも<strong>FIFOはキュー（行列）</strong>として登場する。プリンタの印刷待ちや、タスクの実行順がまさにこれ。</p>
+    <svg width="100%" viewBox="0 0 340 100" role="img" aria-label="キューの図：データが左から入り右から出るFIFO構造">
+      <text x="14" y="22" font-size="10" font-weight="800" fill="#1a6e3c" font-family="M PLUS Rounded 1c">→ Enqueue（入れる）</text>
+      <!-- キューの箱 -->
+      <rect x="10" y="30" width="55" height="34" rx="5" fill="#dff3e6" stroke="#1a6e3c" stroke-width="2"/>
+      <text x="37" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6e3c" font-family="M PLUS Rounded 1c">タスクA</text>
+      <rect x="70" y="30" width="55" height="34" rx="5" fill="#dff3e6" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="97" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">タスクB</text>
+      <rect x="130" y="30" width="55" height="34" rx="5" fill="#dff3e6" stroke="#5aaa70" stroke-width="1.5"/>
+      <text x="157" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#5aaa70" font-family="M PLUS Rounded 1c">タスクC</text>
+      <!-- 矢印 -->
+      <polygon points="200,38 220,47 200,56" fill="#1a6e3c"/>
+      <!-- Dequeue -->
+      <rect x="222" y="30" width="108" height="34" rx="8" fill="#1a6e3c"/>
+      <text x="276" y="44" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">Dequeue（取り出す）</text>
+      <text x="276" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#7eff9e" font-family="M PLUS Rounded 1c">最初のタスクAが出る</text>
+      <text x="37" y="82" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b85e00" font-family="M PLUS Rounded 1c">← 最も古い</text>
+      <text x="157" y="82" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5aaa70" font-family="M PLUS Rounded 1c">最も新しい →</text>
+    </svg>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">LIFOと混同しやすい（スタックもセットで覚える）</div>
+      <div class="tb">LIFO（後入先出）を使うデータ構造は<strong>スタック（Stack）</strong>。「後から積んだものを先に取り出す」＝本の山のイメージ。FIFO＝キュー、LIFO＝スタックと対で覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">在庫評価の計算で「古い単価を使う」のがFIFO</div>
+      <div class="tb">FIFOで払い出す在庫は「先に仕入れた古い単価」から計算する。物価が上がっている時は売上原価が低くなり、利益が多く見えるのが特徴。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">日本ではLIFOは廃止済み</div>
+      <div class="tb">後入先出法（LIFO）は2010年の会計基準改正で廃止。現在は先入先出法・移動平均法・総平均法が使われる。試験でも「現在使えない」が問われることがある。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">コンビニの牛乳棚</span>で完璧に覚える！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">古いのを奥から手前に → 先に入った牛乳が先に売れる ＝ FIFO</span><br><br>
+      <span class="hl">F</span>irst <span class="hl">I</span>n, <span class="hl">F</span>irst <span class="hl">O</span>ut<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「先（First）入れたら先（First）に出す」＝日本語の頭文字そのまま</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

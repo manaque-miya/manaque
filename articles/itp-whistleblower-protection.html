@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>公益通報者保護法とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="公益通報者保護法をわかりやすく解説。内部告発をした従業員を解雇等の不利益から守る法律。通報先の3区分、保護される要件、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-whistleblower-protection">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#bf3a5c,#7a1230);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,18,48,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c0ce;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-pink{--c:#bf3a5c;--cbg:#fbe3ee;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#bf3a5c;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.prot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.prot-cell{border-radius:11px;padding:10px 9px;border:2px solid var(--pc);}
+.prot-cell h4{font-size:12px;font-weight:900;color:var(--pc);margin-bottom:4px;}
+.prot-cell p{font-size:11px;font-weight:600;line-height:1.6;color:#48506a;}
+.pc1{--pc:#2e8b4f;background:#eef8f1;}
+.pc2{--pc:#2e6de5;background:#eef3fd;}
+.pc3{--pc:#d9851f;background:#fdf4e4;}
+@media(max-width:480px){.prot-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ・法務系</span>
+    <h1><b>公益通報者保護法</b>とは？</h1>
+    <p>「会社の不正を告発したら解雇された」—— そんな不利益から内部告発者を守るための法律。通報した人を「公益のために動いたヒーロー」として保護する。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-pink">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#7a1230" opacity=".12"/>
+        <rect x="10" y="60" width="58" height="25" rx="6" fill="#f5c0ce"/>
+        <rect x="16" y="38" width="46" height="30" rx="9" fill="#bf3a5c"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#4a3a3a"/>
+        <rect x="31" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 拡声器アイコン -->
+        <polygon points="44,60 56,55 56,73 44,68" fill="#7a1230" opacity=".8"/>
+        <rect x="42" y="62" width="4" height="6" rx="1" fill="#7a1230"/>
+        <path d="M56 60 q5 6 0 13" stroke="#ffd23f" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        食品会社に勤めるあなた。「賞味期限の偽装が行われている」ことに気づいてしまった。上司に相談したが無視された。消費者庁など外部機関に通報したいが、「告発したら解雇されるかも…」と怖い。
+        <div class="scene-q">…正当な通報者を守る法律って何だっけ？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：保護の仕組み -->
+  <div class="panel p-blue">
+    <span class="phead">🛡️ 公益通報者保護法の仕組み</span>
+    <svg width="100%" viewBox="0 0 580 280" role="img" aria-label="公益通報者保護法の仕組み：従業員が不正を発見し、3つの通報先（事業者内部・行政機関・報道機関等）に通報でき、不利益取扱いから保護される図">
+      <!-- 従業員（通報者） -->
+      <rect x="10" y="100" width="120" height="80" rx="12" fill="#fbe3ee" stroke="#bf3a5c" stroke-width="2"/>
+      <circle cx="70" cy="118" r="12" fill="#f4c89a"/>
+      <rect x="58" y="130" width="24" height="20" rx="4" fill="#bf3a5c"/>
+      <text x="70" y="158" text-anchor="middle" font-size="11" font-weight="900" fill="#7a1230" font-family="M PLUS Rounded 1c">従業員</text>
+      <text x="70" y="173" text-anchor="middle" font-size="10" font-weight="700" fill="#bf3a5c" font-family="M PLUS Rounded 1c">（通報者）</text>
+      <!-- 不正発見 -->
+      <rect x="10" y="10" width="120" height="40" rx="9" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="70" y="35" text-anchor="middle" font-size="12" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">会社の不正を発見！</text>
+      <line x1="70" y1="50" x2="70" y2="98" stroke="#dd5a3a" stroke-width="2" stroke-dasharray="4 3"/>
+      <!-- 矢印：3通報先 -->
+      <line x1="130" y1="120" x2="200" y2="80" stroke="#2e8b4f" stroke-width="2"/>
+      <line x1="130" y1="140" x2="200" y2="140" stroke="#2e6de5" stroke-width="2"/>
+      <line x1="130" y1="160" x2="200" y2="200" stroke="#d9851f" stroke-width="2"/>
+      <!-- 通報先1 -->
+      <rect x="200" y="50" width="150" height="56" rx="10" fill="#eef8f1" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="275" y="72" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">① 事業者内部</text>
+      <text x="275" y="88" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">社内の相談窓口・コンプライアンス部門</text>
+      <text x="275" y="101" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">→ 保護要件がいちばん緩い</text>
+      <!-- 通報先2 -->
+      <rect x="200" y="115" width="150" height="52" rx="10" fill="#eef3fd" stroke="#2e6de5" stroke-width="2"/>
+      <text x="275" y="136" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">② 行政機関</text>
+      <text x="275" y="151" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">監督官庁・消費者庁など</text>
+      <text x="275" y="164" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">→ 「真実と信じる理由」が必要</text>
+      <!-- 通報先3 -->
+      <rect x="200" y="175" width="150" height="52" rx="10" fill="#fdf4e4" stroke="#d9851f" stroke-width="2"/>
+      <text x="275" y="196" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">③ 報道機関等</text>
+      <text x="275" y="211" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">マスコミ・消費者団体など</text>
+      <text x="275" y="224" text-anchor="middle" font-size="10" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">→ 要件がいちばん厳しい</text>
+      <!-- 保護バッジ -->
+      <rect x="370" y="100" width="200" height="80" rx="14" fill="#4256b8"/>
+      <text x="470" y="126" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">🛡️ 不利益取扱い禁止</text>
+      <text x="470" y="146" text-anchor="middle" font-size="11" font-weight="700" fill="#c8d4f5" font-family="M PLUS Rounded 1c">・解雇の無効</text>
+      <text x="470" y="161" text-anchor="middle" font-size="11" font-weight="700" fill="#c8d4f5" font-family="M PLUS Rounded 1c">・降格・減給の禁止</text>
+      <text x="470" y="176" text-anchor="middle" font-size="11" font-weight="700" fill="#c8d4f5" font-family="M PLUS Rounded 1c">・嫌がらせ・配置転換禁止</text>
+      <!-- 連結線 -->
+      <line x1="350" y1="140" x2="370" y2="140" stroke="#4256b8" stroke-width="2.5"/>
+      <!-- 下の補足 -->
+      <rect x="10" y="245" width="560" height="28" rx="8" fill="#f4f6fb"/>
+      <text x="290" y="264" text-anchor="middle" font-size="11" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">保護対象：労働者（正社員・派遣・パート・アルバイト含む）　事業者（会社）側は違反すると罰則あり</text>
+    </svg>
+  </div>
+
+  <!-- 通報要件フロー -->
+  <div class="panel p-green">
+    <span class="phead">📋 保護される通報の3要件</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 通報対象事実がある</div><div class="fb">刑事罰対象の法令違反（食品偽装・労働基準法違反・個人情報漏洩など）。単なる内部トラブルや不満は対象外。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 通報者が「不正の疑い」を真実と信じている</div><div class="fb">確実な証拠がなくても、信じるに足る相当な理由があればOK。ただし外部通報ほど要件が厳しくなる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 公益目的での通報</div><div class="fb">私怨・報復・金銭目的でなく、「社会・消費者のため」という公益目的が必要。個人的な利益のためでは保護されない。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「どこに通報してもよい」は間違い</div>
+      <div class="tb">通報先によって保護要件が異なる。内部（社内）≦ 行政機関 ≦ 報道機関等、の順に要件が厳しくなる。外部報道が一番ハードルが高い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「全ての労働者問題」が対象ではない</div>
+      <div class="tb">通報対象は「法令違反に関する事実」のみ。「上司が嫌い」「給与が低い」などは対象外。刑事罰等が規定された法令違反が対象。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">個人情報保護法・不正競争防止法との混同</div>
+      <div class="tb">公益通報者保護法は「内部告発した人を守る法律」。個人情報保護法は「個人情報の適正利用を定める法律」。目的が全く違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「内部告発・通報した人が不利益を受けないようにする」→ 公益通報者保護法。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「こうい（公益）は こうい（好意）」</span><br>
+    会社の悪事を教えてくれた<strong>「好意のタレコミ屋」は守られる</strong>！<br><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">通報先は3つ：内部（社内）→ 行政 → 報道、の順で要件が厳しくなる</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

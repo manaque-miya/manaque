@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>オムニチャネルとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="オムニチャネルをマルチチャネル・クロスチャネルとの違いで解説。店舗・EC・SNSを一体化して顧客体験を統合する仕組みとITパスポート試験のポイント。">
+<link rel="canonical" href="https://manaque.com/itp-omni-channel">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+/* ヒーロー */
+.hero{background:linear-gradient(155deg,#e84393,#8a1a5c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(138,26,92,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f7cce4;}
+
+/* パネル共通 */
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-pink{--c:#e84393;--cbg:#fde8f2;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+/* シーン */
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#e84393;}
+
+/* チャネル進化ステップ */
+.channel-steps{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+.ch-step{border-radius:12px;padding:12px 14px;border-left:5px solid var(--chc);background:var(--chbg);}
+.ch-step .chh{font-size:13.5px;font-weight:900;color:var(--chc);margin-bottom:3px;}
+.ch-step .chb{font-size:12.5px;font-weight:600;line-height:1.75;color:#48506a;}
+.cs1{--chc:#9aa3b2;--chbg:#f4f6fb;}
+.cs2{--chc:#2e6de5;--chbg:#eef3fd;}
+.cs3{--chc:#e84393;--chbg:#fde8f2;}
+
+/* フロー */
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#9aa3b2;--fbg:#f4f6fb;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#e84393;--fbg:#fde8f2;}
+
+/* ひっかけ */
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+/* 覚え方 */
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>オムニチャネル</b>とは？</h1>
+    <p>店舗・EC・アプリ・SNS…すべての販売チャネルを「1つの体験」として統合する戦略。どこから来ても同じ顧客として扱う。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-pink">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="62" width="58" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="16" y="40" width="46" height="30" rx="9" fill="#e84393"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- スマホ -->
+        <rect x="24" y="56" width="14" height="20" rx="2" fill="#2b3245"/>
+        <rect x="25" y="58" width="12" height="16" fill="#acd0f5"/>
+        <!-- ショッピングバッグ -->
+        <rect x="44" y="60" width="18" height="16" rx="2" fill="#f7cce4"/>
+        <path d="M48 60 q0-6 6-6 q6 0 6 6" fill="none" stroke="#e84393" stroke-width="2"/>
+      </svg>
+      <div class="scene-txt">
+        アパレルのあなた。スマホアプリで欲しいコートを「お気に入り」に登録。<br>
+        翌日、実店舗に行くとスタッフが「ご試着しますか？」と声をかけてくれた。<br>
+        アプリと店舗が同じデータを共有していた。
+        <div class="scene-q">…チャネルをまたいでも"1人の自分"として扱われる仕組みとは？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：チャネル進化の3段階 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 チャネル戦略の進化</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="マルチチャネル・クロスチャネル・オムニチャネルの進化の図">
+      <!-- マルチチャネル -->
+      <rect x="10" y="20" width="90" height="60" rx="10" fill="#f4f6fb" stroke="#9aa3b2" stroke-width="2"/>
+      <text x="55" y="42" text-anchor="middle" font-size="10.5" font-weight="900" fill="#5a6170" font-family="M PLUS Rounded 1c">マルチ</text>
+      <text x="55" y="57" text-anchor="middle" font-size="10" font-weight="800" fill="#8a91a0" font-family="M PLUS Rounded 1c">チャネル</text>
+      <text x="55" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">並列・分断</text>
+      <!-- クロスチャネル -->
+      <rect x="125" y="20" width="90" height="60" rx="10" fill="#eef3fd" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="42" text-anchor="middle" font-size="10.5" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">クロス</text>
+      <text x="170" y="57" text-anchor="middle" font-size="10" font-weight="800" fill="#4a7bce" font-family="M PLUS Rounded 1c">チャネル</text>
+      <text x="170" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#7a9bd4" font-family="M PLUS Rounded 1c">部分的に連携</text>
+      <!-- オムニチャネル -->
+      <rect x="240" y="20" width="90" height="60" rx="10" fill="#fde8f2" stroke="#e84393" stroke-width="2.5"/>
+      <text x="285" y="42" text-anchor="middle" font-size="10.5" font-weight="900" fill="#e84393" font-family="M PLUS Rounded 1c">オムニ</text>
+      <text x="285" y="57" text-anchor="middle" font-size="10" font-weight="800" fill="#c0376e" font-family="M PLUS Rounded 1c">チャネル</text>
+      <text x="285" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#c07090" font-family="M PLUS Rounded 1c">完全統合</text>
+      <!-- 矢印 -->
+      <polygon points="116,50 125,45 125,55" fill="#9aa3b2"/>
+      <line x1="100" y1="50" x2="116" y2="50" stroke="#9aa3b2" stroke-width="2"/>
+      <polygon points="231,50 240,45 240,55" fill="#2e6de5"/>
+      <line x1="215" y1="50" x2="231" y2="50" stroke="#2e6de5" stroke-width="2"/>
+      <!-- 顧客円 -->
+      <circle cx="170" cy="148" r="22" fill="#ffd23f" stroke="#e0a800" stroke-width="2"/>
+      <text x="170" y="145" text-anchor="middle" font-size="10" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">顧客</text>
+      <text x="170" y="159" text-anchor="middle" font-size="9" font-weight="700" fill="#5c4500" font-family="M PLUS Rounded 1c">データ統合</text>
+      <!-- 連結線（オムニ） -->
+      <line x1="285" y1="80" x2="285" y2="120" stroke="#e84393" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="285" y1="120" x2="192" y2="148" stroke="#e84393" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="55" y1="80" x2="55" y2="120" stroke="#e84393" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="55" y1="120" x2="148" y2="148" stroke="#e84393" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="170" y1="80" x2="170" y2="126" stroke="#e84393" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+    <div class="channel-steps">
+      <div class="ch-step cs1"><div class="chh">マルチチャネル</div><div class="chb">店舗・EC・カタログを別々に運営。チャネル間でデータを共有しない（サイロ状態）。</div></div>
+      <div class="ch-step cs2"><div class="chh">クロスチャネル</div><div class="chb">一部データを連携（例：EC在庫を店舗でも確認可能）。ただし顧客データは統合しきれていない。</div></div>
+      <div class="ch-step cs3"><div class="chh">オムニチャネル ★試験で出る</div><div class="chb">すべてのチャネルが同一の顧客データで動く。どこで接点を持っても一貫した顧客体験（CX）を提供する。</div></div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ オムニチャネルが実現する顧客体験</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① どのチャネルからでもアクセス</div><div class="fb">スマホアプリ・PC・店舗・電話…入口はどこでもOK。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 顧客データをリアルタイム共有</div><div class="fb">購買履歴・カート・お気に入りが全チャネルで瞬時に同期。「あのアプリで選んだ商品が店で試せる」。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 切れ目のない顧客体験（CX）</div><div class="fb">チャネルをまたいでも「同じ店の続き」として扱われる。顧客は手戻り・再入力なしでスムーズに購買完了。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">マルチチャネルと混同しやすい</div>
+      <div class="tb">マルチは「複数のチャネルを持つだけ」。オムニは「チャネルを<strong>統合して一体の体験</strong>にする」。数の多さでなく統合度が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">クロスチャネルと混同しやすい</div>
+      <div class="tb">クロスは「チャネルが部分的に連携する中間段階」。オムニは「すべてのチャネルが完全に統合・同期」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「チャネルを増やすことがオムニ」は誤り</div>
+      <div class="tb">チャネルの数でなく「顧客データの統合・シームレスな体験」がオムニチャネルの本質。チャネルが2つでもデータが統合されればオムニ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「全チャネルで顧客データを一元管理・シームレス」の表現が問われたら → <strong>オムニチャネル</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「オムニ＝全部（omni）つながってる」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">omni＝ラテン語で「すべて」。全チャネルが1つに溶け合う。</span><br><br>
+    <span class="hl">マルチは「みんなバラバラ」、オムニは「みんな一つ」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">マルチ＝並列で別管理 ／ オムニ＝全部つながってシームレス</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

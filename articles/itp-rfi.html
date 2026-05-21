@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RFI（情報提供依頼書）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="RFI（情報提供依頼書）の意味・使い方・RFPとの違いをわかりやすく解説。システム調達の流れ、ITパスポート試験でのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-rfi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a5c8a,#2e8bc0);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,80,130,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8e5f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e8bc0;--cbg:#d8eef8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8bc0;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8bc0;--fbg:#e4f3fa;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.comp-table{width:100%;border-collapse:collapse;margin-top:6px;}
+.comp-table th{background:#4256b8;color:#fff;font-size:12px;font-weight:900;padding:8px 10px;text-align:center;}
+.comp-table td{font-size:12px;font-weight:600;padding:8px 10px;border:1px solid #d8dce8;line-height:1.65;}
+.comp-table tr:nth-child(even) td{background:#f4f6fb;}
+.comp-table .label{font-weight:900;color:#4256b8;background:#e4e7f7;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>RFI</b>（情報提供依頼書）とは？</h1>
+    <p>システム調達の「下調べ段階」で使う文書。ベンダーに「あなたの会社の技術・実績を教えて」と頼む1枚。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a5c8a" opacity=".12"/>
+        <rect x="12" y="52" width="54" height="32" rx="7" fill="#c8e5f8"/>
+        <rect x="18" y="58" width="42" height="20" rx="4" fill="#2e8bc0"/>
+        <circle cx="39" cy="34" r="14" fill="#f4c89a"/>
+        <path d="M27 30 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="31" y="45" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 53 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 文書アイコン -->
+        <rect x="44" y="56" width="18" height="22" rx="2" fill="#fff" stroke="#2e8bc0" stroke-width="1.5"/>
+        <line x1="47" y1="62" x2="59" y2="62" stroke="#2e8bc0" stroke-width="1.2"/>
+        <line x1="47" y1="66" x2="59" y2="66" stroke="#2e8bc0" stroke-width="1.2"/>
+        <line x1="47" y1="70" x2="55" y2="70" stroke="#2e8bc0" stroke-width="1.2"/>
+        <text x="53" y="55" text-anchor="middle" font-size="8" font-weight="900" fill="#2e8bc0" font-family="M PLUS Rounded 1c">RFI</text>
+      </svg>
+      <div class="scene-txt">
+        情報システム部門の担当者。新しい在庫管理システムを導入したいが、どんな製品があるかさっぱりわからない。まず複数のITベンダーに「<strong>あなたの会社の製品・技術・実績を教えてください</strong>」と問い合わせた。
+        <div class="scene-q">…この「教えて」の依頼文書が RFI だ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：調達フロー -->
+  <div class="panel p-indigo">
+    <span class="phead">📋 システム調達の全体フロー</span>
+    <svg width="100%" viewBox="0 0 340 76" role="img" aria-label="システム調達フロー：RFI情報収集→RFP提案依頼→選定→契約">
+      <defs>
+        <marker id="arrowI" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6 Z" fill="#4256b8"/>
+        </marker>
+      </defs>
+      <rect x="4" y="18" width="64" height="40" rx="8" fill="#ffd23f" stroke="#c89800" stroke-width="2"/>
+      <text x="36" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">RFI</text>
+      <text x="36" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#7a6000" font-family="M PLUS Rounded 1c">情報収集</text>
+      <path d="M70 38 L88 38" stroke="#4256b8" stroke-width="2.5" marker-end="url(#arrowI)"/>
+      <rect x="90" y="18" width="64" height="40" rx="8" fill="#e7eefc" stroke="#4256b8" stroke-width="2"/>
+      <text x="122" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#2e46a0" font-family="M PLUS Rounded 1c">RFP</text>
+      <text x="122" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">提案依頼</text>
+      <path d="M156 38 L174 38" stroke="#4256b8" stroke-width="2.5" marker-end="url(#arrowI)"/>
+      <rect x="176" y="18" width="64" height="40" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="208" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">選定</text>
+      <text x="208" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">比較・決定</text>
+      <path d="M242 38 L260 38" stroke="#4256b8" stroke-width="2.5" marker-end="url(#arrowI)"/>
+      <rect x="262" y="18" width="70" height="40" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="297" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">契約</text>
+      <text x="297" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">発注・開始</text>
+      <!-- 今ここ -->
+      <text x="36" y="12" text-anchor="middle" font-size="9" font-weight="900" fill="#c89800" font-family="M PLUS Rounded 1c">今ここ</text>
+    </svg>
+    <p style="margin-top:10px;">RFIは調達の<strong>最初の一歩</strong>。「何があるか・何ができるか」を広く集める段階。まだ「どの製品を買う」かは決まっていない。</p>
+  </div>
+
+  <!-- RFI vs RFP比較 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ RFI と RFP の違い</span>
+    <table class="comp-table">
+      <tr>
+        <th style="width:28%">項目</th>
+        <th style="width:36%">RFI（情報提供依頼）</th>
+        <th style="width:36%">RFP（提案依頼書）</th>
+      </tr>
+      <tr>
+        <td class="label">目的</td>
+        <td>市場・技術情報の収集</td>
+        <td>具体的な提案・見積の入手</td>
+      </tr>
+      <tr>
+        <td class="label">タイミング</td>
+        <td>要件定義の前（下調べ）</td>
+        <td>要件定義の後（本命探し）</td>
+      </tr>
+      <tr>
+        <td class="label">内容</td>
+        <td>「技術・実績・できること」を教えて</td>
+        <td>「この要件で提案・見積して」</td>
+      </tr>
+      <tr>
+        <td class="label">拘束力</td>
+        <td>なし（情報収集のみ）</td>
+        <td>なし（次のステップへの材料）</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">RFI と RFP の順番を逆にしない</div>
+      <div class="tb">RFI（情報収集）→ RFP（提案依頼）が正しい順。RFPが先ではない。RFIは「まず世の中を知る」段階。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「RFI＝発注書」ではない</div>
+      <div class="tb">RFIはあくまで<strong>情報収集の依頼</strong>。発注・契約は一切伴わない。受け取ったベンダーに回答義務もない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">RFQ との混同に注意</div>
+      <div class="tb">RFQ（Request for Quotation＝見積依頼書）は価格のみを問い合わせる。RFIは技術・実績・製品情報を幅広く問い合わせる点が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「何があるか・何ができるか調べたい」「まだ要件が固まっていない」→ <strong>RFI</strong>。「要件を決めたうえで提案させる」→ RFP。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「RFI＝"リサーチ・フォー・アイデア"」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">R＝Request, F＝For, I＝Information（情報）</span><br><br>
+    <span class="hl">「まず"アイ（I）"を開いて情報を見る」</span><br>
+    ＝まず情報収集（RFI）→ それから提案を求める（RFP）</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RESTful APIとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="RESTful APIをわかりやすく解説。REST原則・HTTPメソッド（GET/POST/PUT/DELETE）・WebAPIとの関係。ITパスポート試験のひっかけポイントと覚え方ゴロ。">
+<link rel="canonical" href="https://example.com/itp-restful-api">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#cf4f86,#7a1b45);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,27,69,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c3da;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cf4f86;}
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.method-card{border-radius:12px;padding:11px 12px;}
+.method-card h4{font-size:13px;font-weight:900;margin-bottom:4px;}
+.method-card p{font-size:11.5px;font-weight:600;line-height:1.6;color:#48506a;margin:0;}
+.mc-get{background:#e7eefc;}.mc-get h4{color:#2e6de5;}
+.mc-post{background:#e2f3e5;}.mc-post h4{color:#2e8b4f;}
+.mc-put{background:#fcefd9;}.mc-put h4{color:#d9851f;}
+.mc-del{background:#fce4dd;}.mc-del h4{color:#dd5a3a;}
+@media(max-width:480px){.method-grid{grid-template-columns:1fr;}}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#cf4f86;--fbg:#fdf0f5;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>RESTful API</b>とは？</h1>
+    <p>WebサービスのデータをHTTPで読み書きするための「共通の約束事」。スマホアプリもWebも、これで会話している。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- スマホ -->
+        <rect x="26" y="45" width="26" height="38" rx="5" fill="#2b3245"/>
+        <rect x="28" y="49" width="22" height="28" rx="2" fill="#acd0f5"/>
+        <circle cx="39" cy="81" r="2.5" fill="#9aa3b2"/>
+        <!-- 矢印 -->
+        <path d="M52 62 L60 62" stroke="#cf4f86" stroke-width="2"/>
+        <polygon points="60,59 66,62 60,65" fill="#cf4f86"/>
+        <!-- サーバー -->
+        <rect x="62" y="54" width="12" height="18" rx="3" fill="#4256b8"/>
+        <rect x="64" y="57" width="8" height="3" rx="1" fill="#8fa0e8"/>
+        <rect x="64" y="62" width="8" height="3" rx="1" fill="#8fa0e8"/>
+        <!-- 人 -->
+        <circle cx="39" cy="24" r="13" fill="#f4c89a"/>
+        <path d="M27 20 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+      </svg>
+      <div class="scene-txt">
+        スマホの天気アプリを開いたら、今日の天気が表示された。このアプリ、気象データをどうやって取ってるの？　実は気象サービスの<strong>APIに「今の天気を教えて」とリクエスト</strong>を送って、返ってきたデータを表示しているだけ。
+        <div class="scene-q">…その仕組みの標準的な設計がRESTful API！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HTTPメソッド図 -->
+  <div class="panel p-pink">
+    <span class="phead">🔑 4つのHTTPメソッド（CRUD操作）</span>
+    <svg width="100%" viewBox="0 0 340 80" role="img" aria-label="GET・POST・PUT・DELETEの4つのHTTPメソッドとCRUD対応">
+      <!-- GET -->
+      <rect x="5" y="10" width="72" height="58" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="41" y="35" text-anchor="middle" font-size="14" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">GET</text>
+      <text x="41" y="52" text-anchor="middle" font-size="10" font-weight="800" fill="#4a6cc0" font-family="M PLUS Rounded 1c">取得（Read）</text>
+      <!-- POST -->
+      <rect x="88" y="10" width="72" height="58" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="124" y="35" text-anchor="middle" font-size="14" font-weight="900" fill="#145e30" font-family="M PLUS Rounded 1c">POST</text>
+      <text x="124" y="52" text-anchor="middle" font-size="10" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">作成（Create）</text>
+      <!-- PUT -->
+      <rect x="171" y="10" width="72" height="58" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="207" y="35" text-anchor="middle" font-size="14" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">PUT</text>
+      <text x="207" y="52" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">更新（Update）</text>
+      <!-- DELETE -->
+      <rect x="254" y="10" width="82" height="58" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="295" y="35" text-anchor="middle" font-size="13" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">DELETE</text>
+      <text x="295" y="52" text-anchor="middle" font-size="10" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">削除（Delete）</text>
+    </svg>
+    <div class="method-grid">
+      <div class="method-card mc-get"><h4>GET — 「見せて」</h4><p>ユーザー一覧を取得、商品情報を取得など。サーバーのデータは変えない。</p></div>
+      <div class="method-card mc-post"><h4>POST — 「追加して」</h4><p>新規ユーザー登録、新しい投稿を作成など。新しいリソースを作る。</p></div>
+      <div class="method-card mc-put"><h4>PUT — 「書き換えて」</h4><p>ユーザー情報の変更、設定の更新など。既存リソースを上書き更新。</p></div>
+      <div class="method-card mc-del"><h4>DELETE — 「消して」</h4><p>投稿の削除、アカウント削除など。指定したリソースを削除する。</p></div>
+    </div>
+  </div>
+
+  <!-- フロー詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ RESTの設計原則（ポイント3つ）</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① URLはリソースを表す（名詞で書く）</div>
+        <div class="fb">「/users/123」のように、URLは「何のデータか」を示す。「何をするか」はHTTPメソッドで表す（/getUser123 のような書き方はRESTfulではない）。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② ステートレス（状態を持たない）</div>
+        <div class="fb">1回のリクエストに必要な情報はすべてそのリクエスト内に含める。サーバーは前のリクエストを覚えていない。これによりスケールしやすくなる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ レスポンスはJSON（またはXML）</div>
+        <div class="fb">データは人間にもプログラムにも読みやすいJSON形式で返すのが一般的。言語・OS・デバイスを問わず使えるのがRESTfulの強み。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「REST＝プロトコル」は誤り</div>
+      <div class="tb">RESTは<strong>設計スタイル（アーキテクチャスタイル）</strong>であり、プロトコルや規格ではない。HTTPというプロトコルの上でRESTの原則に従って設計したAPIを「RESTful API」と呼ぶ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SOAPとの混同</div>
+      <div class="tb">SOAPはXMLベースのWebサービス通信プロトコル。RESTfulより複雑で厳格。「軽量・シンプル」なのがRESTful、「厳格・企業向け」なのがSOAP。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「POSTは取得、GETは送信」は誤り</div>
+      <div class="tb">GETは<strong>取得（データを変えない）</strong>、POSTは<strong>送信・作成（データを変える）</strong>。逆にすると情報セキュリティ上の問題になる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      4メソッドのゴロ：<span class="hl">「ゲット（GET）→ 取る、ポスト（POST）→ 投函（作る）、プット（PUT）→ 置き直す（更新）、デリート（DELETE）→ 消す」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">郵便ポストに手紙を投函＝POSTで新規作成！ゲットした手紙を読む＝GETで取得！</span><br><br>
+      RESTの本質ゴロ：<span class="hl">「URLは名詞、動詞はメソッドに任せろ」</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-restful-api</div>
+
+</div>
+</body>
+</html>

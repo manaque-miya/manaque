@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>生体認証のFRRとFARとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="生体認証のFRR（本人拒否率）とFAR（他人受入率）をわかりやすく解説。2つの指標の意味、トレードオフの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-biometric-frr-far">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5a2e9e,#2d1260);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(45,18,96,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#cbb8f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-purple{--c:#6b3db8;--cbg:#ede7f7;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6b3db8;}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.col-card{border-radius:12px;padding:14px;}
+.col-card .ch{font-size:14px;font-weight:900;margin-bottom:8px;}
+.col-card .cb{font-size:12.5px;font-weight:600;line-height:1.75;color:#48506a;}
+.col-frr{background:#fce4dd;}.col-frr .ch{color:#bb3c1f;}
+.col-far{background:#e7eefc;}.col-far .ch{color:#2e6de5;}
+@media(max-width:480px){.two-col{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>FRR</b>と<b>FAR</b>とは？</h1>
+    <p>生体認証の精度を測る2つの指標。「本物を弾く率」と「偽物を通す率」のどちらを重視するかで設計が変わる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true" style="flex-shrink:0">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#2d1260" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#d0c4ee"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#6b3db8"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+      </svg>
+      <div class="scene-txt">
+        会社のセキュリティ担当のあなた。指紋認証システムを導入することになった。「精度は高ければいいだろう」と思っていたら、上司から「FRRとFARのバランスを考えろ」と言われた。
+        <div class="scene-q">→ FRRとFARって何？どっちを下げればいいの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：FRRとFAR -->
+  <div class="panel p-blue">
+    <span class="phead">🔍 FRR と FAR の図解</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="FRRは本人を拒否する誤り、FARは他人を受け入れる誤りを示す図">
+      <!-- 中心：認証システム -->
+      <rect x="120" y="85" width="100" height="50" rx="12" fill="#4256b8" stroke="#2e3f9e" stroke-width="2"/>
+      <text x="170" y="107" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">認証</text>
+      <text x="170" y="122" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">システム</text>
+
+      <!-- 本人側 -->
+      <circle cx="50" cy="110" r="28" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="50" y="106" text-anchor="middle" font-size="10" font-weight="900" fill="#1b6e3d" font-family="M PLUS Rounded 1c">本人</text>
+      <text x="50" y="120" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">👤 正規ユーザ</text>
+
+      <!-- 他人側 -->
+      <circle cx="290" cy="110" r="28" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="290" y="106" text-anchor="middle" font-size="10" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">他人</text>
+      <text x="290" y="120" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">👤 不正ユーザ</text>
+
+      <!-- 矢印：本人→システム -->
+      <path d="M78 110 L118 110" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arrowG)"/>
+      <!-- 矢印：他人→システム -->
+      <path d="M262 110 L222 110" stroke="#dd5a3a" stroke-width="2" marker-end="url(#arrowR)"/>
+
+      <defs>
+        <marker id="arrowG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2e8b4f"/>
+        </marker>
+        <marker id="arrowR" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#dd5a3a"/>
+        </marker>
+      </defs>
+
+      <!-- FRR（本人が拒否される） -->
+      <path d="M100 90 Q80 50 50 65" stroke="#bb3c1f" stroke-width="2" stroke-dasharray="5 3" fill="none" marker-end="url(#arrowFrr)"/>
+      <defs>
+        <marker id="arrowFrr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#bb3c1f"/>
+        </marker>
+      </defs>
+      <rect x="55" y="30" width="100" height="28" rx="8" fill="#fce4dd" stroke="#bb3c1f" stroke-width="1.5"/>
+      <text x="105" y="42" text-anchor="middle" font-size="10" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">FRR（本人拒否率）</text>
+      <text x="105" y="54" text-anchor="middle" font-size="9" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">本人なのに「拒否」</text>
+
+      <!-- FAR（他人が受け入れられる） -->
+      <path d="M240 90 Q260 50 290 65" stroke="#2e6de5" stroke-width="2" stroke-dasharray="5 3" fill="none" marker-end="url(#arrowFar)"/>
+      <defs>
+        <marker id="arrowFar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2e6de5"/>
+        </marker>
+      </defs>
+      <rect x="185" y="30" width="110" height="28" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="240" y="42" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">FAR（他人受入率）</text>
+      <text x="240" y="54" text-anchor="middle" font-size="9" font-weight="700" fill="#1f4ba8" font-family="M PLUS Rounded 1c">他人なのに「認証OK」</text>
+
+      <!-- 説明テキスト -->
+      <text x="170" y="165" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">← FRR を下げると FAR が上がる（トレードオフ） →</text>
+      <text x="170" y="183" text-anchor="middle" font-size="10" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">どちらかを改善すると、もう一方が悪化する</text>
+    </svg>
+
+    <div class="two-col">
+      <div class="col-card col-frr">
+        <div class="ch">FRR（本人拒否率）</div>
+        <div class="cb">False Rejection Rate。本物の本人を「別人」と判定してしまう割合。<br>→ <strong>利便性</strong>が下がる（本人が弾かれる）</div>
+      </div>
+      <div class="col-card col-far">
+        <div class="ch">FAR（他人受入率）</div>
+        <div class="cb">False Acceptance Rate。本物でない他人を「本人」と認証してしまう割合。<br>→ <strong>セキュリティ</strong>が下がる（偽者が通る）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：用途別の重視点 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ 用途によって重視する指標が違う</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="用途別のFRR・FAR重視の比較">
+      <!-- 高セキュリティ重視 -->
+      <rect x="10" y="20" width="150" height="120" rx="12" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="85" y="44" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">🔒 セキュリティ重視</text>
+      <text x="85" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">例：核施設・金庫室</text>
+      <rect x="30" y="68" width="110" height="22" rx="6" fill="#bb3c1f"/>
+      <text x="85" y="83" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">FAR を低くする</text>
+      <text x="85" y="104" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">→ 他人は絶対に</text>
+      <text x="85" y="118" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">通さない</text>
+      <text x="85" y="133" text-anchor="middle" font-size="9" font-weight:600 fill="#bb3c1f" font-family="M PLUS Rounded 1c">（本人拒否は許容）</text>
+
+      <!-- 利便性重視 -->
+      <rect x="180" y="20" width="150" height="120" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="255" y="44" text-anchor="middle" font-size="11" font-weight="900" fill="#1b6e3d" font-family="M PLUS Rounded 1c">✅ 利便性重視</text>
+      <text x="255" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">例：スマホ・勤怠管理</text>
+      <rect x="200" y="68" width="110" height="22" rx="6" fill="#2e8b4f"/>
+      <text x="255" y="83" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">FRR を低くする</text>
+      <text x="255" y="104" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">→ 本人はスムーズ</text>
+      <text x="255" y="118" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">に認証できる</text>
+      <text x="255" y="133" text-anchor="middle" font-size="9" font-weight:600 fill="#2e8b4f" font-family="M PLUS Rounded 1c">（他人受入は若干増）</text>
+    </svg>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">FRR と FAR の名前が逆になりやすい</div>
+      <div class="tb">FRR は「Rejection（拒否）」→ 本人を拒む。FAR は「Acceptance（受入）」→ 他人を受け入れる。頭文字の R と A で覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「どちらも低くすればよい」は誤り</div>
+      <div class="tb">FRRを下げようとする（判定を緩くする）とFARが上がる。逆もしかり。<strong>必ずトレードオフ</strong>が発生する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">FRRが高い＝利便性が低い（セキュリティ面は関係なし）</div>
+      <div class="tb">FRRが高いと本人が弾かれる回数が増える＝使いにくい。セキュリティが上がるわけではない。セキュリティはFARで測る。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">FRR＝「本人をリジェクト（拒否）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">F=False / R=Rejection ／ 本人なのに弾かれる悲劇</span><br><br>
+      <span class="hl">FAR＝「アカの他人をアクセプト（受入）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">F=False / A=Acceptance ／ 赤の他人が通る恐怖</span><br><br>
+      <span class="hl">「F-R-R：本人がリジェクトされて涙（泣）」</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

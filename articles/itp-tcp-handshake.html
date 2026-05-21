@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TCPの3ウェイハンドシェイクとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="TCPの3ウェイハンドシェイクをSYN・SYN-ACK・ACKの3ステップで図解。なぜ3回必要か、UDPとの違い、ITパスポートのひっかけポイントまで丁寧に解説。">
+<link rel="canonical" href="https://example.com/itp-tcp-handshake">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1b6fa8,#0d3d66);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,102,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d8f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1b6fa8;--cbg:#ddeef9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1b6fa8;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1b6fa8;--fbg:#ddeef9;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🌐 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>TCPの3ウェイハンドシェイク</b>とは？</h1>
+    <p>通信を始める前に「つながってる？」「うん！」「了解！」と3回確認する接続確立の手順。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="62" height="26" rx="6" fill="#b8d0e8"/>
+        <rect x="14" y="38" width="50" height="28" rx="9" fill="#1b6fa8"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="40" y="56" width="20" height="14" rx="2" fill="#48506a"/>
+        <rect x="42" y="58" width="16" height="10" rx="1" fill="#7ab8e8"/>
+      </svg>
+      <div class="scene-txt">
+        メッセージアプリでファイルを送ろうとするあなた。送信ボタンを押す前に、アプリは相手のサーバーと<strong>「受信できる状態？」「できるよ！」「じゃあ送るね！」</strong>と3回やりとりして接続を確立している。
+        <div class="scene-q">…この「3回確認してから通信する仕組み」の名前は？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：3ウェイハンドシェイクの流れ -->
+  <div class="panel p-indigo">
+    <span class="phead">📡 3ウェイハンドシェイクの流れ</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="クライアントとサーバー間のSYN・SYN-ACK・ACKの3ステップ図">
+      <!-- クライアント -->
+      <rect x="10" y="20" width="90" height="50" rx="10" fill="#1b6fa8"/>
+      <text x="55" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">クライアント</text>
+      <text x="55" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#b8d8f0" font-family="M PLUS Rounded 1c">（送り手）</text>
+      <!-- サーバー -->
+      <rect x="240" y="20" width="90" height="50" rx="10" fill="#4256b8"/>
+      <text x="285" y="41" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">サーバー</text>
+      <text x="285" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#b8c8f8" font-family="M PLUS Rounded 1c">（受け手）</text>
+      <!-- 縦の点線 -->
+      <line x1="55" y1="70" x2="55" y2="248" stroke="#b0bcd0" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="285" y1="70" x2="285" y2="248" stroke="#b0bcd0" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- SYN -->
+      <line x1="65" y1="102" x2="275" y2="116" stroke="#1b6fa8" stroke-width="2.5"/>
+      <polygon points="275,112 275,121 282,116" fill="#1b6fa8"/>
+      <rect x="116" y="88" width="108" height="22" rx="6" fill="#ddeef9"/>
+      <text x="170" y="103" text-anchor="middle" font-size="12" font-weight="900" fill="#1b6fa8" font-family="M PLUS Rounded 1c">① SYN「つながる？」</text>
+      <!-- SYN-ACK -->
+      <line x1="275" y1="150" x2="65" y2="164" stroke="#2e8b4f" stroke-width="2.5"/>
+      <polygon points="65,160 65,169 58,164" fill="#2e8b4f"/>
+      <rect x="100" y="136" width="140" height="22" rx="6" fill="#e2f3e5"/>
+      <text x="170" y="151" text-anchor="middle" font-size="11.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">② SYN-ACK「いいよ！来て！」</text>
+      <!-- ACK -->
+      <line x1="65" y1="198" x2="275" y2="212" stroke="#d9851f" stroke-width="2.5"/>
+      <polygon points="275,208 275,217 282,212" fill="#d9851f"/>
+      <rect x="116" y="184" width="108" height="22" rx="6" fill="#fdf4e4"/>
+      <text x="170" y="199" text-anchor="middle" font-size="12" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">③ ACK「了解！送るね」</text>
+      <!-- 接続完了バッジ -->
+      <rect x="100" y="230" width="140" height="22" rx="8" fill="#4256b8"/>
+      <text x="170" y="245" text-anchor="middle" font-size="11.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">✅ 接続確立 → データ送信開始</text>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🔍 各ステップの詳細</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① SYN（Synchronize）— クライアント → サーバー</div>
+        <div class="fb">「通信を始めたい」という要求を送る。シーケンス番号（通し番号）の初期値も一緒に送る。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② SYN-ACK — サーバー → クライアント</div>
+        <div class="fb">「受け取った（ACK）、こちらも通信OK（SYN）」を返す。自分のシーケンス番号も送る。これで双方向の確認ができる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ ACK — クライアント → サーバー</div>
+        <div class="fb">「サーバーのSYNも受け取った！」と確認。これで両方向の通信路が確認でき、データ送信が始まる。</div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;color:#48506a;font-weight:700;">なぜ3回必要？ → 「送れる」と「受け取れる」を<strong>双方向</strong>で確認するには最低3回必要。2回だとクライアント→サーバー方向しか確認できない。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「2ウェイ」「4ウェイ」は存在するか？</div>
+      <div class="tb">接続確立は必ず<strong>3ウェイ</strong>（3回）。「2回で済む」「4回確認する」は誤り。切断（コネクションクローズ）は4ウェイで行われるが、接続確立は3ウェイ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">UDPにも3ウェイハンドシェイクがある？</div>
+      <div class="tb"><strong>ない。</strong>UDP は接続確立なしでいきなりデータを送る。3ウェイハンドシェイクは<strong>TCP専用</strong>の仕組み。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SYNフラッド攻撃って何？</div>
+      <div class="tb">攻撃者がSYNを大量に送りつけ、サーバーがSYN-ACKを返し続けて疲弊するDoS攻撃。3ウェイハンドシェイクの仕組みを悪用する。出題される場合あり。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「接続確立」「コネクション型」「信頼性のある通信」→ <strong>TCP + 3ウェイハンドシェイク</strong>とセットで覚える。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「シンクロ→シンク返し→了解」</span>でSYN・SYN-ACK・ACK！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">SYN＝「つながる？」 / SYN-ACK＝「いいよ来て」 / ACK＝「了解！」</span><br><br>
+      <span class="hl">악수は3回でお互い確認</span>（握手＝ハンドシェイク）<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">3ウェイ＝3回の握手。「3回以外はおかしい」と即判断できる。</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,180 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>タイムスタンプ（信頼できる時刻証明）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="タイムスタンプ（信頼できる時刻証明）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-timestamp.html">
-<meta property="og:title" content="タイムスタンプ（信頼できる時刻証明）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="タイムスタンプ（信頼できる時刻証明）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-timestamp.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>タイムスタンプとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="タイムスタンプを図解でわかりやすく解説。電子文書がいつ存在したか・改ざんされていないかを証明するしくみ、電子署名との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-timestamp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5a2ea6,#2d1260);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(45,18,96,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d4c2f7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#5a2ea6;--cbg:#ece4f8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5a2ea6;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#5a2ea6;--fbg:#ece4f8;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">タイムスタンプ（信頼できる時刻証明）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">タイムスタンプ（信頼できる時刻証明）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>タイムスタンプ</b>とは？</h1>
+    <p>「この文書は○年○月○日○時に存在し、それ以来改ざんされていない」を第三者が証明する技術。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true" style="flex-shrink:0">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="30" width="52" height="46" rx="6" fill="#ece4f8" stroke="#5a2ea6" stroke-width="2"/>
+        <text x="36" y="52" text-anchor="middle" font-size="8" font-weight="700" fill="#5a2ea6" font-family="M PLUS Rounded 1c">契約書</text>
+        <rect x="16" y="58" width="40" height="5" rx="2" fill="#c8b0e8"/>
+        <rect x="16" y="66" width="30" height="5" rx="2" fill="#c8b0e8"/>
+        <circle cx="52" cy="72" r="10" fill="#ffd23f" stroke="#e0a800" stroke-width="2"/>
+        <text x="52" y="76" text-anchor="middle" font-size="7" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">印</text>
+        <circle cx="36" cy="16" r="12" fill="#f4c89a"/>
+        <path d="M25 13 a11 10 0 0 1 22 0 q-4 -8 -11 -8 q-7 0 -11 8z" fill="#3a3f4a"/>
+      </svg>
+      <div class="scene-txt">
+        取引先との契約書をメールで送った。後日「そんな文書は存在しなかった」と言われたら？<br>
+        紙なら郵便局の消印で日付が証明できる。電子文書ではそれができない。
+        <div class="scene-q">…だから「タイムスタンプ」が必要！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔏 タイムスタンプのしくみ</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="ユーザーが文書をTSAに送り、TSAがタイムスタンプトークンを返す図">
+      <!-- ユーザー -->
+      <rect x="10" y="70" width="80" height="60" rx="10" fill="#ece4f8" stroke="#5a2ea6" stroke-width="2"/>
+      <text x="50" y="96" text-anchor="middle" font-size="11" font-weight="900" fill="#5a2ea6" font-family="M PLUS Rounded 1c">ユーザー</text>
+      <text x="50" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#4a3a7a" font-family="M PLUS Rounded 1c">電子文書</text>
+      <text x="50" y="124" text-anchor="middle" font-size="9" font-weight="700" fill="#4a3a7a" font-family="M PLUS Rounded 1c">のハッシュ</text>
+      <!-- 矢印右 -->
+      <path d="M92 90 L148 90" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr)"/>
+      <text x="120" y="84" text-anchor="middle" font-size="8" font-weight="700" fill="#5a2ea6" font-family="M PLUS Rounded 1c">① ハッシュ送信</text>
+      <!-- TSA -->
+      <rect x="150" y="55" width="100" height="90" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="200" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">TSA</text>
+      <text x="200" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#3a4a8a" font-family="M PLUS Rounded 1c">時刻認証局</text>
+      <text x="200" y="112" text-anchor="middle" font-size="8" font-weight="700" fill="#3a4a8a" font-family="M PLUS Rounded 1c">② 時刻を付加</text>
+      <text x="200" y="126" text-anchor="middle" font-size="8" font-weight="700" fill="#3a4a8a" font-family="M PLUS Rounded 1c">③ TSAの署名</text>
+      <text x="200" y="138" text-anchor="middle" font-size="8" font-weight="700" fill="#3a4a8a" font-family="M PLUS Rounded 1c">→トークン発行</text>
+      <!-- 矢印左下 -->
+      <path d="M148 130 L92 130" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arr2)"/>
+      <text x="120" y="148" text-anchor="middle" font-size="8" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">④ トークン返却</text>
+      <!-- 結果 -->
+      <rect x="260" y="65" width="72" height="70" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="296" y="90" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">証明完了</text>
+      <text x="296" y="106" text-anchor="middle" font-size="8" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">・存在時刻</text>
+      <text x="296" y="118" text-anchor="middle" font-size="8" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">・非改ざん</text>
+      <text x="296" y="130" text-anchor="middle" font-size="8" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">を両方証明</text>
+      <path d="M252 100 L260 100" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#9aa3b2"/></marker>
+        <marker id="arr2" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"><polygon points="8 0, 0 3, 8 6" fill="#2e8b4f"/></marker>
+      </defs>
+    </svg>
+    <p style="font-size:12px;color:#48506a;font-weight:600;margin-top:8px;">TSA（Time Stamping Authority：時刻認証局）が「ハッシュ値＋時刻」に署名する。文書そのものは送らなくてよい＝プライバシー保護にもなる。</p>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 タイムスタンプが証明できる2つのこと</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 存在証明（いつ存在したか）</div>
+        <div class="fb">「○年○月○日○時にこの文書が確かに存在した」を証明。契約書・特許申請・遺言書などで重要。</div>
+      </div>
+      <div class="farrow">＋</div>
+      <div class="fstep f2">
+        <div class="fh">② 非改ざん証明（変えられていないか）</div>
+        <div class="fb">タイムスタンプ発行後に1ビットでも変更されると、ハッシュ値が変わり検証失敗。改ざんを即座に検出できる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">この2つをセットで保証できる</div>
+        <div class="fb">「いつ・この内容で・確かに存在した」を第三者（TSA）が保証する。電子文書の信頼性の根拠になる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">電子署名と混同しやすい</div>
+      <div class="tb">電子署名は「誰が署名したか（本人確認）」を証明する。タイムスタンプは「いつ・改ざんなし」を証明する。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「文書全体をTSAに送る」は誤り</div>
+      <div class="tb">送るのはハッシュ値のみ。文書の中身は送らない（機密情報を外部に出さなくてよい）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「タイムスタンプ＝作成者が自分で付ける」は誤り</div>
+      <div class="tb">自分で付けた日付は証明力ゼロ。第三者機関（TSA）が付けることで初めて証明力を持つ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「電子文書の存在時刻の証明・改ざん検知」→ タイムスタンプ。「誰が作ったかの証明」→ 電子署名。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「タイム（時刻）」＋「スタンプ（消印）」</span>＝郵便局の消印と同じ！<br><br>
+      消印は「この手紙は○月○日に確かに出した」証拠。<br>
+      タイムスタンプは<span class="hl">電子文書の"消印"</span>。<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">消せない・変えられない・第三者が押す ＝ タイムスタンプ</span>
+    </div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>電子契約担当の私。「電子署名で誰が・改ざんなしは証明済み。でも『〇月〇日時点で存在した』を証明する仕組みが要る」と法務指摘。これって何？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>タイムスタンプ（時刻認証）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>電子署名（追加）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 電子署名は「誰が・改ざんなし」のみ。「いつ存在したか」はタイムスタンプ</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：タイムスタンプ（時刻認証）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 タイムスタンプ（信頼できる時刻証明）とは何か</h2>
-<span class="kw">時刻の存在証明</span>
-<p>タイムスタンプは信頼できる第三者機関（TSA: Time Stamping Authority）が電子データのハッシュ値と時刻情報を組み合わせて証明する技術。データが特定時刻に存在したこと（存在証明）と、その後改ざんされていないこと（完全性証明）を示す。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>電子帳簿保存法では電子文書へのタイムスタンプ付与が要件の一つ。電子署名＋タイムスタンプで「誰が・いつ・改ざんなく」を証明できる。
-
-**覚え方** 🎯 **電子署名＝誰が＋改ざんなし／タイムスタンプ＝いつ**。**3点セット**で完全証明。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>【混同注意】電子署名とタイムスタンプは役割が異なる。電子署名＝「誰が」「改ざんなし」を証明、タイムスタンプ＝「いつ存在したか」を第三者機関（TSA）が証明。契約書の有効性には両方が必要。「存在時刻の証明→タイムスタンプ」と覚える。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**電子署名＝誰が＋改ざんなし／タイムスタンプ＝いつ**。**3点セット**で完全証明。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>タイムスタンプ（信頼できる時刻証明）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

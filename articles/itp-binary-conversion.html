@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2進数の基数変換とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="2進数・10進数・16進数の基数変換をわかりやすく解説。10進数→2進数の割り算法、2進数→10進数の位取り法、ITパスポート試験の計算問題の解き方まで。">
+<link rel="canonical" href="https://example.com/itp-binary-conversion">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6e8b,#0d3d4f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,79,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a8d8e8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-teal{--c:#1a6e8b;--cbg:#ddf0f5;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6e8b;}
+
+.conv-box{background:#f5f6fc;border-radius:14px;padding:14px 16px;font-family:monospace;margin-top:10px;}
+.conv-box .cb-title{font-family:"M PLUS Rounded 1c",sans-serif;font-size:12px;font-weight:900;color:#4256b8;margin-bottom:8px;}
+.conv-box .cb-line{font-size:14px;font-weight:900;color:#2b3245;line-height:2.1;}
+.conv-box .cb-arrow{color:#8a91a0;font-family:"M PLUS Rounded 1c",sans-serif;font-weight:700;}
+.cb-red{color:#c8391a;}
+.cb-blue{color:#2e6de5;}
+
+.weight-row{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap;}
+.wbit{text-align:center;background:#e7eefc;border-radius:10px;padding:10px 12px;min-width:58px;}
+.wbit .wv{font-size:20px;font-weight:900;font-family:monospace;color:#2e6de5;}
+.wbit .wp{font-size:10px;font-weight:900;color:#4256b8;margin-top:2px;}
+.wbit .wn{font-size:13px;font-weight:900;color:#c8391a;margin-top:4px;}
+.wbit.active{background:#fce4dd;border:2px solid #c8391a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;font-family:inherit;}
+.fstep .fb code{font-family:monospace;font-size:14px;font-weight:900;background:#f0f0f0;padding:1px 5px;border-radius:4px;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6e8b;--fbg:#e6f5f9;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.trap-item .tb code{font-family:monospace;font-size:13px;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>2進数の基数変換</b>とは？</h1>
+    <p>「基数」＝数を表すために使う数字の種類の数。10進数↔2進数の変換は、コンピュータの数の世界への入口。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-txt">
+      プログラムのバグを調査中。デバッグツールに「0b1010」と表示されている。「これって10なの？それとも2なの？」と迷ってしまった。2進数とわかれば変換するだけ。
+      <div class="scene-q">…「0bから始まる数＝2進数」。変換ルールを知れば一瞬で解読できる！</div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：位の重み -->
+  <div class="panel p-blue">
+    <span class="phead">🔢 2進数の「位の重み」を図解</span>
+    <svg width="100%" viewBox="0 0 340 130" role="img" aria-label="2進数の各桁の重み（1・2・4・8・16・32・64・128）の図解">
+      <!-- ビット位置 -->
+      <rect x="10" y="20" width="40" height="40" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="30" y="38" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">2⁷</text>
+      <text x="30" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="monospace">128</text>
+
+      <rect x="58" y="20" width="40" height="40" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="78" y="38" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">2⁶</text>
+      <text x="78" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="monospace">64</text>
+
+      <rect x="106" y="20" width="40" height="40" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="126" y="38" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">2⁵</text>
+      <text x="126" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="monospace">32</text>
+
+      <rect x="154" y="20" width="40" height="40" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="174" y="38" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">2⁴</text>
+      <text x="174" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#2e6de5" font-family="monospace">16</text>
+
+      <rect x="202" y="20" width="40" height="40" rx="6" fill="#fce4dd" stroke="#c8391a" stroke-width="2"/>
+      <text x="222" y="38" text-anchor="middle" font-size="10" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">2³</text>
+      <text x="222" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#c8391a" font-family="monospace">8</text>
+
+      <rect x="250" y="20" width="40" height="40" rx="6" fill="#fce4dd" stroke="#c8391a" stroke-width="2"/>
+      <text x="270" y="38" text-anchor="middle" font-size="10" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">2²</text>
+      <text x="270" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#c8391a" font-family="monospace">4</text>
+
+      <rect x="298" y="20" width="20" height="40" rx="6" fill="#fce4dd" stroke="#c8391a" stroke-width="2"/>
+      <text x="308" y="38" text-anchor="middle" font-size="8" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">2¹</text>
+      <text x="308" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#c8391a" font-family="monospace">2</text>
+
+      <!-- 2^0 -->
+      <rect x="322" y="20" width="16" height="40" rx="6" fill="#fce4dd" stroke="#c8391a" stroke-width="2"/>
+      <text x="330" y="38" text-anchor="middle" font-size="7" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">2⁰</text>
+      <text x="330" y="52" text-anchor="middle" font-size="14" font-weight="900" fill="#c8391a" font-family="monospace">1</text>
+
+      <!-- 矢印説明 -->
+      <text x="170" y="88" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6e8b" font-family="M PLUS Rounded 1c">左に1桁ずれるたびに×2（右端が2⁰＝1）</text>
+      <text x="170" y="106" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">例：1010 = 8+0+2+0 = 10（10進数）</text>
+      <path d="M60,72 L280,72" stroke="#1a6e8b" stroke-width="1.5" marker-end="url(#larr)" marker-start="url(#rarr)"/>
+      <defs>
+        <marker id="larr" markerWidth="6" markerHeight="6" refX="0" refY="3" orient="auto">
+          <path d="M6,0 L0,3 L6,6 z" fill="#1a6e8b"/>
+        </marker>
+        <marker id="rarr" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 z" fill="#1a6e8b"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細：変換の手順 -->
+  <div class="panel p-orange">
+    <span class="phead">🔄 変換の2大手順</span>
+
+    <p style="font-size:13px;font-weight:900;color:#d9851f;margin-bottom:8px;">【A】2進数 → 10進数（位の重みで足し算）</p>
+    <div class="conv-box">
+      <div class="cb-title">例：1011（2進数）を10進数に</div>
+      <div class="cb-line">
+        1×<span class="cb-blue">8</span> + 0×<span class="cb-blue">4</span> + 1×<span class="cb-blue">2</span> + 1×<span class="cb-blue">1</span><br>
+        ＝ <span class="cb-red">8 + 0 + 2 + 1 ＝ 11</span>
+      </div>
+    </div>
+
+    <p style="font-size:13px;font-weight:900;color:#d9851f;margin:14px 0 8px;">【B】10進数 → 2進数（2で割り続ける）</p>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 10進数の数値を2で割る</div>
+        <div class="fb">割り切れる間ずっと2で割る。余りが0か1になる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 余りを記録する</div>
+        <div class="fb">割るたびに余り（0か1）をメモしていく。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 余りを下から上へ読む</div>
+        <div class="fb">最後の余りが最上位ビット（MSB）。<strong>下から上へ</strong>並べた並びが答え。</div>
+      </div>
+    </div>
+    <div class="conv-box" style="margin-top:10px;">
+      <div class="cb-title">例：13（10進数）を2進数に</div>
+      <div class="cb-line">
+        13÷2＝6 余り<span class="cb-red">1</span>　← ④<br>
+        6÷2＝3 余り<span class="cb-red">0</span>　← ③<br>
+        3÷2＝1 余り<span class="cb-red">1</span>　← ②<br>
+        1÷2＝0 余り<span class="cb-red">1</span>　← ①（ここで終了）<br>
+        下から読む → <span class="cb-red">1101</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">余りを上から読んでしまう</div>
+      <div class="tb">2で割り続けたとき、余りは「<strong>下から上へ</strong>」読むのが正解。上から読むと桁が逆になって全く別の数になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">位の重みを右から2⁰と数え忘れる</div>
+      <div class="tb">右端が2⁰（＝1）、左に行くほど2倍。「右端は1」を固定して考える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">0のビットを無視する</div>
+      <div class="tb"><code>1010</code> の場合、0の桁は「0×4」「0×1」→どちらも0。足し算に含めなくていいが桁の位置はズレてはいけない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「2進数→10進数」は位の重みで<strong>足し算</strong>。「10進数→2進数」は2で<strong>割り算</strong>して余りを<strong>下から読む</strong>。方向を間違えない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「にしん→じゅっ：重みで足す」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">2進数→10進数：右から1・2・4・8…で重みをかけて足す</span><br><br>
+      <span class="hl">「じゅっ→にしん：2で割って下から読む」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">10進数→2進数：÷2し続けて余りを逆順に並べる</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

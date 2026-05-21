@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ITパスポートの出題分野とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ITパスポートの3分野（ストラテジ・マネジメント・テクノロジ）と出題比率を図解で解説。各分野で何が問われるか、試験対策の優先順位も明確に。">
+<link rel="canonical" href="https://mana-quest.com/itp/itp-it-passport-categories">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1b6bc4,#0c3d8a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(12,61,138,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0d8f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1b6bc4;--cbg:#e0edf8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-purple{--c:#6c3b9f;--cbg:#f0e8fa;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1b6bc4;}
+
+.cat-block{border-radius:14px;padding:14px;margin-bottom:10px;border-left:6px solid var(--cb);}
+.cat-block:last-child{margin-bottom:0;}
+.cat-block .cath{font-size:14px;font-weight:900;color:var(--cb);margin-bottom:4px;}
+.cat-block .catpct{display:inline-block;background:var(--cb);color:#fff;font-size:11px;font-weight:900;padding:2px 8px;border-radius:8px;margin-bottom:6px;}
+.cat-block .catb{font-size:12px;font-weight:600;line-height:1.75;color:#48506a;}
+.cat-block ul{list-style:none;margin-top:5px;}
+.cat-block li{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:12px;position:relative;}
+.cat-block li::before{content:"・";position:absolute;left:0;}
+.cb1{--cb:#1b6bc4;background:#e0edf8;}
+.cb2{--cb:#2e8b4f;background:#e2f3e5;}
+.cb3{--cb:#d9851f;background:#fcefd9;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#d9851f;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ 試験概要</span>
+    <h1><b>ITパスポートの出題分野</b>とは？</h1>
+    <p>3分野・3階層で「IT×経営×技術」を問う試験。<br>分野ごとに出題比率と得意科目がある。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#c0d8f5"/>
+        <rect x="14" y="36" width="44" height="26" rx="8" fill="#1b6bc4"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 16 a12 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 問題用紙アイコン -->
+        <rect x="40" y="54" width="22" height="26" rx="2" fill="#fff" stroke="#1b6bc4" stroke-width="1.5"/>
+        <line x1="43" y1="61" x2="59" y2="61" stroke="#1b6bc4" stroke-width="1.2"/>
+        <line x1="43" y1="65" x2="59" y2="65" stroke="#2e8b4f" stroke-width="1.2"/>
+        <line x1="43" y1="69" x2="59" y2="69" stroke="#d9851f" stroke-width="1.2"/>
+        <line x1="43" y1="73" x2="55" y2="73" stroke="#1b6bc4" stroke-width="1.2"/>
+      </svg>
+      <div class="scene-txt">
+        ITパスポートの参考書を開いたあなた。第1章「ストラテジ系」、第2章「マネジメント系」、第3章「テクノロジ系」…<br>
+        「全部で100問、4択、1000点満点、<strong>各分野の合格基準あり</strong>」<br>
+        どの分野から始めれば効率がいい？
+        <div class="scene-q">出題分野の構造を知れば、戦略的に勉強できる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：3分野の構造 -->
+  <div class="panel p-purple">
+    <span class="phead">3分野の全体構造と出題比率</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="ITパスポート3分野の出題比率：ストラテジ35%、マネジメント20%、テクノロジ45%">
+      <!-- タイトル -->
+      <text x="170" y="20" text-anchor="middle" font-size="12" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">100問（1000点満点）の出題構成</text>
+
+      <!-- ストラテジ：約35問 -->
+      <rect x="10" y="30" width="100" height="155" rx="12" fill="#e0edf8" stroke="#1b6bc4" stroke-width="2.5"/>
+      <text x="60" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#0d3d80" font-family="M PLUS Rounded 1c">ストラテジ系</text>
+      <text x="60" y="68" text-anchor="middle" font-size="18" font-weight="900" fill="#1b6bc4" font-family="M PLUS Rounded 1c">約35問</text>
+      <text x="60" y="84" text-anchor="middle" font-size="11" font-weight="800" fill="#3a6098" font-family="M PLUS Rounded 1c">（35%）</text>
+      <line x1="20" y1="92" x2="100" y2="92" stroke="#b0c8e8" stroke-width="1"/>
+      <text x="60" y="107" text-anchor="middle" font-size="10" font-weight="700" fill="#3a6098" font-family="M PLUS Rounded 1c">経営戦略</text>
+      <text x="60" y="121" text-anchor="middle" font-size="10" font-weight="700" fill="#3a6098" font-family="M PLUS Rounded 1c">ITガバナンス</text>
+      <text x="60" y="135" text-anchor="middle" font-size="10" font-weight="700" fill="#3a6098" font-family="M PLUS Rounded 1c">マーケティング</text>
+      <text x="60" y="149" text-anchor="middle" font-size="10" font-weight="700" fill="#3a6098" font-family="M PLUS Rounded 1c">財務・会計</text>
+      <text x="60" y="163" text-anchor="middle" font-size="10" font-weight="700" fill="#3a6098" font-family="M PLUS Rounded 1c">法務・コンプラ</text>
+      <text x="60" y="177" text-anchor="middle" font-size="9" font-weight="700" fill="#6080b0" font-family="M PLUS Rounded 1c">合格基準 300点以上</text>
+
+      <!-- マネジメント：約20問 -->
+      <rect x="120" y="30" width="100" height="155" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="170" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#1a5030" font-family="M PLUS Rounded 1c">マネジメント系</text>
+      <text x="170" y="68" text-anchor="middle" font-size="18" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">約20問</text>
+      <text x="170" y="84" text-anchor="middle" font-size="11" font-weight="800" fill="#3a7040" font-family="M PLUS Rounded 1c">（20%）</text>
+      <line x1="130" y1="92" x2="210" y2="92" stroke="#a0d0a8" stroke-width="1"/>
+      <text x="170" y="107" text-anchor="middle" font-size="10" font-weight="700" fill="#3a7040" font-family="M PLUS Rounded 1c">プロジェクト管理</text>
+      <text x="170" y="121" text-anchor="middle" font-size="10" font-weight="700" fill="#3a7040" font-family="M PLUS Rounded 1c">サービス管理</text>
+      <text x="170" y="135" text-anchor="middle" font-size="10" font-weight="700" fill="#3a7040" font-family="M PLUS Rounded 1c">システム監査</text>
+      <text x="170" y="149" text-anchor="middle" font-size="10" font-weight="700" fill="#3a7040" font-family="M PLUS Rounded 1c">内部統制・IT統制</text>
+      <text x="170" y="163" text-anchor="middle" font-size="10" font-weight="700" fill="#3a7040" font-family="M PLUS Rounded 1c">開発プロセス</text>
+      <text x="170" y="177" text-anchor="middle" font-size="9" font-weight="700" fill="#5a9060" font-family="M PLUS Rounded 1c">合格基準 300点以上</text>
+
+      <!-- テクノロジ：約45問 -->
+      <rect x="230" y="30" width="100" height="155" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="2.5"/>
+      <text x="280" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#7a4000" font-family="M PLUS Rounded 1c">テクノロジ系</text>
+      <text x="280" y="68" text-anchor="middle" font-size="18" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">約45問</text>
+      <text x="280" y="84" text-anchor="middle" font-size="11" font-weight="800" fill="#a06020" font-family="M PLUS Rounded 1c">（45%）</text>
+      <line x1="240" y1="92" x2="320" y2="92" stroke="#e0c090" stroke-width="1"/>
+      <text x="280" y="107" text-anchor="middle" font-size="10" font-weight="700" fill="#a06020" font-family="M PLUS Rounded 1c">コンピュータ基礎</text>
+      <text x="280" y="121" text-anchor="middle" font-size="10" font-weight="700" fill="#a06020" font-family="M PLUS Rounded 1c">ネットワーク</text>
+      <text x="280" y="135" text-anchor="middle" font-size="10" font-weight="700" fill="#a06020" font-family="M PLUS Rounded 1c">セキュリティ</text>
+      <text x="280" y="149" text-anchor="middle" font-size="10" font-weight="700" fill="#a06020" font-family="M PLUS Rounded 1c">データベース</text>
+      <text x="280" y="163" text-anchor="middle" font-size="10" font-weight="700" fill="#a06020" font-family="M PLUS Rounded 1c">システム開発</text>
+      <text x="280" y="177" text-anchor="middle" font-size="9" font-weight="700" fill="#c07030" font-family="M PLUS Rounded 1c">合格基準 300点以上</text>
+    </svg>
+  </div>
+
+  <!-- 3分野の詳細 -->
+  <div class="panel p-green">
+    <span class="phead">各分野で何を問われるか</span>
+    <div class="cat-block cb1">
+      <div class="cath">ストラテジ系（経営・IT戦略）</div>
+      <span class="catpct">約35問 ・ 合格基準300点</span>
+      <div class="catb">「ビジネスとITをつなぐ」分野。文系出身者が得点しやすい。</div>
+      <ul>
+        <li>経営戦略（SWOT・3C・PEST・BSC・PPM）</li>
+        <li>ITガバナンス・IT投資・ITコンプライアンス</li>
+        <li>マーケティング（STP・4P・CRM）</li>
+        <li>財務・会計（損益計算・ROI・TCO）</li>
+        <li>法務（著作権・個人情報保護・不正競争防止）</li>
+      </ul>
+    </div>
+    <div class="cat-block cb2">
+      <div class="cath">マネジメント系（管理・プロセス）</div>
+      <span class="catpct">約20問 ・ 合格基準300点</span>
+      <div class="catb">「プロジェクトとサービスを動かす」分野。問題数は少ないが満点が狙いやすい。</div>
+      <ul>
+        <li>プロジェクト管理（PMBOK・WBS・クリティカルパス・EVM）</li>
+        <li>サービス管理（ITIL・SLA・インシデント管理）</li>
+        <li>システム監査・内部統制・IT統制</li>
+        <li>開発プロセス（ウォーターフォール・アジャイル）</li>
+      </ul>
+    </div>
+    <div class="cat-block cb3">
+      <div class="cath">テクノロジ系（技術・システム）</div>
+      <span class="catpct">約45問 ・ 合格基準300点</span>
+      <div class="catb">「コンピュータとネットワークの仕組み」分野。問題数最多・2進数・計算問題あり。</div>
+      <ul>
+        <li>コンピュータ基礎（2進数・CPU・メモリ・記憶装置）</li>
+        <li>ネットワーク（IP・TCP/UDP・DNS・HTTP）</li>
+        <li>セキュリティ（暗号・認証・攻撃手法・対策）</li>
+        <li>データベース（SQL・正規化・ER図）</li>
+        <li>AI・IoT・クラウド・ビッグデータ</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 試験のキモ -->
+  <div class="panel p-orange">
+    <span class="phead">試験のキモ</span>
+    <ul class="kimo-list">
+      <li>合格は<strong>総合600点以上＋各分野300点以上</strong>（1分野でも300未満なら不合格）。</li>
+      <li>テクノロジ系が<strong>問題数最多（約45問）</strong>。苦手だと総合点が下がる。</li>
+      <li>ストラテジ系は<strong>文系知識で得点しやすい</strong>。確実に300点超えを狙う。</li>
+      <li>マネジメント系は<strong>問題数が少ない</strong>分、1問のミスが響く。満点を狙うべき分野。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">合格基準を誤解しやすい</div>
+      <div class="tb">「総合600点以上だけでよい」は誤り。各分野で300点以上が必要。1分野でも300点未満なら総合が600点以上でも不合格。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">問題数と難易度の関係</div>
+      <div class="tb">問題数が多いテクノロジ系を捨てると合格が難しくなる。「苦手だから後回し」は危険。テクノロジ系に最低限の対策が必要。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">分野名と内容のマッピング</div>
+      <div class="tb">「IT統制」→ マネジメント系。「ITガバナンス・ITコンプライアンス」→ ストラテジ系。「セキュリティ・ネットワーク」→ テクノロジ系。分野を間違えやすいので注意。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">ス</span>ト・<span class="hl">マ</span>ネ・<span class="hl">テ</span>ク＝<span class="hl">「スマテク」</span>！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        ス＝ストラテジ（経営・戦略）<br>
+        マ＝マネジメント（管理・監査）<br>
+        テ＝テクノロジ（技術・システム）<br>
+        「スマテク」＝スマホ×テクノロジで全部OK
+      </span><br><br>
+      出題数は<span class="hl">テ（45）</span>＞<span class="hl">ス（35）</span>＞<span class="hl">マ（20）</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">テ（45）スマ（35・20）→「テスマ」で覚える</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

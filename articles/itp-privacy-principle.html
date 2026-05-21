@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>プライバシー原則とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="プライバシー原則（OECD8原則）を図解でわかりやすく解説。個人情報保護の基本ルール8つ、個人情報保護法との関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-privacy-principle">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#3b6b2e,#1a4010);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(26,64,16,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c2dabb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563a8;--cbg:#deeaf8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.principle-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.pl-item{border-radius:11px;padding:11px 14px;background:var(--pb);border-left:5px solid var(--pc);}
+.pl-item .ph{font-size:13px;font-weight:900;color:var(--pc);margin-bottom:3px;}
+.pl-item .pb{font-size:12px;font-weight:600;line-height:1.75;color:#48506a;}
+.pi1{--pc:#2563a8;--pb:#deeaf8;}
+.pi2{--pc:#2e8b4f;--pb:#e2f3e5;}
+.pi3{--pc:#7c3aed;--pb:#ede9fb;}
+.pi4{--pc:#d9851f;--pb:#fcefd9;}
+.pi5{--pc:#dd5a3a;--pb:#fce4dd;}
+.pi6{--pc:#0891b2;--pb:#e0f6fb;}
+.pi7{--pc:#4256b8;--pb:#e4e7f7;}
+.pi8{--pc:#be185d;--pb:#fce7f3;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>プライバシー原則</b>（OECD8原則）とは？</h1>
+    <p>個人情報を扱うすべての組織が守るべき8つのルール——世界中の個人情報保護法の土台となった国際基準。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#c5d4e8"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#3b6b2e"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        ECサイトを運営するあなた。新規会員登録で「住所・氏名・電話番号」を収集することにした。<br>
+        でも、集めていいデータは何？どう管理すれば合法？いつ消せばいい？
+        <div class="scene-q">→ その答えが「OECD8原則（プライバシー原則）」に全部入っている！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：8原則の輪 -->
+  <div class="panel p-green">
+    <span class="phead">🔄 OECD8原則の全体像</span>
+    <svg width="100%" viewBox="0 0 340 340" role="img" aria-label="OECD8原則を8つの扇形で表した円図">
+      <!-- 中心円 -->
+      <circle cx="170" cy="170" r="56" fill="#2e8b4f"/>
+      <text x="170" y="162" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">OECD</text>
+      <text x="170" y="180" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">8原則</text>
+      <!-- 1 収集制限 -->
+      <path d="M170 170 L170 30 A140 140 0 0 1 269 71 Z" fill="#deeaf8" stroke="#fff" stroke-width="2"/>
+      <text x="227" y="72" text-anchor="middle" font-size="10" font-weight="900" fill="#1a4a80" font-family="M PLUS Rounded 1c">①収集</text>
+      <text x="227" y="85" text-anchor="middle" font-size="10" font-weight="900" fill="#1a4a80" font-family="M PLUS Rounded 1c">制限</text>
+      <!-- 2 データ品質 -->
+      <path d="M170 170 L269 71 A140 140 0 0 1 310 170 Z" fill="#e2f3e5" stroke="#fff" stroke-width="2"/>
+      <text x="299" y="128" text-anchor="middle" font-size="10" font-weight="900" fill="#1a5c30" font-family="M PLUS Rounded 1c">②データ</text>
+      <text x="299" y="141" text-anchor="middle" font-size="10" font-weight="900" fill="#1a5c30" font-family="M PLUS Rounded 1c">品質</text>
+      <!-- 3 目的明確化 -->
+      <path d="M170 170 L310 170 A140 140 0 0 1 269 269 Z" fill="#ede9fb" stroke="#fff" stroke-width="2"/>
+      <text x="299" y="215" text-anchor="middle" font-size="10" font-weight="900" fill="#5b21b6" font-family="M PLUS Rounded 1c">③目的</text>
+      <text x="299" y="228" text-anchor="middle" font-size="10" font-weight="900" fill="#5b21b6" font-family="M PLUS Rounded 1c">明確化</text>
+      <!-- 4 利用制限 -->
+      <path d="M170 170 L269 269 A140 140 0 0 1 170 310 Z" fill="#fcefd9" stroke="#fff" stroke-width="2"/>
+      <text x="227" y="307" text-anchor="middle" font-size="10" font-weight="900" fill="#92400e" font-family="M PLUS Rounded 1c">④利用</text>
+      <text x="227" y="320" text-anchor="middle" font-size="10" font-weight="900" fill="#92400e" font-family="M PLUS Rounded 1c">制限</text>
+      <!-- 5 安全保護 -->
+      <path d="M170 170 L170 310 A140 140 0 0 1 71 269 Z" fill="#fce4dd" stroke="#fff" stroke-width="2"/>
+      <text x="113" y="307" text-anchor="middle" font-size="10" font-weight="900" fill="#9b1c1c" font-family="M PLUS Rounded 1c">⑤安全</text>
+      <text x="113" y="320" text-anchor="middle" font-size="10" font-weight="900" fill="#9b1c1c" font-family="M PLUS Rounded 1c">保護</text>
+      <!-- 6 公開 -->
+      <path d="M170 170 L71 269 A140 140 0 0 1 30 170 Z" fill="#e0f6fb" stroke="#fff" stroke-width="2"/>
+      <text x="41" y="215" text-anchor="middle" font-size="10" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">⑥公開</text>
+      <!-- 7 個人参加 -->
+      <path d="M170 170 L30 170 A140 140 0 0 1 71 71 Z" fill="#e4e7f7" stroke="#fff" stroke-width="2"/>
+      <text x="41" y="128" text-anchor="middle" font-size="10" font-weight="900" fill="#3730a3" font-family="M PLUS Rounded 1c">⑦個人</text>
+      <text x="41" y="141" text-anchor="middle" font-size="10" font-weight="900" fill="#3730a3" font-family="M PLUS Rounded 1c">参加</text>
+      <!-- 8 責任 -->
+      <path d="M170 170 L71 71 A140 140 0 0 1 170 30 Z" fill="#fce7f3" stroke="#fff" stroke-width="2"/>
+      <text x="113" y="56" text-anchor="middle" font-size="10" font-weight="900" fill="#9d174d" font-family="M PLUS Rounded 1c">⑧責任</text>
+    </svg>
+  </div>
+
+  <!-- 8原則詳細 -->
+  <div class="panel p-orange">
+    <span class="phead">📜 8原則の中身（一問一答）</span>
+    <ul class="principle-list">
+      <li class="pl-item pi1">
+        <div class="ph">① 収集制限の原則</div>
+        <div class="pb">個人データは適法・公正な手段で収集し、必要な限度内にとどめる。本人の同意が原則。</div>
+      </li>
+      <li class="pl-item pi2">
+        <div class="ph">② データ内容の原則</div>
+        <div class="pb">目的と関連性があり、正確・完全・最新の状態に保つ。不要なデータを抱えない。</div>
+      </li>
+      <li class="pl-item pi3">
+        <div class="ph">③ 目的明確化の原則</div>
+        <div class="pb">収集前または収集時点で、利用目的を明確にする。目的外利用は禁止。</div>
+      </li>
+      <li class="pl-item pi4">
+        <div class="ph">④ 利用制限の原則</div>
+        <div class="pb">明確にした目的以外でデータを利用・開示・提供しない（例外は本人の同意か法律の要求）。</div>
+      </li>
+      <li class="pl-item pi5">
+        <div class="ph">⑤ 安全保護の原則</div>
+        <div class="pb">紛失・不正アクセス・改ざん・漏えいなどのリスクに合理的なセキュリティ対策を講じる。</div>
+      </li>
+      <li class="pl-item pi6">
+        <div class="ph">⑥ 公開の原則</div>
+        <div class="pb">個人データの管理実務・方針・管理者などを本人が知れるよう公開する（透明性）。</div>
+      </li>
+      <li class="pl-item pi7">
+        <div class="ph">⑦ 個人参加の原則</div>
+        <div class="pb">本人が自分のデータの存在確認・閲覧・訂正・消去を求める権利を持つ。</div>
+      </li>
+      <li class="pl-item pi8">
+        <div class="ph">⑧ 責任の原則</div>
+        <div class="pb">管理者は上記7原則を遵守する責任を負い、実施措置の説明責任を持つ。</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「7原則」と「8原則」の数の混同</div>
+      <div class="tb">プライバシーバイデザインが<strong>7原則</strong>、OECDプライバシーガイドラインが<strong>8原則</strong>。数字が出たら何の原則かを確認する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「目的明確化」≠「目的外利用禁止」は別原則</div>
+      <div class="tb">目的を決めること（③）と、目的外に使わないこと（④）は別々の原則として出題される。セットで覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">GDPRや個人情報保護法との関係</div>
+      <div class="tb">OECD8原則は1980年策定の<strong>国際ガイドライン</strong>。GDPRや日本の個人情報保護法の基礎になっているが、それ自体は法律ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「個人データを何のために使うか最初に決めておく」→ <strong>目的明確化の原則</strong>。「本人が見せてと言えば見せる」→ <strong>個人参加の原則</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「収品目利安公個責」</span>＝「集めた品は目的利用に安心公開、個人は責任者に頼む！」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">収集制限・データ品質・目的明確化・利用制限・安全保護・公開・個人参加・責任</span><br><br>
+      頭文字：<span class="hl">収・品・目・利・安・公・個・責</span>（8文字・8原則）
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

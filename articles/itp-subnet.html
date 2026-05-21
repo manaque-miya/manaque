@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>サブネットとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="サブネット・サブネットマスクをわかりやすく図解。IPアドレスとの関係・ネットワーク部とホスト部の見分け方・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-subnet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#059669,#064e3b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(6,78,59,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a7f3d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563eb;--cbg:#dbeafe;}
+.p-green{--c:#059669;--cbg:#d1fae5;}
+.p-teal{--c:#0d9488;--cbg:#ccfbf1;}
+.p-orange{--c:#d97706;--cbg:#fef3c7;}
+.p-red{--c:#dc2626;--cbg:#fee2e2;}
+
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#059669;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2563eb;--fbg:#eff6ff;}
+.f2{--fc:#059669;--fbg:#f0fdf4;}
+.f3{--fc:#d97706;--fbg:#fffbeb;}
+
+.ip-display{background:#1e293b;border-radius:12px;padding:14px;margin:10px 0;font-family:monospace;}
+.ip-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+.ip-label{font-size:12px;font-weight:800;color:#94a3b8;min-width:120px;}
+.ip-net{background:#3b82f6;color:#fff;font-size:13px;font-weight:900;padding:4px 8px;border-radius:6px;}
+.ip-host{background:#10b981;color:#fff;font-size:13px;font-weight:900;padding:4px 8px;border-radius:6px;}
+.ip-dot{color:#64748b;font-size:16px;font-weight:900;}
+
+.trap-item{background:#fee2e2;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#991b1b;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7f1d1d;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>サブネット</b>とは？</h1>
+    <p>大きなネットワークを小さく「分割」したもの。サブネットマスクで「どこまでが住所（ネットワーク部）か」を指定する。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-txt">
+      大きな会社にはたくさんのパソコンがある。全部を1つのネットワークに繋いだら、通信が混雑してパンクした。<br>
+      そこでネットワーク担当者が「部署ごとに<strong>小さなネットワーク（サブネット）</strong>に分けよう！」と提案。<br>
+      「でも、どこまでが同じネットワークか、どうやって判断するの？」<br>
+      <div class="scene-q">…それを示すのが「サブネットマスク」！</div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：サブネット分割 -->
+  <div class="panel p-green">
+    <span class="phead">🌐 サブネット分割の仕組み（図解）</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="大きなネットワークをサブネットに分割する図">
+      <!-- 大きなネットワーク背景 -->
+      <rect x="10" y="10" width="320" height="190" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+      <text x="170" y="30" text-anchor="middle" font-size="12" font-weight="900" fill="#065f46" font-family="M PLUS Rounded 1c">会社の大きなネットワーク</text>
+      <!-- サブネット1 -->
+      <rect x="20" y="40" width="135" height="70" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+      <text x="87" y="57" text-anchor="middle" font-size="11" font-weight="900" fill="#1d4ed8" font-family="M PLUS Rounded 1c">サブネット1（営業部）</text>
+      <rect x="30" y="62" width="25" height="18" rx="4" fill="#2563eb"/>
+      <text x="42" y="74" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PC</text>
+      <rect x="62" y="62" width="25" height="18" rx="4" fill="#2563eb"/>
+      <text x="74" y="74" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PC</text>
+      <rect x="94" y="62" width="25" height="18" rx="4" fill="#2563eb"/>
+      <text x="106" y="74" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PC</text>
+      <text x="87" y="100" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8" font-family="M PLUS Rounded 1c">192.168.1.0/24</text>
+      <!-- サブネット2 -->
+      <rect x="185" y="40" width="135" height="70" rx="10" fill="#fce7f3" stroke="#be185d" stroke-width="2"/>
+      <text x="252" y="57" text-anchor="middle" font-size="11" font-weight="900" fill="#9d174d" font-family="M PLUS Rounded 1c">サブネット2（開発部）</text>
+      <rect x="195" y="62" width="25" height="18" rx="4" fill="#be185d"/>
+      <text x="207" y="74" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PC</text>
+      <rect x="227" y="62" width="25" height="18" rx="4" fill="#be185d"/>
+      <text x="239" y="74" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PC</text>
+      <rect x="259" y="62" width="25" height="18" rx="4" fill="#be185d"/>
+      <text x="271" y="74" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PC</text>
+      <text x="252" y="100" text-anchor="middle" font-size="10" font-weight="700" fill="#9d174d" font-family="M PLUS Rounded 1c">192.168.2.0/24</text>
+      <!-- ルータ -->
+      <rect x="130" y="125" width="80" height="30" rx="8" fill="#059669"/>
+      <text x="170" y="145" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ルータ</text>
+      <!-- 接続線 -->
+      <line x1="87" y1="110" x2="130" y2="130" stroke="#059669" stroke-width="2"/>
+      <line x1="252" y1="110" x2="210" y2="130" stroke="#059669" stroke-width="2"/>
+      <!-- 説明 -->
+      <text x="170" y="175" text-anchor="middle" font-size="11" font-weight="800" fill="#065f46" font-family="M PLUS Rounded 1c">ルータがサブネット間の通信を中継</text>
+      <text x="170" y="192" text-anchor="middle" font-size="10" font-weight="700" fill="#64748b" font-family="M PLUS Rounded 1c">サブネット内は直接通信、外はルータを経由</text>
+    </svg>
+  </div>
+
+  <!-- IPアドレスとサブネットマスク -->
+  <div class="panel p-teal">
+    <span class="phead">🔢 IPアドレスとサブネットマスク</span>
+    <div class="ip-display">
+      <div class="ip-row">
+        <span class="ip-label" style="color:#94a3b8;font-size:11px;">IPアドレス例</span>
+        <span class="ip-net">192.168.1</span>
+        <span class="ip-dot">.</span>
+        <span class="ip-host">100</span>
+      </div>
+      <div class="ip-row">
+        <span class="ip-label" style="color:#94a3b8;font-size:11px;">サブネットマスク</span>
+        <span class="ip-net">255.255.255</span>
+        <span class="ip-dot">.</span>
+        <span class="ip-host">0</span>
+      </div>
+      <div style="display:flex;gap:14px;margin-top:6px;">
+        <span style="font-size:11px;font-weight:800;color:#3b82f6;">■ 青＝ネットワーク部（住所の「市区町村」）</span>
+      </div>
+      <div style="display:flex;gap:14px;margin-top:3px;">
+        <span style="font-size:11px;font-weight:800;color:#10b981;">■ 緑＝ホスト部（住所の「番地」）</span>
+      </div>
+    </div>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">ネットワーク部 — 「どのネットワーク？」</div>
+        <div class="fb">サブネットマスクで「255」になっている部分。同じネットワーク内のPCは全員この部分が同じ。「192.168.1」が同じ＝同じサブネットにいる。</div>
+      </div>
+      <div class="farrow">+</div>
+      <div class="fstep f2">
+        <div class="fh">ホスト部 — 「そのネットワーク内の誰？」</div>
+        <div class="fb">サブネットマスクで「0」になっている部分。同じネットワーク内で各PCに固有の番号（100番、101番など）が割り当てられる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">サブネットマスク「255」＝ネットワーク部（固定）</div>
+      <div class="tb">「255＝ネットワーク部」「0＝ホスト部」。逆に覚えると全問ハズれる。255が並んでいる部分は全員共通の「住所」の部分。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">同じサブネット内のPCは直接通信できる</div>
+      <div class="tb">別のサブネットのPCに送るにはルータが必要。「同じサブネットならルータ不要、別サブネットならルータ必要」が頻出。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">/24 はサブネットマスクの「1の数」</div>
+      <div class="tb">「192.168.1.0/24」の「/24」は「先頭から24ビットがネットワーク部」という意味。255.255.255.0 と同じ意味。CIDR表記とサブネットマスク表記の対応が出る。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「サブネット＝サブ（副）のネット＝小分けネット」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">大きいネットを小分けしたもの＝サブネット</span><br><br>
+    サブネットマスクの覚え方：<span class="hl">「255は壁（かべ）、0は穴（あな）」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">255の壁で区切られた部分＝ネットワーク部（全員共通）</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">0の穴があいた部分＝ホスト部（個別番号が入る）</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

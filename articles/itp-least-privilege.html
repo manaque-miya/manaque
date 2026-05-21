@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>最小権限の原則とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="最小権限の原則をわかりやすく解説。必要な権限だけ与えるセキュリティの基本思想、Need-to-Knowとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-least-privilege">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e6b4a,#0e3d2a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,61,42,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8ddc8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1e6b4a;--cbg:#ddf0e6;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1e6b4a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e6b4a;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ セキュリティ</span>
+    <h1><b>最小権限の原則</b>とは？</h1>
+    <p>「必要な人に・必要な分だけ」が鉄則。余計な権限は持たせない、セキュリティの根本思想。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="30" rx="9" fill="#1e6b4a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <!-- 鍵マーク -->
+        <circle cx="52" cy="42" r="9" fill="#ffd23f" stroke="#d9a800" stroke-width="1.5"/>
+        <circle cx="52" cy="40" r="4" fill="none" stroke="#5c4500" stroke-width="2"/>
+        <rect x="50" y="43" width="4" height="5" rx="1" fill="#5c4500"/>
+      </svg>
+      <div class="scene-txt">
+        経理担当のAさん。業務に必要なのは「売上ファイルの閲覧」だけなのに、間違って「全社サーバーの管理者権限」を付与されていた。
+        <div class="scene-q">→ もしAさんのアカウントが乗っ取られたら…大惨事！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-green">
+    <span class="phead">🔑 最小権限の原則：図解</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="最小権限の原則の図解：必要な権限のみ付与するイメージ">
+      <!-- 背景帯：全権限 -->
+      <rect x="10" y="30" width="320" height="80" rx="12" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="170" y="20" text-anchor="middle" font-size="12" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">❌ 権限を広く与えすぎる（NG）</text>
+      <text x="30" y="58" font-size="11" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">管理者権限</text>
+      <text x="30" y="76" font-size="11" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">全データ書込み</text>
+      <text x="30" y="94" font-size="11" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">全データ閲覧</text>
+      <text x="180" y="58" font-size="11" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">設定変更</text>
+      <text x="180" y="76" font-size="11" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">ユーザ管理</text>
+      <text x="180" y="94" font-size="11" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">課金操作</text>
+      <!-- 矢印 -->
+      <text x="170" y="128" text-anchor="middle" font-size="20" fill="#9aa3b2">▼</text>
+      <!-- 背景帯：必要な権限のみ -->
+      <rect x="10" y="138" width="320" height="68" rx="12" fill="#ddf0e6" stroke="#1e6b4a" stroke-width="2"/>
+      <text x="170" y="132" text-anchor="middle" font-size="12" font-weight="900" fill="#1e6b4a" font-family="M PLUS Rounded 1c">✅ 必要な権限だけ（最小権限の原則）</text>
+      <text x="30" y="163" font-size="11" font-weight="800" fill="#1e6b4a" font-family="M PLUS Rounded 1c">✔ 担当データ閲覧のみ</text>
+      <text x="30" y="181" font-size="11" font-weight="800" fill="#1e6b4a" font-family="M PLUS Rounded 1c">✔ 業務に必要な操作だけ</text>
+      <text x="180" y="163" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">✘ 管理者権限→なし</text>
+      <text x="180" y="181" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">✘ 余分な書込み→なし</text>
+    </svg>
+  </div>
+
+  <!-- 適用フロー -->
+  <div class="panel p-indigo">
+    <span class="phead">🗺️ 権限設計の3ステップ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 業務に何が必要かを洗い出す</div><div class="fb">「この人はどのデータに・どんな操作（読む/書く/削除）が必要か」を明確にする。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 必要最小限の権限だけを付与</div><div class="fb">洗い出した範囲のみ許可。「念のため広めに」は絶対にしない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 定期的に見直す（棚卸し）</div><div class="fb">異動・退職・業務変更のたびに権限を削除・更新。放置が一番危険。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「管理者にはすべての権限が必要」は誤り</div>
+      <div class="tb">管理者であっても、その役割に不要な権限は与えない。「役職が上＝全権限OK」ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">Need-to-Knowと混同しやすい</div>
+      <div class="tb">Need-to-Know（知る必要性）は<strong>情報へのアクセス</strong>を絞る考え方。最小権限の原則は<strong>システム上の操作権限</strong>を絞る考え方。目的は同じだが対象範囲が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「利便性のために広く与えた方がいい」は誤り</div>
+      <div class="tb">利便性とセキュリティはトレードオフ。ITパスポートでは「セキュリティを優先」する選択肢が正解になる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">最小＝ミニスカ</span>NG！じゃなくて<span class="hl">ミニマム</span>OK！<br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">「最小（さいしょう）」→「必要分だけ・それ以上はあげない」</span><br><br>
+    鍵は<span class="hl">合鍵コピー禁止</span>。<br>
+    必要な扉の鍵だけ。全部屋の合鍵を渡したら事件になる。</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ｜ itp-least-privilege</div>
+
+</div>
+</body>
+</html>

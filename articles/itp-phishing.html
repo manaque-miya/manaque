@@ -1,106 +1,244 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>フィッシング詐欺とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="フィッシング詐欺の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-phishing.html">
-<meta property="og:title" content="フィッシング詐欺とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="フィッシング詐欺の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-phishing.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>フィッシングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="フィッシング詐欺の仕組みと手口を図解。スミッシング・ビッシング・ファーミングとの違い、見分け方、試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-phishing">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c0392b,#6b1a14);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,26,20,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fbcfcc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563b0;--cbg:#e0ecff;}
+.p-red{--c:#c0392b;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c0392b;}
+
+.step-list{list-style:none;margin-top:6px;}
+.step-list li{font-size:13px;font-weight:700;line-height:1.85;padding-left:26px;position:relative;margin-bottom:7px;color:#3c4456;}
+.step-list li::before{position:absolute;left:0;font-size:13px;font-weight:900;}
+.step-list .s1::before{content:"①";}
+.step-list .s2::before{content:"②";}
+.step-list .s3::before{content:"③";}
+.step-list .s4::before{content:"④";}
+
+.variant-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px;}
+.v-card{border-radius:12px;padding:11px 12px;}
+.v-card h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.v-card .vc{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.v1{background:#fce4dd;}.v1 h4{color:#c0392b;}
+.v2{background:#fcefd9;}.v2 h4{color:#d9851f;}
+.v3{background:#e4e7f7;}.v3 h4{color:#4256b8;}
+.v4{background:#daf2e5;}.v4 h4{color:#2e8b4f;}
+@media(max-width:480px){.variant-grid{grid-template-columns:1fr;}}
+
+.guard-list{list-style:none;margin-top:10px;}
+.guard-list li{font-size:13px;font-weight:600;line-height:1.8;color:#3c4456;padding-left:22px;position:relative;margin-bottom:5px;}
+.guard-list li::before{content:"🛡";position:absolute;left:0;font-size:12px;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">フィッシング詐欺とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">フィッシング詐欺</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>自分のスマホに「三菱UFJ銀行：お客様の口座が制限されました。至急ログインを」とSMSが届いた。リンクを踏んだら本物そっくりのログイン画面…！危うくID入れるとこだった。</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">🎣 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>フィッシング</b></h1>
+    <p>本物そっくりの偽メール・偽サイトで「釣り上げる」攻撃。パスワード・クレジットカード番号など個人情報を騙し取る。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>フィッシング詐欺</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>標的型攻撃</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ どちらもメール経由。標的型は「特定企業を狙う」のに対しフィッシングは「不特定多数にばらまく」</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#c0392b"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 17 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- スマホ（メール表示） -->
+        <rect x="38" y="46" width="20" height="28" rx="3" fill="#fff" stroke="#c0392b" stroke-width="1.5"/>
+        <rect x="40" y="49" width="16" height="10" fill="#fce4dd"/>
+        <rect x="40" y="61" width="16" height="2" rx="1" fill="#9aa3b2"/>
+        <rect x="40" y="65" width="11" height="2" rx="1" fill="#9aa3b2"/>
+        <!-- 警告マーク -->
+        <circle cx="52" cy="47" r="5" fill="#ffd23f" stroke="#d9851f" stroke-width="1.2"/>
+        <text x="52" y="51" text-anchor="middle" font-size="7" font-weight="900" fill="#5c4500">!</text>
+      </svg>
+      <div class="scene-txt">
+        スマホに「【重要】Amazon：ご利用のアカウントが不正使用された可能性があります。今すぐ確認してください」というメールが届いた。<br>
+        URLをタップすると…Amazonとそっくりなログインページが！<br>
+        IDとパスワードを入力すると、情報が盗まれた。
+        <div class="scene-q">→ これがフィッシング。「本物に見える偽サイトで釣り上げる」攻撃。</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：フィッシング詐欺</strong></p>
-</div>
+  <!-- フィッシングの仕組み SVG -->
+  <div class="panel p-red">
+    <span class="phead">🎣 フィッシングの攻撃フロー</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="フィッシング攻撃の流れ：偽メール送信→偽サイト誘導→情報入力→盗取">
+      <defs>
+        <marker id="pa1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L7,3 z" fill="#c0392b"/>
+        </marker>
+      </defs>
 
-<div class="card">
-<h2>📘 フィッシング詐欺とは何か</h2>
-<span class="kw">偽サイト誘導</span>
-<p>偽サイトに誘導してID・パスワードを盗む攻撃。不特定多数を対象にメールやSMSで偽サイトへ誘導する。</p>
-</div>
+      <!-- 攻撃者 -->
+      <rect x="5" y="68" width="64" height="64" rx="12" fill="#fce4dd" stroke="#c0392b" stroke-width="2"/>
+      <circle cx="37" cy="85" r="11" fill="#f4c89a"/>
+      <path d="M27 81 a10 9 0 0 1 20 0 q-4 -8 -10 -8 q-6 0 -10 8z" fill="#3a3f4a"/>
+      <rect x="30" y="93" width="14" height="7" fill="#f4c89a"/>
+      <path d="M30 100 l7 4 l7 -4 v4 h-14z" fill="#c0392b"/>
+      <text x="37" y="124" text-anchor="middle" font-size="10" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">攻撃者</text>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「偽サイト誘導・不特定多数」がキーワード。「特定の組織を狙う」なら標的型攻撃として区別する。</p>
-</div>
+      <!-- 矢印1 -->
+      <path d="M70 100 L100 80" stroke="#c0392b" stroke-width="2" marker-end="url(#pa1)"/>
+      <text x="82" y="78" text-anchor="middle" font-size="9.5" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">①偽メール</text>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>標的型攻撃も偽メールを使うが対象が「特定の企業・人」。不特定多数→フィッシング、特定組織→標的型攻撃。どちらもメール偽装で混同しやすい。</p>
-</div>
+      <!-- 偽メール -->
+      <rect x="100" y="40" width="70" height="46" rx="10" fill="#fdf0ec" stroke="#d9851f" stroke-width="2"/>
+      <text x="135" y="58" text-anchor="middle" font-size="9.5" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">【重要】アカウント</text>
+      <text x="135" y="70" text-anchor="middle" font-size="9.5" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">確認が必要です</text>
+      <text x="135" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#c0392b" font-family="M PLUS Rounded 1c" text-decoration="underline">http://amaozn.co...</text>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>Phishing＝**釣り（fishing）**のもじり。**ばらまき釣り**で誰でもいいから引っ掛ける。標的型は一本釣り。</p></div>
-</div>
+      <!-- 矢印2 -->
+      <path d="M170 63 L198 75" stroke="#c0392b" stroke-width="2" marker-end="url(#pa1)"/>
+      <text x="187" y="68" text-anchor="middle" font-size="9.5" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">②誘導</text>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>フィッシング詐欺はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
+      <!-- 偽サイト -->
+      <rect x="198" y="40" width="70" height="46" rx="10" fill="#fce4dd" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="233" y="56" text-anchor="middle" font-size="9.5" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">偽Amazonサイト</text>
+      <rect x="207" y="60" width="52" height="12" rx="3" fill="#fff" stroke="#9aa3b2" stroke-width="1"/>
+      <text x="233" y="70" text-anchor="middle" font-size="8.5" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">ID / パスワード</text>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+      <!-- 矢印3（下向き） -->
+      <path d="M233 87 L233 108" stroke="#c0392b" stroke-width="2" marker-end="url(#pa1)"/>
+      <text x="250" y="100" text-anchor="middle" font-size="9.5" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">③入力</text>
+
+      <!-- 盗取 -->
+      <rect x="198" y="110" width="70" height="46" rx="10" fill="#6b1a14"/>
+      <text x="233" y="128" text-anchor="middle" font-size="10" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">情報を盗取！</text>
+      <text x="233" y="143" text-anchor="middle" font-size="9" font-weight="700" fill="#fbcfcc" font-family="M PLUS Rounded 1c">ID/PW/カード番号</text>
+
+      <!-- 矢印4（攻撃者に戻る） -->
+      <path d="M197 133 L80 120" stroke="#c0392b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#pa1)"/>
+      <text x="135" y="118" text-anchor="middle" font-size="9.5" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">④攻撃者の手に！</text>
+
+      <!-- 被害者 -->
+      <rect x="5" y="155" width="64" height="36" rx="10" fill="#e0ecff" stroke="#2563b0" stroke-width="1.5"/>
+      <text x="37" y="171" text-anchor="middle" font-size="10" font-weight="900" fill="#2563b0" font-family="M PLUS Rounded 1c">被害者</text>
+      <text x="37" y="183" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">（利用者）</text>
+      <path d="M70 133 L37 154" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3"/>
+    </svg>
+    <ul class="step-list">
+      <li class="s1">攻撃者が<strong>本物そっくりの偽メール</strong>を大量送信する（銀行・EC・宅配等を騙る）</li>
+      <li class="s2">メール内の<strong>偽URLをクリック</strong>させ、本物そっくりの偽サイトに誘導する</li>
+      <li class="s3">偽サイトで<strong>ID・パスワード・カード番号</strong>を入力させる</li>
+      <li class="s4">入力した情報が攻撃者のサーバに送られ<strong>盗取</strong>される</li>
+    </ul>
+  </div>
+
+  <!-- バリアント（手口の種類） -->
+  <div class="panel p-indigo">
+    <span class="phead">📱 フィッシングの仲間（手口の種類）</span>
+    <div class="variant-grid">
+      <div class="v-card v1">
+        <h4>フィッシング（メール型）</h4>
+        <div class="vc">偽メールから偽サイトに誘導。最も一般的な手口。</div>
+      </div>
+      <div class="v-card v2">
+        <h4>スミッシング（SMS型）</h4>
+        <div class="vc">SMS（ショートメッセージ）を使って偽サイトに誘導する。宅配業者を騙ることが多い。</div>
+      </div>
+      <div class="v-card v3">
+        <h4>ビッシング（電話型）</h4>
+        <div class="vc">電話（Voice）で銀行・役所を騙り、口頭でPINや個人情報を聞き出す。</div>
+      </div>
+      <div class="v-card v4">
+        <h4>ファーミング（DNS汚染）</h4>
+        <div class="vc">本物のURLにアクセスしても偽サイトに飛ばす。URLを見ても気づけない高度な手口。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 対策 -->
+  <div class="panel p-green">
+    <span class="phead">🛡️ フィッシング対策</span>
+    <ul class="guard-list">
+      <li>URLを毎回確認する（本物と1字違いのドメインに注意）</li>
+      <li>メール内リンクは踏まず、ブックマーク・直接入力で公式サイトへ</li>
+      <li>多要素認証（MFA）を設定しておく（IDとPWを盗まれても不正ログインを防ぐ）</li>
+      <li>フィッシング対策ソフトウェア・フィルタを活用する</li>
+      <li>「緊急」「今すぐ確認」などの煽り文句を見たら立ち止まる</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ファーミングとフィッシングの違い</div>
+      <div class="tb">フィッシングは「偽メールでURLを踏ませる」。ファーミングは「<strong>正規URLにアクセスしても偽サイトに飛ばす</strong>（DNS書き換え）」。URLを確認しても気づけない点が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">スパムメールとフィッシングは違う</div>
+      <div class="tb">スパムは「迷惑な一方的メール（広告・詐欺全般）」。フィッシングは「<strong>特定の偽サイトに誘導して情報を盗む</strong>」目的を持つ攻撃。スパムの中にフィッシングが含まれることもある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">HTTPSだから安全、ではない</div>
+      <div class="tb">偽サイトでもHTTPS証明書は取れる。「鍵マークがある＝本物」は間違い。URLのドメイン名が本物かを確認することが重要。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">標的型フィッシング（スピアフィッシング）</div>
+      <div class="tb">特定の個人・企業を狙って、名前や業務内容を使ったリアルな文面で騙す高度なフィッシング。大量送信型より見抜きにくい。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      フィッシングは<span class="hl">「魚釣り＝人を釣り上げる」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">fishing（釣り）→ phishing（釣り詐欺）← pは無音</span><br><br>
+      <span class="hl">「偽メール→偽サイト→情報入力→盗取」</span>の4ステップ！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">ファーミングだけは「URLを踏まなくても飛ばされる」特殊パターン</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>リスク分析とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="リスク分析の意味・手順・定量的分析と定性的分析の違いをわかりやすく解説。リスクマネジメントの流れ、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-risk-analysis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7a2a1a,#d9501f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(150,50,20,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#faddd5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-orange{--c:#d9501f;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9501f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d9501f;--fbg:#fcebd6;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.comp-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.comp-card{border-radius:12px;padding:12px 13px;}
+.cc-quant{background:#e4e7f7;border:2px solid #4256b8;}
+.cc-qual{background:#fcefd9;border:2px solid #d9851f;}
+.cc-h{font-size:13px;font-weight:900;margin-bottom:6px;}
+.cc-quant .cc-h{color:#4256b8;}
+.cc-qual .cc-h{color:#d9851f;}
+.cc-body{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+@media(max-width:480px){.comp-row{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>リスク分析</b>とは？</h1>
+    <p>「何が起きそうか・どれくらいマズいか」を洗い出し、数値や優先度で整理する作業。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-orange">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#7a2a1a" opacity=".12"/>
+        <rect x="12" y="52" width="54" height="32" rx="7" fill="#faddd5"/>
+        <rect x="18" y="58" width="42" height="20" rx="4" fill="#d9501f"/>
+        <circle cx="39" cy="34" r="14" fill="#f4c89a"/>
+        <path d="M27 30 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="31" y="45" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 53 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 警告アイコン -->
+        <polygon points="51,54 68,78 34,78" fill="none" stroke="#ffd23f" stroke-width="2" stroke-linejoin="round"/>
+        <line x1="51" y1="62" x2="51" y2="70" stroke="#ffd23f" stroke-width="2"/>
+        <circle cx="51" cy="73" r="1.5" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        新システムを開発中のプロジェクトマネージャー。「<strong>何かあった時のために、起こりうる問題を全部洗い出しておこう</strong>」と考え、「サーバ障害・不正アクセス・開発遅延」などを書き出し、それぞれの発生確率と損害額を試算した。
+        <div class="scene-q">…この「リスクを特定して評価する」作業がリスク分析だ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：リスクマップ -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 リスクマップ（発生確率 × 影響度）</span>
+    <svg width="100%" viewBox="0 0 320 240" role="img" aria-label="リスクマップ：縦軸が発生確率、横軸が影響度の大きさ。右上が高優先度リスク">
+      <!-- 背景グラデーション領域 -->
+      <rect x="40" y="20" width="260" height="200" rx="4" fill="#f4f6fb"/>
+      <!-- 高リスク領域（右上） -->
+      <rect x="170" y="20" width="130" height="100" rx="0" fill="#fce4dd" opacity=".6"/>
+      <text x="235" y="40" text-anchor="middle" font-size="10" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">高優先度</text>
+      <!-- 中リスク領域 -->
+      <rect x="40" y="20" width="130" height="100" rx="0" fill="#fcefd9" opacity=".5"/>
+      <rect x="170" y="120" width="130" height="100" rx="0" fill="#fcefd9" opacity=".5"/>
+      <!-- 低リスク領域（左下） -->
+      <rect x="40" y="120" width="130" height="100" rx="0" fill="#e2f3e5" opacity=".5"/>
+      <text x="105" y="186" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">低優先度</text>
+      <!-- 軸 -->
+      <line x1="40" y1="220" x2="300" y2="220" stroke="#5a6478" stroke-width="2"/>
+      <line x1="40" y1="220" x2="40" y2="20" stroke="#5a6478" stroke-width="2"/>
+      <!-- 軸ラベル -->
+      <text x="170" y="238" text-anchor="middle" font-size="11" font-weight="900" fill="#3c4456" font-family="M PLUS Rounded 1c">影響度（損害の大きさ）→</text>
+      <text x="16" y="125" text-anchor="middle" font-size="11" font-weight="900" fill="#3c4456" font-family="M PLUS Rounded 1c" transform="rotate(-90,16,125)">発生確率 →</text>
+      <!-- リスクの点 -->
+      <circle cx="240" cy="55" r="14" fill="#dd5a3a" opacity=".85"/>
+      <text x="240" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">不正</text>
+      <circle cx="220" cy="80" r="12" fill="#d9851f" opacity=".85"/>
+      <text x="220" y="85" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">遅延</text>
+      <circle cx="90" cy="70" r="12" fill="#4256b8" opacity=".75"/>
+      <text x="90" y="75" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">障害</text>
+      <circle cx="75" cy="160" r="10" fill="#2e8b4f" opacity=".75"/>
+      <text x="75" y="165" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">誤字</text>
+      <!-- 凡例 -->
+      <circle cx="60" cy="16" r="5" fill="#dd5a3a"/>
+      <text x="70" y="20" font-size="9" font-weight="700" fill="#3c4456" font-family="M PLUS Rounded 1c">高優先</text>
+      <circle cx="110" cy="16" r="5" fill="#2e8b4f"/>
+      <text x="120" y="20" font-size="9" font-weight="700" fill="#3c4456" font-family="M PLUS Rounded 1c">低優先</text>
+    </svg>
+    <p style="margin-top:10px;"><strong>リスク値 ＝ 発生確率 × 影響度</strong>で優先順位をつける。右上（高確率・高影響）のリスクを最優先に対応する。</p>
+  </div>
+
+  <!-- 定量的・定性的の違い -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 定量的分析 vs 定性的分析</span>
+    <div class="comp-row">
+      <div class="comp-card cc-quant">
+        <div class="cc-h">定量的リスク分析</div>
+        <div class="cc-body">数値で表す。<br>例：「発生確率10%、損害額1,000万円 → 期待損失100万円」<br>根拠が明確で比較しやすい。</div>
+      </div>
+      <div class="comp-card cc-qual">
+        <div class="cc-h">定性的リスク分析</div>
+        <div class="cc-body">高・中・低などの等級で表す。<br>例：「発生可能性：高、影響：大」<br>数値化が難しい場合に使う。</div>
+      </div>
+    </div>
+    <div class="flow" style="margin-top:12px;">
+      <div class="fstep f1">
+        <div class="fh">① リスクの特定</div>
+        <div class="fb">起こりうる脅威・弱点をすべてリストアップする。（例：サーバ故障・情報漏えい・要員離脱）</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② リスクの分析（評価）</div>
+        <div class="fb">発生確率 × 影響度を見積もり、優先度をつける。定量的・定性的どちらかで行う。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ リスク対応策の選択</div>
+        <div class="fb">回避・軽減・移転・受容のうち最適な対応を選ぶ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">リスク分析 ≠ リスク管理（全体）</div>
+      <div class="tb">リスク管理（リスクマネジメント）は「特定→分析→対応→監視」の全工程。リスク分析はその中の「特定・評価」ステップだけ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">定量的と定性的を逆にしない</div>
+      <div class="tb">定量的＝<strong>数値（円・%）</strong>で表す。定性的＝<strong>高・中・低など等級</strong>で表す。試験では「金額で評価する」＝定量的が問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「リスクゼロ」は目指さない</div>
+      <div class="tb">リスク分析の目的はリスクを「ゼロにする」ことではなく「優先順位をつけて対処する」こと。試験では「受容（許容レベルなら何もしない）」も正解選択肢になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「リスクを特定して発生確率・影響度を評価する」→ <strong>リスク分析</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「リスク分析＝確率×ダメージを計算する作業」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">「起きたらどのくらいヤバいか（影響度）×どのくらい起きそうか（確率）」の掛け算</span><br><br>
+    定量的 →<span class="hl">「円（¥）で答える」</span><br>
+    定性的 →<span class="hl">「大・中・小で答える」</span></div>
+  </div>
+
+</div>
+</body>
+</html>

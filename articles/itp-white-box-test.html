@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ホワイトボックステストとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ホワイトボックステストをわかりやすく解説。プログラムの内部構造（コード）を見ながらテストする手法。ブラックボックステストとの違い、命令網羅・分岐網羅、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-white-box-test">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#3a7fcf,#1a3f7a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(26,63,122,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d0f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#3a7fcf;--cbg:#e2eef9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#3a7fcf;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.compare-cell{border-radius:12px;padding:14px 12px;border:2px solid var(--cc);}
+.compare-cell h4{font-size:13px;font-weight:900;color:var(--cc);margin-bottom:6px;}
+.compare-cell p{font-size:12px;font-weight:600;line-height:1.75;color:#48506a;}
+.compare-cell .tag{display:inline-block;font-size:10px;font-weight:800;padding:2px 8px;border-radius:8px;background:var(--cc);color:#fff;margin-top:6px;}
+.cc1{--cc:#3a7fcf;background:#e2eef9;}
+.cc2{--cc:#555e72;background:#f0f2f5;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.coverage-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.coverage-cell{border-radius:11px;padding:11px 12px;border-left:4px solid var(--vc);}
+.coverage-cell h4{font-size:13px;font-weight:900;color:var(--vc);margin-bottom:5px;}
+.coverage-cell p{font-size:12px;font-weight:600;line-height:1.75;color:#48506a;}
+.vc1{--vc:#3a7fcf;background:#eef3fd;}
+.vc2{--vc:#2e8b4f;background:#eef8f1;}
+@media(max-width:480px){.coverage-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・ソフトウェア開発</span>
+    <h1><b>ホワイトボックステスト</b>とは？</h1>
+    <p>プログラムの「中身（コード）を見ながら」テストする手法。ふたを開けて内部構造を確認しながらすべての経路を通る。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a3f7a" opacity=".12"/>
+        <rect x="10" y="60" width="58" height="25" rx="6" fill="#b8d0f0"/>
+        <rect x="16" y="38" width="46" height="30" rx="9" fill="#3a7fcf"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- ルーペでコードを見るアイコン -->
+        <circle cx="54" cy="63" r="9" fill="none" stroke="#1a3f7a" stroke-width="2"/>
+        <circle cx="54" cy="63" r="5" fill="#fff" opacity=".7"/>
+        <line x1="60" y1="69" x2="65" y2="74" stroke="#1a3f7a" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="54" y="66" text-anchor="middle" font-size="6" font-weight="900" fill="#1a3f7a" font-family="M PLUS Rounded 1c">{}</text>
+      </svg>
+      <div class="scene-txt">
+        テストエンジニアのあなた。新しく作ったプログラムにバグがないか確認したい。コードを直接見て「if文のTrueルートもFalseルートも全部テストしよう」と考えた。
+        <div class="scene-q">…コードの中身を見ながらテストするのって何テスト？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：内部構造の経路 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔍 ホワイトボックステストの仕組み</span>
+    <svg width="100%" viewBox="0 0 580 300" role="img" aria-label="ホワイトボックステストのフロー図：プログラムコードの内部経路（命令・分岐）をすべて通るようにテストする図">
+      <!-- 白い箱（中が見える） -->
+      <rect x="10" y="10" width="560" height="280" rx="14" fill="#f0f5fc" stroke="#3a7fcf" stroke-width="2" stroke-dasharray="8 4"/>
+      <text x="290" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#3a7fcf" font-family="M PLUS Rounded 1c">プログラムの内部（コードが見える＝白い箱）</text>
+      <!-- START -->
+      <ellipse cx="290" cy="60" rx="50" ry="20" fill="#4256b8"/>
+      <text x="290" y="65" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">START</text>
+      <!-- 処理A -->
+      <rect x="240" y="98" width="100" height="36" rx="6" fill="#3a7fcf"/>
+      <text x="290" y="121" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">処理 A</text>
+      <line x1="290" y1="80" x2="290" y2="98" stroke="#4256b8" stroke-width="2" marker-end="url(#arr)"/>
+      <!-- 分岐 -->
+      <polygon points="290,152 240,178 340,178" fill="#ffd23f" stroke="#d9851f" stroke-width="2"/>
+      <text x="290" y="172" text-anchor="middle" font-size="11" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">条件分岐</text>
+      <line x1="290" y1="134" x2="290" y2="152" stroke="#3a7fcf" stroke-width="2"/>
+      <!-- True経路 -->
+      <line x1="240" y1="178" x2="140" y2="200" stroke="#2e8b4f" stroke-width="2"/>
+      <rect x="80" y="200" width="120" height="36" rx="6" fill="#2e8b4f"/>
+      <text x="140" y="220" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">True ルート</text>
+      <text x="140" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#c0e8d4" font-family="M PLUS Rounded 1c">処理 B を実行</text>
+      <!-- False経路 -->
+      <line x1="340" y1="178" x2="440" y2="200" stroke="#d9851f" stroke-width="2"/>
+      <rect x="380" y="200" width="120" height="36" rx="6" fill="#d9851f"/>
+      <text x="440" y="220" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">False ルート</text>
+      <text x="440" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#ffecd4" font-family="M PLUS Rounded 1c">処理 C を実行</text>
+      <!-- 合流 END -->
+      <line x1="140" y1="236" x2="210" y2="258" stroke="#2e8b4f" stroke-width="2"/>
+      <line x1="440" y1="236" x2="370" y2="258" stroke="#d9851f" stroke-width="2"/>
+      <ellipse cx="290" cy="268" rx="60" ry="18" fill="#4256b8"/>
+      <text x="290" y="273" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">END</text>
+      <!-- テスト注記 -->
+      <text x="65" y="193" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">✔ テスト1</text>
+      <text x="515" y="193" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">✔ テスト2</text>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 z" fill="#4256b8"/>
+        </marker>
+      </defs>
+    </svg>
+    <p style="margin-top:10px;">「分岐のTrue・False両方を通る」テストケースを設計することで、コードの隅々まで確認する。</p>
+  </div>
+
+  <!-- 網羅条件の種類 -->
+  <div class="panel p-green">
+    <span class="phead">📊 代表的な網羅条件（カバレッジ）</span>
+    <div class="coverage-grid">
+      <div class="coverage-cell vc1">
+        <h4>命令網羅（C0）</h4>
+        <p>全ての命令（行）を少なくとも1回実行する。最も基本的な網羅基準。テスト最小限でOK。</p>
+      </div>
+      <div class="coverage-cell vc2">
+        <h4>分岐網羅（C1）</h4>
+        <p>全ての分岐（if文のTrue・False両方）を最低1回実行する。命令網羅より厳しく、より多くのバグを発見できる。</p>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;color:#48506a;font-weight:700;">分岐網羅（C1）は命令網羅（C0）を内包する。つまり「分岐網羅を満たせば命令網羅も満たす」。</p>
+  </div>
+
+  <!-- ブラックとの比較 -->
+  <div class="panel p-blue">
+    <span class="phead">⚖️ ブラックボックステストとの比較</span>
+    <div class="compare-grid">
+      <div class="compare-cell cc1">
+        <h4>ホワイトボックステスト</h4>
+        <p>内部構造（コード）を見る。開発者がやる。「全ての経路を通ったか」を確認。コードの品質を検証。</p>
+        <span class="tag">中を見る・コード重視</span>
+      </div>
+      <div class="compare-cell cc2">
+        <h4>ブラックボックステスト</h4>
+        <p>内部を見ない。入力と出力だけを確認。ユーザー視点。「仕様どおりに動くか」を確認。</p>
+        <span class="tag">中を見ない・仕様重視</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ホワイト」＝中が見える（透明な箱）</div>
+      <div class="tb">「ホワイト（白）＝中が見えない」と誤解しやすい。実際は逆。「白い箱（中身が見える透明な箱）」が語源。ブラックボックスの反対。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">誰がやるか：主に開発者</div>
+      <div class="tb">ブラックボックステストはユーザー側・テスター。ホワイトボックスは開発者（コードを知っている人）がやることが多い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">命令網羅と分岐網羅の混同</div>
+      <div class="tb">命令網羅（C0）は「全命令を1回以上実行」、分岐網羅（C1）は「全分岐のTrue/False両方を実行」。C1はC0より厳しい基準。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「コードの内部構造を確認」「全経路を網羅」→ ホワイトボックス。「入力と出力だけ確認」「仕様どおりか」→ ブラックボックス。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「ホワイト＝白＝透けて見える」</span><br>
+    白いシャツは<strong>中が透けて見える</strong>＝ホワイトボックスは中（コード）が見える！<br><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">黒シャツ（ブラック）は中が見えない ＝ ブラックボックスは中を見ない</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

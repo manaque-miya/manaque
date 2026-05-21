@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>エスカレーションとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="エスカレーション（上位者への引き継ぎ）をわかりやすく解説。ITサービス管理でのエスカレーションの役割、機能的エスカレーション・階層的エスカレーションの違い、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-escalation">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#c0392b,#7d1a12);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(125,26,18,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5ccc8;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c0392b;}
+.esc-box{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+.esc-level{border-radius:12px;padding:12px 14px;border-left:6px solid var(--lc);background:var(--lbg);}
+.esc-level .lh{font-size:13px;font-weight:900;color:var(--lc);margin-bottom:3px;}
+.esc-level .lb{font-size:12px;font-weight:600;line-height:1.75;color:#48506a;}
+.lv1{--lc:#2e8b4f;--lbg:#eef8f1;}
+.lv2{--lc:#2e6de5;--lbg:#e7eefc;}
+.lv3{--lc:#d9851f;--lbg:#fcefd9;}
+.lv4{--lc:#c0392b;--lbg:#fce4dd;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#c0392b;--fbg:#fce8e6;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>エスカレーション</b>とは？</h1>
+    <p>自分の権限・能力の範囲を超えた問題を、上位の担当者や管理者に引き渡してスムーズに解決する仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="29" ry="5" fill="#0d3d6e" opacity=".1"/>
+        <rect x="8" y="60" width="62" height="25" rx="7" fill="#c8d8f2"/>
+        <rect x="14" y="38" width="50" height="30" rx="10" fill="#2e6de5"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#1a1a1a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+        <!-- 電話アイコン -->
+        <ellipse cx="55" cy="55" rx="10" ry="10" fill="#ffd23f"/>
+        <text x="55" y="59" text-anchor="middle" font-size="11" fill="#5c4500">📞</text>
+      </svg>
+      <div class="scene-txt">
+        ITヘルプデスク担当のあなた。ユーザーから「サーバーに繋がらない」と連絡が入った。マニュアルを見てもわからない。このままでは<strong>業務が止まってしまう</strong>。
+        <div class="scene-q">…自分で解決できないとき、どうする？ → 上の人に"引き渡す"！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：エスカレーションの階層 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔼 エスカレーションの構造</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="エスカレーションの4段階：問い合わせ受付→1次対応→2次対応→専門家・管理職">
+      <!-- 台形ピラミッド -->
+      <polygon points="20,210 320,210 265,160 75,160" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <polygon points="75,160 265,160 228,118 112,118" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <polygon points="112,118 228,118 200,78 140,78" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <polygon points="140,78 200,78 185,45 155,45" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <!-- テキスト -->
+      <text x="170" y="192" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Lv.1 受付・一次対応（ヘルプデスク）</text>
+      <text x="170" y="147" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">Lv.2 技術担当（ITエンジニア）</text>
+      <text x="170" y="104" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">Lv.3 上位技術専門家</text>
+      <text x="170" y="66" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">Lv.4 管理職・経営層</text>
+      <!-- 上矢印 -->
+      <text x="326" y="140" text-anchor="middle" font-size="22" fill="#c0392b" font-family="sans-serif">▲</text>
+      <text x="326" y="158" text-anchor="middle" font-size="9" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">エスカ</text>
+      <text x="326" y="170" text-anchor="middle" font-size="9" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">レート</text>
+    </svg>
+    <div class="esc-box">
+      <div class="esc-level lv1"><div class="lh">Lv.1 一次対応（ヘルプデスク）</div><div class="lb">よくある問い合わせをマニュアルで対応。解決できない場合は上位へ引き継ぐ。</div></div>
+      <div class="esc-level lv2"><div class="lh">Lv.2 技術担当（エスカレーション先）</div><div class="lb">より専門的な知識が必要な問題を担当。Lv.1で対応できない障害を解決する。</div></div>
+      <div class="esc-level lv3"><div class="lh">Lv.3 上位技術専門家</div><div class="lb">特殊な技術問題・ベンダー連携が必要な事態を扱う。重要なシステム障害など。</div></div>
+      <div class="esc-level lv4"><div class="lh">Lv.4 管理職・経営層へのエスカレーション</div><div class="lb">業務・経営に影響する重大問題。意思決定権のある管理職が判断を行う。</div></div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 2種類のエスカレーション</span>
+    <div class="flow">
+      <div class="fstep f2"><div class="fh">機能的エスカレーション（横へ渡す）</div><div class="fb">同じ階層の別の専門チームへ引き渡す。例：ネットワーク問題をNW専門チームに。<br>＝<strong>「専門家に渡す」</strong></div></div>
+      <div class="farrow">or</div>
+      <div class="fstep f4"><div class="fh">階層的エスカレーション（上へ渡す）</div><div class="fb">上位の管理者・責任者へ引き渡す。例：重大障害を部長に報告し意思決定を仰ぐ。<br>＝<strong>「偉い人に渡す」</strong></div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「エスカレーション＝クレーム対応」と思い込まない</div>
+      <div class="tb">ITサービス管理では、クレームだけでなく<strong>技術的に解決困難な障害・インシデント</strong>も上位に引き渡す。トラブル全般に使われる言葉。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「自分で頑張る」がエスカレーションではない</div>
+      <div class="tb">エスカレーションは<strong>「上位者・専門家へ引き渡す」行為</strong>。自分で時間をかけて解決しようとすることは、エスカレーションではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「エスカレーション＝失敗」ではない</div>
+      <div class="tb">エスカレーションは<strong>適切な人に適切なタイミングで対応させる仕組み</strong>。組織として効率よく問題を解決するためのプロセスだ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>対応範囲を超えた問題を上位や専門家に引き渡す</strong>」が問われたら → 迷わず<strong>エスカレーション</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">エスカ</span>レーター＝上に<span class="hl">上げる</span>もの！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">エスカレーションも「問題を上の人に上げる（引き渡す）」こと。</span><br><br>
+    <span class="hl">「エスカ、れーしょん（レーション＝配給品）」</span>を上の人に渡す＝対処を渡す。</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

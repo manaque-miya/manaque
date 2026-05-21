@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>完全性（インテグリティ）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="情報セキュリティの三大要素「完全性（インテグリティ）」を解説。機密性・可用性との違い、改ざんを防ぐ仕組み、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-integrity">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e8b5c,#0f4f32);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(15,79,50,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e8d2;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1e8b5c;--cbg:#e0f5ec;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1e8b5c;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e8b5c;--fbg:#eef8f4;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.cia-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.cia-cell{border-radius:12px;padding:10px 9px;text-align:center;}
+.cia-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.cia-cell p{font-size:11px;font-weight:600;line-height:1.5;color:#48506a;}
+.cia-c{background:#fce4dd;}.cia-c h4{color:#dd5a3a;}
+.cia-i{background:#e0f5ec;border:2px solid #1e8b5c;}.cia-i h4{color:#1e8b5c;}
+.cia-a{background:#e7eefc;}.cia-a h4{color:#2e6de5;}
+@media(max-width:480px){.cia-grid{grid-template-columns:1fr;}}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ セキュリティ</span>
+    <h1><b>完全性</b>（インテグリティ）とは？</h1>
+    <p>「データが正確なまま保たれているか」を守るセキュリティの柱。改ざん・不正書き換えを防ぐ。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="52" width="54" height="34" rx="7" fill="#2b6e4a"/>
+        <circle cx="39" cy="24" r="14" fill="#f4c89a"/>
+        <path d="M27 20 a12 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="31" y="35" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 43 l8 5 l8 -5 v5 h-16z" fill="#d0e8f5"/>
+        <rect x="18" y="60" width="42" height="4" rx="2" fill="#a0c8b0"/>
+        <rect x="18" y="68" width="32" height="4" rx="2" fill="#a0c8b0"/>
+        <circle cx="58" cy="74" r="7" fill="#ffd23f"/>
+        <text x="58" y="78" text-anchor="middle" font-size="9" font-weight="900" fill="#5c4500">✓</text>
+      </svg>
+      <div class="scene-txt">
+        契約書をメールで送ったあなた。受け取った相手が「金額の欄が変わってる！」と言ってきた。<br>
+        送った時と内容が違う……<strong>途中で誰かに書き換えられた？</strong>
+        <div class="scene-q">このデータが「改ざんされていない」と証明できる仕組みって何？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：CIA三要素 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔺 情報セキュリティの三大要素（CIA）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="CIAの三要素：機密性・完全性・可用性">
+      <!-- 背景 -->
+      <rect x="10" y="10" width="320" height="180" rx="14" fill="#f0f2fa"/>
+      <!-- 機密性 -->
+      <rect x="20" y="25" width="90" height="70" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="65" y="52" text-anchor="middle" font-size="18" fill="#dd5a3a">🔑</text>
+      <text x="65" y="70" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">機密性</text>
+      <text x="65" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">見せない</text>
+      <!-- 完全性（強調） -->
+      <rect x="125" y="25" width="90" height="70" rx="10" fill="#e0f5ec" stroke="#1e8b5c" stroke-width="3"/>
+      <text x="170" y="52" text-anchor="middle" font-size="18" fill="#1e8b5c">🛡️</text>
+      <text x="170" y="70" text-anchor="middle" font-size="11" font-weight="900" fill="#0f4f32" font-family="M PLUS Rounded 1c">完全性 ★</text>
+      <text x="170" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1e5c3e" font-family="M PLUS Rounded 1c">書き換えない</text>
+      <!-- 可用性 -->
+      <rect x="230" y="25" width="90" height="70" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="275" y="52" text-anchor="middle" font-size="18" fill="#2e6de5">⚡</text>
+      <text x="275" y="70" text-anchor="middle" font-size="11" font-weight="900" fill="#1a3e8a" font-family="M PLUS Rounded 1c">可用性</text>
+      <text x="275" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2a5090" font-family="M PLUS Rounded 1c">使えるようにする</text>
+      <!-- 矢印 -->
+      <text x="170" y="118" text-anchor="middle" font-size="13" font-weight="900" fill="#1e8b5c" font-family="M PLUS Rounded 1c">完全性＝データを正確なまま保つ</text>
+      <rect x="50" y="128" width="240" height="50" rx="10" fill="#1e8b5c" opacity=".08"/>
+      <text x="170" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#0f4f32" font-family="M PLUS Rounded 1c">改ざん・破損・不正書き換えがない状態</text>
+      <text x="170" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="#0f4f32" font-family="M PLUS Rounded 1c">ハッシュ値・デジタル署名で確認する</text>
+    </svg>
+    <div class="cia-grid">
+      <div class="cia-cell cia-c"><h4>機密性 (C)</h4><p>許可した人だけがアクセスできる</p></div>
+      <div class="cia-cell cia-i"><h4>完全性 (I) ★</h4><p>データが正確・完全に保たれている</p></div>
+      <div class="cia-cell cia-a"><h4>可用性 (A)</h4><p>必要な時に使えるよう稼働している</p></div>
+    </div>
+  </div>
+
+  <!-- 完全性を守る仕組み -->
+  <div class="panel p-green">
+    <span class="phead">🛠️ 完全性を守る具体的な仕組み</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① ハッシュ関数</div>
+        <div class="fb">データから「指紋」（ハッシュ値）を生成。1文字でも変わると全く別の値になるので改ざんを即検知できる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② デジタル署名</div>
+        <div class="fb">「誰が送ったか（認証）」＋「内容が変わっていないか（完全性）」を同時に証明する。電子的なハンコ＋封印。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ アクセス制御・ログ</div>
+        <div class="fb">書き換えできる人を限定し、誰がいつ変更したかを記録する。不正書き換えを未然に防ぐ＋事後追跡できる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">機密性と混同しやすい</div>
+      <div class="tb">機密性＝「見せない・漏らさない」。完全性＝「書き換えない・正確に保つ」。<strong>守るもの（対象）が違う</strong>ので整理しておく。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「改ざんを防ぐ＝機密性」と思いがち</div>
+      <div class="tb">改ざん防止は<strong>完全性（Integrity）</strong>の仕事。機密性はあくまで「誰が見られるか」の問題。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">可用性との区別</div>
+      <div class="tb">可用性＝「壊れずいつでも使える」状態を保つこと。DDoS攻撃で使えなくなるのは<strong>可用性</strong>の脅威であり完全性ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「データが<strong>正確か・改ざんされていないか</strong>」が問われたら → <strong>完全性（Integrity）</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">インテグリ＝一体グリグリ変わらない！</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">In-tegri-ty → 「中グリグリ」しても変わらない＝完全・正確のまま</span><br><br>
+      CIA の真ん中は <span class="hl">I（アイ＝愛）で完全性</span>。<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">C（機密）・<strong>I（完全）</strong>・A（可用）— 真ん中の愛＝完全な愛＝完全性</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

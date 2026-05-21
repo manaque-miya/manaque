@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>プロセスマイニングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="プロセスマイニング（Process Mining）を図解でわかりやすく解説。システムのイベントログから業務プロセスを可視化・分析する手法、データマイニングとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-process-mining">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0e7490,#063f52);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(6,63,82,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a7d4df;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563a8;--cbg:#deeaf8;}
+.p-cyan{--c:#0e7490;--cbg:#e0f6fb;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0e7490;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#0e7490;--fbg:#e0f6fb;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+.cg-item{border-radius:11px;padding:12px;background:var(--cgb);border-top:4px solid var(--cgc);}
+.cg-item h4{font-size:13px;font-weight:900;color:var(--cgc);margin-bottom:6px;}
+.cg-item ul{list-style:none;}
+.cg-item li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.cg-item li::before{content:"・";position:absolute;left:0;}
+.cg1{--cgc:#0e7490;--cgb:#e0f6fb;}
+.cg2{--cgc:#2563a8;--cgb:#deeaf8;}
+@media(max-width:400px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ ストラテジ系・データ活用</span>
+    <h1><b>プロセスマイニング</b>とは？</h1>
+    <p>システムのログを解析して業務プロセスを「見える化」——人が想像するプロセスと実際の動きのズレを発見する手法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#c5d4e8"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#0e7490"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        「受発注業務は3ステップで完了するはずなのに、なぜか毎回1週間かかる……」<br>
+        そこでシステムのログ（誰がいつ何をしたか）を解析してみたら、<strong>実際には7ステップに膨らんでいた</strong>ことが発覚！
+        <div class="scene-q">→ ログから実際の業務プロセスを掘り出す——それが<strong>プロセスマイニング</strong>。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：仕組み -->
+  <div class="panel p-cyan">
+    <span class="phead">🔍 プロセスマイニングの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="イベントログからプロセスモデルを発見するプロセスマイニングの流れ">
+      <!-- イベントログ -->
+      <rect x="10" y="30" width="90" height="140" rx="10" fill="#e0f6fb" stroke="#0e7490" stroke-width="2"/>
+      <text x="55" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">イベント</text>
+      <text x="55" y="65" text-anchor="middle" font-size="11" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">ログ</text>
+      <rect x="18" y="74" width="74" height="14" rx="4" fill="#fff"/>
+      <text x="55" y="85" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">10:00 申請受付</text>
+      <rect x="18" y="92" width="74" height="14" rx="4" fill="#fff"/>
+      <text x="55" y="103" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">10:30 承認依頼</text>
+      <rect x="18" y="110" width="74" height="14" rx="4" fill="#fff"/>
+      <text x="55" y="121" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">14:00 差し戻し</text>
+      <rect x="18" y="128" width="74" height="14" rx="4" fill="#fff"/>
+      <text x="55" y="139" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">15:00 再申請</text>
+      <rect x="18" y="146" width="74" height="14" rx="4" fill="#fff"/>
+      <text x="55" y="157" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">16:30 承認完了</text>
+
+      <!-- 矢印 -->
+      <path d="M103 100 L143 100" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+          <path d="M0 0 L7 3 L0 6 Z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <rect x="143" y="75" width="54" height="50" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="170" y="98" text-anchor="middle" font-size="10" font-weight="900" fill="#92400e" font-family="M PLUS Rounded 1c">プロセス</text>
+      <text x="170" y="112" text-anchor="middle" font-size="10" font-weight="900" fill="#92400e" font-family="M PLUS Rounded 1c">マイニング</text>
+
+      <!-- 矢印2 -->
+      <path d="M200 100 L237 100" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- プロセスモデル -->
+      <rect x="237" y="30" width="95" height="140" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="284" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#1a5c30" font-family="M PLUS Rounded 1c">実際の</text>
+      <text x="284" y="65" text-anchor="middle" font-size="11" font-weight="900" fill="#1a5c30" font-family="M PLUS Rounded 1c">プロセス</text>
+      <circle cx="260" cy="84" r="7" fill="#2e8b4f"/>
+      <text x="260" y="88" text-anchor="middle" font-size="9" fill="#fff" font-family="M PLUS Rounded 1c">1</text>
+      <path d="M260 91 L260 104" stroke="#2e8b4f" stroke-width="2"/>
+      <circle cx="260" cy="111" r="7" fill="#2e8b4f"/>
+      <text x="260" y="115" text-anchor="middle" font-size="9" fill="#fff" font-family="M PLUS Rounded 1c">2</text>
+      <path d="M260 118 L260 131" stroke="#dd5a3a" stroke-width="2" stroke-dasharray="3 2"/>
+      <circle cx="260" cy="138" r="7" fill="#dd5a3a"/>
+      <text x="260" y="142" text-anchor="middle" font-size="9" fill="#fff" font-family="M PLUS Rounded 1c">戻</text>
+      <text x="278" y="142" font-size="9" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">差し戻し</text>
+      <path d="M260 145 L260 158" stroke="#2e8b4f" stroke-width="2"/>
+      <circle cx="260" cy="162" r="7" fill="#2e8b4f"/>
+      <text x="260" y="166" text-anchor="middle" font-size="9" fill="#fff" font-family="M PLUS Rounded 1c">3</text>
+    </svg>
+    <p style="margin-top:10px;font-size:12.5px;">イベントログ（誰が・いつ・何をしたかの記録）を解析し、実際の業務フローを<strong>可視化・分析</strong>する。「差し戻し」などの非効率なループを発見できる。</p>
+  </div>
+
+  <!-- データマイニングとの比較 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ プロセスマイニング vs データマイニング</span>
+    <div class="compare-grid">
+      <div class="cg-item cg1">
+        <h4>プロセスマイニング</h4>
+        <ul>
+          <li>対象：業務プロセス（手順・流れ）</li>
+          <li>入力：イベントログ（時系列）</li>
+          <li>目的：業務の非効率・ボトルネック発見</li>
+          <li>出力：プロセスモデル（フロー図）</li>
+        </ul>
+      </div>
+      <div class="cg-item cg2">
+        <h4>データマイニング</h4>
+        <ul>
+          <li>対象：大量のデータ全般</li>
+          <li>入力：各種データ（数値・テキスト等）</li>
+          <li>目的：パターン・相関・予測の発見</li>
+          <li>出力：ルール・モデル・クラスター</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;">プロセスマイニングは「<strong>時系列のイベントログ</strong>」が必須。「誰が・いつ・何をした」の流れがあってはじめて成り立つ。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「データマイニング」と混同しやすい</div>
+      <div class="tb">データマイニングは数値・テキストなど<strong>あらゆるデータ</strong>からパターンを探す。プロセスマイニングは<strong>イベントログ（業務手順の記録）</strong>に特化している。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「業務フローを設計する」ではない</div>
+      <div class="tb">プロセスマイニングは新しいプロセスを設計するツールではなく、<strong>実際に起きていることを発見・分析する</strong>ツール。BPR（業務プロセス再設計）と混同しない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「理想のプロセス」との比較ができる</div>
+      <div class="tb">あらかじめ定めた「あるべきプロセスモデル」と、ログから発見した「実際のプロセス」を比較して乖離を発見することもできる（適合チェッキング）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「イベントログ」「業務プロセスの可視化」「実際の流れを発見」が出たら → <strong>プロセスマイニング</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">プロセスを「マイン（発掘）」する</span>＝ログから業務の流れを掘り出す！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">マイニング＝鉱山で金脈を掘る→ログから"無駄な手順"という金脈を掘り出す</span><br><br>
+      データマイニングとの違い：<span class="hl">「プロセス（手順）」のログが材料</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「いつ・誰が・何をした」の時系列ログ＝プロセスマイニングの命綱</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

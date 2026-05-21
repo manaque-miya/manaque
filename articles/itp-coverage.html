@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>テストカバレッジとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="テストカバレッジ（網羅率）をわかりやすく解説。命令網羅・分岐網羅・条件網羅の違い、ホワイトボックステストとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-coverage">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#4256b8,#1a2568);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(26,37,104,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8d0f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#4256b8;}
+
+.cov-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;}
+.cov-item{border-radius:12px;padding:11px 10px;text-align:center;}
+.cov-item h4{font-size:12px;font-weight:900;margin-bottom:4px;}
+.cov-item .pct{font-size:22px;font-weight:900;margin:4px 0;}
+.cov-item p{font-size:10.5px;font-weight:600;line-height:1.6;color:#48506a;}
+.ci-cmd{background:#e4e7f7;}.ci-cmd h4,.ci-cmd .pct{color:#4256b8;}
+.ci-br{background:#e7eefc;}.ci-br h4,.ci-br .pct{color:#2e6de5;}
+.ci-cond{background:#e2f3e5;}.ci-cond h4,.ci-cond .pct{color:#2e8b4f;}
+@media(max-width:420px){.cov-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#4256b8;--fbg:#eef0fb;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>テストカバレッジ</b>とは？</h1>
+    <p>「プログラムのどこをどれだけテストしたか」を示す割合＝網羅率。100%近いほどテストの穴が少ない。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-indigo">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a1a4a" opacity=".1"/>
+        <rect x="8" y="60" width="62" height="25" rx="7" fill="#b8c0e8"/>
+        <rect x="14" y="38" width="50" height="30" rx="9" fill="#4256b8"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#2a2a3a"/>
+        <rect x="30" y="34" width="18" height="8" fill="#f4c89a"/>
+        <path d="M30 42 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+        <!-- チェックマーク -->
+        <circle cx="54" cy="27" r="9" fill="#4caf73"/>
+        <path d="M50 27 l3 3 l6 -6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="scene-txt">
+        プログラムをリリース直前にテストしたが、「if文の条件がFalseになった場合」は1回もテストしていなかった。翌日、本番でそのルートがエラーになった。
+        <div class="scene-q">「どの処理を何回テストしたか」の管理＝テストカバレッジ。低いと見落としが起きる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：3種類のカバレッジ -->
+  <div class="panel p-indigo">
+    <span class="phead">📐 カバレッジの3種類（網羅の深さ）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="命令網羅・分岐網羅・条件網羅の関係。条件網羅が最も厳しい">
+      <!-- 同心円（外側から条件→分岐→命令） -->
+      <ellipse cx="170" cy="105" rx="155" ry="85" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <ellipse cx="170" cy="105" rx="108" ry="60" fill="#e7eefc" stroke="#2e6de5" stroke-width="2.5"/>
+      <ellipse cx="170" cy="105" rx="62" ry="35" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+
+      <!-- ラベル -->
+      <text x="170" y="101" text-anchor="middle" font-size="13" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">命令網羅</text>
+      <text x="170" y="117" text-anchor="middle" font-size="11" font-weight="700" fill="#3040a0" font-family="M PLUS Rounded 1c">C0</text>
+
+      <text x="256" y="100" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">分岐網羅</text>
+      <text x="256" y="115" text-anchor="middle" font-size="11" font-weight="700" fill="#1a50b0" font-family="M PLUS Rounded 1c">C1</text>
+
+      <text x="303" y="100" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">条件</text>
+      <text x="303" y="114" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">網羅</text>
+      <text x="303" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#1a5c35" font-family="M PLUS Rounded 1c">C2</text>
+
+      <!-- 厳しさの矢印 -->
+      <text x="170" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">← 緩い（少ないテスト） ／ 厳しい（多くのテスト） →</text>
+    </svg>
+    <div class="cov-grid">
+      <div class="cov-item ci-cmd">
+        <h4>命令網羅（C0）</h4>
+        <div class="pct">全命令</div>
+        <p>すべての命令（行）を1回以上実行する。最も基本的。</p>
+      </div>
+      <div class="cov-item ci-br">
+        <h4>分岐網羅（C1）</h4>
+        <div class="pct">全分岐</div>
+        <p>if文のTrue/Falseを両方テストする。命令網羅より厳しい。</p>
+      </div>
+      <div class="cov-item ci-cond">
+        <h4>条件網羅（C2）</h4>
+        <div class="pct">全条件</div>
+        <p>各条件式のTrue/Falseの組み合わせを全てテスト。最も厳しい。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：カバレッジを上げる手順 -->
+  <div class="panel p-green">
+    <span class="phead">📋 テストカバレッジを高める流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 対象コードのフローを把握</div><div class="fb">ソースコードを読み、分岐・ループ・条件を洗い出す（ホワイトボックステスト）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② テストケースで全ルートを網羅</div><div class="fb">C0→C1→C2の順に、カバーされていないルートをテストケースで追加する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ カバレッジ率を計測・管理</div><div class="fb">「テスト済み行数÷全行数×100%」で率を計算。目標値（例：80%以上）を設定して管理する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">カバレッジ100% ≠ バグゼロ</div>
+      <div class="tb">カバレッジ100%はすべての処理を1回以上テストしたことを示すが、<strong>テストデータが不適切なら欠陥は見つからない</strong>。「網羅した＝正しい」ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ブラックボックステストとの違い</div>
+      <div class="tb">カバレッジはコード内部を見て測る<strong>ホワイトボックステスト</strong>の指標。ブラックボックステストは内部を見ず入力・出力で検証するので、カバレッジは計測できない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">C0・C1・C2の順番を問われる</div>
+      <div class="tb">「C0＝命令網羅（最も緩い）」「C2＝条件網羅（最も厳しい）」。C0→C1→C2の順に<strong>テスト数が増える（より厳しくなる）</strong>のが正解。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      カバレッジの3段階：<span class="hl">「C0・C1・C2」</span>＝<span class="hl">「コーゼロ・いち・に」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">C0＝命令（コ→こ→コマンド→命令） ／ C1＝分岐（いち＝一本道に分岐） ／ C2＝条件（に＝二択の全組み合わせ）</span><br><br>
+      ゴロ：<span class="hl">「コーヒー・いちご・に（2）味」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">コーヒー（C0命令）→いちご（C1分岐）→2味全部試す（C2条件全組み合わせ）</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

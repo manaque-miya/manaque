@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>情報自己決定権とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="情報自己決定権をわかりやすく解説。自分の個人情報をコントロールする権利とは何か、プライバシー権・個人情報保護法との違い、試験でのひっかけポイントまで。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-information-self-determination">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e4daa,#1a2f6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#a040b0;--fbg:#f4e7f8;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系・法務</span>
+    <h1><b>情報自己決定権</b>とは？</h1>
+    <p>自分の個人情報を、自分でコントロールする権利。「集めていいか」「どう使うか」「削除してほしい」―――すべて本人が決める。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="58" width="58" height="26" rx="6" fill="#c0d0ee"/>
+        <rect x="18" y="42" width="42" height="28" rx="9" fill="#2e4daa"/>
+        <circle cx="39" cy="24" r="14" fill="#f4c89a"/>
+        <path d="M26 20 a13 12 0 0 1 26 0 q-6-9-13-9-7 0-13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="35" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 43 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="24" y="66" width="30" height="12" rx="3" fill="#4070cc"/>
+        <text x="39" y="75" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">STOP</text>
+      </svg>
+      <div class="scene-txt">
+        あなたのスマホアプリが「位置情報を常時取得します」と通知してきた。使わない時間帯の情報まで取られるの？　気持ち悪い…。
+        <div class="scene-q">「情報の収集・利用を自分で決める」権利って何て言う？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔑 情報自己決定権の核心</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="情報自己決定権の3つのコントロール：収集・利用・削除">
+      <!-- 背景 -->
+      <rect x="0" y="0" width="340" height="220" rx="14" fill="#f0f3fb"/>
+      <!-- 中心の人 -->
+      <circle cx="170" cy="80" r="22" fill="#4256b8"/>
+      <circle cx="170" cy="64" r="9" fill="#f4c89a"/>
+      <rect x="162" y="72" width="16" height="14" rx="3" fill="#f4c89a"/>
+      <text x="170" y="112" text-anchor="middle" font-size="11" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">自分（本人）</text>
+      <!-- 矢印と権利 -->
+      <!-- 収集拒否 -->
+      <line x1="148" y1="80" x2="76" y2="80" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2e6de5"/>
+        </marker>
+      </defs>
+      <rect x="8" y="58" width="66" height="44" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="41" y="76" text-anchor="middle" font-size="10.5" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">収集の</text>
+      <text x="41" y="90" text-anchor="middle" font-size="10.5" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">許可／拒否</text>
+      <!-- 利用制限 -->
+      <line x1="170" y1="103" x2="170" y2="148" stroke="#2e8b4f" stroke-width="2.5" marker-end="url(#arr2)"/>
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+      <rect x="108" y="150" width="124" height="44" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="170" y="168" text-anchor="middle" font-size="10.5" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">利用目的の確認・</text>
+      <text x="170" y="182" text-anchor="middle" font-size="10.5" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">訂正・削除請求</text>
+      <!-- 提供先選択 -->
+      <line x1="192" y1="80" x2="262" y2="80" stroke="#d9851f" stroke-width="2.5" marker-end="url(#arr3)"/>
+      <defs>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#d9851f"/>
+        </marker>
+      </defs>
+      <rect x="264" y="58" width="66" height="44" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="297" y="76" text-anchor="middle" font-size="10.5" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">第三者への</text>
+      <text x="297" y="90" text-anchor="middle" font-size="10.5" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">提供可否</text>
+    </svg>
+    <p style="margin-top:10px;">情報自己決定権とは、<strong>自分の個人情報の「収集・利用・提供・削除」を自分がコントロールする権利</strong>。憲法の幸福追求権（13条）を根拠とし、個人情報保護法がその具体化。</p>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 個人情報保護法との関係</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 収集時：目的を明示する義務</div><div class="fb">事業者は個人情報を集める前に「何に使うか」を本人に告知しなければならない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 利用時：目的外使用の禁止</div><div class="fb">告知した目的以外には使えない。本人の同意なく別の用途に転用すると法律違反になる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 開示・訂正・削除の請求権</div><div class="fb">本人は「自分のデータを見せて」「間違っているから直して」「消して」と事業者に請求できる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 第三者提供の制限</div><div class="fb">本人の同意なく、他の企業・団体に個人データを渡してはならない（オプトアウト制度は例外あり）。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「プライバシー権」と同じ？</div>
+      <div class="tb">プライバシー権は「私生活を勝手に公開されない権利」（静的・守る）。情報自己決定権は「自分の情報を積極的にコントロールする権利」（動的・操作する）。別の概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「個人情報保護法＝情報自己決定権」ではない</div>
+      <div class="tb">個人情報保護法は情報自己決定権を具体化した法律のひとつ。個人情報保護法があれば自動的に権利が保障されるわけではない（法律の不備もある）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「知る権利」と混同しやすい</div>
+      <div class="tb">「知る権利」は行政が持つ情報を国民が見る権利（情報公開）。情報自己決定権は自分の個人情報を対象とする点が正反対。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「俺の情報、俺が決める！」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">＝ 情報（の）自己決定権</span><br><br>
+      収集・利用・削除、全部<span class="hl">「俺マター」</span>。<br>
+      <span style="font-size:12px;color:#9a6b00;">プライバシー権＝守る（受け身）　情報自己決定権＝コントロールする（能動）</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-information-self-determination</div>
+
+</div>
+</body>
+</html>

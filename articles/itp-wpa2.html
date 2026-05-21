@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WPA2とは？無線LAN暗号化 — ITパスポート 詳細解説</title>
+<meta name="description" content="WPA2をわかりやすく解説。AES暗号化のしくみ、WEP・WPA・WPA3との違い、公衆Wi-Fiの危険性、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-wpa2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1769aa,#0a3660);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(10,54,96,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d8f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1769aa;--cbg:#deeaf8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1769aa;}
+
+.version-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+@media(max-width:400px){.version-grid{grid-template-columns:1fr;}}
+.vcell{border-radius:12px;padding:11px 12px;}
+.vcell .vname{font-size:14px;font-weight:900;margin-bottom:4px;}
+.vcell .venc{font-size:11px;font-weight:800;border-radius:6px;display:inline-block;padding:2px 8px;margin-bottom:5px;}
+.vcell .vdesc{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.vc-wep{background:#fce4dd;}.vc-wep .vname{color:#bb3c1f;}.vc-wep .venc{background:#bb3c1f;color:#fff;}
+.vc-wpa{background:#fcefd9;}.vc-wpa .vname{color:#a8650f;}.vc-wpa .venc{background:#a8650f;color:#fff;}
+.vc-wpa2{background:#e0f0ff;border:2.5px solid #1769aa;}.vc-wpa2 .vname{color:#0a4a8a;}.vc-wpa2 .venc{background:#1769aa;color:#fff;}
+.vc-wpa3{background:#e2f3e5;}.vc-wpa3 .vname{color:#216b3b;}.vc-wpa3 .venc{background:#216b3b;color:#fff;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1769aa;--fbg:#eef5fd;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>WPA2</b>とは？</h1>
+    <p>無線LANの通信を守る暗号化規格。AES暗号を使った現在の<strong>業界標準セキュリティ</strong>。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#0a3660" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#a8ccee"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#1769aa"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="29" y="32" width="14" height="8" fill="#f4c89a"/>
+        <path d="M29 40 l7 5 l7 -5 v5 h-14z" fill="#fff"/>
+        <!-- 鍵アイコン -->
+        <circle cx="36" cy="68" r="4" fill="#ffd23f" stroke="#a07800" stroke-width="1"/>
+        <rect x="34" y="70" width="4" height="6" rx="1" fill="#ffd23f" stroke="#a07800" stroke-width="1"/>
+      </svg>
+      <div class="scene-txt">
+        カフェのフリーWi-Fiに「WPA2-Personal」と書いてある。一方で家のルーターは「WEP」の古い設定のまま……。友達から「WEPは危険だから変えて」と言われた。
+        <div class="scene-q">…WPA2とWEPって何が違うの？</div>
+      </div>
+    </div>
+    <p style="margin-top:10px;">Wi-Fiの電波は空中を飛ぶので、<strong>暗号化なしでは誰でも傍受できる</strong>。WEP→WPA→WPA2と進化し、暗号強度が大幅に上がった。</p>
+  </div>
+
+  <!-- 図解SVG：暗号化のしくみ -->
+  <div class="panel p-indigo">
+    <span class="phead">🔐 WPA2暗号化のしくみ（AES）</span>
+    <svg width="100%" viewBox="0 0 320 160" role="img" aria-label="WPA2の暗号化：スマホの平文データがAES暗号で暗号化され、Wi-Fiを経由し、ルーターで復号される">
+      <!-- スマホ -->
+      <rect x="10" y="50" width="56" height="72" rx="8" fill="#deeaf8" stroke="#1769aa" stroke-width="2"/>
+      <text x="38" y="80" text-anchor="middle" font-size="9" font-weight="900" fill="#1769aa" font-family="sans-serif">スマホ</text>
+      <rect x="18" y="88" width="40" height="22" rx="3" fill="#1769aa"/>
+      <text x="38" y="103" text-anchor="middle" font-size="8" font-weight="800" fill="#fff" font-family="sans-serif">「パスワード」</text>
+      <!-- 矢印＋暗号化 -->
+      <path d="M66 86 L116 86" stroke="#1769aa" stroke-width="2" marker-end="url(#arr2)"/>
+      <rect x="70" y="70" width="44" height="22" rx="7" fill="#1769aa"/>
+      <text x="92" y="85" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="sans-serif">AES暗号化</text>
+      <!-- Wi-Fi電波（暗号化済み） -->
+      <ellipse cx="160" cy="68" rx="30" ry="18" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="160" y="64" text-anchor="middle" font-size="8" font-weight="900" fill="#4256b8" font-family="sans-serif">Wi-Fi電波</text>
+      <text x="160" y="77" text-anchor="middle" font-size="7.5" font-weight="800" fill="#4256b8" font-family="sans-serif">暗号化済み</text>
+      <!-- 電波（暗号化されたデータ） -->
+      <path d="M140 88 L106 110" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <path d="M160 88 L160 115" stroke="#4256b8" stroke-width="2" marker-end="url(#arr2)"/>
+      <!-- 不正傍受 -->
+      <rect x="90" y="110" width="56" height="30" rx="7" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="118" y="123" text-anchor="middle" font-size="8.5" font-weight="900" fill="#dd5a3a" font-family="sans-serif">不正傍受しても</text>
+      <text x="118" y="134" text-anchor="middle" font-size="8.5" font-weight="900" fill="#dd5a3a" font-family="sans-serif">解読できない！</text>
+      <!-- ルーター -->
+      <rect x="218" y="50" width="56" height="72" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="246" y="80" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="sans-serif">ルーター</text>
+      <rect x="226" y="88" width="40" height="22" rx="3" fill="#2e8b4f"/>
+      <text x="246" y="103" text-anchor="middle" font-size="8" font-weight="800" fill="#fff" font-family="sans-serif">「パスワード」</text>
+      <!-- 矢印＋復号 -->
+      <path d="M190 86 L218 86" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arr3)"/>
+      <rect x="194" y="70" width="26" height="22" rx="7" fill="#2e8b4f"/>
+      <text x="207" y="85" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="sans-serif">復号</text>
+      <defs>
+        <marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L0,5 L7,2.5 z" fill="#1769aa"/>
+        </marker>
+        <marker id="arr3" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L0,5 L7,2.5 z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+    </svg>
+    <!-- バージョン比較 -->
+    <div class="version-grid">
+      <div class="vcell vc-wep">
+        <div class="vname">WEP</div>
+        <span class="venc">RC4（脆弱）</span>
+        <div class="vdesc">解読ツールで数分で破られる。現在は使用禁止レベル。</div>
+      </div>
+      <div class="vcell vc-wpa">
+        <div class="vname">WPA</div>
+        <span class="venc">TKIP（暫定）</span>
+        <div class="vdesc">WEPの応急措置版。AESよりも弱く現在は非推奨。</div>
+      </div>
+      <div class="vcell vc-wpa2">
+        <div class="vname">WPA2 ★現在主流</div>
+        <span class="venc">AES（強力）</span>
+        <div class="vdesc">業界標準。AES暗号を採用し、現時点で安全。</div>
+      </div>
+      <div class="vcell vc-wpa3">
+        <div class="vname">WPA3</div>
+        <span class="venc">AES+SAE</span>
+        <div class="vdesc">最新規格。パスワード推測攻撃への耐性がさらに向上。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：接続時の認証 -->
+  <div class="panel p-green">
+    <span class="phead">📋 WPA2接続時のしくみ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 端末がアクセスポイントに接続要求</div><div class="fb">スマホやPCがWi-FiのSSID（ネットワーク名）を検出し、接続を要求する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② パスフレーズ（パスワード）で認証</div><div class="fb">WPA2-Personalでは<strong>事前共有キー（PSK）</strong>を使い、4ウェイハンドシェイクで暗号鍵を生成する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ AES暗号で通信データを保護</div><div class="fb">以降の全通信がAESで暗号化される。傍受されても解読は実質不可能。</div></div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;color:#48506a;font-weight:700;">企業向け：<strong>WPA2-Enterprise</strong>（RADIUSサーバーで個別認証）も試験に出る。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">WEPは「古いが一応安全」ではない</div>
+      <div class="tb">WEPは暗号が弱く、専用ツールで<strong>数分〜数十分で解読可能</strong>。「使えるから安全」は完全な誤り。試験では「現在使うべきでない」という文脈で出る。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">WPA2はWi-Fiの暗号化規格。HTTPSとは別物</div>
+      <div class="tb">WPA2は<strong>無線区間（端末〜ルーター間）</strong>を守る。HTTPSはインターネット上の通信を守る。どちらも必要で、片方だけで十分ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「公衆Wi-FiはWPA2だから安全」は誤り</div>
+      <div class="tb">同じパスワードを使う全員が同じ暗号鍵を持つため、<strong>同じネットワーク内の他の人が傍受できる</strong>可能性がある（WPA3のSAEが解決）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">WPA2のAES暗号 ≠ WEPのTKIP</div>
+      <div class="tb">WPA2＝AES（強力）、WPA≒TKIP（暫定）。「WPA2はTKIPを使う」は誤り。試験で暗号方式を問われたら<strong>WPA2→AES</strong>と即答できるように。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「WEPはウヘッ（古くて弱い）、WPA2はダブルA（二重に安全）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">WEP→ウヘッと嫌な顔（古くて脆弱）／ WPA2→2がついてダブルA評価（現在の標準）</span><br><br>
+      WPA2の暗号は<span class="hl">「エース（AES）は最強」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">WPA2 ＝ AES暗号。エース（AES）を使うのが WPA2。セットで覚える。</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-wpa2 ／ HTML+SVG</div>
+
+</div>
+</body>
+</html>

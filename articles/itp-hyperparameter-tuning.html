@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ハイパーパラメータチューニングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ハイパーパラメータチューニングを図解でわかりやすく解説。パラメータとの違い、過学習・未学習との関係、グリッドサーチ・ランダムサーチの手法、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-hyperparameter-tuning">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0f766e,#134e4a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(19,78,74,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:24px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#5eead4 56%,#5eead4 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#99f6e4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-teal{--c:#0f766e;--cbg:#ccfbf1;}
+.p-cyan{--c:#0e7490;--cbg:#ecfeff;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0f766e;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#0f766e;--fbg:#ccfbf1;}
+.f2{--fc:#0e7490;--fbg:#ecfeff;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:6px;}
+.cg-cell{border-radius:12px;padding:11px 12px;}
+.cg-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.cg-cell ul{list-style:none;}
+.cg-cell li{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.cg-cell li::before{content:"・";position:absolute;left:0;}
+.cg-param{background:#ccfbf1;}.cg-param h4{color:#0f766e;}
+.cg-hyper{background:#ecfeff;}.cg-hyper h4{color:#0e7490;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#ccfbf1,#99f6e4);border-radius:18px;padding:18px;border-left:6px solid #0d9488;}
+.oboe .oh{font-size:13px;font-weight:900;color:#134e4a;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#134e4a;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🧠 ITパスポート ｜ テクノロジ系（AI・機械学習）</span>
+    <h1><b>ハイパーパラメータ<br>チューニング</b>とは？</h1>
+    <p>AIモデルの性能を引き出すための"設定値の最適化"。学習前に人間が決める設定を調整する作業。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="4" fill="#134e4a" opacity=".1"/>
+        <rect x="8" y="55" width="56" height="25" rx="7" fill="#99f6e4"/>
+        <rect x="14" y="34" width="44" height="28" rx="9" fill="#0f766e"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <text x="36" y="72" text-anchor="middle" font-size="14" fill="#134e4a" font-family="sans-serif">⚙️</text>
+      </svg>
+      <div class="scene-txt">
+        オーブンでパンを焼くとき、「温度は200℃か210℃か」「時間は30分か35分か」を調整する。<br>
+        AIも同じで、<strong>学習前に設定する「温度・時間」＝ハイパーパラメータ</strong>を調整して精度を上げる。
+        <div class="scene-q">…その調整作業が「ハイパーパラメータチューニング」</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-cyan">
+    <span class="phead">🔷 パラメータ vs ハイパーパラメータ</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="パラメータとハイパーパラメータの違い：パラメータは学習で自動調整、ハイパーパラメータは人間が事前に設定">
+      <!-- 左：学習フロー -->
+      <rect x="5" y="5" width="155" height="195" rx="12" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.5"/>
+      <text x="82" y="26" text-anchor="middle" font-size="11.5" font-weight="900" fill="#0f766e" font-family="M PLUS Rounded 1c">パラメータ</text>
+      <text x="82" y="41" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0f766e" font-family="M PLUS Rounded 1c">AIが学習で自動調整</text>
+      <rect x="20" y="52" width="120" height="35" rx="9" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.5"/>
+      <text x="80" y="68" text-anchor="middle" font-size="10" font-weight="900" fill="#0f766e" font-family="M PLUS Rounded 1c">ニューラルネットの重み</text>
+      <text x="80" y="82" text-anchor="middle" font-size="9" font-weight="700" fill="#134e4a" font-family="M PLUS Rounded 1c">学習データから自動更新</text>
+      <rect x="20" y="96" width="120" height="35" rx="9" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.5"/>
+      <text x="80" y="111" text-anchor="middle" font-size="10" font-weight="900" fill="#0f766e" font-family="M PLUS Rounded 1c">バイアス値</text>
+      <text x="80" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#134e4a" font-family="M PLUS Rounded 1c">誤差が減る方向に自動調整</text>
+      <rect x="14" y="145" width="132" height="44" rx="9" fill="#0f766e"/>
+      <text x="80" y="163" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">✅ 人間が設定しなくていい</text>
+      <text x="80" y="179" text-anchor="middle" font-size="10" font-weight="700" fill="#99f6e4" font-family="M PLUS Rounded 1c">学習が終わると自動で決まる</text>
+
+      <!-- 右：ハイパーパラメータ -->
+      <rect x="178" y="5" width="155" height="195" rx="12" fill="#ecfeff" stroke="#0e7490" stroke-width="1.5"/>
+      <text x="255" y="26" text-anchor="middle" font-size="11.5" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">ハイパーパラメータ</text>
+      <text x="255" y="41" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0e7490" font-family="M PLUS Rounded 1c">人間が学習前に設定</text>
+      <rect x="193" y="52" width="126" height="35" rx="9" fill="#a5f3fc" stroke="#0e7490" stroke-width="1.5"/>
+      <text x="256" y="68" text-anchor="middle" font-size="10" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">学習率（Learning Rate）</text>
+      <text x="256" y="82" text-anchor="middle" font-size="9" font-weight="700" fill="#155e75" font-family="M PLUS Rounded 1c">どの速さで重みを更新するか</text>
+      <rect x="193" y="96" width="126" height="35" rx="9" fill="#a5f3fc" stroke="#0e7490" stroke-width="1.5"/>
+      <text x="256" y="111" text-anchor="middle" font-size="10" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">エポック数</text>
+      <text x="256" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#155e75" font-family="M PLUS Rounded 1c">データを何回繰り返し学習するか</text>
+      <rect x="187" y="145" width="132" height="44" rx="9" fill="#0e7490"/>
+      <text x="253" y="163" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">⚙️ 人間が試行錯誤して設定</text>
+      <text x="253" y="179" text-anchor="middle" font-size="10" font-weight="700" fill="#a5f3fc" font-family="M PLUS Rounded 1c">これを最適化するのがチューニング</text>
+    </svg>
+    <div class="compare-grid">
+      <div class="cg-cell cg-param"><h4>パラメータ</h4><ul><li>学習で自動調整される</li><li>例：ニューラルネットの重み</li><li>人間は直接触らない</li></ul></div>
+      <div class="cg-cell cg-hyper"><h4>ハイパーパラメータ</h4><ul><li>学習前に人間が設定する</li><li>例：学習率・エポック数・層数</li><li>チューニングで最適化する</li></ul></div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-blue">
+    <span class="phead">📋 チューニングの手法と流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">グリッドサーチ（Grid Search）</div><div class="fb">候補値のすべての組み合わせを試す方法。学習率が[0.01, 0.001]、エポック数が[10, 20]なら4パターン全部試す。確実だが計算量が多い。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">ランダムサーチ（Random Search）</div><div class="fb">候補値をランダムに組み合わせて試す方法。グリッドサーチより効率よく良い値を見つけられることが多い。計算量を抑えたい時に有効。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">チューニングの目標：過学習を防ぐ</div><div class="fb">ハイパーパラメータが不適切だと「過学習（訓練データに特化しすぎ）」や「未学習（学習が足りない）」が起きる。適切なチューニングで汎化性能を高める。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「パラメータ」≠「ハイパーパラメータ」</div>
+      <div class="tb"><strong>パラメータ</strong>は学習によって自動で決まる値（重み・バイアス）。<strong>ハイパーパラメータ</strong>は学習前に人間が決める設定値（学習率・エポック数など）。チューニングするのはハイパーパラメータの方。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「学習率が大きい＝良い」ではない</div>
+      <div class="tb">学習率が大きすぎると最適値を飛び越えて発散する。小さすぎると収束が遅い。適切な値を探すのがチューニングの本質。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「チューニング＝モデルの再設計」ではない</div>
+      <div class="tb">モデルの構造（ニューラルネットの層の設計など）を変えるのは別の作業。ハイパーパラメータチューニングは既存のモデル構造の設定値を最適化すること。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>学習前に人間が設定・調整する値</strong>」→ ハイパーパラメータ。「<strong>その最適化作業</strong>」→ チューニング。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「ハイパー」</span>＝<span class="hl">「上（超）の設定」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#134e4a;">「ハイ（上）」→ 学習より上の層にある設定 → 人間が決める！</span><br><br>
+      パンを焼く前に<span class="hl">「温度・時間を決める」</span>＝<span class="hl">ハイパーパラメータ設定</span><br>
+      焼いてる間に<span class="hl">「生地がどんどん変化する」</span>＝<span class="hl">パラメータ自動更新</span><br>
+      <span style="font-size:11px;font-weight:700;color:#134e4a;">焼く前の設定＝ハイパーパラメータ / 焼き中の変化＝パラメータ</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

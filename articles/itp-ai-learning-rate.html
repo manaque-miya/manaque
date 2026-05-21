@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>学習率とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="学習率（ラーニングレート）をITパスポート試験向けにわかりやすく解説。大きすぎると発散・小さすぎると学習が遅い理由、過学習との違い、試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/kaisetsu/itp-ai-learning-rate">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d9851f,#8a4e08);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(138,78,8,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#fff 56%,#fff 92%,transparent 92%);color:#5c3000;}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fde4b8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9851f;}
+
+.lr-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.lr-cell{border-radius:11px;padding:10px 9px;text-align:center;}
+.lr-cell h4{font-size:12px;font-weight:900;margin-bottom:5px;}
+.lr-cell p{font-size:11px;font-weight:600;line-height:1.6;color:#48506a;}
+.lrc-big{background:#fce8e8;}.lrc-big h4{color:#b82e2e;}
+.lrc-good{background:#eef8f1;}.lrc-good h4{color:#2e8b4f;}
+.lrc-small{background:#eef0fb;}.lrc-small h4{color:#4256b8;}
+@media(max-width:420px){.lr-compare{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d9851f;--fbg:#fdf4e4;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系 / AI・機械学習</span>
+    <h1><b>学習率</b>とは？</h1>
+    <p>AIが「どれだけ大股で学ぶか」を決める数値。大きすぎると迷子、小さすぎると亀の歩み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-orange">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#8a4e08" opacity=".12"/>
+        <!-- 山の形（損失曲線） -->
+        <path d="M8 72 Q20 20 36 60 Q52 100 64 40" stroke="#d9851f" stroke-width="3" fill="none"/>
+        <!-- 谷（最適地点） -->
+        <circle cx="42" cy="68" r="5" fill="#2e8b4f"/>
+        <text x="42" y="65" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">最適</text>
+        <!-- 大股の矢印（飛び越す） -->
+        <path d="M18 52 L56 36" stroke="#b82e2e" stroke-width="2" stroke-dasharray="3 2" marker-end="url(#arr2)"/>
+        <text x="37" y="38" text-anchor="middle" font-size="7" font-weight="900" fill="#b82e2e" font-family="sans-serif">大股→飛び越す</text>
+        <!-- 小股の矢印 -->
+        <path d="M18 54 L24 58" stroke="#4256b8" stroke-width="2"/>
+        <path d="M24 58 L30 60" stroke="#4256b8" stroke-width="2"/>
+        <text x="20" y="70" text-anchor="middle" font-size="7" font-weight="700" fill="#4256b8" font-family="sans-serif">小股</text>
+      </svg>
+      <div class="scene-txt">
+        AIが「エラーをなるべく小さくする」ために少しずつパラメータを調整する。<br>
+        その調整の「一歩の大きさ」が学習率。<br>
+        <div class="scene-q">大股（高い学習率）は谷（最適解）を飛び越す。小股（低い学習率）は時間がかかりすぎる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：学習率の比較 -->
+  <div class="panel p-blue">
+    <span class="phead">🔬 学習率の大・適・小を比較</span>
+    <svg width="100%" viewBox="0 0 340 150" role="img" aria-label="学習率が大きい・適切・小さい場合の損失曲線の変化比較">
+      <!-- 共通の損失曲線（各列） -->
+      <!-- 左列：大きすぎる -->
+      <text x="55" y="15" text-anchor="middle" font-size="11" font-weight="900" fill="#b82e2e" font-family="M PLUS Rounded 1c">大きすぎる</text>
+      <path d="M10 130 Q55 20 100 130" stroke="#e0c0c0" stroke-width="2" fill="none"/>
+      <circle cx="55" cy="75" r="5" fill="#e0c0c0"/>
+      <!-- ジグザグ（発散） -->
+      <path d="M20 120 L45 40 L65 110 L85 30 L100 100" stroke="#b82e2e" stroke-width="2" fill="none"/>
+      <text x="55" y="142" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b82e2e" font-family="M PLUS Rounded 1c">発散・不安定</text>
+      <!-- 中央列：適切 -->
+      <text x="170" y="15" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">適切</text>
+      <path d="M125 130 Q170 20 215 130" stroke="#e0c0c0" stroke-width="2" fill="none"/>
+      <circle cx="170" cy="75" r="5" fill="#2e8b4f"/>
+      <!-- なめらかな収束 -->
+      <path d="M130 120 L148 88 L162 76 L170 74 L178 75" stroke="#2e8b4f" stroke-width="2" fill="none"/>
+      <text x="170" y="142" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">なめらかに収束</text>
+      <!-- 右列：小さすぎる -->
+      <text x="285" y="15" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">小さすぎる</text>
+      <path d="M240 130 Q285 20 330 130" stroke="#e0c0c0" stroke-width="2" fill="none"/>
+      <circle cx="285" cy="75" r="5" fill="#e0c0c0"/>
+      <!-- ゆっくり下降 -->
+      <path d="M245 125 L253 122 L261 119 L269 116 L277 113 L285 110" stroke="#4256b8" stroke-width="2" fill="none"/>
+      <text x="285" y="142" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">遅すぎ・時間不足</text>
+    </svg>
+    <div class="lr-compare">
+      <div class="lr-cell lrc-big">
+        <h4>学習率が大きい</h4>
+        <p>一歩が大きすぎて最適解を飛び越す。損失が発散して学習が安定しない。</p>
+      </div>
+      <div class="lr-cell lrc-good">
+        <h4>学習率が適切</h4>
+        <p>なめらかに最適解に近づく。精度が上がりやすい理想の状態。</p>
+      </div>
+      <div class="lr-cell lrc-small">
+        <h4>学習率が小さい</h4>
+        <p>一歩が小さすぎて学習に時間がかかる。局所最適解に止まるリスクも。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：機械学習における学習率の役割 -->
+  <div class="panel p-indigo">
+    <span class="phead">🗺️ 機械学習で学習率が使われる流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① モデルが予測を出して誤差を計算</div><div class="fb">AIが予測値を出し、正解との差（損失）を計算する。これを「損失関数」という。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 誤差を小さくする方向にパラメータを更新</div><div class="fb">損失が小さくなる方向（勾配）に、パラメータを「学習率×勾配」の分だけ動かす（勾配降下法）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 繰り返して「最適なパラメータ」を見つける</div><div class="fb">①②を何万回も繰り返すことで、精度の高いモデルができる。学習率はこの「一歩の大きさ」を決める。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「学習率を大きくすると速く学習できる」は半分だけ正しい</div>
+      <div class="tb">大きくすると1ステップ当たりの更新量は大きいが、最適解を飛び越して発散しやすい。「速い＝良い」ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">学習率と「エポック数」は別の概念</div>
+      <div class="tb">エポック数は「全学習データを何回使うか」の回数。学習率は「1回の更新での動き幅」。どちらも調整可能なハイパーパラメータだが意味が異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">過学習とは違う問題</div>
+      <div class="tb">過学習は「訓練データに特化しすぎて汎化しない」問題。学習率は「収束のスピードと安定性」の問題。混同しないこと。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">大股で谷を飛び越す</span>、<span class="hl">小股で谷に届かない</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">大（高学習率）→発散 ／ 小（低学習率）→遅い</span><br><br>
+      学習率は<span class="hl">「歩幅」</span>。谷（最適解）にちょうど着地する幅が正解<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">歩幅＝学習率 ／ 谷＝損失最小点（最適解）</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-ai-learning-rate</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>監査計画書とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="監査計画書をわかりやすく解説。監査の目的・範囲・方法・スケジュールを事前に決める文書の役割、監査手続との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-audit-plan">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#0d4d28);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,77,40,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b2e8c8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.plan-items{list-style:none;margin-top:6px;}
+.plan-items li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:22px;position:relative;margin-bottom:5px;}
+.plan-items li::before{content:"📌";position:absolute;left:0;font-size:13px;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#4256b8;--fbg:#edf0fc;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>監査計画書</b>とは？</h1>
+    <p>監査を始める前に「何を・どこまで・どうやって・いつまでに」調べるかを<br><strong>事前に文書化したもの</strong>。監査の"設計図"です。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#0d4d28" opacity=".12"/>
+        <!-- 人物 -->
+        <circle cx="39" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M27 19 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="31" y="33" width="16" height="10" fill="#f4c89a"/>
+        <rect x="18" y="42" width="42" height="30" rx="8" fill="#2e8b4f"/>
+        <!-- 書類 -->
+        <rect x="38" y="46" width="26" height="30" rx="3" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+        <rect x="41" y="50" width="20" height="2" rx="1" fill="#2e8b4f" opacity=".6"/>
+        <rect x="41" y="55" width="20" height="2" rx="1" fill="#2e8b4f" opacity=".6"/>
+        <rect x="41" y="60" width="14" height="2" rx="1" fill="#2e8b4f" opacity=".6"/>
+        <rect x="41" y="65" width="17" height="2" rx="1" fill="#2e8b4f" opacity=".6"/>
+        <!-- チェックリスト -->
+        <path d="M42 70 l3 3 l5 -5" stroke="#2e8b4f" stroke-width="1.8" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        会社の情報セキュリティ監査を任されたあなた。いきなり現場に行って「じゃあ調べます」はNG。<br>
+        まず「<strong>何の目的で・どの部門を・どんな方法で・いつまでに</strong>」チェックするかを書いた計画書を作り、承認を得る。
+        <div class="scene-q">…それが監査計画書！ 準備を文書化する一手間が監査の質を決める。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：監査計画書の構成 -->
+  <div class="panel p-blue">
+    <span class="phead">🔍 監査計画書に盛り込む内容（図解）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="監査計画書の構成要素：目的・範囲・方法・スケジュール・担当">
+      <!-- 中央文書 -->
+      <rect x="110" y="20" width="120" height="160" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="170" y="48" text-anchor="middle" font-size="12" font-weight="900" fill="#0d4d28" font-family="M PLUS Rounded 1c">監査計画書</text>
+      <!-- 線（横線を書類のように） -->
+      <line x1="122" y1="58" x2="218" y2="58" stroke="#2e8b4f" stroke-width="1" opacity=".4"/>
+      <line x1="122" y1="70" x2="218" y2="70" stroke="#2e8b4f" stroke-width="1" opacity=".4"/>
+      <line x1="122" y1="82" x2="218" y2="82" stroke="#2e8b4f" stroke-width="1" opacity=".4"/>
+      <line x1="122" y1="94" x2="218" y2="94" stroke="#2e8b4f" stroke-width="1" opacity=".4"/>
+      <line x1="122" y1="106" x2="218" y2="106" stroke="#2e8b4f" stroke-width="1" opacity=".4"/>
+      <line x1="122" y1="118" x2="218" y2="118" stroke="#2e8b4f" stroke-width="1" opacity=".4"/>
+      <!-- バッジ（クリップ） -->
+      <rect x="148" y="10" width="44" height="18" rx="5" fill="#2e8b4f"/>
+      <rect x="155" y="16" width="30" height="6" rx="3" fill="#e2f3e5"/>
+
+      <!-- 左側：要素バッジ -->
+      <rect x="4" y="28" width="95" height="28" rx="7" fill="#2e6de5"/>
+      <text x="51" y="46" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">① 監査の目的</text>
+      <path d="M99 42 L108 55" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <rect x="4" y="68" width="95" height="28" rx="7" fill="#d9851f"/>
+      <text x="51" y="86" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">② 監査の範囲</text>
+      <path d="M99 82 L108 90" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <rect x="4" y="108" width="95" height="28" rx="7" fill="#6b3fa0"/>
+      <text x="51" y="126" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">③ 監査方法</text>
+      <path d="M99 122 L108 118" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <rect x="4" y="148" width="95" height="28" rx="7" fill="#2e8b4f"/>
+      <text x="51" y="166" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">④ スケジュール</text>
+      <path d="M99 162 L108 148" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- 右側：要素バッジ -->
+      <rect x="241" y="28" width="95" height="28" rx="7" fill="#4256b8"/>
+      <text x="288" y="46" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">⑤ 担当者</text>
+      <path d="M241 42 L232 55" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <rect x="241" y="68" width="95" height="28" rx="7" fill="#cf4f86"/>
+      <text x="288" y="86" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">⑥ 評価基準</text>
+      <path d="M241 82 L232 90" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <rect x="241" y="108" width="95" height="28" rx="7" fill="#dd5a3a"/>
+      <text x="288" y="126" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">⑦ 証拠収集方法</text>
+      <path d="M241 122 L232 118" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <rect x="241" y="148" width="95" height="28" rx="7" fill="#1a9e7a"/>
+      <text x="288" y="166" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">⑧ 報告先・形式</text>
+      <path d="M241 162 L232 148" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+
+    <ul class="plan-items">
+      <li><strong>目的</strong>：何のために監査するか（情報セキュリティの適切性確認、など）</li>
+      <li><strong>範囲</strong>：どの部門・どのシステム・どの期間を対象にするか</li>
+      <li><strong>方法</strong>：文書確認・インタビュー・実地観察など、使う手法</li>
+      <li><strong>スケジュール</strong>：いつ・どこで・何日かけて行うか</li>
+    </ul>
+  </div>
+
+  <!-- 監査の全体フロー -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ 監査の全体フロー（計画書の位置づけ）</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 監査計画書の作成（←ここ！）</div>
+        <div class="fb">目的・範囲・方法・スケジュール・担当者を決めて文書化。監査委員長や経営者の承認を得てから進む。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 予備調査</div>
+        <div class="fb">対象部門の概要・業務フロー・リスクを把握し、監査手続を具体化する準備。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 本調査（証拠収集）</div>
+        <div class="fb">計画書に基づいて現場で監査証拠を収集。調査結果を監査調書に記録する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 監査報告書の作成</div>
+        <div class="fb">収集した証拠をもとに意見を表明し、改善勧告とともに報告書を提出する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「監査計画書」と「監査報告書」の混同</div>
+      <div class="tb">計画書＝監査を始める前の設計図。報告書＝監査が終わった後の結果・意見・勧告の文書。時系列が逆。"計画"→（実施）→"報告"の順。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「監査計画書」と「監査調書」の混同</div>
+      <div class="tb">監査調書は実施中・後に証拠を整理する文書。計画書は事前準備の文書。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">監査計画は一度作ったら変更不可？</div>
+      <div class="tb">実際の監査では追加リスクが判明したり状況が変化したりするため、必要に応じて計画を修正（見直し）することがある。固定されたものではない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">監査計画書＝「旅行の行程表」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">どこ行く（範囲）・何する（方法）・いつ（スケジュール）・誰（担当）を出発前に決める設計図！</span><br><br>
+      <span class="hl">計画→実施→報告</span>の3ステップ<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「けい（計画）じつ（実施）ほう（報告）」— 計画書は必ず最初！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

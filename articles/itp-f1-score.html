@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>F1スコアとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="F1スコアを精度・再現率との関係でわかりやすく解説。AIモデルの性能指標として試験で頻出。混同行列・適合率・再現率のひっかけポイントと覚え方ゴロ付き。">
+<link rel="canonical" href="https://example.com/itp-f1-score">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c44b8a,#6a1040);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(106,16,64,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c0da;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-pink{--c:#c44b8a;--cbg:#fbe3ee;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c44b8a;}
+
+.formula-box{background:#fbe3ee;border-radius:14px;padding:15px;text-align:center;margin:10px 0;}
+.formula-box .formula{font-size:16px;font-weight:900;color:#a3316a;line-height:2;}
+.formula-box .formula-sub{font-size:12px;font-weight:700;color:#8a5070;margin-top:4px;}
+
+.metrics-row{display:flex;gap:9px;margin-top:10px;}
+.metric-card{flex:1;border-radius:12px;padding:10px 8px;text-align:center;}
+.metric-card .mc-name{font-size:11px;font-weight:900;margin-bottom:5px;}
+.metric-card .mc-val{font-size:13px;font-weight:900;line-height:1.4;}
+.mc-prec{background:#e7eefc;}.mc-prec .mc-name{color:#2e6de5;}
+.mc-rec{background:#e2f3e5;}.mc-rec .mc-name{color:#2e8b4f;}
+.mc-f1{background:#fbe3ee;}.mc-f1 .mc-name{color:#c44b8a;}
+@media(max-width:400px){.metrics-row{flex-direction:column;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#c44b8a;--fbg:#fce8f2;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・AI</span>
+    <h1><b>F1スコア</b>とは？</h1>
+    <p>AIの「正確さ」と「漏れのなさ」を<br>ひとつの数字にまとめたバランス指標。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="58" width="48" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="18" y="38" width="36" height="28" rx="8" fill="#c44b8a"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 19 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- メーターアイコン -->
+        <path d="M44 62 a8 8 0 0 1 16 0" fill="none" stroke="#ffd23f" stroke-width="2"/>
+        <line x1="52" y1="62" x2="56" y2="57" stroke="#dd5a3a" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <div class="scene-txt">
+        スパムメール検出AIを評価したい。「怪しいメールを全部スパム判定する」と見逃しがなくなるが、普通のメールまでスパム扱いしてしまう。<strong>「精度」と「網羅性」のトレードオフ</strong>をどう1つの数字で表す？
+        <div class="scene-q">…そこで登場するのが F1スコア。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-pink">
+    <span class="phead">📊 F1スコアの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="適合率・再現率・F1スコアの関係図">
+      <!-- 背景円：全陽性予測 -->
+      <ellipse cx="150" cy="110" rx="90" ry="70" fill="#dce8fb" stroke="#2e6de5" stroke-width="2" opacity=".8"/>
+      <!-- 背景円：実際の陽性 -->
+      <ellipse cx="210" cy="110" rx="90" ry="70" fill="#d8f0e5" stroke="#2e8b4f" stroke-width="2" opacity=".8"/>
+      <!-- 重なり部分（TP） -->
+      <path d="M180 47 Q240 60 240 110 Q240 160 180 173 Q120 160 120 110 Q120 60 180 47 Z" fill="#fce8f2" opacity=".9"/>
+
+      <!-- ラベル：適合率側 -->
+      <text x="120" y="108" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">AI が</text>
+      <text x="120" y="123" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">陽性と予測</text>
+
+      <!-- ラベル：再現率側 -->
+      <text x="240" y="108" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">実際に</text>
+      <text x="240" y="123" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">陽性なもの</text>
+
+      <!-- 重なり部分ラベル（TP） -->
+      <text x="180" y="105" text-anchor="middle" font-size="12" font-weight="900" fill="#c44b8a" font-family="M PLUS Rounded 1c">正しく</text>
+      <text x="180" y="120" text-anchor="middle" font-size="12" font-weight="900" fill="#c44b8a" font-family="M PLUS Rounded 1c">検出</text>
+      <text x="180" y="135" text-anchor="middle" font-size="10" font-weight="700" fill="#a03070" font-family="M PLUS Rounded 1c">（TP）</text>
+
+      <!-- 適合率の矢印と説明 -->
+      <text x="45" y="160" text-anchor="middle" font-size="10" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">適合率</text>
+      <text x="45" y="175" text-anchor="middle" font-size="9" font-weight="700" fill="#4a6acd" font-family="M PLUS Rounded 1c">予測中の正解率</text>
+      <line x1="80" y1="165" x2="115" y2="140" stroke="#2e6de5" stroke-width="1.5" marker-end="url(#ap)"/>
+      <defs>
+        <marker id="ap" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#2e6de5"/>
+        </marker>
+        <marker id="ar" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+
+      <!-- 再現率の矢印と説明 -->
+      <text x="295" y="160" text-anchor="middle" font-size="10" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">再現率</text>
+      <text x="295" y="175" text-anchor="middle" font-size="9" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">実際の捕捉率</text>
+      <line x1="260" y1="165" x2="225" y2="140" stroke="#2e8b4f" stroke-width="1.5" marker-end="url(#ar)"/>
+
+      <!-- F1バッジ -->
+      <rect x="140" y="183" width="80" height="30" rx="10" fill="#c44b8a"/>
+      <text x="180" y="202" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">F1スコア（調和平均）</text>
+    </svg>
+
+    <div class="formula-box">
+      <div class="formula">F1 = 2 × (適合率 × 再現率) ÷ (適合率 + 再現率)</div>
+      <div class="formula-sub">※ 調和平均：どちらかが極端に低いと全体も低くなる</div>
+    </div>
+
+    <div class="metrics-row">
+      <div class="metric-card mc-prec">
+        <div class="mc-name">適合率（Precision）</div>
+        <div class="mc-val">陽性と予測した中で<br>実際に陽性の割合</div>
+      </div>
+      <div class="metric-card mc-rec">
+        <div class="mc-name">再現率（Recall）</div>
+        <div class="mc-val">実際の陽性のうち<br>正しく検出した割合</div>
+      </div>
+      <div class="metric-card mc-f1">
+        <div class="mc-name">F1スコア</div>
+        <div class="mc-val">上2つの<br>調和平均</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー・詳細 -->
+  <div class="panel p-green">
+    <span class="phead">💡 3つの指標の意味</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">適合率（Precision）：「空振りしない」</div><div class="fb">AIが「スパム！」と言ったもののうち、本当にスパムだった割合。空振り（普通のメールをスパム扱い）が少ないほど高い。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">再現率（Recall）：「見逃さない」</div><div class="fb">本当のスパムのうち、AIが正しく検出できた割合。見逃し（スパムを見逃す）が少ないほど高い。適合率と再現率は「上げると片方が下がる」関係。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">F1スコア：「両方のバランス」</div><div class="fb">どちらか一方が極端に低いと全体スコアも下がる調和平均。「精度も網羅性もバランス良く高い」を一数値で表したい時に使う。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">正解率（Accuracy）と混同しやすい</div>
+      <div class="tb">正解率は「全予測中の正解の割合」。陽性がほぼないデータでは正解率が高くても意味がない。F1スコアは不均衡データで有効。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">F1スコアが高いほど必ず良いわけではない</div>
+      <div class="tb">用途によって適合率・再現率どちらを優先すべきか変わる。たとえば病気の見逃しが許されない場面では再現率を優先する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「調和平均」＝単純な平均ではない</div>
+      <div class="tb">算術平均（足して2で割る）と混同しない。調和平均は低い方に引きずられるため、片方が0なら全体も0になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>適合率と再現率のバランス</strong>」「<strong>AIの性能をひとつの数値で</strong>」が出たら → <strong>F1スコア</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">F1スコア＝「ふたつ一緒」</span><br>
+    <span class="hl">精（せい）度と再（さい）現のF1（ふたり一緒）</span><br><br>
+    「<span class="hl">空振り（適合率↓）</span>と<span class="hl">見逃し（再現率↓）</span>を<br>同時に減らした時だけ上がる」<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">F＝Fifty-fifty（ふたつのバランス）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-f1-score</div>
+
+</div>
+</body>
+</html>

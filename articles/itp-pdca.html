@@ -1,106 +1,210 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>PDCAサイクルとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="PDCAサイクルの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-pdca.html">
-<meta property="og:title" content="PDCAサイクルとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="PDCAサイクルの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-pdca.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PDCAサイクルとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="PDCAサイクルをPlan・Do・Check・Actの4フェーズで図解解説。OODAループとの違い、各フェーズの具体例、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-pdca">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d9851f,#8a4800);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(138,72,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fde8c8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9851f;}
+
+.pdca-detail{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.pdca-cell{border-radius:12px;padding:12px 11px;}
+.pdca-cell h4{font-size:14px;font-weight:900;margin-bottom:5px;}
+.pdca-cell .tag{font-size:11px;font-weight:700;border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:5px;}
+.pdca-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.pdca-p{background:#e7eefc;}.pdca-p h4{color:#1a5fc8;}.pdca-p .tag{background:#1a5fc8;color:#fff;}
+.pdca-d{background:#fcefd9;}.pdca-d h4{color:#d9851f;}.pdca-d .tag{background:#d9851f;color:#fff;}
+.pdca-c{background:#e2f3e5;}.pdca-c h4{color:#2e8b4f;}.pdca-c .tag{background:#2e8b4f;color:#fff;}
+.pdca-a{background:#fbe3ee;}.pdca-a h4{color:#cf4f86;}.pdca-a .tag{background:#cf4f86;color:#fff;}
+@media(max-width:480px){.pdca-detail{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a5fc8;--fbg:#e7f0fd;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#cf4f86;--fbg:#fbe3ee;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">PDCAサイクルとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">PDCAサイクル</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>業務改善担当の私。新施策をやったらうまくいかない部分があった。原因を分析して次の計画に反映…これを繰り返してるけど、この4文字サイクル何だっけ？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系 / 業務改善</span>
+    <h1><b>PDCAサイクル</b>とは？</h1>
+    <p>Plan（計画）→ Do（実行）→ Check（評価）→ Act（改善）を繰り返す業務改善の基本フレームワーク。回し続けることで品質が螺旋状に向上する。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>PDCAサイクル</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>OODAループ</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ OODAは緊急時の素早い意思決定向き。「計画→実行→評価→改善」の継続改善はPDCA</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#d9851f"/>
+        <circle cx="36" cy="21" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- サイクル矢印 -->
+        <path d="M46 54 a12 12 0 1 1 0.1 0" stroke="#fff" stroke-width="2" fill="none"/>
+        <polygon points="46,48 50,54 42,54" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        プロジェクト管理者が「今回の不具合が多い理由を分析して、次のスプリントで対策を打とう」と提案した。「計画を立て→実施し→振り返り→改善する」というサイクルを回す。
+        <div class="scene-q">…この改善サイクルを何という？</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：PDCAサイクル</strong></p>
-</div>
+  <!-- 図解：PDCAサイクル -->
+  <div class="panel p-orange">
+    <span class="phead">🔄 PDCAサイクル 図解</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="PDCAサイクルの4フェーズ：Plan計画・Do実行・Check評価・Act改善が円環で繋がっている">
+      <!-- 中央円 -->
+      <circle cx="170" cy="130" r="50" fill="#fdf4e4" stroke="#d9851f" stroke-width="2.5"/>
+      <text x="170" y="124" text-anchor="middle" font-size="13" font-weight="900" fill="#8a4800" font-family="M PLUS Rounded 1c">継続的</text>
+      <text x="170" y="141" text-anchor="middle" font-size="13" font-weight="900" fill="#8a4800" font-family="M PLUS Rounded 1c">改善</text>
+      <!-- Plan（上） -->
+      <circle cx="170" cy="38" r="36" fill="#e7f0fd" stroke="#1a5fc8" stroke-width="3"/>
+      <text x="170" y="34" text-anchor="middle" font-size="17" font-weight="900" fill="#1a5fc8" font-family="M PLUS Rounded 1c">P</text>
+      <text x="170" y="52" text-anchor="middle" font-size="11" font-weight="800" fill="#1a5fc8" font-family="M PLUS Rounded 1c">Plan 計画</text>
+      <!-- Do（右） -->
+      <circle cx="272" cy="130" r="36" fill="#fdf4e4" stroke="#d9851f" stroke-width="3"/>
+      <text x="272" y="126" text-anchor="middle" font-size="17" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">D</text>
+      <text x="272" y="144" text-anchor="middle" font-size="11" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">Do 実行</text>
+      <!-- Check（下） -->
+      <circle cx="170" cy="222" r="36" fill="#eef8f1" stroke="#2e8b4f" stroke-width="3"/>
+      <text x="170" y="218" text-anchor="middle" font-size="17" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">C</text>
+      <text x="170" y="236" text-anchor="middle" font-size="11" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Check 評価</text>
+      <!-- Act（左） -->
+      <circle cx="68" cy="130" r="36" fill="#fbe3ee" stroke="#cf4f86" stroke-width="3"/>
+      <text x="68" y="126" text-anchor="middle" font-size="17" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">A</text>
+      <text x="68" y="144" text-anchor="middle" font-size="11" font-weight="800" fill="#cf4f86" font-family="M PLUS Rounded 1c">Act 改善</text>
+      <!-- 矢印（時計回り） -->
+      <path d="M193 58 Q232 75 254 107" stroke="#9aa3b2" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+      <path d="M262 158 Q248 195 213 215" stroke="#9aa3b2" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+      <path d="M127 215 Q92 195 78 158" stroke="#9aa3b2" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+      <path d="M78 102 Q92 65 147 48" stroke="#9aa3b2" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+    </svg>
 
-<div class="card">
-<h2>📘 PDCAサイクルとは何か</h2>
-<span class="kw">計画実行評価改善</span>
-<p>Plan（計画）→Do（実行）→Check（評価）→Act（改善）を繰り返す継続的改善の手法。</p>
-</div>
+    <!-- 4フェーズ詳細 -->
+    <div class="pdca-detail">
+      <div class="pdca-cell pdca-p">
+        <span class="tag">P: Plan 計画</span>
+        <h4>目標と計画を立てる</h4>
+        <p>何を達成したいか目標設定。数値目標・期限・担当者・手順を決める。</p>
+      </div>
+      <div class="pdca-cell pdca-d">
+        <span class="tag">D: Do 実行</span>
+        <h4>計画に沿って実施する</h4>
+        <p>Planどおりに実施。記録を残しながら進める（後のCheckに使う）。</p>
+      </div>
+      <div class="pdca-cell pdca-c">
+        <span class="tag">C: Check 評価</span>
+        <h4>計画通りか評価する</h4>
+        <p>目標とのギャップを測定・分析。何が原因で差が生まれたかを調べる。</p>
+      </div>
+      <div class="pdca-cell pdca-a">
+        <span class="tag">A: Act 改善</span>
+        <h4>次のサイクルに反映する</h4>
+        <p>うまくいったことは標準化、問題点は改善策を立案して次のPlanへ。</p>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「Check→Actの評価・改善フェーズ」が特徴。品質管理・業務改善の基本フレームワークとして頻出。</p>
-</div>
+  <!-- 具体的な業務フロー -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 現場での使い方（ITプロジェクト例）</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">P：「バグ数を月10件以下に下げる」計画を立てる</div><div class="fb">コードレビューの回数を増やす、テスト自動化を導入するなど具体策を決める。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">D：1ヶ月間、計画どおりレビューを実施する</div><div class="fb">実施状況を記録。バグ発生数・レビュー件数などデータを集める。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">C：月末に実績を目標と比較・原因分析する</div><div class="fb">バグ15件で目標未達。「レビューがスキップされたケースが多い」と判明。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">A：次の計画に改善策を盛り込む</div><div class="fb">「マージ前にレビュー必須」をルール化し、次のPで新目標を設定して再び回す。</div></div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>OODAループは「観察→判断→意思決定→行動」で緊急時の素早い意思決定向き。PDCAは計画的な継続改善向きで時間軸が違う。</p>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">OODAループとの混同</div>
+      <div class="tb">OODAは「Observe（観察）→ Orient（判断）→ Decide（決断）→ Act（行動）」。PDCAは計画先行、OODAは観察先行。迅速対応が必要な場面ではOODAが有効。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「A（Act）は実行すること」は誤り</div>
+      <div class="tb">ActはDoと混同しやすいが、Actは「<strong>改善・標準化・次のPlanへの反映</strong>」。実行はDo（Do=実行、Act=改善）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">PDCAは「一回やれば終わり」ではない</div>
+      <div class="tb">「サイクル」という名の通り、繰り返し回し続けるもの。1回で完結せず、継続的な改善が本質。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">順番は固定（P→D→C→A）</div>
+      <div class="tb">試験では「DoとCheckが入れ替わった選択肢」がよく出る。順番を正確に覚える。</div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**P-D-C-A＝計画・実行・確認・改善**。**回し続ける車輪**。1周終わったら次の計画に反映してまた回す。</p></div>
-</div>
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「Plan Do（プランどー）ちぇっ（Check）、あ（Act）そうか！」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「プランどーちぇっ、あそうか！」と言いながら手を動かすと覚えられる</span><br><br>
+      AとDの区別：<span class="hl">Do＝動く / Act＝改善アクション（次への一手）</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Do＝今やる、Act＝次に活かす、この差が試験に出る</span>
+    </div>
+  </div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>PDCAサイクルはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
 </div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

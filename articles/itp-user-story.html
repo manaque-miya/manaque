@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ユーザーストーリーとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ユーザーストーリーの書き方・フォーマット・役割を解説。アジャイル開発でなぜ使うか、ユースケースとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-user-story">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6a3fc8,#3a1d80);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(58,29,128,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d5c8f7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#6a3fc8;--cbg:#ece5f9;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6a3fc8;}
+
+.story-card{background:#f5f0ff;border:2px solid #6a3fc8;border-radius:14px;padding:16px 18px;margin:10px 0;}
+.story-card .sc-title{font-size:11px;font-weight:900;color:#6a3fc8;margin-bottom:8px;letter-spacing:.05em;}
+.story-card .sc-body{font-size:16px;font-weight:900;color:#3a1d80;line-height:1.8;}
+.story-card .sc-body .part{background:#fff;border-radius:6px;padding:2px 8px;display:inline;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6a3fc8;--fbg:#f0eaff;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>ユーザーストーリー</b>とは？</h1>
+    <p>アジャイル開発で使う要件の書き方。「誰が・何をしたいか・なぜか」を1文で表す。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#3a1d80" opacity=".1"/>
+        <rect x="10" y="58" width="52" height="22" rx="6" fill="#d5c8f7"/>
+        <rect x="14" y="36" width="44" height="30" rx="9" fill="#6a3fc8"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#6b4f2a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 付箋 -->
+        <rect x="42" y="28" width="26" height="20" rx="3" fill="#ffd23f"/>
+        <line x1="46" y1="34" x2="64" y2="34" stroke="#5c4500" stroke-width="1.5"/>
+        <line x1="46" y1="39" x2="64" y2="39" stroke="#5c4500" stroke-width="1.5"/>
+        <line x1="46" y1="44" x2="58" y2="44" stroke="#5c4500" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        スクラム開発のチームが新しいECサイトを作っている。プロダクトオーナーが付箋に「<strong>ユーザーとして、商品を検索して購入したい。なぜなら欲しいものを素早く見つけたいから</strong>」と書いてバックログに貼った。
+        <div class="scene-q">…この付箋の書き方、何と呼ぶの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ユーザーストーリーの構造 -->
+  <div class="panel p-purple">
+    <span class="phead">📝 ユーザーストーリーのフォーマット</span>
+    <div class="story-card">
+      <div class="sc-title">▼ 標準フォーマット（3部構成）</div>
+      <div class="sc-body">
+        <span class="part">〇〇として（ユーザー）</span>、<br>
+        <span class="part">〇〇したい（機能・目的）</span>。<br>
+        なぜなら<span class="part">〇〇だから（理由・価値）</span>。
+      </div>
+    </div>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="ユーザーストーリーの3部構成の図">
+      <!-- 3つのブロック -->
+      <rect x="10" y="30" width="96" height="80" rx="12" fill="#ece5f9" stroke="#6a3fc8" stroke-width="2"/>
+      <text x="58" y="58" text-anchor="middle" font-size="11" font-weight="900" fill="#3a1d80" font-family="M PLUS Rounded 1c">誰として</text>
+      <text x="58" y="74" text-anchor="middle" font-size="10" font-weight="700" fill="#6a3fc8" font-family="M PLUS Rounded 1c">（ユーザー像）</text>
+      <text x="58" y="96" text-anchor="middle" font-size="9" font-weight="600" fill="#48506a" font-family="M PLUS Rounded 1c">例：「会員として」</text>
+      <!-- 矢印 -->
+      <text x="115" y="74" text-anchor="middle" font-size="18" fill="#9aa3b2">▶</text>
+      <!-- 2つ目 -->
+      <rect x="126" y="30" width="96" height="80" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="174" y="58" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">何をしたい</text>
+      <text x="174" y="74" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">（機能・目的）</text>
+      <text x="174" y="96" text-anchor="middle" font-size="9" font-weight="600" fill="#48506a" font-family="M PLUS Rounded 1c">例：「注文履歴を見たい」</text>
+      <!-- 矢印 -->
+      <text x="231" y="74" text-anchor="middle" font-size="18" fill="#9aa3b2">▶</text>
+      <!-- 3つ目 -->
+      <rect x="242" y="30" width="90" height="80" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="287" y="58" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">なぜなら</text>
+      <text x="287" y="74" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">（価値・理由）</text>
+      <text x="287" y="90" text-anchor="middle" font-size="9" font-weight="600" fill="#48506a" font-family="M PLUS Rounded 1c">例：「再注文を</text>
+      <text x="287" y="103" text-anchor="middle" font-size="9" font-weight="600" fill="#48506a" font-family="M PLUS Rounded 1c">楽にしたいから」</text>
+      <!-- 下部ラベル -->
+      <text x="170" y="148" text-anchor="middle" font-size="10" font-weight="800" fill="#6a3fc8" font-family="M PLUS Rounded 1c">「なぜ」を書くことで、開発者がビジネス価値を理解できる</text>
+    </svg>
+  </div>
+
+  <!-- フロー：アジャイル開発での使い方 -->
+  <div class="panel p-blue">
+    <span class="phead">🔄 アジャイル開発での使われ方</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① プロダクトオーナーがユーザーストーリーを書く</div>
+        <div class="fb">ビジネスの要求を「誰が・何を・なぜ」のフォーマットで付箋に書き、プロダクトバックログに積む。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② スプリント計画で優先順位をつける</div>
+        <div class="fb">チームでストーリーポイント（作業量の見積もり）を付け、今スプリントでやるストーリーを決める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 開発・テスト・受け入れ</div>
+        <div class="fb">ストーリーごとに完了条件（受け入れ基準）を決めて実装。顧客が動く機能として確認する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ユーザーストーリー vs ユースケース</div>
+      <div class="tb">ユースケースは「システムが行う処理の流れ」を詳細に記述する。ユーザーストーリーは<strong>「ユーザーの目標と価値」を短文で表す</strong>もの。詳細度・記述スタイルが全然違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ウォーターフォールで使う？</div>
+      <div class="tb">ユーザーストーリーは<strong>アジャイル開発（スクラム）</strong>の手法。ウォーターフォールでは要件定義書・仕様書を使う。試験で「ウォーターフォールでユーザーストーリー」という組み合わせは出ない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ユーザーとして」は人間のユーザーだけ？</div>
+      <div class="tb">外部システムや管理者など、<strong>多様なアクターが主語</strong>になれる。「管理者として」「外部APIとして」など。ユーザー＝エンドユーザーだけではない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「誰が・何を・なぜ」</span> ＝ ユーザーストーリーの3点セット<br>
+      <span style="font-size:13px;font-weight:800;color:#9a6b00;">語呂：<strong>「ユーザー（誰）が ストーリー（何を） 語る（なぜ）」</strong></span><br><br>
+      ユースケースとの区別：<br>
+      <span class="hl">ユーザーストーリー</span>＝付箋1枚・シンプル・アジャイル<br>
+      <span class="hl">ユースケース</span>＝図＋詳細仕様・ウォーターフォール
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

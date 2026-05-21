@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>監査証拠とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="監査証拠をわかりやすく解説。監査人が意見表明に使う根拠の種類・収集方法、監査調書との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-audit-evidence">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6b3fa0,#3a1f70);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(58,31,112,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d0bef5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#6b3fa0;--cbg:#ede0f8;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6b3fa0;}
+
+.evidence-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.ev-cell{border-radius:11px;padding:12px 11px;}
+.ev-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.ev-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.ev-doc{background:#e7eefc;}.ev-doc h4{color:#2e6de5;}
+.ev-interview{background:#e2f3e5;}.ev-interview h4{color:#2e8b4f;}
+.ev-observe{background:#fcefd9;}.ev-observe h4{color:#d9851f;}
+.ev-confirm{background:#ede0f8;}.ev-confirm h4{color:#6b3fa0;}
+@media(max-width:480px){.evidence-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6b3fa0;--fbg:#f5eeff;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>監査証拠</b>とは？</h1>
+    <p>監査人が「問題あり・なし」の意見を述べるために<br>集める<strong>根拠となる情報・記録・証拠の総称</strong>。<br>裁判の「証拠」と同じ役割を果たします。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#3a1f70" opacity=".12"/>
+        <!-- 人物（監査人） -->
+        <circle cx="39" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M27 19 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="31" y="33" width="16" height="10" fill="#f4c89a"/>
+        <rect x="18" y="42" width="42" height="28" rx="8" fill="#6b3fa0"/>
+        <!-- クリップボード -->
+        <rect x="44" y="52" width="20" height="26" rx="3" fill="#ede0f8" stroke="#6b3fa0" stroke-width="1.5"/>
+        <rect x="46" y="56" width="16" height="2" rx="1" fill="#9a6bc8"/>
+        <rect x="46" y="61" width="16" height="2" rx="1" fill="#9a6bc8"/>
+        <rect x="46" y="66" width="10" height="2" rx="1" fill="#9a6bc8"/>
+        <!-- チェックマーク -->
+        <path d="M47 71 l3 3 l6 -6" stroke="#2e8b4f" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        社内情報システムの監査を担当したあなた。「アクセス管理が適切かどうか」を判断するために、<strong>アクセスログ・規程文書・担当者へのインタビュー記録</strong>を集めた。<br>
+        この集めた情報のすべてが「監査証拠」。
+        <div class="scene-q">…意見を言う前に、必ず"証拠"を集めるのが監査の基本！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：監査証拠の種類 -->
+  <div class="panel p-blue">
+    <span class="phead">🔍 監査証拠の主な種類（図解）</span>
+    <svg width="100%" viewBox="0 0 340 170" role="img" aria-label="監査証拠の4種類：文書証拠・口頭証拠・観察証拠・確認証拠">
+      <!-- 中央ラベル -->
+      <ellipse cx="170" cy="85" rx="55" ry="35" fill="#ede0f8" stroke="#6b3fa0" stroke-width="2.5"/>
+      <text x="170" y="81" text-anchor="middle" font-size="13" font-weight="900" fill="#3a1f70" font-family="M PLUS Rounded 1c">監査証拠</text>
+      <text x="170" y="97" text-anchor="middle" font-size="10" font-weight="800" fill="#6b3fa0" font-family="M PLUS Rounded 1c">意見表明の根拠</text>
+
+      <!-- 文書証拠 -->
+      <rect x="8" y="10" width="80" height="44" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.8"/>
+      <text x="48" y="30" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">文書証拠</text>
+      <text x="48" y="44" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">規程・ログ・帳票</text>
+      <path d="M88 32 L114 72" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- 口頭証拠 -->
+      <rect x="8" y="116" width="80" height="44" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.8"/>
+      <text x="48" y="136" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">口頭証拠</text>
+      <text x="48" y="150" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">ヒアリング記録</text>
+      <path d="M88 138 L114 98" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- 観察証拠 -->
+      <rect x="252" y="10" width="82" height="44" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="1.8"/>
+      <text x="293" y="30" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">観察証拠</text>
+      <text x="293" y="44" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">実地確認・視察</text>
+      <path d="M252 32 L226 72" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- 確認証拠 -->
+      <rect x="252" y="116" width="82" height="44" rx="8" fill="#ede0f8" stroke="#6b3fa0" stroke-width="1.8"/>
+      <text x="293" y="136" text-anchor="middle" font-size="11" font-weight="900" fill="#6b3fa0" font-family="M PLUS Rounded 1c">確認証拠</text>
+      <text x="293" y="150" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">第三者照会・回答</text>
+      <path d="M252 138 L226 98" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+
+    <div class="evidence-grid">
+      <div class="ev-cell ev-doc"><h4>文書証拠</h4><p>規程・マニュアル・アクセスログ・帳票などの記録文書。最も客観性が高い。</p></div>
+      <div class="ev-cell ev-interview"><h4>口頭証拠</h4><p>担当者へのインタビュー（ヒアリング）の記録。証拠力は文書より弱め。</p></div>
+      <div class="ev-cell ev-observe"><h4>観察証拠</h4><p>現場に行って実際の作業手順・設備を見て確認したもの。</p></div>
+      <div class="ev-cell ev-confirm"><h4>確認証拠</h4><p>取引先など第三者に照会し、得た回答。独立性が高く信頼できる。</p></div>
+    </div>
+  </div>
+
+  <!-- 監査の流れ -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 監査での証拠の使われ方</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 監査計画書を作る</div>
+        <div class="fb">何を・どの範囲で・どんな方法で監査するかを決める。収集する証拠の種類も計画に含める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 監査証拠を収集する</div>
+        <div class="fb">文書・インタビュー・観察・第三者確認など複数の方法で証拠を集める。集めた証拠は<strong>監査調書</strong>に記録・整理する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 意見を表明する</div>
+        <div class="fb">収集した証拠に基づいて「適切に運用されている／課題がある」という<strong>監査意見</strong>を監査報告書にまとめる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「監査証拠」と「監査調書」の混同</div>
+      <div class="tb">監査証拠＝意見表明の根拠となる情報そのもの。監査調書＝収集した証拠を整理・記録した書類（証拠の入れ物）。証拠が"中身"で調書が"容れ物"。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">口頭証拠だけで十分？</div>
+      <div class="tb">口頭のヒアリングだけでは証拠として弱い。複数の種類の証拠を組み合わせて、証拠の十分性・適切性を確認するのが基本。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「監査証拠＝監査報告書」ではない</div>
+      <div class="tb">監査証拠は意見を述べる"前"に集めるもの。報告書は意見を述べる"後"の成果物。順序を混同しないこと。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">監査証拠＝「意見を言う前の証拠集め」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">裁判と同じ！ 判決（意見）の前に証拠を揃える。証拠なしに「問題あり」とは言えない。</span><br><br>
+      <span class="hl">文書・口頭・観察・確認</span>の4種類<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「ふ（文書）く（口頭）か（観察）く（確認）」でいつも4つ！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>カンパニー制とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="カンパニー制をわかりやすく解説。大企業が事業部門を独立した「社内会社」として運営する組織形態。事業部制・持株会社との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-company-system">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c07a1a,#7a4a00);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,74,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5dfa8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c07a1a;}
+
+.comp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px;}
+.comp-cell{border-radius:12px;padding:10px 9px;}
+.comp-cell h4{font-size:12px;font-weight:900;margin-bottom:5px;}
+.comp-cell p{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+.cc1{background:#fcefd9;}.cc1 h4{color:#d9851f;}
+.cc2{background:#e2f3e5;}.cc2 h4{color:#2e8b4f;}
+.cc3{background:#e4e7f7;}.cc3 h4{color:#4256b8;}
+@media(max-width:480px){.comp-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d9851f;--fbg:#fdf4e4;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#4256b8;--fbg:#eef0fb;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>カンパニー制</b>とは？</h1>
+    <p>大企業が事業部門を「社内の独立会社」として運営する組織形態。事業部長を"社長"扱いにして、スピードある意思決定を実現する。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 建物（大企業） -->
+        <rect x="6" y="42" width="60" height="40" rx="4" fill="#cdd9ec"/>
+        <rect x="10" y="46" width="52" height="34" rx="3" fill="#4256b8"/>
+        <!-- 窓（3つのカンパニー） -->
+        <rect x="13" y="50" width="14" height="12" rx="2" fill="#ffd23f"/>
+        <rect x="29" y="50" width="14" height="12" rx="2" fill="#90e0a0"/>
+        <rect x="45" y="50" width="14" height="12" rx="2" fill="#f4a870"/>
+        <text x="20" y="60" text-anchor="middle" font-size="7" font-weight="900" fill="#5c4500">A社</text>
+        <text x="36" y="60" text-anchor="middle" font-size="7" font-weight="900" fill="#1a5a2a">B社</text>
+        <text x="52" y="60" text-anchor="middle" font-size="7" font-weight="900" fill="#7a3500">C社</text>
+        <!-- 看板 -->
+        <rect x="15" y="36" width="42" height="8" rx="2" fill="#2e6de5"/>
+        <text x="36" y="43" text-anchor="middle" font-size="7.5" font-weight="900" fill="#fff">○○ホールディングス</text>
+        <!-- 人 -->
+        <circle cx="36" cy="16" r="12" fill="#f4c89a"/>
+        <path d="M25 13 a11 10 0 0 1 22 0 q-4-8-11-8-7 0-11 8z" fill="#3a3f4a"/>
+        <rect x="28" y="26" width="16" height="8" fill="#f4c89a"/>
+      </svg>
+      <div class="scene-txt">
+        大企業「○○株式会社」では、電子機器部門・食品部門・不動産部門という3つの事業が全然違う業界で動いている。それぞれの部門を「A カンパニー」「B カンパニー」「C カンパニー」と呼び、各カンパニーのトップが独自に経営判断を下せる。
+        <div class="scene-q">…この「社内を独立した会社のように運営する組織形態」の名前は？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 -->
+  <div class="panel p-orange">
+    <span class="phead">🏢 カンパニー制の構造</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="カンパニー制：本社の下に独立したカンパニーが並ぶ構造">
+      <!-- 本社 -->
+      <rect x="100" y="10" width="140" height="42" rx="12" fill="#7a4a00"/>
+      <text x="170" y="30" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">本社（グループ全体管理）</text>
+      <text x="170" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#f5dfa8" font-family="M PLUS Rounded 1c">全体戦略・資本配分・管理</text>
+      <!-- 線 -->
+      <line x1="80" y1="52" x2="80" y2="80" stroke="#ccc" stroke-width="2"/>
+      <line x1="170" y1="52" x2="170" y2="80" stroke="#ccc" stroke-width="2"/>
+      <line x1="260" y1="52" x2="260" y2="80" stroke="#ccc" stroke-width="2"/>
+      <line x1="80" y1="52" x2="260" y2="52" stroke="#ccc" stroke-width="2"/>
+      <!-- A カンパニー -->
+      <rect x="30" y="80" width="100" height="55" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2.5"/>
+      <text x="80" y="102" text-anchor="middle" font-size="12" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">A カンパニー</text>
+      <text x="80" y="118" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8a5a1a" font-family="M PLUS Rounded 1c">電子機器事業</text>
+      <text x="80" y="129" text-anchor="middle" font-size="10" font-weight="700" fill="#b87a2a" font-family="M PLUS Rounded 1c">独立採算・独自判断</text>
+      <!-- B カンパニー -->
+      <rect x="120" y="80" width="100" height="55" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="170" y="102" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">B カンパニー</text>
+      <text x="170" y="118" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1a6a3a" font-family="M PLUS Rounded 1c">食品事業</text>
+      <text x="170" y="129" text-anchor="middle" font-size="10" font-weight="700" fill="#4a9a6a" font-family="M PLUS Rounded 1c">独立採算・独自判断</text>
+      <!-- C カンパニー -->
+      <rect x="210" y="80" width="100" height="55" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="260" y="102" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">C カンパニー</text>
+      <text x="260" y="118" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2a3a8a" font-family="M PLUS Rounded 1c">不動産事業</text>
+      <text x="260" y="129" text-anchor="middle" font-size="10" font-weight="700" fill="#6a76c8" font-family="M PLUS Rounded 1c">独立採算・独自判断</text>
+      <!-- 特徴ラベル -->
+      <rect x="60" y="155" width="220" height="42" rx="10" fill="#fff7e0" stroke="#e0a800" stroke-width="2"/>
+      <text x="170" y="173" text-anchor="middle" font-size="11.5" font-weight="900" fill="#7a5500" font-family="M PLUS Rounded 1c">各カンパニーは「独立採算制」</text>
+      <text x="170" y="190" text-anchor="middle" font-size="10.5" font-weight="700" fill="#a87a20" font-family="M PLUS Rounded 1c">損益責任をカンパニー単位で持つ</text>
+    </svg>
+    <div class="comp-grid">
+      <div class="comp-cell cc1"><h4>独立採算</h4><p>カンパニー単位で損益を管理。自分たちの稼ぎは自分たちで責任を持つ。</p></div>
+      <div class="comp-cell cc2"><h4>独自意思決定</h4><p>本社の承認を待たず、カンパニー長が迅速に判断できる。</p></div>
+      <div class="comp-cell cc3"><h4>法人格なし</h4><p>あくまで同一法人内の組織単位。別会社（子会社）とは異なる。</p></div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細：比較 -->
+  <div class="panel p-green">
+    <span class="phead">🔍 似た組織形態との違い</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">カンパニー制（社内会社制）</div><div class="fb">同一法人内で「社内会社」として独立採算。法人格は持たない。意思決定は速い。</div></div>
+      <div class="farrow">▼ 比較</div>
+      <div class="fstep f2"><div class="fh">事業部制</div><div class="fb">部門ごとに損益責任を持つが、カンパニー制より独立度は低い。予算権限も弱め。</div></div>
+      <div class="farrow">▼ 比較</div>
+      <div class="fstep f3"><div class="fh">持株会社（ホールディングス）制</div><div class="fb">各カンパニーを法的に独立した子会社として分離。カンパニー制は法人格なし・持株会社制は法人格あり、が最大の違い。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">持株会社制と混同しやすい</div>
+      <div class="tb">カンパニー制は<strong>同一法人内</strong>の組織形態（法人格なし）。持株会社制は各事業が<strong>別法人（子会社）</strong>として独立。この違いが頻出ひっかけ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">事業部制との違い</div>
+      <div class="tb">カンパニー制は事業部制を更に進化させたもの。カンパニー制のほうが<strong>独立採算の徹底度・意思決定の独立性</strong>が高い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>社内で独立採算</strong>」「<strong>法人格はないが社内会社として運営</strong>」が出たら → <strong>カンパニー制</strong>。「法人として独立＝別会社」なら持株会社制。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「カンパニー制＝社内に会社がいっぱい」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">カンパニー（会社）が社内にある → 法人格なし・独立採算あり</span><br><br>
+    持株会社との違いは<span class="hl">「離婚（持株）か別居（カンパニー）か」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">持株会社＝完全に別れた（別法人）、カンパニー制＝同じ家に住んでるが部屋は別（同一法人内）</span></div>
+  </div>
+
+</div>
+</body>
+</html>

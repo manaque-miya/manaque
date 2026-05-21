@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2分木とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="2分木（バイナリツリー）をわかりやすく解説。根・節・葉の役割、2分探索木との違い、ITパスポート試験の出題ポイントまで図解で説明。">
+<link rel="canonical" href="https://example.com/itp-binary-tree">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1b6e3d,#0d4025);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,64,37,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8ddc8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-purple{--c:#6b3db8;--cbg:#ede7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.detail-list{list-style:none;margin-top:8px;}
+.detail-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.detail-list li::before{content:"▶";position:absolute;left:0;color:#2e8b4f;font-weight:900;font-size:10px;top:4px;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>2分木</b>とは？</h1>
+    <p>各ノードが「左の子」と「右の子」を最大2つだけ持つ木構造。コンピュータが大量のデータを高速に探す仕組みの基本。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true" flex-shrink="0" style="flex-shrink:0">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#0d4025" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#c3dcc8"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#2e8b4f"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+      </svg>
+      <div class="scene-txt">
+        図書館のデータベース係に就いたあなた。100万冊の本の中から特定の本を探すシステムを設計する必要がある。「上から順に全部確認？それは遅すぎる…」
+        <div class="scene-q">→ そこで登場するのが「木構造」で効率よく管理する考え方！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：2分木 -->
+  <div class="panel p-blue">
+    <span class="phead">🌳 2分木の構造</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="2分木の構造図。根ノードAから左右に枝が分かれ、各ノードが最大2つの子を持つ">
+      <!-- 枝（線） -->
+      <line x1="170" y1="48" x2="100" y2="108" stroke="#9ab8a0" stroke-width="2.5"/>
+      <line x1="170" y1="48" x2="240" y2="108" stroke="#9ab8a0" stroke-width="2.5"/>
+      <line x1="100" y1="128" x2="60" y2="185" stroke="#9ab8a0" stroke-width="2.5"/>
+      <line x1="100" y1="128" x2="140" y2="185" stroke="#9ab8a0" stroke-width="2.5"/>
+      <line x1="240" y1="128" x2="200" y2="185" stroke="#9ab8a0" stroke-width="2.5"/>
+      <line x1="240" y1="128" x2="280" y2="185" stroke="#9ab8a0" stroke-width="2.5"/>
+
+      <!-- 根（root） -->
+      <circle cx="170" cy="38" r="28" fill="#2e6de5" stroke="#1a4db0" stroke-width="2"/>
+      <text x="170" y="34" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">A</text>
+      <text x="170" y="48" text-anchor="middle" font-size="9" font-weight="700" fill="#acd0f5" font-family="M PLUS Rounded 1c">根(root)</text>
+
+      <!-- 内部ノード -->
+      <circle cx="100" cy="118" r="22" fill="#4a90d9" stroke="#2e6de5" stroke-width="2"/>
+      <text x="100" y="122" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">B</text>
+      <circle cx="240" cy="118" r="22" fill="#4a90d9" stroke="#2e6de5" stroke-width="2"/>
+      <text x="240" y="122" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">C</text>
+
+      <!-- 葉（leaf） -->
+      <rect x="40" y="173" width="40" height="28" rx="8" fill="#2e8b4f" stroke="#1b6e3d" stroke-width="2"/>
+      <text x="60" y="190" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">D</text>
+      <rect x="120" y="173" width="40" height="28" rx="8" fill="#2e8b4f" stroke="#1b6e3d" stroke-width="2"/>
+      <text x="140" y="190" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">E</text>
+      <rect x="180" y="173" width="40" height="28" rx="8" fill="#2e8b4f" stroke="#1b6e3d" stroke-width="2"/>
+      <text x="200" y="190" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">F</text>
+      <rect x="260" y="173" width="40" height="28" rx="8" fill="#2e8b4f" stroke="#1b6e3d" stroke-width="2"/>
+      <text x="280" y="190" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">G</text>
+
+      <!-- ラベル -->
+      <text x="60" y="215" text-anchor="middle" font-size="9" font-weight="700" fill="#1b6e3d" font-family="M PLUS Rounded 1c">葉(leaf)</text>
+      <text x="140" y="215" text-anchor="middle" font-size="9" font-weight="700" fill="#1b6e3d" font-family="M PLUS Rounded 1c">葉(leaf)</text>
+      <text x="200" y="215" text-anchor="middle" font-size="9" font-weight="700" fill="#1b6e3d" font-family="M PLUS Rounded 1c">葉(leaf)</text>
+      <text x="280" y="215" text-anchor="middle" font-size="9" font-weight="700" fill="#1b6e3d" font-family="M PLUS Rounded 1c">葉(leaf)</text>
+
+      <!-- 矢印と説明 -->
+      <text x="68" y="100" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">左の子</text>
+      <text x="218" y="80" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">右の子</text>
+
+      <!-- 凡例 -->
+      <rect x="10" y="230" width="14" height="14" rx="7" fill="#2e6de5"/>
+      <text x="28" y="242" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">根・内部ノード（節）</text>
+      <rect x="160" y="230" width="14" height="14" rx="3" fill="#2e8b4f"/>
+      <text x="178" y="242" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">葉（子なし）</text>
+    </svg>
+    <p style="font-size:12.5px;color:#48506a;margin-top:8px;font-weight:600;">各ノードは<strong>最大2つ</strong>の子ノードを持つ。子を持たない末端が「葉（リーフ）」、最上位が「根（ルート）」。</p>
+  </div>
+
+  <!-- フロー：用語と深さ -->
+  <div class="panel p-purple">
+    <span class="phead">📋 重要用語まとめ</span>
+    <ul class="detail-list">
+      <li><strong>根（ルート）</strong>：木の最上位ノード。親を持たない唯一のノード。</li>
+      <li><strong>節（ふし／内部ノード）</strong>：根でも葉でもないノード。子を1〜2つ持つ。</li>
+      <li><strong>葉（リーフ）</strong>：子を持たない末端のノード。</li>
+      <li><strong>深さ（レベル）</strong>：根からそのノードまでの距離。根は深さ0。</li>
+      <li><strong>高さ</strong>：根から最も遠い葉までの距離。</li>
+      <li><strong>2分探索木</strong>：2分木の一種。「左の子 ＜ 親 ＜ 右の子」のルールで並べる → 高速検索が可能。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「2分木」と「2分探索木」は違う</div>
+      <div class="tb">2分木は「子が最大2つ」という構造の話。2分探索木は「左＜親＜右」のルールを守る<strong>特殊な</strong>2分木。すべての2分探索木は2分木だが、すべての2分木が2分探索木ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「子が2つ」は必須ではない</div>
+      <div class="tb">「最大2つ」なので、子が1つだけ、または0個（葉）でも2分木として正しい。「必ず2つの子を持つ」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「木」の向きに注意</div>
+      <div class="tb">コンピュータ科学の木構造は<strong>根が上・葉が下</strong>（現実の木と逆）。試験の図でも上に根がある。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">2分木＝「子どもは2人まで」ルール</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">2分＝子が最大2個 ／ 根→節→葉の順で下へ</span><br><br>
+      <span class="hl">「ふたごまでの木」</span> と覚える！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">ふたご＝子2人まで ／ の木＝木構造</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

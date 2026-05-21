@@ -1,108 +1,193 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ITガバナンスとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ITガバナンスの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-it-governance.html">
-<meta property="og:title" content="ITガバナンスとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ITガバナンスの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-it-governance.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ITガバナンスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ITガバナンスを「経営層がITの方向を決め、組織全体で推進する仕組み」として解説。IT統制・ITコンプライアンスとの違い、COBIT・ITIL、試験ひっかけポイントまで。">
+<link rel="canonical" href="https://mana-quest.com/itp/itp-it-governance">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6c3b9f,#3b1a6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(59,26,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d8c8f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#6c3b9f;--cbg:#f0e8fa;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6c3b9f;}
+
+.layer-wrap{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+.layer{border-radius:12px;padding:12px 15px;border-left:5px solid var(--lc);background:var(--lbg);}
+.layer .lh{font-size:13px;font-weight:900;color:var(--lc);margin-bottom:3px;}
+.layer .lb{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.l1{--lc:#6c3b9f;--lbg:#f0e8fa;}
+.l2{--lc:#2e6de5;--lbg:#e7eefc;}
+.l3{--lc:#2e8b4f;--lbg:#e2f3e5;}
+.l4{--lc:#d9851f;--lbg:#fcefd9;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#d9851f;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">ITガバナンスとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ITガバナンス</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <!-- ヒーロー -->
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ ストラテジ系</span>
+    <h1><b>ITガバナンス</b>とは？</h1>
+    <p>経営層がITの「方向・判断・監視」を握り、<br>組織全体で正しくITを使う仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#d8c8f0"/>
+        <rect x="14" y="36" width="44" height="26" rx="8" fill="#6c3b9f"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 16 a12 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 王冠アイコン -->
+        <path d="M42 55 l4 -8 l4 5 l4 -8 l4 8 l-2 12 l-12 0 z" fill="#ffd23f" stroke="#b8960f" stroke-width="1"/>
+        <rect x="42" y="66" width="16" height="4" rx="2" fill="#b8960f"/>
+      </svg>
+      <div class="scene-txt">
+        社長室。役員会議でCEOが言う。「我が社のDX戦略を決め、IT投資の優先順位をつけ、年4回進捗を取締役会で報告する仕組みを作りましょう。」<br>
+        部長レベルが「どう実行するか」より前に、<strong>経営層が「何をITで目指すか」を決める。</strong>
+        <div class="scene-q">これが ITガバナンス の本質だ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ITガバナンスの構造 -->
+  <div class="panel p-purple">
+    <span class="phead">ITガバナンスの4つの要素</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="ITガバナンスの4要素：戦略・組織・プロセス・評価の関係">
+      <!-- 中心円 -->
+      <circle cx="170" cy="115" r="45" fill="#6c3b9f" opacity=".95"/>
+      <text x="170" y="108" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ITガバナンス</text>
+      <text x="170" y="125" text-anchor="middle" font-size="10.5" font-weight="800" fill="#dcc8f5" font-family="M PLUS Rounded 1c">経営層の役割</text>
+
+      <!-- 4方向に線 -->
+      <line x1="170" y1="70" x2="170" y2="28" stroke="#6c3b9f" stroke-width="2"/>
+      <line x1="170" y1="160" x2="170" y2="202" stroke="#6c3b9f" stroke-width="2"/>
+      <line x1="125" y1="115" x2="78" y2="115" stroke="#6c3b9f" stroke-width="2"/>
+      <line x1="215" y1="115" x2="262" y2="115" stroke="#6c3b9f" stroke-width="2"/>
+
+      <!-- 上：戦略 -->
+      <rect x="110" y="8" width="120" height="22" rx="8" fill="#f0e8fa" stroke="#6c3b9f" stroke-width="1.8"/>
+      <text x="170" y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#5a2e8a" font-family="M PLUS Rounded 1c">IT戦略の決定</text>
+
+      <!-- 下：評価 -->
+      <rect x="100" y="202" width="140" height="22" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="1.8"/>
+      <text x="170" y="217" text-anchor="middle" font-size="12" font-weight="900" fill="#2e4490" font-family="M PLUS Rounded 1c">パフォーマンス評価</text>
+
+      <!-- 左：組織 -->
+      <rect x="5" y="103" width="74" height="24" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.8"/>
+      <text x="42" y="114" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6035" font-family="M PLUS Rounded 1c">IT組織体制</text>
+      <text x="42" y="124" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">（責任の明確化）</text>
+
+      <!-- 右：プロセス -->
+      <rect x="261" y="103" width="74" height="24" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="1.8"/>
+      <text x="298" y="114" text-anchor="middle" font-size="11" font-weight="900" fill="#a85a00" font-family="M PLUS Rounded 1c">IT投資管理</text>
+      <text x="298" y="124" text-anchor="middle" font-size="10" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">（ROI・優先度）</text>
+    </svg>
+  </div>
+
+  <!-- 3層ピラミッド：ガバナンス・統制・コンプライアンス -->
+  <div class="panel p-green">
+    <span class="phead">ガバナンス・統制・コンプライアンスの違い</span>
+    <div class="layer-wrap">
+      <div class="layer l1">
+        <div class="lh">ITガバナンス（経営層）</div>
+        <div class="lb">「どの方向にITを使うか」を経営層が決め、監視する。方針・戦略・投資判断。</div>
+      </div>
+      <div class="layer l2">
+        <div class="lh">IT統制（管理層）</div>
+        <div class="lb">ITのリスクを管理・制御する仕組み。アクセス管理・変更管理・業務処理の正確性確保。</div>
+      </div>
+      <div class="layer l3">
+        <div class="lh">ITコンプライアンス（現場）</div>
+        <div class="lb">実際の業務でITを使うときに法律・社内規定を守ること。個人情報保護・著作権遵守など。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 試験のキモ -->
+  <div class="panel p-orange">
+    <span class="phead">試験のキモ</span>
+    <ul class="kimo-list">
+      <li>ITガバナンスの主語は<strong>「経営層（取締役会・CIO）」</strong>。現場や管理職ではない。</li>
+      <li>代表的なフレームワーク：<strong>COBIT</strong>（IT統治のガイドライン）。</li>
+      <li>「ITを使う方向性を決め、組織全体で推進・監督する」→ <strong>ITガバナンス</strong>。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">IT統制と混同しやすい</div>
+      <div class="tb">IT統制は「リスク管理・制御の仕組み」で管理層の仕事。ITガバナンスは「方針を決め・監督する」経営層の仕事。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">コーポレートガバナンスと混同しやすい</div>
+      <div class="tb">コーポレートガバナンスは「企業全体の統治」。ITガバナンスはそのうちの「IT部分」の統治。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「推進する」は経営層の役割</div>
+      <div class="tb">ITガバナンスは「現場が自主的に守る」ではなく、「経営層が戦略・方針を示し、組織全体を方向付け・監督する」点が核心。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      ガバナンスの<span class="hl">「ガバ」</span>＝<span class="hl">「ガバッと」</span>つかむ！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        社長が「ITをガバッとつかんで方向を決める」＝ITガバナンス<br>
+        ガバ（经営）・ナン（何をITで目指すか）・ス（ストラテジー）
+      </span><br><br>
+      <span class="hl">ガバ</span>ナンス（方針）→ <span class="hl">統制</span>（管理）→ <span class="hl">コンプラ</span>（遵守）<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">上から下へ降りてくる「ITルール3段ロケット」</span>
+    </div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>上場準備中の中小企業の社長の自分。「IT投資の方向性は経営陣が決めるべき」と監査から指摘された。情シス任せだったけど…経営戦略とITを一致させる枠組みって何？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ITガバナンス</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>IT戦略</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ IT戦略は方針そのもの。「経営者主導の管理の枠組み」はITガバナンス</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：ITガバナンス</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 ITガバナンスとは何か</h2>
-<span class="kw">経営がITを握る</span>
-<p>経営者がIT投資の方向性・優先順位・リスク管理を主導し、IT戦略を経営戦略と一致させる仕組み。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>IT管理（システムの日常運用）より上位の概念。IT投資の意思決定を経営レベルで行うことがITガバナンスの本質。
-
-**覚え方** 🎯 **ガバナンス＝統治・操舵**。社長がIT船の舵を握る。情シス任せにせず経営判断としてIT投資を決める枠組み。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>ITガバナンスとIT管理（ITマネジメント）の混同が最大のひっかけ。情シス部門が日常運用を行うのはIT管理。「経営層が意思決定」「投資の方向性決定」が含まれる選択肢がITガバナンス。コーポレートガバナンス（企業統治全般）の一部という位置づけも押さえる。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**ガバナンス＝統治・操舵**。社長がIT船の舵を握る。情シス任せにせず経営判断としてIT投資を決める枠組み。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>ITガバナンスはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

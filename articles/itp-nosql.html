@@ -1,91 +1,203 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>NoSQLとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="NoSQLの意味・仕組み・試験のポイントを分かりやすく解説。ITパスポート対策に役立つ解説記事です。">
-<link rel="canonical" href="https://manaque.net/articles/itp-nosql.html">
-<meta property="og:title" content="NoSQLとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="NoSQLの意味・仕組み・試験のポイントを分かりやすく解説。">
-<meta property="og:url" content="https://manaque.net/articles/itp-nosql.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NoSQLとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="NoSQLをわかりやすく解説。リレーショナルDBとの違い、キーバリュー型・ドキュメント型・列指向・グラフ型の4種類、スケールアウトと大量データ処理、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-nosql">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;margin-bottom:3px;}
-.hl{background:#EAF2FE;border-left:4px solid #2E6DE5;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.hl p{margin:0;font-weight:700;color:#0F1830;}
-.mb{background:#FFF0F0;border-left:4px solid #FF6B6B;border-radius:0 12px 12px 0;padding:12px 16px;margin:12px 0;}
-.mb p{margin:0;color:#C0392B;font-weight:700;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-th{background:#EAF2FE;color:#1F56C6;font-weight:800;padding:10px 12px;text-align:left;border:1px solid #C8D8F8;}
-td{padding:10px 12px;border:1px solid #E4E9F2;line-height:1.7;}
-tr:nth-child(even) td{background:#F5F8FF;}
-</style></head>
-<body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜テクノロジ</div>
-<h1 class="at">NoSQLとは？ITパスポート試験で確実に正解するポイント</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">NoSQL</span> <span class="tag">テクノロジ</span> <span class="tag">ITパスポート</span></div>
-</div>
-<div class="card"><h2>NoSQLとは何か</h2>
-<p>「ITパスポート 独学」でデータベース技術の最新動向として覚えたいのがNoSQLだ。NoSQLとは「Not Only SQL」の略で、RDB（リレーショナルデータベース）のテーブル構造・SQL言語・厳格なスキーマに縛られない非関係型データベースの総称だ。</p>
-<p>SNSの「いいね」・ゲームのスコア・IoTセンサーデータ・ECサイトの商品カタログのように、横方向に柔軟に伸びるデータや大量データの高速処理・水平スケールに特化した用途で採用される。RDBを置き換えるものではなく「RDB苦手な領域をカバーする補完的なDB群」という位置づけだ。</p>
-<div class="hl"><p>💡 <strong>ポイント</strong>: NoSQLは一つの技術ではなく、複数の異なる設計思想・データモデルを持つDBの総称だ。キーバリュー型・ドキュメント型・列指向型・グラフ型という4つの主要な種類がある。</p></div>
-</div>
-<div class="card"><h2>仕組み・種類</h2>
-<p>NoSQLの4種類を整理する。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>種類</th><th>データモデル</th><th>代表DB</th><th>主な用途</th></tr><tr><td>キーバリュー型</td><td>キー＋バリューのペア</td><td>Redis・DynamoDB</td><td>セッション管理・キャッシュ・ランキング</td></tr><tr><td>ドキュメント型</td><td>JSON/XML形式のドキュメント</td><td>MongoDB・Firestore</td><td>ECサイト商品データ・ブログ記事</td></tr><tr><td>列指向型</td><td>列単位で格納</td><td>Cassandra・HBase</td><td>大量ログ・時系列データ・分析</td></tr><tr><td>グラフ型</td><td>ノード＋エッジのグラフ</td><td>Neo4j</td><td>SNSフォロー関係・推薦エンジン</td></tr></table></div>
-<p>RDBとNoSQLの比較は試験の定番だ。</p>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>特性</th><th>RDB</th><th>NoSQL</th></tr><tr><td>スキーマ</td><td>厳格（変更困難）</td><td>柔軟・スキーマレス</td></tr><tr><td>スケール</td><td>垂直スケール（高価）</td><td>水平スケール（安価）</td></tr><tr><td>トランザクション</td><td>ACID保証（強い一貫性）</td><td>BASE（弱い一貫性を許容）</td></tr><tr><td>データ構造</td><td>テーブル（行・列）</td><td>多様（KV・ドキュメント等）</td></tr></table></div>
-<div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: 「NoSQLはSQLが使えない」とする誤答に注意。NoSQLはSQLを使わない設計が多いが、最近はNoSQLでもSQL-like言語をサポートするものがある。また「NoSQL＝RDBの上位互換」は誤りで、両者は<strong>用途が異なる補完関係</strong>だ。</p></div>
-</div>
-<div class="card"><h2>ここが試験のキモ ✅✅✅</h2>
-<ul style="list-style:none;padding-left:0;">
-<li style="padding:4px 0;font-size:14px;">✅ NoSQL＝Not Only SQL・非関係型DBの総称（1つの技術ではない）</li>
-<li style="padding:4px 0;font-size:14px;">✅ 4種類：キーバリュー・ドキュメント・列指向・グラフ型</li>
-<li style="padding:4px 0;font-size:14px;">✅ RDBとの違い：スキーマレス・水平スケール・ACID保証なし</li>
-<li style="padding:4px 0;font-size:14px;">✅ RDBの置き換えではなく補完関係</li>
-</ul>
-</div>
-<div class="card"><h2>混同しやすい用語との違い</h2>
-<div style="overflow-x:auto;margin:12px 0"><table><tr><th>用語</th><th>スキーマ</th><th>スケール</th><th>トランザクション</th></tr><tr><td>RDB</td><td>厳格（テーブル・SQL）</td><td>垂直</td><td>ACID保証</td></tr><tr><td>NoSQL</td><td>柔軟・スキーマレス</td><td>水平</td><td>BASE（弱い一貫性）</td></tr><tr><td>NewSQL</td><td>RDB互換スキーマ</td><td>水平</td><td>ACID保証（分散対応）</td></tr></table></div>
-</div>
-<div class="card"><h2>🎯 試験対策：NoSQLの重要ポイント</h2>
-<p>「ITパスポート 過去問・勉強方法・独学・何時間」を確認すると、NoSQLはRDBとの比較問題として最も出題頻度が高く、独学でも2項対立で整理すれば短時間でマスターできる。「スキーマを持たず大量データを水平スケールで扱うDB」「SNS・IoTデータ向け」という文脈ではNoSQLを選ぶ。</p>
-<p>「NoSQL とは」で検索すると「Not Only SQL・スキーマレス・水平スケール」という説明が出る。「ITパスポート 勉強方法」としてはRDB（表・行・列・SQL・ACID）とNoSQL（多様なモデル・柔軟・水平スケール）という2項対立で覚えると選択肢の判断が速くなる。</p>
-<p>試験レベルでは4種類のモデル名と代表的なユースケースを覚えておけば十分で、具体的な実装方法の知識は不要だ。</p>
-<p style="font-size:13px;color:#8693AE;margin-top:12px;">📎 関連: <a href="itp-cap-theorem.html">itp-cap-theorem</a>, <a href="itp-rdb.html">itp-rdb</a>, <a href="itp-data-lake.html">itp-data-lake</a>, <a href="itp-acid.html">itp-acid</a></p>
-</div>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語2択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+.hero{background:linear-gradient(155deg,#cf4f86,#7a1540);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(130,20,70,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5d0e2;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cf4f86;}
+
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.tg-cell{border-radius:12px;padding:11px 10px;}
+.tg-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.tg-cell p{font-size:11.5px;font-weight:600;line-height:1.6;color:#48506a;}
+.tc1{background:#e7eefc;}.tc1 h4{color:#2e6de5;}
+.tc2{background:#fbe3ee;}.tc2 h4{color:#cf4f86;}
+.tc3{background:#e2f3e5;}.tc3 h4{color:#2e8b4f;}
+.tc4{background:#fcefd9;}.tc4 h4{color:#d9851f;}
+@media(max-width:480px){.type-grid{grid-template-columns:1fr;}}
+
+.compare-row{display:flex;gap:10px;margin-top:10px;}
+.cr-cell{flex:1;border-radius:12px;padding:12px;}
+.cr-cell h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.cr-cell ul{list-style:none;}
+.cr-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:11px;position:relative;}
+.cr-cell li::before{content:"・";position:absolute;left:0;}
+.cr-rdb{background:#e7eefc;}.cr-rdb h4{color:#2e6de5;}
+.cr-nosql{background:#fbe3ee;}.cr-nosql h4{color:#cf4f86;}
+@media(max-width:480px){.compare-row{flex-direction:column;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🗃️ ITパスポート ｜ テクノロジ系・DB</span>
+    <h1><b>NoSQL</b>とは？</h1>
+    <p>「SQLを使わない（Non-SQL）／関係ない（Not Only SQL）」データベース。大量・多様なデータを高速に扱うのが得意。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="55" width="58" height="30" rx="6" fill="#f5d0e2"/>
+        <rect x="14" y="35" width="50" height="28" rx="9" fill="#cf4f86"/>
+        <circle cx="39" cy="20" r="15" fill="#f4c89a"/>
+        <path d="M25 16 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="32" width="18" height="9" fill="#f4c89a"/>
+        <!-- SNSアイコン的なもの -->
+        <circle cx="25" cy="68" r="8" fill="#cf4f86"/>
+        <circle cx="39" cy="68" r="8" fill="#cf4f86"/>
+        <circle cx="53" cy="68" r="8" fill="#cf4f86"/>
+        <text x="25" y="72" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">♡</text>
+        <text x="39" y="72" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">★</text>
+        <text x="53" y="72" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">↺</text>
+      </svg>
+      <div class="scene-txt">
+        SNSのエンジニアのあなた。ユーザーのプロフィール・投稿・いいね数は人によって形がバラバラ。<strong>1億人のデータを1秒以内に返せ</strong>というシステムを作ることに。
+        <div class="scene-q">…従来のRDBだと限界が来る。何を使う？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NoSQLの4種類 -->
+  <div class="panel p-pink">
+    <span class="phead">🔑 NoSQLの主な4種類</span>
+    <svg width="100%" viewBox="0 0 320 160" role="img" aria-label="NoSQLの4種類：キーバリュー型・ドキュメント型・列指向型・グラフ型を図解">
+      <!-- キーバリュー -->
+      <rect x="5" y="10" width="148" height="60" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="79" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">キーバリュー型</text>
+      <rect x="15" y="34" width="35" height="14" rx="3" fill="#2e6de5"/>
+      <text x="32" y="45" text-anchor="middle" font-size="8.5" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">KEY</text>
+      <text x="72" y="45" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">→ 値（なんでもOK）</text>
+      <text x="79" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">例：Redis・DynamoDB</text>
+      <!-- ドキュメント -->
+      <rect x="167" y="10" width="148" height="60" rx="8" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="241" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">ドキュメント型</text>
+      <text x="178" y="44" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">&#x7B; name:"山田",</text>
+      <text x="178" y="56" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">  age:30 &#x7D; JSON形式</text>
+      <text x="241" y="64" text-anchor="middle" font-size="9" font-weight="700" fill="#a3316a" font-family="M PLUS Rounded 1c">例：MongoDB</text>
+      <!-- 列指向 -->
+      <rect x="5" y="90" width="148" height="60" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="79" y="108" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">列指向型</text>
+      <text x="15" y="122" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">列単位でデータを格納</text>
+      <text x="15" y="134" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">集計クエリが高速</text>
+      <text x="79" y="145" text-anchor="middle" font-size="9" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">例：Cassandra</text>
+      <!-- グラフ -->
+      <rect x="167" y="90" width="148" height="60" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="241" y="108" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">グラフ型</text>
+      <circle cx="210" cy="128" r="8" fill="#d9851f"/>
+      <circle cx="235" cy="118" r="8" fill="#d9851f"/>
+      <circle cx="255" cy="133" r="8" fill="#d9851f"/>
+      <line x1="210" y1="128" x2="235" y2="118" stroke="#d9851f" stroke-width="2"/>
+      <line x1="235" y1="118" x2="255" y2="133" stroke="#d9851f" stroke-width="2"/>
+      <text x="280" y="122" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">関係性</text>
+      <text x="280" y="134" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">を表現</text>
+      <text x="241" y="146" text-anchor="middle" font-size="9" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">例：Neo4j</text>
+    </svg>
+    <div class="type-grid">
+      <div class="tg-cell tc1"><h4>キーバリュー型</h4><p>鍵と値のペアで保存。シンプルで超高速。セッション管理・キャッシュに最適。</p></div>
+      <div class="tg-cell tc2"><h4>ドキュメント型</h4><p>JSON形式でまとめて保存。スキーマ（構造）が柔軟で変更しやすい。</p></div>
+      <div class="tg-cell tc3"><h4>列指向型</h4><p>列単位でデータを格納。大量データの集計分析が超高速。</p></div>
+      <div class="tg-cell tc4"><h4>グラフ型</h4><p>ノードとエッジで関係性を表現。SNSの友達関係・推薦に使われる。</p></div>
+    </div>
+  </div>
+
+  <!-- RDB vs NoSQL -->
+  <div class="panel p-green">
+    <span class="phead">🆚 RDB と NoSQL の使い分け</span>
+    <div class="compare-row">
+      <div class="cr-cell cr-rdb">
+        <h4>RDB（関係DB）</h4>
+        <ul>
+          <li>表形式・厳密なスキーマ</li>
+          <li>ACID特性（整合性重視）</li>
+          <li>SQLで操作</li>
+          <li>金融・在庫管理に向く</li>
+        </ul>
+      </div>
+      <div class="cr-cell cr-nosql">
+        <h4>NoSQL</h4>
+        <ul>
+          <li>形式が多様・柔軟</li>
+          <li>スケールアウトが容易</li>
+          <li>大量データ・高速応答</li>
+          <li>SNS・IoT・ログに向く</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">NoSQL＝「SQLが使えない」ではない</div>
+      <div class="tb">Not Only SQLの意味もある。一部のNoSQLはSQL風のクエリ言語をサポートしている。「SQL禁止」ではなく「SQLだけじゃない」と覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">NoSQLはRDBの「置き換え」ではない</div>
+      <div class="tb">トランザクション管理・整合性が重要な業務（銀行・在庫）はRDBが適切。NoSQLは大量データ・柔軟スキーマの用途に向く。適材適所。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ACID」vs「BASE」の違いも出る</div>
+      <div class="tb">RDBはACID（原子性・一貫性・独立性・耐久性）。NoSQLの多くはBASE（基本的に利用可能・ソフトステート・結果整合性）。完全な整合性より可用性を優先。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「No（野）郎、SQLなしで爆速（NoSQL）」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">NoSQL＝SQLなし or SQLだけじゃない＝大量データ高速処理</span><br><br>
+    4種類の覚え方：<br>
+    <span class="hl">「キー・ドキュ・列・グラ」</span>＝<span style="font-size:12px;">キーバリュー・ドキュメント・列指向・グラフ</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

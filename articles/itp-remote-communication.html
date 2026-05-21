@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>リモートコミュニケーションとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="リモートコミュニケーションをわかりやすく解説。場所を問わず行うコミュニケーションの種類・同期・非同期の違い・課題・ひっかけポイントまでITパスポート試験対策に。">
+<link rel="canonical" href="https://example.com/itp-remote-communication">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a9fa8,#0d5c62);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,92,98,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0eaf0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-teal{--c:#1a9fa8;--cbg:#e0f4f5;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a9fa8;}
+
+.sync-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.sync-cell{border-radius:12px;padding:12px 10px;}
+.sync-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.sync-cell ul{list-style:none;}
+.sync-cell li{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;padding-left:12px;position:relative;}
+.sync-cell li::before{content:"・";position:absolute;left:0;}
+.cell-sync{background:#e7eefc;}.cell-sync h4{color:#2e6de5;}
+.cell-async{background:#fcefd9;}.cell-async h4{color:#d9851f;}
+@media(max-width:480px){.sync-grid{grid-template-columns:1fr;}}
+
+.issue-list{list-style:none;margin-top:6px;}
+.issue-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:22px;position:relative;margin-bottom:5px;}
+.issue-list li::before{content:"⚡";position:absolute;left:0;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>リモートコミュニケーション</b>とは？</h1>
+    <p>物理的に離れた場所にいる人同士が、ICTツールを介して行うコミュニケーション。<br>テレワーク・在宅勤務・グローバル業務で必須の概念。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- ノートPC -->
+        <rect x="10" y="52" width="52" height="30" rx="4" fill="#c8d4ea"/>
+        <rect x="14" y="56" width="44" height="22" rx="2" fill="#1a9fa8"/>
+        <!-- 画面内のビデオ会議風 -->
+        <rect x="16" y="58" width="18" height="14" rx="2" fill="#fff" opacity=".3"/>
+        <circle cx="25" cy="63" r="4" fill="#f4c89a"/>
+        <rect x="20" y="68" width="10" height="4" rx="1" fill="#f4c89a"/>
+        <rect x="38" y="58" width="18" height="14" rx="2" fill="#fff" opacity=".3"/>
+        <circle cx="47" cy="63" r="4" fill="#c8a0f4"/>
+        <rect x="42" y="68" width="10" height="4" rx="1" fill="#c8a0f4"/>
+        <!-- 波線（通信） -->
+        <path d="M18 45 Q22 40 26 45 Q30 50 34 45 Q38 40 42 45 Q46 50 50 45" stroke="#ffd23f" stroke-width="2" fill="none"/>
+        <!-- 人 -->
+        <circle cx="36" cy="22" r="12" fill="#f4c89a"/>
+        <rect x="26" y="31" width="20" height="12" rx="5" fill="#1a9fa8"/>
+      </svg>
+      <div class="scene-txt">
+        東京の社員と大阪の社員がビデオ会議で打ち合わせ。チャットで資料を共有し、後日メールで議事録を送付した。<br>
+        会議中は<strong>リアルタイム（同期）</strong>、議事録送付は<strong>時間差（非同期）</strong>。
+        <div class="scene-q">…離れた場所でのこれらすべたがリモートコミュニケーション！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-teal">
+    <span class="phead">📡 同期と非同期の違い</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="同期型コミュニケーション（リアルタイム）と非同期型コミュニケーション（時間差）の比較図">
+      <rect x="10" y="10" width="320" height="180" rx="14" fill="#e8f9fa"/>
+      <!-- 同期型 -->
+      <rect x="20" y="25" width="135" height="145" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="87" y="48" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">同期型</text>
+      <text x="87" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">（リアルタイム）</text>
+      <!-- 時間軸 -->
+      <rect x="30" y="72" width="50" height="18" rx="5" fill="#2e6de5"/>
+      <text x="55" y="85" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Aが送信</text>
+      <path d="M82 81 L100 81" stroke="#2e6de5" stroke-width="2" marker-end="url(#a4)"/>
+      <rect x="101" y="72" width="46" height="18" rx="5" fill="#2e6de5"/>
+      <text x="124" y="85" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">即受信</text>
+      <text x="87" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#3c4456" font-family="M PLUS Rounded 1c">例：</text>
+      <text x="87" y="124" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">ビデオ会議</text>
+      <text x="87" y="138" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">電話・チャット</text>
+      <text x="87" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8a96b0" font-family="M PLUS Rounded 1c">即応答・即共有が可能</text>
+      <!-- 非同期型 -->
+      <rect x="185" y="25" width="135" height="145" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="252" y="48" text-anchor="middle" font-size="12" font-weight="900" fill="#8c4e00" font-family="M PLUS Rounded 1c">非同期型</text>
+      <text x="252" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#a0681e" font-family="M PLUS Rounded 1c">（時間差）</text>
+      <rect x="193" y="72" width="50" height="18" rx="5" fill="#d9851f"/>
+      <text x="218" y="85" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Aが送信</text>
+      <path d="M244 81 L262 81" stroke="#d9851f" stroke-width="2" marker-end="url(#a5)"/>
+      <rect x="263" y="72" width="48" height="18" rx="5" fill="#ffd23f"/>
+      <text x="287" y="85" text-anchor="middle" font-size="9" font-weight="900" fill="#8c4e00" font-family="M PLUS Rounded 1c">後で受信</text>
+      <text x="252" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#3c4456" font-family="M PLUS Rounded 1c">例：</text>
+      <text x="252" y="124" text-anchor="middle" font-size="10" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">メール・掲示板</text>
+      <text x="252" y="138" text-anchor="middle" font-size="10" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">文書共有・録画</text>
+      <text x="252" y="158" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8a96b0" font-family="M PLUS Rounded 1c">時間・場所の制約が少ない</text>
+      <defs>
+        <marker id="a4" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5 Z" fill="#2e6de5"/></marker>
+        <marker id="a5" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5 Z" fill="#d9851f"/></marker>
+      </defs>
+    </svg>
+    <div class="sync-grid">
+      <div class="sync-cell cell-sync"><h4>同期型</h4><ul><li>ビデオ会議（Zoom等）</li><li>電話・Web会議</li><li>リアルタイムチャット</li></ul></div>
+      <div class="sync-cell cell-async"><h4>非同期型</h4><ul><li>電子メール</li><li>社内掲示板・文書共有</li><li>録画・議事録共有</li></ul></div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細：課題と対策 -->
+  <div class="panel p-orange">
+    <span class="phead">⚡ リモートコミュニケーションの課題</span>
+    <ul class="issue-list">
+      <li><strong>表情・ニュアンスが伝わりにくい</strong>…テキストベースでは感情・温度感が欠落しやすい。</li>
+      <li><strong>反応の遅延</strong>…非同期型では確認・返答待ちが発生し、意思決定が遅くなることがある。</li>
+      <li><strong>情報の分断</strong>…チャット・メール・会議録が散在し、情報共有のもれが起きやすい。</li>
+      <li><strong>コミュニティ感の低下</strong>…雑談・偶発的な会話が減り、チームの一体感が失われやすい。</li>
+      <li><strong>セキュリティリスク</strong>…自宅や外出先からのアクセスで情報漏えいリスクが高まる。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「同期型は常にリモートとは限らない」に注意</div>
+      <div class="tb">「同期型＝リモート」ではない。対面会議も同期型。リモートかどうかは<strong>場所が離れているか</strong>で決まる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「テレワーク」との違い</div>
+      <div class="tb">テレワークは<strong>働く場所の概念</strong>（オフィス以外で働く）。リモートコミュニケーションはその中で行われる<strong>コミュニケーション手段</strong>。上位概念と手段の違い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「非同期型は効率が悪い」は間違い</div>
+      <div class="tb">非同期型は「<strong>時差・タイムゾーンを超えた協業</strong>」や「深く考えてから返答できる」という利点がある。同期・非同期は場面によって使い分けるもの。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>リアルタイムに双方向</strong>」→ 同期型。「<strong>時間差で一方向に送り、後で返信</strong>」→ 非同期型。ビデオ会議は同期・メールは非同期。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">同期＝ドウ（道）はつながってる</span>！<br>
+    同期型は「今すぐつながる＝電話・ビデオ会議」<br>
+    非同期型は「後でつながる＝手紙・メール」<br><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ドウキ（同期）＝同じ時間に繋がる（ビデオ会議・電話）<br>ヒドウキ（非同期）＝時間がズレて繋がる（メール・掲示板）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-remote-communication</div>
+
+</div>
+</body>
+</html>

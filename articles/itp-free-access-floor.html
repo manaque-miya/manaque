@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>フリーアクセスフロアとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="フリーアクセスフロアをわかりやすく解説。二重床のしくみ・データセンターでの役割・OAフロアとの関係・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-free-access-floor">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e7d60,#155040);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(21,80,64,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e8d4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#2e7d60;--cbg:#d9f0e6;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-teal{--c:#2e8b7f;--cbg:#ddf0ee;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e7d60;}
+
+.benefit-list{list-style:none;margin-top:8px;}
+.benefit-list li{font-size:13px;font-weight:700;line-height:1.85;color:#3c4456;padding-left:22px;position:relative;margin-bottom:3px;}
+.benefit-list li::before{content:"✓";position:absolute;left:0;color:#2e7d60;font-weight:900;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e7d60;--fbg:#eef8f4;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>フリーアクセスフロア</b>とは？</h1>
+    <p>床を二重にして「床下の空間」にケーブル・配管を通す設備。データセンターの床の正体。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 床板（浮き床） -->
+        <rect x="6" y="58" width="60" height="8" rx="3" fill="#2e7d60"/>
+        <!-- 支柱4本 -->
+        <rect x="12" y="66" width="4" height="12" fill="#1a5040"/>
+        <rect x="28" y="66" width="4" height="12" fill="#1a5040"/>
+        <rect x="44" y="66" width="4" height="12" fill="#1a5040"/>
+        <rect x="58" y="66" width="4" height="12" fill="#1a5040"/>
+        <!-- ケーブル -->
+        <path d="M10 72 Q20 69 30 74 Q40 78 52 70 Q60 65 65 72" stroke="#ffd23f" stroke-width="2" fill="none" stroke-dasharray="none"/>
+        <path d="M10 76 Q25 73 40 77 Q52 80 64 74" stroke="#4256b8" stroke-width="1.5" fill="none"/>
+        <!-- 人物 -->
+        <rect x="14" y="32" width="44" height="24" rx="9" fill="#2e7d60"/>
+        <circle cx="36" cy="18" r="14" fill="#f4c89a"/>
+        <path d="M23 14 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="28" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 36 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        データセンターの見学に行ったら、床がなんか浮いている！踏み板を外すと、床下にびっしり<strong>ケーブルや電源ラインが走っていた</strong>。床板はどこでも外せて、好きな場所にケーブルを引き出せる。
+        <div class="scene-q">これがフリーアクセスフロア（OAフロア）！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：断面図 -->
+  <div class="panel p-indigo">
+    <span class="phead">🏗️ フリーアクセスフロアの断面</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="フリーアクセスフロアの断面図：上の仕上げ床・中間の空洞にケーブルや空調ダクト・下の構造床という三層構造">
+      <!-- 構造床（一番下） -->
+      <rect x="10" y="160" width="320" height="36" rx="6" fill="#5a5a5a"/>
+      <text x="170" y="183" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">構造床（コンクリートスラブ）</text>
+      <!-- 支柱群 -->
+      <rect x="35" y="110" width="8" height="50" fill="#888"/>
+      <rect x="75" y="110" width="8" height="50" fill="#888"/>
+      <rect x="115" y="110" width="8" height="50" fill="#888"/>
+      <rect x="155" y="110" width="8" height="50" fill="#888"/>
+      <rect x="195" y="110" width="8" height="50" fill="#888"/>
+      <rect x="235" y="110" width="8" height="50" fill="#888"/>
+      <rect x="275" y="110" width="8" height="50" fill="#888"/>
+      <!-- 空間ラベル -->
+      <rect x="10" y="110" width="320" height="50" rx="0" fill="#e8f5ee" opacity=".6"/>
+      <text x="170" y="130" text-anchor="middle" font-size="11" font-weight="800" fill="#2e7d60" font-family="M PLUS Rounded 1c">床下空間（配線・配管・空調ダクト等）</text>
+      <!-- ケーブル -->
+      <path d="M20 145 Q60 135 100 148 Q140 158 180 142 Q220 130 280 148 Q300 152 325 145" stroke="#ffd23f" stroke-width="3" fill="none"/>
+      <path d="M20 152 Q80 145 140 155 Q200 162 260 148 Q290 143 325 152" stroke="#4256b8" stroke-width="2" fill="none"/>
+      <!-- 仕上げ床板 -->
+      <rect x="10" y="92" width="320" height="18" rx="3" fill="#2e7d60"/>
+      <line x1="50" y1="92" x2="50" y2="110" stroke="#1a5040" stroke-width="1"/>
+      <line x1="90" y1="92" x2="90" y2="110" stroke="#1a5040" stroke-width="1"/>
+      <line x1="130" y1="92" x2="130" y2="110" stroke="#1a5040" stroke-width="1"/>
+      <line x1="170" y1="92" x2="170" y2="110" stroke="#1a5040" stroke-width="1"/>
+      <line x1="210" y1="92" x2="210" y2="110" stroke="#1a5040" stroke-width="1"/>
+      <line x1="250" y1="92" x2="250" y2="110" stroke="#1a5040" stroke-width="1"/>
+      <line x1="290" y1="92" x2="290" y2="110" stroke="#1a5040" stroke-width="1"/>
+      <text x="170" y="105" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">仕上げ床板（取り外し可能なパネル）</text>
+      <!-- コンピュータ機器 -->
+      <rect x="40" y="54" width="38" height="34" rx="4" fill="#4256b8"/>
+      <rect x="44" y="58" width="30" height="18" rx="2" fill="#7a9be8"/>
+      <rect x="44" y="79" width="10" height="4" rx="1" fill="#ffd23f"/>
+      <text x="59" y="48" text-anchor="middle" font-size="10" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">サーバ</text>
+      <rect x="140" y="54" width="60" height="34" rx="4" fill="#2e7d60"/>
+      <rect x="144" y="58" width="52" height="18" rx="2" fill="#7ac4a8"/>
+      <rect x="144" y="79" width="10" height="4" rx="1" fill="#ffd23f"/>
+      <text x="170" y="48" text-anchor="middle" font-size="10" font-weight="800" fill="#2e7d60" font-family="M PLUS Rounded 1c">ネットワーク機器</text>
+      <rect x="252" y="54" width="38" height="34" rx="4" fill="#d9851f"/>
+      <rect x="256" y="58" width="30" height="18" rx="2" fill="#f0c480"/>
+      <rect x="256" y="79" width="10" height="4" rx="1" fill="#ffd23f"/>
+      <text x="271" y="48" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">UPS等</text>
+      <!-- ケーブル引き出し線 -->
+      <path d="M59 88 L59 92" stroke="#ffd23f" stroke-width="2"/>
+      <path d="M170 88 L170 92" stroke="#ffd23f" stroke-width="2"/>
+      <path d="M271 88 L271 92" stroke="#ffd23f" stroke-width="2"/>
+    </svg>
+    <ul class="benefit-list">
+      <li>床板を外せばどこでもケーブルを引き出せる＝レイアウト変更が楽</li>
+      <li>床下に空調の冷風を流してサーバを冷やせる（アンダーフロア空調）</li>
+      <li>配線が露出しないので美観・安全性が高い</li>
+      <li>電源・LAN・光ファイバーなど異種ケーブルを一括収容できる</li>
+    </ul>
+  </div>
+
+  <!-- フロー：使われる場所と目的 -->
+  <div class="panel p-teal">
+    <span class="phead">🗺️ どこで・なぜ使われるか</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① データセンター・サーバ室</div>
+        <div class="fb">大量のケーブルと空調ダクトを床下に収容。機器の増設・移動のたびに床を工事しなくて済む。冷風を床下から吹き上げてサーバを効率よく冷却。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 一般オフィス（OAフロア）</div>
+        <div class="fb">電話・LAN・電源を床下に通し、デスクの位置変更に柔軟対応。「OAフロア」はオフィスオートメーション用フリーアクセスフロアの通称。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 建物設計時から組み込む</div>
+        <div class="fb">後付けは床を高くする必要があり大工事になるため、新築・大規模改修時に組み込む。床の高さが数cm〜数十cm上がる点に注意。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「フリーアクセス＝無線LAN」ではない</div>
+      <div class="tb">フリーアクセスフロアは有線ケーブルを床下に収容するための「物理的な床構造」。無線・Wi-Fiとは無関係。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">OAフロアとフリーアクセスフロアの関係</div>
+      <div class="tb">同じもの。OAフロアはオフィス用の通称で、データセンター用・大規模システム室では「フリーアクセスフロア」と呼ぶことが多い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">耐震・免震構造と混同しやすい</div>
+      <div class="tb">フリーアクセスフロアは「配線・冷却」のための設備。耐震・免震は建物や機器の揺れ対策で別の概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「床下にケーブル・配管を通す」「床板を外してどこでも配線を出せる」→ フリーアクセスフロア（OAフロア）。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「フリー（自由）にアクセスできる＝床下の配線を自由に引ける床」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">フリーアクセス＝「どこでも床板を外して配線を出せる自由な床」</span><br><br>
+      もっと短く：<span class="hl">二重床＝床下に配線の高速道路が走ってる</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-free-access-floor</div>
+
+</div>
+</body>
+</html>

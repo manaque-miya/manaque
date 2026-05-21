@@ -1,106 +1,220 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>BCP（事業継続計画）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="BCP（事業継続計画）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-bcp.html">
-<meta property="og:title" content="BCP（事業継続計画）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="BCP（事業継続計画）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-bcp.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BCP（事業継続計画）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="BCP（Business Continuity Plan・事業継続計画）をわかりやすく解説。BCMとの違い、RTOとRPOの意味、DR（災害復旧）との違いをITパスポート試験の視点で完全網羅。">
+<link rel="canonical" href="https://example.com/itp-bcp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#9a3a1a,#5c1a08);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(92,26,8,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f0c8b8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-darkred{--c:#9a3a1a;--cbg:#f5e0d8;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#9a3a1a;}
+
+.timeline{position:relative;padding-left:24px;margin-top:8px;}
+.timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:3px;background:#e0e4ef;border-radius:3px;}
+.tl-item{position:relative;margin-bottom:16px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-dot{position:absolute;left:-18px;top:4px;width:12px;height:12px;border-radius:50%;border:3px solid var(--dc);background:#fff;}
+.tl-phase{font-size:12px;font-weight:900;color:var(--dc);margin-bottom:3px;}
+.tl-body{font-size:12.5px;font-weight:600;line-height:1.75;color:#48506a;background:var(--dbg);border-radius:9px;padding:9px 11px;}
+.t1{--dc:#dd5a3a;--dbg:#fef0ec;}
+.t2{--dc:#d9851f;--dbg:#fdf4e4;}
+.t3{--dc:#2e6de5;--dbg:#eef3fd;}
+.t4{--dc:#2e8b4f;--dbg:#eef8f1;}
+
+.kv-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.kv-cell{border-radius:12px;padding:12px;background:#f4f6fb;}
+.kv-cell h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.kv-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.kv-rto h4{color:#dd5a3a;}
+.kv-rpo h4{color:#2e6de5;}
+@media(max-width:480px){.kv-grid{grid-template-columns:1fr;}.tl-item{margin-bottom:12px;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">BCP（事業継続計画）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">BCP（事業継続計画）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>地方支店長の自分。大地震でオフィスが使えない！でも事前に「バックアップ拠点に切替→重要業務だけ最低限継続」という計画があった。これって何計画？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>BCP</b>（事業継続計画）とは？</h1>
+    <p>大災害・サイバー攻撃が起きても「業務を止めない・最短で戻す」ための事前計画。Business Continuity Plan の略。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>BCP（Business Continuity Plan）に基づく対応</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>DR（ディザスタリカバリ）による復旧</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ DRはシステム復旧特化。BCPは事業継続が目的。BCPの一部にDRが含まれる</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#5c1a08" opacity=".12"/>
+        <!-- 建物（崩壊気味） -->
+        <rect x="14" y="40" width="36" height="40" rx="4" fill="#cdd9ec" stroke="#9a3a1a" stroke-width="2" transform="rotate(-5,32,60)"/>
+        <!-- 崩れ -->
+        <path d="M14 55 l6 -8 l5 6 l4 -5 l4 8" stroke="#9a3a1a" stroke-width="1.5" fill="none"/>
+        <!-- 炎 -->
+        <text x="30" y="38" text-anchor="middle" font-size="18" font-family="sans-serif">🔥</text>
+        <!-- 矢印 -->
+        <path d="M55 60 l8 0" stroke="#ffd23f" stroke-width="2.5" marker-end="url(#arr2)"/>
+        <defs>
+          <marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6z" fill="#ffd23f"/>
+          </marker>
+        </defs>
+        <!-- 計画書 -->
+        <rect x="62" y="48" width="12" height="16" rx="2" fill="#2e8b4f"/>
+        <line x1="64" y1="53" x2="72" y2="53" stroke="#fff" stroke-width="1"/>
+        <line x1="64" y1="57" x2="72" y2="57" stroke="#fff" stroke-width="1"/>
+        <line x1="64" y1="61" x2="72" y2="61" stroke="#fff" stroke-width="1"/>
+        <text x="68" y="44" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="sans-serif">BCP</text>
+      </svg>
+      <div class="scene-txt">
+        大地震で本社ビルが使えなくなった。社員も半数しか出勤できない。<br>
+        でもこの会社には<strong>BCP（事業継続計画）</strong>があった。「このときはAチームがX拠点から業務を再開する」という手順書が完備されていた。
+        <div class="scene-q">…BCPがない会社は、その場で右往左往するだけ。</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：BCP（Business Continuity Plan）に基づく対応</strong></p>
-</div>
+  <!-- 図解：BCPのタイムライン -->
+  <div class="panel p-indigo">
+    <span class="phead">🔷 BCPのタイムライン</span>
+    <svg width="100%" viewBox="0 0 340 100" role="img" aria-label="BCP発動から復旧までのタイムライン">
+      <!-- 時間軸 -->
+      <line x1="20" y1="50" x2="320" y2="50" stroke="#c2c8d8" stroke-width="2"/>
+      <polygon points="318,45 330,50 318,55" fill="#c2c8d8"/>
+      <!-- 発生点 -->
+      <circle cx="50" cy="50" r="7" fill="#dd5a3a"/>
+      <text x="50" y="38" text-anchor="middle" font-size="9" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">災害発生</text>
+      <!-- BCP発動 -->
+      <circle cx="110" cy="50" r="7" fill="#d9851f"/>
+      <text x="110" y="38" text-anchor="middle" font-size="9" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">BCP発動</text>
+      <text x="110" y="72" text-anchor="middle" font-size="8" fill="#d9851f" font-family="M PLUS Rounded 1c">縮小で継続</text>
+      <!-- RPO -->
+      <line x1="50" y1="65" x2="160" y2="65" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="105" y="82" text-anchor="middle" font-size="8" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">RPO（許容データ損失）</text>
+      <!-- 目標復旧点 -->
+      <circle cx="160" cy="50" r="7" fill="#2e6de5"/>
+      <text x="160" y="38" text-anchor="middle" font-size="9" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">目標復旧点</text>
+      <!-- RTO -->
+      <line x1="50" y1="56" x2="250" y2="56" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- 目標復旧時間 -->
+      <circle cx="250" cy="50" r="7" fill="#2e8b4f"/>
+      <text x="250" y="38" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">業務再開</text>
+      <text x="150" y="62" text-anchor="middle" font-size="8" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">RTO（目標復旧時間）</text>
+      <!-- 完全復旧 -->
+      <circle cx="300" cy="50" r="7" fill="#4256b8"/>
+      <text x="300" y="38" text-anchor="middle" font-size="9" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">完全復旧</text>
+      <!-- 時間ラベル -->
+      <text x="175" y="96" text-anchor="middle" font-size="8" fill="#9aa3b2" font-family="M PLUS Rounded 1c">時間 →</text>
+    </svg>
+    <div class="kv-grid">
+      <div class="kv-cell kv-rto">
+        <h4>⏱ RTO（目標復旧時間）</h4>
+        <p>Recovery Time Objective。障害発生から業務再開まで「最大何時間以内に戻すか」の目標値。短いほど高コスト。</p>
+      </div>
+      <div class="kv-cell kv-rpo">
+        <h4>📂 RPO（目標復旧時点）</h4>
+        <p>Recovery Point Objective。「どの時点のデータまで失っても許容するか」の目標値。バックアップ頻度と連動。</p>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>📘 BCP（事業継続計画）とは何か</h2>
-<span class="kw">災害時も事業を止めない計画</span>
-<p>大規模災害・システム障害などの緊急事態が発生しても、重要な業務を継続または早期に再開するための計画。**「業務継続が目的、復旧は手段」**。システムを直すことが目的ではなく、業務を止めないことが目的。策定・訓練・見直しのサイクルが重要。</p>
-</div>
+  <!-- BCP策定フロー -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ BCP策定の流れ</span>
+    <div class="timeline">
+      <div class="tl-item t1">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">① BIA（事業影響分析）</div>
+        <div class="tl-body">業務が止まったとき「どの業務が最優先か」「何時間止まると何億の損失か」を試算する。</div>
+      </div>
+      <div class="tl-item t2">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">② リスクアセスメント</div>
+        <div class="tl-body">地震・火災・サイバー攻撃・感染症など、どのリスクが業務に影響するかを洗い出す。</div>
+      </div>
+      <div class="tl-item t3">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">③ 対策立案（BCPの作成）</div>
+        <div class="tl-body">「誰が・いつ・どこで・どうする」を具体的に記述。バックアップサイト・連絡網・代替手順などを決める。</div>
+      </div>
+      <div class="tl-item t4">
+        <div class="tl-dot"></div>
+        <div class="tl-phase">④ 訓練・見直し（BCM）</div>
+        <div class="tl-body">BCPは作っただけでは使えない。定期訓練・毎年の更新（BCM=事業継続マネジメント）が必須。</div>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>BCP策定では「どの業務が最優先か」「最低限何人いれば動けるか」「バックアップ拠点はどこか」を事前に定める。BCPをより広く管理する体制をBCM（事業継続マネジメント）という。</p>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-darkred">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">BCP≠「システムの復旧計画」</div>
+      <div class="tb">BCPは「業務を止めない」ための計画全体。ITシステム復旧だけでなく、人員・拠点・連絡網なども含む。IT限定の計画はDR（Disaster Recovery）と呼ぶ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">BCM（事業継続マネジメント）との違い</div>
+      <div class="tb">BCPは「計画書（ドキュメント）」。BCMは「BCPを継続的に運用・改善する仕組み・活動」全体を指す。BCPはBCMの一部。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">RTOとRPOを逆に覚えない</div>
+      <div class="tb">RTO＝時間（Time）＝いつまでに再開 / RPO＝ポイント（Point）＝どの時点のデータまで。T＝時間・P＝時点で区別。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「大規模障害時の業務継続」「優先業務の特定」→ BCP。「BCPの運用・見直し全体」→ BCM。「RTO/RPO」はBCP策定時の目標値。</div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>DRは「システムを元に戻す」復旧に特化した計画。BCPは「業務を止めない」継続に特化した計画。DRはBCPの一部として組み込まれることが多い。</p>
-</div>
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">B</span>CP＝<span class="hl">B</span>usiness（業務）を<span class="hl">C</span>ontinue（続ける）<span class="hl">P</span>lan（計画）<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「火事でも店を開け続けるための事前の打ち合わせ」</span><br><br>
+      RTO＝<span class="hl">T＝Time（時間）</span>「何時間以内に戻すか」<br>
+      RPO＝<span class="hl">P＝Point（時点）</span>「どこまでのデータを守るか」<br>
+      <span class="hl">T（時間）とP（時点）</span>で絶対に区別！
+    </div>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>BCP＝**Business Continuity（事業の継続）Plan**。**災害でも業務を止めない**。DRは「直す」、BCPは「止めない」。</p></div>
-</div>
+  <div class="foot">ITパスポート 詳細解説 ／ itp-bcp</div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>BCP（事業継続計画）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
 </div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

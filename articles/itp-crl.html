@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CRL（証明書失効リスト）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="CRL（証明書失効リスト）をわかりやすく解説。失効した電子証明書の一覧を配布する仕組み、OCSPとの違い、PKIの中での役割、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-crl">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6bbf,#0d3570);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,53,112,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#cf4f86;--fbg:#fbe8f2;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>CRL</b>（証明書失効リスト）とは？</h1>
+    <p>使えなくなった電子証明書を世界に公表する「ブラックリスト」の仕組み。失効した証明書を即座に無効にし、なりすましを防ぐ。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="50" width="54" height="34" rx="7" fill="#cdd9ec"/>
+        <rect x="18" y="30" width="42" height="28" rx="8" fill="#1a6bbf"/>
+        <circle cx="39" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M27 17 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="30" y="32" width="18" height="8" fill="#f4c89a"/>
+        <rect x="22" y="60" width="34" height="18" rx="3" fill="#fff"/>
+        <line x1="26" y1="65" x2="52" y2="65" stroke="#dd5a3a" stroke-width="2"/>
+        <line x1="26" y1="70" x2="48" y2="70" stroke="#dd5a3a" stroke-width="2"/>
+        <line x1="26" y1="75" x2="50" y2="75" stroke="#dd5a3a" stroke-width="2"/>
+        <text x="39" y="56" text-anchor="middle" font-size="8" font-weight="900" fill="#dd5a3a" font-family="sans-serif">✕</text>
+      </svg>
+      <div class="scene-txt">
+        オンライン申請のサイトに「この証明書は失効しています」と警告が出た。証明書を発行した会社が倒産して、認証局が<strong>失効処理</strong>をしたのだ。
+        <div class="scene-q">…「失効した証明書の一覧」ってどこで公開されるの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔒 CRLの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="CRLの仕組み：認証局がCRLを発行し、検証者が確認する流れ">
+      <!-- 認証局 -->
+      <rect x="10" y="20" width="100" height="54" rx="12" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="60" y="44" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">認証局（CA）</text>
+      <text x="60" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#6070a8" font-family="M PLUS Rounded 1c">証明書を発行・失効</text>
+
+      <!-- CRLファイル -->
+      <rect x="120" y="20" width="100" height="54" rx="12" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2.5"/>
+      <text x="170" y="42" text-anchor="middle" font-size="12" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">CRL</text>
+      <text x="170" y="57" text-anchor="middle" font-size="10" font-weight="700" fill="#aa4a30" font-family="M PLUS Rounded 1c">失効シリアル番号一覧</text>
+      <text x="170" y="70" text-anchor="middle" font-size="9" font-weight="700" fill="#aa4a30" font-family="M PLUS Rounded 1c">（定期的に更新・配布）</text>
+
+      <!-- 検証者 -->
+      <rect x="230" y="20" width="100" height="54" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="280" y="44" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">検証者</text>
+      <text x="280" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#4a8860" font-family="M PLUS Rounded 1c">証明書を受け取った側</text>
+
+      <!-- 矢印 -->
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <line x1="112" y1="47" x2="118" y2="47" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr)"/>
+      <line x1="222" y1="47" x2="228" y2="47" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- 失効証明書リスト -->
+      <rect x="40" y="110" width="260" height="130" rx="12" fill="#fff7f5" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="170" y="130" text-anchor="middle" font-size="12" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">CRL（失効リスト）の中身</text>
+      <rect x="55" y="138" width="230" height="22" rx="6" fill="#fce4dd"/>
+      <text x="75" y="153" font-size="10" font-weight="700" fill="#aa4a30" font-family="M PLUS Rounded 1c">シリアル番号: 0A1B2C ― 失効日: 2025-01-10</text>
+      <rect x="55" y="164" width="230" height="22" rx="6" fill="#fce4dd"/>
+      <text x="75" y="179" font-size="10" font-weight="700" fill="#aa4a30" font-family="M PLUS Rounded 1c">シリアル番号: 3D4E5F ― 失効日: 2025-03-22</text>
+      <rect x="55" y="190" width="230" height="22" rx="6" fill="#fce4dd"/>
+      <text x="75" y="205" font-size="10" font-weight="700" fill="#aa4a30" font-family="M PLUS Rounded 1c">シリアル番号: 6G7H8I ― 失効日: 2025-04-05</text>
+      <text x="170" y="228" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">↑ 認証局の署名付き ／ 定期的に更新</text>
+
+      <!-- 矢印（CAからCRL） -->
+      <line x1="60" y1="76" x2="110" y2="108" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+      <!-- 矢印（検証者がCRL取得） -->
+      <line x1="280" y1="76" x2="240" y2="108" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+    </svg>
+  </div>
+
+  <!-- フロー詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 証明書検証の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 証明書の受け取り</div><div class="fb">サーバや相手から電子証明書を受け取る。証明書にはシリアル番号・有効期限・発行元CAが書かれている。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② CRLをダウンロード</div><div class="fb">証明書に記載されたURLから、認証局（CA）が公開しているCRLを取得する。CRLは定期的に更新される。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ シリアル番号で照合</div><div class="fb">受け取った証明書のシリアル番号がCRLに載っていないか確認する。載っていたら「失効＝使えない」と判断。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4" style="--fc:#cf4f86;--fbg:#fbe8f2;"><div class="fh">④ 有効 or 失効の判定</div><div class="fb">載っていなければ有効。載っていれば通信を拒否する。ただしCRLは「定期更新」のためリアルタイムではない点に注意。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">CRL vs OCSP — どちらも「失効確認」だが方法が違う</div>
+      <div class="tb">CRLは「失効した証明書のリストを丸ごとダウンロード」して照合。OCSPは「この証明書は有効か？」と認証局にリアルタイムで問い合わせる。CRLはリスト全体を取得するため遅延あり、OCSPはリアルタイムだが問い合わせトラフィックが発生する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「有効期限切れ」と「失効」は別物</div>
+      <div class="tb">有効期限切れは証明書の期間が自然に終了したこと。失効（CRLへの掲載）は、秘密鍵の漏えいや組織変更などで<strong>期限前に強制的に無効化</strong>したこと。CRLは後者の仕組み。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">CRLは認証局（CA）が発行する</div>
+      <div class="tb">エンドユーザや受信者が作るのではなく、証明書を発行した認証局（CA）が作成・署名・配布する。受け取った側はそれを「読むだけ」。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">CRL＝"くびリスト"</span>（首になった証明書の名簿）<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">C＝Certificate（証明書）／ R＝Revocation（失効）／ L＝List（リスト）</span><br><br>
+    「首になった社員（失効した証明書）の名前を会社（認証局）が張り出す（配布）」<br>
+    → 見つかったら<span class="hl">入館拒否（通信拒否）</span></div>
+  </div>
+
+</div>
+</body>
+</html>

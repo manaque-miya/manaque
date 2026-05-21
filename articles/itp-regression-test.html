@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>回帰テストとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="回帰テストをわかりやすく解説。修正後にバグが再発しないか確認するテストの目的・タイミング・ひっかけポイントまでITパスポート試験対策に。">
+<link rel="canonical" href="https://example.com/itp-regression-test">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e6de5,#19357f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#dd5a3a;--fbg:#fdf0ec;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>回帰テスト</b>とは？</h1>
+    <p>修正後、前に直したバグが"ぶり返していない"かを確認するテスト。<br>壊れていなければOK。壊れていたら修正のやり直し。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="55" width="56" height="24" rx="6" fill="#c8d4ea"/>
+        <rect x="14" y="35" width="44" height="28" rx="8" fill="#2e6de5"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 17 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="31" width="16" height="8" fill="#f4c89a"/>
+        <rect x="20" y="50" width="32" height="14" rx="3" fill="#fff" opacity=".2"/>
+        <rect x="24" y="54" width="8" height="3" rx="1" fill="#fff"/>
+        <rect x="24" y="59" width="20" height="3" rx="1" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        開発チームが「ログイン画面のバグを直した！」とリリース。翌日、別のエンジニアが「なぜか商品一覧が表示されなくなった」と報告。<br>
+        修正の影響で、<strong>別の場所が壊れていた</strong>のだ。
+        <div class="scene-q">…この"ぶり返しチェック"が回帰テスト！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔍 回帰テストの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="回帰テストの流れ：バグ修正→回帰テスト実行→影響範囲確認→OKなら次フェーズへ">
+      <!-- 背景レーン -->
+      <rect x="10" y="10" width="320" height="200" rx="14" fill="#f0f2f8"/>
+      <!-- バグ修正ボックス -->
+      <rect x="20" y="30" width="100" height="48" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="70" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">バグ修正</text>
+      <text x="70" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">コードを変更</text>
+      <!-- 矢印 -->
+      <path d="M122 54 L140 54" stroke="#9aa3b2" stroke-width="2.5" marker-end="url(#arr)"/>
+      <!-- 回帰テストボックス -->
+      <rect x="142" y="30" width="100" height="48" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="192" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">回帰テスト</text>
+      <text x="192" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">全体を再確認</text>
+      <!-- 矢印 -->
+      <path d="M244 54 L262 54" stroke="#9aa3b2" stroke-width="2.5" marker-end="url(#arr)"/>
+      <!-- 結果ボックス -->
+      <rect x="264" y="30" width="58" height="48" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="293" y="52" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">OK!</text>
+      <text x="293" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">問題なし</text>
+      <!-- NG矢印（戻り） -->
+      <path d="M192 80 L192 110" stroke="#dd5a3a" stroke-width="2" stroke-dasharray="4 3"/>
+      <rect x="120" y="112" width="144" height="36" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="192" y="128" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">NGの場合 → 再修正して再テスト</text>
+      <text x="192" y="143" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">ぶり返しが消えるまでループ</text>
+      <!-- 対象範囲の説明 -->
+      <rect x="20" y="160" width="300" height="40" rx="10" fill="#4256b8" opacity=".1"/>
+      <text x="170" y="178" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">テスト対象：修正箇所だけでなく</text>
+      <text x="170" y="193" text-anchor="middle" font-size="11.5" font-weight="900" fill="#2e4fa3" font-family="M PLUS Rounded 1c">修正の影響が及ぶ全範囲を再実行</text>
+      <defs>
+        <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6 Z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ ソフトウェア開発における位置づけ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 単体テスト — 部品単位の動作確認</div><div class="fb">関数やモジュール単独で正しく動くかを確認する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 結合テスト — 組み合わせの動作確認</div><div class="fb">複数のモジュールをつないで連携が正しいかを確認する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ バグ修正 → 回帰テスト ← ここ！</div><div class="fb">修正後に<strong>既存の動作が壊れていないか</strong>を改めて全体テスト。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ システムテスト → リリース</div><div class="fb">本番環境に近い状態で全体の品質を最終確認。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「修正した箇所だけテストする」は間違い</div>
+      <div class="tb">回帰テストは修正箇所だけでなく、<strong>影響を受けうる既存機能すべて</strong>を再確認する。「直した部分だけ確認」では見逃しが出る。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「リリース前に1回だけやるもの」は間違い</div>
+      <div class="tb">バグを直すたびに毎回実行する。<strong>修正のたびに繰り返すのが回帰テストの本質</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「退行テスト」「デグレードテスト」とも呼ばれる</div>
+      <div class="tb">別名で問われることがある。退行＝前の状態に後退していないか確認、という意味で同じ概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「修正後に<strong>既存機能が壊れていないか確認</strong>」という文脈が出たら → 回帰テスト（退行テスト）。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">回帰＝帰ってくる</span>バグ退治！<br>
+    直したはずのバグが"また帰ってきた"→ それを<strong>帰る前に捕まえる</strong>テスト。<br><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">回帰（カイキ）→「カイキ敵（怪奇な敵）＝ぶり返すバグ」<br>修正後に全体チェック＝回帰テスト</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-regression-test</div>
+
+</div>
+</body>
+</html>

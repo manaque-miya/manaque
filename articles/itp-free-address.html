@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>フリーアドレスとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="フリーアドレス制の意味・メリット・デメリットをわかりやすく解説。テレワーク・ABWとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-free-address">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:`M PLUS Rounded 1c`,sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0891b2,#164e63);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(22,78,99,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a5f3fc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#0891b2;--cbg:#e0f9fe;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0891b2;}
+
+.merit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;}
+.merit-cell{border-radius:12px;padding:11px 10px;}
+.merit-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.merit-cell ul{list-style:none;}
+.merit-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.merit-cell li::before{content:"▶";position:absolute;left:0;font-size:9px;top:3px;}
+.cell-merit{background:#e2f3e5;}.cell-merit h4{color:#2e8b4f;}
+.cell-demerit{background:#fce4dd;}.cell-demerit h4{color:#dd5a3a;}
+@media(max-width:480px){.merit-grid{grid-template-columns:1fr;}}
+
+.compare-row{display:flex;gap:8px;margin-top:10px;}
+.compare-cell{flex:1;border-radius:12px;padding:11px 9px;text-align:center;}
+.compare-cell .ct{font-size:12px;font-weight:900;margin-bottom:5px;}
+.compare-cell .cb{font-size:11px;font-weight:600;line-height:1.6;color:#48506a;}
+@media(max-width:440px){.compare-row{flex-direction:column;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🏢 ITパスポート ｜ ストラテジ系（経営戦略）</span>
+    <h1><b>フリーアドレス</b>とは？</h1>
+    <p>固定席を廃止し、毎日好きな席に座るオフィス形態。スペース削減と部門間交流が同時に狙える。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- デスク3席のシルエット -->
+        <rect x="6" y="60" width="60" height="8" rx="3" fill="#cdd9ec"/>
+        <rect x="10" y="68" width="8" height="14" rx="2" fill="#a0aec0"/>
+        <rect x="32" y="68" width="8" height="14" rx="2" fill="#a0aec0"/>
+        <rect x="54" y="68" width="8" height="14" rx="2" fill="#a0aec0"/>
+        <!-- 人物 -->
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 18 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#0891b2"/>
+        <rect x="27" y="33" width="18" height="9" fill="#f4c89a"/>
+        <rect x="14" y="42" width="44" height="20" rx="8" fill="#0891b2"/>
+        <!-- 荷物（バッグ）でどこでも行ける感 -->
+        <rect x="50" y="46" width="12" height="10" rx="3" fill="#ffd23f"/>
+        <path d="M53 46 v-3 h6 v3" stroke="#e0a800" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        新しいオフィスに出社したAさん。「今日はどこに座ろうかな」と、窓際の空き席を確保した。<br>
+        隣は普段ほとんど話さない他部署の人。会話が弾んで、新しいアイデアが生まれた。
+        <div class="scene-q">これが「フリーアドレス制」。固定席がない働き方。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 概念SVG図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🪑 フリーアドレスの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="固定席制とフリーアドレス制の比較図">
+      <!-- 左：固定席 -->
+      <rect x="10" y="10" width="150" height="180" rx="12" fill="#f1f3f8" stroke="#9aa3b2" stroke-width="1.5"/>
+      <text x="85" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#48506a" font-family="M PLUS Rounded 1c">固定席制</text>
+      <!-- 席グリッド（名前付き） -->
+      <rect x="22" y="44" width="56" height="34" rx="6" fill="#dbeafe" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="50" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af" font-family="M PLUS Rounded 1c">Aさんの席</text>
+      <rect x="92" y="44" width="56" height="34" rx="6" fill="#dcfce7" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="120" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#166534" font-family="M PLUS Rounded 1c">Bさんの席</text>
+      <rect x="22" y="90" width="56" height="34" rx="6" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+      <text x="50" y="109" text-anchor="middle" font-size="10" font-weight="700" fill="#854d0e" font-family="M PLUS Rounded 1c">Cさんの席</text>
+      <rect x="92" y="90" width="56" height="34" rx="6" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+      <text x="120" y="109" text-anchor="middle" font-size="10" font-weight="700" fill="#9d174d" font-family="M PLUS Rounded 1c">Dさんの席</text>
+      <!-- 空席（×） -->
+      <rect x="22" y="138" width="56" height="34" rx="6" fill="#f1f3f8" stroke="#9aa3b2" stroke-width="1"/>
+      <text x="50" y="157" text-anchor="middle" font-size="18" fill="#9aa3b2" font-family="sans-serif">×</text>
+      <rect x="92" y="138" width="56" height="34" rx="6" fill="#f1f3f8" stroke="#9aa3b2" stroke-width="1"/>
+      <text x="120" y="157" text-anchor="middle" font-size="18" fill="#9aa3b2" font-family="sans-serif">×</text>
+      <text x="85" y="192" text-anchor="middle" font-size="10" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">空席が無駄になる</text>
+
+      <!-- 右：フリーアドレス -->
+      <rect x="180" y="10" width="150" height="180" rx="12" fill="#f0fdf4" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="255" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#166534" font-family="M PLUS Rounded 1c">フリーアドレス制</text>
+      <!-- 席（名前なし・色が混ざる） -->
+      <rect x="192" y="44" width="56" height="34" rx="6" fill="#dbeafe" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="220" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af" font-family="M PLUS Rounded 1c">A ← 今日</text>
+      <rect x="262" y="44" width="56" height="34" rx="6" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+      <text x="290" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#9d174d" font-family="M PLUS Rounded 1c">D ← 今日</text>
+      <rect x="192" y="90" width="56" height="34" rx="6" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+      <text x="220" y="109" text-anchor="middle" font-size="10" font-weight="700" fill="#854d0e" font-family="M PLUS Rounded 1c">C ← 今日</text>
+      <rect x="262" y="90" width="56" height="34" rx="6" fill="#dcfce7" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="290" y="109" text-anchor="middle" font-size="10" font-weight="700" fill="#166534" font-family="M PLUS Rounded 1c">B ← 今日</text>
+      <!-- 空席（○） -->
+      <rect x="192" y="138" width="56" height="34" rx="6" fill="#f0fdf4" stroke="#2e8b4f" stroke-width="1"/>
+      <text x="220" y="157" text-anchor="middle" font-size="13" fill="#2e8b4f" font-weight="900" font-family="sans-serif">空き</text>
+      <rect x="262" y="138" width="56" height="34" rx="6" fill="#f0fdf4" stroke="#2e8b4f" stroke-width="1"/>
+      <text x="290" y="157" text-anchor="middle" font-size="13" fill="#2e8b4f" font-weight="900" font-family="sans-serif">空き</text>
+      <text x="255" y="192" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">スペースを効率活用！</text>
+    </svg>
+  </div>
+
+  <!-- メリット・デメリット -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ メリット・デメリット</span>
+    <div class="merit-grid">
+      <div class="merit-cell cell-merit">
+        <h4>メリット</h4>
+        <ul>
+          <li>オフィスの座席数を削減できる（コスト削減）</li>
+          <li>部門をまたいだ交流・連携が増える</li>
+          <li>在宅・出張でも無駄な空席が出にくい</li>
+        </ul>
+      </div>
+      <div class="merit-cell cell-demerit">
+        <h4>デメリット</h4>
+        <ul>
+          <li>毎日荷物を片付ける手間がある</li>
+          <li>チームの連携が取りにくいことも</li>
+          <li>集中したい時に席が見つからない場合も</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:10px;">テレワーク（在宅勤務）やABW（Activity Based Working）と組み合わせて導入されることが多い。</p>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">テレワークと混同しやすい</div>
+      <div class="tb">テレワークは「自宅や外出先で働く」こと。フリーアドレスは<strong>オフィス内で席を固定しない</strong>こと。場所（オフィス外 vs オフィス内）が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ABW（Activity Based Working）と混同しやすい</div>
+      <div class="tb">ABWは「仕事の内容に応じて場所を選ぶ」考え方全般。フリーアドレスはABWの<strong>具体的な施策の一つ</strong>で、ABW＝フリーアドレスではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「固定席をなくす」がポイント</div>
+      <div class="tb">「毎日自由に席を選ぶ」「専用席なし」「席の予約制」などが説明に出たら → フリーアドレス。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「フリー」＝「自由に」席を「アドレス（住所）しない」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">アドレス＝住所。住所（席）を固定しない＝フリーアドレス！</span><br><br>
+      覚え方：<span class="hl">「毎朝ホームレス（席なし）状態から始まる会社員」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">座席の「住所」が「フリー（不定）」＝フリーアドレス制</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-free-address</div>
+
+</div>
+</body>
+</html>

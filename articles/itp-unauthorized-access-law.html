@@ -1,108 +1,187 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>不正アクセス禁止法とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="不正アクセス禁止法の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-unauthorized-access-law.html">
-<meta property="og:title" content="不正アクセス禁止法とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="不正アクセス禁止法の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-unauthorized-access-law.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>不正アクセス禁止法とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="不正アクセス禁止法を「禁止される3行為」「罰則」「届出先（警察）」で整理。なりすましログインや脆弱性攻撃が対象。個人情報保護法・サイバーセキュリティ基本法との違いまで。">
+<link rel="canonical" href="https://example.com/itp-unauthorized-access-law">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#bb3c1f,#6b1a0a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,26,10,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:27px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f0c4b8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red{--c:#bb3c1f;--cbg:#fce4dd;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#bb3c1f;}
+
+.law-item{border-radius:12px;padding:12px 14px;margin-bottom:8px;border-left:5px solid var(--lc);background:var(--lbg);}
+.law-item .lh{font-size:13px;font-weight:900;color:var(--lc);margin-bottom:4px;}
+.law-item .lb{font-size:12.5px;font-weight:600;line-height:1.75;color:#48506a;}
+.law-1{--lc:#bb3c1f;--lbg:#fce4dd;}
+.law-2{--lc:#d9851f;--lbg:#fcefd9;}
+.law-3{--lc:#4256b8;--lbg:#e4e7f7;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#bb3c1f;--fbg:#fce4dd;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">不正アクセス禁止法とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">不正アクセス禁止法</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🚨 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>不正アクセス禁止法</b>とは？</h1>
+    <p>他人のIDとパスワードを使って勝手にシステムに入ること、セキュリティの穴を突いて侵入することを<strong>禁止・処罰</strong>する法律。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="80" height="92" viewBox="0 0 80 92" aria-hidden="true">
+        <ellipse cx="40" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- 泥棒風の人物 -->
+        <circle cx="40" cy="20" r="13" fill="#3a3f4a"/>
+        <rect x="26" y="32" width="28" height="22" rx="7" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="20" height="8" fill="#3a3f4a"/>
+        <rect x="30" y="42" width="8" height="6" fill="#3a3f4a"/>
+        <rect x="42" y="42" width="8" height="6" fill="#3a3f4a"/>
+        <rect x="26" y="55" width="28" height="20" rx="5" fill="#cdd9ec"/>
+        <!-- サーバー -->
+        <rect x="52" y="52" width="22" height="26" rx="4" fill="#2e6de5"/>
+        <rect x="55" y="56" width="16" height="4" rx="1" fill="#7ab6f5"/>
+        <rect x="55" y="62" width="16" height="4" rx="1" fill="#7ab6f5"/>
+        <rect x="55" y="68" width="8" height="4" rx="1" fill="#ffd23f"/>
+        <!-- 禁止マーク -->
+        <circle cx="63" cy="44" r="10" fill="#dd5a3a" opacity=".9"/>
+        <rect x="57" y="41.5" width="12" height="5" rx="2" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        漏洩したパスワードリストを使って、次々と他人のSNSアカウントへのログインを試みた。試しただけで、実際には何も取っていない。でも逮捕された。
+        <div class="scene-q">…「入っただけ」でアウト！それが不正アクセス禁止法。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 禁止行為の図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🚫 法律が禁止している3つの行為</span>
+    <svg width="100%" viewBox="0 0 340 170" role="img" aria-label="不正アクセス禁止法が禁じる3行為：不正アクセス・識別符号取得・フィッシング">
+      <!-- 背景 -->
+      <rect x="10" y="10" width="320" height="150" rx="14" fill="#f4f6fb"/>
+      <!-- 行為1 -->
+      <rect x="22" y="22" width="90" height="126" rx="10" fill="#fce4dd" stroke="#bb3c1f" stroke-width="2"/>
+      <text x="67" y="50" text-anchor="middle" font-size="20" font-family="sans-serif">🔓</text>
+      <text x="67" y="68" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">不正アクセス</text>
+      <text x="67" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">他人のID・PW等を</text>
+      <text x="67" y="96" text-anchor="middle" font-size="9" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">使って無断侵入</text>
+      <text x="67" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">または脆弱性を</text>
+      <text x="67" y="120" text-anchor="middle" font-size="9" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">突いて侵入</text>
+      <text x="67" y="138" text-anchor="middle" font-size="9" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">3年以下の懲役等</text>
+      <!-- 行為2 -->
+      <rect x="125" y="22" width="90" height="126" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="170" y="50" text-anchor="middle" font-size="20" font-family="sans-serif">🔑</text>
+      <text x="170" y="68" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">識別符号取得</text>
+      <text x="170" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#7a5a2a" font-family="M PLUS Rounded 1c">他人のID・PW等を</text>
+      <text x="170" y="96" text-anchor="middle" font-size="9" font-weight="700" fill="#7a5a2a" font-family="M PLUS Rounded 1c">不正に取得・保管</text>
+      <text x="170" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#7a5a2a" font-family="M PLUS Rounded 1c">する行為（まだ</text>
+      <text x="170" y="120" text-anchor="middle" font-size="9" font-weight="700" fill="#7a5a2a" font-family="M PLUS Rounded 1c">使っていなくてもNG）</text>
+      <text x="170" y="138" text-anchor="middle" font-size="9" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">1年以下の懲役等</text>
+      <!-- 行為3 -->
+      <rect x="228" y="22" width="90" height="126" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="273" y="50" text-anchor="middle" font-size="20" font-family="sans-serif">🎣</text>
+      <text x="273" y="68" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">フィッシング</text>
+      <text x="273" y="84" text-anchor="middle" font-size="9" font-weight="700" fill="#3a4680" font-family="M PLUS Rounded 1c">偽サイト等でID・</text>
+      <text x="273" y="96" text-anchor="middle" font-size="9" font-weight="700" fill="#3a4680" font-family="M PLUS Rounded 1c">PWを入力させて</text>
+      <text x="273" y="108" text-anchor="middle" font-size="9" font-weight="700" fill="#3a4680" font-family="M PLUS Rounded 1c">だまし取る行為</text>
+      <text x="273" y="120" text-anchor="middle" font-size="9" font-weight="700" fill="#3a4680" font-family="M PLUS Rounded 1c">（フィッシング禁止</text>
+      <text x="273" y="132" text-anchor="middle" font-size="9" font-weight="700" fill="#3a4680" font-family="M PLUS Rounded 1c">規定）</text>
+      <text x="273" y="144" text-anchor="middle" font-size="9" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">1年以下の懲役等</text>
+    </svg>
+    <p>「実際に情報を盗んだか」ではなく、<strong>不正にアクセスした事実・不正に取得した事実</strong>だけで違反になる。被害発生前から犯罪となる点が重要。</p>
+  </div>
+
+  <!-- 届出・運用フロー -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 不正アクセスを受けたら？</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 都道府県警察に届け出る（努力義務）</div><div class="fb">被害に遭った組織・個人は都道府県警察本部に届け出ることができる。義務ではないが、再発防止・捜査のために推奨される。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 都道府県警察が国家公安委員会・経産省・総務省へ通知</div><div class="fb">警察から関係省庁に情報が共有され、実態調査や再発防止策の検討に活用される。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ アクセス管理者による防止措置</div><div class="fb">システム管理者（アクセス管理者）はセキュリティ対策を講じる義務がある。パスワード管理・脆弱性対応が求められる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">届け出先は「警察」（総務省・経産省ではない）</div>
+      <div class="tb">不正アクセスの被害届は<strong>都道府県警察</strong>へ。経産省や総務省は警察から通知を受ける側。試験で「どこに届け出るか」が問われやすい。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">個人情報保護法・サイバーセキュリティ基本法との違い</div>
+      <div class="tb">個人情報保護法＝個人情報の適切な取扱いを定める法律。サイバーセキュリティ基本法＝国全体のセキュリティ戦略の基本方針。不正アクセス禁止法＝<strong>「侵入行為そのもの」を禁止・罰則</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「被害が出ていなくても」違反</div>
+      <div class="tb">侵入しただけ、ID・PWを取得しただけでも法律違反。「何もしなかった」は言い訳にならない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">対象は「電気通信回線を通じた不正ログイン」</div>
+      <div class="tb">ネットワーク経由の不正侵入が対象。物理的な立入は別の法律（不法侵入など）が適用される。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「不正アクセス＝カギを盗む・使う・偽造する、全部アウト」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">盗む（フィッシング）＋保管する（識別符号取得）＋使う（不正ログイン）の3つが禁止</span><br><br>
+    届け出先ゴロ：<span class="hl">「不正入られたら　警察へ（けいさつへ）」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「けい（警）さつ（察）」→ 都道府県警察本部 ／ 総務省・経産省ではない！</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-unauthorized-access-law</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>同僚が「他人のID/パスでログイン」した！被害者の自分。これって何法違反？個人情報保護法？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>不正アクセス禁止法</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>個人情報保護法</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 個人情報保護法は情報取扱規制。「他人IDでなりすましログイン」は不正アクセス禁止法</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：不正アクセス禁止法</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 不正アクセス禁止法とは何か</h2>
-<span class="kw">他人のID・パスワードを使った不正ログインを禁止</span>
-<p>不正アクセス禁止法（不正アクセス行為の禁止等に関する法律）が禁止する行為：①不正アクセス行為（他人のID/パスワードを使ったなりすましログイン・脆弱性を突いた不正侵入）②識別符号（ID/パスワード）の不正取得・保管・提供。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>不正アクセス禁止法と他の法律の関係：不正ログイン後にデータを窃取→不正競争防止法や刑法（窃盗・詐欺）が適用。マルウェアを使った攻撃→刑法の不正指令電磁的記録に関する罪が適用。複数の法律が重なることが多い。
-
-**覚え方** 🎯 不正アクセス禁止法＝**他人IDで侵入＝犯罪**。**個人情報保護法とは別軸**。パスワード提供・取得も禁止対象。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>不正アクセス禁止法は「侵入行為」を規制し、**個人情報保護法とは別軸**。パスワード提供・保管も禁止。ログイン後の窃取は刑法が適用される。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>不正アクセス禁止法＝**他人IDで侵入＝犯罪**。**個人情報保護法とは別軸**。パスワード提供・取得も禁止対象。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>不正アクセス禁止法はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

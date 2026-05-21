@@ -1,108 +1,222 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>テレワーク・在宅勤務とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="テレワーク・在宅勤務の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-telework.html">
-<meta property="og:title" content="テレワーク・在宅勤務とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="テレワーク・在宅勤務の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-telework.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>テレワークとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="テレワークの3種類（在宅・モバイル・サテライト）を図解。導入メリット・課題・セキュリティリスク、ITパスポートに出るひっかけポイントまで丁寧に解説。">
+<link rel="canonical" href="https://example.com/itp-telework">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#0d5a2a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,90,42,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b0e8c0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e8b4f;--cbg:#ddf2e4;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2a7a40;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.type-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;}
+.tbox{border-radius:12px;padding:10px 9px;}
+.tbox h4{font-size:12px;font-weight:900;margin-bottom:5px;}
+.tbox p{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+.t1{background:#ddf2e4;}.t1 h4{color:#2e8b4f;}
+.t2{background:#dde7f9;}.t2 h4{color:#2a5da8;}
+.t3{background:#fcefd9;}.t3 h4{color:#d9851f;}
+@media(max-width:480px){.type-grid{grid-template-columns:1fr;}}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.col-box{border-radius:12px;padding:12px;}
+.col-box h4{font-size:13px;font-weight:900;margin-bottom:8px;}
+.col-box ul{list-style:none;}
+.col-box li{font-size:12px;font-weight:600;line-height:1.7;padding-left:13px;position:relative;color:#48506a;}
+.col-box li::before{content:"▶";position:absolute;left:0;font-size:9px;top:3px;}
+.merit-box{background:#e2f3e5;}.merit-box h4{color:#2e8b4f;}
+.demerit-box{background:#fce4dd;}.demerit-box h4{color:#dd5a3a;}
+@media(max-width:400px){.two-col{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">テレワーク・在宅勤務とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">テレワーク・在宅勤務</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💼 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>テレワーク</b>とは？</h1>
+    <p>情報通信技術（ICT）を活用して、会社以外の場所で働く勤務形態。「離れた（テレ）場所で働く（ワーク）」。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- 家のシルエット -->
+        <rect x="14" y="56" width="50" height="28" rx="3" fill="#b0d8b8"/>
+        <polygon points="39,32 10,56 68,56" fill="#2e8b4f"/>
+        <rect x="30" y="64" width="18" height="20" rx="2" fill="#88c8a0"/>
+        <!-- 人物 -->
+        <circle cx="39" cy="22" r="12" fill="#f4c89a"/>
+        <path d="M28 18 a11 10 0 0 1 22 0 q-4 -8 -11 -8 q-7 0 -11 8z" fill="#3a3f4a"/>
+        <!-- ノートPC -->
+        <rect x="25" y="70" width="28" height="16" rx="2" fill="#48506a"/>
+        <rect x="27" y="72" width="24" height="12" rx="1" fill="#7aadd8"/>
+        <rect x="22" y="86" width="34" height="3" rx="1" fill="#48506a"/>
+      </svg>
+      <div class="scene-txt">
+        子どもが熱を出した月曜日の朝。以前なら会社を休むしかなかったが、今はノートPCを開けばVPN経由で社内システムにつながり、<strong>自宅でそのまま仕事</strong>が続けられる。<br>
+        これがテレワーク（在宅勤務）の一形態。
+        <div class="scene-q">…テレワークにはいくつか種類がある。全部言えますか？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3種類の図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🏢 テレワークの3種類</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="テレワークの3種類：在宅勤務・モバイルワーク・サテライトオフィス勤務">
+      <!-- 在宅勤務 -->
+      <rect x="10" y="30" width="96" height="130" rx="12" fill="#ddf2e4" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="58" y="52" text-anchor="middle" font-size="12.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">在宅勤務</text>
+      <!-- 家アイコン -->
+      <polygon points="58,68 38,86 78,86" fill="#2e8b4f"/>
+      <rect x="42" y="86" width="32" height="22" rx="2" fill="#a8d8b0"/>
+      <rect x="51" y="92" width="14" height="16" rx="1" fill="#88c8a0"/>
+      <text x="58" y="128" text-anchor="middle" font-size="10" font-weight="800" fill="#2a6c3c" font-family="M PLUS Rounded 1c">自宅で</text>
+      <text x="58" y="142" text-anchor="middle" font-size="10" font-weight="800" fill="#2a6c3c" font-family="M PLUS Rounded 1c">仕事する</text>
+      <!-- モバイルワーク -->
+      <rect x="122" y="30" width="96" height="130" rx="12" fill="#dde7f9" stroke="#2a5da8" stroke-width="2"/>
+      <text x="170" y="52" text-anchor="middle" font-size="12.5" font-weight="900" fill="#2a5da8" font-family="M PLUS Rounded 1c">モバイルワーク</text>
+      <!-- 電車/カフェアイコン -->
+      <rect x="148" y="66" width="44" height="32" rx="6" fill="#2a5da8"/>
+      <rect x="152" y="70" width="16" height="12" rx="2" fill="#a8c8f8"/>
+      <rect x="172" y="70" width="16" height="12" rx="2" fill="#a8c8f8"/>
+      <circle cx="156" cy="102" r="5" fill="#a8c8f8"/>
+      <circle cx="184" cy="102" r="5" fill="#a8c8f8"/>
+      <text x="170" y="126" text-anchor="middle" font-size="10" font-weight="800" fill="#1a4a88" font-family="M PLUS Rounded 1c">移動中・カフェ</text>
+      <text x="170" y="140" text-anchor="middle" font-size="10" font-weight="800" fill="#1a4a88" font-family="M PLUS Rounded 1c">などで仕事</text>
+      <!-- サテライト -->
+      <rect x="234" y="30" width="96" height="130" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="282" y="52" text-anchor="middle" font-size="12.5" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">サテライト</text>
+      <text x="282" y="66" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">オフィス</text>
+      <!-- ビルアイコン -->
+      <rect x="260" y="76" width="44" height="34" rx="3" fill="#d9851f"/>
+      <rect x="264" y="80" width="8" height="8" rx="1" fill="#fff" opacity=".7"/>
+      <rect x="276" y="80" width="8" height="8" rx="1" fill="#fff" opacity=".7"/>
+      <rect x="288" y="80" width="8" height="8" rx="1" fill="#fff" opacity=".7"/>
+      <rect x="264" y="92" width="8" height="8" rx="1" fill="#fff" opacity=".7"/>
+      <rect x="276" y="92" width="8" height="8" rx="1" fill="#fff" opacity=".7"/>
+      <rect x="288" y="92" width="8" height="8" rx="1" fill="#fff" opacity=".7"/>
+      <text x="282" y="128" text-anchor="middle" font-size="10" font-weight="800" fill="#a06010" font-family="M PLUS Rounded 1c">自社以外の</text>
+      <text x="282" y="142" text-anchor="middle" font-size="10" font-weight="800" fill="#a06010" font-family="M PLUS Rounded 1c">施設で仕事</text>
+      <!-- バッジ下 -->
+      <rect x="10" y="170" width="320" height="22" rx="8" fill="#4256b8"/>
+      <text x="170" y="185" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">共通：ICTを使って「会社以外」で働く</text>
+    </svg>
+    <div class="type-grid">
+      <div class="tbox t1">
+        <h4>在宅勤務</h4>
+        <p>自宅をオフィス代わりに。VPN等で社内システムに接続して仕事する。</p>
+      </div>
+      <div class="tbox t2">
+        <h4>モバイルワーク</h4>
+        <p>移動中・カフェ・顧客先など、特定の場所に縛られず働くスタイル。</p>
+      </div>
+      <div class="tbox t3">
+        <h4>サテライトオフィス</h4>
+        <p>企業が設けた本社以外の小規模オフィス。通勤の負担を減らす。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- メリット・課題 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ メリットと課題</span>
+    <div class="two-col">
+      <div class="col-box merit-box">
+        <h4>メリット</h4>
+        <ul>
+          <li>通勤時間・コスト削減</li>
+          <li>育児・介護と両立しやすい</li>
+          <li>地方人材の採用が可能</li>
+          <li>BCP（事業継続）強化</li>
+          <li>ペーパーレス促進</li>
+        </ul>
+      </div>
+      <div class="col-box demerit-box">
+        <h4>課題・リスク</h4>
+        <ul>
+          <li>情報漏洩リスク（VPN必須）</li>
+          <li>コミュニケーション不足</li>
+          <li>労働時間管理が難しい</li>
+          <li>セキュリティ教育が必要</li>
+          <li>孤独感・モチベーション管理</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「テレワーク＝在宅勤務だけ」は誤り</div>
+      <div class="tb">在宅勤務はテレワークの一種。モバイルワーク・サテライトオフィスも含めた<strong>「会社以外での勤務形態の総称」</strong>がテレワーク。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">フレックスタイムとの違い</div>
+      <div class="tb">フレックスタイムは「勤務時間の自由化」、テレワークは「勤務場所の自由化」。概念が違う（どちらも働き方改革の文脈で出る）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">テレワークの情報セキュリティ対策</div>
+      <div class="tb">自宅や公共Wi-Fiからの接続には<strong>VPN（仮想プライベートネットワーク）</strong>が必須。「テレワーク＋VPN」はセットで覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「場所を問わずICTで働く」→ テレワーク。「時間の柔軟化」→ フレックス。「テレワーク導入の課題」→ セキュリティ・コミュニケーションがほぼ必ず正解に絡む。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">テレワークは「テレポート通勤」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">テレポート＝瞬間移動のように「どこでも職場」。在宅・モバイル・サテライトの3つ。</span><br><br>
+      <span class="hl">「在モサ」（ザイ・モ・サ）の3種類！</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ザイ＝在宅　モ＝モバイル　サ＝サテライト。3つ全部即答できれば完璧！</span>
+    </div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>コロナ後の働き方を考える人事担当の私。「自宅・カフェ・サテライト拠点でICT使って業務」のスタイル。フレックスタイムと違うの？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>テレワーク（在宅勤務・モバイルワーク・サテライトオフィス勤務）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>フレックスタイム制</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ フレックスは「いつ働くか」の柔軟化。「どこで働くか」がテレワーク</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：テレワーク（在宅勤務・モバイルワーク・サテライトオフィス勤務）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 テレワーク・在宅勤務とは何か</h2>
-<span class="kw">ICTを使って場所を問わない働き方—時間ではなく場所の柔軟化</span>
-<p>テレワーク：ICTを活用し、場所・時間を柔軟にする働き方。在宅勤務・モバイルワーク（外出先）・サテライトオフィス（拠点外）の3形態。2019年「働き方改革関連法」でも推進。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>テレワーク導入時のセキュリティ課題：VPN接続・エンドポイント管理・情報漏えいリスク。ゼロトラストセキュリティとも連動する。「働き方改革×情報セキュリティ」の交差点として試験頻出。
-
-**覚え方** 🎯 **テレワーク＝場所の柔軟化（どこで）／フレックス＝時間の柔軟化（いつ）**。場と時の自由は別。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「テレワーク＝時間の自由」と誤解しやすいが、テレワークは場所の柔軟化。時間の柔軟化はフレックスタイム制。また「在宅勤務＝テレワーク全体」と狭く捉えがちだが、モバイルワーク・サテライトオフィス勤務も含む。ITパスポートではセキュリティ課題（VPN・情報漏えい）との絡みも頻出。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**テレワーク＝場所の柔軟化（どこで）／フレックス＝時間の柔軟化（いつ）**。場と時の自由は別。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>テレワーク・在宅勤務はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

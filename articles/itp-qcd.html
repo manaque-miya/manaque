@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>QCDとは？品質・コスト・納期 — ITパスポート 詳細解説</title>
+<meta name="description" content="QCD（Quality・Cost・Delivery）をわかりやすく解説。3要素のトレードオフ、プロジェクト管理での使い方、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-qcd">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c3aed,#4c1d95);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(76,29,149,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c4b5fd;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7c3aed;--cbg:#ede9fe;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c3aed;}
+
+.qcd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;}
+.qcd-cell{border-radius:14px;padding:14px 10px;text-align:center;}
+.qcd-cell .qcl{font-size:22px;font-weight:900;margin-bottom:4px;}
+.qcd-cell .qcen{font-size:11px;font-weight:900;margin-bottom:4px;}
+.qcd-cell .qcja{font-size:14px;font-weight:900;margin-bottom:8px;}
+.qcd-cell .qcdesc{font-size:10.5px;font-weight:700;line-height:1.65;color:#48506a;text-align:left;}
+.cell-q{background:#ede9fe;}.cell-q .qcl,.cell-q .qcen,.cell-q .qcja{color:#7c3aed;}
+.cell-c{background:#e7eefc;}.cell-c .qcl,.cell-c .qcen,.cell-c .qcja{color:#2e6de5;}
+.cell-d{background:#e2f3e5;}.cell-d .qcl,.cell-d .qcen,.cell-d .qcja{color:#2e8b4f;}
+@media(max-width:480px){.qcd-grid{grid-template-columns:1fr;}}
+
+.tradeoff-box{background:#f4f6fb;border-radius:12px;padding:12px;margin-top:10px;}
+.tradeoff-box .tbh{font-size:13px;font-weight:900;color:#4c1d95;margin-bottom:8px;}
+.tradeoff-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.tradeoff-item:last-child{margin-bottom:0;}
+.ti-arrow{font-size:14px;font-weight:900;color:#7c3aed;flex-shrink:0;margin-top:1px;}
+.ti-text{font-size:12px;font-weight:700;color:#48506a;line-height:1.65;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c3aed;--fbg:#ede9fe;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">📋 ITパスポート ｜ マネジメント系</span>
+    <h1><b>QCD</b>とは？</h1>
+    <p>プロジェクト管理・製造業の永遠の3大課題：品質（Quality）・コスト（Cost）・納期（Delivery）。どれかを取ればどれかが犠牲になる三角形。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="50" width="54" height="34" rx="7" fill="#7c3aed"/>
+        <rect x="16" y="54" width="46" height="26" rx="5" fill="#4c1d95"/>
+        <!-- 3つのブロック -->
+        <rect x="18" y="57" width="12" height="10" rx="2" fill="#a78bfa"/>
+        <text x="24" y="64" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">Q</text>
+        <rect x="33" y="57" width="12" height="10" rx="2" fill="#60a5fa"/>
+        <text x="39" y="64" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">C</text>
+        <rect x="48" y="57" width="12" height="10" rx="2" fill="#4ade80"/>
+        <text x="54" y="64" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">D</text>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M27 18 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="31" y="33" width="16" height="8" fill="#f4c89a"/>
+      </svg>
+      <div class="scene-txt">
+        システム開発の現場。「品質を上げたい（Quality）、コストを下げたい（Cost）、急いで届けたい（Delivery）」——しかし3つ全部は無理。<br>
+        「品質を上げるには時間もお金もかかる」「急ぐと品質が落ちる」。
+        <div class="scene-q">この3つのバランスを管理するのがQCD！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：QCDの三角形 -->
+  <div class="panel p-blue">
+    <span class="phead">🔺 QCDの3要素</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="QCDの三角形：品質・コスト・納期の3要素とトレードオフ">
+      <!-- 三角形の辺 -->
+      <path d="M170 40 L60 200 M170 40 L280 200 M60 200 L280 200" stroke="#c4b5fd" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <!-- Quality -->
+      <circle cx="170" cy="40" r="52" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/>
+      <text x="170" y="34" text-anchor="middle" font-size="20" font-weight="900" fill="#7c3aed" font-family="M PLUS Rounded 1c">Q</text>
+      <text x="170" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#4c1d95" font-family="M PLUS Rounded 1c">品質</text>
+      <text x="170" y="66" text-anchor="middle" font-size="9.5" font-weight="800" fill="#7c3aed" font-family="M PLUS Rounded 1c">Quality</text>
+      <!-- Cost -->
+      <circle cx="60" cy="200" r="52" fill="#e7eefc" stroke="#2e6de5" stroke-width="3"/>
+      <text x="60" y="194" text-anchor="middle" font-size="20" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">C</text>
+      <text x="60" y="212" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">コスト</text>
+      <text x="60" y="226" text-anchor="middle" font-size="9.5" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">Cost</text>
+      <!-- Delivery -->
+      <circle cx="280" cy="200" r="52" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="3"/>
+      <text x="280" y="194" text-anchor="middle" font-size="20" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">D</text>
+      <text x="280" y="212" text-anchor="middle" font-size="12" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">納期</text>
+      <text x="280" y="226" text-anchor="middle" font-size="9.5" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Delivery</text>
+      <!-- 中心バッジ -->
+      <rect x="118" y="122" width="104" height="40" rx="10" fill="#4c1d95"/>
+      <text x="170" y="139" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">3つ同時に最大化は</text>
+      <text x="170" y="155" text-anchor="middle" font-size="11" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">不可能（トレードオフ）</text>
+    </svg>
+    <div class="qcd-grid">
+      <div class="qcd-cell cell-q">
+        <div class="qcl">Q</div>
+        <div class="qcen">Quality</div>
+        <div class="qcja">品質</div>
+        <div class="qcdesc">バグの少なさ・機能の完成度・信頼性</div>
+      </div>
+      <div class="qcd-cell cell-c">
+        <div class="qcl">C</div>
+        <div class="qcen">Cost</div>
+        <div class="qcja">コスト</div>
+        <div class="qcdesc">開発費・人件費・インフラ費用</div>
+      </div>
+      <div class="qcd-cell cell-d">
+        <div class="qcl">D</div>
+        <div class="qcen">Delivery</div>
+        <div class="qcja">納期</div>
+        <div class="qcdesc">リリース日・納品スケジュール</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- トレードオフ詳細 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ トレードオフの現実</span>
+    <div class="tradeoff-box">
+      <div class="tbh">どれかを優先するとどうなる？</div>
+      <div class="tradeoff-item">
+        <span class="ti-arrow">▶</span>
+        <span class="ti-text"><strong>品質を上げる</strong>と → テストに時間・コストがかかり、納期が遅れる</span>
+      </div>
+      <div class="tradeoff-item">
+        <span class="ti-arrow">▶</span>
+        <span class="ti-text"><strong>コストを下げる</strong>と → 人員・時間が削られ、品質か納期が犠牲になる</span>
+      </div>
+      <div class="tradeoff-item">
+        <span class="ti-arrow">▶</span>
+        <span class="ti-text"><strong>納期を早める</strong>と → 短期間での開発＝品質が落ちるか、コストが跳ね上がる</span>
+      </div>
+    </div>
+    <p style="margin-top:10px;">プロジェクトマネージャの仕事は、3つのバランスを<strong>ステークホルダーと合意しながら</strong>コントロールすること。</p>
+  </div>
+
+  <!-- PMBOKとの関係 -->
+  <div class="panel p-orange">
+    <span class="phead">📚 QCDとプロジェクト管理</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">プロジェクトの3大制約</div>
+        <div class="fb">PMBOKでは「スコープ・コスト・スケジュール（時間）」と呼ぶ。QCDと対応する：Q≒スコープ・C≒コスト・D≒スケジュール。</div>
+      </div>
+      <div class="farrow">▼ 変化が生じたら</div>
+      <div class="fstep f2">
+        <div class="fh">変更管理でバランスを再調整</div>
+        <div class="fb">「仕様追加（スコープ変更）」が起きたら、コスト増・納期延長を承認してもらうかを協議する。</div>
+      </div>
+      <div class="farrow">▼ 現場では</div>
+      <div class="fstep f3">
+        <div class="fh">QCDを定量的に把握する</div>
+        <div class="fb">品質指標（バグ件数）・コスト実績（予算消化率）・納期進捗（EVM）で見える化する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「Dはデザイン（Design）」→ 誤り</div>
+      <div class="tb">QCDのDは<strong>Delivery（納期・配送）</strong>。Designではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「CはコンテンツまたはCancel」→ 誤り</div>
+      <div class="tb">CはCost（コスト・費用）。プロジェクト管理文脈ではコストを指す。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「QCDは製造業だけの概念」→ 誤り</div>
+      <div class="tb">製造業発祥だが、<strong>ITシステム開発のプロジェクト管理でも頻繁に使われる</strong>。ITパスポートでもマネジメント系で出題される。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「QCDのトレードオフ」が問われたら「3つ全部同時には最大化できない」が正解の軸になる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">Q・C・D</span> ＝ <span class="hl">「く（Q）ださいコ（C）ドを出（D）せ」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">品質（Q）の高いコード（C）を期限通りに出（D）す——それがQCDの要求</span><br><br>
+      トレードオフは：<span class="hl">「早い・安い・うまい」は2つしか選べない</span>＝QCDも同じ。
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

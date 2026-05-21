@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>公開鍵暗号方式とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="公開鍵暗号方式を図解で丁寧に解説。公開鍵と秘密鍵の役割、共通鍵暗号との違い、デジタル署名との使い分け、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-public-key-encryption">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6b8a,#0d3d5c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,92,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d8e8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1a6b8a;--cbg:#dceef5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6b8a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6b8a;--fbg:#dceef5;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.compare-cell{border-radius:12px;padding:12px 11px;}
+.compare-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.compare-cell ul{list-style:none;}
+.compare-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.compare-cell li::before{content:"・";position:absolute;left:0;}
+.cc-blue{background:#dceef5;}.cc-blue h4{color:#1a6b8a;}
+.cc-green{background:#e2f3e5;}.cc-green h4{color:#2e8b4f;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔐 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>公開鍵暗号方式</b>とは？</h1>
+    <p>「鍵を2本使う」暗号。誰でも暗号化できるが、復号できるのは本人だけ——という非対称の仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="62" height="26" rx="7" fill="#1a6b8a"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="8" fill="#f4c89a"/>
+        <path d="M30 42 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+        <rect x="18" y="62" width="20" height="14" rx="3" fill="#0d3d5c"/>
+        <rect x="20" y="64" width="16" height="10" rx="2" fill="#7ecfeb"/>
+        <rect x="42" y="64" width="24" height="12" rx="3" fill="#ffd23f"/>
+        <circle cx="54" cy="70" r="4" fill="#e0a800"/>
+        <rect x="52" y="70" width="4" height="6" rx="1" fill="#e0a800"/>
+      </svg>
+      <div class="scene-txt">
+        Aさんがあなたに秘密のメッセージを送りたい。でも、安全に鍵を渡す方法がない。<br>
+        そこであなたは「<strong>誰でも使えるカギ（公開鍵）</strong>」を公開した。Aさんはそれで封をして送る。開けられるのは<strong>あなただけ（秘密鍵）</strong>。
+        <div class="scene-q">…これが公開鍵暗号の仕組み！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔑 公開鍵暗号の仕組み（図解）</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="公開鍵暗号方式：送信者が公開鍵で暗号化し、受信者が秘密鍵で復号するフロー">
+      <!-- 送信者 -->
+      <rect x="8" y="80" width="72" height="60" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <circle cx="44" cy="92" r="9" fill="#f4c89a"/>
+      <rect x="36" y="100" width="16" height="8" fill="#f4c89a"/>
+      <text x="44" y="150" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">送信者</text>
+
+      <!-- 公開鍵アイコン -->
+      <rect x="88" y="85" width="54" height="42" rx="8" fill="#dceef5" stroke="#1a6b8a" stroke-width="1.5"/>
+      <circle cx="115" cy="101" r="8" fill="none" stroke="#1a6b8a" stroke-width="2"/>
+      <rect x="112" y="104" width="6" height="10" rx="1" fill="#1a6b8a"/>
+      <text x="115" y="136" text-anchor="middle" font-size="9.5" font-weight="900" fill="#1a6b8a" font-family="M PLUS Rounded 1c">公開鍵</text>
+      <text x="115" y="148" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">誰でも使える</text>
+
+      <!-- 矢印：暗号化 -->
+      <path d="M152 106 L190 106" stroke="#4256b8" stroke-width="2.5" marker-end="url(#arr1)"/>
+      <defs>
+        <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8z" fill="#4256b8"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+      <text x="171" y="98" text-anchor="middle" font-size="9" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">暗号化</text>
+
+      <!-- 暗号文 -->
+      <rect x="192" y="82" width="56" height="48" rx="8" fill="#48506a"/>
+      <text x="220" y="104" text-anchor="middle" font-size="9" font-weight="900" fill="#9aa3b2" font-family="M PLUS Rounded 1c">%%#&amp;</text>
+      <text x="220" y="116" text-anchor="middle" font-size="9" font-weight="900" fill="#9aa3b2" font-family="M PLUS Rounded 1c">@!$*</text>
+      <text x="220" y="136" text-anchor="middle" font-size="9" font-weight="700" fill="#ddd" font-family="M PLUS Rounded 1c">暗号文</text>
+
+      <!-- 矢印：復号 -->
+      <path d="M250 106 L272 106" stroke="#2e8b4f" stroke-width="2.5" marker-end="url(#arr2)"/>
+      <text x="261" y="98" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">復号</text>
+
+      <!-- 秘密鍵 -->
+      <rect x="274" y="60" width="58" height="38" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <circle cx="303" cy="73" r="8" fill="none" stroke="#2e8b4f" stroke-width="2"/>
+      <rect x="300" y="76" width="6" height="10" rx="1" fill="#2e8b4f"/>
+      <text x="303" y="106" text-anchor="middle" font-size="9.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">秘密鍵</text>
+
+      <!-- 受信者 -->
+      <rect x="274" y="112" width="58" height="48" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <circle cx="303" cy="124" r="8" fill="#f4c89a"/>
+      <rect x="296" y="131" width="14" height="7" fill="#f4c89a"/>
+      <text x="303" y="168" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">受信者のみ</text>
+
+      <!-- 下部ラベル -->
+      <text x="170" y="200" text-anchor="middle" font-size="10.5" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">公開鍵で「施錠」→ 秘密鍵で「解錠」 ＝ 非対称暗号</text>
+    </svg>
+  </div>
+
+  <!-- フロー：共通鍵との比較 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ 共通鍵 vs 公開鍵 — どちらを選ぶ？</span>
+    <div class="compare-grid">
+      <div class="compare-cell cc-blue">
+        <h4>公開鍵暗号方式</h4>
+        <ul>
+          <li>鍵2本（公開鍵・秘密鍵）</li>
+          <li>鍵を安全に配れる</li>
+          <li>処理が遅い（重い計算）</li>
+          <li>少量データ向け</li>
+          <li>代表：RSA</li>
+        </ul>
+      </div>
+      <div class="compare-cell cc-green">
+        <h4>共通鍵暗号方式</h4>
+        <ul>
+          <li>鍵1本（同じ鍵）</li>
+          <li>鍵の配送が課題</li>
+          <li>処理が速い（軽い）</li>
+          <li>大量データ向け</li>
+          <li>代表：AES</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:11px;font-size:12.5px;font-weight:700;color:#48506a;">
+      実務では両方を組み合わせるハイブリッド方式が一般的。<br>
+      「共通鍵を公開鍵暗号で安全に渡し、あとは共通鍵で高速通信」という使い方。
+    </p>
+  </div>
+
+  <!-- 流れ詳細：デジタル署名 -->
+  <div class="panel p-orange">
+    <span class="phead">✍️ デジタル署名との使い分け</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">暗号化通信（機密性）</div>
+        <div class="fb">受信者の<strong>公開鍵</strong>で暗号化 → 受信者の<strong>秘密鍵</strong>で復号。「本人しか読めない」を保証。</div>
+      </div>
+      <div class="farrow">▼ 目的が逆になる</div>
+      <div class="fstep f2">
+        <div class="fh">デジタル署名（真正性）</div>
+        <div class="fb">送信者の<strong>秘密鍵</strong>で署名 → 送信者の<strong>公開鍵</strong>で検証。「確かに本人が送った」を保証。</div>
+      </div>
+      <div class="farrow">▼ 混乱ポイント</div>
+      <div class="fstep f3">
+        <div class="fh">覚え方の鉄則</div>
+        <div class="fb">暗号化：<strong>相手の公開鍵</strong>で封をする。署名：<strong>自分の秘密鍵</strong>で押印する。使う鍵の"持ち主"が逆！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「公開鍵で復号する」→ 誤り（通常の暗号化では）</div>
+      <div class="tb">通常の暗号化通信では、復号するのは<strong>秘密鍵</strong>。「公開鍵で復号」はデジタル署名の検証の話。文脈を確認すること。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「公開鍵は本人だけが持つ」→ 誤り</div>
+      <div class="tb">公開鍵は<strong>誰でも入手できる</strong>（公開するから公開鍵）。本人だけが持つのは<strong>秘密鍵</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「RSAは共通鍵暗号」→ 誤り</div>
+      <div class="tb">RSAは<strong>公開鍵暗号</strong>の代表例。共通鍵の代表はAESやDES。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">暗号化・復号の問題が出たら「<strong>誰の鍵か？</strong>」と「<strong>何をする鍵か？</strong>」を必ず確認する。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">公開＝郵便受け</span>、<span class="hl">秘密＝家の鍵</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">郵便受け（公開鍵）は誰でも手紙を入れられる。でも取り出す（復号）には家の鍵（秘密鍵）が要る。</span><br><br>
+      <span class="hl">コ・ウ・カイ</span>は「<strong>こう</strong>やって<strong>うけ</strong>とる<strong>かい</strong>ぐり施錠」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">公開鍵＝暗号化（封をする側）、秘密鍵＝復号（開ける側）</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

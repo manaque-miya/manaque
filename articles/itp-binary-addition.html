@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2進数の加算とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="2進数の加算（繰り上がり・オーバーフロー）をわかりやすく解説。1+1=10になる仕組み、桁あふれの見分け方、ITパスポート試験の計算問題の解き方まで。">
+<link rel="canonical" href="https://example.com/itp-binary-addition">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c8391a,#7a1f09);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,31,9,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5bfb0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red{--c:#c8391a;--cbg:#fce4dd;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c8391a;}
+
+.calc-box{background:#f5f6fc;border-radius:14px;padding:16px;font-family:monospace;font-size:16px;font-weight:900;color:#2b3245;line-height:2.2;margin-top:8px;}
+.calc-box .carry{font-size:12px;font-weight:900;color:#c8391a;letter-spacing:10px;}
+.calc-box .line{border-top:2px solid #4256b8;margin:4px 0;}
+.calc-box .result{color:#c8391a;}
+.hl-r{background:#fce4dd;border-radius:4px;padding:1px 5px;color:#c8391a;}
+.hl-b{background:#e7eefc;border-radius:4px;padding:1px 5px;color:#2e6de5;}
+
+.rule-list{list-style:none;margin-top:8px;}
+.rule-list li{font-size:13px;font-weight:700;line-height:2;color:#3c4456;padding-left:20px;position:relative;border-bottom:1px dashed #e4e7f7;padding-bottom:4px;margin-bottom:4px;}
+.rule-list li::before{content:"▶";position:absolute;left:0;color:#4256b8;font-size:10px;top:5px;}
+.rule-list li span{font-family:monospace;font-size:15px;font-weight:900;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;font-family:inherit;}
+.fstep .fb code{font-family:monospace;font-size:14px;font-weight:900;background:#f0f0f0;padding:1px 5px;border-radius:4px;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c8391a;--fbg:#fdf0ed;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.trap-item .tb code{font-family:monospace;font-size:13px;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>2進数の加算</b>とは？</h1>
+    <p>コンピュータが計算するときの基本。1+1が「2」ではなく「10」になる繰り上がりのルールを押さえる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-txt">
+      小学校の算数を思い出して。10進数では9+1=10で「桁が上がる」。2進数では1しか使えないので、1+1で即「桁が上がる」。コンピュータは0と1しか使えないから、すべての計算がこのルールで動いている。
+      <div class="scene-q">…「1+1=10（いちじゅう）」を覚えれば、2進数の加算は解ける！</div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：加算ルール -->
+  <div class="panel p-blue">
+    <span class="phead">➕ 2進数の加算ルール図解</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="2進数の1桁加算4パターンの図解">
+      <!-- 4パターン -->
+      <!-- 0+0=0 -->
+      <rect x="10" y="20" width="70" height="60" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="45" y="44" text-anchor="middle" font-size="18" font-weight="900" fill="#2e6de5" font-family="monospace">0+0</text>
+      <text x="45" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">＝</text>
+      <text x="45" y="75" text-anchor="middle" font-size="18" font-weight="900" fill="#2e6de5" font-family="monospace">0</text>
+      <text x="45" y="95" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">そのまま</text>
+
+      <!-- 0+1=1 -->
+      <rect x="95" y="20" width="70" height="60" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="130" y="44" text-anchor="middle" font-size="18" font-weight="900" fill="#2e6de5" font-family="monospace">0+1</text>
+      <text x="130" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">＝</text>
+      <text x="130" y="75" text-anchor="middle" font-size="18" font-weight="900" fill="#2e6de5" font-family="monospace">1</text>
+      <text x="130" y="95" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">そのまま</text>
+
+      <!-- 1+0=1 -->
+      <rect x="180" y="20" width="70" height="60" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="215" y="44" text-anchor="middle" font-size="18" font-weight="900" fill="#2e6de5" font-family="monospace">1+0</text>
+      <text x="215" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">＝</text>
+      <text x="215" y="75" text-anchor="middle" font-size="18" font-weight="900" fill="#2e6de5" font-family="monospace">1</text>
+      <text x="215" y="95" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">そのまま</text>
+
+      <!-- 1+1=10（繰り上がり） -->
+      <rect x="265" y="10" width="70" height="80" rx="10" fill="#fce4dd" stroke="#c8391a" stroke-width="2.5"/>
+      <text x="300" y="36" text-anchor="middle" font-size="18" font-weight="900" fill="#c8391a" font-family="monospace">1+1</text>
+      <text x="300" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">＝</text>
+      <text x="300" y="68" text-anchor="middle" font-size="22" font-weight="900" fill="#c8391a" font-family="monospace">10</text>
+      <text x="300" y="86" text-anchor="middle" font-size="10" font-weight="900" fill="#c8391a" font-family="M PLUS Rounded 1c">★繰り上がり！</text>
+
+      <!-- 矢印と説明 -->
+      <text x="170" y="130" text-anchor="middle" font-size="12" font-weight="900" fill="#c8391a" font-family="M PLUS Rounded 1c">1+1=10　本桁は0、上の桁へ1を繰り上げる</text>
+      <text x="170" y="148" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">10進数の「9+1=10」と同じ仕組み。使える数字が2種類しかないから先に桁が上がる</text>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細：具体的な加算例 -->
+  <div class="panel p-orange">
+    <span class="phead">🔢 具体的な加算例（右から1桁ずつ）</span>
+    <p style="font-size:13px;font-weight:700;color:#48506a;margin-bottom:10px;">例：2進数の <code style="font-family:monospace;font-size:14px;background:#fcefd9;padding:1px 5px;border-radius:4px;">0110</code>（6） ＋ <code style="font-family:monospace;font-size:14px;background:#fcefd9;padding:1px 5px;border-radius:4px;">0101</code>（5） ＝ <code style="font-family:monospace;font-size:14px;background:#fce4dd;padding:1px 5px;border-radius:4px;">1011</code>（11）</p>
+    <div class="calc-box">
+      <div class="carry">&nbsp;&nbsp;&nbsp;1 1&nbsp;&nbsp;</div>
+      <div>&nbsp;&nbsp;0 1 1 0</div>
+      <div>＋&nbsp;0 1 0 1</div>
+      <div class="line"></div>
+      <div class="result">&nbsp;&nbsp;1 0 1 1</div>
+    </div>
+    <div class="flow" style="margin-top:12px;">
+      <div class="fstep f1">
+        <div class="fh">右の桁から計算する</div>
+        <div class="fb">0＋1＝1（繰り上がりなし）→ 次の桁へ</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">1＋0＝1（繰り上がりなし）</div>
+        <div class="fb">この桁の結果は1。繰り上がりなし。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">1＋1＝10（繰り上がりあり！）</div>
+        <div class="fb">本桁は0、上の桁に1を繰り上げる。繰り上がり分も含めて次の桁で計算。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel" style="--c:#dd5a3a;--cbg:#fce4dd;border-top:5px solid #dd5a3a;">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「1+1=2」は2進数では間違い</div>
+      <div class="tb">2進数に「2」という数字は存在しない。<code>1+1</code>の答えは<code>10</code>（いちじゅう）。「2」と書いたら不正解。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">繰り上がりを忘れる</div>
+      <div class="tb">繰り上がった1は必ず上の桁の計算に加える。「計算して桁を進めたら繰り上がりを忘れた」が最多ミス。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">オーバーフロー（桁あふれ）</div>
+      <div class="tb">決められた桁数を超えた繰り上がりが発生すること。例：4ビットで <code>1111＋0001＝10000</code> になるが5ビット目は表現できない → オーバーフロー。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">加算は「右から1桁ずつ、繰り上がりを必ず持ち越す」。計算後に桁数確認でオーバーフローをチェック。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「いち足すいちは、いちじゅう（10）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">1＋1＝10（2進数での"くり上がり"の合言葉）</span><br><br>
+      10進数で「9の次は10」→ 2進数で「<span class="hl">1の次は10</span>」。<br>
+      使える数が少ないほど、早く桁が上がる！
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

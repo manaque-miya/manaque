@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>職務の分掌・職務の分離とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="職務の分掌（職務の分離）をわかりやすくSVG図解で解説。なぜ1人にまとめてはいけないのか、不正・ミスを防ぐ仕組みとして内部統制でどう使われるか、最小権限・二重チェックとの違いまで。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-segregation-of-duties">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#144d2a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,77,42,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c2e8d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ①ヒーロー -->
+  <div class="hero">
+    <span class="lead">🏢 ITパスポート ｜ 内部統制・セキュリティ</span>
+    <h1><b>職務の分掌</b>（職務の分離）</h1>
+    <p>1人に権限を集中させず、複数人で役割を分担することで不正・ミスを防ぐ内部統制の基本原則。</p>
+  </div>
+
+  <!-- ②こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="14" y="62" width="50" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="20" y="42" width="38" height="28" rx="8" fill="#2e8b4f"/>
+        <circle cx="39" cy="24" r="14" fill="#f4c89a"/>
+        <path d="M26 20 a13 12 0 0 1 26 0 q-5-9-13-9-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="35" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 43 l8 5 l8-5 v5 h-16z" fill="#fff"/>
+        <!-- 鍵2本 -->
+        <circle cx="25" cy="55" r="4" fill="#ffd23f" stroke="#d9851f" stroke-width="1"/>
+        <rect x="28" y="53" width="7" height="3" rx="1" fill="#ffd23f"/>
+        <circle cx="50" cy="55" r="4" fill="#ffd23f" stroke="#d9851f" stroke-width="1"/>
+        <rect x="53" y="53" width="7" height="3" rx="1" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        経理担当のAさんが、自分で請求書を起票して、自分で支払い承認して、自分で振り込みまで行った。誰も確認しないので、架空の請求書で自分の口座に振り込んでしまった。Aさんが長期休暇を取ったら誰も処理できない問題も起きた。
+        <div class="scene-q">…なぜ一人でやってはダメなのか？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③図解SVG：Before/After比較 -->
+  <div class="panel p-green">
+    <span class="phead">📊 職務分掌なし vs 職務分掌あり</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="職務の分掌のBefore/After比較図">
+      <!-- NG：1人が全部 -->
+      <rect x="5" y="10" width="155" height="210" rx="12" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="82" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">NG：1人が全部やる</text>
+      <circle cx="82" cy="68" r="20" fill="#dd5a3a"/>
+      <text x="82" y="65" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Aさん</text>
+      <text x="82" y="78" text-anchor="middle" font-size="9" font-weight="800" fill="#ffd5d5" font-family="M PLUS Rounded 1c">1人で全部</text>
+      <rect x="15" y="105" width="55" height="30" rx="7" fill="#fff" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="42" y="118" text-anchor="middle" font-size="9.5" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">①起票</text>
+      <text x="42" y="130" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">請求書作成</text>
+      <rect x="75" y="105" width="55" height="30" rx="7" fill="#fff" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="102" y="118" text-anchor="middle" font-size="9.5" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">②承認</text>
+      <text x="102" y="130" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">上長承認</text>
+      <rect x="42" y="150" width="80" height="30" rx="7" fill="#fff" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="82" y="163" text-anchor="middle" font-size="9.5" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">③実行</text>
+      <text x="82" y="175" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">振り込み・執行</text>
+      <line x1="70" y1="88" x2="42" y2="105" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="82" y1="88" x2="102" y2="105" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="82" y1="88" x2="82" y2="150" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="82" y="202" text-anchor="middle" font-size="10" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">→ 不正し放題！</text>
+      <!-- OK：役割を分ける -->
+      <rect x="178" y="10" width="157" height="210" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="256" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">OK：役割を分ける</text>
+      <circle cx="215" cy="68" r="16" fill="#2e8b4f"/>
+      <text x="215" y="64" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Aさん</text>
+      <text x="215" y="76" text-anchor="middle" font-size="8" fill="#b8e5c6" font-weight="800" font-family="M PLUS Rounded 1c">起票</text>
+      <circle cx="258" cy="68" r="16" fill="#2e8b4f"/>
+      <text x="258" y="64" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Bさん</text>
+      <text x="258" y="76" text-anchor="middle" font-size="8" fill="#b8e5c6" font-weight="800" font-family="M PLUS Rounded 1c">承認</text>
+      <circle cx="302" cy="68" r="16" fill="#d9851f"/>
+      <text x="302" y="64" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Cさん</text>
+      <text x="302" y="76" text-anchor="middle" font-size="8" fill="#f5d8a8" font-weight="800" font-family="M PLUS Rounded 1c">実行</text>
+      <rect x="188" y="105" width="55" height="30" rx="7" fill="#fff" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="215" y="118" text-anchor="middle" font-size="9.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">①起票</text>
+      <text x="215" y="130" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">請求書作成</text>
+      <rect x="248" y="105" width="55" height="30" rx="7" fill="#fff" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="275" y="118" text-anchor="middle" font-size="9.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">②承認</text>
+      <text x="275" y="130" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">別部署が確認</text>
+      <rect x="210" y="155" width="80" height="30" rx="7" fill="#fff" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="250" y="168" text-anchor="middle" font-size="9.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">③実行</text>
+      <text x="250" y="180" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">さらに別担当が</text>
+      <line x1="215" y1="84" x2="215" y2="105" stroke="#2e8b4f" stroke-width="1.5"/>
+      <line x1="275" y1="84" x2="275" y2="105" stroke="#2e8b4f" stroke-width="1.5"/>
+      <line x1="250" y1="135" x2="250" y2="155" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="256" y="202" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">→ 単独での不正が困難！</text>
+    </svg>
+    <p style="margin-top:10px;">A・B・Cが<strong>共謀しない限り</strong>、不正は成立しない。お互いがチェックし合う牽制の仕組み。</p>
+  </div>
+
+  <!-- ④フロー/詳細：業務種別での適用例 -->
+  <div class="panel p-orange">
+    <span class="phead">🗂️ 職務の分掌が使われる場面</span>
+    <div class="flow">
+      <div class="fstep f2">
+        <div class="fh">経理・会計業務</div>
+        <div class="fb">担当者A：伝票を起票・作成する（自分では承認できない）<br>上司B：内容を確認・承認する（実際の支払いはしない）<br>経理担当C：振込を実行する（自分では承認できない）</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">システム開発・運用</div>
+        <div class="fb">「開発者（プログラム変更権限）」と「本番環境の運用者」を分ける。開発者が直接本番を書き換えられると不正変更のリスクがある。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">情報セキュリティ管理</div>
+        <div class="fb">「セキュリティポリシーの策定者」と「監査する者」を分ける。同じ人が作って自分でチェックしても牽制が機能しない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「二重チェック」≠「職務の分掌」</div>
+      <div class="tb">二重チェックは「同じ業務を2人で確認する」こと。職務の分掌は「起票・承認・実行という<strong>異なる業務</strong>を別々の担当者に割り当てる」こと。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「職務分掌」と「最小権限の原則」を混同しない</div>
+      <div class="tb">職務分掌は<strong>役割を複数人に分ける</strong>こと。最小権限の原則は<strong>各人に必要最小限の権限だけ与える</strong>こと。前者は不正牽制、後者は権限の絞り込みが目的。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「効率化のための分業」とは別物</div>
+      <div class="tb">分掌は効率よりも<strong>牽制（チェック）が目的</strong>。効率を上げるための分業とは動機が異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">不正ゼロを保証するわけではない</div>
+      <div class="tb">職務の分掌は単独での不正を防ぐ仕組み。複数の担当者が共謀すれば理論上は不正ができる。100%の防止ではなく「難易度を上げる」抑止策。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">内部統制の構成要素として出題される</div>
+      <div class="tb">「内部統制の構成要素は？」と問われる場面で、職務分掌は<strong>統制活動</strong>の代表例として登場する。</div>
+    </div>
+  </div>
+
+  <!-- ⑥覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「分けないと分からん（不正が）」</span>＝職務の分掌！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">分けてないから → 不正が分からん</span><br><br>
+      ゴロ：<span class="hl">「分離しないと腐る（不正）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">起票→承認→実行 の3役を1人に持たせない<br>
+      「自分で作って自分でハンコ」は内部統制の大敵</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,106 +1,217 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>IoTとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="IoTの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-iot.html">
-<meta property="og:title" content="IoTとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="IoTの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-iot.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IoT（モノのインターネット）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="IoT（Internet of Things：モノのインターネット）をわかりやすく解説。センサー・ネットワーク・クラウドの仕組み、活用事例、AIやビッグデータとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-iot">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a7ab5,#0c3d6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(12,61,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8d8f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1a7ab5;--cbg:#dceef8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a7ab5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a7ab5;--fbg:#dceef8;}
+.f2{--fc:#4256b8;--fbg:#eaedf9;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.usecase-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.uc-cell{border-radius:12px;padding:10px;}
+.uc-cell h4{font-size:12px;font-weight:900;margin-bottom:4px;}
+.uc-cell p{font-size:11px;font-weight:600;line-height:1.5;color:#48506a;}
+.uc-1{background:#dceef8;}.uc-1 h4{color:#1a7ab5;}
+.uc-2{background:#e2f3e5;}.uc-2 h4{color:#2e8b4f;}
+.uc-3{background:#fcefd9;}.uc-3 h4{color:#d9851f;}
+.uc-4{background:#e4e7f7;}.uc-4 h4{color:#4256b8;}
+@media(max-width:480px){.usecase-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">IoTとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">IoT</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>一人暮らしの私。買った冷蔵庫から「牛乳の賞味期限あと2日です」とスマホに通知が来た！えっ、冷蔵庫からネット？？これって何技術？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">🌐 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>IoT</b>（モノのインターネット）とは？</h1>
+    <p>冷蔵庫・工場の機械・橋まで、あらゆる「モノ」がネットにつながりデータを送り合う世界。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>IoT</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>M2M</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ M2Mは機械同士の直接通信（人を介さない）。IoTはクラウド・スマホ・人まで含む広い概念</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 人物 -->
+        <circle cx="39" cy="24" r="14" fill="#f4c89a"/>
+        <path d="M27 20 a12 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#0c3d6e"/>
+        <rect x="31" y="35" width="16" height="8" fill="#f4c89a"/>
+        <rect x="14" y="54" width="50" height="32" rx="7" fill="#1a7ab5"/>
+        <path d="M31 43 l8 5 l8 -5 v5 h-16z" fill="#b8d8f0"/>
+        <!-- IoTデバイス表現 -->
+        <circle cx="22" cy="62" r="5" fill="#ffd23f"/>
+        <circle cx="56" cy="62" r="5" fill="#7cf5a0"/>
+        <line x1="27" y1="62" x2="51" y2="62" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <text x="39" y="76" text-anchor="middle" font-size="7" font-weight="900" fill="#fff">WiFi</text>
+      </svg>
+      <div class="scene-txt">
+        朝、目覚めると家のエアコンがすでに起動していた。スマホのアプリが「今日は暑い」と判断して<strong>自動でONにした</strong>のだ。<br>
+        冷蔵庫も食材の残りを検知して買い物リストをスマホへ送ってくる……
+        <div class="scene-q">モノがネットにつながって、勝手に通信・判断する仕組みって何？</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：IoT</strong></p>
-</div>
+  <!-- 図解：IoTの仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">🔗 IoTの仕組み（データの流れ）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="IoTのデータフロー：センサー→ネットワーク→クラウド→アクション">
+      <!-- ステップ1：モノ・センサー -->
+      <rect x="5" y="30" width="70" height="80" rx="10" fill="#dceef8" stroke="#1a7ab5" stroke-width="2"/>
+      <text x="40" y="58" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">📡</text>
+      <text x="40" y="76" text-anchor="middle" font-size="10" font-weight="900" fill="#1a7ab5" font-family="M PLUS Rounded 1c">モノ・センサー</text>
+      <text x="40" y="90" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">温度・位置・</text>
+      <text x="40" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">動き を検知</text>
+      <!-- 矢印1 -->
+      <path d="M78 70 L98 70" stroke="#1a7ab5" stroke-width="2.5" marker-end="url(#arr)"/>
+      <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1a7ab5"/></marker></defs>
+      <!-- ステップ2：ネットワーク -->
+      <rect x="100" y="30" width="70" height="80" rx="10" fill="#eaedf9" stroke="#4256b8" stroke-width="2"/>
+      <text x="135" y="58" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">🌐</text>
+      <text x="135" y="76" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">ネットワーク</text>
+      <text x="135" y="90" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">WiFi・LTE・</text>
+      <text x="135" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">LPWA で送信</text>
+      <!-- 矢印2 -->
+      <path d="M173 70 L193 70" stroke="#4256b8" stroke-width="2.5" marker-end="url(#arr2)"/>
+      <defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4256b8"/></marker></defs>
+      <!-- ステップ3：クラウド・AI -->
+      <rect x="195" y="30" width="70" height="80" rx="10" fill="#eef8f1" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="230" y="58" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">☁️</text>
+      <text x="230" y="76" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">クラウド・AI</text>
+      <text x="230" y="90" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">データを蓄積・</text>
+      <text x="230" y="102" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">分析・判断</text>
+      <!-- 矢印3 -->
+      <path d="M268 70 L288 70" stroke="#2e8b4f" stroke-width="2.5" marker-end="url(#arr3)"/>
+      <defs><marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2e8b4f"/></marker></defs>
+      <!-- ステップ4：アクション -->
+      <rect x="290" y="30" width="46" height="80" rx="10" fill="#fdf4e4" stroke="#d9851f" stroke-width="2"/>
+      <text x="313" y="58" text-anchor="middle" font-size="16" font-family="M PLUS Rounded 1c">⚡</text>
+      <text x="313" y="74" text-anchor="middle" font-size="9" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">アクション</text>
+      <text x="313" y="88" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">自動制御・</text>
+      <text x="313" y="100" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">通知・記録</text>
+      <!-- 下ラベル -->
+      <rect x="15" y="128" width="310" height="34" rx="10" fill="#0c3d6e" opacity=".07"/>
+      <text x="170" y="147" text-anchor="middle" font-size="11.5" font-weight="900" fill="#0c3d6e" font-family="M PLUS Rounded 1c">「モノ」がデータを集め → ネットで飛ばし → クラウドで判断 → 自動で動く</text>
+      <!-- 活用例 -->
+      <text x="170" y="178" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">例：スマート家電 ／ 工場の予知保全 ／ スマート農業</text>
+    </svg>
+    <div class="usecase-grid">
+      <div class="uc-cell uc-1"><h4>🏠 スマートホーム</h4><p>エアコン・照明・セキュリティカメラが連携して快適な住環境を自動制御</p></div>
+      <div class="uc-cell uc-2"><h4>🏭 スマートファクトリー</h4><p>機械の異常をリアルタイム検知して故障前に保守（予知保全）</p></div>
+      <div class="uc-cell uc-3"><h4>🚗 コネクテッドカー</h4><p>車がネットにつながり、渋滞情報・走行データをリアルタイムで取得</p></div>
+      <div class="uc-cell uc-4"><h4>🌾 スマート農業</h4><p>土壌センサー・ドローンで気象・生育データを取得し収穫量を最適化</p></div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>📘 IoTとは何か</h2>
-<span class="kw">モノがネットにつながる</span>
-<p>Internet of Things。センサや家電などの「モノ」をインターネットに接続し、データ収集・自動制御を行う技術の総称。</p>
-</div>
+  <!-- IoTとAI・ビッグデータの関係 -->
+  <div class="panel p-green">
+    <span class="phead">🔄 IoT × AI × ビッグデータの連携</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">IoT — データを「集める」</div>
+        <div class="fb">あらゆるモノにセンサーをつけてネットに接続。膨大なリアルタイムデータを収集する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">ビッグデータ — データを「蓄積・整理する」</div>
+        <div class="fb">IoTが集めた大量データをクラウドに蓄積。従来のデータベースでは扱えない量・種類・速度のデータを管理する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">AI — データを「分析・判断する」</div>
+        <div class="fb">蓄積されたデータからパターンを学習。「異常検知」「需要予測」「自動制御」などの知的な判断を行う。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">価値の創出 — 自動で「行動する」</div>
+        <div class="fb">分析結果をもとに機械を自動制御・人に通知・記録を更新。人の手を介さないシームレスな仕組みが完成する。</div>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「モノ×ネット×データ活用」がIoTの3要素。スマート家電・スマートファクトリー・ウェアラブル端末が典型例。</p>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「IoT＝スマートフォン」ではない</div>
+      <div class="tb">スマートフォンは「人が使う端末」。IoTの本質は<strong>人が操作しなくてもモノが自律的にデータを送受信する</strong>こと。センサー内蔵の機械・設備が主役。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">IoTのセキュリティリスクを問われる</div>
+      <div class="tb">ネットにつながるモノが増えるほど<strong>サイバー攻撃の入口（攻撃面）が増える</strong>。工場の機械や医療機器がハッキングされると生命・財産に直結するリスクがある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「Internet of Things」の「Things」は何でも良い</div>
+      <div class="tb">パソコン・スマホに限らず、センサー・家電・工場の機械・農業機器・橋・道路など<strong>あらゆる「モノ」</strong>が対象。「もの」の範囲を狭めないこと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">M2M（Machine to Machine）との違い</div>
+      <div class="tb">M2Mは「機械同士が通信する」の意味で、IoTより古い概念・狭い概念。IoTはM2Mを含みつつ、人・クラウド・AIも含む<strong>より広い概念</strong>。</div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>M2M（Machine to Machine）は機械同士が直接通信する仕組みで人のインターフェースを介さない。IoTはクラウドやスマホを含む広い概念。</p>
-</div>
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">IoT＝「アイオーT（アイ（目）でお（追って）Thing（もの）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">目でモノを追いかける＝センサーがモノのデータを拾いネットへ送る</span><br><br>
+      IoT の流れ＝<span class="hl">「集・飛・蓄・動」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">データを集めて（IoT）→飛ばして（ネット）→蓄える（ビッグデータ）→動かす（AI）</span>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>IoT＝**モノ（Things）にネットを生やす**。冷蔵庫・カメラ・腕時計が全部つぶやき始める世界。</p></div>
-</div>
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>IoTはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
 </div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

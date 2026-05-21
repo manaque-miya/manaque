@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>セキュリティ教育とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="セキュリティ教育を人的セキュリティ対策の要として解説。ISMS・標的型攻撃訓練との関係、セキュリティ監査・ポリシーとの違い、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-security-education">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b83a00,#6e2000);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(110,32,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f4c8a8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red2{--c:#b83a00;--cbg:#fde8e0;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b83a00;}
+
+.edu-level{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+.edu-row{display:flex;align-items:center;gap:10px;}
+.edu-badge{min-width:80px;border-radius:10px;padding:7px 8px;text-align:center;font-size:12px;font-weight:900;color:#fff;}
+.edu-desc{font-size:12.5px;font-weight:600;color:#48506a;line-height:1.7;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#b83a00;--fbg:#fdf0eb;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+.f4{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.three-layer{display:flex;gap:8px;margin-top:8px;}
+.layer-card{flex:1;border-radius:11px;padding:10px 8px;}
+.layer-card h4{font-size:12px;font-weight:900;margin-bottom:4px;}
+.layer-card p{font-size:11px;font-weight:600;color:#48506a;line-height:1.6;}
+.lc-tech{background:#e4eaf9;}.lc-tech h4{color:#2b4da0;}
+.lc-proc{background:#e2f3e5;}.lc-proc h4{color:#2e8b4f;}
+.lc-human{background:#fde8e0;}.lc-human h4{color:#b83a00;}
+@media(max-width:480px){.three-layer{flex-direction:column;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>セキュリティ教育</b>とは？</h1>
+    <p>技術的対策だけでは防げない「人の行動」を守る——全従業員がセキュリティ意識を持てるようにする人的対策。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red2">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#6e2000" opacity=".12"/>
+        <!-- 黒板 -->
+        <rect x="5" y="10" width="68" height="42" rx="5" fill="#2e3a30" stroke="#4a5a44" stroke-width="1.5"/>
+        <!-- 書き込み -->
+        <text x="39" y="26" text-anchor="middle" font-size="8.5" fill="#ffd23f" font-family="sans-serif" font-weight="900">⚠️ 不審メールに注意！</text>
+        <line x1="12" y1="32" x2="66" y2="32" stroke="#5a7a54" stroke-width="1"/>
+        <text x="39" y="44" text-anchor="middle" font-size="7.5" fill="#b0c8a0" font-family="sans-serif">パスワードは定期的に変更</text>
+        <!-- 人物3人（聴衆） -->
+        <circle cx="18" cy="68" r="8" fill="#f4c89a"/>
+        <rect x="11" y="75" width="14" height="10" rx="3" fill="#2e6de5"/>
+        <circle cx="39" cy="66" r="9" fill="#f4a080"/>
+        <rect x="31" y="74" width="16" height="11" rx="3" fill="#b83a00"/>
+        <circle cx="60" cy="68" r="8" fill="#f4c89a"/>
+        <rect x="53" y="75" width="14" height="10" rx="3" fill="#2e8b4f"/>
+        <!-- 講師 -->
+        <circle cx="39" cy="58" r="6" fill="#d4b090"/>
+        <rect x="33" y="63" width="12" height="7" rx="2" fill="#4a3a30"/>
+      </svg>
+      <div class="scene-txt">
+        「また社員がフィッシングメールを開いてしまった…」IT部門が最新のファイアウォールを導入しても、<strong>開くのは人間</strong>。「これ以上技術で守るより、みんなのセキュリティ意識を高めよう」と上司が言った。
+        <div class="scene-q">…この取り組みを何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：3層の対策と人的対策の位置づけ -->
+  <div class="panel p-blue">
+    <span class="phead">🛡️ 情報セキュリティ対策の3層</span>
+    <svg width="100%" viewBox="0 0 340 170" role="img" aria-label="情報セキュリティの3層：技術的対策・物理的対策・人的対策の図">
+      <!-- 3つの同心半楕円（外側が基盤） -->
+      <!-- 人的対策（最外層） -->
+      <ellipse cx="170" cy="155" rx="160" ry="90" fill="#fde8e0"/>
+      <text x="50" y="88" font-size="10" font-weight="900" fill="#b83a00" font-family="M PLUS Rounded 1c">人的対策</text>
+      <!-- 物理的対策 -->
+      <ellipse cx="170" cy="155" rx="120" ry="68" fill="#e2f3e5"/>
+      <text x="65" y="110" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">物理的対策</text>
+      <!-- 技術的対策（最内層） -->
+      <ellipse cx="170" cy="155" rx="80" ry="46" fill="#e4eaf9"/>
+      <text x="105" y="130" font-size="10" font-weight="900" fill="#2b4da0" font-family="M PLUS Rounded 1c">技術的対策</text>
+      <text x="170" y="148" text-anchor="middle" font-size="9" fill="#2b4da0" font-family="M PLUS Rounded 1c">ファイアウォール・暗号化</text>
+      <!-- ラベル右側 -->
+      <text x="258" y="110" font-size="9" fill="#2e8b4f" font-family="M PLUS Rounded 1c">入退室管理</text>
+      <text x="258" y="122" font-size="9" fill="#2e8b4f" font-family="M PLUS Rounded 1c">鍵・監視カメラ</text>
+      <text x="260" y="80" font-size="9" fill="#b83a00" font-family="M PLUS Rounded 1c">教育・訓練</text>
+      <text x="260" y="92" font-size="9" fill="#b83a00" font-family="M PLUS Rounded 1c">規則・誓約書</text>
+      <!-- 強調：人的対策の帯 -->
+      <rect x="10" y="10" width="320" height="22" rx="7" fill="#b83a00"/>
+      <text x="170" y="25" text-anchor="middle" font-size="10.5" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">セキュリティ教育 ＝ 人的対策の中心！</text>
+    </svg>
+    <p style="font-size:12px;color:#48506a;margin-top:6px;font-weight:600;">技術・物理だけでは守れない「人の行動」をカバーするのが人的対策。その核がセキュリティ教育。</p>
+  </div>
+
+  <!-- 教育の内容 -->
+  <div class="panel p-orange">
+    <span class="phead">📚 セキュリティ教育の内容（階層別）</span>
+    <div class="edu-level">
+      <div class="edu-row">
+        <div class="edu-badge" style="background:#b83a00;">全従業員</div>
+        <div class="edu-desc">パスワード管理・フィッシング対策・USBルール・不審メールの見分け方。全員が受ける基礎教育。</div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-badge" style="background:#d9851f;">管理職</div>
+        <div class="edu-desc">情報セキュリティポリシーの理解・部下への周知徹底・インシデント発生時の対応手順。</div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-badge" style="background:#2b4da0;">IT担当者</div>
+        <div class="edu-desc">技術的脆弱性の管理・セキュリティ設定・ログ監視・インシデント対応の深い知識。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 実施サイクル -->
+  <div class="panel p-green">
+    <span class="phead">🔄 セキュリティ教育の実施サイクル</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 教育計画（年1回以上）</div><div class="fb">対象者・内容・時期を決める。ISMSでは年1回以上の実施が求められる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 教育実施（座学・eラーニング・訓練）</div><div class="fb">標的型攻撃訓練メールで実践力を確認。「見せて終わり」でなく「体験させる」が効果的。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 理解度テスト・確認</div><div class="fb">テストで理解を確認。不合格者には再教育。記録に残し監査の証拠とする。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 評価・改善（次回に反映）</div><div class="fb">教育効果を評価し、新たな脅威・事件を反映して内容をアップデート。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">セキュリティ監査と混同しやすい</div>
+      <div class="tb">監査は「対策ができているか<strong>確認・評価</strong>する」活動。教育は「対策ができるよう<strong>知識・意識を高める</strong>」活動。目的が逆。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">セキュリティポリシーと混同しやすい</div>
+      <div class="tb">ポリシーは「<strong>ルールを文書化</strong>したもの」。教育は「そのルールを<strong>全員が理解・実践できるよう</strong>にする活動」。セットで機能する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「教育は1回やれば十分」ではない</div>
+      <div class="tb">脅威は常に進化する。<strong>定期的・継続的な教育</strong>が必要。ISMSでは<strong>年1回以上</strong>の実施が求められる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「全従業員・意識向上・知識・訓練・定期的」→ <strong>セキュリティ教育（人的対策）</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">穴（セキュリティの穴）は人（人間が開ける）</span>だから<span class="hl">人（人的対策）で塞ぐ</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">技術のカギは人が壊す→だから教育が最後の砦</span><br><br>
+    <span class="hl">「教（知る）→育（行動が変わる）」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">知識を入れるだけでなく、行動が変わってはじめて「教育」</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-security-education</div>
+
+</div>
+</body>
+</html>

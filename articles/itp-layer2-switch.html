@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>レイヤ2スイッチとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="レイヤ2スイッチ（L2スイッチ）をMACアドレスで仕分けする「社内ポスト仕分け機」として解説。ハブ・ルータとの違い、ひっかけポイントも。ITパスポート対策。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-layer2-switch">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#145a2e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,90,46,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#7edd9a 56%,#7edd9a 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e8c8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:12px;}
+.compare-table th{background:#e4e7f7;color:#4256b8;font-weight:900;padding:8px 10px;text-align:center;}
+.compare-table td{padding:8px 10px;border-bottom:1px solid #eef1f7;text-align:center;font-weight:600;color:#3c4456;line-height:1.6;}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table .name{font-weight:900;color:#2b3245;}
+.compare-table .hl-g{color:#2e8b4f;font-weight:900;}
+.compare-table .hl-b{color:#2e6de5;font-weight:900;}
+.compare-table .hl-o{color:#d9851f;font-weight:900;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（ネットワーク）</span>
+    <h1><b>レイヤ2スイッチ</b>とは？</h1>
+    <p>MACアドレスを見て「このデータはこのポートへ！」と宛先を正確に選ぶ、LAN内の"賢い仕分け機"。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="50" width="54" height="22" rx="5" fill="#2e8b4f"/>
+        <rect x="16" y="56" width="8" height="10" rx="2" fill="#7edd9a"/>
+        <rect x="28" y="56" width="8" height="10" rx="2" fill="#7edd9a"/>
+        <rect x="40" y="56" width="8" height="10" rx="2" fill="#7edd9a"/>
+        <rect x="52" y="56" width="8" height="10" rx="2" fill="#7edd9a"/>
+        <rect x="34" y="72" width="10" height="12" rx="2" fill="#1a3a2a"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        社内LAN。PCが100台つながっていて、誰かがデータを送るたびに全台に届いていたら……大混雑！<br>
+        レイヤ2スイッチは「宛先のMACアドレス」だけ見て、<strong>必要なPCにだけ</strong>データを届ける。
+        <div class="scene-q">…ハブと何が違うの？どのOSI層で動くの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ハブ・L2スイッチ・ルータの比較 -->
+  <div class="panel p-green">
+    <span class="phead">🔀 ハブ・L2スイッチ・ルータの違い</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="ハブ・レイヤ2スイッチ・ルータの動作比較図">
+      <!-- ハブ -->
+      <rect x="10" y="20" width="96" height="80" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="58" y="38" text-anchor="middle" font-size="12" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">ハブ</text>
+      <text x="58" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">全ポートに</text>
+      <text x="58" y="64" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">ばらまく</text>
+      <text x="58" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">（第1層・物理層）</text>
+      <text x="58" y="92" text-anchor="middle" font-size="9" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">ブロードキャスト</text>
+      <!-- L2スイッチ -->
+      <rect x="122" y="20" width="96" height="80" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="170" y="38" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">L2スイッチ</text>
+      <text x="170" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#1a5c33" font-family="M PLUS Rounded 1c">MACアドレスで</text>
+      <text x="170" y="64" text-anchor="middle" font-size="10" font-weight="700" fill="#1a5c33" font-family="M PLUS Rounded 1c">宛先に届ける</text>
+      <text x="170" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">（第2層・データリンク層）</text>
+      <text x="170" y="92" text-anchor="middle" font-size="9" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ユニキャスト</text>
+      <!-- ルータ -->
+      <rect x="234" y="20" width="96" height="80" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="282" y="38" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">ルータ</text>
+      <text x="282" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#1f4ba8" font-family="M PLUS Rounded 1c">IPアドレスで</text>
+      <text x="282" y="64" text-anchor="middle" font-size="10" font-weight="700" fill="#1f4ba8" font-family="M PLUS Rounded 1c">経路を選ぶ</text>
+      <text x="282" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">（第3層・ネットワーク層）</text>
+      <text x="282" y="92" text-anchor="middle" font-size="9" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">異なるネット間も可</text>
+      <!-- OSI層の横棒 -->
+      <rect x="10" y="118" width="320" height="36" rx="8" fill="#f4f6fb" stroke="#c2c8d8" stroke-width="1"/>
+      <text x="170" y="132" text-anchor="middle" font-size="10" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">OSIモデルで見ると…</text>
+      <rect x="15" y="138" width="50" height="12" rx="4" fill="#fce4dd"/>
+      <text x="40" y="148" text-anchor="middle" font-size="9" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">第1層 物理</text>
+      <rect x="130" y="138" width="80" height="12" rx="4" fill="#e2f3e5"/>
+      <text x="170" y="148" text-anchor="middle" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">第2層 データリンク</text>
+      <rect x="255" y="138" width="70" height="12" rx="4" fill="#e7eefc"/>
+      <text x="290" y="148" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">第3層 ネットワーク</text>
+      <!-- MACアドレステーブル説明 -->
+      <rect x="10" y="162" width="320" height="40" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1"/>
+      <text x="170" y="178" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">L2スイッチの内部：MACアドレステーブル</text>
+      <text x="170" y="194" text-anchor="middle" font-size="10" font-weight="700" fill="#1a5c33" font-family="M PLUS Rounded 1c">「MACアドレス〇〇 → ポート3番」と自動学習・管理</text>
+    </svg>
+  </div>
+
+  <!-- フロー：データ転送の仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">📨 L2スイッチがデータを届けるまで</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① フレームを受信 → 送信元MACアドレスを学習</div>
+        <div class="fb">「このMACアドレスはポート〇番から来た」と<strong>MACアドレステーブル</strong>に自動記録。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 宛先MACアドレスを確認 → テーブルで照合</div>
+        <div class="fb">テーブルに記録があれば、そのポートだけに転送。なければ全ポートに送信（フラッディング）。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 宛先ポートだけに送信 → 不要なトラフィック削減</div>
+        <div class="fb">ハブのように全台に流さない。必要なポートだけに転送するので<strong>ネットワーク効率が大幅に向上</strong>。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「IPアドレスで転送する」は誤り</div>
+      <div class="tb">L2スイッチは<strong>MACアドレス</strong>で転送する。IPアドレスを使うのは<strong>ルータ（L3）</strong>。試験で最も多い引っかけ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ハブとの混同</div>
+      <div class="tb">ハブは全ポートに無差別送信（ブロードキャスト）。L2スイッチは宛先ポートだけに転送。同じに見えて全く違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「異なるネットワーク間の接続」はできない</div>
+      <div class="tb">L2スイッチは同一LAN内の機器を接続する。インターネットや他のネットワークとつなぐのは<strong>ルータの仕事</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「MAC・データリンク層・LAN内の転送」が出たら → <strong>L2スイッチ</strong>。「IP・ルーティング・異なるネット間」→ ルータ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「スイッチは"マックで選ぶ"」</span><br>
+    L2スイッチ＝<span class="hl">MAC</span>アドレスで<span class="hl">ス</span>イッチ（仕分け）する！<br><br>
+    3兄弟の区別：<br>
+    <span class="hl">ハブ＝全員に配る（バラまく）</span><br>
+    <span class="hl">L2スイッチ＝MACで宛先に届ける</span><br>
+    <span class="hl">ルータ＝IPで外の世界へ届ける</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-layer2-switch</div>
+
+</div>
+</body>
+</html>

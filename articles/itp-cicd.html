@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CI/CDとは？（継続的インテグレーション・継続的デリバリー） — ITパスポート 詳細解説</title>
+<meta name="description" content="CI/CD（継続的インテグレーション・継続的デリバリー）をわかりやすく解説。ビルド・テスト・デプロイの自動化の仕組み、DevOpsとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-cicd">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d9851f,#7a4000);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,64,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#fff4a0 56%,#fff4a0 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5d9b0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-blue{--c:#1a6fb0;--cbg:#dbeafa;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9851f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#4256b8;--fbg:#e4e7f7;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#1a6fb0;--fbg:#dbeafa;}
+.f5{--fc:#dd5a3a;--fbg:#fce4dd;}
+
+/* CI/CDパイプライン説明バッジ */
+.badge-row{display:flex;gap:0;margin-top:10px;flex-wrap:wrap;}
+.badge{flex:1;min-width:80px;border-radius:0;padding:10px 6px;text-align:center;}
+.badge:first-child{border-radius:10px 0 0 10px;}
+.badge:last-child{border-radius:0 10px 10px 0;}
+.badge .bname{font-size:11px;font-weight:900;}
+.badge .bdesc{font-size:9.5px;font-weight:700;margin-top:3px;line-height:1.4;}
+@media(max-width:400px){.badge-row{flex-direction:column;}.badge{border-radius:8px;margin-bottom:4px;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>CI/CD</b>とは？</h1>
+    <p>コードを書いたら即ビルド・テスト・本番リリースまで自動でやってしまう仕組み。手作業のミスをなくし、毎日でも安全にリリースできるソフトウェア開発の"高速道路"。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-orange">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="86" viewBox="0 0 72 86" aria-hidden="true">
+        <ellipse cx="36" cy="81" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- PC画面 -->
+        <rect x="10" y="22" width="52" height="36" rx="5" fill="#2b3245"/>
+        <rect x="13" y="25" width="46" height="30" rx="3" fill="#1e2a3e"/>
+        <!-- コード風テキスト -->
+        <rect x="16" y="28" width="20" height="3" rx="1" fill="#4256b8"/>
+        <rect x="16" y="33" width="32" height="3" rx="1" fill="#2e8b4f"/>
+        <rect x="16" y="38" width="26" height="3" rx="1" fill="#d9851f"/>
+        <rect x="16" y="43" width="36" height="3" rx="1" fill="#4256b8"/>
+        <!-- 完了チェック -->
+        <circle cx="52" cy="32" r="7" fill="#2e8b4f"/>
+        <text x="52" y="36" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">✓</text>
+        <!-- 矢印→サーバー -->
+        <line x1="62" y1="40" x2="62" y2="58" stroke="#d9851f" stroke-width="2"/>
+        <polygon points="58,58 66,58 62,66" fill="#d9851f"/>
+        <!-- サーバー -->
+        <rect x="50" y="66" width="22" height="12" rx="3" fill="#1a6fb0"/>
+        <circle cx="57" cy="72" r="2" fill="#fff"/>
+        <line x1="62" y1="70" x2="68" y2="70" stroke="#fff" stroke-width="1"/>
+        <line x1="62" y1="73" x2="68" y2="73" stroke="#fff" stroke-width="1"/>
+      </svg>
+      <div class="scene-txt">
+        開発者がコードをGitHubにプッシュした瞬間——<strong>自動でビルド・テストが走り</strong>、問題なければ<strong>自動で本番サーバーにデプロイ</strong>される。担当者が夜中に手動でサーバーに入らなくていい。
+        <div class="scene-q">この自動化の仕組み一式が「CI/CD パイプライン」</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：CI/CDパイプライン -->
+  <div class="panel p-indigo">
+    <span class="phead">⚙️ CI/CDパイプラインの全体像</span>
+    <svg width="100%" viewBox="0 0 340 130" role="img" aria-label="CI/CDパイプライン：コードコミット→ビルド→テスト（CI）→ステージング→本番デプロイ（CD）の流れ">
+      <defs>
+        <marker id="arrc" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <polygon points="0 0,7 3.5,0 7" fill="#4256b8"/>
+        </marker>
+      </defs>
+      <!-- ステップ1: コミット -->
+      <rect x="5" y="40" width="52" height="46" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="31" y="60" text-anchor="middle" font-size="9" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">コード</text>
+      <text x="31" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">コミット</text>
+      <!-- 矢印 -->
+      <line x1="57" y1="63" x2="65" y2="63" stroke="#4256b8" stroke-width="2" marker-end="url(#arrc)"/>
+      <!-- ステップ2: ビルド -->
+      <rect x="67" y="40" width="52" height="46" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="93" y="60" text-anchor="middle" font-size="9" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">自動</text>
+      <text x="93" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">ビルド</text>
+      <line x1="119" y1="63" x2="127" y2="63" stroke="#4256b8" stroke-width="2" marker-end="url(#arrc)"/>
+      <!-- ステップ3: テスト（CI範囲） -->
+      <rect x="129" y="40" width="52" height="46" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="155" y="60" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">自動</text>
+      <text x="155" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">テスト</text>
+      <line x1="181" y1="63" x2="189" y2="63" stroke="#4256b8" stroke-width="2" marker-end="url(#arrc)"/>
+      <!-- ステップ4: 本番デプロイ -->
+      <rect x="191" y="40" width="52" height="46" rx="8" fill="#dbeafa" stroke="#1a6fb0" stroke-width="2"/>
+      <text x="217" y="60" text-anchor="middle" font-size="9" font-weight="900" fill="#1a6fb0" font-family="M PLUS Rounded 1c">自動</text>
+      <text x="217" y="72" text-anchor="middle" font-size="9" font-weight="900" fill="#1a6fb0" font-family="M PLUS Rounded 1c">デプロイ</text>
+      <line x1="243" y1="63" x2="251" y2="63" stroke="#4256b8" stroke-width="2" marker-end="url(#arrc)"/>
+      <!-- 本番 -->
+      <rect x="253" y="40" width="82" height="46" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="294" y="60" text-anchor="middle" font-size="9" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">本番環境</text>
+      <text x="294" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#9a3a1f" font-family="M PLUS Rounded 1c">ユーザーへ</text>
+      <!-- CI範囲ブレース -->
+      <rect x="5" y="6" width="178" height="22" rx="6" fill="#2e8b4f" opacity=".15"/>
+      <text x="94" y="20" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">← CI（継続的インテグレーション）→</text>
+      <!-- CD範囲ブレース -->
+      <rect x="129" y="96" width="206" height="22" rx="6" fill="#1a6fb0" opacity=".15"/>
+      <text x="232" y="110" text-anchor="middle" font-size="10" font-weight="900" fill="#1a6fb0" font-family="M PLUS Rounded 1c">← CD（継続的デリバリー / デプロイ）→</text>
+    </svg>
+    <div class="badge-row" style="margin-top:14px;">
+      <div class="badge" style="background:#e4e7f7;">
+        <div class="bname" style="color:#4256b8;">CI</div>
+        <div class="bdesc" style="color:#4256b8;">継続的<br>インテグレーション</div>
+      </div>
+      <div class="badge" style="background:#e2f3e5;">
+        <div class="bname" style="color:#2e8b4f;">ビルド+テスト</div>
+        <div class="bdesc" style="color:#2e8b4f;">コード統合時に<br>自動検証</div>
+      </div>
+      <div class="badge" style="background:#dbeafa;">
+        <div class="bname" style="color:#1a6fb0;">CD</div>
+        <div class="bdesc" style="color:#1a6fb0;">継続的<br>デリバリー</div>
+      </div>
+      <div class="badge" style="background:#fcefd9;">
+        <div class="bname" style="color:#d9851f;">自動デプロイ</div>
+        <div class="bdesc" style="color:#d9851f;">本番まで<br>自動リリース</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CI/CDの手順フロー -->
+  <div class="panel p-green">
+    <span class="phead">🔄 CI/CDが解決する課題</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">昔：手動でコードを統合・テスト</div><div class="fb">複数人のコードをまとめると競合が多発。手動テストにも時間がかかり、リリースは月1回が限界。</div></div>
+      <div class="farrow">▼ CI/CDを導入すると</div>
+      <div class="fstep f2"><div class="fh">コミットのたびに自動ビルド・テスト</div><div class="fb">競合やバグを即座に検出。「誰が壊したか」もすぐわかる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">テスト通過後に自動デプロイ</div><div class="fb">担当者がサーバーに手動で入る必要なし。毎日・毎時でもリリース可能。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">小さく・早く・頻繁にリリース</div><div class="fb">問題が起きても影響範囲が小さく、ロールバックも素早い。ビジネスの変化に即応できる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">CIとCDの範囲を混同しやすい</div>
+      <div class="tb">CI（継続的インテグレーション）は<strong>ビルド・テストの自動化</strong>まで。CD（継続的デリバリー/デプロイ）は<strong>本番リリースまでの自動化</strong>。CDはCIの先にある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">DevOpsとCI/CDは別物</div>
+      <div class="tb">DevOpsは開発と運用が連携する<strong>文化・考え方</strong>。CI/CDはその文化を実現する<strong>技術的な手段・ツールの仕組み</strong>。「DevOps ＝ CI/CD」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「CD = Continuous Deployment だけ」は誤り</div>
+      <div class="tb">CDには「Continuous Delivery（継続的デリバリー）」と「Continuous Deployment（継続的デプロイ）」の2つがある。前者は本番手前まで自動、後者は本番まで全自動。試験ではまとめて「CD」と扱うことが多い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「コード統合→<strong>ビルド・テストを自動化</strong>」→ CI。「テスト後→<strong>本番デプロイまで自動化</strong>」→ CD。セットで覚える。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">CI</span>＝「<span class="hl">チー</span>ムで<span class="hl">い</span>つも一緒に（インテグレーション）」<br>
+    <span class="hl">CD</span>＝「<span class="hl">シーディー</span>焼いて<span class="hl">届ける</span>（デリバリー）」<br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">「チームでいつも一緒 → CDに焼いて届ける」</span><br><br>
+    コミット → <span class="hl">自動ビルド</span> → <span class="hl">自動テスト</span> → <span class="hl">自動デプロイ</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">全部「自動」が CI/CD の肝</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-cicd</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>企業文化とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="企業文化（コーポレートカルチャー）をわかりやすく解説。価値観・行動規範・組織風土の関係、経営戦略との関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-corporate-culture">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c4dbd,#3e1a7f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(62,26,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dfd1fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#7c4dbd;--cbg:#ede4fa;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c4dbd;}
+
+.layer-wrap{display:flex;flex-direction:column;gap:0;margin-top:6px;}
+.layer{border-radius:12px;padding:12px 15px;margin-bottom:4px;}
+.layer .lh{font-size:13px;font-weight:900;margin-bottom:4px;}
+.layer .lb{font-size:12px;font-weight:600;line-height:1.75;color:#48506a;}
+.l1{background:#ede4fa;}.l1 .lh{color:#7c4dbd;}
+.l2{background:#e7eefc;}.l2 .lh{color:#2e6de5;}
+.l3{background:#e2f3e5;}.l3 .lh{color:#2e8b4f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c4dbd;--fbg:#f3edfb;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>企業文化</b>とは？</h1>
+    <p>会社全体に染みついた「当たり前」の集合体。価値観・行動規範・習慣が積み重なり、組織を動かす見えない力。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a1a3a" opacity=".1"/>
+        <rect x="8" y="60" width="62" height="25" rx="7" fill="#c5b4e8"/>
+        <rect x="14" y="38" width="50" height="30" rx="9" fill="#7c4dbd"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="8" fill="#f4c89a"/>
+        <path d="M30 42 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+        <rect x="20" y="62" width="12" height="8" rx="2" fill="#9c72d4"/>
+        <rect x="46" y="62" width="12" height="8" rx="2" fill="#9c72d4"/>
+      </svg>
+      <div class="scene-txt">
+        新入社員のあなた。「うちの会社って、なぜか全員が残業せず定時に帰るし、上司でも気軽に意見が言える空気がある。ルールには書いてないのに…」
+        <div class="scene-q">…それが「企業文化」。目に見えないのに、組織全体に行き渡っている。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：企業文化の3層構造 -->
+  <div class="panel p-purple">
+    <span class="phead">🏛️ 企業文化の3層構造</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="企業文化の3層構造：外から見えるもの・意識されるもの・無意識の前提">
+      <!-- 最外層 -->
+      <ellipse cx="170" cy="120" rx="160" ry="100" fill="#ede4fa" stroke="#7c4dbd" stroke-width="2.5"/>
+      <!-- 中層 -->
+      <ellipse cx="170" cy="120" rx="110" ry="67" fill="#ddd0f5" stroke="#7c4dbd" stroke-width="2"/>
+      <!-- 中心 -->
+      <ellipse cx="170" cy="120" rx="62" ry="38" fill="#7c4dbd"/>
+      <!-- テキスト -->
+      <text x="170" y="116" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">価値観・信念</text>
+      <text x="170" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="#e4d9fb" font-family="M PLUS Rounded 1c">（無意識の前提）</text>
+      <text x="170" y="95" text-anchor="middle" font-size="12" font-weight="800" fill="#3e1a7f" font-family="M PLUS Rounded 1c">行動規範・ルール</text>
+      <text x="170" y="150" text-anchor="middle" font-size="11" font-weight="700" fill="#5c3d9a" font-family="M PLUS Rounded 1c">（意識される層）</text>
+      <text x="170" y="70" text-anchor="middle" font-size="12" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">制服・社訓・式典</text>
+      <text x="170" y="88" text-anchor="middle" font-size="11" font-weight="700" fill="#6e5a8a" font-family="M PLUS Rounded 1c">（目に見える層）</text>
+    </svg>
+    <p>企業文化は3層になっている。表面の「制服・社訓」は見えやすいが、組織を本当に動かすのは最深部の<strong>価値観・信念</strong>。</p>
+  </div>
+
+  <!-- フロー：企業文化が経営に与える影響 -->
+  <div class="panel p-green">
+    <span class="phead">🔗 企業文化と経営の関係</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 創業者・経営者が価値観を示す</div><div class="fb">「品質第一」「顧客中心」など、創業理念や経営ビジョンが文化の種になる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 組織全体に染み込む</div><div class="fb">採用・評価・日常の意思決定を通じて「当たり前」として共有される。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 戦略実行の「地盤」になる</div><div class="fb">良い企業文化は変革を後押しし、悪い文化は戦略を骨抜きにする。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">企業文化 ≠ 社内規則・規程</div>
+      <div class="tb">規則は「書かれたルール」。企業文化は<strong>書かれていない暗黙の「当たり前」</strong>。規則を全部守っても文化が壊れることがある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">企業文化 ≠ コーポレートガバナンス</div>
+      <div class="tb">ガバナンスは「不正を防ぐ仕組み（監視・統制）」。文化は「組織の価値観・行動様式」。目的も対象も違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">企業文化は「すぐ変えられる」か？</div>
+      <div class="tb">誤り。企業文化は長年かけて醸成されるため、<strong>短期間では変わらない</strong>のが特徴。変革には経営トップのコミットメントと長期の取り組みが必要。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「空気」読まずに経営できない＝企業文化</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「空気」＝目に見えない・書かれていない・でも全員が感じる＝企業文化</span><br><br>
+      ゴロ：<span class="hl">「きぎょう文化」</span> → <span class="hl">き</span>めた価値観が <span class="hl">ぎょう</span>儀（行動）になる
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

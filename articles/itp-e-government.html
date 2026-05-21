@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>電子政府とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="電子政府をわかりやすく解説。行政手続きのオンライン化、マイナンバー・マイナポータルとの関係、e-Govの役割、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-e-government">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a5fa8,#0b2d62);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(11,45,98,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b0caec;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1a5fa8;--cbg:#ddeaf9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a5fa8;}
+
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.svc-cell{border-radius:12px;padding:12px 11px;}
+.svc-cell h4{font-size:12.5px;font-weight:900;margin-bottom:7px;}
+.svc-cell ul{list-style:none;}
+.svc-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:14px;position:relative;}
+.svc-cell li::before{content:"✓";position:absolute;left:0;font-size:10px;color:#1a5fa8;}
+.cell-before{background:#f0f2f7;}.cell-before h4{color:#6a7080;}
+.cell-after{background:#ddeaf9;}.cell-after h4{color:#1a5fa8;}
+@media(max-width:400px){.service-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a5fa8;--fbg:#e4f0fa;}
+.f2{--fc:#4256b8;--fbg:#edf0fc;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.minirow{display:flex;align-items:center;gap:5px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
+.mtag{border-radius:9px;padding:8px 10px;font-size:11.5px;font-weight:900;color:#fff;text-align:center;line-height:1.4;}
+.marrow{font-size:13px;color:#9aa3b2;font-weight:900;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>電子政府</b>とは？</h1>
+    <p>役所に行かなくても行政手続きをネットで完結させる仕組み。「e-Gov」「マイナポータル」はその一部。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="82" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="56" width="52" height="26" rx="8" fill="#c0d8f0"/>
+        <rect x="16" y="62" width="40" height="18" rx="5" fill="#1a5fa8"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M24 16 a13 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 役所の建物 -->
+        <rect x="44" y="58" width="16" height="14" rx="2" fill="#fff" stroke="#1a5fa8" stroke-width="1.2"/>
+        <rect x="46" y="64" width="4" height="8" rx="1" fill="#1a5fa8"/>
+        <rect x="54" y="61" width="4" height="4" rx="1" fill="#aac8e8"/>
+        <path d="M42 60 l8 -6 l8 6z" fill="#1a5fa8"/>
+      </svg>
+      <div class="scene-txt">
+        引越しの手続きをしに区役所へ行ったら、長い列。<br>「なんでスマホでできないの？」と思った。<br>
+        でも今は、住民票の写しの交付申請などが <strong>オンラインでできる</strong> 時代。<br>
+        <div class="scene-q">→ 行政手続きをデジタル化した仕組みが「電子政府」！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：電子政府の全体像 -->
+  <div class="panel p-indigo">
+    <span class="phead">🏛️ 電子政府の全体像</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="電子政府の仕組み：市民・企業がインターネットを通じて行政と繋がる">
+      <!-- 市民 -->
+      <rect x="8" y="70" width="78" height="60" rx="12" fill="#ddeaf9" stroke="#1a5fa8" stroke-width="2"/>
+      <text x="47" y="94" text-anchor="middle" font-size="20" font-family="M PLUS Rounded 1c">👤</text>
+      <text x="47" y="113" text-anchor="middle" font-size="11" font-weight="900" fill="#1a5fa8" font-family="M PLUS Rounded 1c">市民・企業</text>
+      <text x="47" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#4a7aaa" font-family="M PLUS Rounded 1c">スマホ・PC</text>
+
+      <!-- インターネット（中央） -->
+      <ellipse cx="170" cy="100" rx="54" ry="40" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="170" y="94" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">インターネット</text>
+      <text x="170" y="108" text-anchor="middle" font-size="20" font-family="M PLUS Rounded 1c">🌐</text>
+      <text x="170" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#5a6aaa" font-family="M PLUS Rounded 1c">e-Gov / マイナポータル</text>
+
+      <!-- 行政 -->
+      <rect x="254" y="70" width="78" height="60" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="293" y="94" text-anchor="middle" font-size="20" font-family="M PLUS Rounded 1c">🏛️</text>
+      <text x="293" y="113" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">行政機関</text>
+      <text x="293" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#3a8055" font-family="M PLUS Rounded 1c">国・地方自治体</text>
+
+      <!-- 矢印 左→右 -->
+      <path d="M88 95 L114 95" stroke="#1a5fa8" stroke-width="2" marker-end="url(#arrB)"/>
+      <text x="100" y="90" text-anchor="middle" font-size="9" font-weight="800" fill="#1a5fa8" font-family="M PLUS Rounded 1c">申請・届出</text>
+      <path d="M116 107 L88 107" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arrG)"/>
+      <text x="100" y="120" text-anchor="middle" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">証明・通知</text>
+
+      <!-- 矢印 中→右 -->
+      <path d="M226 95 L252 95" stroke="#1a5fa8" stroke-width="2" marker-end="url(#arrB)"/>
+      <path d="M252 107 L226 107" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arrG)"/>
+
+      <!-- サービス一覧（下） -->
+      <rect x="50" y="158" width="240" height="32" rx="10" fill="#fff6da" stroke="#e0a800" stroke-width="1.5"/>
+      <text x="170" y="170" text-anchor="middle" font-size="10.5" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">主なサービス</text>
+      <text x="170" y="183" text-anchor="middle" font-size="10" font-weight="700" fill="#7a5500" font-family="M PLUS Rounded 1c">住民票申請 / 確定申告(e-Tax) / 社会保険手続き / 法人登記</text>
+
+      <defs>
+        <marker id="arrB" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6z" fill="#1a5fa8"/></marker>
+        <marker id="arrG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6z" fill="#2e8b4f"/></marker>
+      </defs>
+    </svg>
+    <div class="service-grid">
+      <div class="svc-cell cell-before">
+        <h4>📮 電子政府以前</h4>
+        <ul>
+          <li>役所の窓口に直接行く</li>
+          <li>紙の申請書を手書き</li>
+          <li>平日の昼間しか受け付けない</li>
+          <li>何度も足を運ぶ</li>
+        </ul>
+      </div>
+      <div class="svc-cell cell-after">
+        <h4>🖥️ 電子政府で変わったこと</h4>
+        <ul>
+          <li>スマホ・PCからオンライン申請</li>
+          <li>24時間受付（一部）</li>
+          <li>役所に行かずに完結</li>
+          <li>マイナンバーで本人確認</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：電子政府の主要サービス -->
+  <div class="panel p-green">
+    <span class="phead">🔄 電子政府の主要なサービス</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">e-Gov（イーガブ）</div><div class="fb">総務省が運営する行政情報ポータルサイト。各府省への電子申請・届出、法令検索などができる。企業の社会保険・雇用保険の手続きがオンラインで完結する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">マイナポータル</div><div class="fb">マイナンバーカードを使った個人向け行政サービスポータル。自分の行政手続き履歴・税・年金情報の確認、各種申請がスマホからできる。「ぴったりサービス」で子育て・介護の手続きも申請可能。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">e-Tax（イータックス）</div><div class="fb">国税庁の確定申告・法人税申告をオンラインで行うシステム。税理士やサラリーマンの年末調整もネットで処理できる。電子申告することで青色申告の特別控除額アップなどの優遇もある。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">マイナンバー制度（基盤）</div><div class="fb">電子政府を支える本人確認の基盤。マイナンバーカードにより「この申請をしているのは本人か」をオンラインで確認できる。行政サービスのデジタル化に不可欠な仕組み。</div></div>
+    </div>
+    <div class="minirow">
+      <span class="mtag" style="background:#1a5fa8">e-Gov<br>企業向け</span>
+      <span class="marrow">＋</span>
+      <span class="mtag" style="background:#4256b8">マイナ<br>ポータル</span>
+      <span class="marrow">＋</span>
+      <span class="mtag" style="background:#2e8b4f">e-Tax<br>税務</span>
+      <span class="marrow">＝</span>
+      <span class="mtag" style="background:#d9851f">電子政府</span>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「電子政府」＝行政のDXだが、DXそのものではない</div>
+      <div class="tb">電子政府は行政手続きのデジタル化。DXは事業モデルの変革。電子政府はDXの「行政版手段」であり、DXの定義そのものとは別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">e-GovとマイナポータルとGビズIDは違う</div>
+      <div class="tb">e-Gov＝行政手続き電子申請のポータル（主に法人・事業者向け）。マイナポータル＝個人向け行政情報確認・申請サービス。GビズID＝法人・個人事業主向けの行政サービス共通認証アカウント。それぞれ対象・役割が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「電子政府＝全部オンラインで終わる」ではまだない</div>
+      <div class="tb">電子申請できる手続きが増えているが、全手続きがオンライン完結にはなっていない。試験では「オンライン化を推進する取り組み」として問われる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">電子政府 ＝「役所がネットで出前を始めた」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">出前＝スマホで注文（申請）→届く（証明・通知）。行かなくていい。</span><br><br>
+      <span class="hl">「e-Gov：企業用窓口」「マイナポータル：個人用窓口」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">どちらもネットで行政と繋がる仕組み ＝ 電子政府！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-e-government</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>貸借対照表（B/S）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="貸借対照表（バランスシート）を「左右がなぜ必ず一致するか」からわかりやすく解説。損益計算書・キャッシュフロー計算書との違い、ITパスポート試験のひっかけポイントも網羅。">
+<link rel="canonical" href="https://example.com/itp-balance-sheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e6de5,#19357f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.bs-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2.5px solid #4256b8;border-radius:12px;overflow:hidden;margin-top:8px;}
+.bs-left{background:#e7eefc;}
+.bs-right{background:#e2f3e5;border-left:2.5px solid #4256b8;}
+.bs-header{padding:8px 12px;font-size:12px;font-weight:900;text-align:center;}
+.bs-header.h-left{color:#2e6de5;border-bottom:2px solid #c2cef7;}
+.bs-header.h-right{color:#2e8b4f;border-bottom:2px solid #b0dfc0;}
+.bs-body{padding:10px 12px;}
+.bs-item{font-size:12px;font-weight:700;color:#3c4456;padding:4px 0;border-bottom:1px solid rgba(0,0,0,.06);display:flex;justify-content:space-between;}
+.bs-item:last-child{border-bottom:none;}
+.bs-item .amount{font-weight:900;color:#2e6de5;}
+.bs-item-r .amount{color:#2e8b4f;}
+.bs-total{padding:8px 12px;font-size:13px;font-weight:900;display:flex;justify-content:space-between;background:rgba(0,0,0,.05);}
+.bs-total.left-total{color:#2e6de5;}
+.bs-total.right-total{color:#2e8b4f;}
+.bs-eq{text-align:center;font-size:12px;font-weight:900;color:#4256b8;padding:10px;background:#f0f2fc;border-radius:8px;margin-top:10px;}
+
+.three-stmt{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:6px;}
+.stmt-cell{border-radius:12px;padding:10px 8px;text-align:center;}
+.stmt-cell h4{font-size:12px;font-weight:900;margin-bottom:5px;}
+.stmt-cell p{font-size:10.5px;font-weight:600;line-height:1.55;color:#48506a;}
+.sc-bs{background:#e7eefc;}.sc-bs h4{color:#2e6de5;}
+.sc-pl{background:#e2f3e5;}.sc-pl h4{color:#2e8b4f;}
+.sc-cf{background:#fcefd9;}.sc-cf h4{color:#d9851f;}
+@media(max-width:480px){.three-stmt{grid-template-columns:1fr;}.bs-wrap{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>貸借対照表（B/S）</b>とは？</h1>
+    <p>会社の「財産と借金のバランス」を一瞬で見せる財務諸表。左右が常に一致する「ある日の資産スナップショット」。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a2a6a" opacity=".12"/>
+        <!-- 書類 -->
+        <rect x="12" y="30" width="54" height="52" rx="6" fill="#fff" stroke="#2e6de5" stroke-width="2"/>
+        <!-- 左右区切り -->
+        <line x1="39" y1="36" x2="39" y2="78" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <!-- 左ラベル（資産） -->
+        <text x="25" y="47" text-anchor="middle" font-size="8" font-weight="900" fill="#2e6de5" font-family="sans-serif">資産</text>
+        <rect x="15" y="50" width="20" height="3" rx="1" fill="#b0c8f5"/>
+        <rect x="15" y="56" width="20" height="3" rx="1" fill="#b0c8f5"/>
+        <rect x="15" y="62" width="20" height="3" rx="1" fill="#b0c8f5"/>
+        <!-- 右ラベル（負債・純資産） -->
+        <text x="54" y="47" text-anchor="middle" font-size="8" font-weight="900" fill="#2e8b4f" font-family="sans-serif">負債</text>
+        <rect x="43" y="50" width="18" height="3" rx="1" fill="#b0dcba"/>
+        <rect x="43" y="56" width="18" height="3" rx="1" fill="#b0dcba"/>
+        <text x="54" y="68" text-anchor="middle" font-size="8" font-weight="900" fill="#d9851f" font-family="sans-serif">純資産</text>
+        <rect x="43" y="71" width="18" height="3" rx="1" fill="#f5d89a"/>
+        <!-- 天秤 -->
+        <line x1="39" y1="16" x2="20" y2="26" stroke="#4256b8" stroke-width="2"/>
+        <line x1="39" y1="16" x2="58" y2="26" stroke="#4256b8" stroke-width="2"/>
+        <circle cx="39" cy="14" r="4" fill="#4256b8"/>
+        <rect x="17" y="26" width="6" height="6" rx="2" fill="#2e6de5"/>
+        <rect x="55" y="26" width="6" height="6" rx="2" fill="#2e8b4f"/>
+      </svg>
+      <div class="scene-txt">
+        銀行に融資を申し込む場面。担当者から「御社のバランスシートを見せてください」と言われた。<br>
+        出したのが<strong>貸借対照表</strong>。左側に「財産」、右側に「借金と元手」が書いてある。
+        <div class="scene-q">…なぜ左右は必ず同じ金額なの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：B/S構造 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔷 貸借対照表（B/S）の構造</span>
+    <div class="bs-wrap">
+      <div class="bs-left">
+        <div class="bs-header h-left">左：資産の部（何を持っているか）</div>
+        <div class="bs-body">
+          <div class="bs-item"><span>現金・預金</span><span class="amount">300万</span></div>
+          <div class="bs-item"><span>売掛金</span><span class="amount">200万</span></div>
+          <div class="bs-item"><span>在庫（棚卸資産）</span><span class="amount">150万</span></div>
+          <div class="bs-item"><span>建物・機械</span><span class="amount">350万</span></div>
+        </div>
+        <div class="bs-total left-total"><span>資産合計</span><span>1,000万</span></div>
+      </div>
+      <div class="bs-right">
+        <div class="bs-header h-right">右：負債＋純資産（どこから調達したか）</div>
+        <div class="bs-body">
+          <div class="bs-item bs-item-r"><span>借入金</span><span class="amount" style="color:#dd5a3a;">400万</span></div>
+          <div class="bs-item bs-item-r"><span>買掛金</span><span class="amount" style="color:#dd5a3a;">200万</span></div>
+          <div class="bs-item bs-item-r"><span>資本金</span><span class="amount" style="color:#2e8b4f;">200万</span></div>
+          <div class="bs-item bs-item-r"><span>利益剰余金</span><span class="amount" style="color:#2e8b4f;">200万</span></div>
+        </div>
+        <div class="bs-total right-total"><span>負債＋純資産</span><span>1,000万</span></div>
+      </div>
+    </div>
+    <div class="bs-eq">資産 ＝ 負債 ＋ 純資産　← 常に等しい！（これが"バランスシート"の名前の由来）</div>
+  </div>
+
+  <!-- 財務三表との関係 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 財務三表：3つの財務諸表の役割</span>
+    <div class="three-stmt">
+      <div class="stmt-cell sc-bs">
+        <h4>📊 貸借対照表（B/S）</h4>
+        <p>ある特定の日の資産・負債・純資産の残高。「今日の体重計」。</p>
+      </div>
+      <div class="stmt-cell sc-pl">
+        <h4>📈 損益計算書（P/L）</h4>
+        <p>一定期間の売上・費用・利益の増減。「1年間の通知表」。</p>
+      </div>
+      <div class="stmt-cell sc-cf">
+        <h4>💰 CF計算書</h4>
+        <p>現金の増減の流れ。「財布の出し入れ記録」。実際の現金動向がわかる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「貸借対照表は期間の損益を示す」は誤り</div>
+      <div class="tb">損益（もうけ）を示すのは損益計算書（P/L）。B/Sは<strong>ある時点の残高</strong>（スナップショット）を示す。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">左側が「資産」で右側が「負債＋純資産」</div>
+      <div class="tb">逆に書かれた選択肢が出ることがある。「左：資産 / 右：負債・純資産」を体に叩き込む。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「純資産＝利益」ではない</div>
+      <div class="tb">純資産は「資本金＋利益剰余金」など。累積の利益を含むが、その期の利益だけではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「財産・借金のバランス」「ある時点の」→ B/S。「売上・費用・利益」→ P/L。「現金の動き」→ CF計算書。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">B/Sは「今日の体重計」</span>＝ある日の財産の重さを量る<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">P/Lは「1年間の通知表」＝期間の成績（損益）</span><br><br>
+      左に<span class="hl">「資産」</span>、右に<span class="hl">「借金＋元手」</span>。<br>
+      <span class="hl">左右の金額は必ず同じ</span>＝これが<strong>Balance（バランス）</strong>Sheet！
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-balance-sheet</div>
+
+</div>
+</body>
+</html>

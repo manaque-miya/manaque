@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>レイトレーシングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="レイトレーシングを光の反射・屈折・影のシミュレーションで解説。ラスタライズとの違い、CG・ゲーム・映画での活用、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-ray-tracing">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#4a148c,#6a1b9a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(74,20,140,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ce93d8 56%,#ce93d8 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#e1bee7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1565c0;--cbg:#e3f2fd;}
+.p-purple{--c:#6a1b9a;--cbg:#f3e5f5;}
+.p-green{--c:#2e7d32;--cbg:#e8f5e9;}
+.p-red{--c:#c62828;--cbg:#ffebee;}
+.p-orange{--c:#e65100;--cbg:#fff3e0;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6a1b9a;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.cmp-card{border-radius:12px;padding:12px;}
+.cmp-card h4{font-size:14px;font-weight:900;margin-bottom:6px;}
+.cmp-card p{font-size:12px;line-height:1.75;font-weight:600;}
+.cmp-rt{background:#f3e5f5;}.cmp-rt h4{color:#6a1b9a;}
+.cmp-ra{background:#e3f2fd;}.cmp-ra h4{color:#1565c0;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#ffebee;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#b71c1c;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a2424;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🎨 ITパスポート ｜ テクノロジ系 ／ マルチメディア</span>
+    <h1><b>レイトレーシング</b>とは？</h1>
+    <p>光の動きを物理的に追いかけてリアルな映像を作るCG技法。反射・屈折・影がリアルになる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#4a148c" opacity=".12"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#e1bee7"/>
+        <rect x="14" y="37" width="44" height="28" rx="8" fill="#6a1b9a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 光線アイコン -->
+        <line x1="56" y1="38" x2="44" y2="52" stroke="#ffeb3b" stroke-width="2"/>
+        <line x1="60" y1="42" x2="50" y2="52" stroke="#ffeb3b" stroke-width="1.5" opacity=".6"/>
+      </svg>
+      <div class="scene-txt">
+        映画を観ていたら、水面に映った空と、ガラス越しに見える建物の歪みが驚くほどリアルだった。「これ、どうやって作ったんだろう」と思ったとき…
+        <div class="scene-q">…光の道筋を1本1本コンピュータで計算する「レイトレーシング」の出番。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-purple">
+    <span class="phead">💡 レイトレーシングの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 195" role="img" aria-label="レイトレーシングの仕組み：カメラから光線を逆向きに追跡し、オブジェクトとの交差点で反射・屈折・影を計算">
+      <rect width="340" height="195" fill="#1a0030" rx="12"/>
+      <!-- 光源 -->
+      <circle cx="280" cy="25" r="18" fill="#fff9c4" opacity=".9"/>
+      <circle cx="280" cy="25" r="12" fill="#ffee58"/>
+      <text x="280" y="29" text-anchor="middle" font-size="9" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">光源</text>
+      <!-- 光源からの光線 -->
+      <line x1="270" y1="38" x2="160" y2="110" stroke="#ffee58" stroke-width="1.5" opacity=".6" stroke-dasharray="4 3"/>
+      <!-- カメラ -->
+      <rect x="10" y="75" width="40" height="30" rx="6" fill="#7c4dff"/>
+      <text x="30" y="91" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">カメラ</text>
+      <text x="30" y="101" text-anchor="middle" font-size="7.5" font-weight="700" fill="#ce93d8" font-family="M PLUS Rounded 1c">視点</text>
+      <!-- 画面（ピクセル） -->
+      <rect x="60" y="60" width="20" height="60" rx="3" fill="#311b92" stroke="#7c4dff" stroke-width="1.5"/>
+      <text x="70" y="95" text-anchor="middle" font-size="7" font-weight="900" fill="#ce93d8" font-family="M PLUS Rounded 1c" writing-mode="tb">画面</text>
+      <!-- 光線トレース（カメラ→オブジェクト） -->
+      <line x1="50" y1="88" x2="155" y2="108" stroke="#e040fb" stroke-width="2"/>
+      <text x="105" y="98" text-anchor="middle" font-size="8" font-weight="800" fill="#e040fb" font-family="M PLUS Rounded 1c">光線</text>
+      <!-- オブジェクト（球体） -->
+      <circle cx="165" cy="112" r="28" fill="#0288d1" opacity=".85"/>
+      <circle cx="155" cy="102" r="8" fill="#81d4fa" opacity=".6"/>
+      <text x="165" y="116" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">物体</text>
+      <!-- 反射光線 -->
+      <line x1="185" y1="95" x2="255" y2="55" stroke="#80cbc4" stroke-width="2" stroke-dasharray="4 2"/>
+      <text x="228" y="68" text-anchor="middle" font-size="8" font-weight="800" fill="#80cbc4" font-family="M PLUS Rounded 1c">反射光</text>
+      <!-- 屈折光線 -->
+      <line x1="175" y1="137" x2="230" y2="175" stroke="#ffcc02" stroke-width="2" stroke-dasharray="4 2"/>
+      <text x="213" y="168" text-anchor="middle" font-size="8" font-weight="800" fill="#ffcc02" font-family="M PLUS Rounded 1c">屈折光</text>
+      <!-- 影 -->
+      <ellipse cx="165" cy="175" rx="32" ry="8" fill="#000" opacity=".4"/>
+      <text x="165" y="180" text-anchor="middle" font-size="8" font-weight="700" fill="#90a4ae" font-family="M PLUS Rounded 1c">影</text>
+      <!-- 説明テキスト -->
+      <text x="10" y="15" font-size="9.5" font-weight="800" fill="#ce93d8" font-family="M PLUS Rounded 1c">カメラから逆向きに光線を追跡 → 反射・屈折・影を1本ずつ計算</text>
+    </svg>
+    <p style="font-size:12.5px;line-height:1.85;color:#3c4456;margin-top:10px;">
+      カメラ（視点）から各ピクセルに向けて「光線（レイ）」を飛ばし、物体に当たった際の<strong>反射・屈折・影</strong>を物理的に計算して色を決める。リアルだが<strong>計算量が非常に多い</strong>のがデメリット。
+    </p>
+  </div>
+
+  <!-- レイトレーシング vs ラスタライズ -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ レイトレーシング vs ラスタライズ</span>
+    <div class="compare-grid">
+      <div class="cmp-card cmp-rt">
+        <h4>レイトレーシング</h4>
+        <p>光の物理シミュレーション。反射・屈折・影がリアル。計算量が多く処理が重い。<br>映画CG・高品質な静止画・最新ゲームのグラフィック設定に使用。</p>
+      </div>
+      <div class="cmp-card cmp-ra">
+        <h4>ラスタライズ</h4>
+        <p>3Dポリゴンを2D画面に投影する従来の方法。処理が速くリアルタイム向き。<br>ゲームの通常描画・ブラウザグラフィックスに広く使用。</p>
+      </div>
+    </div>
+    <p style="font-size:12px;line-height:1.8;color:#48506a;margin-top:10px;background:#e8f5e9;border-radius:8px;padding:10px;">
+      <strong>近年のGPU</strong>（RTX等）はレイトレーシングを高速処理する専用ハードウェアを搭載。ゲームでもリアルタイムレイトレーシングが可能になってきた。
+    </p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「カメラから」光線を飛ばす（光源からではない）</div>
+      <div class="tb">現実の光は光源→物体→目の順だが、計算効率のためレイトレーシングは<strong>カメラ（目）から逆向き</strong>に光線を追跡する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">レイトレーシング＝リアルタイムではない（従来）</div>
+      <div class="tb">映画CGでは昔から使われていたが、重いのでゲームのリアルタイム描画には向かなかった。近年GPUが進化して普及し始めた。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ポリゴン・テクスチャとは別の概念</div>
+      <div class="tb">ポリゴンは物体の形状表現、テクスチャは表面の見た目。レイトレーシングは光の計算方法。組み合わせて使う別概念。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「レイ（光線）をトレース（追跡）する」そのまんま！</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Ray＝光線 ／ Trace＝追跡 ／ 目から逆向きに光の道を追う</span><br><br>
+      <span class="hl">「刑事が犯人（光）の足跡を逆に辿る」</span>＝レイトレーシング<br>
+      <span style="font-size:12px;font-weight:800;color:#7a5800;">リアルな反射・屈折・影が出るが、処理が重い！</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

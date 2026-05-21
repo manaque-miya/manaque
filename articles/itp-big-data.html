@@ -1,106 +1,191 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ビッグデータとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ビッグデータの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-big-data.html">
-<meta property="og:title" content="ビッグデータとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ビッグデータの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-big-data.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ビッグデータとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ビッグデータを3V（Volume・Variety・Velocity）でわかりやすく解説。データウェアハウス・データマイニング・AIとの関係、ITパスポート試験のひっかけまで。">
+<link rel="canonical" href="https://example.com/itp-big-data">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6b2fb8,#3a1470);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(58,20,112,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d4b8f7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#6b2fb8;--cbg:#ede0fb;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6b2fb8;}
+
+.v3grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;}
+.v3cell{border-radius:14px;padding:12px 10px;text-align:center;}
+.v3cell .vicon{font-size:20px;margin-bottom:6px;}
+.v3cell h4{font-size:13px;font-weight:900;margin-bottom:4px;}
+.v3cell p{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+.cv1{background:#ede0fb;}.cv1 h4{color:#6b2fb8;}
+.cv2{background:#e7eefc;}.cv2 h4{color:#2e6de5;}
+.cv3{background:#e2f3e5;}.cv3 h4{color:#2e8b4f;}
+@media(max-width:480px){.v3grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6b2fb8;--fbg:#f3eafd;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">ビッグデータとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ビッグデータ</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>マーケ担当の私。SNS投稿・購買履歴・位置情報まで全部集めて「個人にピッタリの広告を出す」プロジェクトに参加。テキスト・画像・動画ぜんぶ混在で、しかもリアルタイム…これって普通のDBじゃ無理だよね？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>ビッグデータ</b>とは？</h1>
+    <p>従来のデータベースでは扱えない、膨大で多様・高速なデータの集まり。3つのV（量・種類・速度）がキーワード。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ビッグデータの活用</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>データウェアハウスの活用</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ DWHは整理済み構造化データの保管庫。「非構造データを大量リアルタイム」はビッグデータ</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-txt">
+      スマホを使うたびに、あなたの位置情報・検索履歴・購買履歴・SNSの投稿が記録される。世界中の何十億人が同じことをしている。Excelで処理しようとしたら……一瞬でフリーズ。
+      <div class="scene-q">…この「普通のDBでは無理なデータの洪水」こそビッグデータ！</div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：ビッグデータの活用</strong></p>
-</div>
+  <!-- 図解SVG：3V -->
+  <div class="panel p-blue">
+    <span class="phead">📊 ビッグデータの3V</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="ビッグデータの3V：Volume・Variety・Velocityの図解">
+      <!-- 中央バッジ -->
+      <ellipse cx="170" cy="90" rx="52" ry="38" fill="#6b2fb8"/>
+      <text x="170" y="85" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">Big</text>
+      <text x="170" y="102" text-anchor="middle" font-size="13" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">Data</text>
 
-<div class="card">
-<h2>📘 ビッグデータとは何か</h2>
-<span class="kw">大量・多様・高速の3V</span>
-<p>Volume（大量）・Variety（多様性）・Velocity（高速）の3Vで定義される大規模データ。SNS・センサー・ログなど非構造データも含む。</p>
-</div>
+      <!-- Volume -->
+      <ellipse cx="55" cy="58" rx="46" ry="34" fill="#ede0fb" stroke="#6b2fb8" stroke-width="2"/>
+      <text x="55" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#6b2fb8" font-family="M PLUS Rounded 1c">Volume</text>
+      <text x="55" y="67" text-anchor="middle" font-size="10" font-weight="700" fill="#7a4acc" font-family="M PLUS Rounded 1c">量（大量）</text>
+      <line x1="100" y1="68" x2="120" y2="78" stroke="#6b2fb8" stroke-width="1.5" stroke-dasharray="4 3"/>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>ビッグデータは「構造化・非構造化データの混在」「リアルタイム処理」が特徴。従来のRDBMSでは処理しきれない規模・種類のデータを扱う。</p>
-</div>
+      <!-- Variety -->
+      <ellipse cx="55" cy="132" rx="46" ry="34" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="55" y="126" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">Variety</text>
+      <text x="55" y="141" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">種類（多様）</text>
+      <line x1="100" y1="122" x2="120" y2="104" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="4 3"/>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>データウェアハウスは分析用に整理・統合された構造化データの保管庫。ビッグデータはより広い概念で非構造データやリアルタイムデータも含む。</p>
-</div>
+      <!-- Velocity -->
+      <ellipse cx="288" cy="90" rx="46" ry="34" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="288" y="84" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Velocity</text>
+      <text x="288" y="99" text-anchor="middle" font-size="10" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">速度（高速）</text>
+      <line x1="242" y1="90" x2="222" y2="90" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+    <div class="v3grid">
+      <div class="v3cell cv1">
+        <div class="vicon">🗄️</div>
+        <h4>Volume（量）</h4>
+        <p>ペタバイト・エクサバイト級の巨大なデータ量</p>
+      </div>
+      <div class="v3cell cv2">
+        <div class="vicon">🎭</div>
+        <h4>Variety（種類）</h4>
+        <p>テキスト・画像・音声・センサーなど多様な形式</p>
+      </div>
+      <div class="v3cell cv3">
+        <div class="vicon">⚡</div>
+        <h4>Velocity（速度）</h4>
+        <p>リアルタイムに生成・処理が求められる高速性</p>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>ビッグデータ＝**3V（Volume・Variety・Velocity）**＝**量・種類・速度のV3トリオ**。普通のDBが死ぬ規模。</p></div>
-</div>
+  <!-- フロー/詳細：活用の流れ -->
+  <div class="panel p-green">
+    <span class="phead">🔄 ビッグデータの活用フロー</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① データ収集</div>
+        <div class="fb">IoTセンサー・SNS・ログ・購買履歴などから膨大なデータを集める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② データ蓄積（データウェアハウス・データレイク）</div>
+        <div class="fb">大量データを整理して格納。RDBでは難しいため分散ストレージを使う。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ データ分析（データマイニング・機械学習）</div>
+        <div class="fb">パターン・相関を掘り出し、傾向や予測モデルを作る。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 意思決定・サービス改善</div>
+        <div class="fb">分析結果をもとにレコメンド・需要予測・異常検知などに活用する。</div>
+      </div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>ビッグデータはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「量が多ければビッグデータ」は不正確</div>
+      <div class="tb">Volume だけでなく<strong>Variety（多様性）とVelocity（速度）</strong>もセット。「3V」が揃って初めてビッグデータの特徴。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">データウェアハウスとの混同</div>
+      <div class="tb">データウェアハウスは「分析用に整理されたDB」。ビッグデータは「量・種類・速度が従来を超えるデータ全般」の概念。上位の言葉。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">データマイニングとの混同</div>
+      <div class="tb">データマイニングはビッグデータを<strong>分析する手法</strong>の一つ。ビッグデータ自体ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「量・多様・高速」「従来DBでは扱えない」→ ビッグデータ。分析手法名が出たらビッグデータではなくその手法名。</div>
+    </div>
+  </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「べ（Volume）らぼうに多い・バ（Variety）ラバラ種類・バビ（Velocity）ューン速い」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">V・V・V の3つが揃ってビッグデータ！</span><br><br>
+      「データの<span class="hl">洪水</span>」＝量・種類・速度すべて桁違い。<br>
+      3V を覚えたら試験の選択肢はすぐ絞れる。
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

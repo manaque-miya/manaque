@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ライトバック方式とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ライトバック方式（Write Back）をわかりやすく解説。キャッシュメモリへの書き込み方式、ライトスルーとの違い、性能と一貫性のトレードオフ、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-write-back">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e6e9e,#0d3558);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,53,88,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b0d0f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6e9e;--cbg:#ddeef8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6e9e;}
+
+.compare-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+@media(max-width:400px){.compare-wrap{grid-template-columns:1fr;}}
+.cmp-card{border-radius:12px;padding:12px;}
+.cmp-card .cn{font-size:14px;font-weight:900;margin-bottom:6px;}
+.cmp-card .ct{font-size:11.5px;font-weight:600;line-height:1.75;color:#48506a;}
+.cmp-card .tag{display:inline-block;font-size:10px;font-weight:900;border-radius:6px;padding:2px 8px;margin-bottom:5px;}
+.cc-wb{background:#ddeef8;border:2px solid #2e6e9e;}.cc-wb .cn{color:#0d3558;}.cc-wb .tag{background:#2e6e9e;color:#fff;}
+.cc-wt{background:#fcefd9;border:2px solid #d9851f;}.cc-wt .cn{color:#a8650f;}.cc-wt .tag{background:#d9851f;color:#fff;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6e9e;--fbg:#eef5fb;}
+.f2{--fc:#4256b8;--fbg:#eef0fb;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・コンピュータ構成</span>
+    <h1><b>ライトバック方式</b>とは？</h1>
+    <p>キャッシュメモリだけに先に書き込み、後でまとめてメインメモリに反映する<strong>高速な書き込み方式</strong>。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#0d3558" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#a8ccee"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#2e6e9e"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="29" y="32" width="14" height="8" fill="#f4c89a"/>
+        <path d="M29 40 l7 5 l7 -5 v5 h-14z" fill="#fff"/>
+        <rect x="26" y="62" width="20" height="12" rx="2" fill="#0d3558"/>
+        <text x="36" y="73" text-anchor="middle" font-size="6.5" font-weight="900" fill="#b0d0f0" font-family="sans-serif">Cache ⚡</text>
+      </svg>
+      <div class="scene-txt">
+        表計算ソフトでセルに数値を次々と入力している。Enterを押すたびに毎回ハードディスクへ書き込んでいたら、動作がカクカクして使い物にならない……
+        <div class="scene-q">…どうすれば高速に書き込みできるの？</div>
+      </div>
+    </div>
+    <p style="margin-top:10px;">CPUとメインメモリの間にある<strong>キャッシュメモリ</strong>（超高速な一時記憶）を活用する。書き込み方式が2通りあり、どちらを選ぶかで速度と安全性のバランスが変わる。</p>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔄 ライトバック vs ライトスルーの図解</span>
+    <svg width="100%" viewBox="0 0 320 210" role="img" aria-label="ライトバックとライトスルーの書き込みフローの比較図">
+      <!-- 左：ライトバック -->
+      <text x="80" y="18" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6e9e" font-family="sans-serif">ライトバック</text>
+      <!-- CPU -->
+      <rect x="20" y="26" width="46" height="28" rx="7" fill="#ddeef8" stroke="#2e6e9e" stroke-width="2"/>
+      <text x="43" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#0d3558" font-family="sans-serif">CPU</text>
+      <!-- キャッシュ -->
+      <rect x="80" y="26" width="56" height="28" rx="7" fill="#2e6e9e" stroke="#0d3558" stroke-width="2"/>
+      <text x="108" y="38" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="sans-serif">キャッシュ</text>
+      <text x="108" y="49" text-anchor="middle" font-size="8" font-weight="800" fill="#b0d0f0" font-family="sans-serif">← すぐ書く</text>
+      <!-- 矢印：CPU→キャッシュ（太） -->
+      <path d="M66 40 L80 40" stroke="#2e6e9e" stroke-width="3" marker-end="url(#arr4)"/>
+      <!-- メインメモリ -->
+      <rect x="58" y="90" width="56" height="28" rx="7" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="86" y="102" text-anchor="middle" font-size="9" font-weight="900" fill="#2d3a80" font-family="sans-serif">メイン</text>
+      <text x="86" y="113" text-anchor="middle" font-size="9" font-weight="900" fill="#2d3a80" font-family="sans-serif">メモリ</text>
+      <!-- 矢印：キャッシュ→メモリ（あとで） -->
+      <path d="M108 54 L86 90" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr5)"/>
+      <rect x="98" y="65" width="50" height="18" rx="6" fill="#4256b8"/>
+      <text x="123" y="77" text-anchor="middle" font-size="8.5" font-weight="900" fill="#fff" font-family="sans-serif">後でまとめて</text>
+      <!-- 高速バッジ -->
+      <rect x="30" y="130" width="100" height="20" rx="7" fill="#2e6e9e"/>
+      <text x="80" y="143" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="sans-serif">⚡ 高速・省電力</text>
+
+      <!-- 仕切り線 -->
+      <line x1="160" y1="15" x2="160" y2="165" stroke="#e0e4ee" stroke-width="2" stroke-dasharray="5 4"/>
+
+      <!-- 右：ライトスルー -->
+      <text x="240" y="18" text-anchor="middle" font-size="12" font-weight="900" fill="#d9851f" font-family="sans-serif">ライトスルー</text>
+      <!-- CPU -->
+      <rect x="178" y="26" width="46" height="28" rx="7" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="201" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#a8650f" font-family="sans-serif">CPU</text>
+      <!-- キャッシュ -->
+      <rect x="238" y="26" width="56" height="28" rx="7" fill="#d9851f" stroke="#a8650f" stroke-width="2"/>
+      <text x="266" y="38" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="sans-serif">キャッシュ</text>
+      <text x="266" y="49" text-anchor="middle" font-size="8" font-weight="800" fill="#ffe4b8" font-family="sans-serif">← 同時書き</text>
+      <!-- 矢印：CPU→キャッシュ -->
+      <path d="M224 40 L238 40" stroke="#d9851f" stroke-width="3" marker-end="url(#arr6)"/>
+      <!-- メインメモリ -->
+      <rect x="216" y="90" width="56" height="28" rx="7" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="244" y="102" text-anchor="middle" font-size="9" font-weight="900" fill="#216b3b" font-family="sans-serif">メイン</text>
+      <text x="244" y="113" text-anchor="middle" font-size="9" font-weight="900" fill="#216b3b" font-family="sans-serif">メモリ</text>
+      <!-- 矢印：キャッシュ→メモリ（同時） -->
+      <path d="M266 54 L244 90" stroke="#2e8b4f" stroke-width="2.5" marker-end="url(#arr7)"/>
+      <rect x="254" y="65" width="50" height="18" rx="6" fill="#2e8b4f"/>
+      <text x="279" y="77" text-anchor="middle" font-size="8.5" font-weight="900" fill="#fff" font-family="sans-serif">同時に書く</text>
+      <!-- 安全バッジ -->
+      <rect x="188" y="130" width="108" height="20" rx="7" fill="#d9851f"/>
+      <text x="242" y="143" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="sans-serif">🔒 低速だが安全</text>
+
+      <!-- 矢印マーカー -->
+      <defs>
+        <marker id="arr4" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L0,5 L7,2.5 z" fill="#2e6e9e"/>
+        </marker>
+        <marker id="arr5" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L0,5 L7,2.5 z" fill="#4256b8"/>
+        </marker>
+        <marker id="arr6" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L0,5 L7,2.5 z" fill="#d9851f"/>
+        </marker>
+        <marker id="arr7" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L0,5 L7,2.5 z" fill="#2e8b4f"/>
+        </marker>
+      </defs>
+    </svg>
+
+    <!-- カード比較 -->
+    <div class="compare-wrap">
+      <div class="cmp-card cc-wb">
+        <div class="cn">ライトバック</div>
+        <span class="tag">Write Back</span>
+        <div class="ct">キャッシュだけに書く → 後でまとめてメモリに反映。<br><strong>速いがデータ不整合リスクあり</strong>。</div>
+      </div>
+      <div class="cmp-card cc-wt">
+        <div class="cn">ライトスルー</div>
+        <span class="tag">Write Through</span>
+        <div class="ct">キャッシュとメモリに同時に書く。<br><strong>遅いがデータは常に一致</strong>。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：ライトバックの詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 ライトバックが高速な理由</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① CPUがデータをキャッシュに書き込む（超高速）</div><div class="fb">キャッシュはSRAMで構成され、メインメモリ（DRAM）より数十〜数百倍速い。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② キャッシュラインに「ダーティビット」を立てる</div><div class="fb">「このデータはまだメモリに書き返していない（汚れた）」というフラグを立てる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ キャッシュが追い出される時にまとめてメモリへ</div><div class="fb">ダーティビットが立ったブロックが追い出されるタイミングで、メインメモリに書き戻す。</div></div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;color:#48506a;font-weight:700;">デメリット：停電・クラッシュ時にキャッシュのデータが失われると<strong>データ不整合</strong>が起きる。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ライトバックは安全」は誤り</div>
+      <div class="tb">ライトバックは高速だが、<strong>キャッシュとメモリのデータが一時的に不一致</strong>になる。安全性（整合性）が高いのはライトスルー。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ライトスルーは高速」は誤り</div>
+      <div class="tb">ライトスルーはキャッシュとメモリに同時書き込みするため、<strong>書き込みのたびに低速なメモリアクセスが発生</strong>する。読み込みは速いが書き込みは遅い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">どちらが"読み込み"に強い？</div>
+      <div class="tb">キャッシュの恩恵（高速化）は<strong>読み込み（リード）では同じ</strong>。ライトバックとライトスルーの差は<strong>書き込み（ライト）</strong>の挙動の違い。読み込み速度で選択肢を比較するのは誤り。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      ライトバック＝<span class="hl">「ライト（書く）してバック（後で返す）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">先にキャッシュに書いて、後でメモリに「バック（返す）」→ 速いけど戻し忘れたらアウト</span><br><br>
+      ライトスルー＝<span class="hl">「ライトして一気にスルー（通り抜け）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">キャッシュを通り抜けてメモリまで一気に書く→ 遅いけど確実</span><br><br>
+      <span style="font-size:12px;">バック＝速い・危険 ／ スルー＝遅い・安全　で対比させて覚える</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-write-back ／ HTML+SVG</div>
+
+</div>
+</body>
+</html>

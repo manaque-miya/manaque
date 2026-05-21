@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>情報セキュリティポリシーとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="情報セキュリティポリシーを基本方針・対策基準・実施手順の3階層で解説。ISMSとの違い・試験のひっかけポイント・無理やりゴロで完全攻略。">
+<link rel="canonical" href="https://example.com/itp-isms-policy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#cf4f86,#7a1a4a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,26,74,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ffd5e8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cf4f86;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#cf4f86;--fbg:#fbe3ee;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔐 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>情報セキュリティポリシー</b>とは？</h1>
+    <p>組織の情報セキュリティを守るための<strong>ルール・方針の文書</strong>。3階層（基本方針・対策基準・実施手順）で構成される。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-pink">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="20" rx="5" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="8" fill="#cf4f86"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 書類アイコン -->
+        <rect x="43" y="55" width="16" height="20" rx="2" fill="#fff" stroke="#cf4f86" stroke-width="1.5"/>
+        <line x1="46" y1="61" x2="56" y2="61" stroke="#cf4f86" stroke-width="1.2"/>
+        <line x1="46" y1="66" x2="56" y2="66" stroke="#cf4f86" stroke-width="1.2"/>
+        <line x1="46" y1="71" x2="52" y2="71" stroke="#cf4f86" stroke-width="1.2"/>
+      </svg>
+      <div class="scene-txt">
+        新入社員のあなたに「情報セキュリティポリシーを読んでおいて」と渡された冊子。「パスワードは◯文字以上」「社外秘データはUSBに入れるな」など書いてある。
+        <br>上位の「基本方針」と下位の「実施手順」って何が違うんだろう…
+        <div class="scene-q">…3階層になっているのは、読む人・更新頻度が違うから！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：3階層ピラミッド -->
+  <div class="panel p-indigo">
+    <span class="phead">🏗️ 情報セキュリティポリシーの3階層</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="情報セキュリティポリシーの3階層：基本方針・対策基準・実施手順のピラミッド">
+      <!-- 第1層：基本方針 -->
+      <polygon points="170,18 80,90 260,90" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2.5"/>
+      <text x="170" y="55" text-anchor="middle" font-size="13" font-weight="900" fill="#7a1a4a" font-family="M PLUS Rounded 1c">基本方針</text>
+      <text x="170" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#7a1a4a" font-family="M PLUS Rounded 1c">（Policy）</text>
+
+      <!-- 第2層：対策基準 -->
+      <rect x="60" y="96" width="220" height="60" rx="0" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="170" y="122" text-anchor="middle" font-size="13" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">対策基準</text>
+      <text x="170" y="139" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">（Standard / スタンダード）</text>
+
+      <!-- 第3層：実施手順 -->
+      <rect x="40" y="162" width="260" height="58" rx="0" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="170" y="188" text-anchor="middle" font-size="13" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">実施手順</text>
+      <text x="170" y="205" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">（Procedure / プロシジャ）</text>
+
+      <!-- 右側ラベル -->
+      <text x="286" y="58" font-size="9.5" font-weight="700" fill="#7a1a4a" font-family="M PLUS Rounded 1c">経営層が決定</text>
+      <text x="286" y="130" font-size="9.5" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">管理者が作成</text>
+      <text x="286" y="196" font-size="9.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">担当者が実施</text>
+    </svg>
+
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 基本方針（Policy）</div><div class="fb">「なぜセキュリティを守るか」の経営的宣言。トップダウンで経営層が決める。変更頻度は低い。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 対策基準（Standard）</div><div class="fb">「何を守るか・守り方のルール」。パスワード規則・アクセス権設定など具体的な基準を記す。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 実施手順（Procedure）</div><div class="fb">「どう実施するか」の操作手順書。担当者が日常業務で参照。最も細かく・変更頻度も高い。</div></div>
+    </div>
+  </div>
+
+  <!-- フロー：ポリシーを使う場面 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ ポリシーが活きる場面</span>
+    <p>情報セキュリティポリシーは「作って終わり」ではなく、全従業員が日常業務で参照し、定期的に見直す生きた文書。</p>
+    <p style="margin-top:10px;"><strong>見直しのタイミング例：</strong>セキュリティインシデント発生後 ／ 法令改正時 ／ システム更新時 ／ 定期レビュー（年1回など）。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「基本方針＝一番細かいルール」は誤り</div>
+      <div class="tb">基本方針は<strong>最も抽象的・上位</strong>の方針文書。細かい手順は「実施手順（Procedure）」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">情報セキュリティポリシー≠ISMS</div>
+      <div class="tb">ポリシーはISMSを構成する<strong>文書の一部</strong>。ISMSはポリシーを含む仕組み全体（PDCA含む）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「作ったら変更しない」は誤り</div>
+      <div class="tb">ポリシーは環境変化・インシデント発生に合わせて<strong>定期的に見直す</strong>。作って終わりではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>なぜ守るか</strong>」＝基本方針 ／「<strong>何のルール</strong>」＝対策基準 ／「<strong>どうやる</strong>」＝実施手順 で分類する。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「方針・基準・手順」＝上司・ルール・作業員！</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">上司（基本方針）が「守れ！」→ ルール（対策基準）で「こう守る」→ 作業員（実施手順）が「実行」</span><br><br>
+    <span class="hl">セキュリティポリシー＝「3段ケーキ」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">一番上の薄い層（方針）→ 中間（基準）→ 一番下の厚い層（手順）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

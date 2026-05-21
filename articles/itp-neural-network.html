@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ニューラルネットワークとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ニューラルネットワークを脳のニューロン構造から図解。入力層・隠れ層・出力層の役割、ディープラーニングとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-neural-network">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5b3fb5,#2e1a7a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(46,26,122,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#cfc0f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#5b3fb5;--cbg:#ede8f9;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5b3fb5;}
+
+.layer-labels{display:flex;justify-content:space-around;margin-top:8px;}
+.layer-label{text-align:center;font-size:11.5px;font-weight:900;padding:6px 10px;border-radius:8px;}
+.ll-in{background:#e7eefc;color:#2e6de5;}
+.ll-hid{background:#ede8f9;color:#5b3fb5;}
+.ll-out{background:#e2f3e5;color:#2e8b4f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#5b3fb5;--fbg:#f0ecfc;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（AI）</span>
+    <h1><b>ニューラルネットワーク</b>とは？</h1>
+    <p>脳のニューロン（神経細胞）の仕組みをコンピュータで模倣したAIの基本構造。層を積み重ねれば「ディープラーニング」になる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-txt">
+      スマホで「ネコの写真」をAIが判定する場面。カメラに映った画像が、何千もの小さな計算ユニット（ニューロン）を通り抜けて、最後に「ネコ：95%」と答えが出る。<br><br>
+      人間の脳も同じ。目→神経→脳。コンピュータも同じ仕組みを真似してる。
+      <div class="scene-q">…この「ニューロンの連鎖構造」がニューラルネットワーク。</div>
+    </div>
+  </div>
+
+  <!-- SVG図解：ニューラルネットワークの層構造 -->
+  <div class="panel p-blue">
+    <span class="phead">🧠 ニューラルネットワークの構造</span>
+    <svg width="100%" viewBox="0 0 560 280" role="img" aria-label="入力層・隠れ層・出力層の3層構造と、ニューロン間の接続を表したニューラルネットワーク図">
+      <!-- 背景ライン（接続） -->
+      <!-- 入力→隠れ -->
+      <line x1="90" y1="70" x2="230" y2="70" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="90" y1="70" x2="230" y2="140" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="90" y1="70" x2="230" y2="210" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="90" y1="140" x2="230" y2="70" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="90" y1="140" x2="230" y2="140" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="90" y1="140" x2="230" y2="210" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="90" y1="210" x2="230" y2="70" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="90" y1="210" x2="230" y2="140" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="90" y1="210" x2="230" y2="210" stroke="#c2c8d8" stroke-width="1.2"/>
+      <!-- 隠れ→出力 -->
+      <line x1="270" y1="70" x2="430" y2="105" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="270" y1="70" x2="430" y2="175" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="270" y1="140" x2="430" y2="105" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="270" y1="140" x2="430" y2="175" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="270" y1="210" x2="430" y2="105" stroke="#c2c8d8" stroke-width="1.2"/>
+      <line x1="270" y1="210" x2="430" y2="175" stroke="#c2c8d8" stroke-width="1.2"/>
+
+      <!-- 入力層ノード -->
+      <circle cx="90" cy="70" r="26" fill="#2e6de5" stroke="#fff" stroke-width="2"/>
+      <text x="90" y="66" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">入力</text>
+      <text x="90" y="78" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">データ1</text>
+      <circle cx="90" cy="140" r="26" fill="#2e6de5" stroke="#fff" stroke-width="2"/>
+      <text x="90" y="136" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">入力</text>
+      <text x="90" y="148" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">データ2</text>
+      <circle cx="90" cy="210" r="26" fill="#2e6de5" stroke="#fff" stroke-width="2"/>
+      <text x="90" y="206" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">入力</text>
+      <text x="90" y="218" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">データ3</text>
+
+      <!-- 隠れ層ノード -->
+      <circle cx="250" cy="70" r="26" fill="#5b3fb5" stroke="#fff" stroke-width="2"/>
+      <text x="250" y="74" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">計算</text>
+      <circle cx="250" cy="140" r="26" fill="#5b3fb5" stroke="#fff" stroke-width="2"/>
+      <text x="250" y="144" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">計算</text>
+      <circle cx="250" cy="210" r="26" fill="#5b3fb5" stroke="#fff" stroke-width="2"/>
+      <text x="250" y="214" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">計算</text>
+
+      <!-- 出力層ノード -->
+      <circle cx="450" cy="105" r="30" fill="#2e8b4f" stroke="#fff" stroke-width="2"/>
+      <text x="450" y="101" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ネコ</text>
+      <text x="450" y="114" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">95%</text>
+      <circle cx="450" cy="175" r="30" fill="#8a91a0" stroke="#fff" stroke-width="2"/>
+      <text x="450" y="171" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">イヌ</text>
+      <text x="450" y="183" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">5%</text>
+
+      <!-- ラベル -->
+      <text x="90" y="256" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">入力層</text>
+      <text x="250" y="256" text-anchor="middle" font-size="12" font-weight="900" fill="#5b3fb5" font-family="M PLUS Rounded 1c">隠れ層</text>
+      <text x="450" y="256" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">出力層</text>
+
+      <!-- 矢印（左から右へのフロー） -->
+      <text x="168" y="145" text-anchor="middle" font-size="18" fill="#9aa3b2" font-family="M PLUS Rounded 1c">▶</text>
+      <text x="358" y="145" text-anchor="middle" font-size="18" fill="#9aa3b2" font-family="M PLUS Rounded 1c">▶</text>
+    </svg>
+    <div class="layer-labels">
+      <div class="layer-label ll-in">データを受け取る</div>
+      <div class="layer-label ll-hid">特徴を抽出・変換</div>
+      <div class="layer-label ll-out">答えを出す</div>
+    </div>
+  </div>
+
+  <!-- フロー：ニューラルネットとディープラーニングの関係 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ ニューラルネットワーク → ディープラーニングへ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① ニューラルネットワーク（基本形）</div><div class="fb">入力層・隠れ層（1〜2層）・出力層の3層構造。人間の脳のニューロンを模倣した計算モデル。</div></div>
+      <div class="farrow">▼ 隠れ層を「多層」にすると…</div>
+      <div class="fstep f2"><div class="fh">② ディープラーニング（深層学習）</div><div class="fb">隠れ層を何十層も重ねる＝「深い（deep）」ネットワーク。複雑なパターン（画像・音声・言語）を高精度で認識できる。</div></div>
+      <div class="farrow">▼ 大量データ＋高性能GPUで</div>
+      <div class="fstep f3"><div class="fh">③ 生成AI・大規模言語モデル（LLM）</div><div class="fb">ディープラーニングをさらに発展させた技術。ChatGPT等はトランスフォーマー型のニューラルネットワーク。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ニューラルネットワーク＝ディープラーニング」は誤り</div>
+      <div class="tb">ニューラルネットワークは上位概念。ディープラーニングは<strong>隠れ層を多層にした特殊なニューラルネットワーク</strong>。ディープラーニングはニューラルネットワークの一種。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「脳そのもの」ではなく「脳を模倣した数学モデル」</div>
+      <div class="tb">ニューラルネットワークは生物の脳の<strong>動作原理にヒントを得た</strong>数学的な計算モデル。実際の脳細胞とは全く異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">機械学習との関係</div>
+      <div class="tb">ニューラルネットワーク⊂ディープラーニング⊂機械学習⊂AI、という包含関係。「機械学習の一手法がニューラルネットワーク」が正しい位置づけ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">ニューロン→ニューラル</span>：「ニュー」は脳の神経（neuron）から。脳の真似っこ計算機。<br><br>
+      3層の名前：<span class="hl">「入れて・こねて・出す」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">入力層（入れて）→ 隠れ層（こねて）→ 出力層（出す）</span><br><br>
+      <span class="hl">深くすると「ディープ」</span>：隠れ層を何層も重ねる＝深い（deep）＝ディープラーニング。
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-neural-network</div>
+
+</div>
+</body>
+</html>

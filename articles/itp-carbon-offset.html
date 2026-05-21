@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>カーボンオフセットとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="カーボンオフセットを削減できないCO2を別の場所で埋め合わせる仕組みとして解説。カーボンニュートラル・カーボンクレジットとの違い、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp-carbon-offset">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#27ae60,#145a32);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,90,50,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a9dfbf;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#27ae60;--cbg:#e2f3e5;}
+.p-teal{--c:#1a7a6e;--cbg:#e0f4f1;}
+.p-blue{--c:#1a6dba;--cbg:#e0edf8;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#27ae60;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#dd5a3a;--fbg:#fce8e4;}
+.f2{--fc:#27ae60;--fbg:#eef8f1;}
+.f3{--fc:#1a6dba;--fbg:#e8f2fb;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🌱 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>カーボンオフセット</b>とは？</h1>
+    <p>減らしきれないCO2を「別の場所での吸収・削減」で帳消しにする仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="4" fill="#145a32" opacity=".1"/>
+        <!-- 工場 -->
+        <rect x="6" y="52" width="28" height="28" rx="3" fill="#7b8594"/>
+        <rect x="10" y="42" width="8" height="14" rx="2" fill="#555e6a"/>
+        <rect x="22" y="46" width="8" height="10" rx="2" fill="#555e6a"/>
+        <!-- 煙 -->
+        <ellipse cx="14" cy="36" rx="6" ry="5" fill="#bdc3cc" opacity=".7"/>
+        <ellipse cx="20" cy="30" rx="5" ry="4" fill="#bdc3cc" opacity=".5"/>
+        <ellipse cx="26" cy="24" rx="4" ry="3" fill="#bdc3cc" opacity=".35"/>
+        <!-- 木（吸収） -->
+        <circle cx="54" cy="42" r="16" fill="#27ae60"/>
+        <rect x="50" y="56" width="8" height="18" rx="2" fill="#6d4c41"/>
+        <!-- 矢印：相殺 -->
+        <path d="M36 60 Q44 54 48 60" stroke="#27ae60" stroke-width="2.5" fill="none" stroke-dasharray="4 3" marker-end="url(#garr)"/>
+        <defs>
+          <marker id="garr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+            <polygon points="0 0, 7 3.5, 0 7" fill="#27ae60"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="scene-txt">
+        製造工場のあなたの会社。省エネを進めても、<strong>どうしてもゼロにできないCO2</strong>がある。<br>
+        そこで「森林保全プロジェクト」に出資し、その吸収量を自社の排出量と<strong>相殺（オフセット）</strong>した。
+        <div class="scene-q">…これがカーボンオフセット！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 SVG：仕組みの図 -->
+  <div class="panel p-teal">
+    <span class="phead">🌍 カーボンオフセットの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="カーボンオフセットの仕組み：排出側と吸収側が相殺されカーボンニュートラルへ">
+      <!-- 排出側 -->
+      <rect x="10" y="60" width="120" height="80" rx="14" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="70" y="88" text-anchor="middle" font-size="12" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">CO₂ 排出</text>
+      <text x="70" y="106" text-anchor="middle" font-size="10" font-weight="800" fill="#7a3c2a" font-family="M PLUS Rounded 1c">工場・輸送など</text>
+      <text x="70" y="122" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">削減しきれない分</text>
+      <!-- 「±0」バッジ中央 -->
+      <circle cx="170" cy="100" r="30" fill="#ffd23f"/>
+      <text x="170" y="94" text-anchor="middle" font-size="11" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">相殺</text>
+      <text x="170" y="112" text-anchor="middle" font-size="18" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">±0</text>
+      <!-- 吸収側 -->
+      <rect x="210" y="60" width="120" height="80" rx="14" fill="#e2f3e5" stroke="#27ae60" stroke-width="2"/>
+      <text x="270" y="88" text-anchor="middle" font-size="12" font-weight="900" fill="#27ae60" font-family="M PLUS Rounded 1c">CO₂ 吸収</text>
+      <text x="270" y="106" text-anchor="middle" font-size="10" font-weight="800" fill="#2e5a3a" font-family="M PLUS Rounded 1c">植林・再エネ投資</text>
+      <text x="270" y="122" text-anchor="middle" font-size="11" font-weight="900" fill="#27ae60" font-family="M PLUS Rounded 1c">別の場所で吸収</text>
+      <!-- 矢印 -->
+      <path d="M130 100 L140 100" stroke="#dd5a3a" stroke-width="2.5" marker-end="url(#rr)"/>
+      <path d="M200 100 L210 100" stroke="#27ae60" stroke-width="2.5" marker-start="url(#gg)"/>
+      <defs>
+        <marker id="rr" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><polygon points="0 0, 7 3.5, 0 7" fill="#dd5a3a"/></marker>
+        <marker id="gg" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="180"><polygon points="0 0, 7 3.5, 0 7" fill="#27ae60"/></marker>
+      </defs>
+      <!-- 下：カーボンニュートラルへ -->
+      <rect x="80" y="156" width="180" height="42" rx="12" fill="#145a32"/>
+      <text x="170" y="172" text-anchor="middle" font-size="11" font-weight="800" fill="#a9dfbf" font-family="M PLUS Rounded 1c">→ カーボンニュートラルへ</text>
+      <text x="170" y="188" text-anchor="middle" font-size="11.5" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">排出量 ＝ 吸収量（差引ゼロ）</text>
+      <!-- 上：クレジット -->
+      <rect x="80" y="14" width="180" height="36" rx="10" fill="#e0f4f1" stroke="#1a7a6e" stroke-width="1.5"/>
+      <text x="170" y="28" text-anchor="middle" font-size="10" font-weight="800" fill="#1a7a6e" font-family="M PLUS Rounded 1c">カーボンクレジット（排出権）を</text>
+      <text x="170" y="43" text-anchor="middle" font-size="10.5" font-weight="900" fill="#1a7a6e" font-family="M PLUS Rounded 1c">購入することでも実現できる</text>
+    </svg>
+  </div>
+
+  <!-- フロー：関連用語の整理 -->
+  <div class="panel p-blue">
+    <span class="phead">📋 関連用語を整理</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">カーボンオフセット</div><div class="fb">削減できないCO2を、別の場所での吸収・削減活動で埋め合わせること。あくまでも「補完」の手段。</div></div>
+      <div class="farrow">↕ 目標は</div>
+      <div class="fstep f2"><div class="fh">カーボンニュートラル</div><div class="fb">CO2の排出量と吸収量を差し引きゼロにすること。日本は2050年カーボンニュートラルを目標に掲げている。</div></div>
+      <div class="farrow">↕ 手段の一つ</div>
+      <div class="fstep f3"><div class="fh">カーボンクレジット（排出権取引）</div><div class="fb">CO2削減量を「クレジット」として取引する市場の仕組み。企業が排出権を購入してオフセットに使う。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">カーボンニュートラルと混同しやすい</div>
+      <div class="tb">ニュートラルは「結果の状態（差引ゼロ）」。オフセットは「そこに達するための手段（埋め合わせ）」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「排出しなくて良い」わけではない</div>
+      <div class="tb">オフセットは「減らしきれない分を補う」もの。排出そのものを減らす努力（省エネ・再エネ）が前提。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>削減できないCO2を別の吸収・削減で補う</strong>」→ カーボンオフセット。「差引ゼロの状態」→ カーボンニュートラル。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">カーボン（炭素）をオフ（帳消し）</span>セット（設定）！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">出した分を「よそで引く」＝差し引きゼロ作戦</span><br><br>
+    「借金（排出）を別口で返す（吸収）」<br>
+    <span class="hl">借金帳消し</span>＝オフセット！</div>
+  </div>
+
+</div>
+</body>
+</html>

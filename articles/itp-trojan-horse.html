@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>トロイの木馬とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="トロイの木馬の仕組み・特徴を図解で解説。ウイルス・ワームとの違い、RAT・バックドアとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-trojan-horse">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5c3317,#2e190b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(46,25,11,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#e8c9a0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-brown{--c:#5c3317;--cbg:#f5e8d8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5c3317;}
+
+.malware-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+.malware-table th{background:#4256b8;color:#fff;padding:8px 10px;text-align:left;font-weight:900;}
+.malware-table td{padding:8px 10px;border-bottom:1px solid #e4e7f7;font-weight:600;color:#3c4456;line-height:1.65;}
+.malware-table tr:nth-child(even) td{background:#f4f6fb;}
+.malware-table .hl-row td{background:#fff3e0;font-weight:900;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#5c3317;--fbg:#f9f0e6;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#dd5a3a;--fbg:#fdf0ed;}
+.f4{--fc:#4256b8;--fbg:#edf0fc;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>トロイの木馬</b>とは？</h1>
+    <p>無害に見せかけて侵入し、裏で悪事を働くマルウェア。「自己複製しない」が最大の特徴。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-brown">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <!-- 木馬（贈り物の箱） -->
+        <rect x="10" y="44" width="52" height="34" rx="6" fill="#f5e8d8" stroke="#5c3317" stroke-width="2"/>
+        <!-- リボン -->
+        <path d="M36 44 L36 78" stroke="#d9851f" stroke-width="2.5"/>
+        <path d="M10 61 L62 61" stroke="#d9851f" stroke-width="2.5"/>
+        <polygon points="36,34 28,44 44,44" fill="#d9851f"/>
+        <text x="36" y="58" text-anchor="middle" font-size="9" font-weight="900" fill="#5c3317" font-family="M PLUS Rounded 1c">便利ツール</text>
+        <text x="36" y="70" text-anchor="middle" font-size="9" font-weight="900" fill="#5c3317" font-family="M PLUS Rounded 1c">（無料）</text>
+        <!-- 目（悪い顔） -->
+        <circle cx="28" cy="38" r="3" fill="#dd5a3a"/>
+        <circle cx="44" cy="38" r="3" fill="#dd5a3a"/>
+        <path d="M30 32 Q36 28 42 32" stroke="#dd5a3a" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        「無料の動画変換ソフト」をダウンロード。インストールしたら普通に動いている…でも裏では<strong>パスワードを盗んで外部に送信</strong>していた。
+        <div class="scene-q">…ウイルスと何が違うの？どう見分ける？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 仕組み図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🐴 トロイの木馬の仕組み</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="トロイの木馬の動作フロー：偽装→インストール→バックドア開設→遠隔操作">
+      <!-- ステップ1 -->
+      <rect x="10" y="30" width="70" height="100" rx="10" fill="#f9f0e6" stroke="#5c3317" stroke-width="2"/>
+      <text x="45" y="56" text-anchor="middle" font-size="10" font-weight="900" fill="#5c3317" font-family="M PLUS Rounded 1c">①偽装</text>
+      <text x="45" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#7a5a3a" font-family="M PLUS Rounded 1c">無害なソフト</text>
+      <text x="45" y="86" text-anchor="middle" font-size="9" font-weight="700" fill="#7a5a3a" font-family="M PLUS Rounded 1c">に見せかけ</text>
+      <text x="45" y="104" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">📦</text>
+
+      <text x="92" y="83" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+
+      <!-- ステップ2 -->
+      <rect x="100" y="30" width="70" height="100" rx="10" fill="#fdf4e4" stroke="#d9851f" stroke-width="2"/>
+      <text x="135" y="56" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">②潜伏</text>
+      <text x="135" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#7a5a3a" font-family="M PLUS Rounded 1c">ユーザーが</text>
+      <text x="135" y="86" text-anchor="middle" font-size="9" font-weight="700" fill="#7a5a3a" font-family="M PLUS Rounded 1c">実行・インストール</text>
+      <text x="135" y="104" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">🖱️</text>
+
+      <text x="182" y="83" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+
+      <!-- ステップ3 -->
+      <rect x="190" y="30" width="70" height="100" rx="10" fill="#fdf0ed" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="225" y="56" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">③バックドア</text>
+      <text x="225" y="72" text-anchor="middle" font-size="9" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">攻撃者の</text>
+      <text x="225" y="86" text-anchor="middle" font-size="9" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">入口を開ける</text>
+      <text x="225" y="104" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">🚪</text>
+
+      <text x="272" y="83" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+
+      <!-- ステップ4 -->
+      <rect x="280" y="30" width="50" height="100" rx="10" fill="#edf0fc" stroke="#4256b8" stroke-width="2"/>
+      <text x="305" y="56" text-anchor="middle" font-size="9.5" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">④悪事</text>
+      <text x="305" y="72" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">情報漏洩</text>
+      <text x="305" y="86" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">遠隔操作</text>
+      <text x="305" y="100" text-anchor="middle" font-size="8.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">盗聴など</text>
+    </svg>
+    <p style="font-size:12.5px;color:#48506a;margin-top:10px;line-height:1.8;font-weight:600;">
+      <strong>ポイント：自己複製しない。</strong>ユーザー自身がインストールすることで侵入する。ウイルスのように他のファイルに寄生したり、ワームのようにネットワークを自律で広がったりしない。
+    </p>
+  </div>
+
+  <!-- ウイルス・ワームとの比較 -->
+  <div class="panel p-green">
+    <span class="phead">🔍 マルウェア3兄弟の違い</span>
+    <table class="malware-table">
+      <tr>
+        <th>種類</th>
+        <th>自己複製</th>
+        <th>感染方法</th>
+        <th>特徴</th>
+      </tr>
+      <tr>
+        <td>ウイルス</td>
+        <td>する</td>
+        <td>他のファイルに寄生</td>
+        <td>感染ファイルの実行で広がる</td>
+      </tr>
+      <tr>
+        <td>ワーム</td>
+        <td>する</td>
+        <td>ネットワーク経由で自律拡散</td>
+        <td>人の操作なしに広がる</td>
+      </tr>
+      <tr class="hl-row">
+        <td>トロイの木馬</td>
+        <td>しない</td>
+        <td>ユーザーが自分でインストール</td>
+        <td>無害に偽装・バックドア開設</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「自己複製する」は誤り</div>
+      <div class="tb">トロイの木馬は<strong>自己複製しない</strong>。これが最大の特徴。自己複製はウイルスとワームの特徴。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ワーム＝自律で広がる」との違いを問われる</div>
+      <div class="tb">ワームはネットワークを自律で広がる。トロイの木馬は<strong>ユーザーが自分で実行</strong>することで侵入する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">バックドアを開設するものが多い</div>
+      <div class="tb">感染後に攻撃者が遠隔操作できる「裏口（バックドア）」を開ける。RAT（Remote Access Trojan）がその代表例。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「無料ソフト＝危険」ではない</div>
+      <div class="tb">問われているのは「正規ソフトに偽装する手口」。メールの添付ファイル・フリーソフト・偽のアップデートなど侵入経路は様々。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「プレゼントに見せかけた爆弾」</span>＝トロイの木馬！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">無害に偽装 → 自分で受け取る（実行）→ 中から敵が出てくる</span><br><br>
+      ゴロ：<span class="hl">「ト（と）ロイ（ろい）の木馬は、複製せずコッソリ潜む」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">試験キーワード：「自己複製しない」「ユーザーが実行」「バックドア」</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-trojan-horse</div>
+
+</div>
+</body>
+</html>

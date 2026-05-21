@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>監査手続とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="監査手続をインスペクション・観察・質問・確認・再実施の5種類で丁寧に解説。システム監査との違い、試験のひっかけポイントまでカバー。">
+<link rel="canonical" href="https://example.com/itp-audit-procedure">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e6de5,#19357f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px;}
+.proc-card{border-radius:12px;padding:12px 11px;border:2px solid var(--pc);background:var(--pbg);}
+.proc-card .ph{font-size:13px;font-weight:900;color:var(--pc);margin-bottom:4px;}
+.proc-card .pb{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+@media(max-width:440px){.proc-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#4256b8;--fbg:#e4e7f7;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#2e6de5;--fbg:#eef3fd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>監査手続</b>とは？</h1>
+    <p>「証拠を集める」ための5つの技。監査人がシステムの問題を見抜くために使う具体的な行動パターン。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="60" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#4256b8"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="9" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="22" y="56" width="28" height="20" rx="3" fill="#fff"/>
+        <line x1="25" y1="62" x2="47" y2="62" stroke="#4256b8" stroke-width="2"/>
+        <line x1="25" y1="67" x2="43" y2="67" stroke="#4256b8" stroke-width="1.5"/>
+        <line x1="25" y1="72" x2="40" y2="72" stroke="#4256b8" stroke-width="1.5"/>
+        <circle cx="49" cy="56" r="7" fill="#ffd23f"/>
+        <line x1="53" y1="60" x2="58" y2="65" stroke="#4256b8" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div class="scene-txt">
+        システム監査人として、ある会社の在庫管理システムを監査することになったあなた。ただ「問題ないですか？」と聞くだけでは監査にならない。<strong>証拠を集める方法</strong>が必要だ。
+        <div class="scene-q">…どうやって証拠を集めるの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：5つの手続き -->
+  <div class="panel p-indigo">
+    <span class="phead">🔍 監査手続の5種類</span>
+    <svg width="100%" viewBox="0 0 320 200" role="img" aria-label="監査手続の5種類：インスペクション・観察・質問・確認・再実施">
+      <!-- 中央：監査 -->
+      <circle cx="160" cy="100" r="38" fill="#4256b8"/>
+      <text x="160" y="96" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">監査</text>
+      <text x="160" y="113" text-anchor="middle" font-size="12" font-weight="800" fill="#c8d0f0" font-family="M PLUS Rounded 1c">手続き</text>
+      <!-- 5つの手続き -->
+      <!-- インスペクション（左上） -->
+      <circle cx="62" cy="42" r="32" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="62" y="38" text-anchor="middle" font-size="9.5" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">インスペク</text>
+      <text x="62" y="50" text-anchor="middle" font-size="9.5" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">ション</text>
+      <text x="62" y="62" text-anchor="middle" font-size="8" font-weight="700" fill="#4a6ab0" font-family="M PLUS Rounded 1c">書類を検査</text>
+      <!-- 観察（右上） -->
+      <circle cx="258" cy="42" r="32" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="258" y="43" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">観察</text>
+      <text x="258" y="58" text-anchor="middle" font-size="8" font-weight="700" fill="#4a8a60" font-family="M PLUS Rounded 1c">現場を見る</text>
+      <!-- 質問（左下） -->
+      <circle cx="62" cy="158" r="32" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="62" y="159" text-anchor="middle" font-size="11" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">質問</text>
+      <text x="62" y="174" text-anchor="middle" font-size="8" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">担当者に聞く</text>
+      <!-- 確認（右下） -->
+      <circle cx="258" cy="158" r="32" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="258" y="159" text-anchor="middle" font-size="11" font-weight="900" fill="#a3316a" font-family="M PLUS Rounded 1c">確認</text>
+      <text x="258" y="174" text-anchor="middle" font-size="8" font-weight="700" fill="#c06080" font-family="M PLUS Rounded 1c">第三者に照合</text>
+      <!-- 再実施（下中） -->
+      <circle cx="160" cy="182" r="28" fill="#fff6da" stroke="#e0a800" stroke-width="2"/>
+      <text x="160" y="183" text-anchor="middle" font-size="10" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">再実施</text>
+      <text x="160" y="196" text-anchor="middle" font-size="8" font-weight="700" fill="#c09a30" font-family="M PLUS Rounded 1c">自分でやる</text>
+      <!-- 接続線 -->
+      <line x1="92" y1="57" x2="130" y2="80" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="228" y1="57" x2="190" y2="80" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="92" y1="143" x2="130" y2="120" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="228" y1="143" x2="190" y2="120" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="160" y1="154" x2="160" y2="138" stroke="#c2c8d8" stroke-width="1.5" stroke-dasharray="4 3"/>
+    </svg>
+
+    <div class="proc-grid" style="margin-top:14px;">
+      <div class="proc-card" style="--pc:#2e6de5;--pbg:#e7eefc;">
+        <div class="ph">インスペクション</div>
+        <div class="pb">書類・ログ・記録を直接<strong>検査</strong>する。「議事録を見る」「アクセスログを確認する」など。</div>
+      </div>
+      <div class="proc-card" style="--pc:#2e8b4f;--pbg:#e2f3e5;">
+        <div class="ph">観察</div>
+        <div class="pb">担当者が手順どおりに作業しているか<strong>現場で目で見る</strong>。実際の業務を見学する。</div>
+      </div>
+      <div class="proc-card" style="--pc:#d9851f;--pbg:#fcefd9;">
+        <div class="ph">質問</div>
+        <div class="pb">担当者・管理者に<strong>口頭や書面で聞く</strong>。最も手軽だが証拠としては弱い。</div>
+      </div>
+      <div class="proc-card" style="--pc:#cf4f86;--pbg:#fbe3ee;">
+        <div class="ph">確認（外部確認）</div>
+        <div class="pb">取引先など<strong>第三者に照合</strong>してもらう。銀行残高確認が典型例。</div>
+      </div>
+    </div>
+    <div class="proc-card" style="--pc:#9a6b00;--pbg:#fff6da;margin-top:9px;border-radius:12px;padding:12px 11px;border:2px solid #9a6b00;">
+      <div class="ph">再実施</div>
+      <div class="pb">監査人が担当者と<strong>同じ手順を自分でやり直し</strong>、結果が一致するか確かめる。証拠として最も強力。</div>
+    </div>
+  </div>
+
+  <!-- 監査の流れ -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 監査の流れと手続きの使いどころ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 予備調査（全体把握）</div>
+        <div class="fb">まず<strong>質問</strong>で全体像を掴む。担当者にヒアリングして何が重要か把握する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 本調査（証拠収集）</div>
+        <div class="fb"><strong>インスペクション</strong>（書類確認）・<strong>観察</strong>（現場確認）・<strong>確認</strong>（第三者照合）を組み合わせる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 証拠の検証</div>
+        <div class="fb">疑いがある箇所は<strong>再実施</strong>で自分でやり直し、結果を比較する。最も証拠力が高い。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 報告書作成</div>
+        <div class="fb">収集した証拠をもとに監査意見をまとめ、経営者・委員会に報告する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「質問だけで監査完了」はNG</div>
+      <div class="tb">質問は証拠力が最も弱い手続き。口頭回答は記録されず、うそをつかれるリスクもある。単独では監査の証拠として不十分。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「再実施」と「観察」の混同</div>
+      <div class="tb">観察は「担当者の作業を見る」だけ。再実施は「監査人が自分でやり直す」。証拠の強さが全然違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「確認」は内部の人に聞くことではない</div>
+      <div class="tb">確認（外部確認）は取引先・銀行などの<strong>第三者</strong>に照合してもらうこと。社内の上司に確かめるのは「質問」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">システム監査 ≠ 監査手続き</div>
+      <div class="tb">システム監査は「何を監査するか」（情報システムが対象）。監査手続きは「どうやって証拠を集めるか」の方法論。別の概念。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">イン（スペクション）・観・質・確・再</span><br>
+      <span style="font-size:13px;font-weight:700;color:#9a6b00;">「犬を観察、質問確認、再び走る」</span><br><br>
+      証拠力は<span class="hl">再＞確＞インスペクション＞観察＞質問</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「自分でやる（再実施）が一番強い！」</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

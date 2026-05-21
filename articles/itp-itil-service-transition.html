@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ITILサービストランジションとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ITILのサービストランジションをわかりやすく解説。変更管理・リリース管理・構成管理の役割、サービスデザインやオペレーションとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-itil-service-transition">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5c35b8,#2d1a6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(45,26,110,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d4c8f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#5c35b8;--cbg:#ede8f9;}
+.p-blue{--c:#1e6ab0;--cbg:#e0edf8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5c35b8;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2d1a6e;--fbg:#ede8f9;}
+.f2{--fc:#5c35b8;--fbg:#f0ecfc;}
+.f3{--fc:#1e6ab0;--fbg:#e9f2fb;}
+.f4{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f5{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.proc-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.proc-card{border-radius:12px;padding:10px 10px;text-align:center;}
+.proc-card h4{font-size:11.5px;font-weight:900;margin-bottom:5px;}
+.proc-card p{font-size:10.5px;font-weight:600;line-height:1.6;color:#48506a;}
+.pc1{background:#ede8f9;}.pc1 h4{color:#5c35b8;}
+.pc2{background:#e0edf8;}.pc2 h4{color:#1e6ab0;}
+.pc3{background:#e2f3e5;}.pc3 h4{color:#2e8b4f;}
+@media(max-width:440px){.proc-row{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>ITILサービス<br>トランジション</b>とは？</h1>
+    <p>設計したサービスを「本番環境に安全に届ける」フェーズ。変更・リリース・構成を管理して、事故を出さずに移行する。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="62" width="58" height="22" rx="6" fill="#d4c8f5"/>
+        <rect x="16" y="40" width="46" height="30" rx="9" fill="#5c35b8"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- 移動する矢印イメージ（設計→本番） -->
+        <rect x="42" y="56" width="18" height="14" rx="3" fill="#e8e0ff" stroke="#5c35b8" stroke-width="1.5"/>
+        <text x="51" y="65" text-anchor="middle" font-size="9" font-weight="900" fill="#5c35b8" font-family="sans-serif">GO!</text>
+        <polygon points="62,64 67,60 67,68" fill="#d9851f"/>
+      </svg>
+      <div class="scene-txt">
+        開発チームが新機能を完成させた。でも「よし、そのまま本番に上げよう！」とはならない。本番環境で何が動いているか確認し、変更手順を審査し、切り戻し手順まで用意して初めてリリースできる。
+        <div class="scene-q">…この「安全に本番へ届ける」一連のプロセスがサービストランジション。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ITILライフサイクル中のトランジション -->
+  <div class="panel p-blue">
+    <span class="phead">🔄 ITILサービスライフサイクルの中の位置</span>
+    <svg width="100%" viewBox="0 0 340 130" role="img" aria-label="ITILのサービスライフサイクル：戦略→設計→トランジション→オペレーション→継続的改善">
+      <!-- 5ステップ横並び -->
+      <rect x="4" y="36" width="56" height="52" rx="10" fill="#e8e0ff" stroke="#5c35b8" stroke-width="1.5"/>
+      <text x="32" y="57" text-anchor="middle" font-size="9.5" font-weight="900" fill="#2d1a6e" font-family="M PLUS Rounded 1c">サービス</text>
+      <text x="32" y="70" text-anchor="middle" font-size="9.5" font-weight="900" fill="#2d1a6e" font-family="M PLUS Rounded 1c">戦略</text>
+      <text x="32" y="82" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7e5fbf" font-family="M PLUS Rounded 1c">Strategy</text>
+      <polygon points="64,62 68,58 68,66" fill="#9aa3b2"/>
+      <rect x="70" y="36" width="56" height="52" rx="10" fill="#e0edf8" stroke="#1e6ab0" stroke-width="1.5"/>
+      <text x="98" y="57" text-anchor="middle" font-size="9.5" font-weight="900" fill="#0e3468" font-family="M PLUS Rounded 1c">サービス</text>
+      <text x="98" y="70" text-anchor="middle" font-size="9.5" font-weight="900" fill="#0e3468" font-family="M PLUS Rounded 1c">設計</text>
+      <text x="98" y="82" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6a9fd4" font-family="M PLUS Rounded 1c">Design</text>
+      <polygon points="130,62 134,58 134,66" fill="#9aa3b2"/>
+      <!-- トランジション（ハイライト） -->
+      <rect x="136" y="24" width="68" height="76" rx="12" fill="#5c35b8" stroke="#ffd23f" stroke-width="2.5"/>
+      <text x="170" y="50" text-anchor="middle" font-size="10" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">サービス</text>
+      <text x="170" y="64" text-anchor="middle" font-size="10" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">トランジション</text>
+      <text x="170" y="78" text-anchor="middle" font-size="8.5" font-weight="900" fill="#e0d4ff" font-family="M PLUS Rounded 1c">Transition</text>
+      <text x="170" y="92" text-anchor="middle" font-size="8" font-weight="800" fill="#c8b8f0" font-family="M PLUS Rounded 1c">← ここ！</text>
+      <polygon points="208,62 212,58 212,66" fill="#9aa3b2"/>
+      <rect x="214" y="36" width="56" height="52" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="242" y="57" text-anchor="middle" font-size="9.5" font-weight="900" fill="#1a4620" font-family="M PLUS Rounded 1c">サービス</text>
+      <text x="242" y="70" text-anchor="middle" font-size="9.5" font-weight="900" fill="#1a4620" font-family="M PLUS Rounded 1c">オペレーション</text>
+      <text x="242" y="82" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6abf8c" font-family="M PLUS Rounded 1c">Operation</text>
+      <polygon points="274,62 278,58 278,66" fill="#9aa3b2"/>
+      <rect x="280" y="36" width="56" height="52" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="308" y="57" text-anchor="middle" font-size="9.5" font-weight="900" fill="#8a4d0c" font-family="M PLUS Rounded 1c">継続的</text>
+      <text x="308" y="70" text-anchor="middle" font-size="9.5" font-weight="900" fill="#8a4d0c" font-family="M PLUS Rounded 1c">改善</text>
+      <text x="308" y="82" text-anchor="middle" font-size="8.5" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">CSI</text>
+    </svg>
+    <p style="font-size:12.5px;font-weight:600;color:#48506a;margin-top:10px;">サービスを「設計（Design）」した後、本番「オペレーション」へ渡す橋渡しフェーズがトランジション。設計通りに動くかテスト・検証し、安全に移行する。</p>
+    <!-- 3プロセス -->
+    <div class="proc-row">
+      <div class="proc-card pc1"><h4>変更管理</h4><p>変更を審査・承認するプロセス。CAB（変更諮問委員会）が判断。</p></div>
+      <div class="proc-card pc2"><h4>リリース管理</h4><p>変更を本番環境に展開する計画・実行・検証。</p></div>
+      <div class="proc-card pc3"><h4>構成管理</h4><p>CI（構成アイテム）をCMDB（構成管理データベース）で管理。</p></div>
+    </div>
+  </div>
+
+  <!-- フロー：変更管理の流れ -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 変更管理（Change Management）の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 変更要求（RFC）の提出</div><div class="fb">「この機能を変えたい」という要求をRFC（Request for Change）として正式に申請する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② CABによる審査・承認</div><div class="fb">CAB（Change Advisory Board：変更諮問委員会）がリスク・影響範囲・優先度を審査。承認されて初めて次に進める。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 変更の実装・テスト</div><div class="fb">承認済みの変更を実装し、テスト環境で動作確認。切り戻し手順（ロールバック）も用意する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 本番展開（リリース）</div><div class="fb">問題なければ本番へ展開。展開後も一定期間モニタリングし、問題があればロールバック。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f5"><div class="fh">⑤ 事後レビュー</div><div class="fb">変更が意図通りに機能しているか確認。教訓をナレッジ管理に登録する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">サービスデザインと混同しやすい</div>
+      <div class="tb">サービスデザインは「新サービスの設計図を作る」フェーズ。トランジションはその設計図を「実際に本番に移す」フェーズ。設計→移行の順番を覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">サービスオペレーションと混同しやすい</div>
+      <div class="tb">サービスオペレーションは「日常運用（インシデント対応・問題管理）」。トランジションは「本番への移行そのもの」。移行が完了したらオペレーションが始まる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">変更管理＝承認なしに変えてもよい、は誤り</div>
+      <div class="tb">必ずCABの審査・承認が必要。勝手に本番を変更すると大障害の原因になる。承認フローが変更管理の核心。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">トランジション＝「引越し業者」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">設計（Design）＝間取り決め → トランジション＝引越し作業 → オペレーション＝新居での日常生活</span><br><br>
+      ゴロ：<span class="hl">「ト（届ける）ラ（楽に）ン（念入りに）ジション」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">本番に届ける／楽に切り戻せるよう／念入りにテスト ＝ トランジションの3原則</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

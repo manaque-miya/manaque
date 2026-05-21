@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>正規分布とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="正規分布をわかりやすく解説。平均・標準偏差・ベルカーブの読み方、68%・95%・99.7%ルール、ITパスポート試験のひっかけポイントまで図解で理解できる。">
+<link rel="canonical" href="https://example.com/itp-normal-distribution">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7e3cf5,#3b0fa0);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(80,20,180,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ddd6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#7e3cf5;--cbg:#ede5fd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7e3cf5;}
+
+.sigma-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.sg-cell{border-radius:12px;padding:10px 9px;text-align:center;}
+.sg-cell .sg-pct{font-size:20px;font-weight:900;margin-bottom:3px;}
+.sg-cell .sg-label{font-size:10.5px;font-weight:700;line-height:1.5;}
+.sg1{background:#e7eefc;}.sg1 .sg-pct{color:#2e6de5;}
+.sg2{background:#ede5fd;}.sg2 .sg-pct{color:#7e3cf5;}
+.sg3{background:#fcefd9;}.sg3 .sg-pct{color:#d9851f;}
+@media(max-width:480px){.sigma-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#7e3cf5;--fbg:#f3eefe;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">📊 ITパスポート ｜ ストラテジ系・統計</span>
+    <h1><b>正規分布</b>とは？</h1>
+    <p>平均を中心に左右対称に広がる「ベルカーブ」。データの多くが平均付近に集まり、離れるほど少なくなる分布のこと。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="62" width="62" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="40" width="50" height="30" rx="9" fill="#7e3cf5"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <rect x="48" y="58" width="18" height="15" rx="2" fill="#48506a"/>
+        <rect x="50" y="60" width="14" height="11" rx="1" fill="#c9b0fa"/>
+      </svg>
+      <div class="scene-txt">
+        品質管理担当のあなた。工場で作った製品1000個の重さを測ったら、<strong>ほとんどが規定値±数グラム以内</strong>で、極端に軽い・重いものはごくわずかだった。
+        <div class="scene-q">…このデータが描くグラフの形は？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：正規分布のベルカーブ -->
+  <div class="panel p-purple">
+    <span class="phead">📈 正規分布のベルカーブ（図解）</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="正規分布のベルカーブ。平均μを中心に左右対称のベル型の曲線。標準偏差σで範囲が表現されている。">
+      <!-- 塗り：±3σ（一番外） -->
+      <path d="M30 160 Q50 155 70 140 Q90 110 100 90 Q120 55 170 30 Q220 55 240 90 Q250 110 270 140 Q290 155 310 160 Z" fill="#fcefd9" opacity="0.7"/>
+      <!-- 塗り：±2σ -->
+      <path d="M70 140 Q90 110 100 90 Q120 55 170 30 Q220 55 240 90 Q250 110 270 140 Z" fill="#ede5fd" opacity="0.8"/>
+      <!-- 塗り：±1σ -->
+      <path d="M100 90 Q120 55 170 30 Q220 55 240 90 Z" fill="#e7eefc"/>
+      <!-- ベルカーブ本線 -->
+      <path d="M30 160 Q50 155 70 140 Q90 110 100 90 Q120 55 170 30 Q220 55 240 90 Q250 110 270 140 Q290 155 310 160" stroke="#7e3cf5" stroke-width="3" fill="none"/>
+      <!-- ベースライン -->
+      <line x1="20" y1="160" x2="320" y2="160" stroke="#c2c8d8" stroke-width="1.5"/>
+      <!-- 平均線 -->
+      <line x1="170" y1="28" x2="170" y2="162" stroke="#7e3cf5" stroke-width="2" stroke-dasharray="5 3"/>
+      <!-- σ線 -->
+      <line x1="100" y1="90" x2="100" y2="162" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="240" y1="90" x2="240" y2="162" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="70" y1="140" x2="70" y2="162" stroke="#d9851f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="270" y1="140" x2="270" y2="162" stroke="#d9851f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- ラベル -->
+      <text x="170" y="176" text-anchor="middle" font-size="12" font-weight="900" fill="#7e3cf5" font-family="M PLUS Rounded 1c">μ（平均）</text>
+      <text x="100" y="176" text-anchor="middle" font-size="10" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">μ-σ</text>
+      <text x="240" y="176" text-anchor="middle" font-size="10" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">μ+σ</text>
+      <text x="70" y="176" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">μ-2σ</text>
+      <text x="270" y="176" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">μ+2σ</text>
+      <!-- 68% 矢印 -->
+      <line x1="105" y1="80" x2="235" y2="80" stroke="#2e6de5" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="235" y1="80" x2="105" y2="80" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="170" y="74" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">±1σ：約68%</text>
+      <!-- 95% 矢印 -->
+      <text x="170" y="108" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">±2σ：約95%</text>
+    </svg>
+    <div class="sigma-grid">
+      <div class="sg-cell sg1">
+        <div class="sg-pct">68%</div>
+        <div class="sg-label">±1σ（標準偏差1つ分）の範囲にデータが入る</div>
+      </div>
+      <div class="sg-cell sg2">
+        <div class="sg-pct">95%</div>
+        <div class="sg-label">±2σの範囲にデータが入る</div>
+      </div>
+      <div class="sg-cell sg3">
+        <div class="sg-pct">99.7%</div>
+        <div class="sg-label">±3σの範囲にほぼ全データが入る</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 活用場面 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 正規分布が使われる場面</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 品質管理・製造</div><div class="fb">製品の寸法・重さのばらつきが正規分布に従うと仮定して、不良品率を管理する（3σ管理など）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② ビジネス分析・統計</div><div class="fb">テストの点数・身長・体重など、多くの自然現象・社会現象は正規分布に近づく性質がある。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 異常検知・リスク管理</div><div class="fb">±3σを超えたデータは「外れ値（異常値）」として検知。金融リスク管理にも使われる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「平均＝中央値＝最頻値」は正規分布だけの特徴</div>
+      <div class="tb">正規分布は完全な左右対称なので、平均・中央値・最頻値が一致する。偏った分布ではこれらがズレる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">標準偏差が大きい＝ばらつきが大きい</div>
+      <div class="tb">標準偏差σが大きいとベルカーブは横に広く平たくなる。小さいと縦に細く高くなる。「形が変わる」と覚える。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">すべてのデータが正規分布するわけではない</div>
+      <div class="tb">所得分布・SNSのフォロワー数などは正規分布ではなく<strong>べき乗分布（ロングテール）</strong>に従う。混同しない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「1σで無事（68）、2σで苦しく（95）なし、3σでほぼ（99.7）完璧」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">±1σ→68% ／ ±2σ→95% ／ ±3σ→99.7%</span><br><br>
+    形の覚え方：<span class="hl">ベル（鐘）型</span>＝左右対称・山の頂点が平均</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

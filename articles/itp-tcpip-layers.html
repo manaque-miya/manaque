@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TCP/IPの階層モデルとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="TCP/IPの4層モデルをアプリケーション・トランスポート・インターネット・ネットワークインタフェース層で図解。OSI参照モデルとの対応、各層の役割とプロトコル一覧、ITパスポートのひっかけまで解説。">
+<link rel="canonical" href="https://example.com/itp-tcpip-layers">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2a5da8,#102860);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(16,40,96,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8ccf0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2a5da8;--cbg:#dde7f9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2a5da8;}
+
+.layer-detail{margin-top:10px;}
+.ld-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;}
+.ld-badge{min-width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0;}
+.ld-content{}
+.ld-content .ldt{font-size:13px;font-weight:900;color:#2b3245;margin-bottom:2px;}
+.ld-content .ldd{font-size:12px;font-weight:600;color:#48506a;line-height:1.7;}
+.ld-content .ldp{font-size:11px;font-weight:700;color:#8a91a0;margin-top:2px;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🌐 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>TCP/IPの階層モデル</b>とは？</h1>
+    <p>インターネット通信を4つの層に分けて整理した設計思想。役割を分担することで、互いに独立して動作できる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="62" height="26" rx="6" fill="#b8c8e8"/>
+        <rect x="14" y="38" width="50" height="28" rx="9" fill="#2a5da8"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="40" y="56" width="20" height="14" rx="2" fill="#48506a"/>
+        <rect x="42" y="58" width="16" height="10" rx="1" fill="#88aaee"/>
+      </svg>
+      <div class="scene-txt">
+        郵便局の仕組みを想像してほしい。「手紙を書く人（アプリ）」「封筒に入れる係（トランスポート）」「宛先ラベルを貼る係（インターネット）」「配達員（ネットワーク）」に分業している。<br>
+        あなたが手紙を書くとき、配達ルートを気にしなくていい。それぞれの層が<strong>担当だけ</strong>を行う。
+        <div class="scene-q">…この「分業の仕組み」をTCP/IPの4層モデルという。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4層モデル図 -->
+  <div class="panel p-indigo">
+    <span class="phead">📐 TCP/IP 4層モデル（上から下へ）</span>
+    <svg width="100%" viewBox="0 0 340 300" role="img" aria-label="TCP/IPの4層モデルとOSI参照モデルの対応図">
+      <!-- TCP/IP側のラベル -->
+      <text x="10" y="22" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">TCP/IP モデル（4層）</text>
+      <!-- OSI側のラベル -->
+      <text x="220" y="22" font-size="11" font-weight="900" fill="#7a8096" font-family="M PLUS Rounded 1c">OSI参照モデル（7層）</text>
+      <!-- 対応線 -->
+      <line x1="168" y1="35" x2="215" y2="35" stroke="#c0c8d8" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="168" y1="83" x2="215" y2="83" stroke="#c0c8d8" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="168" y1="131" x2="215" y2="107" stroke="#c0c8d8" stroke-width="1" stroke-dasharray="3 3"/>
+      <line x1="168" y1="179" x2="215" y2="203" stroke="#c0c8d8" stroke-width="1" stroke-dasharray="3 3"/>
+      <!-- 層1 アプリケーション -->
+      <rect x="10" y="30" width="158" height="50" rx="10" fill="#4256b8"/>
+      <text x="89" y="50" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">アプリケーション層</text>
+      <text x="89" y="67" text-anchor="middle" font-size="10" font-weight="700" fill="#c0ccf0" font-family="M PLUS Rounded 1c">HTTP・FTP・SMTP・DNS</text>
+      <!-- 層2 トランスポート -->
+      <rect x="10" y="86" width="158" height="50" rx="10" fill="#1f6b9e"/>
+      <text x="89" y="106" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">トランスポート層</text>
+      <text x="89" y="123" text-anchor="middle" font-size="10" font-weight="700" fill="#b8d8f0" font-family="M PLUS Rounded 1c">TCP・UDP</text>
+      <!-- 層3 インターネット -->
+      <rect x="10" y="142" width="158" height="50" rx="10" fill="#2e8b4f"/>
+      <text x="89" y="162" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">インターネット層</text>
+      <text x="89" y="179" text-anchor="middle" font-size="10" font-weight="700" fill="#b8f0cc" font-family="M PLUS Rounded 1c">IP・ARP・ICMP</text>
+      <!-- 層4 ネットワークインタフェース -->
+      <rect x="10" y="198" width="158" height="50" rx="10" fill="#d9851f"/>
+      <text x="89" y="218" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ネットワーク</text>
+      <text x="89" y="234" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">インタフェース層</text>
+      <text x="89" y="247" text-anchor="middle" font-size="9.5" font-weight="700" fill="#ffe8b0" font-family="M PLUS Rounded 1c">Ethernet・Wi-Fi・光ファイバ</text>
+      <!-- OSI 7層（右側・簡易）-->
+      <rect x="218" y="30" width="112" height="24" rx="6" fill="#e0e4f8"/>
+      <text x="274" y="45" text-anchor="middle" font-size="10" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">7.アプリケーション</text>
+      <rect x="218" y="58" width="112" height="24" rx="6" fill="#e4eaf6"/>
+      <text x="274" y="73" text-anchor="middle" font-size="10" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">6.プレゼンテーション</text>
+      <rect x="218" y="86" width="112" height="24" rx="6" fill="#e8edf4"/>
+      <text x="274" y="101" text-anchor="middle" font-size="10" font-weight="800" fill="#1f6b9e" font-family="M PLUS Rounded 1c">5.セッション</text>
+      <rect x="218" y="114" width="112" height="24" rx="6" fill="#d8eaf6"/>
+      <text x="274" y="129" text-anchor="middle" font-size="10" font-weight="800" fill="#1f6b9e" font-family="M PLUS Rounded 1c">4.トランスポート</text>
+      <rect x="218" y="142" width="112" height="24" rx="6" fill="#d6f0e0"/>
+      <text x="274" y="157" text-anchor="middle" font-size="10" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">3.ネットワーク</text>
+      <rect x="218" y="170" width="112" height="24" rx="6" fill="#fde8c8"/>
+      <text x="274" y="185" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">2.データリンク</text>
+      <rect x="218" y="198" width="112" height="24" rx="6" fill="#fce0b0"/>
+      <text x="274" y="213" text-anchor="middle" font-size="10" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">1.物理</text>
+      <!-- データの流れ（矢印） -->
+      <text x="89" y="268" text-anchor="middle" font-size="11" font-weight="900" fill="#4a5070" font-family="M PLUS Rounded 1c">↑ データが届く向き（下から上へ解釈）</text>
+      <text x="89" y="285" text-anchor="middle" font-size="11" font-weight="900" fill="#4a5070" font-family="M PLUS Rounded 1c">↓ データを送る向き（上から下へ処理）</text>
+    </svg>
+  </div>
+
+  <!-- 各層の詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🔍 各層の役割と代表プロトコル</span>
+    <div class="layer-detail">
+      <div class="ld-row">
+        <div class="ld-badge" style="background:#4256b8;">4</div>
+        <div class="ld-content">
+          <div class="ldt">アプリケーション層 — 「何を伝えるか」</div>
+          <div class="ldd">ブラウザ・メール・FTPなど、アプリが直接使う通信ルールを定める層。人間に一番近い。</div>
+          <div class="ldp">プロトコル：HTTP・HTTPS・FTP・SMTP・POP3・DNS・NTP</div>
+        </div>
+      </div>
+      <div class="ld-row">
+        <div class="ld-badge" style="background:#1f6b9e;">3</div>
+        <div class="ld-content">
+          <div class="ldt">トランスポート層 — 「確実に届けるか・速く届けるか」</div>
+          <div class="ldd">アプリ間の通信品質（信頼性 or 速度）を制御する。ポート番号でアプリを区別する。</div>
+          <div class="ldp">プロトコル：TCP・UDP</div>
+        </div>
+      </div>
+      <div class="ld-row">
+        <div class="ld-badge" style="background:#2e8b4f;">2</div>
+        <div class="ld-content">
+          <div class="ldt">インターネット層 — 「どこに届けるか」</div>
+          <div class="ldd">IPアドレスで送信先を特定し、パケットのルーティング（経路選択）を行う。</div>
+          <div class="ldp">プロトコル：IP（IPv4・IPv6）・ARP・ICMP</div>
+        </div>
+      </div>
+      <div class="ld-row">
+        <div class="ld-badge" style="background:#d9851f;">1</div>
+        <div class="ld-content">
+          <div class="ldt">ネットワークインタフェース層 — 「物理的に届ける」</div>
+          <div class="ldd">MACアドレスで隣接機器を特定し、電気信号や光信号に変換して物理的に送る。</div>
+          <div class="ldp">規格：Ethernet・Wi-Fi・光ファイバ・同軸ケーブル</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">TCP/IPは4層、OSIは7層。混同しない</div>
+      <div class="tb">TCP/IPモデルは<strong>4層</strong>。OSI参照モデルは<strong>7層</strong>。「4層モデル」と言えばTCP/IP、「7層モデル」と言えばOSI。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「IP」はどの層？</div>
+      <div class="tb">IP（インターネットプロトコル）は<strong>インターネット層</strong>（第3層）。トランスポート層（TCP/UDP）と混同しないこと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">HTTPはどの層？</div>
+      <div class="tb">HTTPは<strong>アプリケーション層</strong>（第4層・最上位）。「トランスポート層」と混同しやすいが、HTTPはTCPの上で動くアプリ側プロトコル。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">上から「アプリ・トランスポート・インターネット・ネットワーク」。<strong>TCP/UDPはトランスポート層のみ</strong>、<strong>IPはインターネット層のみ</strong>と覚えれば大半の問題に対応できる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「アプリで（ア）、通信を（ト）、インターネット（イ）、ネット線で（ネ）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ア＝アプリケーション　ト＝トランスポート　イ＝インターネット　ネ＝ネットワークインタフェース</span><br><br>
+      <span class="hl">「TCP/IPは4枚重ねのサンドイッチ」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">上がアプリ層（食べる人）、下がネット層（お皿）。4枚の役割は絶対に変わらない。</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

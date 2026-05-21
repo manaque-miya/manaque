@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>生成AIとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="生成AI（ジェネレーティブAI）を文章・画像・音声を作り出すAI技術として解説。LLM・GAN・VAEとの関係、識別AIとの違い、ハルシネーション・著作権リスク、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-generative-ai">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c3aed,#4c1d95);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(76,29,149,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ddd6fe;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#7c3aed;--cbg:#ede9fb;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c3aed;}
+
+.gen-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+.gen-cell{border-radius:12px;padding:10px 9px;}
+.gen-cell h4{font-size:12px;font-weight:900;margin-bottom:4px;}
+.gen-cell p{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+.gc-llm{background:#ede9fb;border-left:4px solid #7c3aed;}
+.gc-llm h4{color:#7c3aed;}
+.gc-gan{background:#e2f3e5;border-left:4px solid #2e8b4f;}
+.gc-gan h4{color:#2e8b4f;}
+.gc-img{background:#e7eefc;border-left:4px solid #2e6de5;}
+.gc-img h4{color:#2e6de5;}
+.gc-audio{background:#fcefd9;border-left:4px solid #d9851f;}
+.gc-audio h4{color:#d9851f;}
+@media(max-width:480px){.gen-grid{grid-template-columns:1fr;}}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:12px;}
+.compare-table th{background:#ede9fb;color:#7c3aed;font-weight:900;padding:8px 10px;text-align:left;}
+.compare-table td{padding:8px 10px;border-bottom:1px solid #e8e8f0;font-weight:600;color:#3c4456;line-height:1.65;}
+.compare-table tr:last-child td{border-bottom:none;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c3aed;--fbg:#ede9fb;}
+.f2{--fc:#2e8b4f;--fbg:#e2f3e5;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.risk-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.risk-item:last-child{margin-bottom:0;}
+.risk-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.risk-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系 / AI</span>
+    <h1><b>生成AI</b>（ジェネレーティブAI）とは？</h1>
+    <p>文章・画像・音声・動画など、<strong>新しいコンテンツを「作り出す」</strong> AI。<br>ChatGPTや画像生成AIがその代表例。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="26" rx="9" fill="#7c3aed"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-6 -9 -13 -9 q-7 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- チャット吹き出し -->
+        <rect x="42" y="34" width="22" height="14" rx="4" fill="#ffd23f"/>
+        <text x="53" y="44" text-anchor="middle" font-size="8" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">AI!</text>
+      </svg>
+      <div class="scene-txt">
+        「明日の会議の資料をまとめて」とAIに打ったら、<strong>3秒でレポートが完成</strong>した。「猫のイラストを描いて」と頼んだら、プロ級の画像が出てきた。
+        <div class="scene-q">…これらを実現する「生成AI」って何がすごいの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：生成AIの全体像 -->
+  <div class="panel p-purple">
+    <span class="phead">🧠 生成AIの全体像</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="生成AIは入力プロンプトを受け取り、学習データを基に文章・画像・音声などを生成する">
+      <!-- 入力 -->
+      <rect x="8" y="68" width="72" height="44" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="44" y="86" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">プロンプト</text>
+      <text x="44" y="100" text-anchor="middle" font-size="10" font-weight="700" fill="#4a7bb5" font-family="M PLUS Rounded 1c">（指示・質問）</text>
+      <text x="44" y="114" text-anchor="middle" font-size="10" font-weight="600" fill="#7096cc" font-family="M PLUS Rounded 1c">テキスト・画像等</text>
+      <!-- 矢印 -->
+      <line x1="80" y1="90" x2="100" y2="90" stroke="#7c3aed" stroke-width="2.5"/>
+      <polygon points="100,84 110,90 100,96" fill="#7c3aed"/>
+      <!-- 生成AIエンジン -->
+      <rect x="110" y="50" width="120" height="80" rx="14" fill="#ede9fb" stroke="#7c3aed" stroke-width="2.5"/>
+      <text x="170" y="76" text-anchor="middle" font-size="13" font-weight="900" fill="#7c3aed" font-family="M PLUS Rounded 1c">生成AIエンジン</text>
+      <text x="170" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#6d28d9" font-family="M PLUS Rounded 1c">大量データで学習</text>
+      <text x="170" y="108" text-anchor="middle" font-size="10" font-weight="600" fill="#8b5cf6" font-family="M PLUS Rounded 1c">（LLM・GAN・拡散モデル等）</text>
+      <!-- 矢印 -->
+      <line x1="230" y1="90" x2="250" y2="90" stroke="#7c3aed" stroke-width="2.5"/>
+      <polygon points="250,84 260,90 250,96" fill="#7c3aed"/>
+      <!-- 出力 -->
+      <rect x="260" y="10" width="72" height="30" rx="8" fill="#d8f0ea" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="296" y="29" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">文章・文書</text>
+      <line x1="296" y1="40" x2="296" y2="58" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <rect x="260" y="58" width="72" height="30" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="296" y="77" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">画像・動画</text>
+      <line x1="296" y1="88" x2="296" y2="106" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <rect x="260" y="106" width="72" height="30" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="296" y="125" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">音声・音楽</text>
+      <line x1="296" y1="136" x2="296" y2="154" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <rect x="260" y="154" width="72" height="20" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="296" y="168" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">コード等</text>
+    </svg>
+  </div>
+
+  <!-- 生成AIの種類 -->
+  <div class="panel p-green">
+    <span class="phead">📦 生成AIを支える主な技術</span>
+    <div class="gen-grid">
+      <div class="gen-cell gc-llm">
+        <h4>LLM（大規模言語モデル）</h4>
+        <p>文章生成・翻訳・要約。ChatGPT・Gemini等の基盤技術。テキストの「次の単語」を予測する仕組み。</p>
+      </div>
+      <div class="gen-cell gc-gan">
+        <h4>GAN（敵対的生成NW）</h4>
+        <p>画像・動画の生成。生成器と識別器が競い合って本物そっくりのデータを生成。</p>
+      </div>
+      <div class="gen-cell gc-img">
+        <h4>拡散モデル（Diffusion）</h4>
+        <p>高品質な画像生成。ノイズを徐々に除去して鮮明な画像を作る仕組み。Stable Diffusionが有名。</p>
+      </div>
+      <div class="gen-cell gc-audio">
+        <h4>VAE（変分オートエンコーダ）</h4>
+        <p>データの圧縮と再生成。音声・画像の潜在的な特徴を学習して新しいデータを生成。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 識別AIとの比較 -->
+  <div class="panel p-orange">
+    <span class="phead">⚖️ 生成AI vs 識別AI（判断AI）</span>
+    <table class="compare-table">
+      <tr>
+        <th>項目</th>
+        <th>生成AI</th>
+        <th>識別AI（判断AI）</th>
+      </tr>
+      <tr>
+        <td>何をするか</td>
+        <td>新しいデータを<strong>作り出す</strong></td>
+        <td>入力データを<strong>分類・判定</strong>する</td>
+      </tr>
+      <tr>
+        <td>具体例</td>
+        <td>文章生成・画像生成・翻訳</td>
+        <td>スパム判定・画像認識・異常検知</td>
+      </tr>
+      <tr>
+        <td>出力</td>
+        <td>新規コンテンツ（テキスト・画像等）</td>
+        <td>ラベル・スコア・確率</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ハルシネーション（幻覚）を知っておく</div>
+      <div class="tb">生成AIは<strong>もっともらしい嘘</strong>を自信たっぷりに答えることがある（ハルシネーション）。事実確認なしに信用するとミス・リスクになる。試験での出題頻度が高い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">著作権・個人情報リスク</div>
+      <div class="tb">生成AIの出力物の<strong>著作権帰属は未確定</strong>な部分が多い。また学習データに個人情報が含まれる場合、プライバシーリスクが生じる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「生成AI＝何でもできる」は誤り</div>
+      <div class="tb">生成AIはリアルタイム情報を持たない（学習データに依存）、計算を正確に行う保証がない、などの限界がある。万能ではないことを押さえる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「生成AI＝LLMだけ」は誤り</div>
+      <div class="tb">LLMは生成AIの1つ。GAN・拡散モデル・VAEなど、画像・音声・動画を生成する技術も生成AIに含まれる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      生成AIは<span class="hl">「せ（生）い（成）！出せ！AIよ」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">分類・判定じゃない → 新しいものを作り出すのが生成AI</span><br><br>
+      ゴロ：<span class="hl">「生AIはクリエイター（作る）、識別AIは審査員（判定する）」</span><br>
+      <span style="font-size:11px;font-weight:600;color:#9a6b00;">ハルシネーション＝「嘘をつくクリエイター」と一緒に覚える</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

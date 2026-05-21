@@ -1,108 +1,182 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SLA（サービスレベル合意）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="SLA（サービスレベル合意）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-sla.html">
-<meta property="og:title" content="SLA（サービスレベル合意）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="SLA（サービスレベル合意）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-sla.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SLA（サービスレベル合意書）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="SLA（Service Level Agreement）をわかりやすく解説。サービスの品質・可用性・応答時間を数値で合意する文書。SLM・KPIとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-sla">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b71c1c,#7f1414);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(127,20,20,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ffcdd2;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red2{--c:#b71c1c;--cbg:#fce4e4;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b71c1c;}
+
+.sla-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.sla-item{border-radius:11px;padding:10px 12px;background:#f2f4fb;}
+.sla-item h4{font-size:12.5px;font-weight:900;color:#b71c1c;margin-bottom:4px;}
+.sla-item p{font-size:12px;font-weight:600;color:#48506a;line-height:1.65;}
+@media(max-width:440px){.sla-items{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#b71c1c;--fbg:#fce4e4;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">SLA（サービスレベル合意）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">SLA（サービスレベル合意）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>SLA</b>（サービスレベル合意書）とは？</h1>
+    <p>Service Level Agreement ＝ サービス提供者と利用者が「このレベルのサービスを提供します」と<strong>数値で合意</strong>した文書・契約。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red2">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 2人の人物：会社と顧客 -->
+        <circle cx="20" cy="22" r="11" fill="#f4c89a"/>
+        <rect x="12" y="34" width="16" height="20" rx="5" fill="#b71c1c"/>
+        <rect x="14" y="56" width="12" height="22" rx="4" fill="#8a8a9a"/>
+        <circle cx="58" cy="22" r="11" fill="#f4c89a"/>
+        <rect x="50" y="34" width="16" height="20" rx="5" fill="#2e6de5"/>
+        <rect x="52" y="56" width="12" height="22" rx="4" fill="#8a8a9a"/>
+        <!-- 文書 -->
+        <rect x="28" y="38" width="22" height="28" rx="3" fill="#fff" stroke="#b71c1c" stroke-width="1.5"/>
+        <rect x="31" y="43" width="14" height="2" rx="1" fill="#b71c1c"/>
+        <rect x="31" y="48" width="10" height="2" rx="1" fill="#7a8098"/>
+        <rect x="31" y="53" width="12" height="2" rx="1" fill="#7a8098"/>
+        <text x="30" y="63" font-size="5.5" font-weight="900" fill="#b71c1c" font-family="sans-serif">SLA合意</text>
+        <!-- 握手線 -->
+        <path d="M28 52 L22 52" stroke="#b71c1c" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <path d="M50 52 L56 52" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="3 2"/>
+      </svg>
+      <div class="scene-txt">
+        会社がクラウドサービスを契約。「障害が起きたとき何時間以内に直してくれる？」「稼働率は何%保証してくれる？」と交渉し、合意内容を文書にした。
+        <div class="scene-q">→ その"数値で合意した文書"が SLA！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLAの主要項目 -->
+  <div class="panel p-blue">
+    <span class="phead">📄 SLAに書かれる主要項目（図解）</span>
+    <svg width="100%" viewBox="0 0 340 100" role="img" aria-label="SLAの主要項目：可用性・応答時間・復旧時間・サポート範囲">
+      <rect x="0" y="5" width="340" height="90" rx="14" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <!-- 左上 -->
+      <rect x="14" y="18" width="74" height="34" rx="8" fill="#fff" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="51" y="33" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">可用性</text>
+      <text x="51" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">例：稼働率99.9%</text>
+      <!-- 右上 -->
+      <rect x="100" y="18" width="74" height="34" rx="8" fill="#fff" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="137" y="33" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">応答時間</text>
+      <text x="137" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">例：3秒以内</text>
+      <!-- 左下 -->
+      <rect x="186" y="18" width="74" height="34" rx="8" fill="#fff" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="223" y="33" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">復旧時間</text>
+      <text x="223" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">例：4時間以内</text>
+      <!-- 右下 -->
+      <rect x="272" y="18" width="60" height="34" rx="8" fill="#fff" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="302" y="33" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">サポート</text>
+      <text x="302" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">例：24時間</text>
+      <!-- 下部説明 -->
+      <text x="170" y="85" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">→ 数値で明記して合意・契約に組み込む</text>
+    </svg>
+    <div class="sla-items">
+      <div class="sla-item"><h4>可用性（稼働率）</h4><p>99.9% なら年間約8.7時間しか停止を許さない。</p></div>
+      <div class="sla-item"><h4>応答時間・処理時間</h4><p>リクエストからレスポンスまでの最大時間を規定。</p></div>
+      <div class="sla-item"><h4>障害復旧時間（RTO）</h4><p>障害発生から復旧までの目標時間。</p></div>
+      <div class="sla-item"><h4>ペナルティ・補償</h4><p>SLAを達成できなかった場合の返金・補償ルール。</p></div>
+    </div>
+  </div>
+
+  <!-- SLAの運用サイクル -->
+  <div class="panel p-green">
+    <span class="phead">🔄 SLAの締結・管理サイクル</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① SLA締結</div><div class="fb">サービス提供者と利用者が、提供品質の数値目標を文書で合意・署名。</div></div>
+      <div class="farrow">▼ サービス稼働後</div>
+      <div class="fstep f2"><div class="fh">② SLM（サービスレベル管理）で監視</div><div class="fb">稼働率・応答時間・障害件数を定期的に計測し、SLAを満たしているかを確認する管理活動。</div></div>
+      <div class="farrow">▼ 達成できなかった場合</div>
+      <div class="fstep f3"><div class="fh">③ 改善・ペナルティ・再交渉</div><div class="fb">SLA未達なら補償・改善計画を実施。定期的にSLAの内容自体を見直すことも。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">SLA と SLM の混同</div>
+      <div class="tb">SLA は<strong>合意した文書・契約</strong>そのもの。SLM（Service Level Management）はSLAを守るための<strong>管理活動・プロセス</strong>。「書くもの vs. 管理するもの」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「サービスの内容の説明書」ではない</div>
+      <div class="tb">SLAは「何をするか」の説明でなく、「<strong>どのレベルで提供するか（数値）</strong>」の合意。品質水準の約束。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">KPI・KGIと混同しやすい</div>
+      <div class="tb">KPI・KGIは<strong>社内の目標管理</strong>指標。SLAは<strong>外部（顧客・取引先）との合意</strong>。スコープが違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>サービスの品質水準・稼働率・応答時間を数値で合意・契約</strong>」が出たら → <strong>SLA</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">SLA</span> ＝ <span class="hl">「スラスラ決める・数字で約束」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">S=スラスラ（合意）L=レベル（品質水準）A=Agreement（約束）</span><br><br>
+    <span class="hl">「SLAは書いたもの・SLMは守るもの」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">A（Agreement＝合意文書）vs M（Management＝管理活動）で区別</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-sla</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>中小企業の社長の私。クラウドの契約書に「可用性99.9%以上を保証、下回ったら返金」と書いてある。これって何の合意？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>SLA（Service Level Agreement）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>NDA（秘密保持契約）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ NDAは情報保護の契約。「品質を数値で保証する契約」はSLA</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：SLA（Service Level Agreement）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 SLA（サービスレベル合意）とは何か</h2>
-<span class="kw">サービス品質を契約で保証</span>
-<p>サービス提供者と利用者の間で、サービスの品質（可用性・応答時間・サポート対応時間など）を数値で合意した契約文書。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「99.9%の可用性（年間8.76時間以内のダウン許容）」などの数値が記載される。SLAを下回った場合のペナルティ（返金・補償）も定める。
-
-**覚え方** 🎯 SLA＝**Service Level Agreement＝品質約束書**。「99.9%稼働します。守れなきゃ返金」の数値契約。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>SLAはSecurity関連と混同しやすいが「品質の数値契約」。「99.9%」の意味を問われたら年間約8.76時間のダウンが許容範囲と押さえる。SLOやSLIと混同しないこと。SLAは契約書、SLOは目標値。ペナルティ条項があることもポイント。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>SLA＝**Service Level Agreement＝品質約束書**。「99.9%稼働します。守れなきゃ返金」の数値契約。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>SLA（サービスレベル合意）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

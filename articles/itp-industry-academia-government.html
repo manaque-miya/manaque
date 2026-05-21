@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>産学官連携とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="産学官連携をわかりやすく解説。企業・大学・政府の3者が手を組む理由、オープンイノベーションとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-industry-academia-government">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#124d2b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(18,77,43,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c2ecd4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:8px;}
+@media(max-width:480px){.three-col{grid-template-columns:1fr;}}
+.col-card{border-radius:12px;padding:12px;}
+.col-card h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.col-card ul{list-style:none;}
+.col-card li{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.col-card li::before{content:"・";position:absolute;left:0;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#d9851f;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>産学官連携</b>とは？</h1>
+    <p>企業（産）・大学（学）・政府（官）が力を合わせて、1社・1校・1官庁ではできないイノベーションを起こす仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- 企業ビル -->
+        <rect x="6" y="50" width="18" height="34" rx="3" fill="#2e6de5"/>
+        <rect x="9" y="54" width="4" height="4" fill="#fff" opacity=".7"/>
+        <rect x="15" y="54" width="4" height="4" fill="#fff" opacity=".7"/>
+        <rect x="9" y="62" width="4" height="4" fill="#fff" opacity=".7"/>
+        <rect x="15" y="62" width="4" height="4" fill="#fff" opacity=".7"/>
+        <!-- 大学 -->
+        <rect x="30" y="56" width="18" height="28" rx="3" fill="#2e8b4f"/>
+        <polygon points="39,44 28,56 50,56" fill="#1a5a30"/>
+        <rect x="36" y="66" width="6" height="18" fill="#1a5a30"/>
+        <!-- 政府 -->
+        <rect x="54" y="52" width="18" height="32" rx="3" fill="#d9851f"/>
+        <polygon points="63,40 51,52 75,52" fill="#a05800"/>
+        <rect x="57" y="56" width="4" height="4" fill="#fff" opacity=".7"/>
+        <rect x="65" y="56" width="4" height="4" fill="#fff" opacity=".7"/>
+        <rect x="57" y="64" width="4" height="4" fill="#fff" opacity=".7"/>
+        <rect x="65" y="64" width="4" height="4" fill="#fff" opacity=".7"/>
+        <!-- 連結線 -->
+        <line x1="24" y1="72" x2="30" y2="72" stroke="#ffd23f" stroke-width="2"/>
+        <line x1="48" y1="72" x2="54" y2="72" stroke="#ffd23f" stroke-width="2"/>
+      </svg>
+      <div class="scene-txt">
+        AI創薬スタートアップが「大学の研究データが使いたい。でも臨床試験の規制で止まっている」と悩んでいる。そこへ政府が「規制のサンドボックス特区を作ろう」と動いた。<br>
+        <strong>企業の実用化力＋大学の研究力＋政府の規制・資金力</strong>が合わさった。
+        <div class="scene-q">…これが産学官連携の典型例！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：3者の関係 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔺 産・学・官 それぞれの役割</span>
+    <svg width="100%" viewBox="0 0 340 270" role="img" aria-label="産学官連携の三角形：産（企業）・学（大学）・官（政府）と中心のイノベーション">
+      <!-- 連結線 -->
+      <path d="M170 65 L88 200 M170 65 L252 200 M88 200 L252 200" stroke="#c2c8d8" stroke-width="2.5" stroke-dasharray="5 5"/>
+      <!-- 産：企業 -->
+      <circle cx="170" cy="65" r="54" fill="#e7eefc" stroke="#2e6de5" stroke-width="3"/>
+      <text x="170" y="56" text-anchor="middle" font-size="20" font-family="sans-serif">🏭</text>
+      <text x="170" y="76" text-anchor="middle" font-size="15" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">産（企業）</text>
+      <text x="170" y="92" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">実用化・市場投入</text>
+      <!-- 学：大学 -->
+      <circle cx="88" cy="200" r="54" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="3"/>
+      <text x="88" y="190" text-anchor="middle" font-size="20" font-family="sans-serif">🎓</text>
+      <text x="88" y="211" text-anchor="middle" font-size="15" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">学（大学）</text>
+      <text x="88" y="227" text-anchor="middle" font-size="10" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">研究・人材育成</text>
+      <!-- 官：政府 -->
+      <circle cx="252" cy="200" r="54" fill="#fcefd9" stroke="#d9851f" stroke-width="3"/>
+      <text x="252" y="190" text-anchor="middle" font-size="20" font-family="sans-serif">🏛️</text>
+      <text x="252" y="211" text-anchor="middle" font-size="15" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">官（政府）</text>
+      <text x="252" y="227" text-anchor="middle" font-size="10" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">規制緩和・資金提供</text>
+      <!-- 中心：イノベーション -->
+      <rect x="110" y="138" width="120" height="42" rx="12" fill="#ffd23f" stroke="#e0a800" stroke-width="2"/>
+      <text x="170" y="156" text-anchor="middle" font-size="11" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">イノベーション</text>
+      <text x="170" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#7a5c00" font-family="M PLUS Rounded 1c">1社では無理な挑戦を実現</text>
+    </svg>
+    <div class="three-col">
+      <div class="col-card" style="background:#e7eefc;">
+        <h4 style="color:#2e6de5;">産（企業）</h4>
+        <ul>
+          <li>技術の製品化</li>
+          <li>市場投入・量産</li>
+          <li>資金の回収</li>
+        </ul>
+      </div>
+      <div class="col-card" style="background:#e2f3e5;">
+        <h4 style="color:#2e8b4f;">学（大学）</h4>
+        <ul>
+          <li>基礎研究・論文</li>
+          <li>人材育成</li>
+          <li>知財・特許</li>
+        </ul>
+      </div>
+      <div class="col-card" style="background:#fcefd9;">
+        <h4 style="color:#d9851f;">官（政府）</h4>
+        <ul>
+          <li>補助金・予算措置</li>
+          <li>規制緩和</li>
+          <li>政策・法整備</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：産学官連携で何が生まれるか -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 産学官連携で生まれるもの</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 基礎研究（大学主導）</div><div class="fb">大学が新技術・理論を研究。企業がすぐには手を出せない長期・高リスク研究を担う。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 共同開発（産学共同）</div><div class="fb">企業が研究費を提供し、大学の研究室でプロトタイプを開発。大学の人材・設備を活用。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 社会実装・普及（官の後押し）</div><div class="fb">政府が補助金・規制特区などで後押し。大学発ベンチャー（スタートアップ）が製品を市場へ。</div></div>
+    </div>
+  </div>
+
+  <!-- 試験のキモ -->
+  <div class="panel p-orange">
+    <span class="phead">⭐ 試験のキモ</span>
+    <ul class="kimo-list">
+      <li>産学官連携は<strong>「産（企業）・学（大学）・官（政府）」の3者協力</strong>が必須。2者だと別の概念（産学連携など）。</li>
+      <li>目的は<strong>「1者では実現できないイノベーション」</strong>。単なる共同研究や業務委託ではない。</li>
+      <li>オープンイノベーション（外部の知識・技術を取り込む）との関係で出題される場合あり。産学官連携はオープンイノベーションの一形態。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「産学連携」≠「産学官連携」</div>
+      <div class="tb">産学連携は企業と大学の2者。<strong>官（政府）が入ると産学官連携</strong>。官の役割（補助金・規制緩和）が含まれるかどうかが違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">オープンイノベーションと混同しやすい</div>
+      <div class="tb">オープンイノベーションは「自社外の知識・技術を積極的に取り込む」広い概念。産学官連携はその中の特定の形。「官（政府）」が登場するかどうかがキー。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「官」は政府・行政機関のこと</div>
+      <div class="tb">「官」は国や地方自治体・公的機関。民間企業の団体（業界団体）は「官」ではない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">さん（産）が（学）か（官）んで三つ巴</span>！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">さん＝産（企業） ／ が＝学（大学） ／ か＝官（政府）</span><br><br>
+      「<span class="hl">さん・が・か</span>ん」3者が揃って初めて産学官連携<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">2者だと「産学連携」→ 官がいないと別物！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ブレークポイントとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ブレークポイント（デバッグの中断点）を分かりやすく解説。プログラムのデバッグで特定の行に仕掛ける「一時停止地点」の意味と使い方。ITパスポート試験対策。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-breakpoint">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1d4ed8,#1e3a8a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(29,78,216,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#bfdbfe;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#1d4ed8;--cbg:#dbeafe;}
+.p-indigo{--c:#4338ca;--cbg:#e0e7ff;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1d4ed8;}
+
+.code-block{background:#1e2336;border-radius:12px;padding:14px 16px;margin:10px 0;font-family:monospace;font-size:13px;line-height:1.8;overflow-x:auto;}
+.code-block .normal{color:#a0c4f8;}
+.code-block .bp-line{background:#3d2c10;display:block;border-left:4px solid #fbbf24;padding-left:8px;color:#fde68a;font-weight:900;}
+.code-block .comment{color:#6b7280;}
+.bp-label{display:inline-block;background:#fbbf24;color:#3d2c10;font-size:11px;font-weight:900;padding:2px 8px;border-radius:6px;margin-bottom:6px;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1d4ed8;--fbg:#eff6ff;}
+.f2{--fc:#fbbf24;--fbg:#fffbeb;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#4338ca;--fbg:#eef2ff;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>ブレークポイント</b>とは？</h1>
+    <p>デバッグのときにプログラムを「ここで一時停止して！」と指示するための目印。バグ探しの必須テクニック。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1e3a8a" opacity=".1"/>
+        <rect x="8" y="60" width="62" height="25" rx="8" fill="#bfdbfe" opacity=".7"/>
+        <rect x="14" y="38" width="50" height="30" rx="10" fill="#1d4ed8"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- 虫眼鏡（デバッグ）アイコン -->
+        <circle cx="53" cy="62" r="7" fill="none" stroke="#fbbf24" stroke-width="2"/>
+        <line x1="58" y1="67" x2="63" y2="72" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div class="scene-txt">
+        プログラムを書いたあなた。計算結果がなぜかおかしい。プログラムは何百行もあって、どこでバグが起きているかわからない。そこで<strong>「怪しい行に目印をつけ、そこで実行を止めて変数の中身を確認する」</strong>ことにした。
+        <div class="scene-q">…その「目印」が「ブレークポイント」。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ブレークポイントのイメージ -->
+  <div class="panel p-indigo">
+    <span class="phead">🖥️ ブレークポイントのしくみ</span>
+    <div class="code-block">
+      <span class="normal">1:  result = 0</span>
+      <span class="normal">2:  for i in range(10):</span>
+      <span class="normal">3:    result = result + i * 2</span>
+      <span class="bp-label">⬛ ブレークポイント設定</span>
+      <span class="bp-line">4:    result = result + bonus  <span class="comment">← ここで一時停止！</span></span>
+      <span class="normal">5:  return result</span>
+    </div>
+    <svg width="100%" viewBox="0 0 340 140" role="img" aria-label="ブレークポイントでプログラムが停止し変数の中身を確認できる">
+      <!-- プログラム実行の流れ -->
+      <rect x="10" y="20" width="90" height="36" rx="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+      <text x="55" y="34" text-anchor="middle" font-size="11" font-weight="900" fill="#1d4ed8" font-family="M PLUS Rounded 1c">1〜3行</text>
+      <text x="55" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">通常実行</text>
+      <line x1="100" y1="38" x2="125" y2="38" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrow)"/>
+      <!-- ブレークポイントで停止 -->
+      <rect x="125" y="16" width="90" height="44" rx="8" fill="#fffbeb" stroke="#fbbf24" stroke-width="2.5"/>
+      <text x="170" y="30" text-anchor="middle" font-size="10" font-weight="900" fill="#92400e" font-family="M PLUS Rounded 1c">⛔ 4行目で</text>
+      <text x="170" y="44" text-anchor="middle" font-size="10" font-weight="900" fill="#92400e" font-family="M PLUS Rounded 1c">一時停止！</text>
+      <text x="170" y="56" text-anchor="middle" font-size="9" font-weight="700" fill="#78350f" font-family="M PLUS Rounded 1c">（ブレークポイント）</text>
+      <!-- 変数確認 -->
+      <rect x="125" y="75" width="90" height="36" rx="8" fill="#e0e7ff" stroke="#4338ca" stroke-width="1.5"/>
+      <text x="170" y="88" text-anchor="middle" font-size="10" font-weight="900" fill="#4338ca" font-family="M PLUS Rounded 1c">変数の中身を確認</text>
+      <text x="170" y="101" text-anchor="middle" font-size="9" font-weight="700" fill="#4338ca" font-family="M PLUS Rounded 1c">result=? bonus=?</text>
+      <line x1="170" y1="60" x2="170" y2="75" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <!-- 再開 -->
+      <line x1="215" y1="38" x2="240" y2="38" stroke="#9aa3b2" stroke-width="2"/>
+      <rect x="240" y="20" width="90" height="36" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="285" y="34" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">5行目〜</text>
+      <text x="285" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">実行再開</text>
+      <!-- 矢印定義 -->
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <!-- バグ発見！ -->
+      <rect x="75" y="115" width="190" height="22" rx="6" fill="#dd5a3a"/>
+      <text x="170" y="130" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">バグの原因を特定できる！</text>
+    </svg>
+  </div>
+
+  <!-- デバッグの流れ -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ ブレークポイントを使ったデバッグ手順</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 怪しい行にブレークポイントを設定</div>
+        <div class="fb">バグが起きていそうな行や、確認したい変数が使われている行を選んで目印をつける。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② プログラムをデバッグモードで実行</div>
+        <div class="fb">ブレークポイントの行まで来ると自動で一時停止する。この時点での変数の値を確認できる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 変数の値・状態を検査してバグを特定</div>
+        <div class="fb">想定外の値が入っている変数を発見。「どこでおかしくなったか」の原因を突き止める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 実行を再開して次の確認ポイントへ</div>
+        <div class="fb">ステップ実行（1行ずつ進める）や次のブレークポイントまで実行して詳しく追う。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ブレークポイント」と「損益分岐点（Break-Even Point）」の混同</div>
+      <div class="tb">デバッグの「ブレークポイント」はプログラムの中断点（テクノロジ系）。「損益分岐点」は財務・経営の概念（ストラテジ系）。Break-Even と Breakpoint は全く別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ブレークポイントはプログラムを「終了」させない</div>
+      <div class="tb">ブレークポイントで「一時停止」する。プログラムは終了していない。確認後は再開できる。「停止」と「終了」を混同しない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ブレークポイントはデバッグの手法の一つ</div>
+      <div class="tb">デバッグには他にもステップ実行・トレース・ログ出力などがある。問題文で「プログラムを特定の行で一時停止する」と書かれたらブレークポイントを選ぶ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      ブレーク＝<span class="hl">「ブレーキ」</span>をかける場所<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「ブレーク（Break）」＝止まれ！ の「ブレーキ」、「ポイント」＝場所</span><br><br>
+      「プログラムに<span class="hl">ブレーキランプ</span>を仕掛ける」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">→ そこに来たら一時停止して変数を見る ＝ ブレークポイント</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

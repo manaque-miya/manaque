@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>アジャイルな組織とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="アジャイルな組織をわかりやすく解説。変化に素早く対応できる組織の特徴、階層型組織との違い、自律的なチームと意思決定の分散、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp/itp-agile-organization">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#059669,#064e3b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(6,78,59,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a7f3d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#059669;--cbg:#d1fae5;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#059669;}
+
+/* 組織比較グリッド */
+.orgGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.orgCard{border-radius:14px;padding:13px;}
+.orgCard h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.orgCard ul{list-style:none;}
+.orgCard li{font-size:11.5px;font-weight:600;line-height:1.75;color:#48506a;padding-left:14px;position:relative;}
+.orgCard li::before{content:"✓";position:absolute;left:0;font-weight:900;}
+.card-agile{background:#d1fae5;}.card-agile h4{color:#059669;}.card-agile li::before{color:#059669;}
+.card-hier{background:#e7eefc;}.card-hier h4{color:#2e6de5;}.card-hier li::before{color:#2e6de5;}
+@media(max-width:480px){.orgGrid{grid-template-columns:1fr;}}
+
+/* 特徴リスト */
+.featList{display:flex;flex-direction:column;gap:9px;margin-top:10px;}
+.featItem{border-radius:11px;padding:11px 13px;display:flex;gap:10px;align-items:flex-start;}
+.featIcon{font-size:20px;flex-shrink:0;line-height:1;}
+.featBody .fh{font-size:13px;font-weight:900;color:var(--fhc);margin-bottom:2px;}
+.featBody .fb{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.feat1{background:#d1fae5;--fhc:#059669;}
+.feat2{background:#dbeafe;--fhc:#1d4ed8;}
+.feat3{background:#fcefd9;--fhc:#d9851f;}
+.feat4{background:#ede9fe;--fhc:#7c3aed;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>アジャイルな組織</b>とは？</h1>
+    <p>変化を素早くキャッチして動ける、自律分散型のチームで構成された組織のこと。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#064e3b" opacity=".12"/>
+        <!-- 3人のシルエット・横並びフラット -->
+        <!-- 中央 -->
+        <circle cx="39" cy="24" r="11" fill="#059669"/>
+        <rect x="29" y="33" width="20" height="16" rx="5" fill="#059669"/>
+        <!-- 左 -->
+        <circle cx="16" cy="30" r="9" fill="#34d399"/>
+        <rect x="7" y="38" width="18" height="14" rx="4" fill="#34d399"/>
+        <!-- 右 -->
+        <circle cx="62" cy="30" r="9" fill="#34d399"/>
+        <rect x="53" y="38" width="18" height="14" rx="4" fill="#34d399"/>
+        <!-- 双方向の矢印（つながり） -->
+        <path d="M25 44 L28 44" stroke="#ffd23f" stroke-width="2.5"/>
+        <path d="M50 44 L53 44" stroke="#ffd23f" stroke-width="2.5"/>
+        <!-- 下部：速さの表現 -->
+        <path d="M10 62 Q39 54 68 62" stroke="#059669" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <polygon points="65,58 70,62 65,66" fill="#059669"/>
+        <text x="39" y="78" text-anchor="middle" font-size="9" font-weight="900" fill="#059669" font-family="M PLUS Rounded 1c">素早く動く</text>
+      </svg>
+      <div class="scene-txt">
+        大手メーカーのB社。新製品の企画会議で「市場トレンドが変わった」と報告が入った。従来の組織では部長→課長→担当と承認を重ね、動き出すまで1か月かかっていた。アジャイルな組織では、現場チームが即座に判断し、<strong>翌日には試作に着手</strong>していた。
+        <div class="scene-q">…この「変化に素早く自律的に対応できる組織」を何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：階層型 vs アジャイル -->
+  <div class="panel p-green">
+    <span class="phead">🏢 組織の構造の違い</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="階層型組織とアジャイルな組織の構造比較">
+      <!-- 左：階層型 -->
+      <text x="80" y="18" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">階層型組織</text>
+      <!-- トップ -->
+      <rect x="50" y="24" width="60" height="22" rx="5" fill="#2e6de5"/>
+      <text x="80" y="39" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">経営層</text>
+      <!-- 矢印下 -->
+      <line x1="80" y1="46" x2="80" y2="56" stroke="#9aa3b2" stroke-width="2"/>
+      <polygon points="77,54 80,60 83,54" fill="#9aa3b2"/>
+      <!-- 中間 -->
+      <rect x="40" y="60" width="80" height="22" rx="5" fill="#4256b8"/>
+      <text x="80" y="75" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">管理職</text>
+      <!-- 矢印下 -->
+      <line x1="80" y1="82" x2="80" y2="92" stroke="#9aa3b2" stroke-width="2"/>
+      <polygon points="77,90 80,96 83,90" fill="#9aa3b2"/>
+      <!-- 現場 -->
+      <rect x="30" y="96" width="100" height="22" rx="5" fill="#6b7fd4"/>
+      <text x="80" y="111" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">現場チーム</text>
+      <!-- 説明 -->
+      <rect x="25" y="130" width="110" height="36" rx="7" fill="#e7eefc"/>
+      <text x="80" y="146" text-anchor="middle" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">意思決定が上に集中</text>
+      <text x="80" y="159" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">変化対応が遅い</text>
+
+      <!-- 区切り -->
+      <line x1="172" y1="15" x2="172" y2="175" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- 右：アジャイル -->
+      <text x="258" y="18" text-anchor="middle" font-size="11" font-weight="900" fill="#059669" font-family="M PLUS Rounded 1c">アジャイルな組織</text>
+      <!-- チームA -->
+      <circle cx="218" cy="70" r="28" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+      <text x="218" y="66" text-anchor="middle" font-size="9.5" font-weight="900" fill="#059669" font-family="M PLUS Rounded 1c">チームA</text>
+      <text x="218" y="79" text-anchor="middle" font-size="8.5" font-weight="700" fill="#064e3b" font-family="M PLUS Rounded 1c">自律判断</text>
+      <!-- チームB -->
+      <circle cx="298" cy="70" r="28" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+      <text x="298" y="66" text-anchor="middle" font-size="9.5" font-weight="900" fill="#059669" font-family="M PLUS Rounded 1c">チームB</text>
+      <text x="298" y="79" text-anchor="middle" font-size="8.5" font-weight="700" fill="#064e3b" font-family="M PLUS Rounded 1c">自律判断</text>
+      <!-- チームC -->
+      <circle cx="258" cy="145" r="28" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+      <text x="258" y="141" text-anchor="middle" font-size="9.5" font-weight="900" fill="#059669" font-family="M PLUS Rounded 1c">チームC</text>
+      <text x="258" y="154" text-anchor="middle" font-size="8.5" font-weight="700" fill="#064e3b" font-family="M PLUS Rounded 1c">自律判断</text>
+      <!-- 双方向線 -->
+      <line x1="246" y1="72" x2="270" y2="72" stroke="#059669" stroke-width="2"/>
+      <line x1="230" y1="93" x2="244" y2="117" stroke="#059669" stroke-width="2"/>
+      <line x1="286" y1="93" x2="272" y2="117" stroke="#059669" stroke-width="2"/>
+    </svg>
+
+    <p style="margin-top:10px;">アジャイルな組織では、チームが<strong>自律的（セルフオーガナイジング）</strong>に動く。承認待ちなしに判断でき、変化に素早く対応できる。</p>
+  </div>
+
+  <!-- 4つの特徴 -->
+  <div class="panel p-orange">
+    <span class="phead">🌟 アジャイルな組織の4つの特徴</span>
+    <div class="featList">
+      <div class="featItem feat1">
+        <div class="featIcon">⚡</div>
+        <div class="featBody">
+          <div class="fh">意思決定の分散</div>
+          <div class="fb">現場チームが承認を待たず自分たちで判断・実行できる。階層を経由しない。</div>
+        </div>
+      </div>
+      <div class="featItem feat2">
+        <div class="featIcon">🔄</div>
+        <div class="featBody">
+          <div class="fh">変化への適応を優先</div>
+          <div class="fb">計画通りに進めることより「状況が変わったら柔軟に変える」を重視する。</div>
+        </div>
+      </div>
+      <div class="featItem feat3">
+        <div class="featIcon">👥</div>
+        <div class="featBody">
+          <div class="fh">クロスファンクショナルチーム</div>
+          <div class="fb">企画・開発・テスト・営業など異なる役割を1チームに集め、外部依存なしで完結させる。</div>
+        </div>
+      </div>
+      <div class="featItem feat4">
+        <div class="featIcon">📦</div>
+        <div class="featBody">
+          <div class="fh">小さく・速く・繰り返す</div>
+          <div class="fb">大きな計画より短い期間で成果を出し、フィードバックを素早く取り込む。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「アジャイルな組織＝アジャイル開発を使う組織」ではない</div>
+      <div class="tb">アジャイルな組織はソフトウェア開発だけの話ではない。<strong>経営・製造・営業など組織全体の体質</strong>を指す概念。開発手法のアジャイルより広い概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「無秩序な組織」と混同しやすい</div>
+      <div class="tb">自律的な意思決定は「ルールなし・バラバラ」ではない。<strong>共通のビジョンや価値観</strong>のもとでチームが自律して動く。秩序は維持される。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">階層型組織が「悪い」わけではない</div>
+      <div class="tb">安定した環境・大規模プロジェクト・厳格な規制下では階層型も合理的。<strong>変化が速い環境でアジャイルな組織が有効</strong>という使い分けが重要。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「ア（アジャイル）組（組織）は自分で動く」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">アジャイルな組織＝自律・分散・変化対応が3点セット<br><br></span>
+      追加ゴロ：<span class="hl">上に聞かず・チームが決める・すぐ動く</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">承認不要の自律判断 ＝ アジャイルな組織の核心</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-agile-organization</div>
+
+</div>
+</body>
+</html>

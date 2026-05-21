@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>生成AIチャットボットとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="生成AIチャットボットをわかりやすく解説。LLMの仕組み、従来型チャットボットとの違い、ハルシネーションのリスクと試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-generative-ai-chatbot">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c3aed,#4c1d95);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(76,29,149,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ddd6fe;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-purple{--c:#7c3aed;--cbg:#ede9fe;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c3aed;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c3aed;--fbg:#f5f3ff;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.cgcell{border-radius:12px;padding:11px 10px;}
+.cgcell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.cgcell ul{list-style:none;}
+.cgcell li{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.cgcell li::before{content:"・";position:absolute;left:0;}
+.cg-old{background:#f0f4f8;}.cg-old h4{color:#4256b8;}
+.cg-new{background:#f5f3ff;}.cg-new h4{color:#7c3aed;}
+@media(max-width:400px){.compare-grid{grid-template-columns:1fr;}}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>生成AIチャットボット</b>とは？</h1>
+    <p>大規模言語モデル（LLM）が"文脈を読んで"自然な文章を生み出す、次世代のAI会話システム。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#1a0a3a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="24" rx="7" fill="#c4b5fd"/>
+        <rect x="14" y="38" width="44" height="28" rx="9" fill="#7c3aed"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-6 -9 -13 -9 q-7 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- チャット吹き出し -->
+        <rect x="42" y="8" width="24" height="14" rx="4" fill="#7c3aed"/>
+        <path d="M44 22 l-4 4 l6 0z" fill="#7c3aed"/>
+        <rect x="45" y="12" width="14" height="2" rx="1" fill="#fff"/>
+        <rect x="45" y="16" width="10" height="2" rx="1" fill="#c4b5fd"/>
+      </svg>
+      <div class="scene-txt">
+        仕事でわからない用語が出てきたので、スマホで「ChatGPT」に質問した。すると、まるで同僚に説明されているような、自然で具体的な回答が返ってきた。
+        <div class="scene-q">…これが「生成AIチャットボット」の正体？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：LLMの仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">🔬 LLMが動く仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="生成AIチャットボットの処理フロー：入力→トークン化→LLM推論→テキスト生成→出力">
+      <!-- 背景レーン -->
+      <rect x="8" y="16" width="324" height="168" rx="14" fill="#f0eeff" stroke="#c4b5fd" stroke-width="1.5"/>
+      <!-- ステップボックス -->
+      <rect x="18" y="32" width="68" height="52" rx="8" fill="#7c3aed"/>
+      <text x="52" y="55" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ユーザーが</text>
+      <text x="52" y="68" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">質問を入力</text>
+      <text x="52" y="97" text-anchor="middle" font-size="9" font-weight="700" fill="#7c3aed" font-family="M PLUS Rounded 1c">「〇〇とは？」</text>
+
+      <text x="90" y="60" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+
+      <rect x="96" y="32" width="68" height="52" rx="8" fill="#4256b8"/>
+      <text x="130" y="55" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">トークンに</text>
+      <text x="130" y="68" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">分割</text>
+      <text x="130" y="97" text-anchor="middle" font-size="9" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">単語の部品に</text>
+
+      <text x="168" y="60" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+
+      <rect x="174" y="32" width="68" height="52" rx="8" fill="#2e6de5"/>
+      <text x="208" y="55" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">LLMが</text>
+      <text x="208" y="68" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">確率予測</text>
+      <text x="208" y="97" text-anchor="middle" font-size="9" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">次の単語を予測</text>
+
+      <text x="246" y="60" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+
+      <rect x="252" y="32" width="68" height="52" rx="8" fill="#2e8b4f"/>
+      <text x="286" y="55" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">自然な文章</text>
+      <text x="286" y="68" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">を出力</text>
+      <text x="286" y="97" text-anchor="middle" font-size="9" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">回答が生成！</text>
+
+      <!-- キーポイント -->
+      <rect x="18" y="118" width="302" height="50" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="170" y="138" text-anchor="middle" font-size="11" font-weight="900" fill="#4c1d95" font-family="M PLUS Rounded 1c">大量のテキストで事前学習済み → 文脈を理解して次の語を予測</text>
+      <text x="170" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="#7c3aed" font-family="M PLUS Rounded 1c">決まった答えを返す「検索」ではなく、「生成」する点が核心</text>
+    </svg>
+  </div>
+
+  <!-- 従来型との比較 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ 従来型チャットボットとの違い</span>
+    <div class="compare-grid">
+      <div class="cgcell cg-old">
+        <h4>従来型チャットボット</h4>
+        <ul>
+          <li>あらかじめ用意した回答を返す</li>
+          <li>想定外の質問には対応不可</li>
+          <li>シナリオ分岐で動く</li>
+          <li>FAQ対応・問い合わせ窓口に多い</li>
+        </ul>
+      </div>
+      <div class="cgcell cg-new">
+        <h4>生成AIチャットボット</h4>
+        <ul>
+          <li>文脈を読んで文章を生成</li>
+          <li>初めての質問にも対応できる</li>
+          <li>LLM（大規模言語モデル）で動く</li>
+          <li>ChatGPT・Gemini等が代表例</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：活用と注意点 -->
+  <div class="panel p-orange">
+    <span class="phead">📋 業務活用のポイント</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 得意なこと — 文章生成・要約・翻訳</div><div class="fb">メール文面の作成、議事録の要約、多言語翻訳など、テキスト処理全般。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 限界 — ハルシネーション（幻覚）</div><div class="fb">事実でない情報をもっともらしく生成することがある。重要情報は必ず一次情報で確認。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ セキュリティ — 機密情報の入力禁止</div><div class="fb">入力データが学習に使われるサービスもある。顧客情報・社外秘データは絶対に入力しない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ AIリテラシー — 出力を「素材」として使う</div><div class="fb">生成された文章はそのまま使わず、人間が内容を確認・編集してから利用する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「検索エンジン」と混同しやすい</div>
+      <div class="tb">検索はWebを探してリンクを返す。生成AIは<strong>新しい文章を作り出す</strong>。情報の出どころが違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「常に正確」と思いがち</div>
+      <div class="tb">ハルシネーション（誤情報の生成）は現在の生成AIの本質的な問題。<strong>出力を鵜呑みにしない</strong>が試験でも重要な態度。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「LLM」＝「生成AIチャットボット」ではない</div>
+      <div class="tb">LLMは言語モデルそのもの。チャットボットはLLMを使ったアプリケーション。<strong>モデル≠アプリ</strong>の関係。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「文脈を理解し自然な文章を<strong>生成</strong>する」→ 生成AIチャットボット。「決まったシナリオで答える」→ 従来型。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「生成AI」は「生」み出す</span>＝答えを探すんじゃなく<span class="hl">作る</span>！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">検索＝倉庫から取り出す ／ 生成AI＝その場で料理して出す</span><br><br>
+    ハルシネーション＝<span class="hl">幻覚</span>→ AIが<span class="hl">「嘘をハル（張る）」</span>と覚える！</div>
+  </div>
+
+</div>
+</body>
+</html>

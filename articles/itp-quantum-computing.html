@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>量子コンピュータとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="量子コンピュータをわかりやすく解説。量子ビット・重ね合わせ・もつれの概念、古典コンピュータとの違い、暗号への影響、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-quantum-computing">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6d28d9,#1e1b4b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(29,27,75,.3);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c4b5fd;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-violet{--c:#6d28d9;--cbg:#ede9fe;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6d28d9;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.compare-cell{border-radius:12px;padding:12px 11px;}
+.compare-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.compare-cell ul{list-style:none;}
+.compare-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.compare-cell li::before{content:"・";position:absolute;left:0;}
+.cc-violet{background:#ede9fe;}.cc-violet h4{color:#6d28d9;}
+.cc-blue{background:#e7eefc;}.cc-blue h4{color:#2e6de5;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.use-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.use-cell{border-radius:11px;padding:11px;background:#f4f6fb;}
+.use-cell .uh{font-size:12px;font-weight:900;color:#6d28d9;margin-bottom:4px;}
+.use-cell .ub{font-size:11px;font-weight:700;color:#48506a;line-height:1.65;}
+@media(max-width:480px){.use-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6d28d9;--fbg:#ede9fe;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#dd5a3a;--fbg:#fce4dd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">⚛️ ITパスポート ｜ テクノロジ系・先端技術</span>
+    <h1><b>量子コンピュータ</b>とは？</h1>
+    <p>「0か1か」ではなく「0でも1でも同時」を使って計算する次世代コンピュータ。特定の問題で従来型コンピュータを圧倒的に超える。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-violet">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 量子ビット（球） -->
+        <circle cx="39" cy="45" r="24" fill="none" stroke="#6d28d9" stroke-width="2"/>
+        <ellipse cx="39" cy="45" rx="24" ry="8" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <ellipse cx="39" cy="45" rx="8" ry="24" fill="none" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <circle cx="39" cy="23" r="4" fill="#ffd23f"/>
+        <circle cx="39" cy="67" r="4" fill="#6d28d9"/>
+        <line x1="39" y1="21" x2="39" y2="69" stroke="#6d28d9" stroke-width="1.5"/>
+        <text x="52" y="26" font-size="8" font-weight="900" fill="#ffd23f" font-family="sans-serif">|0⟩</text>
+        <text x="52" y="70" font-size="8" font-weight="900" fill="#6d28d9" font-family="sans-serif">|1⟩</text>
+      </svg>
+      <div class="scene-txt">
+        普通のコンピュータは迷路を「1本ずつ」試す。量子コンピュータは「全部の道を<strong>同時</strong>に試せる」。<br>
+        巨大な数を素因数分解するのに従来機が数万年かかるところ、量子コンピュータなら<strong>数秒</strong>で解ける可能性がある。
+        <div class="scene-q">「重ね合わせ」で同時並列に計算するのが量子の力！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：古典 vs 量子 -->
+  <div class="panel p-blue">
+    <span class="phead">⚛️ 古典コンピュータ vs 量子コンピュータ</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="古典コンピュータと量子コンピュータのビット比較図">
+      <!-- 左：古典ビット -->
+      <rect x="10" y="20" width="148" height="170" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="84" y="42" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">古典コンピュータ</text>
+      <text x="84" y="58" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">ビット（bit）</text>
+      <!-- 0か1だけ -->
+      <rect x="30" y="68" width="44" height="44" rx="10" fill="#2e6de5"/>
+      <text x="52" y="97" text-anchor="middle" font-size="28" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">0</text>
+      <text x="84" y="92" text-anchor="middle" font-size="18" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">or</text>
+      <rect x="90" y="68" width="44" height="44" rx="10" fill="#4256b8"/>
+      <text x="112" y="97" text-anchor="middle" font-size="28" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">1</text>
+      <text x="84" y="130" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">1回に「どちらか一方」</text>
+      <text x="84" y="144" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">しか表せない</text>
+      <text x="84" y="162" text-anchor="middle" font-size="9.5" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">0 or 1（二択）</text>
+      <text x="84" y="178" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">n個で2ⁿ状態を順番に</text>
+
+      <!-- 右：量子ビット -->
+      <rect x="182" y="20" width="148" height="170" rx="12" fill="#ede9fe" stroke="#6d28d9" stroke-width="2"/>
+      <text x="256" y="42" text-anchor="middle" font-size="12" font-weight="900" fill="#6d28d9" font-family="M PLUS Rounded 1c">量子コンピュータ</text>
+      <text x="256" y="58" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">量子ビット（qubit）</text>
+      <!-- 重ね合わせ表現 -->
+      <circle cx="256" cy="90" r="32" fill="none" stroke="#6d28d9" stroke-width="2.5"/>
+      <ellipse cx="256" cy="90" rx="32" ry="10" fill="none" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <circle cx="256" cy="59" r="5" fill="#ffd23f"/>
+      <circle cx="256" cy="121" r="5" fill="#6d28d9"/>
+      <line x1="256" y1="57" x2="256" y2="123" stroke="#6d28d9" stroke-width="1.5"/>
+      <text x="256" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">「重ね合わせ」</text>
+      <text x="256" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">0と1を同時に</text>
+      <text x="256" y="162" text-anchor="middle" font-size="9.5" font-weight="800" fill="#6d28d9" font-family="M PLUS Rounded 1c">0 and 1（同時）</text>
+      <text x="256" y="178" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">n個で2ⁿ状態を同時に</text>
+    </svg>
+    <div class="compare-grid">
+      <div class="compare-cell cc-blue">
+        <h4>古典コンピュータ</h4>
+        <ul>
+          <li>ビット（0 or 1）</li>
+          <li>順番に計算</li>
+          <li>汎用・安定</li>
+          <li>常温で動作</li>
+        </ul>
+      </div>
+      <div class="compare-cell cc-violet">
+        <h4>量子コンピュータ</h4>
+        <ul>
+          <li>量子ビット（0 and 1）</li>
+          <li>同時並列に計算</li>
+          <li>特定問題に超高速</li>
+          <li>極低温(-273°C付近)が必要</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 得意な用途 -->
+  <div class="panel p-green">
+    <span class="phead">🎯 量子コンピュータが得意なこと</span>
+    <div class="use-grid">
+      <div class="use-cell">
+        <div class="uh">素因数分解</div>
+        <div class="ub">巨大な数を素因数に分解。現在の公開鍵暗号（RSA）を破れる可能性。</div>
+      </div>
+      <div class="use-cell">
+        <div class="uh">最適化問題</div>
+        <div class="ub">物流ルート・金融ポートフォリオなどの膨大な組み合わせを一気に探索。</div>
+      </div>
+      <div class="use-cell">
+        <div class="uh">分子シミュレーション</div>
+        <div class="ub">新薬開発・材料科学での分子構造の計算。</div>
+      </div>
+      <div class="use-cell">
+        <div class="uh">AIの学習</div>
+        <div class="ub">機械学習の最適化計算を高速化する研究が進む。</div>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;font-weight:700;color:#48506a;">
+      注：現時点では実用的な量子コンピュータはまだ開発途上。<strong>汎用コンピュータの置き換えではなく「特定問題の専用機」</strong>として使われる見通し。
+    </p>
+  </div>
+
+  <!-- 暗号への影響 -->
+  <div class="panel p-orange">
+    <span class="phead">🔐 暗号・セキュリティへの影響</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">現在の公開鍵暗号（RSA）</div>
+        <div class="fb">巨大な数の素因数分解が現実的に不可能なことを安全の根拠にしている。</div>
+      </div>
+      <div class="farrow">▼ 量子コンピュータが実用化されると</div>
+      <div class="fstep f2">
+        <div class="fh">RSA暗号が解読されるリスク</div>
+        <div class="fb">Shorのアルゴリズムにより、量子コンピュータはRSA・楕円曲線暗号を効率的に解けるとされる。</div>
+      </div>
+      <div class="farrow">▼ 対策として</div>
+      <div class="fstep f3">
+        <div class="fh">耐量子暗号（PQC）の開発</div>
+        <div class="fb">量子コンピュータでも解けない新しい暗号方式（格子暗号など）の研究・標準化が世界で進んでいる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「量子コンピュータは全ての計算が速い」→ 誤り</div>
+      <div class="tb">量子コンピュータが超高速なのは<strong>特定の問題（素因数分解・最適化など）</strong>に限られる。文書作成やWebブラウジングは古典コンピュータの方が得意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「量子コンピュータはすでに普及している」→ 誤り</div>
+      <div class="tb">2020年代時点では研究・実証段階。実用化・普及にはまだ時間がかかる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「量子ビットは0か1のどちらか」→ 誤り</div>
+      <div class="tb">量子ビットは「重ね合わせ」によって<strong>0と1を同時</strong>に取り得る（測定した瞬間にどちらかに確定する）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「量子コンピュータの特徴」を問われたら → <strong>「重ね合わせ」「特定問題で超高速」「暗号への影響」</strong>の3点セットで考える。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">量子＝「迷路を全部屋同時に走る」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">古典コンピュータは1人が1本ずつ走る。量子は分身の術で全ての道を同時に走り、一番早く出口に着いた道を答える。</span><br><br>
+      <span class="hl">「キュー（Q）ビット」＝「キューに並ばずに一気に処理」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">qubit（量子ビット）の「Q」で「キュー（行列）に並ばずに重ね合わせで同時処理」と連想。</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

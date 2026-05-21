@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>スラッシングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="スラッシングを図解でわかりやすく解説。仮想記憶のページング処理が頻繁に起きてCPUが本来の仕事をできなくなる状態、ページフォルトとの関係まで。">
+<link rel="canonical" href="https://example.com/itp-thrashing">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#0f766e,#042f2e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(4,47,46,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#99f6e4;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-teal{--c:#0f766e;--cbg:#ccfbf1;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0f766e;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#dd5a3a;--fbg:#fce4dd;}
+.f3{--fc:#0f766e;--fbg:#ccfbf1;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>スラッシング</b>とは？</h1>
+    <p>コンピュータがページの入れ替えに追われすぎて、本来の仕事を全くできなくなった状態。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-hidden="true">
+        <ellipse cx="36" cy="87" rx="28" ry="4" fill="#042f2e" opacity=".12"/>
+        <rect x="8" y="52" width="56" height="32" rx="6" fill="#99f6e4"/>
+        <rect x="14" y="30" width="44" height="28" rx="9" fill="#0f766e"/>
+        <circle cx="36" cy="19" r="13" fill="#f4c89a"/>
+        <path d="M24 16 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#292524"/>
+        <rect x="28" y="30" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 38 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 汗マーク -->
+        <ellipse cx="52" cy="35" rx="5" ry="6" fill="#3dd0c0" opacity=".7"/>
+        <text x="52" y="39" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="sans-serif">汗</text>
+      </svg>
+      <div class="scene-txt">
+        古いPCに大量のアプリを同時に開いたとき、HDDのランプが点滅しっぱなしで画面がフリーズ状態に……。<br>
+        CPUはほとんど「メモリの入れ替え」だけをやり続けていて、アプリの処理が全く進まない。
+        <div class="scene-q">この「入れ替えに追われてパンク」状態がスラッシング！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 -->
+  <div class="panel p-blue">
+    <span class="phead">📊 スラッシングが起きる仕組み</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="仮想記憶のページング：ページフォルトが頻発してCPUが入れ替えだけに追われる状態">
+      <!-- 実メモリ（小さい） -->
+      <rect x="10" y="20" width="140" height="100" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="80" y="14" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">実メモリ（物理RAM）</text>
+      <rect x="18" y="30" width="30" height="22" rx="4" fill="#2e6de5" opacity=".8"/>
+      <text x="33" y="45" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">P1</text>
+      <rect x="52" y="30" width="30" height="22" rx="4" fill="#2e6de5" opacity=".8"/>
+      <text x="67" y="45" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">P2</text>
+      <rect x="86" y="30" width="30" height="22" rx="4" fill="#7db5f5" opacity=".8"/>
+      <text x="101" y="45" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">P3</text>
+      <rect x="120" y="30" width="22" height="22" rx="4" fill="#c9d9f5" opacity=".8"/>
+      <text x="131" y="45" text-anchor="middle" font-size="7" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">空</text>
+      <text x="80" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">メモリが少なく</text>
+      <text x="80" y="95" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">すぐ溢れる</text>
+      <text x="80" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">（ページフォルト多発）</text>
+
+      <!-- 矢印（双方向：ページイン・アウト） -->
+      <path d="M155 70 L185 70" stroke="#dd5a3a" stroke-width="2.5" marker-end="url(#arrowTH1)"/>
+      <path d="M185 80 L155 80" stroke="#dd5a3a" stroke-width="2.5" marker-end="url(#arrowTH2)"/>
+      <defs>
+        <marker id="arrowTH1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#dd5a3a"/></marker>
+        <marker id="arrowTH2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#dd5a3a"/></marker>
+      </defs>
+      <text x="170" y="64" text-anchor="middle" font-size="9" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">ページイン</text>
+      <text x="170" y="90" text-anchor="middle" font-size="9" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">ページアウト</text>
+
+      <!-- 仮想記憶（ディスク） -->
+      <rect x="190" y="20" width="140" height="100" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+      <text x="260" y="14" text-anchor="middle" font-size="11" font-weight="900" fill="#b45309" font-family="M PLUS Rounded 1c">仮想記憶（ディスク）</text>
+      <rect x="198" y="30" width="30" height="22" rx="4" fill="#fbbf24" opacity=".8"/>
+      <text x="213" y="45" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">P4</text>
+      <rect x="232" y="30" width="30" height="22" rx="4" fill="#fbbf24" opacity=".8"/>
+      <text x="247" y="45" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">P5</text>
+      <rect x="266" y="30" width="30" height="22" rx="4" fill="#fbbf24" opacity=".8"/>
+      <text x="281" y="45" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">P6</text>
+      <text x="260" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">ディスクは遅い</text>
+      <text x="260" y="95" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">→入れ替えに時間かかる</text>
+
+      <!-- 下部：結果 -->
+      <rect x="50" y="135" width="240" height="40" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="170" y="152" text-anchor="middle" font-size="12" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">CPU が入れ替えだけに追われる</text>
+      <text x="170" y="168" text-anchor="middle" font-size="11" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">本来の計算処理がほぼゼロ＝スラッシング！</text>
+
+      <!-- CPUマーク -->
+      <text x="170" y="200" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">※ CPU使用率は高いのに処理は進まない</text>
+    </svg>
+  </div>
+
+  <!-- フロー：原因→発生→対策 -->
+  <div class="panel p-green">
+    <span class="phead">⚙️ 原因・発生・対策の流れ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 原因：実メモリ不足</div>
+        <div class="fb">同時に動かすプロセスが多すぎて、実メモリ（RAM）に必要なページが全部入らない状態になる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 発生：ページフォルト多発→スラッシング</div>
+        <div class="fb">必要なページがRAMにない（ページフォルト）→ディスクから読み込み→すぐまた別のページが必要→また読み込み……の無限ループ。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 対策：メモリ増設・プロセス数削減</div>
+        <div class="fb">RAMを増やす・同時に動かすプロセスを減らす・ワーキングセット管理で必要なページを優先的にRAMに残す。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ページフォルト」と混同しやすい</div>
+      <div class="tb">ページフォルトは「必要なページがRAMにない」という1回の出来事。スラッシングは「ページフォルトが多発して処理が止まる」状態——因果関係があるが別概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「デッドロック」と混同しやすい</div>
+      <div class="tb">デッドロックは「プロセスが互いに資源の解放を待って止まる」状態。スラッシングは「メモリの入れ替えに追われて止まる」状態——どちらも「処理が止まる」だが原因が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「CPU使用率100%なのに遅い」がキーワード</div>
+      <div class="tb">スラッシングではCPUが「入れ替え処理」をしているため使用率は高くなる。しかし本来のアプリ処理は進まない——この矛盾がスラッシングの特徴。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「ページングが<strong>頻繁すぎて</strong>本来の処理ができない」→ スラッシング一択。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">スラッシング</span>＝<span class="hl">スラ（スライド）</span>しすぎてパンク！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「スライド（ページを入れ替える）」を繰り返しすぎて、CPUがパンクするイメージ。</span><br><br>
+      <span class="hl">スラッシュ</span>（slash）＝ゴリゴリ削る音。ディスクを<span class="hl">ゴリゴリ</span>削り続けて仕事できない！
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ スラッシング</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>データサイエンティストとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="データサイエンティストの役割・必要スキル3領域（統計・IT・ビジネス）をわかりやすく解説。AIエンジニア・データアナリストとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-data-scientist">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0f766e,#134e4a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(15,118,110,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#99f6e4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-teal{--c:#0f766e;--cbg:#ccfbf1;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0f766e;}
+
+.skill3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:6px;}
+.skill-cell{border-radius:14px;padding:12px 10px;text-align:center;}
+.skill-cell h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.skill-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.sk-stat{background:#e7eefc;} .sk-stat h4{color:#2e6de5;}
+.sk-it{background:#ccfbf1;} .sk-it h4{color:#0f766e;}
+.sk-biz{background:#fcefd9;} .sk-biz h4{color:#d9851f;}
+@media(max-width:480px){.skill3{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e6de5;--fbg:#eef3fd;}
+.f2{--fc:#0f766e;--fbg:#f0fdfa;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#7c3aed;--fbg:#f3eeff;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>データサイエンティスト</b>とは？</h1>
+    <p>統計・IT・ビジネスの3つのスキルを持ち、データから価値を生み出す専門職。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4.5" fill="#134e4a" opacity=".12"/>
+        <rect x="8" y="58" width="56" height="20" rx="6" fill="#b2dfdb"/>
+        <rect x="14" y="37" width="44" height="28" rx="9" fill="#0f766e"/>
+        <circle cx="36" cy="21" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- ノートPC -->
+        <rect x="40" y="54" width="20" height="13" rx="2" fill="#1e293b"/>
+        <rect x="42" y="56" width="16" height="9" rx="1" fill="#38bdf8"/>
+        <!-- グラフ線 -->
+        <polyline points="43,63 47,59 51,61 55,57" fill="none" stroke="#fff" stroke-width="1.2"/>
+      </svg>
+      <div class="scene-txt">
+        社内に大量の購買データがあるが、誰も活用できていない。そこで経営陣が採用したのが「<strong>データサイエンティスト</strong>」。データを分析し、どの商品が売れる見込みかを予測して、経営判断に使えるレポートにまとめてくれた。
+        <div class="scene-q">…分析・統計・ビジネス——全部できる人？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3つのスキル領域 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔬 3つのスキル領域</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="データサイエンティストの3スキル：統計・数学・IT・ビジネスの重なり図">
+      <!-- 3つの円 -->
+      <circle cx="170" cy="90" r="60" fill="#e7eefc" fill-opacity=".8" stroke="#2e6de5" stroke-width="2.5"/>
+      <circle cx="110" cy="190" r="60" fill="#ccfbf1" fill-opacity=".8" stroke="#0f766e" stroke-width="2.5"/>
+      <circle cx="230" cy="190" r="60" fill="#fcefd9" fill-opacity=".8" stroke="#d9851f" stroke-width="2.5"/>
+      <!-- 中央バッジ -->
+      <ellipse cx="170" cy="160" rx="42" ry="24" fill="#4256b8"/>
+      <text x="170" y="155" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">データ</text>
+      <text x="170" y="169" text-anchor="middle" font-size="10" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">サイエンティスト</text>
+      <!-- ラベル -->
+      <text x="170" y="72" text-anchor="middle" font-size="14" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">統計・数学</text>
+      <text x="170" y="88" text-anchor="middle" font-size="11" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">Statistics</text>
+      <text x="103" y="210" text-anchor="middle" font-size="13" font-weight="900" fill="#0a5c54" font-family="M PLUS Rounded 1c">IT・機械学習</text>
+      <text x="103" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#2e8b6a" font-family="M PLUS Rounded 1c">Technology</text>
+      <text x="237" y="210" text-anchor="middle" font-size="14" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">ビジネス</text>
+      <text x="237" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">Business</text>
+    </svg>
+    <div class="skill3">
+      <div class="skill-cell sk-stat"><h4>統計・数学</h4><p>仮説検定・回帰分析・確率論。データを正しく読む土台。</p></div>
+      <div class="skill-cell sk-it"><h4>IT・機械学習</h4><p>Python・SQL・AIモデル構築。データを処理・予測する技術。</p></div>
+      <div class="skill-cell sk-biz"><h4>ビジネス</h4><p>課題を定義し、分析結果を経営判断に翻訳する力。</p></div>
+    </div>
+  </div>
+
+  <!-- データ活用フロー -->
+  <div class="panel p-green">
+    <span class="phead">🔄 データ活用の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 課題の定義（ビジネス）</div><div class="fb">「何を明らかにしたいか」をビジネス視点で設定する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② データ収集・前処理（IT）</div><div class="fb">必要なデータを集め、欠損値処理・正規化などを行う。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 分析・モデル構築（統計・ML）</div><div class="fb">統計手法や機械学習でパターンを発見・予測する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 結果の可視化・提言（ビジネス）</div><div class="fb">経営陣・現場に伝わる形でインサイトをまとめ、意思決定を支援する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">AIエンジニアと混同しやすい</div>
+      <div class="tb">AIエンジニアはモデルを「実装・運用」する技術職。データサイエンティストはビジネス課題への<strong>分析・提言</strong>が主軸。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">データアナリストと混同しやすい</div>
+      <div class="tb">データアナリストは過去データの集計・報告が中心。データサイエンティストは<strong>予測・意思決定への活用</strong>まで担う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「統計だけ」「プログラミングだけ」ではない</div>
+      <div class="tb">試験では「<strong>ビジネス課題の解決</strong>」が必須要件として問われる。3領域すべてが必要な点を押さえておく。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      「<span class="hl">統（とう）・IT・ビ</span>」= データサイエンティストの三種の神器！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">統＝統計・数学 ／ IT＝機械学習・プログラミング ／ ビ＝ビジネス課題解決</span><br><br>
+      データサイエンティスト＝<span class="hl">「データで飯を食う」ビジネス人</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">分析して終わりじゃなく、経営判断まで落とし込む「使える人」</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-data-scientist</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>オプトアウトとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="オプトアウトをメール配信停止・個人情報の利用停止から図解でわかりやすく解説。オプトインとの違い・特定電子メール法・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-opt-out">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#8b5aa8,#40207a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(64,32,122,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d8bff5;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1e8a5e;--cbg:#e2f5ed;}
+.p-purple{--c:#8b5aa8;--cbg:#f3ecf8;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#8b5aa8;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#8b5aa8;--fbg:#f3ecf8;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+.compare-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+.cbox{border-radius:13px;padding:13px;border:2px solid var(--bc);}
+.cbox-purple{--bc:#8b5aa8;background:#f3ecf8;}
+.cbox-blue{--bc:#2e6de5;background:#eef3fd;}
+.cbox h4{font-size:13px;font-weight:900;color:var(--bc);margin-bottom:6px;}
+.cbox ul{list-style:none;}
+.cbox li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:14px;position:relative;}
+.cbox li::before{content:"→";position:absolute;left:0;color:var(--bc);}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系・法務</span>
+    <h1><b>オプトアウト</b>とは？</h1>
+    <p>デフォルトで「参加・許可」の状態から、ユーザーが「<strong>拒否・停止</strong>」の意思を示して初めて止まる方式。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="50" width="58" height="35" rx="8" fill="#cdd9ec"/>
+        <circle cx="39" cy="32" r="14" fill="#f4c89a"/>
+        <path d="M30 29 a9 8 0 0 1 18 0 q-4 -6 -9 -6 q-5 0 -9 6z" fill="#3a3f4a"/>
+        <rect x="16" y="58" width="46" height="8" rx="3" fill="#f3ecf8" stroke="#8b5aa8" stroke-width="1.5"/>
+        <rect x="17" y="59" width="6" height="6" rx="1" fill="#8b5aa8"/>
+        <text x="8" y="68" font-size="5.5" font-weight="900" fill="#8b5aa8" font-family="sans-serif">✓</text>
+        <text x="27" y="64" font-size="6.5" font-weight="700" fill="#8b5aa8" font-family="sans-serif">メール停止を希望</text>
+        <rect x="16" y="70" width="46" height="10" rx="3" fill="#dd5a3a"/>
+        <text x="39" y="78" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">配信停止を申請する</text>
+      </svg>
+      <div class="scene-txt">
+        買い物サイトで買い物をしたら、毎日プロモーションメールが届くようになった。「購入者には自動的にメルマガ登録」という規約があった。止めるには「配信停止リンク」を自分でクリックしないといけない。
+        <div class="scene-q">…このような仕組みを何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：仕組み -->
+  <div class="panel p-purple">
+    <span class="phead">🔍 オプトアウトの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="オプトアウトのフロー図：デフォルト許可状態から停止申請まで">
+      <defs>
+        <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 Z" fill="#8b5aa8"/>
+        </marker>
+        <marker id="arrowRed2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0 0 L8 4 L0 8 Z" fill="#dd5a3a"/>
+        </marker>
+      </defs>
+      <!-- 状態1: デフォルト許可 -->
+      <rect x="10" y="30" width="140" height="60" rx="12" fill="#f3ecf8" stroke="#8b5aa8" stroke-width="2"/>
+      <text x="80" y="55" text-anchor="middle" font-size="12" font-weight="900" fill="#8b5aa8" font-family="M PLUS Rounded 1c">デフォルト：許可</text>
+      <text x="80" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#6b3a8a" font-family="M PLUS Rounded 1c">メール・情報活用が</text>
+      <text x="80" y="85" text-anchor="middle" font-size="10" font-weight="700" fill="#6b3a8a" font-family="M PLUS Rounded 1c">自動的に始まる</text>
+      <!-- 矢印（行動しない場合） -->
+      <path d="M80 90 q0 30 0 40" stroke="#8b5aa8" stroke-width="2" stroke-dasharray="4 3" fill="none" marker-end="url(#arrowPurple)"/>
+      <text x="88" y="118" font-size="9.5" font-weight="700" fill="#8b5aa8" font-family="M PLUS Rounded 1c">何もしないと</text>
+      <!-- 状態2: 継続 -->
+      <rect x="10" y="132" width="140" height="48" rx="12" fill="#f3ecf8" stroke="#8b5aa8" stroke-width="2"/>
+      <text x="80" y="155" text-anchor="middle" font-size="12" font-weight="900" fill="#8b5aa8" font-family="M PLUS Rounded 1c">ずっと継続される</text>
+      <text x="80" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#6b3a8a" font-family="M PLUS Rounded 1c">（何もしない＝継続）</text>
+      <!-- 分岐矢印 -->
+      <line x1="150" y1="60" x2="190" y2="60" stroke="#dd5a3a" stroke-width="2.5" marker-end="url(#arrowRed2)"/>
+      <text x="170" y="55" text-anchor="middle" font-size="9" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">停止を申請</text>
+      <!-- 状態3: 停止 -->
+      <rect x="192" y="30" width="140" height="60" rx="12" fill="#e2f5ed" stroke="#1e8a5e" stroke-width="2"/>
+      <text x="262" y="55" text-anchor="middle" font-size="12" font-weight="900" fill="#1e8a5e" font-family="M PLUS Rounded 1c">停止完了</text>
+      <text x="262" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#2a6a4a" font-family="M PLUS Rounded 1c">配信・情報活用が</text>
+      <text x="262" y="85" text-anchor="middle" font-size="10" font-weight="700" fill="#2a6a4a" font-family="M PLUS Rounded 1c">止まる</text>
+      <!-- まとめ -->
+      <rect x="80" y="188" width="180" height="0" rx="0" fill="none"/>
+      <text x="170" y="198" text-anchor="middle" font-size="11" font-weight="900" fill="#8b5aa8" font-family="M PLUS Rounded 1c">自ら申告しないと継続される仕組み</text>
+    </svg>
+    <div class="compare-2col">
+      <div class="cbox cbox-purple">
+        <h4>オプトアウト</h4>
+        <ul>
+          <li>デフォルト＝許可</li>
+          <li>停止は自分から申告</li>
+          <li>行動しないと続く</li>
+        </ul>
+      </div>
+      <div class="cbox cbox-blue">
+        <h4>オプトイン</h4>
+        <ul>
+          <li>デフォルト＝拒否</li>
+          <li>同意を自分から表明</li>
+          <li>行動しないと始まらない</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー・詳細 -->
+  <div class="panel p-orange">
+    <span class="phead">📋 オプトアウトが使われる場面</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 購入時のメルマガ自動登録</div>
+        <div class="fb">購入・会員登録と同時にメールマガジンが自動登録される。配信を止めるには「配信停止リンク」を自分でクリックする必要がある。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 個人情報の第三者提供（名簿業者など）</div>
+        <div class="fb">個人情報保護法では、第三者提供についてオプトアウト方式が認められる場合がある（要件あり）。ただし要配慮個人情報はオプトアウト不可。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ Cookieのデフォルト許可設定</div>
+        <div class="fb">一部のサイトはCookieをデフォルトで許可し、ユーザーが設定で拒否しない限り追跡し続ける。GDPR圏ではこの方式は問題視される。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">オプトインと逆に覚えやすい</div>
+      <div class="tb">オプトアウト＝「出る（OUT）」意思を示す＝自分から退場申請しないと参加し続ける。オプトイン＝「入る（IN）」意思を示す＝自分から入会申請しないと参加できない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「オプトアウト＝悪い方式」ではない</div>
+      <div class="tb">場面によってはオプトアウトが合法的に使われる（個人情報保護法の一部ケース）。ただし現代の個人情報保護の流れはオプトイン重視。試験では「どちらが何か」を正確に区別することが問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「拒否の機会がない」はオプトアウトでも違反</div>
+      <div class="tb">オプトアウト方式であっても、拒否（停止）の手段を提供しないのは法律違反。「配信停止の方法を明示する義務」がある。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「オプトアウト＝逃げないと続く定期購読」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">OUT（逃げる）を申請しないと居続ける＝オプトアウト</span><br><br>
+      <span class="hl">「アウトは自動参加・インは手動参加」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">放置＝アウト継続 ／ 申請しないと始まらない＝イン</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

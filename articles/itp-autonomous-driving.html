@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>自動運転とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="自動運転の6段階（レベル0〜5）をわかりやすく解説。AI・IoT・センサ技術との関係、試験のひっかけポイントまで。ITパスポート対策。">
+<link rel="canonical" href="https://example.com/itp-autonomous-driving">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5b34c4,#2d1a6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(45,26,110,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#cdb8f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-purple{--c:#5b34c4;--cbg:#ede9fa;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5b34c4;}
+
+.level-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;padding:10px 12px;border-radius:11px;border-left:4px solid var(--lc);background:var(--lbg);}
+.level-badge{min-width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;background:var(--lc);}
+.level-body .lh{font-size:13px;font-weight:900;color:var(--lc);margin-bottom:2px;}
+.level-body .lb{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.lv0{--lc:#9aa3b2;--lbg:#f4f6fb;}
+.lv1{--lc:#2e8b4f;--lbg:#eef8f1;}
+.lv2{--lc:#2e6de5;--lbg:#eef3fd;}
+.lv3{--lc:#d9851f;--lbg:#fdf4e4;}
+.lv4{--lc:#cf4f86;--lbg:#fbe3ee;}
+.lv5{--lc:#5b34c4;--lbg:#ede9fa;}
+
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.tech-card{border-radius:12px;padding:11px 10px;border:2px solid var(--tc);background:var(--tbg);}
+.tech-card .th{font-size:12.5px;font-weight:900;color:var(--tc);margin-bottom:4px;}
+.tech-card .tb{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+@media(max-width:440px){.tech-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>自動運転</b>とは？</h1>
+    <p>AI・センサ・通信が連携して車が自分で走る技術。レベル0〜5の6段階で「どこまで人が要るか」を分類する。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="80" height="92" viewBox="0 0 80 92" aria-hidden="true">
+        <!-- 地面 -->
+        <rect x="0" y="78" width="80" height="10" rx="2" fill="#ccd0da"/>
+        <rect x="30" y="80" width="20" height="3" rx="1" fill="#fff" opacity=".6"/>
+        <!-- 車体 -->
+        <rect x="6" y="52" width="68" height="28" rx="8" fill="#5b34c4"/>
+        <rect x="16" y="42" width="48" height="18" rx="6" fill="#7a5ae0"/>
+        <!-- 窓 -->
+        <rect x="20" y="44" width="18" height="13" rx="3" fill="#b8e8ff" opacity=".8"/>
+        <rect x="42" y="44" width="18" height="13" rx="3" fill="#b8e8ff" opacity=".8"/>
+        <!-- タイヤ -->
+        <circle cx="20" cy="80" r="9" fill="#2b3245"/><circle cx="20" cy="80" r="4" fill="#7a5ae0"/>
+        <circle cx="60" cy="80" r="9" fill="#2b3245"/><circle cx="60" cy="80" r="4" fill="#7a5ae0"/>
+        <!-- センサ（屋根） -->
+        <rect x="34" y="38" width="12" height="6" rx="3" fill="#ffd23f"/>
+        <!-- 電波 -->
+        <path d="M48 30 q8 -5 0 -10" stroke="#ffd23f" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M50 34 q14 -8 0 -16" stroke="#ffd23f" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".6"/>
+      </svg>
+      <div class="scene-txt">
+        高速道路を走るあなたの車が、あなたが何もしなくても自動でハンドルを操作し、前の車との距離を保ち、車線をキープし続けている。でも「何かあったらすぐハンドルを握って」と表示されている。
+        <div class="scene-q">…これって何レベルの自動運転？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：6段階 -->
+  <div class="panel p-purple">
+    <span class="phead">🚗 自動運転の6段階（レベル0〜5）</span>
+    <svg width="100%" viewBox="0 0 320 56" role="img" aria-label="自動運転レベル0から5のグラデーション。左が人間主体、右がシステム主体">
+      <defs>
+        <linearGradient id="lvgrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#9aa3b2"/>
+          <stop offset="40%" stop-color="#2e6de5"/>
+          <stop offset="70%" stop-color="#cf4f86"/>
+          <stop offset="100%" stop-color="#5b34c4"/>
+        </linearGradient>
+      </defs>
+      <rect x="10" y="20" width="300" height="16" rx="8" fill="url(#lvgrad)"/>
+      <text x="10" y="12" font-size="9" font-weight="800" fill="#9aa3b2" font-family="M PLUS Rounded 1c">L0</text>
+      <text x="62" y="12" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">L1</text>
+      <text x="114" y="12" font-size="9" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">L2</text>
+      <text x="166" y="12" font-size="9" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">L3</text>
+      <text x="218" y="12" font-size="9" font-weight="800" fill="#cf4f86" font-family="M PLUS Rounded 1c">L4</text>
+      <text x="296" y="12" font-size="9" font-weight="800" fill="#5b34c4" font-family="M PLUS Rounded 1c">L5</text>
+      <text x="10" y="50" font-size="8.5" font-weight="700" fill="#7a7f8a" font-family="M PLUS Rounded 1c">人間が運転</text>
+      <text x="230" y="50" font-size="8.5" font-weight="700" fill="#5b34c4" font-family="M PLUS Rounded 1c">システムが完全運転</text>
+    </svg>
+
+    <div style="margin-top:12px;">
+      <div class="level-item lv0">
+        <div class="level-badge">L0</div>
+        <div class="level-body"><div class="lh">自動化なし</div><div class="lb">人間がすべて操作。システムは補助もしない。</div></div>
+      </div>
+      <div class="level-item lv1">
+        <div class="level-badge">L1</div>
+        <div class="level-body"><div class="lh">運転支援</div><div class="lb">「ハンドル操作」か「アクセル・ブレーキ」のどちらか一方だけを自動化。クルーズコントロール、車線キープなど。</div></div>
+      </div>
+      <div class="level-item lv2">
+        <div class="level-badge">L2</div>
+        <div class="level-body"><div class="lh">部分自動化（人が監視）</div><div class="lb">ハンドル操作とアクセル・ブレーキを<strong>同時に</strong>自動化。ただし人間が<strong>常に監視</strong>して介入できる状態を維持する。</div></div>
+      </div>
+      <div class="level-item lv3">
+        <div class="level-badge">L3</div>
+        <div class="level-body"><div class="lh">条件付き自動化（緊急時は人が対応）</div><div class="lb">特定条件下（高速道路など）でシステムが運転。<strong>緊急時はドライバーが対応</strong>する必要がある。</div></div>
+      </div>
+      <div class="level-item lv4">
+        <div class="level-badge">L4</div>
+        <div class="level-body"><div class="lh">高度自動化（特定領域で完全無人）</div><div class="lb">特定の場所・条件内で人の介入なしに運転可能。無人タクシー・ロボットバスなど。エリア外では不可。</div></div>
+      </div>
+      <div class="level-item lv5">
+        <div class="level-badge">L5</div>
+        <div class="level-body"><div class="lh">完全自動化（あらゆる状況で完全無人）</div><div class="lb">どんな道路・天候・状況でも人の介入なし。ハンドル・ペダルが不要。現在はまだ実現していない。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 要素技術 -->
+  <div class="panel p-green">
+    <span class="phead">⚙️ 自動運転を支える技術</span>
+    <div class="tech-grid">
+      <div class="tech-card" style="--tc:#5b34c4;--tbg:#ede9fa;">
+        <div class="th">AI（機械学習）</div>
+        <div class="tb">膨大なデータから状況を判断。歩行者・障害物の識別、経路判断などに使う。</div>
+      </div>
+      <div class="tech-card" style="--tc:#2e6de5;--tbg:#e7eefc;">
+        <div class="th">センサ（LiDAR・カメラ）</div>
+        <div class="tb">レーザーで周囲を3Dスキャン（LiDAR）＋カメラで色・形を認識。周囲の状況を把握する目の役割。</div>
+      </div>
+      <div class="tech-card" style="--tc:#2e8b4f;--tbg:#e2f3e5;">
+        <div class="th">IoT・V2X通信</div>
+        <div class="tb">車同士（V2V）・車と道路（V2I）が通信。信号情報・渋滞情報をリアルタイムで共有。</div>
+      </div>
+      <div class="tech-card" style="--tc:#d9851f;--tbg:#fcefd9;">
+        <div class="th">GPS・地図情報</div>
+        <div class="tb">高精度GPS（cm単位）で位置を把握。3Dの精密地図と照合して車線レベルで自分の位置を特定。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">レベル2とレベル3の境界線</div>
+      <div class="tb">L2は「常に人が監視しなければならない」。L3は「通常はシステムが監視、緊急時だけ人が対応」。監視する主体が変わる点がポイント。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「自動運転 = 完全無人」ではない</div>
+      <div class="tb">L2・L3も自動運転に含まれる。「自動ブレーキ」「クルーズコントロール」はL1〜L2であり、完全無人ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">L5は現在まだ実現していない</div>
+      <div class="tb">試験では「どのレベルが現在普及しているか」を問われることがある。L5（完全自動化）は技術的に未達。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">IoTとV2Xの混同</div>
+      <div class="tb">自動運転はIoT技術の応用例のひとつ。V2X（Vehicle to Everything）は車とあらゆるモノが通信する仕組みで、IoTの一形態。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">L3が境界線</span>「監視する主体が変わる」<br>
+      <span style="font-size:13px;font-weight:700;color:#9a6b00;">「L2まで＝ドライバーが監視」「L3から＝システムが監視」</span><br><br>
+      <span class="hl">L0〜2：人が主役</span> ／ <span class="hl">L3：緊急時だけ人</span> ／ <span class="hl">L4〜5：完全無人</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「ゼロ・イチ・ニで人が見て、サンから任せてゴで完全フリー」</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

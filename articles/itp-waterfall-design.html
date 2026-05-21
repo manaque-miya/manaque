@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ウォーターフォールの設計工程とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ウォーターフォールモデルの設計工程（基本設計・詳細設計）をわかりやすく解説。外部設計と内部設計の違い、テスト工程との対応関係（V字モデル）、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-waterfall-design">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2a6fae,#153d6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(21,61,110,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b0cce8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2a6fae;--cbg:#d6e8f8;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2a6fae;}
+
+.design-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.dg-cell{border-radius:12px;padding:12px 11px;}
+.dg-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.dg-cell ul{list-style:none;}
+.dg-cell li{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:12px;position:relative;}
+.dg-cell li::before{content:"・";position:absolute;left:0;}
+.dg-basic{background:#d6e8f8;}.dg-basic h4{color:#2a6fae;}
+.dg-detail{background:#e4e7f7;}.dg-detail h4{color:#4256b8;}
+@media(max-width:480px){.design-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ テクノロジ系・開発手法</span>
+    <h1><b>ウォーターフォールの<br>設計工程</b>とは？</h1>
+    <p>基本設計（外部設計）と詳細設計（内部設計）の2層構造。<br>「外から見えるか、内側か」で分かれる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="85" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 人物 -->
+        <circle cx="36" cy="20" r="12" fill="#f4c89a"/>
+        <path d="M25 16 a11 11 0 0 1 22 0 q-4 -8 -11 -8 q-7 0 -11 8z" fill="#3a3f4a"/>
+        <rect x="30" y="30" width="12" height="7" fill="#f4c89a"/>
+        <rect x="24" y="37" width="24" height="18" rx="5" fill="#2a6fae"/>
+        <!-- 設計書2枚 -->
+        <rect x="10" y="58" width="22" height="26" rx="3" fill="#d6e8f8" stroke="#2a6fae" stroke-width="1.5"/>
+        <text x="21" y="69" text-anchor="middle" font-size="7" font-weight="900" fill="#2a6fae" font-family="M PLUS Rounded 1c">基本</text>
+        <text x="21" y="78" text-anchor="middle" font-size="7" font-weight="900" fill="#2a6fae" font-family="M PLUS Rounded 1c">設計書</text>
+        <rect x="40" y="58" width="22" height="26" rx="3" fill="#e4e7f7" stroke="#4256b8" stroke-width="1.5"/>
+        <text x="51" y="69" text-anchor="middle" font-size="7" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">詳細</text>
+        <text x="51" y="78" text-anchor="middle" font-size="7" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">設計書</text>
+      </svg>
+      <div class="scene-txt">
+        システム開発の設計フェーズ。SE（システムエンジニア）が「まず基本設計で画面と機能の仕様を決めて、次に詳細設計でプログラムの処理方法を細かく決めます」と説明している。
+        <div class="scene-q">…基本設計と詳細設計、何が違うの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：基本設計 vs 詳細設計 -->
+  <div class="panel p-indigo">
+    <span class="phead">基本設計と詳細設計の違い</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="基本設計と詳細設計の役割の違いを示す図">
+      <!-- 基本設計ブロック -->
+      <rect x="15" y="15" width="145" height="200" rx="12" fill="#d6e8f8" stroke="#2a6fae" stroke-width="2.5"/>
+      <text x="87" y="40" text-anchor="middle" font-size="13" font-weight="900" fill="#153d6e" font-family="M PLUS Rounded 1c">基本設計</text>
+      <text x="87" y="56" text-anchor="middle" font-size="10" font-weight="700" fill="#2a6fae" font-family="M PLUS Rounded 1c">外部設計ともいう</text>
+
+      <rect x="25" y="65" width="125" height="28" rx="7" fill="#2a6fae"/>
+      <text x="87" y="78" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ユーザーの視点で設計</text>
+      <text x="87" y="91" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c0ddf8" font-family="M PLUS Rounded 1c">「外から見える」部分</text>
+
+      <text x="87" y="115" text-anchor="middle" font-size="10.5" font-weight="800" fill="#153d6e" font-family="M PLUS Rounded 1c">【設計するもの】</text>
+      <text x="87" y="131" text-anchor="middle" font-size="10" font-weight="700" fill="#2a6fae" font-family="M PLUS Rounded 1c">・画面レイアウト</text>
+      <text x="87" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#2a6fae" font-family="M PLUS Rounded 1c">・入出力の仕様</text>
+      <text x="87" y="161" text-anchor="middle" font-size="10" font-weight="700" fill="#2a6fae" font-family="M PLUS Rounded 1c">・帳票・帳票レイアウト</text>
+      <text x="87" y="176" text-anchor="middle" font-size="10" font-weight="700" fill="#2a6fae" font-family="M PLUS Rounded 1c">・システムの機能一覧</text>
+      <text x="87" y="202" text-anchor="middle" font-size="11" font-weight="900" fill="#1a618e" font-family="M PLUS Rounded 1c">対応テスト：</text>
+      <text x="87" y="214" text-anchor="middle" font-size="10.5" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">システムテスト</text>
+
+      <!-- 詳細設計ブロック -->
+      <rect x="180" y="15" width="145" height="200" rx="12" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="252" y="40" text-anchor="middle" font-size="13" font-weight="900" fill="#2b3b8e" font-family="M PLUS Rounded 1c">詳細設計</text>
+      <text x="252" y="56" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">内部設計ともいう</text>
+
+      <rect x="190" y="65" width="125" height="28" rx="7" fill="#4256b8"/>
+      <text x="252" y="78" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">プログラマの視点で設計</text>
+      <text x="252" y="91" text-anchor="middle" font-size="9.5" font-weight="700" fill="#c0c8f0" font-family="M PLUS Rounded 1c">「内側の処理」を定義</text>
+
+      <text x="252" y="115" text-anchor="middle" font-size="10.5" font-weight="800" fill="#2b3b8e" font-family="M PLUS Rounded 1c">【設計するもの】</text>
+      <text x="252" y="131" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">・処理ロジック・アルゴリズム</text>
+      <text x="252" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">・データベース内部構造</text>
+      <text x="252" y="161" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">・モジュール分割</text>
+      <text x="252" y="176" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">・エラー処理の詳細</text>
+      <text x="252" y="202" text-anchor="middle" font-size="11" font-weight="900" fill="#2b3b8e" font-family="M PLUS Rounded 1c">対応テスト：</text>
+      <text x="252" y="214" text-anchor="middle" font-size="10.5" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">結合テスト・単体テスト</text>
+    </svg>
+
+    <div class="design-grid">
+      <div class="dg-cell dg-basic"><h4>基本設計（外部設計）</h4><ul>
+        <li>ユーザーが見る部分を設計</li>
+        <li>SEが担当することが多い</li>
+        <li>システムテストと対応</li>
+      </ul></div>
+      <div class="dg-cell dg-detail"><h4>詳細設計（内部設計）</h4><ul>
+        <li>プログラムの処理を細かく定義</li>
+        <li>プログラマが担当することが多い</li>
+        <li>単体・結合テストと対応</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <!-- V字モデルのフロー -->
+  <div class="panel p-green">
+    <span class="phead">V字モデル：設計とテストの対応</span>
+    <svg width="100%" viewBox="0 0 340 170" role="img" aria-label="V字モデル：設計工程とテスト工程が左右対称に対応する図">
+      <!-- 左下がり（設計側） -->
+      <rect x="10" y="10" width="90" height="30" rx="7" fill="#1a618e"/>
+      <text x="55" y="30" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">要件定義</text>
+
+      <rect x="20" y="50" width="85" height="30" rx="7" fill="#2a6fae"/>
+      <text x="62" y="70" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">基本設計</text>
+
+      <rect x="30" y="90" width="80" height="30" rx="7" fill="#4256b8"/>
+      <text x="70" y="110" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">詳細設計</text>
+
+      <!-- 底 -->
+      <rect x="108" y="130" width="70" height="30" rx="7" fill="#2e7a5e"/>
+      <text x="143" y="150" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">実装</text>
+
+      <!-- 右上がり（テスト側） -->
+      <rect x="230" y="90" width="80" height="30" rx="7" fill="#4256b8" opacity=".7"/>
+      <text x="270" y="110" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">単体テスト</text>
+
+      <rect x="235" y="50" width="85" height="30" rx="7" fill="#2a6fae" opacity=".7"/>
+      <text x="277" y="70" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">結合テスト</text>
+
+      <rect x="240" y="10" width="90" height="30" rx="7" fill="#1a618e" opacity=".7"/>
+      <text x="285" y="30" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">システムテスト</text>
+
+      <!-- V字の線 -->
+      <path d="M55 40 L55 50 L62 90 L108 130 L178 130 L232 90 L270 50 L285 40" stroke="#c2c8d8" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+
+      <!-- 対応矢印 -->
+      <path d="M105 25 L235 25" stroke="#ffd23f" stroke-width="1.5" stroke-dasharray="5 3"/>
+      <path d="M110 65 L230 65" stroke="#ffd23f" stroke-width="1.5" stroke-dasharray="5 3"/>
+      <path d="M115 105 L225 105" stroke="#ffd23f" stroke-width="1.5" stroke-dasharray="5 3"/>
+
+      <text x="170" y="22" text-anchor="middle" font-size="9" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">対応</text>
+      <text x="170" y="62" text-anchor="middle" font-size="9" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">対応</text>
+      <text x="170" y="102" text-anchor="middle" font-size="9" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">対応</text>
+    </svg>
+    <p>設計工程とテスト工程は「V字」で対応する。要件定義→システムテスト、基本設計→結合テスト、詳細設計→単体テストが対応関係にある。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「外部設計」と「内部設計」を反対に覚えやすい</div>
+      <div class="tb">外部設計（基本設計）は「ユーザーの視点（外から見える）」。内部設計（詳細設計）は「プログラム内部の処理」。「外側か内側か」で判断する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">基本設計＝粗い、詳細設計＝細かい（だけ）ではない</div>
+      <div class="tb">粗さ・細かさの違いもあるが、本質は「視点の違い（ユーザー視点 vs プログラマ視点）」。誰が使う設計書かを意識する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">テスト工程との対応を問う問題</div>
+      <div class="tb">V字モデルでは「基本設計→結合テスト」「詳細設計→単体テスト」が対応。要件定義→システムテスト（受け入れテスト）も頻出。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「外は客向け、内は職人向け」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">外部設計（基本）＝客（ユーザー）が見る画面・操作<br>内部設計（詳細）＝職人（プログラマ）が読む処理の設計書</span><br><br>
+      V字は<span class="hl">「開発と検証がペア」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">設計した人が「本当にこれで動くか？」をテストで確かめる</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

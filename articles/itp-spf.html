@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SPF（送信ドメイン認証）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="SPF（Sender Policy Framework）をわかりやすく解説。メールの送信元を確認する仕組み、DKIMとの違い、なりすましメール対策、試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-spf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6e3e,#0d3d22);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,80,40,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e6cc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.compare-row{display:flex;gap:8px;margin-top:8px;}
+.ccard{flex:1;border-radius:12px;padding:11px;border:2px solid var(--cc);}
+.ccard .ch{font-size:12.5px;font-weight:900;color:var(--cc);margin-bottom:6px;}
+.ccard .cb{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.cc-green{--cc:#2e8b4f;background:#eef8f1;}
+.cc-blue{--cc:#2e6de5;background:#eef3fd;}
+.cc-orange{--cc:#d9851f;background:#fdf4e4;}
+@media(max-width:400px){.compare-row{flex-direction:column;}}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ セキュリティ</span>
+    <h1><b>SPF</b>（送信ドメイン認証）</h1>
+    <p>「このメールは本当に、そのドメインのサーバーから送られたのか？」を確認する仕組み。なりすましメールを見抜く鍵。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="62" width="58" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="16" y="40" width="46" height="30" rx="9" fill="#1a6e3e"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <rect x="44" y="58" width="22" height="15" rx="2" fill="#48506a"/>
+        <rect x="46" y="60" width="18" height="11" rx="1" fill="#aaf0c0"/>
+        <text x="55" y="69" text-anchor="middle" font-size="8" font-weight="900" fill="#1a6e3e" font-family="sans-serif">✓</text>
+      </svg>
+      <div class="scene-txt">
+        あなたの会社に「○○銀行から」というメールが届いた。送信元アドレスは <strong>info@ooo-bank.jp</strong> と書いてある。<br><br>
+        でも、実際には詐欺師が<strong>まったく別のサーバー</strong>から送ったなりすましメールかもしれない。<br><br>
+        <strong>SPF</strong>は「ooo-bank.jpドメインのメールは、このIPアドレスのサーバーから送る」と<strong>DNSに登録</strong>しておくことで、受信側が正規サーバーかを確認できる。
+        <div class="scene-q">→ 不一致 ＝ なりすましと判断してスパム扱いにできる！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔍 SPFの仕組み（DNS照合）</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="SPFの仕組み：送信側がDNSにIPを登録し、受信側が照合する流れ">
+      <!-- 送信側 -->
+      <rect x="10" y="60" width="90" height="50" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="55" y="80" text-anchor="middle" font-size="10" font-weight="900" fill="#1a6e3e" font-family="M PLUS Rounded 1c">送信サーバー</text>
+      <text x="55" y="94" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">example.com</text>
+      <text x="55" y="107" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">IP: 203.0.113.1</text>
+
+      <!-- DNS -->
+      <rect x="120" y="10" width="100" height="50" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="170" y="30" text-anchor="middle" font-size="10" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">DNS サーバー</text>
+      <text x="170" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">SPFレコード登録</text>
+      <text x="170" y="58" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7a5c1a" font-family="M PLUS Rounded 1c">ip: 203.0.113.1</text>
+
+      <!-- 受信側 -->
+      <rect x="240" y="60" width="90" height="50" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="285" y="80" text-anchor="middle" font-size="10" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">受信サーバー</text>
+      <text x="285" y="94" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">メール受信</text>
+      <text x="285" y="107" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">照合チェック</text>
+
+      <!-- 矢印：送信者→受信者 -->
+      <line x1="100" y1="85" x2="240" y2="85" stroke="#2e8b4f" stroke-width="2"/>
+      <polygon points="240,85 231,80 231,90" fill="#2e8b4f"/>
+      <text x="170" y="78" text-anchor="middle" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">メール送信</text>
+
+      <!-- 矢印：受信者→DNS（照合） -->
+      <line x1="285" y1="60" x2="215" y2="58" stroke="#d9851f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="215,58 224,53 224,63" fill="#d9851f"/>
+      <text x="255" y="50" text-anchor="middle" font-size="8.5" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">SPFレコード確認</text>
+
+      <!-- 矢印：DNS→送信者（登録） -->
+      <line x1="120" y1="35" x2="100" y2="75" stroke="#d9851f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="100,75 104,65 113,69" fill="#d9851f"/>
+
+      <!-- 判定結果 -->
+      <rect x="200" y="130" width="130" height="75" rx="10" fill="#fff" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="265" y="150" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6e3e" font-family="M PLUS Rounded 1c">照合 OK</text>
+      <text x="265" y="166" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">→ 正規メール</text>
+      <text x="265" y="185" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">照合 NG</text>
+      <text x="265" y="200" text-anchor="middle" font-size="9.5" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">→ スパム/拒否</text>
+
+      <!-- 矢印：受信者→判定 -->
+      <line x1="285" y1="110" x2="265" y2="130" stroke="#4256b8" stroke-width="1.5"/>
+      <polygon points="265,130 268,120 276,125" fill="#4256b8"/>
+    </svg>
+    <p>送信元ドメインのDNSに「このIPアドレスからのみ正規メールを送る」と登録（SPFレコード）。受信側はDNSを照合してIPアドレスが一致するか確認する。</p>
+  </div>
+
+  <!-- フロー：詳細 -->
+  <div class="panel p-blue">
+    <span class="phead">📋 メール認証技術の3兄弟</span>
+    <div class="compare-row">
+      <div class="ccard cc-green">
+        <div class="ch">SPF</div>
+        <div class="cb">送信<strong>IPアドレス</strong>をDNSに登録して照合。<br>「どのサーバーから送るか」を宣言。</div>
+      </div>
+      <div class="ccard cc-blue">
+        <div class="ch">DKIM</div>
+        <div class="cb">メールに<strong>電子署名</strong>を付与して改ざん検知。<br>「内容が変えられていないか」を保証。</div>
+      </div>
+      <div class="ccard cc-orange">
+        <div class="ch">DMARC</div>
+        <div class="cb">SPF・DKIMの結果を使って<strong>ポリシー</strong>を設定。<br>不正メールの処理方法を指示。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">SPF ≠ 暗号化</div>
+      <div class="tb">SPFはメールを「暗号化」しない。送信元IPアドレスの正当性を「認証」するだけ。暗号化はS/MIMEやPGPなど別の仕組み。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SPF ≠ 内容の改ざん防止</div>
+      <div class="tb">SPFは「送信元が正規サーバーか」を確認するだけ。メール本文の改ざん防止にはDKIMが必要。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「SPFレコードを設定するのは受信側」は間違い</div>
+      <div class="tb">SPFレコードはメールを<strong>送信する側</strong>がDNSに登録する。受信側はそれを照合するだけ。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">SPF ＝ 日焼け止め</span>！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">なりすまし（有害な光）をブロックして本物を守る</span><br><br>
+      <span class="hl">「Senderのポリシーをフレームワークに」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Sender Policy Framework ＝ 送る人・ルール・枠組み</span><br><br>
+      <span class="hl">DNS に「ここから送る」と事前申告</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">申告したIP以外 ＝ なりすまし → 拒否！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-spf</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EHR（電子健康記録）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="EHR（Electronic Health Record・電子健康記録）をEMR・PHRとの違いを中心に解説。生涯にわたる健康データを複数医療機関で共有する仕組み。ITパスポート試験対策。">
+<link rel="canonical" href="https://example.com/itp-ehr">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c0392b,#7b1f17);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(123,31,23,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5b7b1;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.p-red{--c:#c0392b;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c0392b;}
+
+/* 3種類比較表 */
+.rec-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;}
+.rec-table th{padding:8px 6px;font-weight:900;text-align:center;}
+.rec-table td{padding:8px 6px;font-weight:600;text-align:center;line-height:1.6;color:#48506a;border-top:1px solid #e8eaf0;}
+.rec-table tr:first-child th:first-child{border-radius:8px 0 0 0;}
+.rec-table tr:first-child th:last-child{border-radius:0 8px 0 0;}
+.th-emr{background:#fce4dd;color:#c0392b;}
+.th-ehr{background:#e4e7f7;color:#4256b8;}
+.th-phr{background:#e2f3e5;color:#2e8b4f;}
+.td-emr{background:#fff8f7;}
+.td-ehr{background:#f9faff;}
+.td-phr{background:#f5fbf7;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c0392b;--fbg:#fce4dd;}
+.f2{--fc:#4256b8;--fbg:#eef0fb;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>EHR</b>（電子健康記録）とは？</h1>
+    <p>生まれてから一生涯の健康データを複数の医療機関で共有する電子記録の仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="62" width="58" height="22" rx="6" fill="#f5b7b1"/>
+        <rect x="16" y="40" width="46" height="30" rx="9" fill="#c0392b"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- 赤十字 -->
+        <rect x="32" y="65" width="14" height="14" rx="2" fill="#fff"/>
+        <rect x="37" y="66" width="4" height="12" fill="#c0392b"/>
+        <rect x="33" y="70" width="12" height="4" fill="#c0392b"/>
+      </svg>
+      <div class="scene-txt">
+        引っ越してかかりつけ医が変わったあなた。新しい病院で「これまでの持病やアレルギーを教えてください」と言われるたびに一から説明し直すのが面倒。
+        <div class="scene-q">→ 生涯の健康データをどこでも参照できれば…それがEHR！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EHR/EMR/PHRの違い図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">📋 EHR・EMR・PHRの違い</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="EHR・EMR・PHRの管理主体と共有範囲の違い">
+      <!-- 患者（中央） -->
+      <circle cx="170" cy="95" r="28" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <circle cx="170" cy="85" r="10" fill="#4256b8"/>
+      <path d="M153 110 q0-14 17-14 q17 0 17 14z" fill="#4256b8"/>
+      <text x="170" y="128" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">患者</text>
+      <!-- EMR（左） -->
+      <rect x="10" y="65" width="80" height="60" rx="10" fill="#fce4dd" stroke="#c0392b" stroke-width="2"/>
+      <text x="50" y="87" text-anchor="middle" font-size="13" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">EMR</text>
+      <text x="50" y="101" text-anchor="middle" font-size="9.5" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">1つの病院内</text>
+      <text x="50" y="115" text-anchor="middle" font-size="9.5" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">だけで管理</text>
+      <!-- EMR矢印 -->
+      <line x1="90" y1="95" x2="142" y2="95" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- EHR（上） -->
+      <rect x="120" y="10" width="100" height="50" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="170" y="32" text-anchor="middle" font-size="13" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">EHR</text>
+      <text x="170" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">複数機関で共有</text>
+      <!-- EHR矢印 -->
+      <line x1="170" y1="60" x2="170" y2="67" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- PHR（右） -->
+      <rect x="250" y="65" width="80" height="60" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="290" y="87" text-anchor="middle" font-size="13" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">PHR</text>
+      <text x="290" y="101" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e5040" font-family="M PLUS Rounded 1c">本人が自分で</text>
+      <text x="290" y="115" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2e5040" font-family="M PLUS Rounded 1c">管理する記録</text>
+      <!-- PHR矢印 -->
+      <line x1="198" y1="95" x2="250" y2="95" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- ラベル -->
+      <text x="170" y="175" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">EHRは複数の医療機関をまたいで共有できる点が特徴</text>
+    </svg>
+
+    <table class="rec-table">
+      <tr>
+        <th class="th-emr">EMR</th>
+        <th class="th-ehr">EHR</th>
+        <th class="th-phr">PHR</th>
+      </tr>
+      <tr>
+        <td class="td-emr">電子カルテ<br>1病院内</td>
+        <td class="td-ehr">電子健康記録<br>複数機関共有</td>
+        <td class="td-phr">個人健康記録<br>本人が管理</td>
+      </tr>
+      <tr>
+        <td class="td-emr">医師が管理</td>
+        <td class="td-ehr">医療機関が連携</td>
+        <td class="td-phr">患者本人が管理</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- EHRが実現する流れ -->
+  <div class="panel p-green">
+    <span class="phead">🔄 EHRで何が変わるか</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">これまで：記録はバラバラ</div><div class="fb">A病院のカルテはA病院だけ。B病院に転院すると初診扱い。薬の重複処方や検査の重複が起きやすい。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">EHR導入後：横断共有</div><div class="fb">A・B・C病院すべてで同じ健康記録を参照。薬歴・アレルギー・過去の検査結果をどこでも確認できる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">生涯健康管理が実現</div><div class="fb">乳幼児期から高齢期まで連続した記録が保持され、予防医療・慢性疾患管理の精度が上がる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">EMR（電子カルテ）との混同</div>
+      <div class="tb">EMRは<strong>1つの医療機関内</strong>の電子カルテ。EHRは<strong>複数機関にまたがる</strong>広域の健康記録。スコープの広さが決定的な違い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">PHRは「本人管理」</div>
+      <div class="tb">PHR（Personal Health Record）は患者自身がスマートフォン等で管理するデータ。医療機関が主体ではない点がEHRと違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">EHRには個人情報保護が必須</div>
+      <div class="tb">健康記録は機微な個人情報。アクセス権管理・暗号化・同意管理なしには実装できない。「誰でも参照できる」は誤り。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「E＝どこでも・H＝健康・R＝記録」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Electronic Health Record ＝ 電子健康記録</span><br><br>
+      <span class="hl">「EMRは1院・EHRはみんな・PHRは私」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">管理の主体と共有範囲がそれぞれ違う！この3つをセットで覚える。</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

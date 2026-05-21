@@ -1,108 +1,178 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>GDPR（欧州一般データ保護規則）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="GDPR（欧州一般データ保護規則）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-gdpr.html">
-<meta property="og:title" content="GDPR（欧州一般データ保護規則）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="GDPR（欧州一般データ保護規則）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-gdpr.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GDPRとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="GDPRをEUの個人データ保護規則として解説。適用範囲・主な権利（忘れられる権利・データポータビリティ）・違反時の制裁金、日本の個人情報保護法との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-gdpr">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#003399,#001a66);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(0,26,102,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd700 56%,#ffd700 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b3c6ff;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#003399;--cbg:#e6ecff;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#003399;}
+
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+.rights-cell{border-radius:12px;padding:10px 9px;background:#e6ecff;border-left:4px solid #003399;}
+.rights-cell h4{font-size:12px;font-weight:900;color:#003399;margin-bottom:4px;}
+.rights-cell p{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+@media(max-width:480px){.rights-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#003399;--fbg:#e6ecff;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#dd5a3a;--fbg:#fce4dd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">GDPR（欧州一般データ保護規則）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">GDPR（欧州一般データ保護規則）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系 / 法務</span>
+    <h1><b>GDPR</b>とは？</h1>
+    <p>EU（欧州連合）が制定した個人データ保護の最強ルール。<br>「あなたのデータはあなたのもの」を法律で守る。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="26" rx="9" fill="#003399"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-6 -9 -13 -9 q-7 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="42" y="54" width="20" height="13" rx="2" fill="#48506a"/>
+        <rect x="44" y="56" width="16" height="9" rx="1" fill="#b3c6ff"/>
+      </svg>
+      <div class="scene-txt">
+        日本の会社がEU在住のユーザーにサービスを提供していたら、ある日「<strong>私のデータを全部削除してください</strong>」とEU在住ユーザーからメールが来た。断れるの？
+        <div class="scene-q">…GDPRが適用されると、どうしなければならない？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：GDPRの全体像 -->
+  <div class="panel p-indigo">
+    <span class="phead">🇪🇺 GDPRの全体像</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="GDPRの全体像：EUの法律・世界中の企業に適用・違反すると巨額制裁金">
+      <!-- EU旗風の背景 -->
+      <rect x="10" y="10" width="320" height="55" rx="12" fill="#003399"/>
+      <text x="170" y="32" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">GDPR（一般データ保護規則）</text>
+      <text x="170" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#b3c6ff" font-family="M PLUS Rounded 1c">General Data Protection Regulation</text>
+      <!-- 3ボックス -->
+      <rect x="10" y="74" width="98" height="64" rx="10" fill="#e6ecff" stroke="#003399" stroke-width="1.5"/>
+      <text x="59" y="96" text-anchor="middle" font-size="11" font-weight="900" fill="#003399" font-family="M PLUS Rounded 1c">適用対象</text>
+      <text x="59" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">EUの人のデータを</text>
+      <text x="59" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">扱う全企業（日本含む）</text>
+      <rect x="120" y="74" width="98" height="64" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="169" y="96" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">施行</text>
+      <text x="169" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">2018年5月</text>
+      <text x="169" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">EU全域で適用</text>
+      <rect x="230" y="74" width="100" height="64" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="280" y="96" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">違反制裁金</text>
+      <text x="280" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">最大：年間売上の</text>
+      <text x="280" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">4% or 2,000万€</text>
+      <!-- DPO説明 -->
+      <rect x="10" y="148" width="320" height="42" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="170" y="165" text-anchor="middle" font-size="11" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">DPO（データ保護責任者）の設置が義務となる場合あり</text>
+      <text x="170" y="181" text-anchor="middle" font-size="10" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">大量の個人データを扱う事業者・公的機関は選任が必須</text>
+    </svg>
+  </div>
+
+  <!-- データ主体の主な権利 -->
+  <div class="panel p-green">
+    <span class="phead">🔑 データ主体（本人）の主な権利</span>
+    <div class="rights-grid">
+      <div class="rights-cell">
+        <h4>忘れられる権利</h4>
+        <p>自分のデータの削除を請求できる。企業は原則として消去しなければならない。</p>
+      </div>
+      <div class="rights-cell">
+        <h4>データポータビリティ権</h4>
+        <p>自分のデータを別のサービスへ持ち出せる。CSV等で受け取る権利。</p>
+      </div>
+      <div class="rights-cell">
+        <h4>アクセス権</h4>
+        <p>自分のデータをどう使われているか確認できる。企業は開示しなければならない。</p>
+      </div>
+      <div class="rights-cell">
+        <h4>処理制限権</h4>
+        <p>データの利用を一時停止するよう要求できる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">日本の「個人情報保護法」と混同しやすい</div>
+      <div class="tb">個人情報保護法は<strong>日本国内</strong>の法律。GDPRは<strong>EUの法律</strong>だが、EU域内の人のデータを扱う限り、<strong>日本企業にも適用される</strong>。企業の所在地でなく「誰のデータか」が基準。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「EU企業だけに適用」は誤り</div>
+      <div class="tb">EUに拠点がなくても、<strong>EU在住者にサービス提供・行動監視をしていれば対象</strong>。日本のEC事業者でもEU向け販売があればGDPR適用。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">違反制裁金の数字は覚える</div>
+      <div class="tb">「最大で年間売上の<strong>4%</strong>または<strong>2,000万ユーロ</strong>の高い方」という基準が試験に出る。非常に高額な制裁が特徴。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">GDPR＝ゴツい（G）データ（D）防護（P）ルール（R）</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">EU発・全世界に適用・違反したら超高額罰金</span><br><br>
+      ゴロ：<span class="hl">「ジーデーピーアール＝EUの盾（全世界のデータを守る）」</span><br>
+      <span style="font-size:11px;font-weight:600;color:#9a6b00;">「忘れさせろ」「持ち出させろ」「見せろ」が3大武器</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>EU向けサービス運営の日本企業勤務の私。「EUユーザーの同意なしにデータ第三者提供」で全世界売上の4%もの制裁金！この規則の名前は？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>GDPR（EU一般データ保護規則）違反</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>日本の個人情報保護法違反</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ 日本法は適用範囲外。「EU住民データを扱う企業に世界どこでも適用」がGDPR</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：GDPR（EU一般データ保護規則）違反</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 GDPR（欧州一般データ保護規則）とは何か</h2>
-<span class="kw">GDPR＋制裁4%</span>
-<p>GDPR（General Data Protection Regulation）：EU一般データ保護規則。EU域内の個人データ処理を規制し、EUの住民データを扱う企業なら国外企業にも適用。違反制裁金は全世界年間売上高の4%または2000万ユーロの高い方。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>GDPRの特徴：「忘れられる権利（データ削除要求権）」「データポータビリティ権」「明示的同意の義務」「個人データ侵害の72時間以内通知義務」。日本の個人情報保護法より厳格。
-
-**覚え方** 🎯 GDPR＝**EUの個人情報守護神**。**違反は全世界売上の4%**（巨額制裁）。**忘れられる権利**が代表特徴。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>「制裁金は売上の4%」は正確には「全世界年間売上高の4%または2000万ユーロのいずれか高い方」。日本企業でもEUユーザーのデータを扱えば適用される域外適用が重要な特徴。「GDPRは日本に適用されない」という誤りに引っかかりやすい。また72時間以内通知義務も試験に出る。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>GDPR＝**EUの個人情報守護神**。**違反は全世界売上の4%**（巨額制裁）。**忘れられる権利**が代表特徴。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>GDPR（欧州一般データ保護規則）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

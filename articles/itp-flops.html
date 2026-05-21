@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FLOPS（フロップス）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="FLOPSをわかりやすく解説。1秒間の浮動小数点演算回数＝コンピュータの計算性能の単位。MIPS・MHzとの違い、スーパーコンピュータとの関連、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-flops">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7c3aed,#4c1d95);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(76,29,149,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#e0d4fa;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-purple{--c:#7c3aed;--cbg:#ede9fb;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c3aed;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.unit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.unit-cell{border-radius:11px;padding:11px 12px;}
+.unit-cell h4{font-size:13px;font-weight:900;margin-bottom:4px;}
+.unit-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+@media(max-width:400px){.unit-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>FLOPS</b>（フロップス）とは？</h1>
+    <p>Floating Point Operations Per Second＝1秒間に何回の浮動小数点演算ができるか。科学計算・AIの「計算力」を測る単位。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="82" rx="26" ry="4" fill="#4c1d95" opacity=".12"/>
+        <rect x="8" y="56" width="56" height="22" rx="6" fill="#d9d0f5"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#7c3aed"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5-9-13-9 q-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="22" y="61" width="28" height="12" rx="3" fill="#4c1d95" opacity=".4"/>
+        <!-- 稲妻アイコン -->
+        <polygon points="46,58 40,68 44,68 38,78 50,65 46,65" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        AIの研究所に訪問したあなた。
+        「このスパコンは<strong>1エクサFLOPS（10の18乗回/秒）</strong>の性能です」と説明された。<br><br>
+        横のボードには「富岳：442ペタFLOPS」の文字も。
+        <div class="scene-q">…FLOPSって何を測っている数値？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：FLOPSの仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">⚡ FLOPSの意味と単位系</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="FLOPSの単位と計算性能の目安">
+      <!-- 背景 -->
+      <rect width="340" height="220" fill="#f4f6fb" rx="10"/>
+
+      <!-- 展開表 -->
+      <text x="170" y="28" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">FLOPS = Floating-point Operations Per Second</text>
+
+      <!-- 性能スケール バー -->
+      <rect x="20" y="40" width="300" height="14" rx="7" fill="url(#grad)"/>
+      <defs>
+        <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#e4e7f7"/>
+          <stop offset="100%" stop-color="#7c3aed"/>
+        </linearGradient>
+      </defs>
+      <text x="20" y="68" font-size="9" font-weight="800" fill="#9aa3b2" font-family="M PLUS Rounded 1c">低い</text>
+      <text x="300" y="68" text-anchor="end" font-size="9" font-weight="800" fill="#7c3aed" font-family="M PLUS Rounded 1c">高い</text>
+
+      <!-- 単位一覧 -->
+      <rect x="20" y="76" width="58" height="48" rx="7" fill="#e4e7f7"/>
+      <text x="49" y="95" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">MFLOPS</text>
+      <text x="49" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">メガ</text>
+      <text x="49" y="121" text-anchor="middle" font-size="8" font-weight="600" fill="#9aa3b2" font-family="M PLUS Rounded 1c">10⁶/秒</text>
+
+      <rect x="83" y="76" width="58" height="48" rx="7" fill="#ddd5f7"/>
+      <text x="112" y="95" text-anchor="middle" font-size="11" font-weight="900" fill="#6527d0" font-family="M PLUS Rounded 1c">GFLOPS</text>
+      <text x="112" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#6527d0" font-family="M PLUS Rounded 1c">ギガ</text>
+      <text x="112" y="121" text-anchor="middle" font-size="8" font-weight="600" fill="#9aa3b2" font-family="M PLUS Rounded 1c">10⁹/秒</text>
+
+      <rect x="146" y="76" width="58" height="48" rx="7" fill="#d0c5f5"/>
+      <text x="175" y="95" text-anchor="middle" font-size="11" font-weight="900" fill="#5a1fc5" font-family="M PLUS Rounded 1c">TFLOPS</text>
+      <text x="175" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#5a1fc5" font-family="M PLUS Rounded 1c">テラ</text>
+      <text x="175" y="121" text-anchor="middle" font-size="8" font-weight="600" fill="#9aa3b2" font-family="M PLUS Rounded 1c">10¹²/秒</text>
+
+      <rect x="209" y="76" width="58" height="48" rx="7" fill="#c4b4f3"/>
+      <text x="238" y="95" text-anchor="middle" font-size="11" font-weight="900" fill="#4c1d95" font-family="M PLUS Rounded 1c">PFLOPS</text>
+      <text x="238" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#4c1d95" font-family="M PLUS Rounded 1c">ペタ</text>
+      <text x="238" y="121" text-anchor="middle" font-size="8" font-weight="600" fill="#9aa3b2" font-family="M PLUS Rounded 1c">10¹⁵/秒</text>
+
+      <rect x="272" y="76" width="48" height="48" rx="7" fill="#7c3aed"/>
+      <text x="296" y="95" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">EFLOPS</text>
+      <text x="296" y="110" text-anchor="middle" font-size="9" font-weight="700" fill="#e0d4fa" font-family="M PLUS Rounded 1c">エクサ</text>
+      <text x="296" y="121" text-anchor="middle" font-size="8" font-weight="600" fill="#e0d4fa" font-family="M PLUS Rounded 1c">10¹⁸/秒</text>
+
+      <!-- 用途例 -->
+      <rect x="20" y="134" width="300" height="72" rx="8" fill="#ede9fb"/>
+      <text x="170" y="152" text-anchor="middle" font-size="11" font-weight="900" fill="#7c3aed" font-family="M PLUS Rounded 1c">何に使う性能指標？</text>
+      <text x="30" y="168" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">• 科学技術計算（気象予測・核シミュレーション）</text>
+      <text x="30" y="183" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">• AI/機械学習の学習・推論（GPU性能の比較）</text>
+      <text x="30" y="198" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">• スーパーコンピュータの性能ランキング（TOP500）</text>
+    </svg>
+  </div>
+
+  <!-- 他の性能指標との比較 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ 他の性能単位との違い</span>
+    <div class="unit-grid">
+      <div class="unit-cell" style="background:#ede9fb;">
+        <h4 style="color:#7c3aed;">FLOPS</h4>
+        <p>浮動小数点演算の回数/秒。科学計算・AIの性能比較に使う。</p>
+      </div>
+      <div class="unit-cell" style="background:#e7eefc;">
+        <h4 style="color:#2e6de5;">MIPS</h4>
+        <p>Millions of Instructions Per Second。命令の実行回数/秒。汎用的なCPU性能指標。浮動小数点に限定しない。</p>
+      </div>
+      <div class="unit-cell" style="background:#e2f3e5;">
+        <h4 style="color:#2e8b4f;">MHz / GHz</h4>
+        <p>クロック周波数。CPU が1秒間に刻む「拍数」。高いほど速い傾向だが、アーキテクチャ違いで単純比較はできない。</p>
+      </div>
+      <div class="unit-cell" style="background:#fcefd9;">
+        <h4 style="color:#d9851f;">Bps / bps</h4>
+        <p>通信速度（バイト or ビット/秒）。CPUの計算性能ではなくデータ転送量の単位。混同注意。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「MIPSは浮動小数点演算の指標」→ 誤り</div>
+      <div class="tb">MIPSは「命令実行回数/秒」の汎用指標。浮動小数点に特化しているのがFLOPS。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「FLOPSが高い＝クロック周波数が高い」→ 誤り</div>
+      <div class="tb">FLOPSはコアの並列数や命令セットの効率にも依存する。クロック周波数だけで決まらない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">単位の混同（ペタ・テラ・ギガ）</div>
+      <div class="tb">ギガ(G)=10⁹、テラ(T)=10¹²、ペタ(P)=10¹⁵、エクサ(E)=10¹⁸。1000倍ずつ大きくなる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">フロップス</span>＝<strong>フロ（風呂）でポップス</strong>を1秒何曲聴けるか！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">（FLoating-point OPeration Per Second）</span><br><br>
+      「<span class="hl">F</span>loating（浮く）＋<span class="hl">OPS</span>（操作）」→浮動小数点の<strong>操作数/秒</strong>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

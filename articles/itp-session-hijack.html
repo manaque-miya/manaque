@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>セッションハイジャックとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="セッションハイジャックをわかりやすく解説。仕組み・被害・対策・なりすまし・XSSとの違い・ひっかけポイントまでITパスポート試験対策に完全対応。">
+<link rel="canonical" href="https://example.com/itp-session-hijack">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#cc2a2a,#7a0000);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,0,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f0c0c0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-danger{--c:#cc2a2a;--cbg:#fce4dd;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cc2a2a;}
+
+.step-list{list-style:none;margin-top:10px;}
+.step-list li{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;margin-bottom:8px;background:var(--slbg);border-left:4px solid var(--slc);}
+.step-list li .snum{font-size:15px;font-weight:900;color:var(--slc);min-width:22px;}
+.step-list li .stxt{font-size:12.5px;font-weight:700;line-height:1.7;color:#48506a;}
+.sl-red{--slc:#cc2a2a;--slbg:#fce8e8;}
+.sl-orange{--slc:#d9851f;--slbg:#fdf4e4;}
+.sl-dark{--slc:#4256b8;--slbg:#eceef8;}
+
+.taisaku-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.taisaku-item{border-radius:12px;padding:11px 13px;border:2px solid var(--tc);background:var(--tbg);}
+.taisaku-item h4{font-size:12.5px;font-weight:900;color:var(--tc);margin-bottom:5px;}
+.taisaku-item p{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.ts-1{--tc:#2e8b4f;--tbg:#eef8f1;}
+.ts-2{--tc:#2e6de5;--tbg:#eef3fd;}
+.ts-3{--tc:#d9851f;--tbg:#fdf4e4;}
+.ts-4{--tc:#4256b8;--tbg:#eceef8;}
+@media(max-width:480px){.taisaku-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（セキュリティ）</span>
+    <h1><b>セッション<br>ハイジャック</b>とは？</h1>
+    <p>ログイン済みのセッション（鍵）を盗み、本人のふりをしてサービスを不正利用する攻撃。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="85" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 盗まれるイメージ：正規ユーザー -->
+        <rect x="4" y="55" width="26" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="8" y="38" width="18" height="18" rx="7" fill="#2e6de5"/>
+        <circle cx="17" cy="26" r="9" fill="#f4c89a"/>
+        <!-- 攻撃者 -->
+        <rect x="44" y="55" width="26" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="48" y="38" width="18" height="18" rx="7" fill="#cc2a2a"/>
+        <circle cx="57" cy="26" r="9" fill="#8a6040"/>
+        <!-- 鍵マーク（セッション） -->
+        <circle cx="36" cy="52" r="8" fill="#ffd23f" stroke="#a07800" stroke-width="1.5"/>
+        <rect x="33" y="58" width="6" height="8" rx="1" fill="#ffd23f" stroke="#a07800" stroke-width="1.5"/>
+        <!-- 矢印（盗む方向） -->
+        <path d="M44 52 L36 52" stroke="#cc2a2a" stroke-width="2.5" marker-end="url(#arrh)"/>
+        <defs>
+          <marker id="arrh" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#cc2a2a"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="scene-txt">
+        ネットバンキングにログインしたあなた。実はその瞬間、攻撃者が通信を傍受して「<strong>セッションID（ログイン済みの証明書）</strong>」を盗んでいた。攻撃者はそのIDを使い、パスワードなしであなたの口座にアクセスした。
+        <div class="scene-q">ログイン済みの「通行証」を丸ごと盗まれる攻撃！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：攻撃の仕組み -->
+  <div class="panel p-danger">
+    <span class="phead">🔓 セッションハイジャックの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="セッションハイジャックの攻撃フロー：ユーザーがログイン後セッションIDを傍受されサーバーにアクセスされる">
+      <!-- ユーザー -->
+      <rect x="10" y="20" width="70" height="60" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <circle cx="45" cy="40" r="12" fill="#f4c89a"/>
+      <rect x="34" y="54" width="22" height="16" rx="5" fill="#2e6de5"/>
+      <text x="45" y="92" text-anchor="middle" font-size="10.5" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">正規ユーザー</text>
+
+      <!-- サーバー -->
+      <rect x="260" y="20" width="70" height="60" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <rect x="275" y="28" width="40" height="28" rx="5" fill="#2e8b4f"/>
+      <rect x="278" y="31" width="34" height="10" rx="2" fill="#acd0f5"/>
+      <rect x="278" y="44" width="8" height="4" rx="1" fill="#ffd23f"/>
+      <rect x="289" y="44" width="8" height="4" rx="1" fill="#ffd23f"/>
+      <rect x="300" y="44" width="8" height="4" rx="1" fill="#ffd23f"/>
+      <text x="295" y="92" text-anchor="middle" font-size="10.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Webサーバー</text>
+
+      <!-- 通信線（正規） -->
+      <line x1="82" y1="50" x2="258" y2="50" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="5 3"/>
+      <!-- セッションIDラベル -->
+      <rect x="115" y="36" width="110" height="22" rx="7" fill="#ffd23f"/>
+      <text x="170" y="51" text-anchor="middle" font-size="10.5" font-weight="900" fill="#7a4000" font-family="M PLUS Rounded 1c">セッションID: abc123</text>
+
+      <!-- 攻撃者 -->
+      <rect x="115" y="150" width="110" height="70" rx="12" fill="#fce4dd" stroke="#cc2a2a" stroke-width="2"/>
+      <circle cx="170" cy="170" r="12" fill="#8a6040"/>
+      <rect x="158" y="184" width="24" height="16" rx="5" fill="#cc2a2a"/>
+      <text x="170" y="212" text-anchor="middle" font-size="10.5" font-weight="900" fill="#cc2a2a" font-family="M PLUS Rounded 1c">攻撃者</text>
+
+      <!-- 傍受の矢印 -->
+      <path d="M170 150 L170 62" stroke="#cc2a2a" stroke-width="2.5" stroke-dasharray="4 3" marker-end="url(#arrhj)"/>
+      <defs>
+        <marker id="arrhj" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#cc2a2a"/>
+        </marker>
+        <marker id="arrhj2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#cc2a2a"/>
+        </marker>
+      </defs>
+      <rect x="128" y="100" width="84" height="20" rx="6" fill="#fce4dd" stroke="#cc2a2a" stroke-width="1"/>
+      <text x="170" y="114" text-anchor="middle" font-size="10" font-weight="900" fill="#cc2a2a" font-family="M PLUS Rounded 1c">①セッションIDを盗む</text>
+
+      <!-- 攻撃者→サーバーの矢印 -->
+      <path d="M225 185 Q280 185 280 82" stroke="#cc2a2a" stroke-width="2.5" stroke-dasharray="4 3" marker-end="url(#arrhj2)"/>
+      <rect x="244" y="150" width="80" height="20" rx="6" fill="#fce4dd" stroke="#cc2a2a" stroke-width="1"/>
+      <text x="284" y="164" text-anchor="middle" font-size="9.5" font-weight="900" fill="#cc2a2a" font-family="M PLUS Rounded 1c">②盗んだIDで接続</text>
+      <text x="284" y="178" text-anchor="middle" font-size="9" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">（なりすまし成功）</text>
+    </svg>
+    <ul class="step-list" style="margin-top:12px;">
+      <li class="sl-red"><span class="snum">①</span><span class="stxt">ユーザーがログインし、サーバーからセッションIDを受け取る。このIDが「ログイン済みの証明書」になる。</span></li>
+      <li class="sl-orange"><span class="snum">②</span><span class="stxt">攻撃者が通信を傍受・XSS・フィッシング等でセッションIDを盗む。</span></li>
+      <li class="sl-dark"><span class="snum">③</span><span class="stxt">盗んだセッションIDを使ってサーバーにアクセス。サーバーはIDを信用し、正規ユーザーのふりができてしまう。</span></li>
+    </ul>
+  </div>
+
+  <!-- 対策 -->
+  <div class="panel p-green">
+    <span class="phead">🛡️ セッションハイジャックへの対策</span>
+    <div class="taisaku-grid">
+      <div class="taisaku-item ts-1">
+        <h4>HTTPS通信の使用</h4>
+        <p>通信を暗号化し、傍受されても中身を読めなくする。最も基本的な対策。</p>
+      </div>
+      <div class="taisaku-item ts-2">
+        <h4>セッションIDの定期更新</h4>
+        <p>ログイン後や操作ごとにIDを再発行。盗まれても短時間で無効になる。</p>
+      </div>
+      <div class="taisaku-item ts-3">
+        <h4>セッションタイムアウト</h4>
+        <p>一定時間操作がなければ自動ログアウト。放置されたセッションを無効化。</p>
+      </div>
+      <div class="taisaku-item ts-4">
+        <h4>IPアドレス検証</h4>
+        <p>セッション中にIPが変わったら再認証を要求。異常なアクセスを検知する。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「パスワードを盗む」攻撃ではない</div>
+      <div class="tb">セッションハイジャックはパスワードを使わずに、<strong>ログイン後のセッションIDを盗む</strong>。パスワードが正しくてもセッション奪取は防げない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">XSS（クロスサイトスクリプティング）との違い</div>
+      <div class="tb">XSSは<strong>悪意あるスクリプトを実行させる攻撃手法</strong>。セッションハイジャックは<strong>セッションを乗っ取る目的</strong>。XSSを使ってセッションハイジャックを行う場合もある（手段と目的の違い）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">セッション固定攻撃（Session Fixation）と混同しやすい</div>
+      <div class="tb">セッション固定は「攻撃者が<strong>事前にセッションIDを仕込む</strong>」攻撃。ハイジャックは「<strong>発行済みのIDを後から盗む</strong>」。仕込む vs 盗む。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「乗ってるバス（セッション）をハイジャック（乗っ取り）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">バス＝ログイン中のセッション ／ ハイジャック＝その乗っ取り</span><br><br>
+      <span class="hl">「鍵を盗んで家に入る泥棒＝セッションハイジャック」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">合鍵（セッションID）さえあれば、合言葉（パスワード）は不要。だから怖い。</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-session-hijack</div>
+
+</div>
+</body>
+</html>

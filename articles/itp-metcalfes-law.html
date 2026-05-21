@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>メトカーフの法則とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="メトカーフの法則（ネットワークの価値はユーザー数の2乗に比例）をわかりやすく解説。LINEやSNSへの応用例、ITパスポート試験のひっかけポイントと無理やりゴロ付き。">
+<link rel="canonical" href="https://manaque.com/itp/itp-metcalfes-law">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d9851f,#8a4a00);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(138,74,0,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fce5c4;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9851f;}
+
+.compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.cmp-cell{border-radius:10px;padding:10px;text-align:center;}
+.cmp-cell .cn{font-size:12px;font-weight:900;margin-bottom:4px;}
+.cmp-cell .cv{font-size:20px;font-weight:900;}
+.cmp-cell .cs{font-size:11px;font-weight:700;color:#48506a;margin-top:2px;}
+@media(max-width:480px){.compare-row{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d9851f;--fbg:#fdf4e4;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>メトカーフの法則</b>とは？</h1>
+    <p>ネットワークの価値（有用性）は、接続しているユーザー数の「2乗」に比例して大きくなるという法則。人が増えるほど指数関数的に価値が膨らむ。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="14" y="58" width="50" height="28" rx="7" fill="#fcefd9"/>
+        <!-- LINEっぽいアイコン -->
+        <rect x="20" y="63" width="16" height="16" rx="5" fill="#2e8b4f"/>
+        <text x="28" y="74" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#fff">💬</text>
+        <rect x="42" y="63" width="16" height="16" rx="5" fill="#2e8b4f"/>
+        <text x="50" y="74" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#fff">💬</text>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#d9851f"/>
+      </svg>
+      <div class="scene-txt">
+        「LINEを入れて」と親に勧めたCさん。最初は家族4人だけで使っていたが、友人・同僚・クラス全員が使い始めると、グループ・スタンプ・通話…使い道が爆発的に増えた。
+        <div class="scene-q">…ユーザー数が増えるだけで、なぜ価値が何倍にも増えるのか？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：n²の爆発的増加 -->
+  <div class="panel p-orange">
+    <span class="phead">📈 ユーザー数と接続ペア数の関係</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="ユーザーが2人・4人・6人に増えると接続数が1・6・15と2乗で増えることを示すネットワーク図">
+      <rect x="0" y="0" width="340" height="230" rx="12" fill="#fdf4e4"/>
+      <!-- ラベル行 -->
+      <text x="52"  y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#8a4a00" font-family="M PLUS Rounded 1c">2人</text>
+      <text x="170" y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#8a4a00" font-family="M PLUS Rounded 1c">4人</text>
+      <text x="288" y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#8a4a00" font-family="M PLUS Rounded 1c">6人</text>
+
+      <!-- 2人：接続1本 -->
+      <circle cx="32"  cy="60" r="12" fill="#d9851f"/>
+      <text x="32"  cy="60" text-anchor="middle" font-size="10" font-family="sans-serif">😄</text>
+      <circle cx="72"  cy="60" r="12" fill="#d9851f"/>
+      <text x="72"  cy="60" text-anchor="middle" font-size="10" font-family="sans-serif">😄</text>
+      <line x1="44" y1="60" x2="60" y2="60" stroke="#d9851f" stroke-width="2"/>
+      <text x="52" y="95" text-anchor="middle" font-size="12" font-weight="900" fill="#8a4a00" font-family="M PLUS Rounded 1c">1本</text>
+      <text x="52" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#a06010" font-family="M PLUS Rounded 1c">2×1÷2=1</text>
+
+      <!-- 4人：接続6本 -->
+      <circle cx="150" cy="45" r="11" fill="#d9851f"/><text x="150" y="50" text-anchor="middle" font-size="10" font-family="sans-serif">😄</text>
+      <circle cx="190" cy="45" r="11" fill="#d9851f"/><text x="190" y="50" text-anchor="middle" font-size="10" font-family="sans-serif">😄</text>
+      <circle cx="150" cy="80" r="11" fill="#d9851f"/><text x="150" y="85" text-anchor="middle" font-size="10" font-family="sans-serif">😄</text>
+      <circle cx="190" cy="80" r="11" fill="#d9851f"/><text x="190" y="85" text-anchor="middle" font-size="10" font-family="sans-serif">😄</text>
+      <line x1="161" y1="45" x2="179" y2="45" stroke="#d9851f" stroke-width="1.5"/>
+      <line x1="150" y1="56" x2="150" y2="69" stroke="#d9851f" stroke-width="1.5"/>
+      <line x1="190" y1="56" x2="190" y2="69" stroke="#d9851f" stroke-width="1.5"/>
+      <line x1="161" y1="80" x2="179" y2="80" stroke="#d9851f" stroke-width="1.5"/>
+      <line x1="159" y1="54" x2="181" y2="71" stroke="#d9851f" stroke-width="1.5"/>
+      <line x1="181" y1="54" x2="159" y2="71" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="170" y="108" text-anchor="middle" font-size="12" font-weight="900" fill="#8a4a00" font-family="M PLUS Rounded 1c">6本</text>
+      <text x="170" y="123" text-anchor="middle" font-size="11" font-weight="700" fill="#a06010" font-family="M PLUS Rounded 1c">4×3÷2=6</text>
+
+      <!-- 6人：接続15本 -->
+      <circle cx="267" cy="40"  r="10" fill="#dd5a3a"/><text x="267" y="45"  text-anchor="middle" font-size="9" font-family="sans-serif">😄</text>
+      <circle cx="308" cy="55"  r="10" fill="#dd5a3a"/><text x="308" y="60"  text-anchor="middle" font-size="9" font-family="sans-serif">😄</text>
+      <circle cx="312" cy="90"  r="10" fill="#dd5a3a"/><text x="312" y="95"  text-anchor="middle" font-size="9" font-family="sans-serif">😄</text>
+      <circle cx="287" cy="112" r="10" fill="#dd5a3a"/><text x="287" y="117" text-anchor="middle" font-size="9" font-family="sans-serif">😄</text>
+      <circle cx="255" cy="98"  r="10" fill="#dd5a3a"/><text x="255" y="103" text-anchor="middle" font-size="9" font-family="sans-serif">😄</text>
+      <circle cx="250" cy="63"  r="10" fill="#dd5a3a"/><text x="250" y="68"  text-anchor="middle" font-size="9" font-family="sans-serif">😄</text>
+      <line x1="277" y1="44"  x2="298" y2="55"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="277" y1="44"  x2="302" y2="88"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="277" y1="44"  x2="279" y2="102" stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="277" y1="44"  x2="247" y2="92"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="277" y1="44"  x2="258" y2="63"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="298" y1="55"  x2="302" y2="88"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="298" y1="55"  x2="279" y2="102" stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="298" y1="55"  x2="247" y2="92"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="298" y1="55"  x2="258" y2="63"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="302" y1="88"  x2="279" y2="102" stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="302" y1="88"  x2="247" y2="92"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="302" y1="88"  x2="258" y2="63"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="279" y1="102" x2="247" y2="92"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="279" y1="102" x2="258" y2="63"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <line x1="247" y1="92"  x2="258" y2="63"  stroke="#dd5a3a" stroke-width="1" opacity=".8"/>
+      <text x="283" y="140" text-anchor="middle" font-size="12" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">15本！</text>
+      <text x="283" y="155" text-anchor="middle" font-size="11" font-weight="700" fill="#bb3c1f" font-family="M PLUS Rounded 1c">6×5÷2=15</text>
+
+      <!-- 下部まとめ -->
+      <rect x="14" y="170" width="312" height="50" rx="10" fill="#ffd23f" opacity=".9"/>
+      <text x="170" y="191" text-anchor="middle" font-size="12" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">接続数 ＝ n×(n-1)÷2 ≒ n²に比例</text>
+      <text x="170" y="211" text-anchor="middle" font-size="11" font-weight="700" fill="#8a4a00" font-family="M PLUS Rounded 1c">ユーザー数が3倍になると、価値は約9倍に！</text>
+    </svg>
+  </div>
+
+  <!-- フロー：身近な例 -->
+  <div class="panel p-green">
+    <span class="phead">💡 身近な応用例</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">SNS・メッセージアプリ（LINE・Instagram）</div>
+        <div class="fb">友人が全員使っているから自分も使う。みんながいるほど投稿・反応・交流が増え、価値が増す。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">フリマアプリ・マッチングサービス</div>
+        <div class="fb">出品者が多いほど購入者も増え、購入者が多いほど出品者も増える。参加者が増えるほど取引成立率が上がる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">ビジネス戦略への応用</div>
+        <div class="fb">先に多くのユーザーを獲得した側が圧倒的優位に立つ（ネットワーク効果）。「最初にシェアを取れ」という戦略の根拠になる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ユーザー数に比例」と混同する</div>
+      <div class="tb">メトカーフの法則は「<strong>ユーザー数の2乗に比例</strong>」。単純比例ではない。2倍になると価値は4倍、3倍になると価値は9倍。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ムーアの法則と混同する</div>
+      <div class="tb">ムーアの法則は「半導体のトランジスタ数が<strong>18〜24か月で2倍</strong>になる」という法則。ネットワークの価値ではなくコンピュータ性能の法則。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「価値」の定義</div>
+      <div class="tb">ここでの「価値」は<strong>接続できるペア数（組み合わせ数）</strong>のこと。n人いると n×(n-1)÷2 本の接続が生まれる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ネットワーク効果との関係</div>
+      <div class="tb">メトカーフの法則は「ネットワーク効果」の理論的根拠。「ネットワーク効果とは何か」と聞かれたとき、この法則を説明の根拠として使う。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">メトカーフ</span> ＝ <span class="hl">めっちゃカーブ（2乗の曲線）</span><br>
+    「<strong>め(メト)っちゃ(カー)カーブ(フ)！ ユーザー二乗で価値爆増</strong>」<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">LINE・Instagram・メルカリ全部これ ／ 人が増えると価値2乗</span><br><br>
+    <span class="hl">n人 → 価値はn²</span>（ムーアは性能・メトカーフはネット価値）</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

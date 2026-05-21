@@ -1,106 +1,211 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ISMS（情報セキュリティマネジメントシステム）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ISMS（情報セキュリティマネジメントシステム）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-isms.html">
-<meta property="og:title" content="ISMS（情報セキュリティマネジメントシステム）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ISMS（情報セキュリティマネジメントシステム）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-isms.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ISMSとは？情報セキュリティマネジメントシステム — ITパスポート 詳細解説</title>
+<meta name="description" content="ISMSを情報セキュリティの「仕組み」として解説。PDCAサイクルで継続改善・ISO/IEC 27001との関係・試験のひっかけと無理やりゴロで完全攻略。">
+<link rel="canonical" href="https://example.com/itp-isms">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7b2d96,#3d0e56);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(61,14,86,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#e0c8f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7b2d96;--cbg:#f0dffa;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7b2d96;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7b2d96;--fbg:#f0dffa;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fcefd9;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.cia-row{display:flex;gap:8px;margin-top:10px;}
+.cia-card{flex:1;border-radius:11px;padding:10px 8px;text-align:center;}
+.cia-card h4{font-size:13px;font-weight:900;margin-bottom:4px;}
+.cia-card p{font-size:11px;font-weight:600;line-height:1.6;color:#48506a;}
+.cc{background:#dce9fb;}.cc h4{color:#0a5dbf;}
+.ci{background:#d8f0e0;}.ci h4{color:#1a6b3a;}
+.ca{background:#fcefd9;}.ca h4{color:#d9851f;}
+@media(max-width:480px){.cia-row{flex-direction:column;}}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">ISMS（情報セキュリティマネジメントシステム）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ISMS（情報セキュリティマネジメントシステム）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>上場準備中の中小企業の情シス担当の自分。「パスワード強化呼びかけ」だけじゃダメ、PDCAサイクルで継続改善する仕組みが要ると言われた。国際規格はISO/IEC 27001。これ何？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">🔐 ITパスポート ｜ テクノロジ系・マネジメント系</span>
+    <h1><b>ISMS</b>とは？</h1>
+    <p>情報セキュリティを「一時的な対策」ではなく<strong>仕組みとして継続運用</strong>する体制。ISO/IEC 27001が国際規格。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ISMS（ISO/IEC 27001に基づくマネジメントシステム）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>セキュリティポリシーの策定</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ポリシーは文書（ルール）。「PDCAで回し続ける仕組み全体」がISMS</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="20" rx="5" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="8" fill="#7b2d96"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 鍵アイコン -->
+        <circle cx="52" cy="62" r="6" fill="none" stroke="#ffd23f" stroke-width="2"/>
+        <rect x="49" y="63" width="6" height="5" rx="1" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        情報システム担当になったあなた。「うちの会社はISMS認証を取得している」と聞いた。パスワードルールを作ったこととは何が違うのか…
+        <br>調べると「<strong>セキュリティの仕組み自体を組織として継続的に管理・改善する体制</strong>」のことだとわかった。
+        <div class="scene-q">…ルールを作るだけじゃなく、"仕組みごと"マネジメントするんだ！</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：ISMS（ISO/IEC 27001に基づくマネジメントシステム）</strong></p>
-</div>
+  <!-- 図解：ISMSのPDCAサイクル -->
+  <div class="panel p-indigo">
+    <span class="phead">🔄 ISMSのPDCAサイクル</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="ISMSのPDCAサイクル：Plan・Do・Check・Actの4段階">
+      <!-- 中心円 -->
+      <circle cx="170" cy="120" r="40" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="170" y="115" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">PDCA</text>
+      <text x="170" y="130" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">継続改善</text>
 
-<div class="card">
-<h2>📘 ISMS（情報セキュリティマネジメントシステム）とは何か</h2>
-<span class="kw">情報セキュリティを組織的に管理する仕組み</span>
-<p>Information Security Management System。情報セキュリティを組織的・継続的に管理する仕組み。ISO/IEC 27001が国際規格。PDCAサイクルでセキュリティレベルを継続的に向上させる。</p>
-</div>
+      <!-- Plan（上） -->
+      <rect x="110" y="10" width="120" height="44" rx="12" fill="#f0dffa" stroke="#7b2d96" stroke-width="2"/>
+      <text x="170" y="29" text-anchor="middle" font-size="13" font-weight="900" fill="#7b2d96" font-family="M PLUS Rounded 1c">Plan（計画）</text>
+      <text x="170" y="46" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">リスクアセスメント・対策立案</text>
+      <line x1="170" y1="54" x2="170" y2="80" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr1)"/>
+      <defs><marker id="arr1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#9aa3b2"/></marker></defs>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「ISMS認証」を取得することで、組織が適切な情報セキュリティ管理を行っていることを第三者に証明できる。取引先・顧客への信頼性アピールにも使われる。</p>
-</div>
+      <!-- Do（右） -->
+      <rect x="258" y="90" width="74" height="44" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="295" y="109" text-anchor="middle" font-size="13" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Do（実施）</text>
+      <text x="295" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">対策の実行</text>
+      <line x1="210" y1="110" x2="258" y2="112" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr2)"/>
+      <defs><marker id="arr2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#9aa3b2"/></marker></defs>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>セキュリティポリシーは「ルールを定めた文書」。ISMSはそのルールを「計画→実施→確認→改善（PDCA）」で回し続ける仕組み全体。「文書→ポリシー」「仕組み→ISMS」。</p>
-</div>
+      <!-- Check（下） -->
+      <rect x="110" y="186" width="120" height="44" rx="12" fill="#dce9fb" stroke="#0a5dbf" stroke-width="2"/>
+      <text x="170" y="205" text-anchor="middle" font-size="13" font-weight="900" fill="#0a5dbf" font-family="M PLUS Rounded 1c">Check（評価）</text>
+      <text x="170" y="222" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">監査・レビューで評価</text>
+      <line x1="170" y1="160" x2="170" y2="186" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr3)"/>
+      <defs><marker id="arr3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#9aa3b2"/></marker></defs>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>ISMS＝**Information Security Management System**。**ISO/IEC 27001のPDCAでセキュリティを継続改善**。文書じゃなく仕組み。</p></div>
-</div>
+      <!-- Act（左） -->
+      <rect x="10" y="90" width="74" height="44" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="47" y="109" text-anchor="middle" font-size="13" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">Act（改善）</text>
+      <text x="47" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">見直し・修正</text>
+      <line x1="130" y1="130" x2="84" y2="120" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arr4)"/>
+      <defs><marker id="arr4" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#9aa3b2"/></marker></defs>
+    </svg>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>ISMS（情報セキュリティマネジメントシステム）はITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
+    <p>ISMSでは情報セキュリティを<strong>一度きりの対策でなく</strong>、PDCAサイクルで継続的に改善し続けることが核心。セキュリティポリシーを作って終わりではない。</p>
+  </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+  <!-- CIAの3要素 -->
+  <div class="panel p-green">
+    <span class="phead">🛡️ 情報セキュリティの3要素（CIA）</span>
+    <p>ISMSが守るべき情報の3要素。試験頻出。</p>
+    <div class="cia-row">
+      <div class="cia-card cc">
+        <h4>機密性 C</h4>
+        <p>許可された人だけがアクセスできる</p>
+      </div>
+      <div class="cia-card ci">
+        <h4>完全性 I</h4>
+        <p>情報が正確で改ざんされていない</p>
+      </div>
+      <div class="cia-card ca">
+        <h4>可用性 A</h4>
+        <p>必要な時に使える状態を保つ</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：ISMS導入から認証まで -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ ISMS認証取得の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 情報セキュリティポリシー策定</div><div class="fb">組織の方針・規則・手順を文書化する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② リスクアセスメント・対策実施</div><div class="fb">リスクを洗い出し、優先度をつけて対策を実行する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 内部監査・マネジメントレビュー</div><div class="fb">自社でチェックし、改善点を把握する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 第三者機関による審査・認証</div><div class="fb">ISO/IEC 27001に基づき審査機関が認証を付与する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ISMSとセキュリティポリシーは別物</div>
+      <div class="tb">セキュリティポリシーはISMSの<strong>一部</strong>（文書）。ISMSはポリシーを含む<strong>仕組み全体</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「認証取得＝安全」ではない</div>
+      <div class="tb">ISMS認証は「<strong>仕組みが適切に整備・運用されている</strong>」の証明。インシデントが絶対起きないわけではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ISO/IEC 27001との混同</div>
+      <div class="tb">ISO/IEC 27001はISMSを認証するための<strong>国際規格</strong>。ISMSは仕組みそのもの。規格と仕組みは別の概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>情報セキュリティを組織的・継続的に管理する仕組み</strong>」＝ISMS。単なるルールや技術対策とは異なる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">ISMS＝「いつもセキュリティ回す！」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">I＝Information ／ S＝Security ／ M＝Management ／ S＝System</span><br><br>
+    <span class="hl">「アイスム（ISMS）＝冷静にPDCA回す！」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Plan→Do→Check→Actをぐるぐる回す仕組み＝ISMSの核心</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

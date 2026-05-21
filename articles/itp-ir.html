@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IR（インベスターリレーションズ）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="IR（インベスターリレーションズ）を投資家向け広報として解説。PRとの違い・試験のひっかけポイント・無理やりゴロでITパスポートを確実攻略。">
+<link rel="canonical" href="https://example.com/itp-ir">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6b3a,#0d3d20);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,32,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8ebc9;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#1a6b3a;--cbg:#d8f0e0;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-blue{--c:#0a5dbf;--cbg:#dce9fb;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6b3a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6b3a;--fbg:#d8f0e0;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#d9851f;--fbg:#fcefd9;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.stakeholder-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.scard{border-radius:11px;padding:10px;}
+.scard h4{font-size:12.5px;font-weight:900;margin-bottom:4px;}
+.scard p{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+.scard-ir{background:#d8f0e0;}.scard-ir h4{color:#1a6b3a;}
+.scard-pr{background:#e4e7f7;}.scard-pr h4{color:#4256b8;}
+.scard-sr{background:#dce9fb;}.scard-sr h4{color:#0a5dbf;}
+.scard-ad{background:#fcefd9;}.scard-ad h4{color:#d9851f;}
+@media(max-width:480px){.stakeholder-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💼 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>IR</b>（インベスターリレーションズ）とは？</h1>
+    <p>企業が<strong>投資家・株主</strong>に経営情報を発信する活動。「IR＝投資家向け広報」が最重要ポイント。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="20" rx="5" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="8" fill="#1a6b3a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="40" y="55" width="20" height="14" rx="2" fill="#48506a"/>
+        <rect x="42" y="57" width="16" height="10" rx="1" fill="#a8e6c0"/>
+      </svg>
+      <div class="scene-txt">
+        上場企業の広報担当になったあなた。「IR資料を作ってください」と指示が来た。プレスリリースと何が違うのか…
+        <br>調べると「<strong>投資家や株主</strong>向けに、決算内容・経営方針を説明する資料」だとわかった。
+        <div class="scene-q">…IRって、一般向けのPRとは目的が全然違うんだ！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：IRと他の広報活動 -->
+  <div class="panel p-indigo">
+    <span class="phead">🏢 企業広報の種類と対象</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="IR・PR・SR・広告の対象者の違いを示す図">
+      <!-- 中心：企業 -->
+      <rect x="130" y="70" width="80" height="40" rx="10" fill="#4256b8" stroke="#fff" stroke-width="2"/>
+      <text x="170" y="86" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">企業</text>
+      <text x="170" y="101" text-anchor="middle" font-size="10" font-weight="700" fill="#c5ccf0" font-family="M PLUS Rounded 1c">情報発信</text>
+
+      <!-- IR → 投資家 -->
+      <line x1="130" y1="80" x2="60" y2="50" stroke="#1a6b3a" stroke-width="2" marker-end="url(#arrow-g)"/>
+      <defs><marker id="arrow-g" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#1a6b3a"/></marker></defs>
+      <rect x="5" y="28" width="66" height="32" rx="8" fill="#d8f0e0" stroke="#1a6b3a" stroke-width="1.5"/>
+      <text x="38" y="42" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6b3a" font-family="M PLUS Rounded 1c">IR</text>
+      <text x="38" y="56" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">投資家・株主</text>
+
+      <!-- PR → メディア -->
+      <line x1="210" y1="80" x2="276" y2="50" stroke="#0a5dbf" stroke-width="2" marker-end="url(#arrow-b)"/>
+      <defs><marker id="arrow-b" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#0a5dbf"/></marker></defs>
+      <rect x="265" y="28" width="66" height="32" rx="8" fill="#dce9fb" stroke="#0a5dbf" stroke-width="1.5"/>
+      <text x="298" y="42" text-anchor="middle" font-size="11" font-weight="900" fill="#0a5dbf" font-family="M PLUS Rounded 1c">PR</text>
+      <text x="298" y="56" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">メディア・社会</text>
+
+      <!-- SR → 従業員 -->
+      <line x1="130" y1="100" x2="60" y2="140" stroke="#d9851f" stroke-width="2" marker-end="url(#arrow-o)"/>
+      <defs><marker id="arrow-o" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#d9851f"/></marker></defs>
+      <rect x="5" y="122" width="66" height="32" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="1.5"/>
+      <text x="38" y="136" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">SR</text>
+      <text x="38" y="150" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">株主・社会全般</text>
+
+      <!-- 広告 → 消費者 -->
+      <line x1="210" y1="100" x2="276" y2="140" stroke="#dd5a3a" stroke-width="2" marker-end="url(#arrow-r)"/>
+      <defs><marker id="arrow-r" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#dd5a3a"/></marker></defs>
+      <rect x="265" y="122" width="66" height="32" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="1.5"/>
+      <text x="298" y="136" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">広告</text>
+      <text x="298" y="150" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">消費者・顧客</text>
+    </svg>
+
+    <div class="stakeholder-grid">
+      <div class="scard scard-ir">
+        <h4>IR（投資家向け広報）</h4>
+        <p>決算・経営方針・業績予想を投資家・株主に開示。株式投資の意思決定を助ける。</p>
+      </div>
+      <div class="scard scard-pr">
+        <h4>PR（社会向け広報）</h4>
+        <p>メディアや社会全般に企業イメージを伝える。プレスリリース・記者発表など。</p>
+      </div>
+      <div class="scard scard-sr">
+        <h4>SR（株主対応）</h4>
+        <p>株主総会・議決権行使など株主との対話活動。IRと重複する部分もある。</p>
+      </div>
+      <div class="scard scard-ad">
+        <h4>広告</h4>
+        <p>費用を払って消費者に商品・サービスを宣伝する。IRとは無関係。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー：IRの具体的活動 -->
+  <div class="panel p-blue">
+    <span class="phead">🗺️ IR活動の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 決算発表・業績開示</div><div class="fb">四半期・年次の決算情報を投資家に適時に開示する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② アナリスト・機関投資家向け説明会</div><div class="fb">証券アナリストや機関投資家に経営者が直接説明する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 個人投資家向けウェブサイト・報告書</div><div class="fb">決算短信・有価証券報告書・IRサイトで情報を公開する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">IRとPRの混同</div>
+      <div class="tb">IR＝<strong>投資家・株主向け</strong>。PR＝メディア・社会向け。対象が全然違う。「R」がついても別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「IR活動は上場企業だけ」を見落とす</div>
+      <div class="tb">基本的に<strong>上場企業（株式公開企業）</strong>の活動。非上場企業には一般的にIR義務はない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">CSR（企業の社会的責任）との混同</div>
+      <div class="tb">CSRは社会・環境への責任活動。IRは投資家への財務情報開示。目的が異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>投資家・株主・決算・業績開示</strong>」というキーワードが出たら → 迷わず<strong>IR</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">IR＝「いれる（Investor Relations）」</span>＝投資家に情報を「入れる」！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">I＝Investor（投資家） ／ R＝Relations（関係）</span><br><br>
+    <span class="hl">投資家に「いーアール（IR）」と声かけ</span>して決算を説明する！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">PRは「プレス（報道）リレーションズ」で社会向け。IRは投資家向け。</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

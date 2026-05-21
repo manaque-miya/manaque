@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>利益率とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="利益率（売上高利益率）の計算式・種類をわかりやすく解説。売上総利益率・営業利益率・経常利益率の違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-profit-margin">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d97706,#78350f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(120,53,15,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fde68a;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-orange{--c:#d97706;--cbg:#fef3c7;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-blue{--c:#2563eb;--cbg:#dbeafe;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d97706;}
+
+.formula-box{background:#fef9ee;border:2.5px solid #d97706;border-radius:14px;padding:14px 16px;margin:10px 0;text-align:center;}
+.formula-box .ft{font-size:11px;font-weight:700;color:#92400e;margin-bottom:4px;}
+.formula-box .fm{font-size:17px;font-weight:900;color:#78350f;line-height:1.5;}
+.formula-box .fm .frac{display:inline-block;text-align:center;vertical-align:middle;}
+.formula-box .fm .frac .num{display:block;border-bottom:2px solid #78350f;padding:0 4px;font-size:15px;}
+.formula-box .fm .frac .den{display:block;padding:0 4px;font-size:15px;}
+
+.profit-list{list-style:none;margin-top:8px;}
+.profit-list li{border-radius:10px;padding:10px 12px;margin-bottom:7px;font-size:12.5px;font-weight:700;line-height:1.6;}
+.pl1{background:#fef3c7;color:#78350f;}
+.pl2{background:#d1fae5;color:#065f46;}
+.pl3{background:#dbeafe;color:#1e3a8a;}
+.pl4{background:#f3e8ff;color:#5b21b6;}
+.profit-list li b{display:block;font-size:13.5px;margin-bottom:2px;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d97706;--fbg:#fef9ee;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#2563eb;--fbg:#eff6ff;}
+.f4{--fc:#5b21b6;--fbg:#f5f3ff;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>利益率</b>とは？</h1>
+    <p>売上に対してどれだけ利益が残るかを示す指標。「100円売って何円儲かるか」を%で表す。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-orange">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="14" y="58" width="50" height="26" rx="6" fill="#fef3c7"/>
+        <rect x="20" y="64" width="16" height="13" rx="2" fill="#d97706"/>
+        <text x="28" y="74" text-anchor="middle" font-size="8" font-weight="900" fill="#fff" font-family="sans-serif">売上</text>
+        <rect x="42" y="70" width="10" height="7" rx="2" fill="#2e8b4f"/>
+        <text x="47" y="77" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">利益</text>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#d97706"/>
+      </svg>
+      <div class="scene-txt">
+        ラーメン屋を経営するあなた。月の売上は100万円。でも材料費・人件費・家賃を引いたら手元に残るのは10万円。売上100万のうち利益は10万円。
+        <div class="scene-q">…利益率は何%？ → 10÷100×100＝<strong>10%</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">💰 利益の構造（売上から何が引かれるか）</span>
+    <svg width="100%" viewBox="0 0 340 260" role="img" aria-label="売上から各利益が計算される構造図">
+      <!-- 売上高バー -->
+      <rect x="20" y="20" width="300" height="44" rx="8" fill="#d97706"/>
+      <text x="170" y="47" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">売上高（例：1000万円）</text>
+      <!-- 売上原価 -->
+      <rect x="20" y="72" width="190" height="36" rx="7" fill="#fbbf24"/>
+      <text x="115" y="95" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">売上原価（600万）</text>
+      <!-- 売上総利益 -->
+      <rect x="218" y="72" width="102" height="36" rx="7" fill="#34d399" stroke="#059669" stroke-width="2"/>
+      <text x="269" y="87" text-anchor="middle" font-size="10.5" font-weight="900" fill="#065f46" font-family="M PLUS Rounded 1c">売上総利益</text>
+      <text x="269" y="101" text-anchor="middle" font-size="10.5" font-weight="900" fill="#065f46" font-family="M PLUS Rounded 1c">400万（40%）</text>
+      <!-- 矢印 -->
+      <text x="205" y="95" text-anchor="middle" font-size="16" fill="#4256b8" font-weight="900">＝</text>
+      <!-- 販管費 -->
+      <rect x="20" y="116" width="130" height="34" rx="7" fill="#fde68a"/>
+      <text x="85" y="137" text-anchor="middle" font-size="11" font-weight="900" fill="#92400e" font-family="M PLUS Rounded 1c">販管費（250万）</text>
+      <!-- 営業利益 -->
+      <rect x="158" y="116" width="162" height="34" rx="7" fill="#60a5fa" stroke="#2563eb" stroke-width="2"/>
+      <text x="239" y="131" text-anchor="middle" font-size="10.5" font-weight="900" fill="#1e3a8a" font-family="M PLUS Rounded 1c">営業利益 150万（15%）</text>
+      <text x="145" y="136" text-anchor="middle" font-size="16" fill="#4256b8" font-weight="900">＝</text>
+      <!-- 営業外 -->
+      <rect x="20" y="158" width="94" height="32" rx="7" fill="#e9d5ff"/>
+      <text x="67" y="178" text-anchor="middle" font-size="10" font-weight="900" fill="#5b21b6" font-family="M PLUS Rounded 1c">営業外費用（30万）</text>
+      <text x="120" y="178" text-anchor="middle" font-size="16" fill="#4256b8" font-weight="900">＝</text>
+      <!-- 経常利益 -->
+      <rect x="130" y="158" width="190" height="32" rx="7" fill="#a78bfa" stroke="#5b21b6" stroke-width="2"/>
+      <text x="225" y="178" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">経常利益 120万（12%）</text>
+      <!-- 式説明 -->
+      <text x="170" y="220" text-anchor="middle" font-size="11" font-weight="700" fill="#64748b" font-family="M PLUS Rounded 1c">利益率 ＝ 各利益 ÷ 売上高 × 100（%）</text>
+      <text x="170" y="240" text-anchor="middle" font-size="11" font-weight="900" fill="#d97706" font-family="M PLUS Rounded 1c">売上高が分母・利益が分子</text>
+    </svg>
+    <div class="formula-box">
+      <div class="ft">利益率の計算式</div>
+      <div class="fm">利益率（%）＝ 利益 ÷ 売上高 × 100</div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📊 利益の種類と意味</span>
+    <ul class="profit-list">
+      <li class="pl1"><b>① 売上総利益率（粗利率）</b>売上高 − 売上原価 ÷ 売上高 × 100。製品の「生産コスト引いたら何%残るか」。IT企業は高い。</li>
+      <li class="pl2"><b>② 営業利益率</b>売上高 − 売上原価 − 販管費 ÷ 売上高 × 100。本業の稼ぐ力。広告費・人件費を引いた後の利益率。</li>
+      <li class="pl3"><b>③ 経常利益率</b>営業利益 ± 営業外損益（利息・受取配当等）÷ 売上高 × 100。財務活動も含めた総合的な収益性。</li>
+      <li class="pl4"><b>④ 当期純利益率</b>税金・特別損益まで引いた最終的な利益 ÷ 売上高 × 100。株主への還元原資。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「利益率＝利益÷費用」は誤り</div>
+      <div class="tb">利益率の分母は<strong>売上高</strong>。費用ではない。「利益÷売上高×100」が正しい式。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">売上が大きくても利益率が低い場合がある</div>
+      <div class="tb">売上1000万でも原価900万なら利益率10%。売上100万でも原価20万なら利益率80%。<strong>売上の大きさ≠利益率の高さ</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「利益率が高い＝経営が良い」とは限らない</div>
+      <div class="tb">成長期は広告・設備投資でわざと利益率を下げることがある。文脈によって判断基準が変わる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">どの利益率を聞かれているか確認</div>
+      <div class="tb">「売上総利益率」「営業利益率」「経常利益率」はすべて違う計算式。問題文の<strong>「何の利益」かを必ず確認</strong>する。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「売上（うりあ）で割る！」</span><br>
+    り益率＝り益 ÷ <span class="hl">うりあげ</span>（売上）× 100<br>
+    「り・うり」→<strong>利益÷売上</strong>！<br><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">粗利（そり）＝原価だけ引く ／ 営業利益＝販管費も引く ／ 経常＝営業外も引く</span></div>
+  </div>
+
+</div>
+</body>
+</html>

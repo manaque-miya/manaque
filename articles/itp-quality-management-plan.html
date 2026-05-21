@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>品質管理計画とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="品質管理計画をわかりやすく解説。QA・QCとの違い、品質計画書の内容、PDCAサイクルとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-quality-management-plan">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0e7490,#164e63);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,116,144,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a5f3fc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-teal{--c:#0e7490;--cbg:#cffafe;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0e7490;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#0e7490;--fbg:#cffafe;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.plan-items{list-style:none;margin-top:6px;}
+.plan-items li{font-size:12.5px;font-weight:700;line-height:1.75;color:#3c4456;padding:8px 12px;border-left:4px solid #0e7490;background:#f0fdff;border-radius:0 8px 8px 0;margin-bottom:6px;}
+.plan-items li strong{color:#0e7490;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.compare-cell{border-radius:12px;padding:12px 11px;}
+.compare-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.compare-cell ul{list-style:none;}
+.compare-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.compare-cell li::before{content:"・";position:absolute;left:0;}
+.cc-teal{background:#cffafe;}.cc-teal h4{color:#0e7490;}
+.cc-green{background:#e2f3e5;}.cc-green h4{color:#2e8b4f;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">📋 ITパスポート ｜ マネジメント系</span>
+    <h1><b>品質管理計画</b>とは？</h1>
+    <p>「どんな品質をどうやって確保するか」を最初に決めておく計画書。後から直すより最初に設計する方が安く済む。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="16" y="38" width="46" height="44" rx="6" fill="#cffafe" stroke="#0e7490" stroke-width="2"/>
+        <rect x="20" y="44" width="28" height="3" rx="1.5" fill="#0e7490"/>
+        <rect x="20" y="51" width="36" height="2" rx="1" fill="#9aa3b2"/>
+        <rect x="20" y="57" width="32" height="2" rx="1" fill="#9aa3b2"/>
+        <rect x="20" y="63" width="36" height="2" rx="1" fill="#9aa3b2"/>
+        <rect x="20" y="69" width="24" height="2" rx="1" fill="#9aa3b2"/>
+        <!-- チェックマーク -->
+        <circle cx="58" cy="68" r="9" fill="#2e8b4f"/>
+        <path d="M53 68 l4 4 l8 -8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="39" cy="21" r="13" fill="#f4c89a"/>
+        <path d="M27 17 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+      </svg>
+      <div class="scene-txt">
+        システム開発プロジェクトが始まった。「どのくらいのバグ数なら合格？」「テストは誰がやる？」「レビューは何回やる？」——<br>
+        終わってから決めるのでは遅い。最初に全部決めておくのが<strong>品質管理計画</strong>。
+        <div class="scene-q">「何をもって品質OK」かを事前に定義する！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 品質管理計画の内容 -->
+  <div class="panel p-blue">
+    <span class="phead">📄 品質管理計画書に書くこと</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="品質管理計画書の構成要素">
+      <!-- 計画書枠 -->
+      <rect x="10" y="10" width="320" height="170" rx="14" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <rect x="10" y="10" width="320" height="38" rx="14" fill="#2e6de5"/>
+      <text x="170" y="33" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">品質管理計画書</text>
+      <!-- 内容4項目 -->
+      <rect x="22" y="58" width="136" height="48" rx="8" fill="#fff"/>
+      <text x="90" y="76" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">① 品質目標</text>
+      <text x="90" y="92" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">バグ密度・合格基準</text>
+      <text x="90" y="104" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">を数値で定義</text>
+
+      <rect x="182" y="58" width="136" height="48" rx="8" fill="#fff"/>
+      <text x="250" y="76" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">② 品質保証活動</text>
+      <text x="250" y="92" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">レビュー・テストの</text>
+      <text x="250" y="104" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">種類・担当・回数</text>
+
+      <rect x="22" y="118" width="136" height="48" rx="8" fill="#fff"/>
+      <text x="90" y="136" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">③ 測定指標</text>
+      <text x="90" y="152" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">何をどう測るか</text>
+      <text x="90" y="164" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">（KPI設定）</text>
+
+      <rect x="182" y="118" width="136" height="48" rx="8" fill="#fff"/>
+      <text x="250" y="136" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">④ 改善アクション</text>
+      <text x="250" y="152" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">基準未達のとき</text>
+      <text x="250" y="164" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">どう対応するか</text>
+    </svg>
+    <ul class="plan-items">
+      <li><strong>品質目標</strong>：「単体テスト合格率 95%以上」「バグ密度 0.5件/KLOC以下」のように数値化</li>
+      <li><strong>品質保証活動</strong>：コードレビュー・単体/結合/システムテストの計画</li>
+      <li><strong>測定指標・収集方法</strong>：何を、いつ、誰が測るか</li>
+      <li><strong>改善基準</strong>：目標を下回ったときのエスカレーション手順</li>
+    </ul>
+  </div>
+
+  <!-- QAとQCの違い -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ QA と QC の違い</span>
+    <div class="compare-grid">
+      <div class="compare-cell cc-teal">
+        <h4>QA（品質保証）</h4>
+        <ul>
+          <li>プロセス全体を管理</li>
+          <li>「正しく作っているか」</li>
+          <li>計画・設計・レビュー</li>
+          <li>予防が目的</li>
+        </ul>
+      </div>
+      <div class="compare-cell cc-green">
+        <h4>QC（品質管理）</h4>
+        <ul>
+          <li>成果物を検査・測定</li>
+          <li>「正しいものが作れたか」</li>
+          <li>テスト・検査・是正</li>
+          <li>検出が目的</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;font-weight:700;color:#48506a;">品質管理計画は QA（プロセス保証）と QC（成果物検査）の<strong>両方をカバーする</strong>。</p>
+  </div>
+
+  <!-- PDCAとの関係 -->
+  <div class="panel p-orange">
+    <span class="phead">🔄 品質管理とPDCAサイクル</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">Plan（品質管理計画）</div>
+        <div class="fb">品質目標・測定指標・保証活動を計画書に定義する。ここが品質管理計画の本体。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">Do（品質保証・管理の実施）</div>
+        <div class="fb">レビュー・テストを計画どおり実施。測定値を記録する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">Check（品質評価）</div>
+        <div class="fb">実績を目標値と比較。バグ密度・テスト合格率が基準内か確認。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">Act（改善）</div>
+        <div class="fb">基準未達なら再テスト・追加レビュー・プロセス見直しを行う。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「品質管理計画は開発後に作る」→ 誤り</div>
+      <div class="tb">品質管理計画は<strong>プロジェクト開始時（計画フェーズ）</strong>に作成する。後から作っても手遅れになることが多い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「QAはテストと同じ」→ 誤り</div>
+      <div class="tb">テストはQC（品質管理・検出活動）。QAはプロセス全体を保証する活動で、テストより広い概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「品質目標は主観でよい」→ 誤り</div>
+      <div class="tb">品質目標は<strong>数値化・定量化</strong>が必要。「なんとなく高い品質」では管理できない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「品質に関して何かを計画・事前に定義する」文脈 → 品質管理計画。「テスト・検査・是正する」文脈 → QC・品質管理。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">品質管理計画</span> ＝ <span class="hl">「試験前に採点基準を決める」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「何点取れば合格か」を事前に決めずに試験したら意味がない。品質もおなじ。先に「何をもって合格か」を決めておく。</span><br><br>
+      <span class="hl">QA＝作り方を保証、QC＝作ったものを検査</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">QA（保証）はプロセス、QC（管理）はモノ。頭文字Aが「あんしん設計」、Cが「チェック」。</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

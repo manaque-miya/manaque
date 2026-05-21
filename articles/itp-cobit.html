@@ -1,108 +1,162 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>COBITとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="COBITの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-cobit.html">
-<meta property="og:title" content="COBITとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="COBITの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-cobit.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>COBITとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="COBITをわかりやすく解説。ITガバナンスの国際フレームワークとしての役割、ISACAが策定した背景、ITIL・ISO/IEC 27001との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-cobit">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2563a8,#0f2d5c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(15,45,92,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563a8;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2563a8;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2563a8;--fbg:#eef3fd;}
+.f2{--fc:#4256b8;--fbg:#eef0fb;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">COBITとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">COBIT</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>COBIT</b>とは？</h1>
+    <p>ITガバナンスを「経営の視点」で管理するための国際フレームワーク。ISACAが策定した。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#2563a8"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5-9-13-9-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="27" y="32" width="18" height="8" fill="#f4c89a"/>
+        <rect x="18" y="60" width="36" height="10" rx="3" fill="#1a3a6a"/>
+        <rect x="22" y="63" width="10" height="4" rx="1" fill="#7aaad8"/>
+        <rect x="34" y="63" width="14" height="4" rx="1" fill="#7aaad8"/>
+      </svg>
+      <div class="scene-txt">
+        IT部門の責任者として経営会議に出席。社長から「うちのITシステム、ちゃんとリスク管理できてる？経営目標と連動してる？」と聞かれた。
+        <div class="scene-q">…ITガバナンスを体系的に示すには、どのフレームワークを使えばいい？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔷 COBITの位置づけ</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="COBITはITガバナンスを経営とITの橋渡しをするフレームワーク">
+      <!-- 経営層 -->
+      <rect x="20" y="20" width="300" height="50" rx="12" fill="#0f2d5c"/>
+      <text x="170" y="42" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">経営層</text>
+      <text x="170" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#9ec3e8" font-family="M PLUS Rounded 1c">「ITで事業目標を達成したい」</text>
+      <!-- COBIT -->
+      <rect x="60" y="100" width="220" height="55" rx="14" fill="#2563a8" stroke="#ffd23f" stroke-width="3"/>
+      <text x="170" y="124" text-anchor="middle" font-size="16" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">COBIT</text>
+      <text x="170" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#c8dcf5" font-family="M PLUS Rounded 1c">ITガバナンスの国際フレームワーク</text>
+      <!-- IT部門 -->
+      <rect x="20" y="185" width="300" height="45" rx="12" fill="#2e8b4f"/>
+      <text x="170" y="205" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">IT部門・システム</text>
+      <text x="170" y="222" text-anchor="middle" font-size="11" font-weight="700" fill="#a8e0c0" font-family="M PLUS Rounded 1c">「ITシステムを安全・効率的に運用する」</text>
+      <!-- 矢印 -->
+      <line x1="170" y1="70" x2="170" y2="99" stroke="#ffd23f" stroke-width="2.5" stroke-dasharray="4 3"/>
+      <polygon points="165,96 175,96 170,102" fill="#ffd23f"/>
+      <line x1="170" y1="155" x2="170" y2="184" stroke="#ffd23f" stroke-width="2.5" stroke-dasharray="4 3"/>
+      <polygon points="165,181 175,181 170,187" fill="#ffd23f"/>
+      <!-- ラベル -->
+      <text x="190" y="89" font-size="10" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">橋渡し・整合</text>
+    </svg>
+    <p style="font-size:12.5px;color:#48506a;margin-top:8px;line-height:1.8;">COBITは「経営目標」と「IT活動」を結びつけ、<strong>ITが経営に貢献しているかを管理・評価</strong>するためのフレームワーク。策定者は国際組織 <strong>ISACA（情報システムコントロール協会）</strong>。</p>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 COBITの主な5つの原則</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① ステークホルダーニーズを満たす</div><div class="fb">経営者・株主・顧客など関係者の要求に応えるITガバナンスを目指す。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② エンドツーエンドでカバー</div><div class="fb">IT部門だけでなく、組織全体のIT関連活動を網羅的に管理する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 単一の統合フレームワーク</div><div class="fb">他の標準（ITIL・ISO等）と矛盾せず、統合的に使える設計になっている。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 全体的なアプローチ</div><div class="fb">ITガバナンスを「プロセス・組織・文化・情報・技術」の全側面から捉える。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">ITILと混同しやすい</div>
+      <div class="tb">ITILは「ITサービス管理（運用のベストプラクティス）」。COBITは「ITガバナンス（経営とITの整合）」。<strong>レイヤーが違う</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ISO/IEC 27001と混同しやすい</div>
+      <div class="tb">ISO/IEC 27001は「情報セキュリティマネジメント」の認証規格。COBITはガバナンス全体のフレームワーク。目的が異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「策定者はISACA」を覚える</div>
+      <div class="tb">ITILはイギリス政府機関、ISO規格はISOが策定。COBITの策定者は<strong>ISACA（情報システムコントロール協会）</strong>という国際非営利団体。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>ITガバナンス</strong>」「<strong>経営目標とITの整合</strong>」「<strong>ISACA</strong>」のキーワードが出たら → <strong>COBIT</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">コービット（COBIT）</span>＝<span class="hl">「コービー（経営）がビット（IT）を管理」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">経営（Co）＋ IT（bit）＝ COBITで、経営レベルでITを管理するフレームワーク！</span><br><br>
+    策定：<span class="hl">「アイサカ（ISACA）がアイツのコービット管理」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ISACA ＝ 情報システムコントロール協会</span></div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>大企業のCIO直属の自分。「経営目標とITを整合・ITリスク・コンプライアンス・IT投資効果を統制」する国際フレームワーク。ITIL？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>COBIT（Control Objectives for Information and Related Technology）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ITIL</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ITILはIT運用のベストプラクティス。「ITガバナンス全体（経営×IT整合）」がCOBIT</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：COBIT（Control Objectives for Information and Related Technology）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 COBITとは何か</h2>
-<span class="kw">ITと経営目標を整合させるITガバナンスの国際フレームワーク</span>
-<p>COBIT（現在COBIT 2019）はISACA（情報システム監査・統制協会）が発行するITガバナンスのフレームワーク。目的：IT関連リスクの管理・IT投資の最適化・コンプライアンス確保・IT資産の保護。J-SOX対応やITガバナンス評価にも使われる。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>ITIL＝IT運用の「How to（何をどうやるか）」。COBIT＝IT経営の「What（何を達成すべきか）・Why（なぜITに投資するか）」。役割が異なるため両方を組み合わせて使うことが多い。
-
-**覚え方** 🎯 **ITIL（運用How）／COBIT（経営What・Why）**。**ITILで動かす、COBITで統治**。両輪セット利用。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>【最頻出ひっかけ】COBITとITILの混同。ITIL=IT運用の「How（方法・プロセス）」、COBIT=ITガバナンスの「What・Why（目的・統治）」。発行元も異なる：ITIL=AXELOS（英国政府系）、COBIT=ISACA（米国）。J-SOX対応・IT投資統制→COBIT、サービスデスク設計・インシデント管理→ITIL。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**ITIL（運用How）／COBIT（経営What・Why）**。**ITILで動かす、COBITで統治**。両輪セット利用。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>COBITはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

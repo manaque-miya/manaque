@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>デジタルサイネージとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="デジタルサイネージをわかりやすく解説。電子看板の仕組み・活用シーン・紙ポスターとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-digital-signage">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7b2ff7,#3a0b9e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(58,11,158,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d4bbf8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7b2ff7;--cbg:#ede0fe;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#1a7a4a;--cbg:#d9f0e6;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7b2ff7;}
+
+.use-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.use-cell{border-radius:12px;padding:10px 11px;background:#f0f0fb;}
+.use-cell h4{font-size:12px;font-weight:900;color:#4256b8;margin-bottom:5px;}
+.use-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+@media(max-width:400px){.use-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7b2ff7;--fbg:#f5eefe;}
+.f2{--fc:#4256b8;--fbg:#eef0fb;}
+.f3{--fc:#1a7a4a;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">📺 ITパスポート ｜ ストラテジ系・社会</span>
+    <h1><b>デジタルサイネージ</b>とは？</h1>
+    <p>ディスプレイを使って動画・画像・テキストを表示する電子看板。場所・時間・状況に合わせて情報を切り替えられる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="4" fill="#3a0b9e" opacity=".1"/>
+        <!-- 人物 -->
+        <circle cx="36" cy="18" r="12" fill="#f4c89a"/>
+        <path d="M24 14 a12 11 0 0 1 24 0 q-4 -8 -12 -8 q-8 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="27" y="28" width="18" height="8" fill="#f4c89a"/>
+        <rect x="14" y="36" width="44" height="26" rx="9" fill="#7b2ff7"/>
+        <rect x="10" y="62" width="52" height="18" rx="6" fill="#c8c0ea"/>
+        <!-- サイネージ画面 -->
+        <rect x="38" y="42" width="16" height="12" rx="2" fill="#ffd23f"/>
+        <text x="46" y="51" text-anchor="middle" font-size="6" font-weight="900" fill="#3a0b9e" font-family="M PLUS Rounded 1c">SALE</text>
+      </svg>
+      <div class="scene-txt">
+        駅の改札前を歩いていると、大型ディスプレイに「今日限り！近隣レストラン20%オフ」の広告が流れている。昼は飲食店の宣伝、夜は映画の予告、ラッシュ時は乗換案内……同じ画面が時間帯で内容を変えている。
+        <div class="scene-q">…これが <strong>デジタルサイネージ</strong>。紙ポスターと最大の違いは「遠隔で・即座に・複数同時に」変更できること。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🖥️ デジタルサイネージの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="デジタルサイネージのシステム構成：コンテンツサーバーからネットワーク経由で複数ディスプレイへ配信">
+      <rect x="4" y="8" width="332" height="174" rx="14" fill="#f0f0fb" stroke="#c5cce8" stroke-width="1.5"/>
+      <!-- サーバー -->
+      <rect x="18" y="30" width="78" height="62" rx="10" fill="#ede0fe" stroke="#7b2ff7" stroke-width="2"/>
+      <text x="57" y="55" text-anchor="middle" font-size="11" font-weight="900" fill="#7b2ff7" font-family="M PLUS Rounded 1c">コンテンツ</text>
+      <text x="57" y="70" text-anchor="middle" font-size="11" font-weight="900" fill="#7b2ff7" font-family="M PLUS Rounded 1c">サーバー</text>
+      <text x="57" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#9a7cc8" font-family="M PLUS Rounded 1c">管理・配信</text>
+      <!-- ネットワーク -->
+      <path d="M98 61 L140 61" stroke="#4256b8" stroke-width="2.5" stroke-dasharray="5 4"/>
+      <text x="119" y="54" text-anchor="middle" font-size="9" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">ネットワーク</text>
+      <!-- 分岐 -->
+      <path d="M140 61 L180 40 M140 61 L180 90 M140 61 L180 140" stroke="#4256b8" stroke-width="2" stroke-dasharray="4 3"/>
+      <!-- ディスプレイ1 -->
+      <rect x="180" y="24" width="70" height="36" rx="6" fill="#4256b8"/>
+      <rect x="184" y="27" width="62" height="28" rx="3" fill="#8aacf5"/>
+      <text x="215" y="44" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">駅・空港</text>
+      <!-- ディスプレイ2 -->
+      <rect x="180" y="74" width="70" height="36" rx="6" fill="#4256b8"/>
+      <rect x="184" y="77" width="62" height="28" rx="3" fill="#8aacf5"/>
+      <text x="215" y="94" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">店舗・商業施設</text>
+      <!-- ディスプレイ3 -->
+      <rect x="180" y="124" width="70" height="36" rx="6" fill="#4256b8"/>
+      <rect x="184" y="127" width="62" height="28" rx="3" fill="#8aacf5"/>
+      <text x="215" y="144" text-anchor="middle" font-size="9.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">病院・公共施設</text>
+      <!-- 特徴 -->
+      <rect x="262" y="30" width="68" height="128" rx="10" fill="#ffd23f" opacity=".9"/>
+      <text x="296" y="56" text-anchor="middle" font-size="9.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">即座に</text>
+      <text x="296" y="70" text-anchor="middle" font-size="9.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">一括変更</text>
+      <line x1="270" y1="82" x2="322" y2="82" stroke="#c0960a" stroke-width="1"/>
+      <text x="296" y="100" text-anchor="middle" font-size="9.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">時間・場所で</text>
+      <text x="296" y="114" text-anchor="middle" font-size="9.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">内容を変更</text>
+      <line x1="270" y1="126" x2="322" y2="126" stroke="#c0960a" stroke-width="1"/>
+      <text x="296" y="144" text-anchor="middle" font-size="9.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">動画・音声</text>
+      <text x="296" y="158" text-anchor="middle" font-size="9.5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">にも対応</text>
+    </svg>
+    <div class="use-grid">
+      <div class="use-cell"><h4>交通・公共</h4><p>駅・空港・バス停の乗換案内・広告表示</p></div>
+      <div class="use-cell"><h4>商業・小売</h4><p>店頭のプロモーション・タイムセール告知</p></div>
+      <div class="use-cell"><h4>医療・官公庁</h4><p>病院の待合室・市役所の案内表示</p></div>
+      <div class="use-cell"><h4>イベント・教育</h4><p>会議室のスケジュール表示・校内放送画面</p></div>
+    </div>
+  </div>
+
+  <!-- フロー・詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📡 コンテンツ配信の流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① コンテンツ作成・登録</div><div class="fb">広告・案内・動画を制作し、CMS（コンテンツ管理システム）にアップロードする。表示スケジュール（時間帯・曜日）も設定できる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② ネットワーク経由で配信</div><div class="fb">インターネット・LAN経由でディスプレイ端末へ自動配信。担当者が現場に行かずに内容を変更できる点が最大の強み。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ ディスプレイで自動再生</div><div class="fb">設定したスケジュール通りに自動表示。複数拠点の数十台・数百台を同時に管理できる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「電子ペーパー」と混同しやすい</div>
+      <div class="tb">電子ペーパーは低消費電力で静止画表示に特化したディスプレイ。デジタルサイネージは<strong>動画・リアルタイム更新</strong>に対応する電子看板全般を指す。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「テレビ放送」と混同しやすい</div>
+      <div class="tb">テレビ放送は不特定多数への一方向発信。デジタルサイネージは<strong>設置場所・時間帯・ターゲット</strong>に合わせたコンテンツを配信する点が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「インタラクティブ型」もある</div>
+      <div class="tb">タッチパネルで来場者が操作できるデジタルサイネージも存在する。試験では「表示するだけ」＝デジタルサイネージとは限らないので文脈に注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「ネットワーク経由でディスプレイの内容を遠隔更新する電子看板」→ 迷わず<strong>デジタルサイネージ</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「デジサイン（デジタル看板）は遠隔でサインチェンジ」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">サイネージ ＝ SIGN（看板）＋ AGE（時代）＝ デジタル時代の看板</span><br><br>
+    <span class="hl">サイ</span>（在庫セール！）を<span class="hl">ネージ</span>（ネット経由）で即変更<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">遠隔・リアルタイム・複数台 ＝ デジタルサイネージの3大特徴</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-digital-signage</div>
+
+</div>
+</body>
+</html>

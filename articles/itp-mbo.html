@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MBOとは？目標管理・マネジメントバイアウト — ITパスポート 詳細解説</title>
+<meta name="description" content="MBOの2つの意味（Management by Objectives：目標管理とManagement Buyout：経営陣買収）をITパスポート向けにわかりやすく解説。OKRとの違い、試験のひっかけポイントも。">
+<link rel="canonical" href="https://example.com/itp-mbo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#145c30);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,92,48,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c6e8d2;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-teal{--c:#1a7a7a;--cbg:#dff4f4;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.mbo-split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.mbo-card{border-radius:14px;padding:14px;text-align:center;}
+.mbo-card .tag{display:inline-block;font-size:10px;font-weight:900;padding:3px 10px;border-radius:10px;margin-bottom:8px;}
+.mbo-card h3{font-size:15px;font-weight:900;margin-bottom:6px;}
+.mbo-card p{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;text-align:left;}
+.card-main{background:#e2f3e5;border:2px solid #2e8b4f;}
+.card-main .tag{background:#2e8b4f;color:#fff;}
+.card-main h3{color:#145c30;}
+.card-sub{background:#fcefd9;border:2px dashed #d9851f;}
+.card-sub .tag{background:#d9851f;color:#fff;}
+.card-sub h3{color:#9a5810;}
+@media(max-width:480px){.mbo-split{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#4256b8;--fbg:#edf0fb;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.badge{display:inline-block;font-size:10px;font-weight:900;padding:2px 8px;border-radius:8px;background:#ffd23f;color:#5c4500;vertical-align:middle;margin-left:4px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>MBO</b>とは？</h1>
+    <p>ITパスポートに登場するMBOは2つの意味がある。<br>「目標管理（Management by Objectives）」が主役・「マネジメントバイアウト」も要注意。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#2e8b4f"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="31" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 39 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 目標カード -->
+        <rect x="40" y="48" width="24" height="30" rx="3" fill="#fff" stroke="#2e8b4f" stroke-width="1.5"/>
+        <line x1="44" y1="56" x2="60" y2="56" stroke="#2e8b4f" stroke-width="1.5"/>
+        <line x1="44" y1="62" x2="58" y2="62" stroke="#c2c8d8" stroke-width="1"/>
+        <line x1="44" y1="67" x2="56" y2="67" stroke="#c2c8d8" stroke-width="1"/>
+        <circle cx="56" cy="71" r="4" fill="#ffd23f" stroke="#d9851f" stroke-width="1"/>
+        <text x="56" y="74" text-anchor="middle" font-size="5" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">達</text>
+      </svg>
+      <div class="scene-txt">
+        期初に上司と「今期の目標」を話し合い、自分で設定した。期末に達成度を評価される。この制度を「<strong>MBO</strong>」と呼ぶ上司。一方、ニュースでは「MBOで非上場化」という別の文脈でも同じ略語が…
+        <div class="scene-q">…MBOって、どっちの意味？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2つのMBO -->
+  <div class="panel p-blue">
+    <span class="phead">🔑 MBOの2つの意味</span>
+    <div class="mbo-split">
+      <div class="mbo-card card-main">
+        <span class="tag">主要義（経営管理）</span>
+        <h3>目標管理</h3>
+        <p><strong>Management by Objectives</strong><br>従業員が自ら目標を設定し、達成度を人事評価に連動させる管理手法。P・ドラッカーが提唱。</p>
+      </div>
+      <div class="mbo-card card-sub">
+        <span class="tag">財務・M&amp;A</span>
+        <h3>経営陣買収</h3>
+        <p><strong>Management Buyout</strong><br>自社の経営陣が株式を買い取り、親会社から独立・非上場化する手法。</p>
+      </div>
+    </div>
+    <p>ITパスポートでは<strong>「目標管理（Management by Objectives）」として出題されることがほとんど</strong>。問題文に「人事評価」「目標設定」「自己評価」が出たら迷わず目標管理のMBO。</p>
+  </div>
+
+  <!-- 図解：目標管理MBOのサイクル -->
+  <div class="panel p-indigo">
+    <span class="phead">🔄 MBO（目標管理）のサイクル</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="MBO目標管理のPDCAサイクル：目標設定・実行・中間確認・評価フィードバック">
+      <!-- 中央円 -->
+      <circle cx="170" cy="100" r="38" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="170" y="97" text-anchor="middle" font-size="12" font-weight="900" fill="#145c30" font-family="M PLUS Rounded 1c">MBO</text>
+      <text x="170" y="112" text-anchor="middle" font-size="10" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">サイクル</text>
+
+      <!-- 4つのステップ -->
+      <!-- ① 目標設定（上） -->
+      <rect x="110" y="14" width="120" height="34" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="170" y="28" text-anchor="middle" font-size="10.5" font-weight="900" fill="#145c30" font-family="M PLUS Rounded 1c">① 目標設定</text>
+      <text x="170" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">上司と合意・自己設定</text>
+      <!-- ② 実行（右） -->
+      <rect x="258" y="70" width="74" height="34" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="295" y="84" text-anchor="middle" font-size="10.5" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">② 実行</text>
+      <text x="295" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">業務・進捗記録</text>
+      <!-- ③ 中間確認（下） -->
+      <rect x="110" y="155" width="120" height="34" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="170" y="169" text-anchor="middle" font-size="10.5" font-weight="900" fill="#9a5810" font-family="M PLUS Rounded 1c">③ 中間確認</text>
+      <text x="170" y="183" text-anchor="middle" font-size="9" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">フォロー・修正</text>
+      <!-- ④ 評価（左） -->
+      <rect x="8" y="70" width="74" height="34" rx="10" fill="#f0e8fc" stroke="#7b3fe4" stroke-width="2"/>
+      <text x="45" y="84" text-anchor="middle" font-size="10.5" font-weight="900" fill="#5a20b8" font-family="M PLUS Rounded 1c">④ 評価</text>
+      <text x="45" y="98" text-anchor="middle" font-size="9" font-weight="700" fill="#7b50c0" font-family="M PLUS Rounded 1c">自己評価→上司評価</text>
+
+      <!-- 矢印 -->
+      <path d="M200 45 Q225 55 250 75" stroke="#9aa3b2" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+      <path d="M285 105 Q280 130 240 155" stroke="#9aa3b2" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+      <path d="M130 157 Q105 140 80 110" stroke="#9aa3b2" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+      <path d="M68 72 Q90 55 130 46" stroke="#9aa3b2" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <polygon points="0 0, 7 3.5, 0 7" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+    </svg>
+    <div class="flow" style="margin-top:10px;">
+      <div class="fstep f1">
+        <div class="fh">ポイント：目標は「自分で設定」する</div>
+        <div class="fb">上から押し付けるのではなく、本人と上司が話し合って合意する。これが自律性・モチベーションを高める鍵。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">MBOとOKRは似て非なるもの</div>
+      <div class="tb">OKR（Objectives and Key Results）は「目標（O）＋測定可能な結果（KR）」で高い野心的目標を設定する手法。MBOは達成可能な目標で人事評価に直結。OKRは評価より挑戦を重視。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">MBOとKPIを混同しやすい</div>
+      <div class="tb">KPI（重要業績評価指標）は「目標達成を測るための指標（数値）」。MBOは「目標管理の仕組み」。KPIはMBOの中で使う道具の一つ。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「経営陣買収」のMBOは文脈で判断</div>
+      <div class="tb">「MBOで非上場化」「親会社からMBOで独立」など、M&A・財務文脈が出たらManagement Buyout。「目標設定」「人事評価」文脈ならManagement by Objectives。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">MBOの提唱者はドラッカー</div>
+      <div class="tb">ピーター・ドラッカーが1954年に提唱。「知識労働者の自律的管理」が目的。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">MBO = 「めっちゃ自分でビジョン（目標）立てる、オレが決める」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">M＝めっちゃ ／ B＝ビジョン（自分設定）／ O＝オレが（自律）</span><br><br>
+      <span class="hl">Buyout = 「バイアウト＝バイバイ、外に出る（買って独立）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">経営陣が株を「バイ（Buy）」して、親会社から「アウト（Out）」する</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

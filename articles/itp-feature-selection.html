@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>特徴選択とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="機械学習の特徴選択をわかりやすく解説。なぜ変数を絞るのか、特徴抽出との違い、過学習との関係、ITパスポート試験での出題ポイントをSVG図解で紹介。">
+<link rel="canonical" href="https://example.com/itp-feature-selection">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5d2d9c,#2d0d5c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(45,13,92,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#c9a0ff 56%,#c9a0ff 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#cdb5f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#5d2d9c;--cbg:#ede4fc;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5d2d9c;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.ccard{border-radius:13px;padding:13px;}
+.ccard h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.ccard p{font-size:12px;line-height:1.75;font-weight:600;color:#48506a;}
+.ccard-purple{background:#ede4fc;}.ccard-purple h4{color:#5d2d9c;}
+.ccard-blue{background:#e7eefc;}.ccard-blue h4{color:#2e6de5;}
+@media(max-width:420px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（AI・機械学習）</span>
+    <h1><b>特徴選択</b>とは？</h1>
+    <p>機械学習でモデルに使う変数を"厳選"すること。ゴミを取り除いて精度を上げる作業。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="70" height="88" viewBox="0 0 70 88" aria-hidden="true">
+        <ellipse cx="35" cy="82" rx="26" ry="4" fill="#2d0d5c" opacity=".1"/>
+        <rect x="8" y="56" width="54" height="20" rx="5" fill="#d4c8ec"/>
+        <rect x="14" y="34" width="42" height="28" rx="9" fill="#5d2d9c"/>
+        <circle cx="35" cy="19" r="12" fill="#f4c89a"/>
+        <path d="M24 16 a11 10 0 0 1 22 0 q-5 -8 -11 -8 q-6 0 -11 8z" fill="#3a2050"/>
+        <rect x="28" y="29" width="14" height="7" fill="#f4c89a"/>
+        <!-- データ列イメージ -->
+        <rect x="38" y="54" width="24" height="5" rx="2" fill="#5d2d9c" opacity=".7"/>
+        <rect x="38" y="61" width="24" height="5" rx="2" fill="#c9a0ff" opacity=".7"/>
+        <rect x="38" y="68" width="24" height="5" rx="2" fill="#5d2d9c" opacity=".7"/>
+      </svg>
+      <div class="scene-txt">
+        売上予測モデルを作ろうと、100個のデータ項目を全部突っ込んだら…精度が低い。<strong>関係ない変数が邪魔をしている</strong>のかも。
+        <div class="scene-q">→ 「本当に売上に影響する変数だけ使え」が特徴選択の考え方。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：特徴選択の仕組み -->
+  <div class="panel p-purple">
+    <span class="phead">📊 特徴選択のイメージ</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="特徴選択の図：多数の変数から有効な変数だけを選んでモデルに入れる流れ">
+      <!-- 入力データ列 -->
+      <text x="18" y="22" font-size="11" font-weight="800" fill="#5d2d9c" font-family="M PLUS Rounded 1c">入力データ（100変数）</text>
+      <!-- 変数ブロック群 -->
+      <rect x="10" y="28" width="60" height="22" rx="4" fill="#c9a0ff"/>
+      <text x="40" y="43" text-anchor="middle" font-size="10" font-weight="800" fill="#2d0d5c" font-family="M PLUS Rounded 1c">年齢</text>
+      <rect x="76" y="28" width="60" height="22" rx="4" fill="#c9a0ff"/>
+      <text x="106" y="43" text-anchor="middle" font-size="10" font-weight="800" fill="#2d0d5c" font-family="M PLUS Rounded 1c">購入回数</text>
+      <rect x="142" y="28" width="60" height="22" rx="4" fill="#e4d6f7" opacity=".6"/>
+      <text x="172" y="43" text-anchor="middle" font-size="10" font-weight="700" fill="#9a7abf" font-family="M PLUS Rounded 1c">誕生日の星座</text>
+      <rect x="208" y="28" width="60" height="22" rx="4" fill="#e4d6f7" opacity=".6"/>
+      <text x="238" y="43" text-anchor="middle" font-size="10" font-weight="700" fill="#9a7abf" font-family="M PLUS Rounded 1c">名前の文字数</text>
+      <rect x="274" y="28" width="56" height="22" rx="4" fill="#c9a0ff"/>
+      <text x="302" y="43" text-anchor="middle" font-size="10" font-weight="800" fill="#2d0d5c" font-family="M PLUS Rounded 1c">地域</text>
+      <text x="300" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#9a7abf" font-family="M PLUS Rounded 1c">…他95変数</text>
+      <!-- フィルターBOX -->
+      <rect x="80" y="80" width="180" height="44" rx="12" fill="#5d2d9c"/>
+      <text x="170" y="97" text-anchor="middle" font-size="12" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">🔍 特徴選択フィルター</text>
+      <text x="170" y="114" text-anchor="middle" font-size="10" font-weight="700" fill="#c9a0ff" font-family="M PLUS Rounded 1c">重要度が低い変数を除去</text>
+      <!-- 矢印上 -->
+      <line x1="170" y1="62" x2="170" y2="78" stroke="#5d2d9c" stroke-width="2.5"/>
+      <polygon points="165,78 175,78 170,86" fill="#5d2d9c"/>
+      <!-- 矢印下 -->
+      <line x1="170" y1="124" x2="170" y2="142" stroke="#5d2d9c" stroke-width="2.5"/>
+      <polygon points="165,142 175,142 170,150" fill="#5d2d9c"/>
+      <!-- 出力 -->
+      <rect x="70" y="150" width="200" height="36" rx="10" fill="#dff3e6" stroke="#1a6e3c" stroke-width="2"/>
+      <text x="170" y="163" text-anchor="middle" font-size="11" font-weight="800" fill="#1a6e3c" font-family="M PLUS Rounded 1c">有効な変数 10個だけ残す</text>
+      <text x="170" y="178" text-anchor="middle" font-size="11" font-weight="900" fill="#0c3d21" font-family="M PLUS Rounded 1c">→ 精度UP・処理速度UP！</text>
+      <!-- バツ印で不要変数 -->
+      <line x1="142" y1="56" x2="268" y2="76" stroke="#dd5a3a" stroke-width="1.5" opacity=".4" stroke-dasharray="3 2"/>
+      <text x="205" y="72" font-size="10" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c" opacity=".7">✕ 除去</text>
+    </svg>
+    <p>100個の変数（特徴量）があっても、<strong>予測に効かない変数</strong>（星座・名前の文字数など）が入るとモデルが混乱して精度が落ちる。特徴選択で"本当に効く変数"だけ残すことで精度と速度が改善する。</p>
+  </div>
+
+  <!-- 特徴選択 vs 特徴抽出 -->
+  <div class="panel p-blue">
+    <span class="phead">⚖️ 特徴抽出との違い</span>
+    <div class="compare-grid">
+      <div class="ccard ccard-purple">
+        <h4>特徴選択（Feature Selection）</h4>
+        <p>元の変数の中から<strong>重要なものだけを選ぶ</strong>。変数は加工せず、そのまま使う。</p>
+      </div>
+      <div class="ccard ccard-blue">
+        <h4>特徴抽出（Feature Extraction）</h4>
+        <p>元の変数を<strong>組み合わせ・変換して新しい変数を作る</strong>。主成分分析（PCA）など。</p>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;">「<strong>選択</strong>」＝もとの変数を選ぶ。「<strong>抽出</strong>」＝変換して新しいものを作る。この差を押さえると混同しない。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「変数を増やすほど精度が上がる」は誤り</div>
+      <div class="tb">無関係な変数を増やすと過学習（学習データに過剰適合）を招き、むしろ精度が下がる。特徴選択は「削る」ことで精度を上げる作業。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">特徴抽出と特徴選択を混同しやすい</div>
+      <div class="tb">選択＝「選ぶだけ・変換しない」、抽出＝「変換して新しい変数を生成」。問題文に「新たな変数を生成」と書いてあれば特徴抽出が正解。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">前処理の一部であることを忘れない</div>
+      <div class="tb">特徴選択は機械学習の「データ前処理」ステップの一部。モデルの学習そのものではない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「選手選考」</span>みたいなもの！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">100人の候補（変数）から"試合に出る10人"（有効な特徴）だけ選ぶ</span><br><br>
+      特徴<span class="hl">選択</span>＝<span class="hl">選</span>ぶ（加工なし）<br>
+      特徴<span class="hl">抽出</span>＝<span class="hl">抽</span>んでくる（変換して新しいもの）
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,214 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>5フォース分析とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="5フォース分析の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-5forces.html">
-<meta property="og:title" content="5フォース分析とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="5フォース分析の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-5forces.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ファイブフォース分析とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ファイブフォース分析（5フォース）を5つの競争要因でわかりやすく解説。業界の収益性を決める5つの力、3C・SWOT・PEST分析との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-5forces">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b82048,#6a0a28);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(106,10,40,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f0c0d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red{--c:#b82048;--cbg:#fce4ee;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-warn{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b82048;}
+
+.force-list{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+.force-item{border-radius:11px;padding:10px 13px;display:flex;gap:10px;align-items:center;}
+.force-num{font-size:18px;font-weight:900;min-width:28px;text-align:center;}
+.force-body .fh{font-size:13px;font-weight:900;margin-bottom:2px;}
+.force-body .fb{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.fi1{background:#fce4ee;}.fi1 .fh{color:#b82048;}.fi1 .force-num{color:#b82048;}
+.fi2{background:#ede3f9;}.fi2 .fh{color:#6b34a8;}.fi2 .force-num{color:#6b34a8;}
+.fi3{background:#e7eefc;}.fi3 .fh{color:#2e6de5;}.fi3 .force-num{color:#2e6de5;}
+.fi4{background:#e2f3e5;}.fi4 .fh{color:#2e8b4f;}.fi4 .force-num{color:#2e8b4f;}
+.fi5{background:#fcefd9;}.fi5 .fh{color:#d9851f;}.fi5 .force-num{color:#d9851f;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:14px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">5フォース分析とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">5フォース分析</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>ファイブフォース分析</b>とは？</h1>
+    <p>業界の収益性を決める「5つの競争の力」を分析し、自社がどれだけ稼げる業界にいるかを把握するフレームワーク（マイケル・ポーター提唱）。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="29" ry="4" fill="#300510" opacity=".12"/>
+        <!-- 中心の自社 -->
+        <rect x="27" y="36" width="24" height="18" rx="5" fill="#b82048"/>
+        <text x="39" y="49" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">自社</text>
+        <!-- 上（新規参入） -->
+        <rect x="28" y="10" width="22" height="14" rx="3" fill="#6b34a8"/>
+        <line x1="39" y1="24" x2="39" y2="36" stroke="#6b34a8" stroke-width="2" stroke-dasharray="3 2"/>
+        <polygon points="36,34 42,34 39,38" fill="#6b34a8"/>
+        <!-- 下（代替品） -->
+        <rect x="28" y="66" width="22" height="14" rx="3" fill="#2e8b4f"/>
+        <line x1="39" y1="54" x2="39" y2="66" stroke="#2e8b4f" stroke-width="2" stroke-dasharray="3 2"/>
+        <polygon points="36,56 42,56 39,52" fill="#2e8b4f"/>
+        <!-- 左（仕入先） -->
+        <rect x="2" y="40" width="20" height="14" rx="3" fill="#2e6de5"/>
+        <line x1="22" y1="47" x2="27" y2="47" stroke="#2e6de5" stroke-width="2" stroke-dasharray="3 2"/>
+        <!-- 右（買い手） -->
+        <rect x="56" y="40" width="20" height="14" rx="3" fill="#d9851f"/>
+        <line x1="51" y1="47" x2="56" y2="47" stroke="#d9851f" stroke-width="2" stroke-dasharray="3 2"/>
+      </svg>
+      <div class="scene-txt">
+        新規事業を検討中の経営企画部のあなた。「この業界、参入しても儲かるのか？」を判断したい。<br>
+        新たに入ってくる競合・仕入先の力・買い手の力・代替品・既存競合——5つの圧力を洗い出せば、業界の魅力度が見えてくる。
+        <div class="scene-q">…この「5つの力」を使うフレームワークは？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5フォース図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">⚔️ 5つの競争の力（5 Forces）</span>
+    <svg width="100%" viewBox="0 0 340 270" role="img" aria-label="ファイブフォース分析の図解：中心の業界内競合を囲む5つの競争要因">
+      <rect x="0" y="0" width="340" height="270" rx="10" fill="#f0f3fe"/>
+
+      <!-- 中心：業界内競合 -->
+      <rect x="115" y="100" width="110" height="60" rx="12" fill="#b82048" stroke="#fff" stroke-width="2"/>
+      <text x="170" y="125" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">業界内の</text>
+      <text x="170" y="143" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">既存競合</text>
+
+      <!-- 上：新規参入の脅威 -->
+      <rect x="116" y="14" width="108" height="44" rx="9" fill="#ede3f9" stroke="#6b34a8" stroke-width="2"/>
+      <text x="170" y="33" text-anchor="middle" font-size="11" font-weight="900" fill="#6b34a8" font-family="M PLUS Rounded 1c">新規参入の脅威</text>
+      <text x="170" y="50" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8860c0" font-family="M PLUS Rounded 1c">新しいライバルが来る圧力</text>
+      <line x1="170" y1="58" x2="170" y2="100" stroke="#6b34a8" stroke-width="2" stroke-dasharray="4 2"/>
+      <polygon points="165,98 175,98 170,104" fill="#6b34a8"/>
+
+      <!-- 下：代替品の脅威 -->
+      <rect x="116" y="212" width="108" height="44" rx="9" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="170" y="231" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">代替品の脅威</text>
+      <text x="170" y="248" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">別の手段で代替される圧力</text>
+      <line x1="170" y1="160" x2="170" y2="212" stroke="#2e8b4f" stroke-width="2" stroke-dasharray="4 2"/>
+      <polygon points="165,162 175,162 170,158" fill="#2e8b4f"/>
+
+      <!-- 左：売り手（仕入先）の交渉力 -->
+      <rect x="4" y="110" width="98" height="44" rx="9" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="53" y="129" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">売り手の</text>
+      <text x="53" y="147" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">交渉力</text>
+      <line x1="102" y1="132" x2="115" y2="132" stroke="#2e6de5" stroke-width="2" stroke-dasharray="4 2"/>
+      <polygon points="113,128 113,136 119,132" fill="#2e6de5"/>
+
+      <!-- 右：買い手の交渉力 -->
+      <rect x="238" y="110" width="98" height="44" rx="9" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="287" y="129" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">買い手の</text>
+      <text x="287" y="147" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">交渉力</text>
+      <line x1="225" y1="132" x2="238" y2="132" stroke="#d9851f" stroke-width="2" stroke-dasharray="4 2"/>
+      <polygon points="225,128 225,136 219,132" fill="#d9851f"/>
+    </svg>
+
+    <!-- 5つの説明リスト -->
+    <div class="force-list">
+      <div class="force-item fi2">
+        <span class="force-num">①</span>
+        <div class="force-body">
+          <div class="fh">新規参入の脅威</div>
+          <div class="fb">新しい競合が参入しやすい業界ほど、既存プレイヤーの利益が削られる。参入障壁の高さがポイント。</div>
+        </div>
+      </div>
+      <div class="force-item fi4">
+        <span class="force-num">②</span>
+        <div class="force-body">
+          <div class="fh">代替品の脅威</div>
+          <div class="fb">全く別の手段（代替品）に顧客が乗り換えるリスク。例：タクシー業界へのライドシェアの参入。</div>
+        </div>
+      </div>
+      <div class="force-item fi3">
+        <span class="force-num">③</span>
+        <div class="force-body">
+          <div class="fh">売り手（仕入先）の交渉力</div>
+          <div class="fb">仕入先が強いと原材料・部品の価格を上げられる。調達先が1社だけなら交渉力は相手が持つ。</div>
+        </div>
+      </div>
+      <div class="force-item fi5">
+        <span class="force-num">④</span>
+        <div class="force-body">
+          <div class="fh">買い手（顧客）の交渉力</div>
+          <div class="fb">大口顧客や選択肢が多い顧客は価格を下げる圧力をかけられる。競合他社と比較されやすい状況は買い手が有利。</div>
+        </div>
+      </div>
+      <div class="force-item fi1">
+        <span class="force-num">⑤</span>
+        <div class="force-body">
+          <div class="fh">業界内の競合（既存競合同士の対抗度）</div>
+          <div class="fb">業界内の競争が激しいほど価格競争が起き、利益率が下がる。競合が多く・差別化が難しい業界ほど厳しい。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-warn">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">3C分析との違い</div>
+      <div class="tb">3Cは「顧客・競合・自社」の3軸で<strong>戦略の勝ち筋</strong>を探す。5フォースは「5つの圧力」で<strong>業界の収益性・魅力度</strong>を評価する。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SWOT分析との違い</div>
+      <div class="tb">SWOTは自社の強み・弱み・外部機会・脅威の4軸。5フォースは業界構造そのものの分析。SWOTは自社視点、5フォースは業界視点。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「5つの力」の数を間違えない</div>
+      <div class="tb">新規参入・代替品・売り手・買い手・既存競合の5つ。「業界内競合だけで1つ」と数える（5＋1ではなく5）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「業界の収益性」「参入障壁」「交渉力」キーワードが出たら → <strong>ファイブフォース（5フォース）分析</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「新代売買競（しんだいばいばいきょう）」</span>の5力！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">新（新規参入）・代（代替品）・売（売り手）・買（買い手）・競（既存競合）</span><br><br>
+    業界に入る前に<span class="hl">5方向から圧力チェック</span>。<br>圧力が強い業界＝儲からない！</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>新規業界進出を検討する経営企画の自分。「既存競合・新規参入・代替品・買い手・売り手」の5つの圧力で業界の儲かりやすさを評価。この手法の名前は？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>5フォース分析（ファイブフォース）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>PEST分析</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ PESTはマクロ環境（業界より広い）。「業界内の競争構造を5圧力で」が5フォース</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：5フォース分析（ファイブフォース）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 5フォース分析とは何か</h2>
-<span class="kw">業界の競争要因を5つで分析</span>
-<p>マイケル・ポーターが提唱した競争戦略フレームワーク。①既存競合②新規参入③代替品④買い手⑤売り手の5つの力（フォース）で業界の収益性・競争強度を分析する。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「この5つの力が強い業界ほど儲けにくい」という考え方。参入障壁が高い（新規参入の脅威が低い）業界は既存企業にとって有利。
-
-**覚え方** 🎯 5フォース＝**業界の5つの圧力**。**既存・新規・代替・買・売の5方向から押される度合い**。儲け度の温度計。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>5フォース分析はSWOT分析や3C分析と混同しやすい。「5つの力」はすべて**外部環境（業界構造）**であり、自社内部は含まない点に注意。また「買い手」「売り手」はそれぞれ顧客・仕入先の交渉力を指し、「既存競合との競争」とは別の軸として扱う。5つ全部言えるか確認を。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>5フォース＝**業界の5つの圧力**。**既存・新規・代替・買・売の5方向から押される度合い**。儲け度の温度計。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>5フォース分析はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

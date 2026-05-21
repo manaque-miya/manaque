@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>共創（コ・クリエーション）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="共創（コ・クリエーション）をわかりやすく解説。企業と顧客が一緒に価値を作る仕組み、オープンイノベーション・マスカスタマイゼーションとの違い、ひっかけポイントと無理やりゴロ。ITパスポート ストラテジ系。">
+<link rel="canonical" href="https://manaque.com/itp/itp-co-creation">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#cf4f86,#7a1a4f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,26,79,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c9de;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cf4f86;}
+
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;margin-top:8px;}
+.vs-cell{border-radius:12px;padding:12px 10px;text-align:center;}
+.vs-cell h4{font-size:13px;font-weight:900;margin-bottom:5px;}
+.vs-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.vc-co{background:#fbe3ee;}.vc-co h4{color:#cf4f86;}
+.vc-trad{background:#e7eefc;}.vc-trad h4{color:#2e6de5;}
+.vs-center{font-size:18px;font-weight:900;color:#9aa3b2;text-align:center;}
+@media(max-width:400px){.vs-grid{grid-template-columns:1fr;}.vs-center{display:none;}}
+
+.ex-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:8px;}
+.ex-item{display:flex;align-items:flex-start;gap:9px;border-radius:10px;padding:10px 12px;background:#fbe3ee;}
+.ex-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.ex-body h4{font-size:13px;font-weight:900;color:#cf4f86;margin-bottom:2px;}
+.ex-body p{font-size:12px;font-weight:600;line-height:1.65;color:#48506a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#cf4f86;--fbg:#fbe3ee;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🤝 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>共創</b>（コ・クリエーション）とは？</h1>
+    <p>企業と顧客・パートナーが協力して、一緒に新しい価値を作り出す取り組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-pink">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true" style="flex-shrink:0">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 人物A（企業）-->
+        <circle cx="22" cy="18" r="11" fill="#f4c89a"/>
+        <path d="M12 15 a10 9 0 0 1 20 0 q-5-8-10-8-5 0-10 8z" fill="#3a3f4a"/>
+        <rect x="13" y="27" width="18" height="22" rx="5" fill="#cf4f86"/>
+        <!-- 人物B（顧客）-->
+        <circle cx="56" cy="18" r="11" fill="#f4c89a"/>
+        <path d="M46 15 a10 9 0 0 1 20 0 q-5-8-10-8-5 0-10 8z" fill="#5a3daa"/>
+        <rect x="47" y="27" width="18" height="22" rx="5" fill="#4256b8"/>
+        <!-- 中心：一緒に作る -->
+        <ellipse cx="39" cy="65" rx="18" ry="14" fill="#ffd23f"/>
+        <text x="39" y="62" text-anchor="middle" font-size="9" font-weight="900" fill="#7a4a00" font-family="M PLUS Rounded 1c">共同</text>
+        <text x="39" y="73" text-anchor="middle" font-size="9" font-weight="900" fill="#7a4a00" font-family="M PLUS Rounded 1c">で創る</text>
+        <!-- 腕を伸ばす線 -->
+        <path d="M22 48 L34 57" stroke="#cf4f86" stroke-width="2"/>
+        <path d="M56 48 L44 57" stroke="#4256b8" stroke-width="2"/>
+      </svg>
+      <div class="scene-txt">
+        あるスポーツ用品メーカーが、プロ選手や一般ユーザを開発チームに招き、「使う人が一緒にシューズを設計する」プロジェクトを開始した。製品の完成後、参加したユーザが熱烈なファンになった。
+        <div class="scene-q">…「作る側」と「使う側」が一緒に価値を生み出す＝これが共創</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔄 従来型と共創の違い</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="従来型は企業が製品を作って顧客に渡す一方向の矢印。共創は企業と顧客が双方向の矢印で価値を共同創造する図。">
+      <!-- 従来型 -->
+      <text x="85" y="22" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">従来型</text>
+      <rect x="10" y="30" width="70" height="40" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="45" y="55" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">企業</text>
+      <path d="M80 50 L150 50" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arr2)"/>
+      <text x="115" y="45" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">製品を提供</text>
+      <rect x="155" y="30" width="70" height="40" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="190" y="55" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">顧客</text>
+
+      <defs>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M1 1 L7 4 L1 7z" fill="#2e6de5"/>
+        </marker>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M1 1 L7 4 L1 7z" fill="#cf4f86"/>
+        </marker>
+        <marker id="arr3r" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+          <path d="M1 1 L7 4 L1 7z" fill="#cf4f86"/>
+        </marker>
+      </defs>
+
+      <!-- 共創 -->
+      <text x="85" y="112" text-anchor="middle" font-size="12" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">共創</text>
+      <rect x="10" y="120" width="70" height="40" rx="8" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="45" y="145" text-anchor="middle" font-size="12" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">企業</text>
+      <path d="M80 136 L150 136" stroke="#cf4f86" stroke-width="2.5" marker-end="url(#arr3)"/>
+      <path d="M150 147 L80 147" stroke="#cf4f86" stroke-width="2.5" marker-end="url(#arr3r)"/>
+      <text x="115" y="131" text-anchor="middle" font-size="10" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">アイデア・知識</text>
+      <text x="115" y="163" text-anchor="middle" font-size="10" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">フィードバック</text>
+      <rect x="155" y="120" width="70" height="40" rx="8" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2"/>
+      <text x="190" y="145" text-anchor="middle" font-size="12" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">顧客</text>
+
+      <!-- 共創の中心：価値 -->
+      <ellipse cx="260" cy="141" rx="35" ry="22" fill="#ffd23f"/>
+      <text x="260" y="137" text-anchor="middle" font-size="10.5" font-weight="900" fill="#7a4a00" font-family="M PLUS Rounded 1c">共同で</text>
+      <text x="260" y="151" text-anchor="middle" font-size="10.5" font-weight="900" fill="#7a4a00" font-family="M PLUS Rounded 1c">価値を創造</text>
+      <path d="M225 141 L190 141" stroke="#cf4f86" stroke-width="1.5" stroke-dasharray="3 2" marker-end="url(#arr3r)"/>
+    </svg>
+
+    <ul class="ex-list">
+      <li class="ex-item">
+        <div class="ex-icon">👟</div>
+        <div class="ex-body">
+          <h4>製品開発への顧客参加</h4>
+          <p>ユーザをプロトタイプテストに招き、意見を反映して商品を完成させる。</p>
+        </div>
+      </li>
+      <li class="ex-item">
+        <div class="ex-icon">💻</div>
+        <div class="ex-body">
+          <h4>オープンAPIで外部開発者と共創</h4>
+          <p>企業がAPIを公開し、外部の開発者がサービスを作ることで生態系（エコシステム）が広がる。</p>
+        </div>
+      </li>
+      <li class="ex-item">
+        <div class="ex-icon">🌐</div>
+        <div class="ex-body">
+          <h4>クラウドソーシング・コミュニティ</h4>
+          <p>Wikipediaやオープンソースソフトウェアのように、不特定多数が共同で価値を作り上げる。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 共創が生まれるプロセス</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 対話・参加の場をつくる</div>
+        <div class="fb">企業が顧客・パートナーを「作る側」として招く。ワークショップ・ユーザコミュニティ・ベータテストなど。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 知識・アイデアを持ち寄る</div>
+        <div class="fb">企業の技術・リソースと、顧客のニーズ・現場感覚を組み合わせる。どちらかだけでは生まれない価値が生まれる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 共同で価値を実現・展開する</div>
+        <div class="fb">完成した価値（製品・サービス）を市場に出す。参加した顧客が「自分たちが作った」という当事者意識を持ち、広める担い手になる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「オープンイノベーション」との混同</div>
+      <div class="tb">オープンイノベーションは「外部の知識・技術を取り込む」こと（企業間・大学連携など）。共創は「顧客や利用者と一緒に価値を作る」こと。主体が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「マスカスタマイゼーション」との混同</div>
+      <div class="tb">マスカスタマイゼーションは「大量生産しながら個別対応する製造方式」。共創は価値創造のプロセスに顧客を参加させる概念で、別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「顧客アンケート＝共創」ではない</div>
+      <div class="tb">共創は単なる意見収集（アンケート・フォーカスグループ）とは違う。顧客が能動的に「作る側」として参加することが本質。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">試験でのポイント</div>
+      <div class="tb">「企業と顧客が一緒に価値を創造する」「利用者がサービス開発に参加する」→ 共創（コ・クリエーション）と判断する。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「コ（一緒）にクリエーション（創る）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Co（共に）＋ Creation（創造）＝共創・コ・クリエーション</span><br><br>
+      <span class="hl">「売るより 一緒に作ろうぜ！が共創」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">作った後に売る従来型 vs 顧客も一緒に作るのが共創。<br>「コ（同行者）」がいるかどうか＝それが共創の本質</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

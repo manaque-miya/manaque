@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>2025年の崖とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="2025年の崖をわかりやすく解説。レガシーシステムの老朽化・複雑化・ブラックボックス化によるリスクと、DX推進が遅れた場合の経済損失。ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-2025-cliff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5a2d82,#2d1050);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(45,16,80,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d9c8ef;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#6b34a8;--cbg:#ede3f9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6b34a8;}
+
+.cliff-wrap{margin:8px 0 4px;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#dd5a3a;--fbg:#fff0ec;}
+.f2{--fc:#6b34a8;--fbg:#f3ebfc;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.num-row{display:flex;gap:10px;margin-top:10px;}
+.num-box{flex:1;border-radius:13px;padding:13px 10px;text-align:center;background:var(--nb);border:2px solid var(--nc);}
+.num-box .nv{font-size:22px;font-weight:900;color:var(--nc);}
+.num-box .nl{font-size:11px;font-weight:700;color:#48506a;margin-top:3px;line-height:1.5;}
+.nb1{--nb:#fff0ec;--nc:#dd5a3a;}
+.nb2{--nb:#f3ebfc;--nc:#6b34a8;}
+@media(max-width:400px){.num-row{flex-direction:column;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>2025年の崖</b>とは？</h1>
+    <p>老朽化した基幹システムが足かせとなり、DXが進まないまま巨大な経済損失が生まれる。経済産業省が警鐘を鳴らした"期限付きの崖"。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="29" ry="4" fill="#1a0a30" opacity=".12"/>
+        <!-- 崖のシルエット -->
+        <rect x="4" y="50" width="40" height="34" rx="3" fill="#8b6ba8"/>
+        <polygon points="4,50 44,50 44,40 20,40" fill="#6b34a8"/>
+        <!-- 人物 -->
+        <circle cx="22" cy="30" r="8" fill="#f4c89a"/>
+        <rect x="16" y="37" width="12" height="14" rx="4" fill="#5a2d82"/>
+        <rect x="19" y="49" width="4" height="7" rx="2" fill="#3a1a60"/>
+        <rect x="25" y="49" width="4" height="7" rx="2" fill="#3a1a60"/>
+        <!-- 崖の下 -->
+        <rect x="50" y="65" width="24" height="19" rx="3" fill="#c8b0e0"/>
+        <!-- 落下の矢印 -->
+        <line x1="47" y1="50" x2="47" y2="62" stroke="#dd5a3a" stroke-width="2.5" stroke-dasharray="3 2"/>
+        <polygon points="44,61 50,61 47,66" fill="#dd5a3a"/>
+      </svg>
+      <div class="scene-txt">
+        大手製造業のIT部長のあなた。20年前に構築した基幹システムは複雑すぎて、開発ベンダーも引退寸前。「このままでは新しいデジタルサービスを作れない…」と頭を抱えている。
+        <div class="scene-q">…この老朽化システムが引き起こす社会的危機を表す言葉は？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：崖のイメージ -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 2025年の崖：全体像</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="2025年の崖の図解：2025年にレガシーシステムの問題が臨界点を迎え、崖から落ちるように経済損失が発生する">
+      <!-- 背景グラデーション的な帯 -->
+      <rect x="0" y="0" width="340" height="230" rx="10" fill="#f0eafa"/>
+      <!-- 崖の形 -->
+      <polygon points="20,60 180,60 180,130 340,130 340,210 20,210" fill="#d4c2f0"/>
+      <polygon points="20,60 180,60 180,130 20,130" fill="#a87de0"/>
+      <!-- 崖の断面 -->
+      <rect x="175" y="60" width="8" height="70" fill="#6b34a8"/>
+      <!-- 左側ラベル（DX推進中） -->
+      <rect x="25" y="20" width="140" height="34" rx="8" fill="#6b34a8"/>
+      <text x="95" y="34" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">DX推進できている企業</text>
+      <text x="95" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="#d9c8ef" font-family="M PLUS Rounded 1c">競争力を維持・強化</text>
+      <!-- 右側ラベル（崖から落ちる） -->
+      <rect x="195" y="20" width="135" height="34" rx="8" fill="#dd5a3a"/>
+      <text x="263" y="34" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">DXが遅れた企業・日本</text>
+      <text x="263" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="#fdd8cc" font-family="M PLUS Rounded 1c">年12兆円の経済損失</text>
+      <!-- 矢印（落下） -->
+      <line x1="250" y1="130" x2="250" y2="165" stroke="#dd5a3a" stroke-width="3"/>
+      <polygon points="244,163 256,163 250,172" fill="#dd5a3a"/>
+      <!-- 2025マーカー -->
+      <rect x="164" y="118" width="48" height="22" rx="7" fill="#2b1050" stroke="#ffd23f" stroke-width="2"/>
+      <text x="188" y="133" text-anchor="middle" font-size="11" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">2025年</text>
+      <!-- 損失ラベル -->
+      <rect x="185" y="178" width="140" height="30" rx="8" fill="#dd5a3a" opacity=".9"/>
+      <text x="255" y="193" text-anchor="middle" font-size="11.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">最大 年12兆円の損失</text>
+      <text x="255" y="205" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fdd8cc" font-family="M PLUS Rounded 1c">（経済産業省 2018年試算）</text>
+    </svg>
+    <div class="num-row">
+      <div class="num-box nb1">
+        <div class="nv">12兆円</div>
+        <div class="nl">DX遅延による<br>年間経済損失（最大）</div>
+      </div>
+      <div class="num-box nb2">
+        <div class="nv">2025年</div>
+        <div class="nl">レガシー問題が<br>臨界点を迎える年</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細：問題の構造 -->
+  <div class="panel p-red">
+    <span class="phead">🔗 なぜ2025年が「崖」なのか</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① レガシーシステムの老朽化・複雑化</div>
+        <div class="fb">21年以上稼働する基幹システムが続出。誰も全体を把握できない「ブラックボックス」状態に。技術的負債が積み上がる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② IT人材不足・2025年問題</div>
+        <div class="fb">システムを知る技術者が定年退職。ベンダーのサポートも終了。維持費がIT予算の8割超を占め、新規投資ができない。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ DX（デジタルトランスフォーメーション）の停滞 → 崖</div>
+        <div class="fb">古いシステムがDXの足かせとなり、競争力を失う。2025年をピークにセキュリティリスク・システム停止リスクが急増する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-orange">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「2025年の崖」はIT系の用語ではなく経済政策の警鐘</div>
+      <div class="tb">経済産業省が2018年に発表した「DXレポート」の中のキーワード。技術的な仕様の話ではなく、<strong>社会・経済のリスク</strong>を指す。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「2025年」を過ぎても問題は残る</div>
+      <div class="tb">2025年が「解決の年」ではなく「最大のリスクが顕在化する臨界点」。2025年以降も継続して取り組むべき課題。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">DXとIT化の違いに注意</div>
+      <div class="tb">「IT化」＝業務をデジタルツールに置き換えること。「DX（デジタルトランスフォーメーション）」＝<strong>ビジネスモデル・組織そのものを変革</strong>すること。2025年の崖はDXの停滞が問題。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「レガシーシステム」「老朽化・ブラックボックス」「年12兆円」「DX」キーワードが出たら → <strong>2025年の崖</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「古いシステム、二五（にご）る」</span>＝2025年の崖！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">にご（2・5）＝2025年 ／ 濁る（にごる）＝老朽化・ブラックボックス化</span><br><br>
+    落ちたら<span class="hl">年12兆円</span>の損失。<br>
+    崖から落ちないために今すぐ<span class="hl">DX</span>を！</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

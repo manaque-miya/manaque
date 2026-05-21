@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BGP（Border Gateway Protocol）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="BGP（ボーダーゲートウェイプロトコル）をわかりやすく解説。インターネット上のAS間ルーティング、OSPFとの違い、試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-bgp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6e4a,#0d3d28);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,40,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b2d8c8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6e4a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6e4a;--fbg:#e6f5ef;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:10px;}
+.compare-table th{background:#4256b8;color:#fff;font-size:12px;font-weight:900;padding:8px;text-align:left;}
+.compare-table td{font-size:12px;font-weight:600;padding:8px;border-bottom:1px solid #e4e7f7;color:#3c4456;line-height:1.7;}
+.compare-table tr:nth-child(even) td{background:#f5f6fc;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>BGP</b>とは？</h1>
+    <p>インターネット上の「国境を越える」ルーティングプロトコル。AS間でパスを広告し合い、世界中のネットワークをつないでいる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4" fill="#0d3d28" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#b2d8c8"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#1a6e4a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="42" y="54" width="18" height="14" rx="2" fill="#48506a"/>
+        <rect x="44" y="56" width="14" height="10" rx="1" fill="#7ecfb0"/>
+      </svg>
+      <div class="scene-txt">
+        ネットワーク担当のあなた。「うちの会社のAS（自律システム）から、海外のプロバイダのASへどうやってパケットが届くの？」と新入社員に聞かれた。
+        <div class="scene-q">…AS間をつなぐのが、BGPの役割！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🌐 BGPの仕組み図解</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="BGPによるAS間ルーティングの図解">
+      <!-- AS A -->
+      <rect x="10" y="60" width="90" height="80" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2.5"/>
+      <text x="55" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">AS A</text>
+      <text x="55" y="97" text-anchor="middle" font-size="9" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">（ISP 1）</text>
+      <circle cx="35" cy="118" r="8" fill="#2e6de5"/>
+      <circle cx="55" cy="110" r="8" fill="#2e6de5"/>
+      <circle cx="75" cy="118" r="8" fill="#2e6de5"/>
+      <line x1="35" y1="118" x2="55" y2="110" stroke="#fff" stroke-width="1.5"/>
+      <line x1="55" y1="110" x2="75" y2="118" stroke="#fff" stroke-width="1.5"/>
+
+      <!-- AS B (中継) -->
+      <rect x="130" y="40" width="80" height="80" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2.5"/>
+      <text x="170" y="62" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">AS B</text>
+      <text x="170" y="77" text-anchor="middle" font-size="9" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">（中継ISP）</text>
+      <circle cx="155" cy="98" r="8" fill="#2e8b4f"/>
+      <circle cx="175" cy="90" r="8" fill="#2e8b4f"/>
+      <circle cx="195" cy="98" r="8" fill="#2e8b4f"/>
+      <line x1="155" y1="98" x2="175" y2="90" stroke="#fff" stroke-width="1.5"/>
+      <line x1="175" y1="90" x2="195" y2="98" stroke="#fff" stroke-width="1.5"/>
+
+      <!-- AS C -->
+      <rect x="245" y="60" width="85" height="80" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="2.5"/>
+      <text x="287" y="82" text-anchor="middle" font-size="11" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">AS C</text>
+      <text x="287" y="97" text-anchor="middle" font-size="9" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">（ISP 2）</text>
+      <circle cx="267" cy="118" r="8" fill="#d9851f"/>
+      <circle cx="287" cy="110" r="8" fill="#d9851f"/>
+      <circle cx="307" cy="118" r="8" fill="#d9851f"/>
+      <line x1="267" y1="118" x2="287" y2="110" stroke="#fff" stroke-width="1.5"/>
+      <line x1="287" y1="110" x2="307" y2="118" stroke="#fff" stroke-width="1.5"/>
+
+      <!-- BGP接続矢印 -->
+      <line x1="100" y1="100" x2="130" y2="88" stroke="#4256b8" stroke-width="2.5" stroke-dasharray="6 3" marker-end="url(#arr)"/>
+      <line x1="210" y1="88" x2="245" y2="100" stroke="#4256b8" stroke-width="2.5" stroke-dasharray="6 3" marker-end="url(#arr)"/>
+
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#4256b8"/>
+        </marker>
+      </defs>
+
+      <!-- BGPラベル -->
+      <rect x="102" y="78" width="36" height="16" rx="4" fill="#4256b8"/>
+      <text x="120" y="90" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">BGP</text>
+      <rect x="210" y="78" width="36" height="16" rx="4" fill="#4256b8"/>
+      <text x="228" y="90" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">BGP</text>
+
+      <text x="170" y="175" text-anchor="middle" font-size="10.5" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">AS内部：OSPF等／AS間：BGP</text>
+      <text x="170" y="192" text-anchor="middle" font-size="10" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">eBGP（外部）・iBGP（内部） の2種類あり</text>
+    </svg>
+  </div>
+
+  <!-- フロー／詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ BGPの動作フロー</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① BGPピア（隣接AS）との接続確立</div>
+        <div class="fb">TCP 179番ポートで接続。互いに「ピア」と呼ばれる隣接関係を結ぶ。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 経路（プレフィックス）の広告</div>
+        <div class="fb">自分のASが管理するIPアドレス帯（プレフィックス）を隣接ASに通知する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ パス属性によるベストパス選択</div>
+        <div class="fb">AS_PATH（経由するASの数・順序）や Local_Pref などの属性をもとに、最良の経路を選ぶ。ホップ数だけで決めない点がポイント。</div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;color:#48506a;font-weight:700;">BGPはパスベクタ型プロトコル。「どのASを経由するか」という経路情報（パス）を持ち回して経路を決める。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">OSPF・RIPと混同しやすい</div>
+      <div class="tb">OSPFとRIPは<strong>AS内部</strong>（同一組織内）のルーティングプロトコル（IGP）。BGPはAS<strong>間</strong>（組織をまたぐ）のプロトコル（EGP）。「インターネット全体をつなぐ」ならBGP。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「最短経路」は使わない</div>
+      <div class="tb">RIPはホップ数最小、OSPFはコスト最小で経路選択するが、BGPはパス属性（AS_PATHなど）で選ぶ。「最小ホップで選ぶ」はBGPではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">TCPポート番号を問われることも</div>
+      <div class="tb">BGPはTCP <strong>179番</strong>ポートを使う。UDPではない。信頼性のあるTCP上で動くのが特徴。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>AS間</strong>」「<strong>インターネット規模</strong>」「<strong>ISP同士</strong>」という言葉が出たら → BGP。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">BGP＝「ボーダー越えるゲート番人」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">B＝Border（国境）・G＝Gateway（門）・P＝Protocol（ルール）</span><br><br>
+      AS間の「国境」を通過させるかどうか判定する門番。<br>
+      <span class="hl">AS内→OSPF、AS間→BGP</span>で切り替え！
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

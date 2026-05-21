@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>プロジェクトスコープ管理とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="プロジェクトスコープ管理の意味・WBS・スコープクリープを図解で解説。スコープ定義・検証・コントロールの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-project-scope">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d9851f,#7a4600);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,70,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fde0b5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9851f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d9851f;--fbg:#fdf4e4;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#4256b8;--fbg:#eaedf8;}
+.f5{--fc:#dd5a3a;--fbg:#fdf0ed;}
+
+.wbs-box{border-radius:10px;padding:8px 12px;font-size:12px;font-weight:700;color:#fff;text-align:center;line-height:1.4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ プロジェクトマネジメント</span>
+    <h1><b>プロジェクトスコープ管理</b>とは？</h1>
+    <p>「やること」と「やらないこと」を明確に決めて守り続ける管理活動。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="62" width="54" height="22" rx="6" fill="#c8d8e8"/>
+        <rect x="18" y="42" width="42" height="28" rx="9" fill="#d9851f"/>
+        <circle cx="39" cy="24" r="14" fill="#f4c89a"/>
+        <path d="M26 20 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="35" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 43 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 付箋 -->
+        <rect x="20" y="56" width="16" height="14" rx="2" fill="#ffd23f" transform="rotate(-5 28 63)"/>
+        <rect x="42" y="54" width="16" height="14" rx="2" fill="#ff9966" transform="rotate(4 50 61)"/>
+        <line x1="23" y1="60" x2="33" y2="60" stroke="#999" stroke-width="1.5"/>
+        <line x1="23" y1="63" x2="31" y2="63" stroke="#999" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        Webサイト制作プロジェクト。途中で顧客から「スマホアプリも追加して」と頼まれた。断れず受け入れ続けた結果、<strong>予算オーバー・納期遅延</strong>が発生。
+        <div class="scene-q">…これが「スコープクリープ」。スコープ管理で防げたのでは？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-orange">
+    <span class="phead">🔲 スコープとは「やること・やらないこと」の境界線</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="スコープの境界：内側がやること、外側がやらないこと">
+      <!-- 外側（やらないこと） -->
+      <rect x="10" y="10" width="320" height="180" rx="14" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2" stroke-dasharray="8 4"/>
+      <text x="280" y="28" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">やらないこと</text>
+      <!-- スコープ境界線（内側） -->
+      <rect x="40" y="30" width="200" height="145" rx="12" fill="#fdf4e4" stroke="#d9851f" stroke-width="3"/>
+      <text x="140" y="52" text-anchor="middle" font-size="12" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">プロジェクトスコープ</text>
+      <!-- やること -->
+      <rect x="52" y="60" width="80" height="38" rx="8" fill="#d9851f"/>
+      <text x="92" y="80" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">要件定義</text>
+      <rect x="52" y="104" width="80" height="38" rx="8" fill="#e0950a"/>
+      <text x="92" y="124" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">システム開発</text>
+      <rect x="143" y="60" width="82" height="38" rx="8" fill="#b86b0a"/>
+      <text x="184" y="80" text-anchor="middle" font-size="10.5" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">テスト</text>
+      <rect x="143" y="104" width="82" height="38" rx="8" fill="#7a4600"/>
+      <text x="184" y="124" text-anchor="middle" font-size="10.5" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">リリース</text>
+      <!-- スコープ外の吹き出し -->
+      <ellipse cx="285" cy="90" rx="28" ry="22" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="285" y="85" text-anchor="middle" font-size="9.5" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">スマホ</text>
+      <text x="285" y="98" text-anchor="middle" font-size="9.5" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">アプリ化</text>
+      <line x1="257" y1="90" x2="242" y2="90" stroke="#dd5a3a" stroke-width="2" marker-end="url(#arr)"/>
+      <text x="253" y="118" text-anchor="middle" font-size="9" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">✗ スコープ外</text>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-indigo">
+    <span class="phead">🗺️ スコープ管理のプロセス</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① スコープ計画</div>
+        <div class="fb">プロジェクトの目標・成果物・境界（何をやり、何をやらないか）を文書化するプロセス計画を立てる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② スコープ定義（要求収集）</div>
+        <div class="fb">ステークホルダーの要求を集め、スコープ記述書（何を・どの範囲で作るか）を作成する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ WBS（作業分解構造）作成</div>
+        <div class="fb">スコープを小さな作業（ワーク・パッケージ）に分解した階層図を作る。コスト・スケジュール計画の土台になる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ スコープ検証</div>
+        <div class="fb">完成した成果物が定義したスコープを満たしているか、顧客・依頼者から正式に確認（検収）を得る。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f5">
+        <div class="fh">⑤ スコープコントロール</div>
+        <div class="fb">追加要求（変更）が来たら、スコープへの影響を評価し、変更管理プロセスで正式承認を得てから反映する。スコープクリープを防ぐ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">スコープクリープは「悪意のない追加」が原因</div>
+      <div class="tb">「少し追加してほしい」という小さなお願いが積み重なってスコープが膨らむのがスコープクリープ。承認なし変更は<strong>すべてNG</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「スコープ検証」と「品質管理」は別プロセス</div>
+      <div class="tb">スコープ検証＝<strong>顧客が承認する</strong>（要件を満たしているか）、品質管理＝<strong>内部で品質基準を確認する</strong>。承認主体が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">WBSは「全作業を網羅」している</div>
+      <div class="tb">WBSにない作業は公式には「プロジェクトの外」。<strong>100%ルール</strong>＝スコープ全体をWBSに必ず含める。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      スコープは<span class="hl">「柵（さく）」</span>！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">柵の内側＝やること ／ 外側＝やらないこと</span><br><br>
+      <span class="hl">「スコープ超え」</span>たら<span class="hl">クリープ（忍び足）</span>で予算が逃げる！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">スコープクリープ＝承認なしにスコープが膨らむ恐怖</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

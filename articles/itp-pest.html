@@ -1,108 +1,312 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>PEST分析とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="PEST分析の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-pest.html">
-<meta property="og:title" content="PEST分析とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="PEST分析の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-pest.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PEST分析とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="PEST分析を政治・経済・社会・技術の4視点でわかりやすく解説。3C分析・SWOT分析との違い、マクロ環境とミクロ環境の見分け方、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.jp/itp-pest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+/* ヒーロー */
+.hero{background:linear-gradient(155deg,#1a7d5a,#0d4433);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,68,51,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8e4d4;}
+
+/* パネル共通 */
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#1a7d5a;--cbg:#d8f0e8;}
+.p-teal{--c:#0e7490;--cbg:#cff0f7;}
+.p-violet{--c:#6d28d9;--cbg:#ede9fe;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+/* シーン */
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a7d5a;}
+
+/* 4視点グリッド */
+.pest-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px;}
+.pest-cell{border-radius:13px;padding:12px 11px;}
+.pest-cell h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.pest-cell ul{list-style:none;}
+.pest-cell li{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:12px;position:relative;}
+.pest-cell li::before{content:"・";position:absolute;left:0;}
+.cell-p{background:#fce4dd;}.cell-p h4{color:#c0392b;}
+.cell-e{background:#fcefd9;}.cell-e h4{color:#d9851f;}
+.cell-s{background:#e2f3e5;}.cell-s h4{color:#1a7d5a;}
+.cell-t{background:#cff0f7;}.cell-t h4{color:#0e7490;}
+@media(max-width:440px){.pest-grid{grid-template-columns:1fr;}}
+
+/* フロー */
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a7d5a;--fbg:#eef8f4;}
+.f2{--fc:#0e7490;--fbg:#e6f6fa;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#6d28d9;--fbg:#f3f0fe;}
+
+/* ひっかけ */
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+/* 覚え方 */
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+/* 比較表 */
+.comp-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+.comp-table th{background:#1a7d5a;color:#fff;font-weight:900;padding:8px 7px;text-align:left;}
+.comp-table td{padding:8px 7px;border-bottom:1px solid #e2e8f0;font-weight:600;color:#3c4456;vertical-align:top;}
+.comp-table tr:nth-child(even) td{background:#f7faf8;}
+.badge{display:inline-block;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:900;}
+.badge-macro{background:#d8f0e8;color:#1a7d5a;}
+.badge-micro{background:#fcefd9;color:#d9851f;}
+
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">PEST分析とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">PEST分析</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <!-- ①ヒーロー -->
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ ストラテジ系</span>
+    <h1><b>PEST分析</b>とは？</h1>
+    <p>自社ではコントロールできない<strong>マクロ環境</strong>を、政治・経済・社会・技術の4視点で丸ごと把握するフレームワーク。</p>
+  </div>
+
+  <!-- ②こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="80" height="92" viewBox="0 0 80 92" aria-hidden="true">
+        <ellipse cx="40" cy="87" rx="30" ry="5" fill="#0d4433" opacity=".1"/>
+        <!-- 体 -->
+        <rect x="12" y="62" width="56" height="22" rx="6" fill="#b8e4d4"/>
+        <rect x="16" y="40" width="48" height="30" rx="9" fill="#1a7d5a"/>
+        <!-- 頭 -->
+        <circle cx="40" cy="23" r="15" fill="#f4c89a"/>
+        <path d="M26 19 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <!-- 首 -->
+        <rect x="31" y="35" width="18" height="9" fill="#f4c89a"/>
+        <!-- シャツ -->
+        <path d="M31 44 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <!-- 資料 -->
+        <rect x="42" y="56" width="26" height="18" rx="3" fill="#0d4433"/>
+        <rect x="44" y="58" width="22" height="14" rx="2" fill="#d8f0e8"/>
+        <!-- グラフ線 -->
+        <polyline points="46,68 50,63 55,66 61,60" stroke="#1a7d5a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="scene-txt">
+        新しい海外市場に進出を検討している戦略部門のあなた。「自社の商品が売れるかどうか」を判断する前に、<strong>その国の政治リスク・為替動向・人口構成・技術インフラ</strong>を調べようとした。
+        <div class="scene-q">…この「外部の大きな流れ」を4軸で整理するのが何のフレームワーク？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③図解SVG — 4視点の全体像 -->
+  <div class="panel p-teal">
+    <span class="phead">PEST分析の4つの視点</span>
+    <svg width="100%" viewBox="0 0 340 310" role="img" aria-label="PEST分析：Politics・Economy・Society・Technologyの4視点が企業を取り囲む構造">
+      <!-- 外枠：マクロ環境ラベル -->
+      <rect x="10" y="10" width="320" height="290" rx="20" fill="#d8f0e8" stroke="#1a7d5a" stroke-width="2.5" stroke-dasharray="8 4"/>
+      <text x="170" y="30" text-anchor="middle" font-size="12" font-weight="900" fill="#1a7d5a" font-family="M PLUS Rounded 1c">マクロ環境（自社ではコントロール不可）</text>
+      <!-- 中心：企業 -->
+      <rect x="120" y="120" width="100" height="60" rx="14" fill="#0d4433" stroke="#fff" stroke-width="2"/>
+      <text x="170" y="146" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">企業</text>
+      <text x="170" y="164" text-anchor="middle" font-size="10" font-weight="700" fill="#b8e4d4" font-family="M PLUS Rounded 1c">（自社）</text>
+      <!-- 矢印：4方向から企業へ -->
+      <line x1="80" y1="85" x2="135" y2="130" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrow)"/>
+      <line x1="260" y1="85" x2="205" y2="130" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrow)"/>
+      <line x1="80" y1="215" x2="135" y2="170" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrow)"/>
+      <line x1="260" y1="215" x2="205" y2="170" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrow)"/>
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <!-- P：政治 -->
+      <rect x="16" y="44" width="110" height="72" rx="12" fill="#fce4dd" stroke="#c0392b" stroke-width="2"/>
+      <text x="71" y="67" text-anchor="middle" font-size="16" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">P</text>
+      <text x="71" y="84" text-anchor="middle" font-size="11.5" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">Politics</text>
+      <text x="71" y="101" text-anchor="middle" font-size="10" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">政治・法規制</text>
+      <!-- E：経済 -->
+      <rect x="214" y="44" width="110" height="72" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="269" y="67" text-anchor="middle" font-size="16" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">E</text>
+      <text x="269" y="84" text-anchor="middle" font-size="11.5" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">Economy</text>
+      <text x="269" y="101" text-anchor="middle" font-size="10" font-weight="700" fill="#7a5016" font-family="M PLUS Rounded 1c">経済・景気</text>
+      <!-- S：社会 -->
+      <rect x="16" y="184" width="110" height="72" rx="12" fill="#e2f3e5" stroke="#1a7d5a" stroke-width="2"/>
+      <text x="71" y="207" text-anchor="middle" font-size="16" font-weight="900" fill="#1a7d5a" font-family="M PLUS Rounded 1c">S</text>
+      <text x="71" y="224" text-anchor="middle" font-size="11.5" font-weight="900" fill="#1a7d5a" font-family="M PLUS Rounded 1c">Society</text>
+      <text x="71" y="241" text-anchor="middle" font-size="10" font-weight="700" fill="#0d4433" font-family="M PLUS Rounded 1c">社会・文化・人口</text>
+      <!-- T：技術 -->
+      <rect x="214" y="184" width="110" height="72" rx="12" fill="#cff0f7" stroke="#0e7490" stroke-width="2"/>
+      <text x="269" y="207" text-anchor="middle" font-size="16" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">T</text>
+      <text x="269" y="224" text-anchor="middle" font-size="11.5" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">Technology</text>
+      <text x="269" y="241" text-anchor="middle" font-size="10" font-weight="700" fill="#074f63" font-family="M PLUS Rounded 1c">技術・イノベーション</text>
+      <!-- 下部テキスト -->
+      <text x="170" y="285" text-anchor="middle" font-size="10.5" font-weight="800" fill="#1a7d5a" font-family="M PLUS Rounded 1c">4つの外部環境が事業機会・リスクを生み出す</text>
+    </svg>
+
+    <div class="pest-grid">
+      <div class="pest-cell cell-p">
+        <h4>P — Politics（政治）</h4>
+        <ul>
+          <li>法律・規制の改廃</li>
+          <li>税制・補助金</li>
+          <li>政権交代・政策方針</li>
+          <li>国際条約・貿易摩擦</li>
+        </ul>
+      </div>
+      <div class="pest-cell cell-e">
+        <h4>E — Economy（経済）</h4>
+        <ul>
+          <li>景気・GDP成長率</li>
+          <li>為替・金利・物価</li>
+          <li>失業率・賃金水準</li>
+          <li>消費者購買力</li>
+        </ul>
+      </div>
+      <div class="pest-cell cell-s">
+        <h4>S — Society（社会）</h4>
+        <ul>
+          <li>人口動態・少子高齢化</li>
+          <li>ライフスタイルの変化</li>
+          <li>価値観・文化・宗教</li>
+          <li>教育水準・世論</li>
+        </ul>
+      </div>
+      <div class="pest-cell cell-t">
+        <h4>T — Technology（技術）</h4>
+        <ul>
+          <li>技術革新・DX</li>
+          <li>特許・研究開発動向</li>
+          <li>AI・IoT・5Gの普及</li>
+          <li>インフラ整備状況</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④フロー／詳細 — PEST分析の使い方ステップ -->
+  <div class="panel p-green">
+    <span class="phead">PEST分析の使い方ステップ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① PEST分析 — 外部のマクロ環境を把握</div>
+        <div class="fb">自社でコントロールできない政治・経済・社会・技術の大きな流れを整理し、事業機会とリスクを発見する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 3C分析 — 市場・競合・自社を分析</div>
+        <div class="fb">PESTで掴んだ環境変化を踏まえ、顧客（Customer）・競合（Competitor）・自社（Company）の3軸で市場を整理する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ SWOT分析 — 内外を統合して強み・弱みを整理</div>
+        <div class="fb">外部環境（機会・脅威）と内部環境（強み・弱み）を4象限で整理し、戦略の方向性を決める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ STP→4P — 具体的な施策へ落とし込む</div>
+        <div class="fb">攻める市場を絞り（STP）、製品・価格・流通・プロモーションを設計して実行する（4P）。</div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;color:#48506a;font-weight:700;">PEST分析は<strong>「一番外側の環境スキャン」</strong>。まず大きな波を掴んでから、市場・自社の細かい分析に入る。</p>
+  </div>
+
+  <!-- ⑤ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">ひっかけ注意ポイント</span>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>フレームワーク</th>
+          <th>見る範囲</th>
+          <th>視点の数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>PEST分析</strong></td>
+          <td><span class="badge badge-macro">マクロ環境</span><br>政治・経済・社会・技術</td>
+          <td>4つ</td>
+        </tr>
+        <tr>
+          <td><strong>3C分析</strong></td>
+          <td><span class="badge badge-micro">ミクロ環境</span><br>顧客・競合・自社</td>
+          <td>3つ</td>
+        </tr>
+        <tr>
+          <td><strong>SWOT分析</strong></td>
+          <td><span class="badge badge-macro">外部</span>+<span class="badge badge-micro">内部</span><br>機会・脅威・強み・弱み</td>
+          <td>4つ</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:11px;">
+      <div class="trap-item">
+        <div class="th">PEST分析とSWOT分析を混同しやすい</div>
+        <div class="tb">どちらも4つの軸。違いは「外部だけか・内外セットか」。PESTは外部（マクロ）のみ。SWOTは外部の機会・脅威＋内部の強み・弱みをセットで扱う。</div>
+      </div>
+      <div class="trap-item">
+        <div class="th">PEST分析と3C分析を混同しやすい</div>
+        <div class="tb">3Cは「顧客・競合・自社」のミクロ環境分析。PESTは「政治・経済・社会・技術」のマクロ環境分析。スコープがまるで違う。</div>
+      </div>
+      <div class="trap-item">
+        <div class="th">「技術」でITだけを連想しない</div>
+        <div class="tb">TechnologyはIT限定ではない。製造技術・バイオ・物流自動化など、事業に影響するあらゆる技術革新が対象。</div>
+      </div>
+      <div class="trap-item">
+        <div class="th">判断のコツ</div>
+        <div class="tb">「政治・経済・社会・技術」の4語が出たら → 迷わず<strong>PEST分析</strong>。「顧客・競合・自社」の3語なら → <strong>3C分析</strong>。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「ペスト（PEST）は外から降ってくる」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">P＝Political（政治）／ E＝Economy（経済）／ S＝Society（社会）／ T＝Technology（技術）</span><br><br>
+      ペスト＝中世の疫病＝自分では止められない「<strong>外から降ってくる力</strong>」<br>
+      → マクロ環境 ＝ <span class="hl">コントロールできない外部の大波</span> と結びつける。<br><br>
+      <span style="font-size:13px;font-weight:900;color:#5c4500;">
+        <span class="hl">P</span>olitics → 法律で縛られる<br>
+        <span class="hl">E</span>conomy → 円安で仕入れ高騰<br>
+        <span class="hl">S</span>ociety → 少子化で市場縮小<br>
+        <span class="hl">T</span>echnology → AIで仕事が変わる
+      </span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（全テキストは本物のHTMLテキスト）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>新規事業企画の自分。「政治規制・経済情勢・社会人口動態・技術トレンド」の4観点で外部環境を整理せよと上司から指示。この分析手法は？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>PEST分析</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>SWOT分析</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ SWOTは内部+外部の4象限。「外部環境を4要因で細分化」はPEST</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：PEST分析</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 PEST分析とは何か</h2>
-<span class="kw">外部環境を4要因で分析</span>
-<p>Political（政治）・Economic（経済）・Social（社会）・Technological（技術）の4要因で外部環境を分析するフレームワーク。マクロ環境の把握に使う。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>SWOTの「機会・脅威」を分析する際の情報収集ツールとしてPESTが使われる。「PEST→外部環境の整理→SWOT分析」という流れが典型。
-
-**覚え方** 🎯 PEST＝**政治・経済・社会・技術の4文字**。**世の中の風向きを読む4方位コンパス**。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>SWOT分析と混同しやすい。PESTは「外部マクロ環境のみ」を整理するツールで、内部要因（強み・弱み）は扱わない。SWOTの「機会・脅威」を洗い出す際の前段として使う関係。試験では「マクロ外部環境→PEST」「内外環境総合→SWOT」と役割を区別すること。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>PEST＝**政治・経済・社会・技術の4文字**。**世の中の風向きを読む4方位コンパス**。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>PEST分析はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

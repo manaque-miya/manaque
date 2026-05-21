@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>インシデント管理とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="インシデント管理をわかりやすく解説。障害発生から復旧までの流れ、問題管理との違い、ITILにおける位置づけ、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-incident-management">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b52e2e,#6b1010);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,16,16,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c8c8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b52e2e;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#dd5a3a;--fbg:#fce4dd;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#2e6de5;--fbg:#eef3fd;}
+.f5{--fc:#4256b8;--fbg:#e4e7f7;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#d9851f;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ マネジメント系</span>
+    <h1><b>インシデント管理</b>とは？</h1>
+    <p>障害が起きた！まず「早く直す」。原因は後で追う。サービス復旧最優先の管理プロセス。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="62" width="54" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="18" y="40" width="42" height="28" rx="9" fill="#b52e2e"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="8" fill="#f4c89a"/>
+        <text x="39" y="57" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="sans-serif">!</text>
+        <rect x="44" y="58" width="22" height="15" rx="2" fill="#48506a"/>
+        <rect x="46" y="60" width="18" height="11" rx="1" fill="#ffd23f"/>
+      </svg>
+      <div class="scene-txt">
+        月曜朝、会社のメールサーバが突然ダウン。社員全員がメールを送受信できない状態に。
+        IT担当のあなたは「<strong>原因は後で！まずメールが使えるように</strong>してください！」と上司に言われた。
+        <div class="scene-q">…この「早く直す」対応こそが、インシデント管理！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：インシデント管理の全体像 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔺 インシデント管理の全体像</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="インシデント管理の流れ：検知→記録→分類→調査→解決→終了">
+      <!-- 背景 -->
+      <rect x="10" y="10" width="320" height="200" rx="16" fill="#f0f2fa"/>
+      <!-- タイトル -->
+      <text x="170" y="34" text-anchor="middle" font-size="13" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">目的：サービスを最速で復旧させる</text>
+      <!-- ステップボックス -->
+      <rect x="18" y="46" width="48" height="34" rx="8" fill="#dd5a3a"/>
+      <text x="42" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">①検知</text>
+      <text x="42" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#ffd0d0" font-family="M PLUS Rounded 1c">障害発見</text>
+      <text x="72" y="67" text-anchor="middle" font-size="14" fill="#9aa3b2">▶</text>
+      <rect x="78" y="46" width="48" height="34" rx="8" fill="#d9851f"/>
+      <text x="102" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">②記録</text>
+      <text x="102" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#ffe8c8" font-family="M PLUS Rounded 1c">チケット起票</text>
+      <text x="132" y="67" text-anchor="middle" font-size="14" fill="#9aa3b2">▶</text>
+      <rect x="138" y="46" width="48" height="34" rx="8" fill="#4256b8"/>
+      <text x="162" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">③分類</text>
+      <text x="162" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#d4d9f7" font-family="M PLUS Rounded 1c">優先度設定</text>
+      <text x="192" y="67" text-anchor="middle" font-size="14" fill="#9aa3b2">▶</text>
+      <rect x="198" y="46" width="48" height="34" rx="8" fill="#2e8b4f"/>
+      <text x="222" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">④調査</text>
+      <text x="222" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#c2f0d0" font-family="M PLUS Rounded 1c">原因を絞る</text>
+      <text x="252" y="67" text-anchor="middle" font-size="14" fill="#9aa3b2">▶</text>
+      <rect x="258" y="46" width="48" height="34" rx="8" fill="#2e6de5"/>
+      <text x="282" y="60" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">⑤解決</text>
+      <text x="282" y="73" text-anchor="middle" font-size="9" font-weight="700" fill="#c8dcff" font-family="M PLUS Rounded 1c">復旧完了</text>
+      <!-- 下段の補足 -->
+      <rect x="30" y="96" width="280" height="48" rx="10" fill="#ffd23f" opacity=".25"/>
+      <text x="170" y="115" text-anchor="middle" font-size="11.5" font-weight="900" fill="#8a6200" font-family="M PLUS Rounded 1c">ゴールは「根本原因の解明」ではなく</text>
+      <text x="170" y="133" text-anchor="middle" font-size="13" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">「サービスの早期復旧」</text>
+      <!-- 二重矢印 -->
+      <rect x="30" y="156" width="120" height="42" rx="10" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="90" y="173" text-anchor="middle" font-size="11" font-weight="900" fill="#b52e2e" font-family="M PLUS Rounded 1c">インシデント管理</text>
+      <text x="90" y="188" text-anchor="middle" font-size="10" font-weight="700" fill="#b52e2e" font-family="M PLUS Rounded 1c">→ 「早く直す」</text>
+      <text x="175" y="180" text-anchor="middle" font-size="18" fill="#9aa3b2">↔</text>
+      <rect x="190" y="156" width="120" height="42" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="250" y="173" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">問題管理</text>
+      <text x="250" y="188" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">→ 「根本原因を潰す」</text>
+    </svg>
+  </div>
+
+  <!-- フロー詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 対応ステップの詳細</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 検知・受付</div><div class="fb">ユーザーからの問い合わせ、監視ツールのアラートなどで障害を把握する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 記録・分類・優先度設定</div><div class="fb">インシデントチケットを起票。業務への影響度・緊急度から優先度を決める（例：全社停止 ＞ 一部ユーザー影響）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 調査・診断</div><div class="fb">症状を絞り込む。既知の回避策（ナレッジベース）があればすぐ適用。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4"><div class="fh">④ 解決・復旧</div><div class="fb">サービスを正常状態に戻す。この時点で「根本原因が不明」でも問題ない＝とにかく動かす。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f5"><div class="fh">⑤ 終了・記録</div><div class="fb">ユーザーに確認をとりクローズ。記録はナレッジとして蓄積し、次回の問題管理に引き継ぐ。</div></div>
+    </div>
+  </div>
+
+  <!-- 試験のキモ -->
+  <div class="panel p-orange">
+    <span class="phead">⭐ 試験のキモ</span>
+    <ul class="kimo-list">
+      <li>インシデント管理の目的は<strong>「サービスの早期復旧」</strong>。根本原因の解明は<strong>問題管理</strong>の仕事。</li>
+      <li>「障害が発生した場合、まず何をするか」という問いへの答えはインシデント管理＝<strong>復旧</strong>。</li>
+      <li>ITILというフレームワーク（サービス管理のベストプラクティス）の中の1プロセスとして出題される。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「問題管理」と混同しやすい</div>
+      <div class="tb">インシデント管理＝<strong>早く直す（復旧）</strong>。問題管理＝<strong>根本原因を解明して再発防止</strong>。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「変更管理」と混同しやすい</div>
+      <div class="tb">変更管理はシステムへの計画的な変更を承認・実施するプロセス。障害対応とは別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「インシデント＝セキュリティ事件」と思い込む</div>
+      <div class="tb">ITILのインシデントはサービス障害全般を指す。セキュリティ文脈での「インシデント（不正アクセス等）」と混同しないこと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>障害 → 復旧</strong>」ならインシデント管理。「<strong>再発防止 → 根本原因</strong>」なら問題管理。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">インシ（急いで）デント（直せ）！</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">インシデント管理＝とにかく「急いで直す」＝サービス復旧最優先</span><br><br>
+      問題管理は「<span class="hl">問題の根っこ</span>」を「<span class="hl">もんだい（問題）なく潰す</span>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">インシデント管理＝復旧 ／ 問題管理＝根本解決</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

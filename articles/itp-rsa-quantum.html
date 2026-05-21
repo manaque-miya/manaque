@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RSA暗号と量子コンピュータとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="RSA暗号の仕組みと量子コンピュータが与える脅威をわかりやすく解説。公開鍵暗号の原理、量子コンピュータで解読が危うくなる理由、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-rsa-quantum">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#4a1a7a,#200d4a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(32,13,74,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#c8a3f0 56%,#c8a3f0 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbc8fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7c4dcc;--cbg:#ede4f8;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-teal{--c:#1a7a6f;--cbg:#e2f3f0;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7c4dcc;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#7c4dcc;--fbg:#f3eef8;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#1a7a6f;--fbg:#eef7f5;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>RSA暗号</b>と<b>量子コンピュータ</b></h1>
+    <p>桁外れに大きな数の「素因数分解の難しさ」が暗号の盾。量子コンピュータはその盾を脅かす存在。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#200d4a" opacity=".1"/>
+        <!-- 南京錠 -->
+        <rect x="18" y="42" width="42" height="36" rx="8" fill="#7c4dcc"/>
+        <path d="M25 42 q0 -24 14 -24 q14 0 14 24" stroke="#4a1a7a" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="39" cy="60" r="7" fill="#200d4a"/>
+        <rect x="36" y="60" width="6" height="10" rx="2" fill="#200d4a"/>
+        <!-- 鍵 -->
+        <circle cx="59" cy="26" r="6" stroke="#e0a800" stroke-width="2.5" fill="#fff6da"/>
+        <line x1="65" y1="26" x2="74" y2="26" stroke="#e0a800" stroke-width="2.5"/>
+        <line x1="71" y1="26" x2="71" y2="30" stroke="#e0a800" stroke-width="2.5"/>
+        <line x1="68" y1="26" x2="68" y2="29" stroke="#e0a800" stroke-width="2.5"/>
+      </svg>
+      <div class="scene-txt">
+        ネットショッピングで支払いするとき、URLが「https://」になっている。このとき通信は<strong>RSA暗号などの公開鍵暗号</strong>で守られている。<br>
+        ところが「量子コンピュータが実用化されたら、RSA暗号が解読されてしまうかも」という話が…。
+        <div class="scene-q">…なぜ量子コンピュータはRSAを破れるの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：RSAの仕組み -->
+  <div class="panel p-blue">
+    <span class="phead">🔑 RSA暗号の仕組み（公開鍵と秘密鍵）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="RSA暗号：公開鍵で暗号化して秘密鍵で復号する仕組み">
+      <defs>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2e6de5"/>
+        </marker>
+        <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#7c4dcc"/>
+        </marker>
+      </defs>
+      <!-- 送信者 -->
+      <rect x="5" y="70" width="70" height="60" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="40" y="94" text-anchor="middle" font-size="11" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">送信者</text>
+      <text x="40" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">平文を</text>
+      <text x="40" y="122" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">公開鍵で暗号化</text>
+
+      <!-- 公開鍵バッジ -->
+      <rect x="10" y="20" width="60" height="36" rx="8" fill="#e0a800" opacity=".9"/>
+      <text x="40" y="38" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">🔓 公開鍵</text>
+      <text x="40" y="51" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">誰でも入手OK</text>
+      <line x1="40" y1="56" x2="40" y2="70" stroke="#e0a800" stroke-width="2" stroke-dasharray="4 3"/>
+
+      <!-- 矢印（暗号化データ送信） -->
+      <path d="M76 100 L140 100" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arr3)"/>
+      <text x="108" y="92" text-anchor="middle" font-size="10" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">暗号化データ</text>
+
+      <!-- 暗号化データ（中間） -->
+      <rect x="140" y="78" width="60" height="44" rx="8" fill="#ede4f8" stroke="#7c4dcc" stroke-width="2"/>
+      <text x="170" y="98" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">🔐</text>
+      <text x="170" y="114" text-anchor="middle" font-size="10" font-weight="700" fill="#7c4dcc" font-family="M PLUS Rounded 1c">暗号文</text>
+
+      <!-- 矢印（受信者へ） -->
+      <path d="M200 100 L262 100" stroke="#7c4dcc" stroke-width="2.5" marker-end="url(#arr4)"/>
+      <text x="231" y="92" text-anchor="middle" font-size="10" font-weight="800" fill="#7c4dcc" font-family="M PLUS Rounded 1c">復号</text>
+
+      <!-- 受信者 -->
+      <rect x="262" y="70" width="70" height="60" rx="10" fill="#ede4f8" stroke="#7c4dcc" stroke-width="2"/>
+      <text x="297" y="94" text-anchor="middle" font-size="11" font-weight="900" fill="#4a1a7a" font-family="M PLUS Rounded 1c">受信者</text>
+      <text x="297" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#7c4dcc" font-family="M PLUS Rounded 1c">秘密鍵で</text>
+      <text x="297" y="122" text-anchor="middle" font-size="10" font-weight="700" fill="#7c4dcc" font-family="M PLUS Rounded 1c">復号</text>
+
+      <!-- 秘密鍵バッジ -->
+      <rect x="267" y="20" width="60" height="36" rx="8" fill="#7c4dcc" opacity=".9"/>
+      <text x="297" y="38" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">🔒 秘密鍵</text>
+      <text x="297" y="51" text-anchor="middle" font-size="9" font-weight="700" fill="#eee" font-family="M PLUS Rounded 1c">本人だけが持つ</text>
+      <line x1="297" y1="56" x2="297" y2="70" stroke="#7c4dcc" stroke-width="2" stroke-dasharray="4 3"/>
+
+      <!-- RSA根拠 -->
+      <rect x="90" y="148" width="160" height="42" rx="10" fill="#f3eef8" stroke="#7c4dcc" stroke-width="1.5"/>
+      <text x="170" y="166" text-anchor="middle" font-size="11" font-weight="900" fill="#4a1a7a" font-family="M PLUS Rounded 1c">RSAの安全の根拠</text>
+      <text x="170" y="182" text-anchor="middle" font-size="10" font-weight="700" fill="#7c4dcc" font-family="M PLUS Rounded 1c">巨大な数の素因数分解が超難しい</text>
+    </svg>
+    <p>RSA暗号は「巨大な数（例：2048ビット）を2つの素数の積として分解するのは、現在のコンピュータでは現実的な時間では解けない」という数学的難しさを安全の根拠にしている。</p>
+  </div>
+
+  <!-- フロー：量子コンピュータとの関係 -->
+  <div class="panel p-teal">
+    <span class="phead">⚡ 量子コンピュータが脅威になる理由</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">現在のコンピュータ（古典コンピュータ）</div>
+        <div class="fb">0か1かで処理。巨大な素因数分解には天文学的な時間がかかる → RSAは安全。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">量子コンピュータ（量子ビット・重ね合わせ）</div>
+        <div class="fb">0と1を同時に処理できる「重ね合わせ」の性質で、素因数分解を<strong>劇的に高速化</strong>できる（ショアのアルゴリズム）。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">RSA暗号が解読される可能性</div>
+        <div class="fb">量子コンピュータが実用規模になれば、RSA暗号の安全の根拠（素因数分解の難しさ）が崩れる恐れがある。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">対策：耐量子暗号（ポスト量子暗号）</div>
+        <div class="fb">量子コンピュータでも解読困難な新しい暗号方式の研究・標準化が進んでいる（NISTによる標準化など）。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「量子コンピュータ＝すでにRSAを破った」はウソ</div>
+      <div class="tb">現時点（2024年前後）では量子コンピュータはまだ実用規模に達していない。「将来の脅威」として対策が進んでいる段階。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">RSAと共通鍵暗号（AESなど）の混同</div>
+      <div class="tb">RSAは<strong>公開鍵暗号</strong>（鍵が2つ）。AESなどは<strong>共通鍵暗号</strong>（同じ鍵を共有）。量子の脅威はRSAなど公開鍵暗号への影響が大きい。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「RSA＝絶対安全」でも「RSA＝すでに危険」でもない</div>
+      <div class="tb">現在は安全だが、量子コンピュータ実用化に備えて新方式への移行準備が必要。「将来的には解読リスクがある」が正確。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">公開鍵は「誰でも持てる」が安全</div>
+      <div class="tb">公開鍵で暗号化できるが、復号には秘密鍵が必要。「公開＝危険」ではない。暗号化専用の鍵が公開鍵。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">RSA＝「録（R）に素（S）因数分解：あ（A）かん」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">素因数分解の難しさ＝RSAの盾。量子はその盾を砕く剣。</span><br><br>
+      「<span class="hl">量子が来たら素因数が割れる</span>」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">鍵ペア（公開鍵＋秘密鍵）で暗号化・復号 → 公開鍵暗号方式</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

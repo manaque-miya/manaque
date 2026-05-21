@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>受入テストとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="受入テスト（ユーザー受け入れテスト/UAT）をわかりやすく解説。単体・結合・システムテストとの違い、実施タイミング、ひっかけポイント、覚え方ゴロまで。">
+<link rel="canonical" href="https://example.com/itp-acceptance-test">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#145c30);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(20,92,48,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0e8d0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.test-stages{display:flex;flex-direction:column;gap:6px;margin-top:6px;}
+.tstage{border-radius:11px;padding:11px 14px;display:flex;align-items:center;gap:12px;}
+.tstage .tnum{font-size:22px;font-weight:900;min-width:36px;text-align:center;}
+.tstage .tname{font-size:14px;font-weight:900;}
+.tstage .tdesc{font-size:12px;font-weight:600;color:#48506a;margin-top:2px;}
+.ts1{background:#f0f4ff;}.ts1 .tnum{color:#6b7fe0;}.ts1 .tname{color:#4256b8;}
+.ts2{background:#e8f5fc;}.ts2 .tnum{color:#5a9fc0;}.ts2 .tname{color:#1a6fa8;}
+.ts3{background:#e8f8ef;}.ts3 .tnum{color:#3da870;}.ts3 .tname{color:#2e8b4f;}
+.ts4{background:#fff8e0;border:2px solid #e0a800;}.ts4 .tnum{color:#d9851f;}.ts4 .tname{color:#a05c00;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>受入テスト</b>とは？</h1>
+    <p>発注者（ユーザー）が「これで使えるか」を最終確認するテスト。<br>システム開発の最後の関門。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="20" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#2e8b4f"/>
+        <circle cx="36" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M24 18 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#6b4226"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="18" y="60" width="36" height="10" rx="2" fill="#a0d4b8"/>
+      </svg>
+      <div class="scene-txt">
+        社内の在庫管理システムが完成し、開発会社から納品された。<br>
+        「じゃあ実際に現場のスタッフに触ってもらって、<strong>業務で使えるかチェックしてもらおう</strong>」と上司が言った。
+        <div class="scene-q">…これが「受入テスト」！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- テスト工程の図解 -->
+  <div class="panel p-blue">
+    <span class="phead">🔺 テストの4段階</span>
+    <svg width="100%" viewBox="0 0 340 80" role="img" aria-label="単体テスト→結合テスト→システムテスト→受入テストの4段階フロー">
+      <rect x="5" y="20" width="68" height="40" rx="8" fill="#e4e7f7" stroke="#4256b8" stroke-width="1.5"/>
+      <text x="39" y="38" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">単体</text>
+      <text x="39" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">テスト</text>
+      <text x="79" y="42" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+      <rect x="88" y="20" width="68" height="40" rx="8" fill="#e2edf8" stroke="#1a6fa8" stroke-width="1.5"/>
+      <text x="122" y="38" text-anchor="middle" font-size="10" font-weight="900" fill="#1a6fa8" font-family="M PLUS Rounded 1c">結合</text>
+      <text x="122" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#1a6fa8" font-family="M PLUS Rounded 1c">テスト</text>
+      <text x="162" y="42" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+      <rect x="171" y="20" width="68" height="40" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="205" y="38" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">システム</text>
+      <text x="205" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">テスト</text>
+      <text x="245" y="42" text-anchor="middle" font-size="16" fill="#9aa3b2">▶</text>
+      <rect x="254" y="14" width="80" height="52" rx="8" fill="#fff8e0" stroke="#e0a800" stroke-width="2.5"/>
+      <text x="294" y="36" text-anchor="middle" font-size="10" font-weight="900" fill="#a05c00" font-family="M PLUS Rounded 1c">受入</text>
+      <text x="294" y="50" text-anchor="middle" font-size="10" font-weight="900" fill="#a05c00" font-family="M PLUS Rounded 1c">テスト</text>
+      <text x="294" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#c48000" font-family="M PLUS Rounded 1c">★ここ！</text>
+    </svg>
+    <div class="test-stages">
+      <div class="tstage ts1">
+        <div class="tnum">①</div>
+        <div>
+          <div class="tname">単体テスト（ユニットテスト）</div>
+          <div class="tdesc">部品1つ1つが正しく動くか。開発者が実施。</div>
+        </div>
+      </div>
+      <div class="tstage ts2">
+        <div class="tnum">②</div>
+        <div>
+          <div class="tname">結合テスト（インテグレーションテスト）</div>
+          <div class="tdesc">部品をつなげたときに正しく連携するか。開発者が実施。</div>
+        </div>
+      </div>
+      <div class="tstage ts3">
+        <div class="tnum">③</div>
+        <div>
+          <div class="tname">システムテスト</div>
+          <div class="tdesc">システム全体が要件を満たすか。開発側（発注者の場合も）が実施。</div>
+        </div>
+      </div>
+      <div class="tstage ts4">
+        <div class="tnum">④</div>
+        <div>
+          <div class="tname">受入テスト（ユーザー受入テスト・UAT）</div>
+          <div class="tdesc">発注者（ユーザー）が業務で使えるかを最終確認。<strong>発注者が主体で実施する</strong>。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「誰が実施するか」が最重要</div>
+      <div class="tb">受入テストは<strong>発注者（ユーザー側）</strong>が実施する。開発者が実施するのはシステムテストまで。「ベンダーが受入テストを行う」は誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">システムテストと受入テストの混同</div>
+      <div class="tb">システムテスト＝「仕様どおりに動くか（開発者視点）」。受入テスト＝「業務で使えるか（ユーザー視点）」。目的が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">受入テスト合格 = 納品承認</div>
+      <div class="tb">受入テストにOKを出す＝システムを受け入れる（納品を承認する）こと。「まだ本番稼働していない」段階で行う最後の確認。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「受け取る前に、受取人がテストする」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">宅配便と同じ。荷物（システム）を<strong>受け取る人（ユーザー）</strong>が「壊れてない？使える？」と確認してからサインする＝受入テスト</span><br><br>
+    テストの順番ゴロ：<span class="hl">「単（たん）・結（けつ）・シ（し）・受（う）」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">→ 「たんけつしう（探偵しよう）」と覚える</span></div>
+  </div>
+
+</div>
+</body>
+</html>

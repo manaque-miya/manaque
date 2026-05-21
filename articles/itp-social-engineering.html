@@ -1,106 +1,167 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ソーシャルエンジニアリングとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ソーシャルエンジニアリングの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-social-engineering.html">
-<meta property="og:title" content="ソーシャルエンジニアリングとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ソーシャルエンジニアリングの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-social-engineering.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ソーシャルエンジニアリングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ソーシャルエンジニアリングを具体的な手口と対策でわかりやすく解説。なりすまし・のぞき見・ゴミ箱漁りの違い、フィッシングとの混同ポイント、ITパスポート試験の頻出パターンまで。">
+<link rel="canonical" href="itp-social-engineering">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b91c1c,#7f1d1d);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(127,29,29,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fecaca;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-red{--c:#b91c1c;--cbg:#fee2e2;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b91c1c;}
+
+.trick-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px;}
+.trick-card{border-radius:13px;padding:12px;background:var(--bg);border-left:4px solid var(--bc);}
+.trick-card .th{font-size:13px;font-weight:900;color:var(--bc);margin-bottom:5px;}
+.trick-card .tb{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+@media(max-width:480px){.trick-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#b91c1c;--fbg:#fff1f2;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fee2e2;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#b91c1c;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7f1d1d;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">ソーシャルエンジニアリングとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ソーシャルエンジニアリング</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
-</div>
+<div class="wrap">
 
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>一人情シスの自分。突然「あ、佐藤社長の秘書ですが、システムトラブルで社長のパスワードが必要で…！」と電話が来た。…えっ、声に焦りがあって本物っぽいけど、これって罠？？</p></div>
-</div>
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ セキュリティ</span>
+    <h1><b>ソーシャルエンジニアリング</b>とは？</h1>
+    <p>技術を使わずに、人の心理・行動を突いてパスワードや機密情報を盗み出す攻撃手法。</p>
+  </div>
 
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ソーシャルエンジニアリング</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>フィッシング詐欺</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ フィッシングは偽サイト・偽メール経由。電話・対面で人間を直接騙すのはソーシャルエンジニアリング</div></li>
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="26" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#b91c1c"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 電話 -->
+        <rect x="44" y="52" width="18" height="14" rx="3" fill="#374151"/>
+        <path d="M47 54 q2 -2 4 0 l1 3 q-1 1 -1 2 q2 3 4 4 q1 -1 2 -1 l3 1 q2 2 0 4 q-4 2 -8 -3 q-4 -4 -5 -10z" fill="#4ade80" opacity=".85"/>
+      </svg>
+      <div class="scene-txt">
+        ある朝、社員に「システム管理者の鈴木です。緊急のセキュリティ確認のためパスワードを教えてください」という電話がかかってきた。本物っぽいが少し変…
+        <div class="scene-q">…これ、まさにソーシャルエンジニアリング！</div>
+      </div>
+    </div>
+  </div>
 
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：ソーシャルエンジニアリング</strong></p>
-</div>
+  <!-- 代表的な手口 -->
+  <div class="panel p-orange">
+    <span class="phead">🃏 代表的な手口4種</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="ソーシャルエンジニアリングの4種の手口">
+      <!-- 背景 -->
+      <rect x="5" y="10" width="155" height="80" rx="12" fill="#fff1f2" stroke="#b91c1c" stroke-width="2"/>
+      <text x="83" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#b91c1c" font-family="M PLUS Rounded 1c">なりすまし</text>
+      <text x="83" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d" font-family="M PLUS Rounded 1c">管理者・警察・同僚を</text>
+      <text x="83" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d" font-family="M PLUS Rounded 1c">偽って電話・メール</text>
+      <text x="83" y="84" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">📞</text>
 
-<div class="card">
-<h2>📘 ソーシャルエンジニアリングとは何か</h2>
-<span class="kw">技術を使わず人を騙す</span>
-<p>システムに侵入するのではなく、人間の心理的隙（信頼・焦り・権威への服従）を突いて情報を引き出す攻撃。技術を使わない点が特徴。</p>
-</div>
+      <rect x="180" y="10" width="155" height="80" rx="12" fill="#fdf4e4" stroke="#d9851f" stroke-width="2"/>
+      <text x="258" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">ショルダーハック</text>
+      <text x="258" y="52" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f" font-family="M PLUS Rounded 1c">背後からのぞいて</text>
+      <text x="258" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f" font-family="M PLUS Rounded 1c">パスワードを盗み見</text>
+      <text x="258" y="84" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">👀</text>
 
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>「なりすまし電話・ゴミ箱漁り・肩越し盗み見（ショルダーハッキング）」がソーシャルエンジニアリングの代表例。技術的防御が効かない。</p>
-</div>
+      <rect x="5" y="110" width="155" height="80" rx="12" fill="#eef8f1" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="83" y="132" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">トラッシング</text>
+      <text x="83" y="152" text-anchor="middle" font-size="10" font-weight="700" fill="#14532d" font-family="M PLUS Rounded 1c">ゴミ箱・廃棄書類を</text>
+      <text x="83" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="#14532d" font-family="M PLUS Rounded 1c">漁って情報を入手</text>
+      <text x="83" y="184" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">🗑️</text>
 
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>フィッシング詐欺は偽サイト・偽メールでIDを盗むデジタル攻撃。ソーシャルエンジニアリングは電話・対面など人間を直接狙う。どちらも「騙す」手口だが手段が違う。</p>
-</div>
+      <rect x="180" y="110" width="155" height="80" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="258" y="132" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">ビッシング</text>
+      <text x="258" y="152" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a" font-family="M PLUS Rounded 1c">音声通話で騙す</text>
+      <text x="258" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a" font-family="M PLUS Rounded 1c">なりすましの電話版</text>
+      <text x="258" y="184" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">☎️</text>
+    </svg>
+  </div>
 
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>ソーシャル＝**人間関係**を悪用。**技術じゃなくて口八丁**でだます。最強のセキュリティは結局「人」が弱点。</p></div>
-</div>
+  <!-- 攻撃〜被害フロー -->
+  <div class="panel p-blue">
+    <span class="phead">🗺️ 攻撃から被害までの流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 情報収集（下調べ）</div><div class="fb">SNS・会社HPで組織図・担当者名・業務内容を把握する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 接触・信頼獲得</div><div class="fb">得た情報を使って「本物らしさ」を演出し、相手を安心させる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 情報引き出し・侵入</div><div class="fb">「緊急だから今すぐパスワードを」などと焦りを煽り、情報を入手。不正アクセスへ。</div></div>
+    </div>
+  </div>
 
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>ソーシャルエンジニアリングはITパスポートのIT全般分野で頻出（high）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">フィッシングと混同しやすい</div>
+      <div class="tb">フィッシングは「偽サイト・偽メールでIDを入力させる」技術的手口。ソーシャルエンジニアリングは「人を騙す心理的手口」。ただしフィッシングもソーシャルエンジニアリングの一種とされる場合があるので注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「技術的な攻撃」と言えない</div>
+      <div class="tb">ソーシャルエンジニアリングはプログラムやツールを使わない。「人間を騙す」ことが本質。技術的な対策（ファイアウォール等）では防げない点が問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">対策はルール＋教育</div>
+      <div class="tb">「電話でパスワードを聞かれても絶対に答えない」「第三者への情報開示禁止ルール」「全社員への定期的なセキュリティ教育」が正解。技術ツールだけで解決しようとするのは誤り。</div>
+    </div>
+  </div>
 
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「社会（ソーシャル）の仕組み</span>＝人間関係・役職」を使って騙す<br>
+    技術ゼロで情報ゲット＝<span class="hl">「話術エンジニア」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">なりすまし・のぞき見・ゴミ漁り・電話詐欺　→　全部「人を騙す技」</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

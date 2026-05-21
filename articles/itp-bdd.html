@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BDD（振る舞い駆動開発）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="BDD（Behavior-Driven Development・振る舞い駆動開発）をわかりやすく解説。TDDとの違い、Given-When-Thenの書き方、アジャイルとの関係をITパスポート試験の視点で完全網羅。">
+<link rel="canonical" href="https://example.com/itp-bdd">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6b2eb8,#3a1270);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(58,18,112,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d8c4f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#6b2eb8;--cbg:#ede4fa;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6b2eb8;}
+
+.gwt-block{background:#f8f4fd;border-radius:12px;padding:14px;margin-top:10px;border-left:5px solid #6b2eb8;}
+.gwt-title{font-size:12px;font-weight:900;color:#6b2eb8;margin-bottom:10px;}
+.gwt-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+.gwt-row:last-child{margin-bottom:0;}
+.gwt-kw{min-width:64px;border-radius:7px;padding:5px 8px;font-size:12px;font-weight:900;color:#fff;text-align:center;}
+.gwt-given{background:#2e8b4f;}
+.gwt-when{background:#2e6de5;}
+.gwt-then{background:#d9851f;}
+.gwt-text{font-size:12.5px;font-weight:600;line-height:1.7;color:#48506a;padding-top:4px;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.cmp-cell{border-radius:12px;padding:12px;}
+.cmp-cell h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.cmp-cell ul{list-style:none;}
+.cmp-cell li{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:14px;position:relative;}
+.cmp-cell li::before{content:"・";position:absolute;left:0;}
+.cmp-tdd{background:#e7eefc;}.cmp-tdd h4{color:#2e6de5;}
+.cmp-bdd{background:#ede4fa;}.cmp-bdd h4{color:#6b2eb8;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#6b2eb8;--fbg:#f5effe;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>BDD</b>（振る舞い駆動開発）とは？</h1>
+    <p>「このシステムはどう振る舞うべきか」を自然言語で先に書いてからコードを作る開発手法。TDDを"人間の言葉"に進化させたもの。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#3a1270" opacity=".12"/>
+        <!-- ノートPC -->
+        <rect x="10" y="48" width="50" height="32" rx="4" fill="#3a1270"/>
+        <rect x="13" y="51" width="44" height="26" rx="2" fill="#1a0a3a"/>
+        <!-- コード行 -->
+        <rect x="16" y="55" width="30" height="2.5" rx="1" fill="#6b2eb8" opacity=".8"/>
+        <rect x="16" y="61" width="22" height="2.5" rx="1" fill="#2e8b4f" opacity=".8"/>
+        <rect x="20" y="67" width="26" height="2.5" rx="1" fill="#2e6de5" opacity=".8"/>
+        <rect x="20" y="73" width="18" height="2.5" rx="1" fill="#d9851f" opacity=".8"/>
+        <!-- 吹き出し（自然言語） -->
+        <rect x="40" y="22" width="32" height="22" rx="6" fill="#6b2eb8"/>
+        <polygon points="48,44 44,50 54,44" fill="#6b2eb8"/>
+        <text x="56" y="34" text-anchor="middle" font-size="7" font-weight="900" fill="#fff" font-family="sans-serif">Given</text>
+        <text x="56" y="43" text-anchor="middle" font-size="7" font-weight="900" fill="#ffd23f" font-family="sans-serif">When...</text>
+      </svg>
+      <div class="scene-txt">
+        ECサイト開発のミーティング。エンジニアがいきなりコードを書く前に、営業・QAも含めた全員で「<strong>ユーザーがカートに商品を入れたら合計金額が更新される</strong>」と書き出した。<br>
+        この"振る舞いの定義"から開発を始めるのが<strong>BDD</strong>。
+        <div class="scene-q">…コードより先に「どう動くか」を言葉で決める！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：Given-When-Then -->
+  <div class="panel p-indigo">
+    <span class="phead">🔷 BDDの核心：Given-When-Then</span>
+    <svg width="100%" viewBox="0 0 340 130" role="img" aria-label="BDDのGiven-When-Thenの3ステップを示す図">
+      <!-- 3ブロック -->
+      <rect x="15" y="20" width="90" height="90" rx="12" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="60" y="47" text-anchor="middle" font-size="13" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">Given</text>
+      <text x="60" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">前提条件</text>
+      <text x="60" y="80" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">「ユーザーが</text>
+      <text x="60" y="94" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">ログイン済みの場合」</text>
+      <!-- 矢印 -->
+      <path d="M107 65 l16 0" stroke="#9aa3b2" stroke-width="2" marker-end="url(#ba1)"/>
+      <defs>
+        <marker id="ba1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <rect x="125" y="20" width="90" height="90" rx="12" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="47" text-anchor="middle" font-size="13" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">When</text>
+      <text x="170" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">操作・イベント</text>
+      <text x="170" y="80" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">「カートに商品を</text>
+      <text x="170" y="94" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">追加した時」</text>
+      <!-- 矢印 -->
+      <path d="M217 65 l16 0" stroke="#9aa3b2" stroke-width="2" marker-end="url(#ba2)"/>
+      <defs>
+        <marker id="ba2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <rect x="235" y="20" width="90" height="90" rx="12" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="280" y="47" text-anchor="middle" font-size="13" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">Then</text>
+      <text x="280" y="63" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">期待する結果</text>
+      <text x="280" y="80" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">「合計金額が</text>
+      <text x="280" y="94" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">更新される」</text>
+    </svg>
+    <div class="gwt-block">
+      <div class="gwt-title">実際のBDDシナリオの書き方（例：ショッピングカート）</div>
+      <div class="gwt-row">
+        <span class="gwt-kw gwt-given">Given</span>
+        <div class="gwt-text">ユーザーがログイン済みで、カートに商品Aが1点入っている</div>
+      </div>
+      <div class="gwt-row">
+        <span class="gwt-kw gwt-when">When</span>
+        <div class="gwt-text">商品Bをカートに追加する</div>
+      </div>
+      <div class="gwt-row">
+        <span class="gwt-kw gwt-then">Then</span>
+        <div class="gwt-text">カートの合計金額が「商品A＋商品B」の金額に更新される</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TDDとの比較 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ TDDとBDDの違い</span>
+    <div class="compare-grid">
+      <div class="cmp-cell cmp-tdd">
+        <h4>🧪 TDD（テスト駆動開発）</h4>
+        <ul>
+          <li>エンジニア向け</li>
+          <li>コードのテストを先に書く</li>
+          <li>「関数が正しく動くか」</li>
+          <li>技術的な正しさに焦点</li>
+        </ul>
+      </div>
+      <div class="cmp-cell cmp-bdd">
+        <h4>🗣 BDD（振る舞い駆動開発）</h4>
+        <ul>
+          <li>全員（非技術者も）向け</li>
+          <li>振る舞い（シナリオ）を先に書く</li>
+          <li>「ユーザーにとって正しいか」</li>
+          <li>ビジネス要件に焦点</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flow" style="margin-top:12px;">
+      <div class="fstep f1"><div class="fh">① シナリオ作成（自然言語）</div><div class="fb">エンジニア・営業・QAが全員参加してGiven-When-Thenで振る舞いを定義。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② シナリオからテストコードを自動生成</div><div class="fb">Cucumber・SpecFlowなどのツールがシナリオをテストコードに変換する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ テストが通るようにコードを実装</div><div class="fb">テストをパスすることが「振る舞いの要件を満たした」ことを意味する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「BDD＝TDDの別名」は誤り</div>
+      <div class="tb">BDDはTDDを拡張した手法だが別物。TDDは「コードのテストを先に書く」、BDDは「振る舞い（ビジネス要件）のシナリオを先に書く」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「BDD＝エンジニアだけが使う」は誤り</div>
+      <div class="tb">BDDの目的は「技術者と非技術者（営業・企画）が共通言語で要件を確認すること」。非技術者も参加する点が特徴。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">アジャイル開発との関係</div>
+      <div class="tb">BDDはアジャイル開発と親和性が高い。短いサイクルで「振る舞いの定義 → 実装 → テスト」を繰り返す。スクラムと組み合わせて使うことが多い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「振る舞い」「Given-When-Then」「非技術者も参加」→ BDD。「テストを先に書く（コード単位）」→ TDD。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      BDD＝<span class="hl">B</span>ehavior（振る舞い）で<span class="hl">D</span>rive（引っ張る）<span class="hl">D</span>evelopment（開発）<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「コードより先に、みんなで"動き方"を言葉で決める」</span><br><br>
+      <span class="hl">Given（準備）→ When（操作）→ Then（結果）</span><br>
+      <span class="hl">「準備して→動かして→こうなる」</span>で丸覚え！<br>
+      TDDはコード単位・BDDは<span class="hl">人間の言葉</span>で。
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-bdd</div>
+
+</div>
+</body>
+</html>

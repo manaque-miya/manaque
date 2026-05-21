@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>二要素認証とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="二要素認証（2FA）を「知識・所持・生体」の3要素から解説。パスワード＋スマホSMSが定番の組み合わせ。二段階認証との違いやITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-two-factor-auth">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1e6b3f,#0d3d23);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,61,35,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0dcc9;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1e6b3f;--cbg:#dff2e6;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1e6b3f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1e6b3f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.factor-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;}
+.factor-cell{border-radius:12px;padding:11px 9px;text-align:center;}
+.factor-cell h4{font-size:12px;font-weight:900;margin-bottom:5px;}
+.factor-cell p{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+.fc-k{background:#e7eefc;} .fc-k h4{color:#2e6de5;}
+.fc-s{background:#dff2e6;} .fc-s h4{color:#1e6b3f;}
+.fc-b{background:#fcefd9;} .fc-b h4{color:#d9851f;}
+@media(max-width:480px){.factor-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔐 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>二要素認証</b>とは？</h1>
+    <p>「知ってること」と「持ってるもの」など、<strong>種類の違う2つ</strong>で本人確認する方法。パスワード1本より格段に安全。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="76" height="90" viewBox="0 0 76 90" aria-hidden="true">
+        <ellipse cx="38" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="58" width="52" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="18" y="38" width="40" height="28" rx="9" fill="#1e6b3f"/>
+        <circle cx="38" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M25 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="29" y="32" width="18" height="8" fill="#f4c89a"/>
+        <path d="M29 40 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+        <rect x="28" y="60" width="20" height="16" rx="3" fill="#2e8b4f"/>
+        <rect x="31" y="63" width="14" height="10" rx="1" fill="#b3e6c6"/>
+        <rect x="35" y="66" width="6" height="4" rx="1" fill="#1e6b3f"/>
+      </svg>
+      <div class="scene-txt">
+        ネットバンクにログインしようとすると、パスワードを入力した後に<strong>「SMSに送った6桁のコードを入力してください」</strong>と表示された。
+        <div class="scene-q">…これが二要素認証！パスワード漏れても、スマホがなければ入れない。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3要素の図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔑 認証の3要素と「二要素」の意味</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="認証の3要素：知識・所持・生体。二要素認証はこの中から異なる2種類を組み合わせる">
+      <!-- 背景帯 -->
+      <rect x="10" y="10" width="320" height="180" rx="14" fill="#f4f6fb"/>
+      <!-- 知識要素 -->
+      <rect x="22" y="28" width="90" height="70" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="67" y="52" text-anchor="middle" font-size="22" fill="#2e6de5" font-family="sans-serif">🔤</text>
+      <text x="67" y="70" text-anchor="middle" font-size="12" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">知識要素</text>
+      <text x="67" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">パスワード・PIN</text>
+      <!-- 所持要素 -->
+      <rect x="125" y="28" width="90" height="70" rx="10" fill="#dff2e6" stroke="#1e6b3f" stroke-width="2"/>
+      <text x="170" y="52" text-anchor="middle" font-size="22" fill="#1e6b3f" font-family="sans-serif">📱</text>
+      <text x="170" y="70" text-anchor="middle" font-size="12" font-weight="900" fill="#155c32" font-family="M PLUS Rounded 1c">所持要素</text>
+      <text x="170" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">スマホ・ICカード</text>
+      <!-- 生体要素 -->
+      <rect x="228" y="28" width="90" height="70" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="273" y="52" text-anchor="middle" font-size="22" fill="#d9851f" font-family="sans-serif">👆</text>
+      <text x="273" y="70" text-anchor="middle" font-size="12" font-weight="900" fill="#a8650f" font-family="M PLUS Rounded 1c">生体要素</text>
+      <text x="273" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">指紋・顔・静脈</text>
+      <!-- 二要素認証の説明 -->
+      <rect x="22" y="114" width="296" height="60" rx="10" fill="#4256b8"/>
+      <text x="170" y="136" text-anchor="middle" font-size="12" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">二要素認証 ＝ 上の3種類から</text>
+      <text x="170" y="155" text-anchor="middle" font-size="13" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">「異なる種類」を2つ組み合わせる</text>
+      <text x="170" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#c8d0f0" font-family="M PLUS Rounded 1c">例：パスワード（知識）＋ SMS（所持）</text>
+    </svg>
+    <div class="factor-grid">
+      <div class="factor-cell fc-k"><h4>知識要素</h4><p>頭の中にある情報。パスワード・暗証番号・秘密の質問。</p></div>
+      <div class="factor-cell fc-s"><h4>所持要素</h4><p>物理的に持つもの。スマートフォン・ICカード・ハードウェアトークン。</p></div>
+      <div class="factor-cell fc-b"><h4>生体要素</h4><p>身体の特徴。指紋・顔・虹彩・静脈。本人しか持てない。</p></div>
+    </div>
+  </div>
+
+  <!-- 認証フロー -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ 二要素認証のログインフロー</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 第1要素：パスワード入力（知識）</div><div class="fb">IDとパスワードを入力。ここだけでは認証完了しない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 第2要素：SMSコード入力（所持）</div><div class="fb">登録済みスマホにワンタイムパスワードが届く。6桁の数字を入力。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 両方通過でログイン成功</div><div class="fb">パスワードが漏れてもスマホがなければ突破できない。安全性が大幅アップ。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「二段階認証」と「二要素認証」は別物</div>
+      <div class="tb">二段階認証は「認証を2回行う」だけ（同じ種類でもOK）。二要素認証は「<strong>種類の違う</strong>要素を2つ」使うという意味。パスワード2回は二段階認証だが二要素認証ではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">同じ要素を2つ使っても「二要素認証」にならない</div>
+      <div class="tb">「パスワード＋秘密の質問」は両方とも知識要素。これは二段階認証だが<strong>二要素認証ではない</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「多要素認証（MFA）」との関係</div>
+      <div class="tb">多要素認証（MFA）は2種類以上の要素を使う上位概念。二要素認証（2FA）はMFAの一種。試験では「多要素認証」として出ることもある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">問われたら「<strong>種類が違うか？</strong>」を確認。知識・所持・生体の3種類から2種類以上 → 二要素（多要素）認証。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「知ってる」＋「持ってる」で2つそろって開く錠前</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">知識（パスワード）＋ 所持（スマホ）＝ 二要素認証</span><br><br>
+    <span class="hl">「ふたつ」の「よ（4）うそ」</span> → <strong>二要素</strong>は<strong>「よ（4）うそ（素）」=4素材使うわけじゃない・2種類</strong>！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">同じ種類2つはダメ ＝「同じ道具×2」は二要素認証ではない</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-two-factor-auth</div>
+
+</div>
+</body>
+</html>

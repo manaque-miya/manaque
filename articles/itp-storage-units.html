@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>記憶容量の単位（ビット・バイト・KB・MB・GB）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ビット・バイト・KB・MB・GB・TBの違いを図解でわかりやすく解説。1024の壁・1000との混同・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-storage-units">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+/* ヒーロー */
+.hero{background:linear-gradient(155deg,#2563eb,#1e3a8a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(30,58,138,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#bfdbfe;}
+
+/* パネル共通 */
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2563eb;--cbg:#dbeafe;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#16a34a;--cbg:#dcfce7;}
+.p-orange{--c:#d97706;--cbg:#fef3c7;}
+.p-red{--c:#dc2626;--cbg:#fee2e2;}
+
+/* シーン */
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2563eb;}
+
+/* 単位ピラミッド */
+.unit-stack{display:flex;flex-direction:column;align-items:center;gap:0;margin:10px 0;}
+.unit-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+.unit-box{border-radius:10px;padding:9px 18px;font-weight:900;text-align:center;min-width:90px;}
+.unit-label{font-size:12px;font-weight:700;color:#6b7280;min-width:110px;}
+.unit-arrow{font-size:13px;color:#9aa3b2;font-weight:900;text-align:center;padding:1px 0;}
+
+/* フロー */
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#16a34a;--fbg:#f0fdf4;}
+.f2{--fc:#2563eb;--fbg:#eff6ff;}
+.f3{--fc:#7c3aed;--fbg:#f5f3ff;}
+.f4{--fc:#d97706;--fbg:#fffbeb;}
+.f5{--fc:#dc2626;--fbg:#fef2f2;}
+
+/* ひっかけ */
+.trap-item{background:#fee2e2;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#991b1b;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7f1d1d;}
+
+/* 覚え方 */
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>記憶容量の単位</b>とは？</h1>
+    <p>ビット・バイト・KB・MB・GB・TB。どれだけ「情報を入れられるか」の単位。1024倍ずつ大きくなる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-txt">
+      スマホを買い替えようとしている。店員から「128GBモデルと256GBモデルがあります」と言われた。<br>
+      「GBって何？ 大きい方がいいの？ そもそもKBとMBとGBって何が違うの？」<br>
+      <div class="scene-q">…記憶容量の単位を理解すれば、すべて解決する！</div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：単位の大きさ -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 単位の大きさ（1024倍ずつ）</span>
+    <svg width="100%" viewBox="0 0 340 320" role="img" aria-label="記憶容量単位の大きさ比較：bit→Byte→KB→MB→GB→TB">
+      <!-- 背景 -->
+      <rect x="10" y="10" width="320" height="300" rx="14" fill="#f1f5f9"/>
+      <!-- ラベル列 -->
+      <text x="28" y="40" font-size="11" font-weight="800" fill="#64748b" font-family="M PLUS Rounded 1c">単位</text>
+      <text x="120" y="40" font-size="11" font-weight="800" fill="#64748b" font-family="M PLUS Rounded 1c">何バイト？</text>
+      <text x="230" y="40" font-size="11" font-weight="800" fill="#64748b" font-family="M PLUS Rounded 1c">身近な目安</text>
+      <!-- 区切り線 -->
+      <line x1="20" y1="48" x2="320" y2="48" stroke="#cbd5e1" stroke-width="1.5"/>
+      <!-- bit行 -->
+      <rect x="20" y="55" width="70" height="28" rx="7" fill="#dbeafe"/>
+      <text x="55" y="74" text-anchor="middle" font-size="13" font-weight="900" fill="#1d4ed8" font-family="M PLUS Rounded 1c">bit（ビット）</text>
+      <text x="120" y="74" font-size="12" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">1/8 Byte</text>
+      <text x="230" y="74" font-size="11.5" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">0か1の1桁</text>
+      <!-- 矢印 -->
+      <text x="168" y="96" text-anchor="middle" font-size="11" font-weight="900" fill="#94a3b8" font-family="M PLUS Rounded 1c">× 8 = 1Byte</text>
+      <!-- Byte行 -->
+      <rect x="20" y="102" width="70" height="28" rx="7" fill="#e0e7ff"/>
+      <text x="55" y="121" text-anchor="middle" font-size="13" font-weight="900" fill="#3730a3" font-family="M PLUS Rounded 1c">Byte（バイト）</text>
+      <text x="120" y="121" font-size="12" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">1 Byte</text>
+      <text x="230" y="121" font-size="11.5" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">英字1文字</text>
+      <!-- 矢印 -->
+      <text x="168" y="143" text-anchor="middle" font-size="11" font-weight="900" fill="#94a3b8" font-family="M PLUS Rounded 1c">× 1,024 = 1KB</text>
+      <!-- KB行 -->
+      <rect x="20" y="149" width="70" height="28" rx="7" fill="#dcfce7"/>
+      <text x="55" y="168" text-anchor="middle" font-size="13" font-weight="900" fill="#15803d" font-family="M PLUS Rounded 1c">KB（キロ）</text>
+      <text x="120" y="168" font-size="12" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">約 1千 Byte</text>
+      <text x="230" y="168" font-size="11.5" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">短いメール1通</text>
+      <!-- 矢印 -->
+      <text x="168" y="190" text-anchor="middle" font-size="11" font-weight="900" fill="#94a3b8" font-family="M PLUS Rounded 1c">× 1,024 = 1MB</text>
+      <!-- MB行 -->
+      <rect x="20" y="196" width="70" height="28" rx="7" fill="#fef9c3"/>
+      <text x="55" y="215" text-anchor="middle" font-size="13" font-weight="900" fill="#a16207" font-family="M PLUS Rounded 1c">MB（メガ）</text>
+      <text x="120" y="215" font-size="12" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">約 百万 Byte</text>
+      <text x="230" y="215" font-size="11.5" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">写真1枚(数MB)</text>
+      <!-- 矢印 -->
+      <text x="168" y="237" text-anchor="middle" font-size="11" font-weight="900" fill="#94a3b8" font-family="M PLUS Rounded 1c">× 1,024 = 1GB</text>
+      <!-- GB行 -->
+      <rect x="20" y="243" width="70" height="28" rx="7" fill="#ffe4e6"/>
+      <text x="55" y="262" text-anchor="middle" font-size="13" font-weight="900" fill="#be123c" font-family="M PLUS Rounded 1c">GB（ギガ）</text>
+      <text x="120" y="262" font-size="12" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">約 10億 Byte</text>
+      <text x="230" y="262" font-size="11.5" font-weight="700" fill="#475569" font-family="M PLUS Rounded 1c">スマホ容量128GB</text>
+      <!-- 矢印 -->
+      <text x="168" y="284" text-anchor="middle" font-size="11" font-weight="900" fill="#94a3b8" font-family="M PLUS Rounded 1c">× 1,024 = 1TB</text>
+      <!-- TB行 -->
+      <rect x="20" y="290" width="70" height="14" rx="7" fill="#f3e8ff"/>
+      <text x="55" y="301" text-anchor="middle" font-size="11" font-weight="900" fill="#6b21a8" font-family="M PLUS Rounded 1c">TB（テラ）</text>
+    </svg>
+  </div>
+
+  <!-- ビットとバイトの関係 -->
+  <div class="panel p-green">
+    <span class="phead">🔢 ビットとバイトの関係</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">bit（ビット）＝情報の最小単位</div>
+        <div class="fb">コンピュータの最も小さな情報の単位。「0」か「1」かの2択だけ。電気のオン/オフに対応。</div>
+      </div>
+      <div class="farrow">▼ 8個集まると</div>
+      <div class="fstep f2">
+        <div class="fh">Byte（バイト）＝通常使う基本単位</div>
+        <div class="fb">8bit = 1Byte。英字1文字を表すのに1Byte使う。日本語は2〜3Byte。容量を語るときは基本Byte単位。</div>
+      </div>
+      <div class="farrow">▼ 1024倍ずつ大きくなる</div>
+      <div class="fstep f3">
+        <div class="fh">1KB = 1,024 Byte（なぜ1000じゃないの？）</div>
+        <div class="fb">2進数のコンピュータでは 2の10乗 = 1,024 がキリが良い。1000（10進数）と1024（2進数）の違いが出題される。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「1KB = 1000バイト」は間違い</div>
+      <div class="tb">正しくは 1KB = <strong>1,024</strong> バイト。試験では「1000倍ずつ増える」という選択肢が誤答として出る。2進数のキリは1024。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">bit（b小文字）とByte（B大文字）を混同しない</div>
+      <div class="tb">通信速度は「bps（ビット/秒）」、ファイルサイズは「Byte」が多い。「100Mbps」を「100メガバイト/秒」と読み間違えると8倍ズレる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">TB（テラバイト）はGBの1000倍以上</div>
+      <div class="tb">1TB = 1,024 GB。ハードディスクの容量でよく出る。GBとTBの関係も1,024倍。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「きっと毎晩ギター弾く」</span> で単位順を覚える！<br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">き＝KB ／ っ（と）＝（スキップ） ／ 毎＝MB ／ 晩＝（スキップ） ／ ギ＝GB ／ （弾）く＝（T）B</span><br><br>
+    もっと簡単に：<span class="hl">「キロ・メガ・ギガ・テラ」</span> = <span class="hl">「木目木目（きめきめ）」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">1024倍ずつ大きくなる＝ゲームのレベルアップみたいに1024段ずつ上がる</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

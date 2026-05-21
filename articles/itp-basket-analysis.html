@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>バスケット分析とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="バスケット分析（購買バスケット分析）をわかりやすく解説。「ビールとおむつ」の有名例からアソシエーション分析との違い、ITパスポート試験のひっかけポイントまで完全網羅。">
+<link rel="canonical" href="https://example.com/itp-basket-analysis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e8b4f,#155c30);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(21,92,48,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8dfc6;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e8b4f;}
+
+.rule-card{background:#eef8f1;border-radius:12px;padding:14px;margin-top:12px;border:2px solid #2e8b4f;}
+.rule-card .rc-title{font-size:13px;font-weight:900;color:#2e8b4f;margin-bottom:8px;}
+.rule-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.rule-tag{border-radius:8px;padding:6px 10px;font-size:12px;font-weight:900;color:#fff;}
+.rule-tag.a{background:#2e8b4f;}
+.rule-tag.b{background:#2e6de5;}
+.rule-tag.c{background:#d9851f;}
+.rule-arrow{font-size:14px;color:#9aa3b2;font-weight:900;}
+.rule-metric{background:#fff;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700;color:#3c4456;border:1px solid #c2d8c9;}
+
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.app-cell{border-radius:11px;padding:11px;background:#f4f6fb;}
+.app-cell h4{font-size:12px;font-weight:900;color:#4256b8;margin-bottom:5px;}
+.app-cell p{font-size:11.5px;font-weight:600;line-height:1.6;color:#48506a;}
+@media(max-width:480px){.app-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>バスケット分析</b>とは？</h1>
+    <p>「ビールを買う人はおむつも一緒に買う」——購買データから「同時に買われる組み合わせ」を発見する分析手法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-green">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#155c30" opacity=".12"/>
+        <!-- カート -->
+        <path d="M10 48 l5 20 h38 l5 -20z" fill="#2e8b4f" stroke="#155c30" stroke-width="1.5"/>
+        <path d="M8 44 h6 l7 24" fill="none" stroke="#2e8b4f" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="22" cy="73" r="4" fill="#155c30"/>
+        <circle cx="46" cy="73" r="4" fill="#155c30"/>
+        <!-- 商品（ビール缶） -->
+        <rect x="20" y="40" width="12" height="16" rx="3" fill="#ffd23f" stroke="#c8a000" stroke-width="1.2"/>
+        <text x="26" y="52" text-anchor="middle" font-size="8" font-weight="900" fill="#5c4500" font-family="sans-serif">🍺</text>
+        <!-- 商品（おむつ） -->
+        <rect x="36" y="38" width="14" height="18" rx="3" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.2"/>
+        <text x="43" y="50" text-anchor="middle" font-size="9" font-family="sans-serif">👶</text>
+        <!-- 矢印と分析 -->
+        <text x="39" y="32" text-anchor="middle" font-size="9" font-weight="900" fill="#ffd23f" font-family="sans-serif">同時購買？</text>
+      </svg>
+      <div class="scene-txt">
+        スーパーのPOSデータを分析したところ、「<strong>金曜の夕方にビールを買う人はおむつも一緒に買う</strong>」というパターンが発見された。<br>
+        そこでビール売り場の横におむつを置いたら、売上が急増。
+        <div class="scene-q">…この「一緒に買われる組み合わせ発見」が<strong>バスケット分析</strong>！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">🔷 バスケット分析の仕組み</span>
+    <svg width="100%" viewBox="0 0 340 190" role="img" aria-label="バスケット分析の流れ：購買データから組み合わせルールを発見する図">
+      <!-- 購買データ -->
+      <rect x="10" y="20" width="90" height="120" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="55" y="40" text-anchor="middle" font-size="10" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">購買データ</text>
+      <text x="55" y="58" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">客A: 🍺🧴</text>
+      <text x="55" y="74" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">客B: 🍺👶</text>
+      <text x="55" y="90" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">客C: 🍺👶🧴</text>
+      <text x="55" y="106" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">客D: 👶🍫</text>
+      <text x="55" y="122" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">客E: 🍺👶</text>
+      <!-- 矢印 -->
+      <path d="M102 80 l28 0" stroke="#9aa3b2" stroke-width="2.5" marker-end="url(#a1)"/>
+      <defs>
+        <marker id="a1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <!-- アルゴリズム -->
+      <rect x="132" y="50" width="76" height="60" rx="10" fill="#2e8b4f" opacity=".9"/>
+      <text x="170" y="72" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">頻度カウント</text>
+      <text x="170" y="88" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">＋</text>
+      <text x="170" y="104" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">パターン抽出</text>
+      <!-- 矢印 -->
+      <path d="M210 80 l28 0" stroke="#9aa3b2" stroke-width="2.5" marker-end="url(#a2)"/>
+      <defs>
+        <marker id="a2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6z" fill="#9aa3b2"/>
+        </marker>
+      </defs>
+      <!-- ルール -->
+      <rect x="240" y="30" width="90" height="100" rx="10" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="285" y="50" text-anchor="middle" font-size="10" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">発見ルール</text>
+      <text x="285" y="68" text-anchor="middle" font-size="9" font-weight="800" fill="#7a5c2a" font-family="M PLUS Rounded 1c">🍺→👶</text>
+      <text x="285" y="83" text-anchor="middle" font-size="9" fill="#7a5c2a" font-family="M PLUS Rounded 1c">支持度60%</text>
+      <text x="285" y="97" text-anchor="middle" font-size="9" fill="#7a5c2a" font-family="M PLUS Rounded 1c">信頼度75%</text>
+      <text x="285" y="117" text-anchor="middle" font-size="9" fill="#d9851f" font-family="M PLUS Rounded 1c">→陳列に活用！</text>
+      <!-- ラベル下 -->
+      <text x="55" y="155" text-anchor="middle" font-size="9" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">レシートデータ</text>
+      <text x="170" y="125" text-anchor="middle" font-size="9" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">機械学習</text>
+      <text x="285" y="145" text-anchor="middle" font-size="9" font-weight="800" fill="#d9851f" font-family="M PLUS Rounded 1c">アソシエーション</text>
+    </svg>
+    <div class="rule-card">
+      <div class="rc-title">3つの指標で「同時購買の強さ」を測る</div>
+      <div class="rule-row">
+        <span class="rule-tag a">支持度（Support）</span>
+        <span class="rule-arrow">→</span>
+        <span class="rule-metric">全取引中「A＆B両方」買われた割合</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag b">信頼度（Confidence）</span>
+        <span class="rule-arrow">→</span>
+        <span class="rule-metric">「Aを買った人」のうち「Bも買った」割合</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag c">リフト値（Lift）</span>
+        <span class="rule-arrow">→</span>
+        <span class="rule-metric">偶然より何倍一緒に買われるか（1超＝相関あり）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 活用場面 -->
+  <div class="panel p-blue">
+    <span class="phead">🗺️ バスケット分析の活用場面</span>
+    <div class="app-grid">
+      <div class="app-cell">
+        <h4>🏪 スーパー・コンビニ</h4>
+        <p>「一緒によく買われる商品」を隣に並べて売上アップ。陳列・棚割り最適化。</p>
+      </div>
+      <div class="app-cell">
+        <h4>🛒 ECサイト</h4>
+        <p>「この商品を買った人はこちらも」のレコメンド機能に使われる。</p>
+      </div>
+      <div class="app-cell">
+        <h4>🍽️ メニュー設計</h4>
+        <p>「Aを注文した人がBも頼む」傾向からセットメニューを企画。</p>
+      </div>
+      <div class="app-cell">
+        <h4>💊 医療・薬局</h4>
+        <p>処方薬の組み合わせパターン分析で副作用リスクや需要予測に活用。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「バスケット分析＝時系列分析」は誤り</div>
+      <div class="tb">時系列（売上の月次推移など）を見るのではなく、「同時に買われたか」の<strong>共起関係</strong>を見る。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「相関＝因果」ではない</div>
+      <div class="tb">「ビールとおむつが一緒に買われる」は相関。「ビールを買うからおむつも買う」という因果関係を直接意味しない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">アソシエーション分析と同じ意味</div>
+      <div class="tb">「アソシエーション分析（association analysis）」はバスケット分析の別名。同じ手法を指す。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「同時購買」「一緒に買われる」「レシート」→ バスケット分析。「過去の売上傾向」→ 時系列分析で使い分け。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">買い物かご（バスケット）</span>の中身を分析するから<span class="hl">バスケット分析</span>！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">かごの中の組み合わせを数える → 「一緒によく入ってる」ルールを発見</span><br><br>
+      <span class="hl">🍺＋👶</span>＝「ビールとおむつ」でまず覚える。<br>
+      <span class="hl">同時購買＝バスケット</span>、<span class="hl">時系列＝別分析</span>で区別！
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-basket-analysis</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ISO/IEC 27017とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ISO/IEC 27017はクラウドサービスのセキュリティ管理策を定めた国際規格。27001・27002との違い、クラウド提供者と利用者それぞれの責任範囲、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-iso27017">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a5fa8,#0d2e5c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,46,92,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c8daf5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a5fa8;--fbg:#e8f0fa;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.resp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.resp-card{border-radius:13px;padding:12px;}
+.resp-card h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.resp-card ul{list-style:none;}
+.resp-card li{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.resp-card li::before{content:"・";position:absolute;left:0;}
+.card-prov{background:#e8f0fa;}.card-prov h4{color:#1a5fa8;}
+.card-user{background:#e2f3e5;}.card-user h4{color:#2e8b4f;}
+@media(max-width:400px){.resp-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>ISO/IEC 27017</b>とは？</h1>
+    <p>クラウドサービスに特化したセキュリティ管理策の国際規格。クラウド提供者と利用者、双方の責任をカバーする。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="55" width="56" height="26" rx="7" fill="#cdd9ec"/>
+        <rect x="14" y="35" width="44" height="28" rx="9" fill="#1a5fa8"/>
+        <circle cx="36" cy="19" r="14" fill="#f4c89a"/>
+        <path d="M23 15 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#2b3245"/>
+        <rect x="28" y="31" width="16" height="8" fill="#f4c89a"/>
+        <rect x="22" y="65" width="28" height="5" rx="2" fill="#a0b4cc"/>
+        <rect x="22" y="73" width="18" height="3" rx="1" fill="#a0b4cc"/>
+      </svg>
+      <div class="scene-txt">
+        システム担当のあなた。会社が使う業務システムをクラウドに移行することになった。「セキュリティは大丈夫？」と上司に聞かれ、<strong>クラウド向けのセキュリティ規格</strong>を調べることに。
+        <div class="scene-q">…クラウド専用のセキュリティ基準って、どれを参照すればいい？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 規格の位置づけ図 -->
+  <div class="panel p-indigo">
+    <span class="phead">📐 ISO 27000ファミリーの中の位置づけ</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="ISO 27001・27002・27017の階層関係図">
+      <!-- 27001：外枠 -->
+      <rect x="10" y="10" width="320" height="210" rx="16" fill="#e4e7f7" stroke="#4256b8" stroke-width="2.5"/>
+      <text x="170" y="34" text-anchor="middle" font-size="14" font-weight="900" fill="#2d3d9a" font-family="M PLUS Rounded 1c">ISO/IEC 27001</text>
+      <text x="170" y="52" text-anchor="middle" font-size="11" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">情報セキュリティマネジメントシステム（ISMS）の要件</text>
+      <!-- 27002：中枠 -->
+      <rect x="30" y="64" width="280" height="100" rx="13" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="85" text-anchor="middle" font-size="13" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">ISO/IEC 27002</text>
+      <text x="170" y="102" text-anchor="middle" font-size="11" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">情報セキュリティ管理策の実践規範（汎用）</text>
+      <!-- 27017：内枠 -->
+      <rect x="60" y="114" width="220" height="40" rx="10" fill="#1a5fa8" stroke="#fff" stroke-width="2"/>
+      <text x="170" y="131" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ISO/IEC 27017</text>
+      <text x="170" y="147" text-anchor="middle" font-size="11" font-weight="800" fill="#c8daf5" font-family="M PLUS Rounded 1c">クラウドサービス向けの追加管理策</text>
+      <!-- 注釈 -->
+      <text x="170" y="183" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">27001をベースに、クラウド特有のリスクへの</text>
+      <text x="170" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">対策を追加した「クラウド専用の管理策集」</text>
+    </svg>
+  </div>
+
+  <!-- 提供者と利用者の責任 -->
+  <div class="panel p-green">
+    <span class="phead">🏗️ 提供者と利用者、それぞれの責任</span>
+    <p>27017は、クラウド<strong>提供者（CSP）</strong>と<strong>利用者（CSC）</strong>の両方に向けた管理策を定めている点が特徴。</p>
+    <div class="resp-grid">
+      <div class="resp-card card-prov">
+        <h4>提供者（CSP）が担う管理策</h4>
+        <ul>
+          <li>仮想化環境の分離・保護</li>
+          <li>管理用操作インタフェースの保護</li>
+          <li>利用者の仮想マシン強化</li>
+          <li>クラウド環境の監視・ログ管理</li>
+        </ul>
+      </div>
+      <div class="resp-card card-user">
+        <h4>利用者（CSC）が担う管理策</h4>
+        <ul>
+          <li>仮想環境上の資産管理</li>
+          <li>クラウド利用ポリシーの整備</li>
+          <li>アクセス権の管理・見直し</li>
+          <li>データ持ち出し時の保護</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 関連規格フロー -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ クラウド導入の判断フロー</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① まず 27001 で ISMS の枠組みを作る</div><div class="fb">組織全体の情報セキュリティ管理体制（PDCA）を構築する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 27002 で汎用的な管理策を適用する</div><div class="fb">アクセス管理・暗号化・物理セキュリティなど、一般的な管理策を実施。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ クラウド利用時は 27017 を上乗せ</div><div class="fb">仮想化・マルチテナント・提供者と利用者の責任分界など、クラウド固有のリスクに対応。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">27001・27002・27017をごちゃ混ぜにする</div>
+      <div class="tb">27001は「要件（何をしなければならないか）」、27002は「汎用的な実践規範」、27017は「クラウド向けの追加管理策」。それぞれ役割が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「27017はクラウド提供者だけのもの」という誤解</div>
+      <div class="tb">提供者だけでなく、<strong>利用者（企業）</strong>にも向けた管理策が含まれている。両者に向けた規格。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ISO 27018と混同しやすい</div>
+      <div class="tb">27018は「クラウドで扱う<strong>個人情報（PII）保護</strong>」に特化した規格。27017はセキュリティ全般、27018は個人情報保護、と覚える。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">27017 → 「クナ（27）ナイチナナ（017）」→ クラウドナイチな規格</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">27001 = ISMS要件 ／ 27002 = 汎用管理策 ／ <strong>27017 = クラウド専用</strong></span><br><br>
+    <span class="hl">「7（クラウドは雲→7個の水蒸気→7）」で区切って覚える</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">クラウドサービス = 2701<strong>7</strong>（末尾が7）</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

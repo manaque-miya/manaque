@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>クリエイティブコモンズとは？ライセンス記号の意味を図解 — ITパスポート</title>
+<meta name="description" content="クリエイティブコモンズ（CC）ライセンスの4つの条件（BY・NC・ND・SA）を図解でわかりやすく解説。著作権との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-creative-commons">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#cc5500,#7a2f00);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,47,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fbd8b8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#cc5500;--cbg:#fce8da;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cc5500;}
+
+.cc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.cc-card{border-radius:12px;padding:12px;border:2px solid var(--bc);background:var(--bg);}
+.cc-card .cc-sym{font-size:22px;font-weight:900;color:var(--bc);margin-bottom:4px;}
+.cc-card .cc-name{font-size:13px;font-weight:900;color:var(--bc);margin-bottom:3px;}
+.cc-card .cc-desc{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.cc1{--bc:#2e6de5;--bg:#e7eefc;}
+.cc2{--bc:#cc5500;--bg:#fce8da;}
+.cc3{--bc:#2e8b4f;--bg:#e2f3e5;}
+.cc4{--bc:#9b4ec4;--bg:#f4eafa;}
+@media(max-width:480px){.cc-grid{grid-template-columns:1fr;}}
+
+.lic-list{list-style:none;margin-top:8px;}
+.lic-list li{font-size:12.5px;font-weight:700;line-height:1.75;color:#3c4456;padding:7px 10px;margin-bottom:6px;border-radius:9px;background:#f4f6fb;}
+.lic-list li strong{color:#cc5500;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🎨 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>クリエイティブコモンズ</b>とは？</h1>
+    <p>「このマーク見たことある！」。著作権を持ちながら「ここまでは自由に使っていいよ」と条件を示す国際ライセンスの仕組み。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <div class="scene-txt">
+        ブログ用にフリー写真を探していたら、写真の下に丸いマークが4つ並んでいた。「©マーク以外にも何か付いてる…これって使っていい？どこまで？」<br><br>
+        著作権は「全部ダメ」が基本。でもクリエイティブコモンズは作者が「<strong>条件付きなら自由に使っていい</strong>」と宣言する仕組み。
+        <div class="scene-q">…4つの記号、それぞれ何を意味するの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-orange">
+    <span class="phead">🔍 CCライセンスの全体構造</span>
+    <svg width="100%" viewBox="0 0 340 170" role="img" aria-label="クリエイティブコモンズライセンスの構造。著作権の上にCCライセンスが4つの条件の組み合わせで成り立つ図">
+      <!-- 著作権ベース -->
+      <rect x="10" y="120" width="320" height="40" rx="10" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="170" y="137" text-anchor="middle" font-size="12" font-weight="900" fill="#2e3a8a" font-family="M PLUS Rounded 1c">© 著作権（Copyright）— 作者が全権利を保持</text>
+      <text x="170" y="153" text-anchor="middle" font-size="10" font-weight="700" fill="#5a6abf" font-family="M PLUS Rounded 1c">「無断使用・無断転載は禁止」がデフォルト</text>
+
+      <!-- CC上矢印 -->
+      <path d="M170 118 L170 95" stroke="#cc5500" stroke-width="2.5" marker-end="url(#arrocc)"/>
+      <defs>
+        <marker id="arrocc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#cc5500"/>
+        </marker>
+      </defs>
+      <text x="185" y="110" font-size="9" font-weight="800" fill="#cc5500" font-family="M PLUS Rounded 1c">上乗せ</text>
+
+      <!-- CCライセンスバナー -->
+      <rect x="10" y="15" width="320" height="75" rx="12" fill="#fce8da" stroke="#cc5500" stroke-width="2.5"/>
+      <text x="170" y="36" text-anchor="middle" font-size="13" font-weight="900" fill="#7a2f00" font-family="M PLUS Rounded 1c">CC ライセンス（4条件の組み合わせ）</text>
+
+      <!-- 4つのアイコン -->
+      <circle cx="55" cy="65" r="16" fill="#2e6de5"/>
+      <text x="55" y="70" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">BY</text>
+
+      <circle cx="115" cy="65" r="16" fill="#cc5500"/>
+      <text x="115" y="70" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">NC</text>
+
+      <circle cx="175" cy="65" r="16" fill="#2e8b4f"/>
+      <text x="175" y="70" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ND</text>
+
+      <circle cx="235" cy="65" r="16" fill="#9b4ec4"/>
+      <text x="235" y="70" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">SA</text>
+
+      <text x="55" y="90" text-anchor="middle" font-size="9.5" font-weight="800" fill="#1f4ba8" font-family="M PLUS Rounded 1c">表示</text>
+      <text x="115" y="90" text-anchor="middle" font-size="9.5" font-weight="800" fill="#7a2f00" font-family="M PLUS Rounded 1c">非営利</text>
+      <text x="175" y="90" text-anchor="middle" font-size="9.5" font-weight="800" fill="#0d5c2a" font-family="M PLUS Rounded 1c">改変禁止</text>
+      <text x="235" y="90" text-anchor="middle" font-size="9.5" font-weight="800" fill="#6b2e98" font-family="M PLUS Rounded 1c">継承</text>
+
+      <text x="295" y="72" text-anchor="middle" font-size="22" font-weight="900" fill="#cc5500" font-family="M PLUS Rounded 1c">∞</text>
+      <text x="295" y="90" text-anchor="middle" font-size="8.5" font-weight="700" fill="#cc5500" font-family="M PLUS Rounded 1c">組み合わせ</text>
+    </svg>
+    <p style="font-size:12px;color:#6a7080;margin-top:8px;font-weight:600;">BYは必須。NC・ND・SAは組み合わせ可能。</p>
+  </div>
+
+  <!-- 4条件の詳細 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔑 4つの条件の意味</span>
+    <div class="cc-grid">
+      <div class="cc-card cc1">
+        <div class="cc-sym">BY</div>
+        <div class="cc-name">Attribution（表示）</div>
+        <div class="cc-desc">作者の名前を必ず明記すること。必須条件。省略不可。</div>
+      </div>
+      <div class="cc-card cc2">
+        <div class="cc-sym">NC</div>
+        <div class="cc-name">NonCommercial（非営利）</div>
+        <div class="cc-desc">商業目的（お金儲け）には使えない。個人・教育目的はOK。</div>
+      </div>
+      <div class="cc-card cc3">
+        <div class="cc-sym">ND</div>
+        <div class="cc-name">NoDerivatives（改変禁止）</div>
+        <div class="cc-desc">編集・翻訳・加工は不可。原形のまま利用すること。</div>
+      </div>
+      <div class="cc-card cc4">
+        <div class="cc-sym">SA</div>
+        <div class="cc-name">ShareAlike（継承）</div>
+        <div class="cc-desc">改変して公開するなら同じCCライセンスで。コピーレフト的な仕組み。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ライセンス例 -->
+  <div class="panel p-green">
+    <span class="phead">📝 よく出るライセンス組み合わせ</span>
+    <ul class="lic-list">
+      <li><strong>CC BY</strong>：表示さえすれば何でもOK（商用・改変・再配布可）</li>
+      <li><strong>CC BY-NC</strong>：表示+非営利のみ。商用利用は不可</li>
+      <li><strong>CC BY-ND</strong>：表示+改変禁止。そのままなら商用もOK</li>
+      <li><strong>CC BY-SA</strong>：表示+継承。改変OKだが同じライセンスで公開が必要</li>
+      <li><strong>CC BY-NC-ND</strong>：表示+非営利+改変禁止。フリー素材でよく見るタイプ</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「著作権を放棄する仕組み」は誤り</div>
+      <div class="tb">CCライセンスは著作権を<strong>保持したまま</strong>条件を示す仕組み。著作権放棄（パブリックドメイン）とは別物。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">BYは必須なのに「省略できる」と出てくる</div>
+      <div class="tb">BY（表示）は全CCライセンスに必ず含まれる。BYなしのCCライセンスは存在しない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">NDとSAは同時使用できない</div>
+      <div class="tb">ND（改変禁止）とSA（改変して同ライセンスで）は矛盾する。組み合わせは不可。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">著作権法との違い</div>
+      <div class="tb">著作権は自動発生・法律で保護。CCライセンスは作者が自分で宣言する任意の条件表示。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">4条件は <span class="hl">「バイ・エヌシー・エヌディー・エスエー」</span><br>
+    → <span class="hl">「バイナリSA（差）！」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">BY＝表示（バイ＝bye＝名乗れ） ／ NC＝非営利（No Cash） ／ ND＝改変禁止（No Destroy） ／ SA＝継承（Share As-is）</span><br><br>
+    <span class="hl">「バイはいつもいる（BY は必須）」</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

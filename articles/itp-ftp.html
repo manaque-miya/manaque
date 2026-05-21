@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FTPとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="FTP（ファイル転送プロトコル）の仕組みをわかりやすく解説。HTTPやSFTPとの違い、ポート番号、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://mana-que.com/itp/itp-ftp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:`M PLUS Rounded 1c`,sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#0e7490,#164e63);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(22,78,99,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#a5f3fc;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#0e7490;--cbg:#e0f9fe;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#0e7490;}
+
+.protocol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px;}
+.proto-cell{border-radius:12px;padding:11px 10px;}
+.proto-cell h4{font-size:13px;font-weight:900;margin-bottom:5px;}
+.proto-cell p{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.proto-ftp{background:#e0f9fe;}.proto-ftp h4{color:#0e7490;}
+.proto-sftp{background:#e2f3e5;}.proto-sftp h4{color:#2e8b4f;}
+.proto-http{background:#e7eefc;}.proto-http h4{color:#2e6de5;}
+.proto-smtp{background:#fcefd9;}.proto-smtp h4{color:#d9851f;}
+@media(max-width:480px){.protocol-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#0e7490;--fbg:#e0f9fe;}
+.f2{--fc:#4256b8;--fbg:#e4e7f7;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+code{background:#f1f3f8;border-radius:5px;padding:1px 7px;font-size:13px;font-family:monospace;color:#0e7490;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🌐 ITパスポート ｜ テクノロジ系（ネットワーク）</span>
+    <h1><b>FTP</b>とは？</h1>
+    <p>File Transfer Protocol の略。インターネット上でファイルを送受信するための通信規約（プロトコル）。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="26" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="55" width="56" height="24" rx="8" fill="#cdd9ec"/>
+        <rect x="12" y="36" width="48" height="26" rx="8" fill="#0e7490"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 16 a12 11 0 0 1 24 0 q-5 -8 -12 -8 q-7 0 -12 8z" fill="#3a3f4a"/>
+        <rect x="27" y="31" width="18" height="9" fill="#f4c89a"/>
+        <path d="M27 40 l9 5 l9 -5 v5 h-18z" fill="#a5f3fc"/>
+        <!-- ファイル転送の矢印 -->
+        <rect x="38" y="57" width="20" height="14" rx="3" fill="#164e63"/>
+        <rect x="14" y="57" width="20" height="14" rx="3" fill="#0e7490" opacity=".7"/>
+        <path d="M28 64 l8 0" stroke="#ffd23f" stroke-width="2" marker-end="url(#arrowY)"/>
+        <defs>
+          <marker id="arrowY" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+            <path d="M0,0 L0,5 L5,2.5 z" fill="#ffd23f"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="scene-txt">
+        Webサイトのデータをサーバーにアップロードしたい。FTPクライアントを開き、サーバーのアドレス・ID・パスワードを入力。<br>
+        ファイルをドラッグ＆ドロップで転送完了。
+        <div class="scene-q">これがFTP。PCとサーバー間でファイルをやり取りする"宅配便ルール"。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 仕組みSVG図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">📡 FTPの仕組み（クライアント−サーバー）</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="FTPの仕組み：クライアントとサーバーの間でコントロール接続とデータ転送の2チャンネルで通信する図">
+      <!-- クライアント側 -->
+      <rect x="10" y="40" width="100" height="80" rx="12" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="60" y="75" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">💻 クライアント</text>
+      <text x="60" y="95" text-anchor="middle" font-size="10.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">FTPソフト</text>
+      <text x="60" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">（手元のPC）</text>
+      <!-- サーバー側 -->
+      <rect x="230" y="40" width="100" height="80" rx="12" fill="#e0f9fe" stroke="#0e7490" stroke-width="2"/>
+      <text x="280" y="75" text-anchor="middle" font-size="12" font-weight="900" fill="#0e7490" font-family="M PLUS Rounded 1c">🖥️ サーバー</text>
+      <text x="280" y="95" text-anchor="middle" font-size="10.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">FTPサーバー</text>
+      <text x="280" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">（ホスト側）</text>
+      <!-- 上の矢印：コントロール（制御） -->
+      <line x1="110" y1="68" x2="230" y2="68" stroke="#4256b8" stroke-width="2"/>
+      <polygon points="228,64 236,68 228,72" fill="#4256b8"/>
+      <text x="170" y="62" text-anchor="middle" font-size="10" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">コントロール接続</text>
+      <text x="170" y="78" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">ポート21（命令のやり取り）</text>
+      <!-- 下の矢印：データ転送 -->
+      <line x1="230" y1="105" x2="110" y2="105" stroke="#0e7490" stroke-width="2" stroke-dasharray="5 3"/>
+      <polygon points="112,101 104,105 112,109" fill="#0e7490"/>
+      <text x="170" y="98" text-anchor="middle" font-size="10" font-weight="800" fill="#0e7490" font-family="M PLUS Rounded 1c">データ転送</text>
+      <text x="170" y="118" text-anchor="middle" font-size="9.5" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">ポート20（ファイルの本体）</text>
+    </svg>
+    <p style="margin-top:10px;">FTPはコントロール用（ポート<strong>21</strong>）とデータ転送用（ポート<strong>20</strong>）の2チャンネルを使う。ただし通信が<strong>暗号化されない</strong>のが弱点。</p>
+  </div>
+
+  <!-- 関連プロトコルとの比較 -->
+  <div class="panel p-green">
+    <span class="phead">🔍 関連プロトコルとの違い</span>
+    <div class="protocol-grid">
+      <div class="proto-cell proto-ftp">
+        <h4>FTP（ポート20/21）</h4>
+        <p>ファイル転送専用。暗号化なし。古くからある標準プロトコル。</p>
+      </div>
+      <div class="proto-cell proto-sftp">
+        <h4>SFTP（ポート22）</h4>
+        <p>FTPをSSHで暗号化した安全版。今はこちらが主流。</p>
+      </div>
+      <div class="proto-cell proto-http">
+        <h4>HTTP/HTTPS（ポート80/443）</h4>
+        <p>Webページを表示するためのプロトコル。ファイル転送が主目的ではない。</p>
+      </div>
+      <div class="proto-cell proto-smtp">
+        <h4>SMTP（ポート25）</h4>
+        <p>メールを送信するためのプロトコル。ファイル転送ではなくメール専用。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 使われ方のフロー -->
+  <div class="panel p-orange">
+    <span class="phead">🔄 FTPが使われる典型的な流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① Webサイトのファイルをローカルで編集</div><div class="fb">HTML・CSS・画像などをPC上で作成・修正する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② FTPクライアントでサーバーに接続</div><div class="fb">サーバーのIPアドレス・ユーザー名・パスワードを使って認証する（ポート21）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ ファイルをアップロード／ダウンロード</div><div class="fb">データ転送チャンネル（ポート20）でファイルを送受信する。Webサイトに反映される。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">HTTPと混同しやすい</div>
+      <div class="tb">HTTPはブラウザで<strong>Webページを表示</strong>するためのプロトコル。FTPは<strong>ファイルを転送</strong>するためのプロトコル。用途が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">SMTPと混同しやすい</div>
+      <div class="tb">SMTPはメールの<strong>送信</strong>プロトコル。ファイルの転送ではない。「メールにファイルを添付する」のはSMTP＋MIMEであってFTPではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">FTPは暗号化されない</div>
+      <div class="tb">FTPは通信内容が<strong>平文</strong>（暗号化なし）。パスワードも盗聴される恐れがある。安全なファイル転送には<strong>SFTP</strong>（SSH＋FTP）を使う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ポート番号の問い方</div>
+      <div class="tb">FTPのポートは<strong>21</strong>（コントロール）と<strong>20</strong>（データ）の2つ。「FTPのポート番号は？」と聞かれたら<strong>21</strong>が正解になることが多い。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「ファイルを（F）テケテケ（T）運ぶ（P）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">File Transfer Protocol ＝ ファイルをテケテケ運ぶ規約</span><br><br>
+      ポート番号の覚え方：<span class="hl">「FTPは（２）一（１）個上からコントロール」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">20（データ）、21（制御）。21が玄関口＝制御用</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-ftp</div>
+
+</div>
+</body>
+</html>

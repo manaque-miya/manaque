@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>インフルエンサーとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="インフルエンサーをわかりやすく解説。SNSでの影響力の仕組み、インフルエンサーマーケティングの特徴、口コミ・アンバサダーとの違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-influencer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#cf4f86,#7a1045);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,16,69,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fbd8ea;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#cf4f86;}
+
+.inf-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px;}
+@media(max-width:400px){.inf-type-grid{grid-template-columns:1fr;}}
+.inf-card{border-radius:12px;padding:12px;}
+.inf-card .ihead{font-size:13px;font-weight:900;margin-bottom:5px;}
+.inf-card .ibody{font-size:11.5px;font-weight:600;line-height:1.75;color:#48506a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#cf4f86;--fbg:#fbe3ee;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.kimo-list{list-style:none;}
+.kimo-list li{font-size:13px;line-height:1.85;color:#3c4456;font-weight:600;padding-left:20px;position:relative;margin-bottom:5px;}
+.kimo-list li::before{content:"✓";position:absolute;left:0;color:#d9851f;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>インフルエンサー</b>とは？</h1>
+    <p>SNSで多くのフォロワーに影響を与える人物。企業が広告塔として起用するマーケティング手法の核心。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- スマホ -->
+        <rect x="22" y="42" width="34" height="42" rx="5" fill="#2b3245"/>
+        <rect x="24" y="46" width="30" height="34" rx="2" fill="#fbd8ea"/>
+        <!-- ハートとフォロワー -->
+        <text x="39" y="66" text-anchor="middle" font-size="14" font-family="sans-serif">❤️</text>
+        <text x="39" y="80" text-anchor="middle" font-size="9" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">10万いいね</text>
+        <!-- 人物 -->
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="8" fill="#f4c89a"/>
+        <!-- 放射線（影響力） -->
+        <line x1="12" y1="40" x2="20" y2="47" stroke="#ffd23f" stroke-width="2"/>
+        <line x1="8" y1="54" x2="18" y2="55" stroke="#ffd23f" stroke-width="2"/>
+        <line x1="66" y1="40" x2="58" y2="47" stroke="#ffd23f" stroke-width="2"/>
+        <line x1="70" y1="54" x2="60" y2="55" stroke="#ffd23f" stroke-width="2"/>
+      </svg>
+      <div class="scene-txt">
+        フォロワー50万人のYouTuberが「このスキンケア最高！」と動画を投稿した翌日、ECサイトの在庫が即完売。テレビCMに何千万円も使うより、<strong>1本の動画の方が購買効果が高い</strong>。
+        <div class="scene-q">…これがインフルエンサーマーケティングの力！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：インフルエンサーの影響力の構造 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 インフルエンサーの影響力の構造</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="インフルエンサーマーケティングの流れ：企業→インフルエンサー→フォロワー→購買">
+      <!-- 企業 -->
+      <rect x="10" y="80" width="60" height="44" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="40" y="99" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">企業</text>
+      <text x="40" y="114" text-anchor="middle" font-size="9" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">PR依頼</text>
+      <!-- 矢印1 -->
+      <path d="M72 102 L100 102" stroke="#cf4f86" stroke-width="2.5" marker-end="url(#pink-arr)"/>
+      <text x="86" y="96" text-anchor="middle" font-size="9" font-weight="700" fill="#cf4f86" font-family="M PLUS Rounded 1c">報酬</text>
+      <defs>
+        <marker id="pink-arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#cf4f86"/>
+        </marker>
+      </defs>
+      <!-- インフルエンサー -->
+      <circle cx="140" cy="102" r="36" fill="#fbe3ee" stroke="#cf4f86" stroke-width="2.5"/>
+      <text x="140" y="97" text-anchor="middle" font-size="18" font-family="sans-serif">👤</text>
+      <text x="140" y="113" text-anchor="middle" font-size="10" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">インフル</text>
+      <text x="140" y="125" text-anchor="middle" font-size="10" font-weight="900" fill="#cf4f86" font-family="M PLUS Rounded 1c">エンサー</text>
+      <!-- 放射状矢印：フォロワーへ -->
+      <line x1="176" y1="80" x2="220" y2="46" stroke="#cf4f86" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="178" y1="102" x2="228" y2="102" stroke="#cf4f86" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="176" y1="124" x2="220" y2="156" stroke="#cf4f86" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <!-- フォロワー群 -->
+      <circle cx="236" cy="36" r="22" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="236" y="32" text-anchor="middle" font-size="14" font-family="sans-serif">👥</text>
+      <text x="236" y="49" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">フォロワー</text>
+      <circle cx="240" cy="102" r="22" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="240" y="98" text-anchor="middle" font-size="14" font-family="sans-serif">👥</text>
+      <text x="240" y="115" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">フォロワー</text>
+      <circle cx="236" cy="166" r="22" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="236" y="162" text-anchor="middle" font-size="14" font-family="sans-serif">👥</text>
+      <text x="236" y="179" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">フォロワー</text>
+      <!-- 購買→ -->
+      <path d="M266 102 L300 102" stroke="#d9851f" stroke-width="2.5" marker-end="url(#org-arr)"/>
+      <defs>
+        <marker id="org-arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#d9851f"/>
+        </marker>
+      </defs>
+      <text x="316" y="97" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">購買</text>
+      <text x="316" y="112" text-anchor="middle" font-size="10" font-weight="700" fill="#a05800" font-family="M PLUS Rounded 1c">行動化</text>
+    </svg>
+  </div>
+
+  <!-- インフルエンサーの種類 -->
+  <div class="panel p-pink">
+    <span class="phead">📋 インフルエンサーの種類</span>
+    <div class="inf-type-grid">
+      <div class="inf-card" style="background:#fbe3ee;border:2px solid #cf4f86;">
+        <div class="ihead" style="color:#cf4f86;">メガインフルエンサー</div>
+        <div class="ibody">フォロワー100万人以上。テレビタレント・有名YouTuberなど。リーチは広いが親近感は薄い。広告費が高額。</div>
+      </div>
+      <div class="inf-card" style="background:#e7eefc;border:2px solid #2e6de5;">
+        <div class="ihead" style="color:#2e6de5;">マクロインフルエンサー</div>
+        <div class="ibody">フォロワー10〜100万人。一定の専門性があり、業界では知名度が高い。</div>
+      </div>
+      <div class="inf-card" style="background:#e2f3e5;border:2px solid #2e8b4f;">
+        <div class="ihead" style="color:#2e8b4f;">マイクロインフルエンサー</div>
+        <div class="ibody">フォロワー1〜10万人。特定ジャンルで濃いファンを持つ。エンゲージメント率が高く費用対効果が良い。</div>
+      </div>
+      <div class="inf-card" style="background:#fcefd9;border:2px solid #d9851f;">
+        <div class="ihead" style="color:#d9851f;">ナノインフルエンサー</div>
+        <div class="ibody">フォロワー1万人以下。一般人に近い。口コミの信頼性が高く、ニッチ市場で効果的。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- インフルエンサーマーケティングのフロー -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ インフルエンサーマーケティングの流れ</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① インフルエンサー選定</div><div class="fb">商品・サービスのターゲット層と一致するフォロワーを持つ人を選ぶ。フォロワー数よりエンゲージメント率（反応率）が重要。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② PR投稿・コンテンツ制作</div><div class="fb">インフルエンサーが自分のスタイルで商品を紹介。「広告感」が薄く、フォロワーに自然な形で届く（ステマに注意：広告表示義務あり）。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 口コミ拡散・購買行動</div><div class="fb">フォロワーが共感・シェア。SNSで二次拡散が起きる。ECサイトへ誘導し購買につなげる。</div></div>
+    </div>
+  </div>
+
+  <!-- 試験のキモ -->
+  <div class="panel p-orange">
+    <span class="phead">⭐ 試験のキモ</span>
+    <ul class="kimo-list">
+      <li>インフルエンサーは<strong>「SNSで多数のフォロワーに影響力を持つ人」</strong>。フォロワー数と影響力が核心。</li>
+      <li>インフルエンサーマーケティング＝<strong>口コミ効果をマーケティングに活用</strong>。従来の広告より信頼性が高い。</li>
+      <li>ステルスマーケティング（ステマ）＝広告であることを隠す行為。日本では景品表示法で規制。</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「フォロワーが多い＝高いマーケティング効果」は誤り</div>
+      <div class="tb">フォロワー数より<strong>エンゲージメント率（いいね・コメント・シェアの割合）</strong>が重要。フォロワーが多くても反応が少ないインフルエンサーは効果が低い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">アンバサダーとの混同</div>
+      <div class="tb">アンバサダーは「ブランドの公式代表者・長期契約」。インフルエンサーは「SNSの影響力を活用した短期的な宣伝者」のニュアンスが強い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ステルスマーケティング（ステマ）に注意</div>
+      <div class="tb">インフルエンサーが報酬をもらいながら広告表示をしない投稿はステマ。日本では2023年から景品表示法でステマが規制対象に。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">インフル（感染）エンサー（伝える）</span>！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">インフルエンサー＝インフルエンザのように口コミを「感染拡大」させる人</span><br><br>
+      「<span class="hl">フォロワー数より反応率</span>」がマーケの決め手<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">エンゲージメント率（いいね・コメント・シェア ÷ フォロワー数）が高い人を選ぶ</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

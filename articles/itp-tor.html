@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Torとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="Tor（トーア）を図解でわかりやすく解説。玉ねぎルーティングで匿名通信を実現するしくみ、VPNとの違い、ダークウェブとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-tor">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#3a2a6e,#1a1040);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(26,16,64,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c0aef7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#3a2a6e;--cbg:#e8e3f5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-blue{--c:#1e7fd4;--cbg:#e3f0fb;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#3a2a6e;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+.compare-cell{border-radius:12px;padding:12px 10px;}
+.compare-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.compare-cell ul{list-style:none;}
+.compare-cell li{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.compare-cell li::before{content:"・";position:absolute;left:0;}
+.cell-tor{background:#e8e3f5;}.cell-tor h4{color:#3a2a6e;}
+.cell-vpn{background:#e3f0fb;}.cell-vpn h4{color:#1e7fd4;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・セキュリティ</span>
+    <h1><b>Tor</b>（トーア）とは？</h1>
+    <p>通信を何重もの暗号で包み、複数の中継ノードを経由して送信者を隠す匿名通信ネットワーク。玉ねぎルーティングが語源。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true" style="flex-shrink:0">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- 玉ねぎ風の重ね円 -->
+        <circle cx="36" cy="50" r="26" fill="none" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <circle cx="36" cy="50" r="19" fill="none" stroke="#7a6ab0" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <circle cx="36" cy="50" r="12" fill="none" stroke="#4a3a8a" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <circle cx="36" cy="50" r="6" fill="#3a2a6e"/>
+        <text x="36" y="54" text-anchor="middle" font-size="6" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">私</text>
+        <circle cx="36" cy="16" r="12" fill="#f4c89a"/>
+        <path d="M25 13 a11 10 0 0 1 22 0 q-4 -8 -11 -8 q-7 0 -11 8z" fill="#3a3f4a"/>
+      </svg>
+      <div class="scene-txt">
+        政府の検閲が厳しい国で、ジャーナリストが情報を発信したい。<br>
+        でも通信を追跡されると逮捕される。どうすれば安全に発信できる？
+        <div class="scene-q">…そのために開発されたのが「Tor」！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🧅 玉ねぎルーティングのしくみ</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="Torの玉ねぎルーティング：送信者の通信が3つのノードを経由して目的地に届き、各ノードは前後の経路しか知らない">
+      <!-- 送信者 -->
+      <circle cx="30" cy="105" r="24" fill="#e8e3f5" stroke="#3a2a6e" stroke-width="2"/>
+      <text x="30" y="101" text-anchor="middle" font-size="9" font-weight="900" fill="#3a2a6e" font-family="M PLUS Rounded 1c">送信者</text>
+      <text x="30" y="114" text-anchor="middle" font-size="8" font-weight="700" fill="#5a4a9a" font-family="M PLUS Rounded 1c">3層暗号化</text>
+      <!-- ノード1 -->
+      <circle cx="110" cy="60" r="22" fill="#dde3f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="110" y="56" text-anchor="middle" font-size="9" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">ノード1</text>
+      <text x="110" y="69" text-anchor="middle" font-size="7.5" font-weight="700" fill="#3a4a8a" font-family="M PLUS Rounded 1c">1層目を復号</text>
+      <!-- ノード2 -->
+      <circle cx="200" cy="105" r="22" fill="#dde3f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="200" y="101" text-anchor="middle" font-size="9" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">ノード2</text>
+      <text x="200" y="114" text-anchor="middle" font-size="7.5" font-weight="700" fill="#3a4a8a" font-family="M PLUS Rounded 1c">2層目を復号</text>
+      <!-- ノード3（出口） -->
+      <circle cx="290" cy="60" r="22" fill="#dde3f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="290" y="56" text-anchor="middle" font-size="9" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">出口ノード</text>
+      <text x="290" y="69" text-anchor="middle" font-size="7.5" font-weight="700" fill="#3a4a8a" font-family="M PLUS Rounded 1c">3層目を復号</text>
+      <!-- 目的地 -->
+      <rect x="268" y="140" width="64" height="36" rx="8" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="300" y="158" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">目的地</text>
+      <text x="300" y="170" text-anchor="middle" font-size="8" font-weight="700" fill="#3a7a5a" font-family="M PLUS Rounded 1c">Webサーバー</text>
+      <!-- 矢印 -->
+      <path d="M52 92 L88 72" stroke="#3a2a6e" stroke-width="1.5" marker-end="url(#tor1)"/>
+      <path d="M130 68 L178 98" stroke="#4256b8" stroke-width="1.5" marker-end="url(#tor2)"/>
+      <path d="M222 92 L270 68" stroke="#4256b8" stroke-width="1.5" marker-end="url(#tor3)"/>
+      <path d="M290 82 L300 140" stroke="#2e8b4f" stroke-width="1.5" marker-end="url(#tor4)"/>
+      <!-- 注釈 -->
+      <text x="170" y="148" text-anchor="middle" font-size="8" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">各ノードは「前」と「次」しか知らない</text>
+      <text x="170" y="162" text-anchor="middle" font-size="8" font-weight="700" fill="#7a3c2a" font-family="M PLUS Rounded 1c">→ 経路全体を誰も把握できない</text>
+      <defs>
+        <marker id="tor1" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0, 7 2.5, 0 5" fill="#3a2a6e"/></marker>
+        <marker id="tor2" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0, 7 2.5, 0 5" fill="#4256b8"/></marker>
+        <marker id="tor3" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0, 7 2.5, 0 5" fill="#4256b8"/></marker>
+        <marker id="tor4" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0, 7 2.5, 0 5" fill="#2e8b4f"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-blue">
+    <span class="phead">📋 Tor vs VPN：何が違う？</span>
+    <div class="compare-grid">
+      <div class="compare-cell cell-tor">
+        <h4>Tor</h4>
+        <ul>
+          <li>複数のノードを経由</li>
+          <li>各ノードは部分的な経路のみ知る</li>
+          <li>管理者が存在しない（分散型）</li>
+          <li>通信速度が遅くなる</li>
+          <li>完全匿名に近い（完全ではない）</li>
+        </ul>
+      </div>
+      <div class="compare-cell cell-vpn">
+        <h4>VPN</h4>
+        <ul>
+          <li>VPNサーバー1台を経由</li>
+          <li>VPN事業者は通信先を把握できる</li>
+          <li>事業者が管理・運用</li>
+          <li>速度は比較的速い</li>
+          <li>事業者を信頼する必要あり</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#48506a;font-weight:700;margin-top:10px;">Torは「誰も全経路を知らない」が強み。VPNは「事業者が知っている」という前提がある。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「Tor＝違法」ではない</div>
+      <div class="tb">Torはプライバシー保護・検閲回避のための正当な技術。ジャーナリスト・内部告発者も使う。ただしダークウェブへのアクセスに悪用されることもあり「危険なイメージ」がある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「Onion Routing（玉ねぎルーティング）」がTorの技術名</div>
+      <div class="tb">Tor = "The Onion Router"の略。暗号の層が玉ねぎの皮のように重なっているから「玉ねぎ」。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「出口ノードでは通信内容が見える」場合がある</div>
+      <div class="tb">最後の出口ノードで暗号が復号される。HTTPSを使わないサイトへのアクセスでは、出口ノード運用者に内容が見える可能性がある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「匿名通信・玉ねぎルーティング・複数ノードを経由・送信者を隠す」→ Tor。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">Tor＝玉ねぎ（The Onion Router）</span><br><br>
+      <span class="hl">「タマネギ（Tor）は何枚むいても中が見えない」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">皮をむいても（ノードを通っても）次の層しかわからない</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">→ 誰も経路全体を知れない ＝ 匿名通信！</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

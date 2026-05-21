@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ショルダーハッキングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ショルダーハッキング（ショルダーサーフィン）を分かりやすく解説。のぞき見による情報漏洩の手口・対策、フィッシング・スキミングとの違い、ITパスポート試験のポイントまで。">
+<link rel="canonical" href="https://example.com/itp-shoulder-hacking">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7b1fa2,#4a148c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(74,20,140,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#e1bee7;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7b1fa2;--cbg:#f3e5f5;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7b1fa2;}
+
+.countermeasure-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.cm-cell{border-radius:11px;padding:10px 12px;}
+.cm-cell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.cm-cell p{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+.cm-g{background:#e2f3e5;}.cm-g h4{color:#2e8b4f;}
+@media(max-width:440px){.countermeasure-grid{grid-template-columns:1fr;}}
+
+.threat-compare{margin-top:6px;}
+.tc-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;margin-bottom:6px;}
+.tc-row:nth-child(odd){background:#f2f4fb;}
+.tc-row:nth-child(even){background:#f7f8fd;}
+.tc-label{min-width:120px;font-size:12.5px;font-weight:900;color:#4256b8;}
+.tc-desc{font-size:12px;font-weight:600;color:#48506a;line-height:1.65;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系（セキュリティ）</span>
+    <h1><b>ショルダーハッキング</b>とは？</h1>
+    <p>「肩越しにのぞく」情報漏洩の手口。スマホや端末の画面・入力を物理的に盗み見るソーシャルエンジニアリングの一種。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- ターゲット人物 -->
+        <rect x="8" y="58" width="30" height="26" rx="5" fill="#b0bec5"/>
+        <rect x="10" y="42" width="26" height="22" rx="7" fill="#7b1fa2"/>
+        <circle cx="23" cy="28" r="11" fill="#f4c89a"/>
+        <path d="M13 25 a10 9 0 0 1 20 0 q-4 -7 -10 -7 q-6 0 -10 7z" fill="#3a3f4a"/>
+        <!-- スマホ画面 -->
+        <rect x="10" y="54" width="16" height="25" rx="2" fill="#2b3245"/>
+        <rect x="12" y="57" width="12" height="19" rx="1" fill="#acd0f5"/>
+        <rect x="13" y="60" width="8" height="2" rx="1" fill="#fff"/>
+        <rect x="13" y="64" width="5" height="2" rx="1" fill="#ffb74d"/>
+        <!-- のぞく人物 -->
+        <rect x="46" y="60" width="24" height="24" rx="5" fill="#b0bec5"/>
+        <rect x="48" y="44" width="20" height="20" rx="6" fill="#4a148c"/>
+        <circle cx="58" cy="32" r="10" fill="#f4c89a"/>
+        <path d="M49 30 a9 8 0 0 1 18 0 q-3 -6 -9 -6 q-6 0 -9 6z" fill="#3a3f4a"/>
+        <!-- 目線矢印 -->
+        <path d="M50 46 Q38 52 24 62" stroke="#ffd23f" stroke-width="2.5" stroke-dasharray="4 3" fill="none" marker-end="url(#arr)"/>
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#ffd23f"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="scene-txt">
+        電車の中でスマホで仕事のメール確認。後ろに座っている人がじーっと画面を見ている。パスワード入力中も横に人が…。
+        <div class="scene-q">→ 画面や入力を物理的に盗み見る = ショルダーハッキング！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：のぞき見の種類 -->
+  <div class="panel p-blue">
+    <span class="phead">👁️ ショルダーハッキングの手口（図解）</span>
+    <svg width="100%" viewBox="0 0 340 170" role="img" aria-label="ショルダーハッキングの3つの手口：直接のぞき見・カメラ・双眼鏡">
+      <!-- 背景 -->
+      <rect x="0" y="0" width="340" height="170" rx="14" fill="#f3e5f5"/>
+
+      <!-- 手口1 -->
+      <rect x="10" y="15" width="96" height="140" rx="10" fill="#fff" stroke="#7b1fa2" stroke-width="1.5"/>
+      <text x="58" y="40" text-anchor="middle" font-size="11" font-weight="900" fill="#7b1fa2" font-family="M PLUS Rounded 1c">① 直接のぞき見</text>
+      <text x="58" y="58" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">電車・カフェ・</text>
+      <text x="58" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">会議室の隣席</text>
+      <text x="58" y="95" text-anchor="middle" font-size="28" font-family="sans-serif">👀</text>
+      <text x="58" y="140" text-anchor="middle" font-size="10" font-weight="800" fill="#c62828" font-family="M PLUS Rounded 1c">最も多い手口</text>
+
+      <!-- 手口2 -->
+      <rect x="122" y="15" width="96" height="140" rx="10" fill="#fff" stroke="#7b1fa2" stroke-width="1.5"/>
+      <text x="170" y="40" text-anchor="middle" font-size="11" font-weight="900" fill="#7b1fa2" font-family="M PLUS Rounded 1c">② カメラ撮影</text>
+      <text x="170" y="58" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">隠し撮り・</text>
+      <text x="170" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">スマホカメラ</text>
+      <text x="170" y="95" text-anchor="middle" font-size="28" font-family="sans-serif">📷</text>
+      <text x="170" y="140" text-anchor="middle" font-size="10" font-weight="800" fill="#c62828" font-family="M PLUS Rounded 1c">証拠も残る</text>
+
+      <!-- 手口3 -->
+      <rect x="234" y="15" width="96" height="140" rx="10" fill="#fff" stroke="#7b1fa2" stroke-width="1.5"/>
+      <text x="282" y="40" text-anchor="middle" font-size="11" font-weight="900" fill="#7b1fa2" font-family="M PLUS Rounded 1c">③ 遠距離観察</text>
+      <text x="282" y="58" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">双眼鏡・望遠</text>
+      <text x="282" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">カメラ越しに</text>
+      <text x="282" y="95" text-anchor="middle" font-size="28" font-family="sans-serif">🔭</text>
+      <text x="282" y="140" text-anchor="middle" font-size="10" font-weight="800" fill="#c62828" font-family="M PLUS Rounded 1c">気づかれにくい</text>
+    </svg>
+    <p>共通点：<strong>ソフトウェアやネットワークを使わない</strong>、純粋に「物理的・視覚的」な攻撃。これが他のサイバー攻撃との最大の違い。</p>
+  </div>
+
+  <!-- 対策 -->
+  <div class="panel p-green">
+    <span class="phead">🛡️ 主な対策</span>
+    <div class="countermeasure-grid">
+      <div class="cm-cell cm-g"><h4>プライバシーフィルター</h4><p>画面に貼るフィルムで、斜めから見えなくする。正面以外は暗く見える。</p></div>
+      <div class="cm-cell cm-g"><h4>のぞかれない環境</h4><p>電車・カフェでの機密作業を避ける。背後に壁がある席を選ぶ。</p></div>
+      <div class="cm-cell cm-g"><h4>画面を手で隠す</h4><p>ATMや端末でPIN・パスワード入力時に手でキーパッドを隠す。</p></div>
+      <div class="cm-cell cm-g"><h4>セキュリティ教育</h4><p>「のぞかれるリスク」を全員が意識する組織ルールの整備。</p></div>
+    </div>
+  </div>
+
+  <!-- 類似攻撃との比較 -->
+  <div class="panel p-orange">
+    <span class="phead">🔍 類似攻撃との違い</span>
+    <div class="threat-compare">
+      <div class="tc-row"><span class="tc-label">ショルダーハッキング</span><span class="tc-desc">物理的に画面・入力を<strong>目で盗み見る</strong>。ネット・ソフト不使用。</span></div>
+      <div class="tc-row"><span class="tc-label">フィッシング</span><span class="tc-desc">偽サイト・偽メールでパスワードを<strong>入力させて盗む</strong>。ネット利用。</span></div>
+      <div class="tc-row"><span class="tc-label">スキミング</span><span class="tc-desc">カードリーダーに装置を付け<strong>磁気データを読み取る</strong>機械的盗難。</span></div>
+      <div class="tc-row"><span class="tc-label">ソーシャルエンジニアリング</span><span class="tc-desc">人の心理・行動を利用した攻撃の<strong>総称</strong>。ショルダーハッキングはその一種。</span></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ハッキング」という名前に惑わされる</div>
+      <div class="tb">「ハッキング」という語感でシステム侵入を連想するが、ショルダーハッキングは<strong>物理的な盗み見</strong>。PCやネットは関係ない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「ソーシャルエンジニアリング」の一種</div>
+      <div class="tb">試験では「ソーシャルエンジニアリングに該当するものを選べ」という形式でショルダーハッキングが正解になることがある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>のぞき見・盗み見・目で見る</strong>」というキーワードが出たら → <strong>ショルダーハッキング</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">ショルダー</span> ＝ <span class="hl">肩（かた）越し</span> に見る！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Shoulder（肩）からそのまま「肩越しにのぞく」と覚える</span><br><br>
+    <span class="hl">「ショルダーは目でやる・スキミングは機械でやる」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">目 ↔ 機械 で区別する</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-shoulder-hacking</div>
+
+</div>
+</body>
+</html>

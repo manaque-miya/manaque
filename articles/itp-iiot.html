@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IIoT（産業用IoT）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="IIoT（Industrial Internet of Things・産業用IoT）をわかりやすく解説。消費者向けIoTとの違い、工場・インフラでの活用例、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-iiot">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#4a7c2f,#2a4a18);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(42,74,24,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#cfe8bb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#4a7c2f;--cbg:#e2f0d8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#4a7c2f;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.compare-cell{border-radius:12px;padding:12px;}
+.compare-cell h4{font-size:12.5px;font-weight:900;margin-bottom:6px;}
+.compare-cell ul{list-style:none;}
+.compare-cell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.compare-cell li::before{content:"・";position:absolute;left:0;}
+.cc-iot{background:#e7eefc;}.cc-iot h4{color:#2e6de5;}
+.cc-iiot{background:#e2f0d8;}.cc-iiot h4{color:#4a7c2f;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#4a7c2f;--fbg:#eef6e6;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・IoT</span>
+    <h1><b>IIoT</b>（産業用IoT）とは？</h1>
+    <p>工場・インフラ・物流など「産業現場」の機器をネットにつなぎ、データを活用して効率化・安全化するIoTの活用形態。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="27" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="30" rx="9" fill="#4a7c2f"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- gear icon -->
+        <circle cx="36" cy="52" r="5" fill="none" stroke="#fff" stroke-width="2"/>
+        <circle cx="36" cy="52" r="2" fill="#fff"/>
+        <line x1="36" y1="44" x2="36" y2="47" stroke="#fff" stroke-width="2"/>
+        <line x1="36" y1="57" x2="36" y2="60" stroke="#fff" stroke-width="2"/>
+        <line x1="28" y1="52" x2="31" y2="52" stroke="#fff" stroke-width="2"/>
+        <line x1="41" y1="52" x2="44" y2="52" stroke="#fff" stroke-width="2"/>
+      </svg>
+      <div class="scene-txt">
+        大手製造業に就職したあなた。工場では大型の機械が24時間稼働している。<br><br>
+        現場のDX担当が説明した。「うちの工場では<strong>IIoT</strong>を導入して、機械のセンサーデータをリアルタイムで集め、故障の予兆を検知しています。スマートウォッチのIoTとは規模も要求水準も全然違いますよ」。
+        <div class="scene-q">…IoTとIIoTって、何が違うの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-green">
+    <span class="phead">🏭 IIoTの仕組み（工場の例）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="工場でのIIoTの仕組み図">
+      <!-- Factory floor -->
+      <rect x="10" y="100" width="320" height="70" rx="8" fill="#f5f7f0" stroke="#4a7c2f" stroke-width="1.5"/>
+      <text x="170" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#4a7c2f" font-family="M PLUS Rounded 1c">工場・現場</text>
+
+      <!-- Machine 1 -->
+      <rect x="22" y="125" width="56" height="36" rx="5" fill="#cfe8bb" stroke="#4a7c2f" stroke-width="1.5"/>
+      <text x="50" y="140" text-anchor="middle" font-size="10" font-weight="900" fill="#2a4a18" font-family="M PLUS Rounded 1c">機械A</text>
+      <circle cx="36" cy="153" r="5" fill="#4a7c2f"/>
+      <circle cx="50" cy="153" r="5" fill="#4a7c2f"/>
+      <circle cx="64" cy="153" r="5" fill="#4a7c2f"/>
+      <text x="50" y="168" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">センサー</text>
+
+      <!-- Machine 2 -->
+      <rect x="96" y="125" width="56" height="36" rx="5" fill="#cfe8bb" stroke="#4a7c2f" stroke-width="1.5"/>
+      <text x="124" y="140" text-anchor="middle" font-size="10" font-weight="900" fill="#2a4a18" font-family="M PLUS Rounded 1c">機械B</text>
+      <circle cx="110" cy="153" r="5" fill="#4a7c2f"/>
+      <circle cx="124" cy="153" r="5" fill="#4a7c2f"/>
+      <circle cx="138" cy="153" r="5" fill="#4a7c2f"/>
+      <text x="124" y="168" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">センサー</text>
+
+      <!-- Machine 3 -->
+      <rect x="170" y="125" width="56" height="36" rx="5" fill="#cfe8bb" stroke="#4a7c2f" stroke-width="1.5"/>
+      <text x="198" y="140" text-anchor="middle" font-size="10" font-weight="900" fill="#2a4a18" font-family="M PLUS Rounded 1c">機械C</text>
+      <circle cx="184" cy="153" r="5" fill="#4a7c2f"/>
+      <circle cx="198" cy="153" r="5" fill="#4a7c2f"/>
+      <circle cx="212" cy="153" r="5" fill="#4a7c2f"/>
+      <text x="198" y="168" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">センサー</text>
+
+      <!-- arrows up -->
+      <line x1="50" y1="100" x2="50" y2="70" stroke="#4a7c2f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="124" y1="100" x2="124" y2="70" stroke="#4a7c2f" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="198" y1="100" x2="198" y2="70" stroke="#4a7c2f" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- Cloud/Analysis -->
+      <rect x="60" y="30" width="220" height="42" rx="12" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="170" y="49" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">クラウド / AIによるデータ分析</text>
+      <text x="170" y="65" text-anchor="middle" font-size="10" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">故障予兆検知・品質管理・稼働最適化</text>
+
+      <!-- Top label -->
+      <text x="170" y="16" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">リアルタイムで収集・分析・自動制御</text>
+    </svg>
+  </div>
+
+  <!-- IoT vs IIoT比較 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔍 IoT vs IIoT の違い</span>
+    <div class="compare-grid">
+      <div class="compare-cell cc-iot">
+        <h4>IoT（一般消費者向け）</h4>
+        <ul>
+          <li>スマートウォッチ</li>
+          <li>スマートホーム機器</li>
+          <li>少し止まっても問題なし</li>
+          <li>精度より便利さ優先</li>
+        </ul>
+      </div>
+      <div class="compare-cell cc-iiot">
+        <h4>IIoT（産業・工業向け）</h4>
+        <ul>
+          <li>工場の機械・ロボット</li>
+          <li>電力・水道・鉄道インフラ</li>
+          <li>止まると大損害・人命に関わる</li>
+          <li>超高信頼性・リアルタイム必須</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;color:#48506a;font-weight:700;">「I（Industrial＝産業）」が頭についているだけの違いではなく、<strong>信頼性・安全性の要求水準が桁違い</strong>。</p>
+  </div>
+
+  <!-- 活用例フロー -->
+  <div class="panel p-orange">
+    <span class="phead">🗺️ IIoTの代表的な活用例</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">予知保全（Predictive Maintenance）</div>
+        <div class="fb">機械のセンサーで振動・温度・音を常時監視し、故障する前に予兆を検知してメンテナンスを実施。突発停止による損失を防ぐ。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">スマートファクトリー</div>
+        <div class="fb">工場全体の機械・ライン・在庫をリアルタイムで連携。AIが最適な生産量・工程を自動制御する「つながる工場」。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">社会インフラの遠隔監視</div>
+        <div class="fb">橋・トンネル・水道管にセンサーを取り付け、劣化や異常を早期発見。少ない人員で広域インフラを安全に管理。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">IIoTはただのIoTと同じ、という誤解</div>
+      <div class="tb">一般的なIoT（スマートウォッチ等）と区別して「<strong>産業用</strong>」という点が重要。高信頼性・リアルタイム制御・安全性が求められる点で質的に異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">IIoTはAIを使わない、という誤解</div>
+      <div class="tb">IIoTとAI・ビッグデータ・クラウドは密接に組み合わせて使う。センサーデータをAIが分析して予知保全などを実現する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>工場・インフラ・物流</strong>など産業現場のIoT」→ IIoT。「スマート家電・ウェアラブル等の一般消費者向け」→ （一般）IoT。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">IIoT</span> ＝「<strong>ダブルI（工業×工業）</strong>でダブルの責任」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">Iが2つ ＝ Industrial（産業） ＋ Internet → 工場・インフラ向けのIoT</span><br><br>
+      <span class="hl">合言葉</span>：「<strong>止まったら大事故</strong>＝IIoT」<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">スマートウォッチが止まっても笑い話。工場が止まると億単位の損失。</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

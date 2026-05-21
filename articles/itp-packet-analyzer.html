@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>パケットアナライザとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="パケットアナライザ（パケットキャプチャ）の仕組みと使い方をわかりやすく解説。ネットワーク監視・盗聴リスク・Wiresharkとの関係、ITパスポート試験のひっかけポイントまで図解。">
+<link rel="canonical" href="https://example.com/itp-packet-analyzer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1d4e8f,#0b2a5a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(11,42,90,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b8cef0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.use-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.use-card{border-radius:12px;padding:12px;border:2px solid var(--uc);}
+.use-card .uh{font-size:13px;font-weight:900;color:var(--uc);margin-bottom:5px;}
+.use-card .ub{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.uc-good{--uc:#2e8b4f;background:#eef8f1;}
+.uc-bad{--uc:#dd5a3a;background:#fce4dd;}
+@media(max-width:400px){.use-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>パケットアナライザ</b>とは？</h1>
+    <p>ネットワークを流れるパケット（データのかたまり）をリアルタイムで捕まえ、中身を解析するツール。正しく使えば障害調査・セキュリティ監視に、悪用されると盗聴ツールになる「諸刃の剣」。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-hidden="true">
+        <ellipse cx="36" cy="86" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="60" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="30" rx="9" fill="#1d4e8f"/>
+        <circle cx="36" cy="21" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5-9-13-9-8 0-13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8-5 v5 h-16z" fill="#fff"/>
+        <rect x="16" y="63" width="40" height="12" rx="3" fill="#0b2a5a"/>
+        <circle cx="24" cy="69" r="3" fill="#ffd23f"/>
+        <circle cx="33" cy="69" r="3" fill="#4ac97e"/>
+        <circle cx="42" cy="69" r="3" fill="#ff6b6b"/>
+        <circle cx="51" cy="69" r="3" fill="#4ac97e"/>
+      </svg>
+      <div class="scene-txt">
+        ネットワークが急に遅くなったと報告が入った。システム管理者のあなたが原因を調べるため「パケットアナライザ」を起動すると、画面に流れるパケットの群れ。どこかのPCが大量のデータを外部に送り続けているのが見えた。
+        <div class="scene-q">…不正な通信をリアルタイムで発見するのがパケットアナライザ！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：パケットキャプチャの仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">📡 パケットキャプチャの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="パケットアナライザの動作図：ネットワークを流れるパケットをコピーして解析">
+      <!-- ネットワーク回線 -->
+      <line x1="20" y1="110" x2="320" y2="110" stroke="#9aa3b2" stroke-width="4"/>
+      <!-- PC A -->
+      <rect x="15" y="80" width="50" height="36" rx="5" fill="#4256b8"/>
+      <rect x="18" y="83" width="44" height="24" rx="3" fill="#b8cef0"/>
+      <text x="40" y="126" text-anchor="middle" font-size="10" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">PC A</text>
+      <!-- パケット群 -->
+      <rect x="90" y="99" width="28" height="20" rx="4" fill="#2e6de5" opacity=".9"/>
+      <text x="104" y="113" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PKT</text>
+      <rect x="130" y="99" width="28" height="20" rx="4" fill="#2e6de5" opacity=".7"/>
+      <text x="144" y="113" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PKT</text>
+      <rect x="170" y="99" width="28" height="20" rx="4" fill="#2e6de5" opacity=".5"/>
+      <text x="184" y="113" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">PKT</text>
+      <!-- 矢印（→） -->
+      <polygon points="215,106 228,110 215,114" fill="#9aa3b2"/>
+      <!-- PC B -->
+      <rect x="275" y="80" width="50" height="36" rx="5" fill="#4256b8"/>
+      <rect x="278" y="83" width="44" height="24" rx="3" fill="#b8cef0"/>
+      <text x="300" y="126" text-anchor="middle" font-size="10" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">PC B</text>
+      <!-- アナライザ端末（コピーして解析） -->
+      <line x1="150" y1="110" x2="150" y2="155" stroke="#dd5a3a" stroke-width="2.5" stroke-dasharray="4 3"/>
+      <polygon points="146,153 150,162 154,153" fill="#dd5a3a"/>
+      <rect x="110" y="163" width="80" height="45" rx="8" fill="#fff3f0" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="150" y="178" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">パケット</text>
+      <text x="150" y="192" text-anchor="middle" font-size="10" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">アナライザ</text>
+      <text x="150" y="205" text-anchor="middle" font-size="9" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">コピーして解析</text>
+      <!-- 説明 -->
+      <text x="20" y="17" font-size="11" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">▶ 通信を止めずにパケットを「コピー」して中身を確認</text>
+      <text x="20" y="35" font-size="11" font-weight="700" fill="#dd5a3a" font-family="M PLUS Rounded 1c">▶ 悪用すると：暗号化されていない通信は内容が丸見えに</text>
+    </svg>
+  </div>
+
+  <!-- 正当な用途 vs 不正な用途 -->
+  <div class="panel p-green">
+    <span class="phead">✅ 正当な用途 vs 不正な用途</span>
+    <div class="use-grid">
+      <div class="use-card uc-good">
+        <div class="uh">正当な使い方</div>
+        <div class="ub">・ネットワーク障害の原因調査<br>・不審な通信の検知・監視<br>・パフォーマンス分析<br>・セキュリティ診断</div>
+      </div>
+      <div class="use-card uc-bad">
+        <div class="uh">不正な使い方（盗聴）</div>
+        <div class="ub">・IDやパスワードの盗み見<br>・メール内容の傍受<br>・個人情報の窃取<br>→ 不正アクセス禁止法に抵触</div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;">同じツールでも、<strong>正規の権限・目的</strong>があるかどうかで合法か違法かが分かれる。</p>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-blue">
+    <span class="phead">🔍 解析できる情報の階層</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① ヘッダ情報（送信元・宛先）</div><div class="fb">IPアドレス・MACアドレス・ポート番号など。「誰が誰に送ったか」が分かる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② プロトコル情報</div><div class="fb">TCP/UDP/HTTP/FTPなど、どのプロトコルで通信しているかが分かる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ ペイロード（データ本体）</div><div class="fb">暗号化されていなければ、メール本文やフォームの入力内容まで読める。HTTPSで暗号化すれば内容は保護される。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">IDSと混同しやすい</div>
+      <div class="tb">IDS（不正侵入検知システム）はパケットを<strong>自動で監視・警告</strong>するシステム。パケットアナライザは「人間が見て分析するツール」。目的は似ているが自動化の有無が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">ファイアウォールと混同しやすい</div>
+      <div class="tb">ファイアウォールは通信を「遮断する」仕組み。パケットアナライザは遮断せず「中身を見る」ツール。機能が全く異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「使うだけで盗聴になる」は誤り</div>
+      <div class="tb">自分が管理するネットワークの監視・障害調査には正当に使える。不正になるのは<strong>権限なく他人の通信を傍受</strong>する場合。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">パケット＝小包</span>、<span class="hl">アナライザ＝X線検査機</span><br>
+      宅配便を止めずに<strong>「X線でこっそり中身を確認」</strong>するイメージ<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">正当な管理者＝空港の検査官 ／ 悪用する人＝荷物を盗み見る人</span><br>
+      「<span class="hl">パ（は）・ケット（を）・アナ（穴あけて）・ライザ（ライブで見る）</span>」
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

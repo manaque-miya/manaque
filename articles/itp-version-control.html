@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>バージョン管理とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="バージョン管理をわかりやすく解説。ファイルの変更履歴を記録して過去に戻れる仕組み、リポジトリ・コミット・チェックアウトの意味、Gitとの関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-version-control">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#d9851f,#7a4300);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,67,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fde8c0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#d9851f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#d9851f;--fbg:#fdf4e4;}
+.f2{--fc:#2e6de5;--fbg:#e7eefc;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.term-row{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+.term-tag{flex:1;min-width:120px;border-radius:11px;padding:10px 12px;background:#fdf4e4;border-left:4px solid #d9851f;}
+.term-tag .tt{font-size:12px;font-weight:900;color:#7a4300;margin-bottom:4px;}
+.term-tag .td{font-size:11.5px;font-weight:600;line-height:1.65;color:#48506a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>バージョン管理</b>とは？</h1>
+    <p>ファイルの変更履歴をすべて記録しておき、「いつ・誰が・何を変えたか」を追跡できる仕組み。過去の状態にいつでも戻れる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-orange">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <!-- ファイルスタック（履歴） -->
+        <rect x="8" y="70" width="48" height="14" rx="3" fill="#c5cfe0"/>
+        <rect x="8" y="56" width="48" height="14" rx="3" fill="#aed4f5"/>
+        <rect x="8" y="42" width="48" height="14" rx="3" fill="#fde8c0"/>
+        <rect x="8" y="28" width="48" height="14" rx="3" fill="#ffd23f"/>
+        <!-- バージョンラベル -->
+        <text x="32" y="79" text-anchor="middle" font-size="7" fill="#48506a" font-weight="700" font-family="sans-serif">v1.0</text>
+        <text x="32" y="65" text-anchor="middle" font-size="7" fill="#1d6fa4" font-weight="700" font-family="sans-serif">v1.1</text>
+        <text x="32" y="51" text-anchor="middle" font-size="7" fill="#7a4300" font-weight="700" font-family="sans-serif">v1.2</text>
+        <text x="32" y="37" text-anchor="middle" font-size="8" fill="#9a6b00" font-weight="900" font-family="sans-serif">v2.0 ★現在</text>
+        <!-- 巻き戻し矢印 -->
+        <path d="M60 50 Q72 50 72 65 Q72 80 60 80" stroke="#dd5a3a" stroke-width="2" fill="none" marker-end="url(#a7)"/>
+        <defs><marker id="a7" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3z" fill="#dd5a3a"/></marker></defs>
+        <text x="70" y="47" text-anchor="middle" font-size="7" fill="#dd5a3a" font-weight="900" font-family="sans-serif">戻せる</text>
+      </svg>
+      <div class="scene-txt">
+        開発チームでコードを修正したら、バグが混入して動かなくなった。でも「昨日の状態に戻せる」ので慌てなくて済んだ。
+        <div class="scene-q">→ バージョン管理があると、変更履歴をさかのぼって「動いていた状態」に一発で戻せる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：バージョン管理の仕組み -->
+  <div class="panel p-indigo">
+    <span class="phead">📦 バージョン管理の仕組み</span>
+    <svg width="100%" viewBox="0 0 340 180" role="img" aria-label="バージョン管理の仕組み：コミットのたびにスナップショットが記録され、いつでも過去に戻れる">
+      <!-- タイムライン -->
+      <line x1="20" y1="90" x2="320" y2="90" stroke="#c2c8d8" stroke-width="2"/>
+      <!-- コミット1 -->
+      <circle cx="50" cy="90" r="18" fill="#fdf4e4" stroke="#d9851f" stroke-width="2"/>
+      <text x="50" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#7a4300" font-family="M PLUS Rounded 1c">v1.0</text>
+      <text x="50" y="99" text-anchor="middle" font-size="8" font-weight="700" fill="#d9851f" font-family="M PLUS Rounded 1c">初版</text>
+      <text x="50" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">コミット①</text>
+      <!-- コミット2 -->
+      <circle cx="130" cy="90" r="18" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="130" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#1f4ba8" font-family="M PLUS Rounded 1c">v1.1</text>
+      <text x="130" y="99" text-anchor="middle" font-size="8" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">機能追加</text>
+      <text x="130" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">コミット②</text>
+      <!-- コミット3 -->
+      <circle cx="210" cy="90" r="18" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="210" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#164d2a" font-family="M PLUS Rounded 1c">v1.2</text>
+      <text x="210" y="99" text-anchor="middle" font-size="8" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">バグ修正</text>
+      <text x="210" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#8a91a0" font-family="M PLUS Rounded 1c">コミット③</text>
+      <!-- 現在 -->
+      <circle cx="294" cy="90" r="20" fill="#ffd23f" stroke="#e0a800" stroke-width="2.5"/>
+      <text x="294" y="86" text-anchor="middle" font-size="9" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">v2.0</text>
+      <text x="294" y="100" text-anchor="middle" font-size="8" font-weight="700" fill="#7a4300" font-family="M PLUS Rounded 1c">★現在</text>
+      <!-- 巻き戻し矢印 -->
+      <path d="M294 68 Q294 40 210 40 Q130 40 50 40" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="5 3" fill="none" marker-end="url(#a8)"/>
+      <defs><marker id="a8" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5z" fill="#dd5a3a"/></marker></defs>
+      <text x="170" y="30" text-anchor="middle" font-size="9" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">どの版にも戻せる（チェックアウト）</text>
+      <!-- リポジトリラベル -->
+      <rect x="60" y="150" width="220" height="22" rx="6" fill="#e4e7f7" stroke="#4256b8" stroke-width="1.5"/>
+      <text x="170" y="165" text-anchor="middle" font-size="10" font-weight="900" fill="#2b3245" font-family="M PLUS Rounded 1c">すべての履歴をリポジトリに保存</text>
+    </svg>
+  </div>
+
+  <!-- 用語 -->
+  <div class="panel p-blue">
+    <span class="phead">📖 よく出る用語</span>
+    <div class="term-row">
+      <div class="term-tag"><div class="tt">リポジトリ</div><div class="td">変更履歴を保管する"倉庫"。ローカル（手元）とリモート（サーバー）がある。</div></div>
+      <div class="term-tag"><div class="tt">コミット</div><div class="td">変更内容をリポジトリに"確定・記録"する操作。1コミット＝1スナップショット。</div></div>
+    </div>
+    <div class="term-row">
+      <div class="term-tag"><div class="tt">チェックアウト</div><div class="td">過去のバージョンや別ブランチの状態を取り出す操作。"過去に戻る"ためのコマンド。</div></div>
+      <div class="term-tag"><div class="tt">ブランチ</div><div class="td">本流（main）から分岐した開発の流れ。機能ごとに並行作業できる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「バックアップ」とは別物</div>
+      <div class="tb">バックアップは「ファイルをコピーして保存するだけ」。バージョン管理は「誰が・いつ・何を変えたかの<strong>差分と履歴</strong>を管理する」。目的と機能が根本的に違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「チェックアウト」≠「ファイルをダウンロードするだけ」</div>
+      <div class="tb">チェックアウトは「特定バージョンの状態に作業ディレクトリを切り替える」操作。単なるダウンロードではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">GitはバージョンSimon管理ツールの一種</div>
+      <div class="tb">バージョン管理の概念が先にある。Gitはその代表的なツール。「バージョン管理＝Git」ではなく、SVNなど他のツールも存在する。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">バージョン管理＝「タイムマシン付き日記」</span><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">コミット＝日記に書く　チェックアウト＝過去のページを開く</span><br><br>
+    <span class="hl">「コミっと記録、チェックで戻る」</span><br>
+    コミット（記録）→ チェックアウト（取り出す）の2ステップで覚える</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-version-control</div>
+
+</div>
+</body>
+</html>

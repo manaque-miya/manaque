@@ -1,108 +1,205 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>減価償却とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="減価償却の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-depreciation.html">
-<meta property="og:title" content="減価償却とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="減価償却の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-depreciation.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>減価償却とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="減価償却をわかりやすく解説。固定資産のコストを耐用年数で分割計上する理由・定額法・定率法のちがい・ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://manaque.com/itp/itp-depreciation">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#2e6de5,#19357f);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+.f4{--fc:#4256b8;--fbg:#eaecf7;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.cgcell{border-radius:12px;padding:10px;}
+.cgcell h4{font-size:12.5px;font-weight:900;margin-bottom:5px;}
+.cgcell ul{list-style:none;}
+.cgcell li{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.cgcell li::before{content:"・";position:absolute;left:0;}
+.cg-a{background:#e2f3e5;}.cg-a h4{color:#2e8b4f;}
+.cg-b{background:#fcefd9;}.cg-b h4{color:#d9851f;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">減価償却とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">減価償却</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系</span>
+    <h1><b>減価償却</b>とは？</h1>
+    <p>高額な資産のコストを、使える年数に分割して費用に計上する会計のしくみ。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="4.5" fill="#1a2a4a" opacity=".10"/>
+        <rect x="8" y="56" width="56" height="26" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="26" rx="9" fill="#2e6de5"/>
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- ノートPCの図 -->
+        <rect x="24" y="60" width="24" height="16" rx="2" fill="#48506a"/>
+        <rect x="26" y="62" width="20" height="12" rx="1" fill="#acd0f5"/>
+        <rect x="20" y="75" width="32" height="3" rx="1.5" fill="#9aa3b2"/>
+      </svg>
+      <div class="scene-txt">
+        会社が300万円のサーバーを購入した。でも経理担当者は「今年の費用は60万円だけ」と記帳している。<strong>「なんで全額費用にしないの？」</strong>
+        <div class="scene-q">…この不思議な仕組みが、減価償却です。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：減価償却の概念 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 減価償却のしくみ（図解）</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="300万円のサーバーを5年間で毎年60万円ずつ費用計上する減価償却のイメージ図">
+      <!-- 棒グラフ背景 -->
+      <rect x="20" y="20" width="300" height="160" rx="6" fill="#f0f3fa"/>
+      <!-- 300万円の資産ブロック -->
+      <rect x="40" y="30" width="260" height="30" rx="4" fill="#4256b8"/>
+      <text x="170" y="50" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">購入額 300万円のサーバー</text>
+      <!-- 5年分の費用バー -->
+      <rect x="40" y="72" width="48" height="26" rx="4" fill="#2e6de5"/>
+      <text x="64" y="89" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">1年目</text>
+      <rect x="96" y="72" width="48" height="26" rx="4" fill="#2e6de5"/>
+      <text x="120" y="89" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">2年目</text>
+      <rect x="152" y="72" width="48" height="26" rx="4" fill="#2e6de5"/>
+      <text x="176" y="89" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">3年目</text>
+      <rect x="208" y="72" width="48" height="26" rx="4" fill="#2e6de5"/>
+      <text x="232" y="89" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">4年目</text>
+      <rect x="264" y="72" width="48" height="26" rx="4" fill="#2e6de5"/>
+      <text x="288" y="89" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="M PLUS Rounded 1c">5年目</text>
+      <!-- 矢印と説明 -->
+      <text x="64" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">60万</text>
+      <text x="120" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">60万</text>
+      <text x="176" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">60万</text>
+      <text x="232" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">60万</text>
+      <text x="288" y="115" text-anchor="middle" font-size="11" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">60万</text>
+      <!-- ポイント説明 -->
+      <rect x="40" y="128" width="260" height="44" rx="6" fill="#e4e7f7"/>
+      <text x="170" y="148" text-anchor="middle" font-size="12" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">300万 ÷ 5年 ＝ 毎年 60万円ずつ費用計上</text>
+      <text x="170" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="#6b78a0" font-family="M PLUS Rounded 1c">→ 使った年数に対応した費用として記録できる</text>
+      <!-- ラベル -->
+      <text x="170" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">耐用年数5年・定額法の例</text>
+    </svg>
+    <p style="font-size:12.5px;color:#48506a;font-weight:600;margin-top:8px;">高額な固定資産（PC・サーバー・車・建物など）は、<strong>購入した年だけに全額費用計上すると、その年だけ大赤字になってしまう</strong>。そこで使用できる期間（耐用年数）にわたって少しずつ費用に分割計上する。</p>
+  </div>
+
+  <!-- 定額法 vs 定率法 -->
+  <div class="panel p-green">
+    <span class="phead">⚖️ 定額法 vs 定率法</span>
+    <div class="compare-grid">
+      <div class="cgcell cg-a">
+        <h4>定額法</h4>
+        <ul>
+          <li>毎年同額を費用計上</li>
+          <li>計算が簡単・予測しやすい</li>
+          <li>例：300万÷5年＝60万/年</li>
+          <li>ITパスポートの出題はほぼこれ</li>
+        </ul>
+      </div>
+      <div class="cgcell cg-b">
+        <h4>定率法</h4>
+        <ul>
+          <li>最初は多く・後半は少なく計上</li>
+          <li>残存価値×一定率で計算</li>
+          <li>早期に費用を多く計上できる</li>
+          <li>実務では機械設備などに使用</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flow" style="margin-top:12px;">
+      <div class="fstep f1"><div class="fh">固定資産を購入</div><div class="fb">土地以外の有形固定資産（PC・サーバー・車・建物など）が対象。土地は減価償却しない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">耐用年数を確認</div><div class="fb">税法で決められた使用可能年数。PCは4年、サーバーは5年など。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">毎年、費用として計上</div><div class="fb">定額法なら「取得価額 ÷ 耐用年数」を毎期の損益計算書に計上する。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「土地も減価償却する」→ ×</div>
+      <div class="tb">土地は使っても価値が減らないので、減価償却の対象外。建物・機械・PCなど<strong>価値が減っていく有形固定資産</strong>だけが対象。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「購入した年に全額費用計上する」→ ×</div>
+      <div class="tb">それは「費用処理」または「即時償却」。通常の減価償却は耐用年数にわたって分割計上する。混同に注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「減価償却費＝現金の支出」→ ×</div>
+      <div class="tb">減価償却は帳簿上の費用計上であり、その年に現金は出ない。購入時に現金が出て、その後は<strong>帳簿上だけで費用を配分</strong>している。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「高額の固定資産コストを<strong>耐用年数で分割</strong>」が出たら → 迷わず<strong>減価償却</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">減価</span>＝価値が<span class="hl">減る</span>、<span class="hl">償却</span>＝チャラにしていく<br>
+    → 「<span class="hl">価値が減る物は、毎年少しずつチャラにする</span>」<br><br>
+    PC4年・サーバー5年・建物47年<br>
+    →「<span class="hl">パソコンは4年たつと型落ち（耐用4年）</span>」で覚える</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>経理新人の私。「100万円のサーバを購入年に全額費用計上」したら経理部長から「耐用年数で分散しろ」と指導。これって何処理？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>減価償却</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>リース費用の計上</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ リースは毎月使用料。「買い取り資産の取得費を耐用年数で分割計上」が減価償却</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：減価償却</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 減価償却とは何か</h2>
-<span class="kw">固定資産の購入費を耐用年数に分散計上</span>
-<p>減価償却は長期間使用する固定資産（PCサーバー・機械・車両など）の取得費用を耐用年数に分割して毎期の費用として計上する会計処理。主な方法：定額法（毎年同額を計上）と定率法（取得価格の一定率を計上）。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>土地・ソフトウェア（種類による）は減価償却しない。ITパスポートでは「なぜ一括費用にしないか」→長期間にわたって便益を生むため、対応する期間に費用を分散させるという「費用収益対応の原則」が背景。
-
-**覚え方** 🎯 減価償却＝**長く使う資産を耐用年数で分割費用化**。**定額法（毎年同額）／定率法（残価×率）**の2方式。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>【ひっかけ】土地は価値が目減りしないため**減価償却しない**。また「ソフトウェア」は無形固定資産として償却対象になる場合があり、「有形か無形か」で判断しないこと。定額法と定率法の違いも頻出：定額法は毎年同額、定率法は**初期に費用が多く計上**されて後半は減る点を区別すること。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>減価償却＝**長く使う資産を耐用年数で分割費用化**。**定額法（毎年同額）／定率法（残価×率）**の2方式。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>減価償却はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

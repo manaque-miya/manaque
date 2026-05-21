@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>回路配置利用権とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="回路配置利用権を分かりやすく解説。半導体チップの回路パターンを守る権利で、著作権・特許権との違い、ITパスポートのひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-circuit-layout-right">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#4b6fa8,#1e3a6e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(25,53,127,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dbe6fb;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#2e6de5;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.table-wrap{overflow-x:auto;margin-top:8px;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;}
+th{background:#4256b8;color:#fff;font-weight:900;padding:8px 10px;text-align:center;}
+td{padding:8px 10px;border:1px solid #d0d6e8;color:#3c4456;font-weight:600;line-height:1.6;}
+tr:nth-child(even) td{background:#f4f6fb;}
+td:first-child{font-weight:900;color:#4256b8;text-align:center;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>回路配置利用権</b>とは？</h1>
+    <p>半導体チップの「回路パターン」を守る、知的財産権の一種。著作権でも特許権でもない、独自の権利。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="42" width="62" height="40" rx="6" fill="#2b3245"/>
+        <rect x="14" y="48" width="50" height="28" rx="3" fill="#1e3a6e"/>
+        <!-- 回路パターン -->
+        <line x1="20" y1="58" x2="35" y2="58" stroke="#7ec8e3" stroke-width="2"/>
+        <line x1="35" y1="58" x2="35" y2="66" stroke="#7ec8e3" stroke-width="2"/>
+        <line x1="35" y1="66" x2="55" y2="66" stroke="#7ec8e3" stroke-width="2"/>
+        <rect x="38" y="52" width="8" height="8" rx="1" fill="#ffd23f"/>
+        <rect x="24" y="62" width="8" height="8" rx="1" fill="#7ec8e3"/>
+        <rect x="52" y="60" width="6" height="10" rx="1" fill="#6ee86e"/>
+        <circle cx="39" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M27 18 a12 11 0 0 1 24 0 q-5-8-12-8 q-7 0-12 8z" fill="#3a3f4a"/>
+        <rect x="31" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 40 l8 5 l8-5v5h-16z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        あなたの会社が長年かけて設計した半導体チップ。その<strong>回路の配置パターン</strong>を、競合他社がコピーして製品を出してきた。「これは著作権侵害？特許侵害？」
+        <div class="scene-q">…どちらでもない。<strong>回路配置利用権</strong>の侵害だ！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：回路配置利用権の全体像 -->
+  <div class="panel p-indigo">
+    <span class="phead">🔌 回路配置利用権とは</span>
+    <svg width="100%" viewBox="0 0 340 230" role="img" aria-label="回路配置利用権：半導体集積回路の回路配置を守る権利">
+      <!-- 背景 -->
+      <rect x="10" y="10" width="320" height="210" rx="14" fill="#f0f3fb"/>
+      <!-- チップ図 -->
+      <rect x="30" y="40" width="120" height="100" rx="8" fill="#1e3a6e"/>
+      <rect x="38" y="50" width="104" height="84" rx="4" fill="#243a6a"/>
+      <!-- 回路パターン（装飾） -->
+      <line x1="50" y1="70" x2="80" y2="70" stroke="#7ec8e3" stroke-width="2.5"/>
+      <line x1="80" y1="70" x2="80" y2="90" stroke="#7ec8e3" stroke-width="2.5"/>
+      <line x1="80" y1="90" x2="120" y2="90" stroke="#7ec8e3" stroke-width="2.5"/>
+      <rect x="56" y="60" width="12" height="12" rx="2" fill="#ffd23f"/>
+      <rect x="88" y="82" width="12" height="12" rx="2" fill="#6ee86e"/>
+      <rect x="110" y="60" width="10" height="14" rx="2" fill="#ff8c8c"/>
+      <line x1="50" y1="100" x2="70" y2="100" stroke="#aab8d8" stroke-width="1.5"/>
+      <line x1="100" y1="60" x2="100" y2="80" stroke="#aab8d8" stroke-width="1.5"/>
+      <text x="90" y="155" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">半導体チップ</text>
+      <text x="90" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="#7a8aaa" font-family="M PLUS Rounded 1c">（集積回路）</text>
+      <!-- 矢印 -->
+      <polygon points="172,90 190,80 190,100" fill="#4256b8"/>
+      <!-- 権利説明 -->
+      <rect x="194" y="40" width="126" height="130" rx="10" fill="#4256b8"/>
+      <text x="257" y="65" text-anchor="middle" font-size="12" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">回路配置利用権</text>
+      <text x="257" y="85" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">保護対象：</text>
+      <text x="257" y="102" text-anchor="middle" font-size="10" font-weight="700" fill="#dbe6fb" font-family="M PLUS Rounded 1c">回路の配置パターン</text>
+      <text x="257" y="122" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">保護期間：</text>
+      <text x="257" y="138" text-anchor="middle" font-size="10" font-weight="700" fill="#dbe6fb" font-family="M PLUS Rounded 1c">登録から 10年</text>
+      <text x="257" y="158" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="M PLUS Rounded 1c">根拠法：</text>
+      <text x="257" y="174" text-anchor="middle" font-size="10" font-weight="700" fill="#dbe6fb" font-family="M PLUS Rounded 1c">半導体集積回路の</text>
+      <text x="257" y="188" text-anchor="middle" font-size="10" font-weight="700" fill="#dbe6fb" font-family="M PLUS Rounded 1c">回路配置に関する法律</text>
+    </svg>
+    <p>半導体チップの内部に描かれた<strong>回路の配置（レイアウト）</strong>を模倣から守る権利。設計者が経済産業大臣に登録することで発生し、<strong>登録から10年間</strong>保護される。</p>
+  </div>
+
+  <!-- 知的財産権の比較表 -->
+  <div class="panel p-green">
+    <span class="phead">📊 知的財産権との比較</span>
+    <div class="table-wrap">
+      <table>
+        <tr><th>権利名</th><th>守る対象</th><th>保護期間</th></tr>
+        <tr><td>特許権</td><td>発明（技術的アイデア）</td><td>出願から20年</td></tr>
+        <tr><td>著作権</td><td>創作物（文章・プログラム等）</td><td>死後70年</td></tr>
+        <tr><td>回路配置利用権</td><td>半導体の回路配置パターン</td><td>登録から10年</td></tr>
+        <tr><td>営業秘密</td><td>秘密として管理された情報</td><td>（期間なし）</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;color:#48506a;">回路配置は「技術的アイデア」ではなく「配置パターン（レイアウト）」なので特許とは別扱い。また文章や絵のような「表現物」ではないので著作権でも守れない。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「著作権で守られる」は×</div>
+      <div class="tb">著作権は文章・音楽・プログラム等の<strong>表現</strong>を守る権利。回路の配置パターンは「表現物」でないため対象外。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「特許権で守られる」は×</div>
+      <div class="tb">特許は技術的<strong>アイデア（発明）</strong>を守る。回路レイアウト自体は発明でなく配置パターンなので、別の権利が必要。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">保護期間は「登録から10年」</div>
+      <div class="tb">「出願から」でも「製造から」でもなく<strong>登録から10年</strong>。特許の「出願から20年」と混同しない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">登録が必要</div>
+      <div class="tb">著作権は自動発生するが、回路配置利用権は<strong>経済産業大臣への登録が必要</strong>（無登録では権利なし）。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「基板（きばん）10年」</span><br>
+    キ（基板＝半導体）・バン（10年の番＝10年間番をする）<br><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">「チップのレイアウトを10年番する権利」と覚える！</span><br>
+    著作権・特許権と違い、<span class="hl">登録が必要</span>＆<span class="hl">10年</span>の2点がキモ。</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-circuit-layout-right</div>
+
+</div>
+</body>
+</html>

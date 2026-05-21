@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>標的型攻撃・スピアフィッシングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="標的型攻撃・スピアフィッシングをわかりやすく解説。通常のフィッシングとの違い、攻撃の手口と流れ、試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-spear-phishing">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#8b1a1a,#4a0e0e);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(80,20,20,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f0cece;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#dd5a3a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#dd5a3a;--fbg:#fdf2ee;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#4256b8;--fbg:#eef0fb;}
+.f4{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.compare-table th{font-size:12px;font-weight:900;padding:8px;text-align:center;background:#4256b8;color:#fff;}
+.compare-table th:first-child{background:#4256b8;}
+.compare-table td{font-size:12px;font-weight:600;padding:8px;text-align:center;border:1px solid #e0e4ef;line-height:1.6;color:#3c4456;}
+.compare-table tr:nth-child(even) td{background:#f5f6fb;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔒 ITパスポート ｜ セキュリティ</span>
+    <h1><b>標的型攻撃</b>・スピアフィッシング</h1>
+    <p>「あなただけに送った」と思わせる、特定の人・組織を狙い撃ちにした騙しのメール攻撃。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-red">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="10" y="62" width="58" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="16" y="40" width="46" height="30" rx="9" fill="#8b1a1a"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M25 18 a14 13 0 0 1 28 0 q-6 -10 -14 -10 q-8 0 -14 10z" fill="#3a3f4a"/>
+        <rect x="30" y="34" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 43 l9 6 l9 -6 v6 h-18z" fill="#fff"/>
+        <rect x="44" y="58" width="22" height="15" rx="2" fill="#48506a"/>
+        <rect x="46" y="60" width="18" height="11" rx="1" fill="#ffaaaa"/>
+        <text x="55" y="69" text-anchor="middle" font-size="8" font-weight="900" fill="#8b1a1a" font-family="sans-serif">!</text>
+      </svg>
+      <div class="scene-txt">
+        大手メーカーの人事担当・田中さん。朝、こんなメールが届いた。<br><br>
+        「田中様、先日の採用面接の件で添付書類をご確認ください。<br>— 営業部 佐藤」<br><br>
+        田中さんは覚えがあるので添付ファイルを開いた。その瞬間、マルウェアがPC全体に広がった。
+        <div class="scene-q">→ これが「標的型攻撃（スピアフィッシング）」の典型的な手口。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解 -->
+  <div class="panel p-indigo">
+    <span class="phead">🎯 標的型 vs 通常フィッシングの違い</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="標的型攻撃と通常フィッシングの比較図">
+      <!-- 通常フィッシング側 -->
+      <rect x="10" y="10" width="145" height="180" rx="14" fill="#e4e7f7" stroke="#4256b8" stroke-width="2"/>
+      <text x="82" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">通常フィッシング</text>
+      <!-- 魚を広く投げるイメージ -->
+      <ellipse cx="82" cy="90" rx="55" ry="22" fill="none" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <circle cx="38" cy="90" r="8" fill="#c0c8e8"/>
+      <circle cx="60" cy="80" r="8" fill="#c0c8e8"/>
+      <circle cx="82" cy="95" r="8" fill="#c0c8e8"/>
+      <circle cx="104" cy="78" r="8" fill="#c0c8e8"/>
+      <circle cx="126" cy="90" r="8" fill="#c0c8e8"/>
+      <text x="82" y="88" text-anchor="middle" font-size="19" font-family="sans-serif">🎣</text>
+      <text x="82" y="130" text-anchor="middle" font-size="10" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">不特定多数に</text>
+      <text x="82" y="145" text-anchor="middle" font-size="10" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">大量送信</text>
+      <text x="82" y="163" text-anchor="middle" font-size="10" font-weight="700" fill="#7a82a0" font-family="M PLUS Rounded 1c">引っかかった人が被害</text>
+      <!-- 標的型側 -->
+      <rect x="185" y="10" width="145" height="180" rx="14" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="257" y="34" text-anchor="middle" font-size="12" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">標的型攻撃</text>
+      <!-- 狙い撃ちイメージ -->
+      <circle cx="257" cy="90" r="30" fill="none" stroke="#dd5a3a" stroke-width="2"/>
+      <circle cx="257" cy="90" r="18" fill="none" stroke="#dd5a3a" stroke-width="1.5"/>
+      <circle cx="257" cy="90" r="8" fill="#dd5a3a"/>
+      <!-- 矢印で狙い撃ち -->
+      <line x1="215" y1="68" x2="249" y2="87" stroke="#8b1a1a" stroke-width="2.5"/>
+      <polygon points="249,87 240,84 243,92" fill="#8b1a1a"/>
+      <text x="257" y="130" text-anchor="middle" font-size="10" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">特定の人・組織を</text>
+      <text x="257" y="145" text-anchor="middle" font-size="10" font-weight="800" fill="#48506a" font-family="M PLUS Rounded 1c">徹底的に調査して攻撃</text>
+      <text x="257" y="163" text-anchor="middle" font-size="10" font-weight="700" fill="#8b1a1a" font-family="M PLUS Rounded 1c">個人情報・内部情報を狙う</text>
+    </svg>
+  </div>
+
+  <!-- フロー：攻撃の手口 -->
+  <div class="panel p-orange">
+    <span class="phead">📋 標的型攻撃の流れ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 標的の調査（偵察）</div>
+        <div class="fb">SNS・企業サイト・名刺情報などから、攻撃対象者の氏名・役職・業務内容・人間関係を徹底調査する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 巧みなメールを作成</div>
+        <div class="fb">「取引先からの請求書」「上司からの指示」など、標的が疑わずに開く内容に仕立てる。実在の人物名・部署名・業務内容を入れて信憑性を高める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 添付ファイル・URLで侵入</div>
+        <div class="fb">標的がファイルを開く・URLをクリックすると、マルウェアがインストールされPCが乗っ取られる。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 組織内部へ横展開</div>
+        <div class="fb">感染PCを踏み台にして組織内の他PCへ侵入拡大。機密情報の窃取・破壊活動へと進む。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <table class="compare-table">
+      <tr>
+        <th>用語</th>
+        <th>対象</th>
+        <th>特徴</th>
+      </tr>
+      <tr>
+        <td><strong>フィッシング</strong></td>
+        <td>不特定多数</td>
+        <td>銀行・大手サービスを装い大量送信</td>
+      </tr>
+      <tr>
+        <td><strong>スピアフィッシング</strong><br>（標的型攻撃）</td>
+        <td>特定の個人・組織</td>
+        <td>事前調査あり・個人情報を使って信憑性を高める</td>
+      </tr>
+      <tr>
+        <td><strong>ホエーリング</strong></td>
+        <td>経営者・役員</td>
+        <td>スピアフィッシングの中でも超高位の人物を狙う</td>
+      </tr>
+    </table>
+    <div class="trap-item" style="margin-top:10px;">
+      <div class="th">「標的型攻撃 ＝ マルウェアを直接送りつける」は間違い</div>
+      <div class="tb">必ずしもマルウェア送信とは限らない。URLによる誘導・添付ファイル経由・SNS経由など手口は多様。共通点は「特定の標的に絞る」こと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「不審なメールは開かない」だけでは防げない</div>
+      <div class="tb">標的型攻撃は「怪しく見えない」ことが最大の武器。技術的対策（メールフィルタ・EDR）＋教育の両輪が必要。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">スピア（槍）</span>＝一人だけを狙い撃ち！<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">フィッシング（釣り）は網を広げる→スピアは槍で一突き</span><br><br>
+      <span class="hl">「調べて・騙して・侵入して・広げる」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">標的型の4ステップ＝ちょうだいひろ（調騙侵広）</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-spear-phishing</div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,222 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>OCR（光学文字認識）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="OCR（光学文字認識）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-ocr.html">
-<meta property="og:title" content="OCR（光学文字認識）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="OCR（光学文字認識）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-ocr.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OCRとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="OCR（光学文字認識）をわかりやすく解説。紙の文字を画像として読み取り、テキストデータに変換する技術。ICR・OMRとの違い、活用例をITパスポート向けに図解で説明。">
+<link rel="canonical" href="https://example.com/itp-ocr">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+.hero{background:linear-gradient(155deg,#c9550a,#7a2d04);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,45,4,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5d0b8;}
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#c9550a;--cbg:#fce4d3;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c9550a;}
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c9550a;--fbg:#fdf0e8;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#4256b8;--fbg:#eef0fb;}
+.f4{--fc:#2e8b4f;--fbg:#eef8f1;}
+.use-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+@media(max-width:420px){.use-grid{grid-template-columns:1fr;}}
+.use-card{background:#fdf0e8;border-radius:11px;padding:11px 12px;}
+.use-card h4{font-size:12.5px;font-weight:900;color:#c9550a;margin-bottom:5px;}
+.use-card p{font-size:11.5px;font-weight:600;color:#48506a;line-height:1.65;}
+.compare-table{width:100%;border-collapse:collapse;margin-top:8px;}
+.compare-table th,.compare-table td{font-size:11.5px;font-weight:700;padding:7px 8px;border:1.5px solid #e0e5ef;text-align:center;}
+.compare-table th{background:#f0f3fa;color:#2b3245;font-weight:900;}
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">OCR（光学文字認識）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">OCR（光学文字認識）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">📄 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>OCR</b>（光学文字認識）とは？</h1>
+    <p>紙に書かれた文字を「画像」として読み取り、コンピュータが扱える「テキスト」に変換する技術。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="86" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <!-- 紙 -->
+        <rect x="12" y="50" width="34" height="36" rx="3" fill="#fff" stroke="#c2c8d8" stroke-width="1.5"/>
+        <line x1="16" y1="59" x2="42" y2="59" stroke="#2b3245" stroke-width="1"/>
+        <line x1="16" y1="65" x2="38" y2="65" stroke="#2b3245" stroke-width="1"/>
+        <line x1="16" y1="71" x2="40" y2="71" stroke="#2b3245" stroke-width="1"/>
+        <line x1="16" y1="77" x2="36" y2="77" stroke="#2b3245" stroke-width="1"/>
+        <!-- 矢印 -->
+        <text x="50" y="73" font-size="13" fill="#c9550a">→</text>
+        <!-- スクリーン -->
+        <rect x="60" y="58" width="14" height="20" rx="2" fill="#2e6de5"/>
+        <rect x="62" y="60" width="10" height="14" rx="1" fill="#b3d4ef"/>
+        <text x="67" y="68" text-anchor="middle" font-size="5.5" fill="#2b3245" font-family="monospace">ABC</text>
+        <text x="67" y="74" text-anchor="middle" font-size="5.5" fill="#2b3245" font-family="monospace">123</text>
+        <!-- 人物 -->
+        <circle cx="39" cy="23" r="15" fill="#f4c89a"/>
+        <path d="M26 19 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="30" y="36" width="18" height="8" fill="#f4c89a"/>
+        <path d="M30 44 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        倉庫に積み上がった数十年分の紙の請求書。これをデジタル化したい。スキャナで画像にしても、文字が「画像の点」のままではExcelに貼れない。
+        <div class="scene-q">…OCRを使えば画像の文字をテキストデータに変換でき、検索・集計・編集が可能になる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG図解：OCRの処理フロー -->
+  <div class="panel p-orange">
+    <span class="phead">🔍 OCRの処理フロー</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="OCRの処理フロー：紙→スキャン→画像→OCR処理→テキストデータ">
+      <!-- 紙 -->
+      <rect x="5" y="50" width="52" height="60" rx="5" fill="#fff" stroke="#c9550a" stroke-width="2"/>
+      <text x="31" y="68" text-anchor="middle" font-size="9" fill="#2b3245" font-family="monospace">請求書</text>
+      <line x1="12" y1="76" x2="50" y2="76" stroke="#2b3245" stroke-width="1"/>
+      <line x1="12" y1="83" x2="46" y2="83" stroke="#2b3245" stroke-width="1"/>
+      <line x1="12" y1="90" x2="48" y2="90" stroke="#2b3245" stroke-width="1"/>
+      <line x1="12" y1="97" x2="44" y2="97" stroke="#2b3245" stroke-width="1"/>
+      <text x="31" y="120" text-anchor="middle" font-size="9.5" font-weight="900" fill="#c9550a" font-family="M PLUS Rounded 1c">①紙の文書</text>
+      <!-- 矢印1 -->
+      <polygon points="68,78 80,72 80,84" fill="#d9851f"/>
+      <line x1="57" y1="78" x2="68" y2="78" stroke="#d9851f" stroke-width="2"/>
+      <text x="68" y="98" text-anchor="middle" font-size="8" fill="#d9851f" font-weight="900" font-family="M PLUS Rounded 1c">スキャン</text>
+      <!-- 画像（PNG） -->
+      <rect x="82" y="48" width="64" height="62" rx="6" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="114" y="65" text-anchor="middle" font-size="9" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">画像データ</text>
+      <text x="114" y="79" text-anchor="middle" font-size="9" fill="#5a7bbf" font-family="M PLUS Rounded 1c">（JPG/PNG）</text>
+      <text x="114" y="93" text-anchor="middle" font-size="8" fill="#48506a" font-family="M PLUS Rounded 1c">文字は"点の集合"</text>
+      <text x="114" y="118" text-anchor="middle" font-size="9.5" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">②画像ファイル</text>
+      <!-- 矢印2 -->
+      <polygon points="158,78 170,72 170,84" fill="#c9550a"/>
+      <line x1="146" y1="78" x2="158" y2="78" stroke="#c9550a" stroke-width="2"/>
+      <text x="158" y="98" text-anchor="middle" font-size="8" fill="#c9550a" font-weight="900" font-family="M PLUS Rounded 1c">OCR処理</text>
+      <!-- OCRエンジン -->
+      <rect x="172" y="45" width="72" height="65" rx="7" fill="#fce4d3" stroke="#c9550a" stroke-width="2.5"/>
+      <text x="208" y="63" text-anchor="middle" font-size="10" font-weight="900" fill="#c9550a" font-family="M PLUS Rounded 1c">OCR</text>
+      <text x="208" y="76" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">パターン認識</text>
+      <text x="208" y="88" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">AI学習</text>
+      <text x="208" y="100" text-anchor="middle" font-size="9" fill="#48506a" font-family="M PLUS Rounded 1c">文字照合</text>
+      <text x="208" y="120" text-anchor="middle" font-size="9.5" font-weight="900" fill="#c9550a" font-family="M PLUS Rounded 1c">③認識エンジン</text>
+      <!-- 矢印3 -->
+      <polygon points="256,78 268,72 268,84" fill="#2e8b4f"/>
+      <line x1="244" y1="78" x2="256" y2="78" stroke="#2e8b4f" stroke-width="2"/>
+      <!-- テキスト -->
+      <rect x="270" y="48" width="65" height="62" rx="6" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="302" y="65" text-anchor="middle" font-size="9" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">テキスト</text>
+      <text x="302" y="78" text-anchor="middle" font-size="8.5" fill="#48506a" font-family="monospace">請求書</text>
+      <text x="302" y="89" text-anchor="middle" font-size="8.5" fill="#48506a" font-family="monospace">¥50,000</text>
+      <text x="302" y="100" text-anchor="middle" font-size="8.5" fill="#48506a" font-family="monospace">田中太郎</text>
+      <text x="302" y="118" text-anchor="middle" font-size="9.5" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">④テキストデータ</text>
+    </svg>
+  </div>
+
+  <!-- フロー/詳細：OCRと似た技術の比較 + 活用例 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ OCR・ICR・OMRの違い</span>
+    <table class="compare-table">
+      <tr><th>名前</th><th>正式名称</th><th>読み取るもの</th><th>使用例</th></tr>
+      <tr>
+        <td style="font-weight:900;color:#c9550a;">OCR</td>
+        <td>光学文字認識</td>
+        <td>印刷文字・活字</td>
+        <td>請求書・本のデジタル化</td>
+      </tr>
+      <tr>
+        <td style="font-weight:900;color:#2e6de5;">ICR</td>
+        <td>手書き文字認識</td>
+        <td>手書き文字</td>
+        <td>手書き申込書の自動入力</td>
+      </tr>
+      <tr>
+        <td style="font-weight:900;color:#2e8b4f;">OMR</td>
+        <td>光学マーク認識</td>
+        <td>マーク（塗りつぶし）</td>
+        <td>マークシート試験の採点</td>
+      </tr>
+    </table>
+    <p style="font-size:12.5px;font-weight:700;color:#48506a;margin-top:10px;">OCRは「印刷された文字」が対象。手書きはICR（OCRの上位互換として扱うこともある）、丸塗りマークはOMR。</p>
+    <div class="use-grid">
+      <div class="use-card">
+        <h4>紙書類のデジタル化</h4>
+        <p>請求書・契約書・名刺をスキャンしてテキスト化。検索・編集が可能になる。</p>
+      </div>
+      <div class="use-card">
+        <h4>自動入力・RPA連携</h4>
+        <p>紙の伝票をOCRで読み取り、システムに自動入力。人手入力を大幅削減。</p>
+      </div>
+      <div class="use-card">
+        <h4>翻訳アプリ</h4>
+        <p>スマホカメラで外国語のメニュー等を読み取り、OCR→翻訳を即時実行。</p>
+      </div>
+      <div class="use-card">
+        <h4>番号プレート認識</h4>
+        <p>駐車場・高速道路のETC/カメラがOCRでナンバープレートを読み取る。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">OCRとOMRを混同しやすい</div>
+      <div class="tb">OCR＝文字（Character）を読む。OMR＝マーク（Mark）を読む。「マークシート試験の採点」→OMR、「請求書の文字認識」→OCR。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「画像のまま保存＝OCRではない」</div>
+      <div class="tb">スキャンしただけでは画像データ（文字を検索できない）。OCRは「画像→テキスト変換」まで行う処理。スキャン＝OCRというのは誤り。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">OCRの認識精度は100%ではない</div>
+      <div class="tb">汚れ・手書き・特殊フォントなどで認識精度が下がることがある。試験では「必ず正確に読み取れる」という選択肢は誤り。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      OCR ＝「<span class="hl">おじちゃんが紙を読む</span>（Optical Character Recognition）」<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">O＝おじちゃんが（Optical）　C＝紙の文字を（Character）　R＝読む（Recognition）</span><br><br>
+      「<span class="hl">文字→OCR</span>」「<span class="hl">マーク→OMR</span>」「<span class="hl">手書き→ICR</span>」<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">何を読むか（Character・Mark・Ink）で三兄弟を区別！</span>
+    </div>
+  </div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>経理DX担当の私。「紙の請求書をスキャン→印刷文字をテキストデータに自動変換」したい。手書き音声じゃなく…これって？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>OCR（光学文字認識）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>ASR（自動音声認識）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ ASRは音声→テキスト。「スキャン画像の視覚的文字をテキスト化」がOCR</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：OCR（光学文字認識）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 OCR（光学文字認識）とは何か</h2>
-<span class="kw">画像の文字を読み取ってテキストデータに変換</span>
-<p>OCR（Optical Character Recognition）はスキャン画像・写真・PDFなどに含まれる文字を画像処理技術で認識し、編集可能なテキストデータとして出力する技術。近年はAI・ディープラーニングを活用した高精度OCRが普及し、手書き文字の認識精度も大幅に向上している。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>活用例：紙の請求書・契約書のデジタル化、免許証・パスポートの情報読み取り、古文書のデジタルアーカイブ。電子帳簿保存法対応でOCRによる書類デジタル化が加速している。
-
-**覚え方** 🎯 OCR＝**Optical Character Recognition＝画像の文字を読む目**。**電帳法対応で需要急増**。AIで手書きも高精度化。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>OCR（文字認識）とOMR（マークシート位置認識）の混同に注意。OCRは画像内の「文字の形」をテキストに変換し、音声認識（ASR）とは別技術。「OCR＝リアルタイム音声をテキスト化」は誤り。電帳法対応でOCRの需要が急増している背景も押さえること。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>OCR＝**Optical Character Recognition＝画像の文字を読む目**。**電帳法対応で需要急増**。AIで手書きも高精度化。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>OCR（光学文字認識）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

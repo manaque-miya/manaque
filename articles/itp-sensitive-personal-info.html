@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>要配慮個人情報とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="要配慮個人情報（病歴・障害・犯罪歴など）の定義・具体例・通常の個人情報との違いをSVG図解で解説。個人情報保護法のひっかけポイントも網羅。ITパスポート試験対策。">
+<link rel="canonical" href="itp-sensitive-personal-info">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#9b2c2c,#5c1010);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(92,16,16,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:26px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c5c5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-crimson{--c:#9b2c2c;--cbg:#fde8e8;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#9b2c2c;}
+
+.tag-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.tag{display:inline-block;background:#fde8e8;color:#9b2c2c;border-radius:20px;padding:5px 13px;font-size:12px;font-weight:900;border:1.5px solid #f5a5a5;}
+.tag-normal{background:#e7eefc;color:#2e6de5;border-color:#a5bef5;}
+
+.diff-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.dcell{border-radius:12px;padding:12px;border:2px solid var(--dc);}
+.dcell h4{font-size:12.5px;font-weight:900;color:var(--dc);margin-bottom:6px;}
+.dcell ul{list-style:none;}
+.dcell li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:12px;position:relative;}
+.dcell li::before{content:"・";position:absolute;left:0;}
+.d-red{--dc:#9b2c2c;background:#fde8e8;}
+.d-blue{--dc:#2e6de5;background:#e7eefc;}
+@media(max-width:480px){.diff-row{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#9b2c2c;--fbg:#fde8e8;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">ITパスポート ｜ ストラテジ系 ／ 法務・セキュリティ</span>
+    <h1><b>要配慮個人情報</b>とは？</h1>
+    <p>取り扱いに特別な配慮が必要な個人情報。本人の同意なしに取得・提供することが原則禁止。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-crimson">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="56" width="56" height="24" rx="6" fill="#e8c5c5"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#9b2c2c"/>
+        <circle cx="36" cy="20" r="13" fill="#f4c89a"/>
+        <path d="M24 16 a12 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="28" y="31" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 39 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+      </svg>
+      <div class="scene-txt">
+        会社が健康診断の結果を従業員に無断で保険会社に提供した。採用選考で応募者の宗教観を事前調査した。これらは個人情報の中でも特に「差別・偏見・不利益につながりやすい情報」だ。
+        <div class="scene-q">…この情報には何という特別な名称がある？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG分類図 -->
+  <div class="panel p-blue">
+    <span class="phead">📊 個人情報の分類</span>
+    <svg width="100%" viewBox="0 0 340 210" role="img" aria-label="個人情報の分類図：通常の個人情報と要配慮個人情報の関係">
+      <!-- 外側の大きな楕円：個人情報全体 -->
+      <ellipse cx="170" cy="110" rx="155" ry="88" fill="#e7eefc" stroke="#2e6de5" stroke-width="2.5"/>
+      <text x="52" y="40" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">個人情報</text>
+      <!-- 外側エリアのラベル例 -->
+      <text x="52" y="56" text-anchor="middle" font-size="9" fill="#48506a" font-weight="700" font-family="M PLUS Rounded 1c">氏名・住所</text>
+      <text x="52" y="70" text-anchor="middle" font-size="9" fill="#48506a" font-weight="700" font-family="M PLUS Rounded 1c">電話番号</text>
+      <text x="52" y="84" text-anchor="middle" font-size="9" fill="#48506a" font-weight="700" font-family="M PLUS Rounded 1c">メール</text>
+      <text x="290" y="56" text-anchor="middle" font-size="9" fill="#48506a" font-weight="700" font-family="M PLUS Rounded 1c">マイナンバー</text>
+      <text x="290" y="70" text-anchor="middle" font-size="9" fill="#48506a" font-weight="700" font-family="M PLUS Rounded 1c">生年月日</text>
+      <!-- 内側の楕円：要配慮個人情報 -->
+      <ellipse cx="185" cy="120" rx="100" ry="62" fill="#fde8e8" stroke="#9b2c2c" stroke-width="2.5"/>
+      <text x="185" y="84" text-anchor="middle" font-size="10.5" font-weight="900" fill="#9b2c2c" font-family="M PLUS Rounded 1c">要配慮個人情報</text>
+      <!-- アイコン的テキスト -->
+      <text x="155" y="103" text-anchor="middle" font-size="9" fill="#7a2020" font-weight="800" font-family="M PLUS Rounded 1c">🏥 病歴・障害</text>
+      <text x="218" y="103" text-anchor="middle" font-size="9" fill="#7a2020" font-weight="800" font-family="M PLUS Rounded 1c">✝ 信条・宗教</text>
+      <text x="155" y="122" text-anchor="middle" font-size="9" fill="#7a2020" font-weight="800" font-family="M PLUS Rounded 1c">🌍 人種・民族</text>
+      <text x="218" y="122" text-anchor="middle" font-size="9" fill="#7a2020" font-weight="800" font-family="M PLUS Rounded 1c">⚖ 犯罪歴</text>
+      <text x="155" y="141" text-anchor="middle" font-size="9" fill="#7a2020" font-weight="800" font-family="M PLUS Rounded 1c">🗳 政治的見解</text>
+      <text x="218" y="141" text-anchor="middle" font-size="9" fill="#7a2020" font-weight="800" font-family="M PLUS Rounded 1c">💼 社会差別</text>
+      <!-- ラベル（通常） -->
+      <rect x="8" y="180" width="14" height="10" rx="2" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="26" y="190" font-size="9" fill="#48506a" font-weight="700" font-family="M PLUS Rounded 1c">通常の個人情報（同意なしでも一定範囲で取得可）</text>
+      <rect x="8" y="196" width="14" height="10" rx="2" fill="#fde8e8" stroke="#9b2c2c" stroke-width="1.5"/>
+      <text x="26" y="206" font-size="9" fill="#48506a" font-weight="700" font-family="M PLUS Rounded 1c">要配慮個人情報（取得には原則として本人の同意が必要）</text>
+    </svg>
+
+    <div class="diff-row">
+      <div class="dcell d-blue">
+        <h4>通常の個人情報</h4>
+        <ul>
+          <li>氏名・住所・電話番号</li>
+          <li>メール・生年月日</li>
+          <li>利用目的を明示すれば取得可</li>
+        </ul>
+      </div>
+      <div class="dcell d-red">
+        <h4>要配慮個人情報</h4>
+        <ul>
+          <li>病歴・障害・健康状態</li>
+          <li>人種・信条・宗教</li>
+          <li>犯罪歴・前科・逮捕歴</li>
+          <li>取得は<strong>原則として本人の同意が必要</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 具体的な該当例 -->
+  <div class="panel p-orange">
+    <span class="phead">📌 要配慮個人情報の具体例（法律上）</span>
+    <div class="tag-grid">
+      <span class="tag">人種・民族</span>
+      <span class="tag">信条・宗教</span>
+      <span class="tag">社会的身分</span>
+      <span class="tag">病歴</span>
+      <span class="tag">障害</span>
+      <span class="tag">健康診断の結果</span>
+      <span class="tag">犯罪歴（前科）</span>
+      <span class="tag">逮捕・捜査の事実</span>
+      <span class="tag">行政処分の記録</span>
+      <span class="tag">性的指向・性自認</span>
+    </div>
+    <p style="margin-top:12px;font-size:12px;color:#6a7080;font-weight:700;">
+      ※ これら以外でも「本人を差別・偏見にさらす可能性がある情報」は要配慮として扱われる場合がある。
+    </p>
+  </div>
+
+  <!-- 義務のフロー -->
+  <div class="panel p-green">
+    <span class="phead">⚙️ 要配慮個人情報の取り扱いルール</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 取得：原則として本人の明示的な同意が必要</div><div class="fb">通常の個人情報と異なり、「黙示の同意（なんとなくOK）」では不十分。明示的に「この情報を使ってよいですか」と確認する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 第三者提供：原則禁止（本人同意なし）</div><div class="fb">通常の個人情報でも第三者提供は同意が必要だが、要配慮情報は「オプトアウト（あらかじめ通知して本人が拒否できる仕組み）」が使えない。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 管理：通常の個人情報以上に厳重に</div><div class="fb">漏洩した場合の本人への不利益が大きい。適切な安全管理措置（アクセス制限・暗号化等）が求められる。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「病歴」は必ず要配慮、でも「身長・体重」は通常の個人情報</div>
+      <div class="tb">身長・体重は個人情報だが要配慮ではない。病歴・診断結果・障害の有無などが「要配慮」に当たる。「健康に関する情報＝全部要配慮」と早合点しない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「信条」には政治的見解・宗教的見解も含む</div>
+      <div class="tb">「信条」は単に個人の好き嫌いではなく、宗教的信念・政治的立場・思想的傾向まで含む広い概念。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">オプトアウトは要配慮には使えない</div>
+      <div class="tb">通常の個人情報は「あらかじめ本人に通知し拒否する機会を与える（オプトアウト）」形で第三者提供ができるが、要配慮個人情報はオプトアウトは認められない。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「病気・民族・信条・犯罪歴＝要配慮（ようはいりょ）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        要配慮＝「差別・偏見に直結する情報」<br>
+        バレると損する情報→ 本人の許可なく取ってはダメ
+      </span><br><br>
+      ゴロ：<span class="hl">「病・民・信・犯 ＝ ヤバイ情報」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        ビョウ（病歴）・ミン（人種・民族）・シン（信条）・ハン（犯罪歴）<br>
+        → 「ビミシハ」でヤバイ情報を連想
+      </span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,108 +1,173 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ロードバランサーとは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="ロードバランサーの意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-load-balancer.html">
-<meta property="og:title" content="ロードバランサーとは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="ロードバランサーの意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-load-balancer.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ロードバランサとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="ロードバランサをわかりやすく解説。複数サーバへの負荷分散の仕組み、冗長化・フェイルオーバーとの関係、DNSラウンドロビンとの違い、ITパスポート試験の頻出ポイントまで。">
+<link rel="canonical" href="https://example.com/itp-load-balancer">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a6b8a,#0a3d55);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(10,61,85,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#aaddf0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-teal{--c:#1a6b8a;--cbg:#d8f0f8;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a6b8a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a6b8a;--fbg:#d8f0f8;}
+.f2{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">ロードバランサーとは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">ロードバランサー</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🖥️ ITパスポート ｜ テクノロジ系</span>
+    <h1><b>ロードバランサ</b>とは？</h1>
+    <p>大量のアクセスを複数のサーバに振り分ける「交通整理係」。過負荷を防ぎ、サービスを止めない。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="88" viewBox="0 0 72 88" aria-hidden="true">
+        <ellipse cx="36" cy="83" rx="28" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="30" rx="9" fill="#1a6b8a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <!-- 振り分け矢印イメージ -->
+        <path d="M52 60 L60 56 M52 64 L60 64 M52 68 L60 72" stroke="#ffd23f" stroke-width="1.5" fill="none"/>
+      </svg>
+      <div class="scene-txt">
+        人気ECサイトのセール初日。一気に10万人がアクセス。1台のサーバだけでは処理が追いつかない。そこで「ロードバランサ」が3台のサーバにアクセスを均等に振り分ける。
+        <div class="scene-q">→ ページが落ちない！売上機会を逃さない！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：ロードバランサの仕組み -->
+  <div class="panel p-teal">
+    <span class="phead">⚖️ ロードバランサの仕組み</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="ユーザからのアクセスをロードバランサが3台のサーバに分散する図">
+      <!-- ユーザ群（左） -->
+      <circle cx="28" cy="50" r="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="28" y="54" text-anchor="middle" font-size="9" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">👤</text>
+      <circle cx="28" cy="100" r="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="28" y="104" text-anchor="middle" font-size="9" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">👤</text>
+      <circle cx="28" cy="150" r="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="1.5"/>
+      <text x="28" y="154" text-anchor="middle" font-size="9" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">👤</text>
+      <!-- 矢印：ユーザ→LB -->
+      <line x1="38" y1="50" x2="88" y2="95" stroke="#2e6de5" stroke-width="1.5"/>
+      <line x1="38" y1="100" x2="88" y2="100" stroke="#2e6de5" stroke-width="1.5"/>
+      <line x1="38" y1="150" x2="88" y2="105" stroke="#2e6de5" stroke-width="1.5"/>
+      <!-- ロードバランサ本体 -->
+      <rect x="88" y="74" width="74" height="52" rx="10" fill="#d8f0f8" stroke="#1a6b8a" stroke-width="2.5"/>
+      <text x="125" y="95" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6b8a" font-family="M PLUS Rounded 1c">ロード</text>
+      <text x="125" y="111" text-anchor="middle" font-size="11" font-weight="900" fill="#1a6b8a" font-family="M PLUS Rounded 1c">バランサ</text>
+      <!-- 矢印：LB→サーバ -->
+      <line x1="162" y1="88" x2="208" y2="50" stroke="#2e8b4f" stroke-width="2"/>
+      <polygon points="205,46 213,50 207,56" fill="#2e8b4f"/>
+      <line x1="162" y1="100" x2="208" y2="100" stroke="#2e8b4f" stroke-width="2"/>
+      <polygon points="206,96 214,100 206,104" fill="#2e8b4f"/>
+      <line x1="162" y1="112" x2="208" y2="150" stroke="#2e8b4f" stroke-width="2"/>
+      <polygon points="205,146 213,150 207,156" fill="#2e8b4f"/>
+      <!-- サーバ3台 -->
+      <rect x="210" y="30" width="60" height="40" rx="8" fill="#eef8f1" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="240" y="48" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">サーバ A</text>
+      <text x="240" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">30%負荷</text>
+      <rect x="210" y="80" width="60" height="40" rx="8" fill="#eef8f1" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="240" y="98" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">サーバ B</text>
+      <text x="240" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">35%負荷</text>
+      <rect x="210" y="130" width="60" height="40" rx="8" fill="#eef8f1" stroke="#2e8b4f" stroke-width="1.5"/>
+      <text x="240" y="148" text-anchor="middle" font-size="10" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">サーバ C</text>
+      <text x="240" y="162" text-anchor="middle" font-size="9" font-weight="700" fill="#48506a" font-family="M PLUS Rounded 1c">35%負荷</text>
+      <!-- vs 1台の時（×マーク） -->
+      <text x="305" y="95" text-anchor="middle" font-size="9" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">vs 1台だと</text>
+      <text x="305" y="108" text-anchor="middle" font-size="9" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">100%超え</text>
+      <text x="305" y="121" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">→ダウン</text>
+    </svg>
+  </div>
+
+  <!-- 負荷分散の種類と冗長化 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ ロードバランサの2大効果</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">効果① 負荷分散（スケールアウト）</div><div class="fb">アクセスを複数サーバに均等に振り分けることで、1台あたりの処理量を減らし、レスポンスを維持する。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">効果② 冗長化・フェイルオーバー</div><div class="fb">1台が故障してもロードバランサが残りのサーバへ自動的に振り分けを切り替え、サービスを継続できる。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">代表的なアルゴリズム</div><div class="fb">ラウンドロビン（順番に振る）・最小接続数（一番暇なサーバへ）・IPハッシュ（同一ユーザを同じサーバへ）など。</div></div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「ロードバランサ＝セキュリティ機器」は誤り</div>
+      <div class="tb">ロードバランサは<strong>負荷分散・可用性向上</strong>のための機器。ファイアウォールやIDS/IDSとは役割が異なる（ただし機能を持つ製品もある）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">DNSラウンドロビンと混同しやすい</div>
+      <div class="tb">DNSラウンドロビンはDNSレベルで複数IPを返すだけで、<strong>サーバの死活確認ができない</strong>。ロードバランサはサーバの健康状態を監視し、障害時に自動で除外できる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「サーバを増やすだけで同じ効果」は誤り</div>
+      <div class="tb">サーバを増やしても、ロードバランサなしでは振り分けができない。アクセスが1台に集中したままになる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">ロード（荷物）をバランスよく分ける</span>＝ロードバランサ！<br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">Load（負荷）をBalance（均等に）するもの</span><br><br>
+    引越し業者が<span class="hl">トラック3台に荷物を分ける</span>イメージ。<br>
+    1台に全部積んだら走れない → 落ちる！</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ｜ itp-load-balancer</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>ECサイト運用エンジニアの自分。「アクセス集中で1台のサーバがダウン！」3台並べてトラフィック分散したい。CDN？それとも別？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>ロードバランサー</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>CDN（コンテンツデリバリーネットワーク）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ CDNは地理的配信高速化。「同一拠点の複数サーバへ振り分け」がロードバランサー</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：ロードバランサー</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 ロードバランサーとは何か</h2>
-<span class="kw">トラフィック分散で1台集中を防ぐ装置</span>
-<p>ロードバランサー（負荷分散装置）は受け取ったリクエストをラウンドロビン・重み付け・最少接続数などのアルゴリズムで複数サーバーに振り分ける。単一障害点（SPOF）の排除にも使われ、1台が停止しても他のサーバーが引き継ぐ。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>L4ロードバランサーはIPアドレス・ポート番号で振り分け、L7ロードバランサーはURLパス・Cookieの内容など上位レイヤーで振り分けられる。Webシステムの冗長化・スケールアウトに不可欠。
-
-**覚え方** 🎯 ロードバランサー＝**負荷の交通整理員**。**ラウンドロビン・重み付け・最少接続**で振り分け。**L4（IP/ポート）・L7（URL）**の2階層。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>【ひっかけ注意】ロードバランサーとCDNは**どちらも負荷軽減だが目的が異なる**。CDN＝地理的分散キャッシュ配信、ロードバランサー＝同一拠点内のサーバ間トラフィック振り分け。また「L4はURL判定できない」点が頻出。L7のみCookieやURLパスで振り分け可能。「スケールアウト＝台数増加・スケールアップ＝性能増強」との混同にも注意。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>ロードバランサー＝**負荷の交通整理員**。**ラウンドロビン・重み付け・最少接続**で振り分け。**L4（IP/ポート）・L7（URL）**の2階層。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>ロードバランサーはITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

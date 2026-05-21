@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>総当たり攻撃（ブルートフォース攻撃）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="総当たり攻撃（ブルートフォース攻撃）をわかりやすく解説。パスワード解析の仕組み、辞書攻撃・リスト型攻撃との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-brute-force">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#b52a2a,#6b1111);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(107,17,17,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#f5c0c0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-pink{--c:#cf4f86;--cbg:#fbe3ee;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#b52a2a;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#dd5a3a;--fbg:#fdf0ed;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.counter-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.cnt-box{flex:1;min-width:130px;background:#fdf0ed;border-radius:12px;padding:10px 12px;border:2px solid #dd5a3a;}
+.cnt-box .ch{font-size:12px;font-weight:900;color:#bb3c1f;margin-bottom:4px;}
+.cnt-box .cb{font-size:11.5px;font-weight:600;line-height:1.65;color:#7a3c2a;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🔐 ITパスポート ｜ セキュリティ系</span>
+    <h1><b>総当たり攻撃</b>（ブルートフォース）とは？</h1>
+    <p>考えられる組み合わせを片っ端から試してパスワードを破る、力まかせの攻撃手法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="36" width="44" height="28" rx="9" fill="#b52a2a"/>
+        <circle cx="36" cy="20" r="14" fill="#f4c89a"/>
+        <path d="M23 16 a13 12 0 0 1 26 0 q-6 -9 -13 -9 q-7 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 鍵アイコン -->
+        <rect x="47" y="54" width="18" height="13" rx="2" fill="#ffd23f"/>
+        <circle cx="56" cy="51" r="5" fill="none" stroke="#ffd23f" stroke-width="3"/>
+      </svg>
+      <div class="scene-txt">
+        あなたの会社のシステムに不審なログイン試行が何千回も来ている。ログを見ると、同一IPから「password1」「password2」「password3」…と順番に試した形跡があった。
+        <div class="scene-q">…これ、何という攻撃？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：総当たりの仕組み -->
+  <div class="panel p-red">
+    <span class="phead">🔢 総当たり攻撃の仕組み</span>
+    <svg width="100%" viewBox="0 0 340 220" role="img" aria-label="総当たり攻撃：考えられるすべてのパスワードを順番に試す仕組みの図">
+      <!-- 攻撃者 -->
+      <rect x="10" y="70" width="80" height="80" rx="12" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <circle cx="50" cy="95" r="12" fill="#f4c89a"/>
+      <rect x="38" y="108" width="24" height="18" rx="5" fill="#b52a2a"/>
+      <text x="50" y="162" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">攻撃者</text>
+
+      <!-- 矢印群 -->
+      <line x1="92" y1="90" x2="148" y2="78" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <line x1="92" y1="103" x2="148" y2="103" stroke="#dd5a3a" stroke-width="2"/>
+      <line x1="92" y1="116" x2="148" y2="128" stroke="#dd5a3a" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="118" y="75" text-anchor="middle" font-size="9.5" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">aaa…</text>
+      <text x="118" y="101" text-anchor="middle" font-size="9.5" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">aab…</text>
+      <text x="118" y="132" text-anchor="middle" font-size="9.5" font-weight="800" fill="#dd5a3a" font-family="M PLUS Rounded 1c">aac…</text>
+
+      <!-- ログインフォーム -->
+      <rect x="150" y="60" width="100" height="100" rx="10" fill="#f4f6fb" stroke="#4256b8" stroke-width="2"/>
+      <text x="200" y="80" text-anchor="middle" font-size="11" font-weight="900" fill="#4256b8" font-family="M PLUS Rounded 1c">ログイン画面</text>
+      <rect x="162" y="88" width="76" height="18" rx="4" fill="#fff" stroke="#c2c8d8" stroke-width="1.5"/>
+      <text x="200" y="101" text-anchor="middle" font-size="10" fill="#9aa3b2" font-family="M PLUS Rounded 1c">ID: user01</text>
+      <rect x="162" y="112" width="76" height="18" rx="4" fill="#fff" stroke="#c2c8d8" stroke-width="1.5"/>
+      <text x="200" y="125" text-anchor="middle" font-size="10" fill="#9aa3b2" font-family="M PLUS Rounded 1c">PW: ●●●●</text>
+      <rect x="172" y="136" width="56" height="16" rx="4" fill="#4256b8"/>
+      <text x="200" y="148" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">ログイン</text>
+
+      <!-- 結果 -->
+      <rect x="262" y="80" width="68" height="60" rx="10" fill="#e2f3e5" stroke="#2e8b4f" stroke-width="2"/>
+      <line x1="252" y1="110" x2="262" y2="110" stroke="#2e8b4f" stroke-width="2"/>
+      <polygon points="262,106 262,114 268,110" fill="#2e8b4f"/>
+      <text x="296" y="102" text-anchor="middle" font-size="11" font-weight="900" fill="#216b3b" font-family="M PLUS Rounded 1c">一致した！</text>
+      <text x="296" y="118" text-anchor="middle" font-size="18" font-family="M PLUS Rounded 1c">🔓</text>
+      <text x="296" y="136" text-anchor="middle" font-size="10" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">侵入成功</text>
+
+      <!-- 下部注記 -->
+      <text x="170" y="185" text-anchor="middle" font-size="11" font-weight="800" fill="#bb3c1f" font-family="M PLUS Rounded 1c">数字・英字・記号の全組み合わせを機械的に試し続ける</text>
+      <text x="170" y="200" text-anchor="middle" font-size="10.5" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">パスワードが短いほど・種類が少ないほど早く破られる</text>
+    </svg>
+    <div class="counter-row">
+      <div class="cnt-box">
+        <div class="ch">パスワードが4桁（数字のみ）</div>
+        <div class="cb">10,000通り → コンピュータなら瞬殺</div>
+      </div>
+      <div class="cnt-box">
+        <div class="ch">英数字混合8桁</div>
+        <div class="cb">約218兆通り → 時間はかかるが突破可能</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 類似攻撃との比較フロー -->
+  <div class="panel p-indigo">
+    <span class="phead">🗺️ 類似攻撃との違い</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">総当たり攻撃（ブルートフォース）</div>
+        <div class="fb">考えられる<strong>すべての組み合わせ</strong>を機械的に試す。辞書も使わない純粋な力まかせ。時間がかかるが確実に破れる。</div>
+      </div>
+      <div class="farrow">▼ 似ているが違う</div>
+      <div class="fstep f2">
+        <div class="fh">辞書攻撃（Dictionary Attack）</div>
+        <div class="fb">よく使われるパスワード集（辞書）から順に試す。「password」「123456」など<strong>意味のある単語が多い</strong>ため、総当たりより速い。</div>
+      </div>
+      <div class="farrow">▼ さらに違う</div>
+      <div class="fstep f3">
+        <div class="fh">リスト型攻撃（パスワードスプレー）</div>
+        <div class="fb">どこかで流出した<strong>ID・パスワードの組み合わせリスト</strong>をそのまま使いまわす。「同じパスワードを複数サービスで使う人」を狙う。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">辞書攻撃と混同しやすい</div>
+      <div class="tb">辞書攻撃は「よく使われる単語リスト」を使う。総当たりは<strong>リストを使わず全組み合わせ</strong>を試す点が違う。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">リスト型攻撃（パスワードスプレー）と混同しやすい</div>
+      <div class="tb">リスト型は「漏えいした実在のID・PW」を流用。総当たりは<strong>実在リストを使わず機械的に生成</strong>する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">対策を問う問題</div>
+      <div class="tb">「アカウントロック（一定回数失敗でロック）」「多要素認証」「長い・複雑なパスワード」が有効な対策。CAPTCHA も減速に効く。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「全組み合わせ」「片っ端から」「力まかせ」が問題文にあれば → <strong>総当たり攻撃（ブルートフォース）</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">ブル（牛）が力まかせ</span>に扉を頭突きで全部試す！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">ブルートフォース ＝ 「brute（獣・力まかせ）＋ force（力）」<br>
+    牛みたいに全部の扉を頭突きで試す＝全組み合わせを試す</span><br><br>
+    <span class="hl">ブル（牛）は辞書を読まない</span> → 辞書攻撃との違いはここ！</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

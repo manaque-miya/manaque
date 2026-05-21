@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>アノテーションとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="アノテーションをわかりやすく解説。AIの学習データに正解ラベルを付ける作業、教師あり学習との関係、クラウドソーシングでの実施方法、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp/itp-annotation">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c45c00,#7a3500);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(122,53,0,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#ffd9b5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-amber{--c:#c45c00;--cbg:#fde8cc;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c45c00;}
+
+.anno-types{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.at-item{border-radius:11px;padding:10px 13px;display:flex;gap:10px;align-items:flex-start;}
+.at-icon{font-size:22px;flex-shrink:0;line-height:1;}
+.at-body h4{font-size:13px;font-weight:900;margin-bottom:3px;}
+.at-body p{font-size:12px;font-weight:600;line-height:1.7;color:#48506a;}
+.at-img{background:#fde8cc;}.at-img h4{color:#c45c00;}
+.at-text{background:#e7eefc;}.at-text h4{color:#2e6de5;}
+.at-voice{background:#e2f3e5;}.at-voice h4{color:#2e8b4f;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#c45c00;--fbg:#fde8cc;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f4{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>アノテーション</b>とは？</h1>
+    <p>AIに学ばせるデータに「これは何か」という正解ラベルを人間が付ける作業。良質なAIは良質なアノテーションから生まれる。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-amber">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#7a3500" opacity=".12"/>
+        <!-- 画像+ラベル付けアイコン -->
+        <rect x="10" y="40" width="44" height="36" rx="5" fill="#7a3500"/>
+        <rect x="14" y="44" width="36" height="26" rx="3" fill="#ffd9b5"/>
+        <!-- 犬の輪郭 -->
+        <ellipse cx="32" cy="57" rx="12" ry="8" fill="#c45c00" opacity=".5"/>
+        <ellipse cx="32" cy="50" rx="6" ry="5" fill="#c45c00" opacity=".6"/>
+        <!-- ラベル赤枠 -->
+        <rect x="20" y="46" width="24" height="16" rx="2" fill="none" stroke="#dd5a3a" stroke-width="1.5"/>
+        <!-- ラベルタグ -->
+        <rect x="44" y="46" width="28" height="12" rx="3" fill="#ffd23f"/>
+        <text x="58" y="56" text-anchor="middle" font-size="7" font-weight="900" fill="#7a3500" font-family="sans-serif">犬</text>
+        <line x1="44" y1="52" x2="44" y2="52" stroke="#ffd23f" stroke-width="1"/>
+        <circle cx="39" cy="22" r="13" fill="#f4c89a"/>
+        <path d="M27 18 a12 12 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="31" y="32" width="16" height="8" fill="#f4c89a"/>
+      </svg>
+      <div class="scene-txt">
+        AI開発会社でのアルバイト。「この写真に写っているものが何か、ラベルを付けてください」という仕事を大量にこなす。「犬」「猫」「車」とひたすらタグ付け。
+        <div class="scene-q">…これが「アノテーション」。AIが学習するための「答え付き問題集」を人間が作る作業。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-blue">
+    <span class="phead">🏷️ アノテーションが機械学習を動かす</span>
+    <svg width="100%" viewBox="0 0 340 195" role="img" aria-label="アノテーションから機械学習モデル完成までの流れ">
+      <rect x="0" y="0" width="340" height="195" rx="12" fill="#f0f4fc"/>
+
+      <!-- ステップ1: 生データ -->
+      <rect x="5" y="20" width="80" height="80" rx="10" fill="#4a5568"/>
+      <text x="45" y="40" text-anchor="middle" font-size="9" font-weight="900" fill="#a0aec0" font-family="M PLUS Rounded 1c">生データ</text>
+      <!-- 画像アイコン群 -->
+      <rect x="12" y="46" width="22" height="16" rx="2" fill="#718096"/>
+      <ellipse cx="20" cy="52" rx="4" ry="3" fill="#a0aec0" opacity=".5"/>
+      <rect x="38" y="46" width="22" height="16" rx="2" fill="#718096"/>
+      <ellipse cx="49" cy="52" rx="4" ry="3" fill="#a0aec0" opacity=".5"/>
+      <rect x="12" y="66" width="22" height="16" rx="2" fill="#718096"/>
+      <rect x="38" y="66" width="22" height="16" rx="2" fill="#718096"/>
+      <text x="45" y="96" text-anchor="middle" font-size="8.5" font-weight="700" fill="#a0aec0" font-family="M PLUS Rounded 1c">ラベルなし</text>
+
+      <!-- 矢印1 -->
+      <path d="M87 60 L110 60" stroke="#c45c00" stroke-width="2.5" marker-end="url(#arrA1)"/>
+      <defs><marker id="arrA1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#c45c00"/></marker></defs>
+      <text x="98" y="55" text-anchor="middle" font-size="7.5" font-weight="900" fill="#c45c00" font-family="M PLUS Rounded 1c">人間が</text>
+      <text x="98" y="75" text-anchor="middle" font-size="7.5" font-weight="900" fill="#c45c00" font-family="M PLUS Rounded 1c">ラベル付け</text>
+
+      <!-- ステップ2: アノテーション済みデータ -->
+      <rect x="112" y="20" width="80" height="80" rx="10" fill="#c45c00"/>
+      <text x="152" y="40" text-anchor="middle" font-size="8.5" font-weight="900" fill="#ffd9b5" font-family="M PLUS Rounded 1c">アノテーション</text>
+      <text x="152" y="52" text-anchor="middle" font-size="8.5" font-weight="900" fill="#ffd9b5" font-family="M PLUS Rounded 1c">済みデータ</text>
+      <!-- ラベル付き画像 -->
+      <rect x="118" y="58" width="22" height="16" rx="2" fill="#7a3500"/>
+      <rect x="136" y="56" width="16" height="10" rx="2" fill="#ffd23f"/>
+      <text x="144" y="64" text-anchor="middle" font-size="6.5" fill="#5c4500" font-weight="900" font-family="sans-serif">猫</text>
+      <rect x="145" y="58" width="22" height="16" rx="2" fill="#7a3500"/>
+      <rect x="163" y="56" width="16" height="10" rx="2" fill="#ffd23f"/>
+      <text x="171" y="64" text-anchor="middle" font-size="6.5" fill="#5c4500" font-weight="900" font-family="sans-serif">犬</text>
+      <text x="152" y="88" text-anchor="middle" font-size="8" font-weight="700" fill="#ffd9b5" font-family="M PLUS Rounded 1c">「答え付き問題集」</text>
+      <text x="152" y="100" text-anchor="middle" font-size="8" font-weight="700" fill="#ffd9b5" font-family="M PLUS Rounded 1c">の完成</text>
+
+      <!-- 矢印2 -->
+      <path d="M194 60 L218 60" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arrA2)"/>
+      <defs><marker id="arrA2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2e6de5"/></marker></defs>
+      <text x="206" y="55" text-anchor="middle" font-size="7.5" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">機械学習</text>
+      <text x="206" y="75" text-anchor="middle" font-size="7.5" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">で学習</text>
+
+      <!-- ステップ3: 完成モデル -->
+      <rect x="220" y="20" width="112" height="80" rx="10" fill="#2e8b4f"/>
+      <text x="276" y="42" text-anchor="middle" font-size="9" font-weight="900" fill="#b8e8c8" font-family="M PLUS Rounded 1c">学習済みAIモデル</text>
+      <!-- 判定デモ -->
+      <rect x="228" y="50" width="22" height="14" rx="2" fill="#1d5e34"/>
+      <text x="239" y="61" text-anchor="middle" font-size="8" fill="#ffd23f" font-weight="900" font-family="sans-serif">?</text>
+      <path d="M252 57 L262 57" stroke="#ffd23f" stroke-width="1.5" marker-end="url(#arrA3)"/>
+      <defs><marker id="arrA3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#ffd23f"/></marker></defs>
+      <rect x="264" y="50" width="26" height="14" rx="3" fill="#ffd23f"/>
+      <text x="277" y="61" text-anchor="middle" font-size="8" fill="#5c4500" font-weight="900" font-family="sans-serif">猫！</text>
+      <text x="276" y="86" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b8e8c8" font-family="M PLUS Rounded 1c">未知の画像も</text>
+      <text x="276" y="98" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b8e8c8" font-family="M PLUS Rounded 1c">自動で判定できる</text>
+
+      <!-- 下部メッセージ -->
+      <text x="170" y="155" text-anchor="middle" font-size="11" font-weight="900" fill="#c45c00" font-family="M PLUS Rounded 1c">アノテーションの質がAIの賢さを決める</text>
+      <text x="170" y="172" text-anchor="middle" font-size="10" font-weight="700" fill="#718096" font-family="M PLUS Rounded 1c">「ゴミデータ→ゴミAI」「良質ラベル→賢いAI」</text>
+    </svg>
+
+    <div class="anno-types">
+      <div class="at-item at-img">
+        <span class="at-icon">🖼️</span>
+        <div class="at-body">
+          <h4>画像アノテーション</h4>
+          <p>写真に「犬」「猫」「車」などのラベルを付ける。物体検出では対象を囲む矩形（バウンディングボックス）も描く。自動運転・医療画像診断に使われる。</p>
+        </div>
+      </div>
+      <div class="at-item at-text">
+        <span class="at-icon">📝</span>
+        <div class="at-body">
+          <h4>テキストアノテーション</h4>
+          <p>文章の感情（ポジティブ/ネガティブ）や固有名詞（人名・地名）のラベルを付ける。感情分析・翻訳AIに使われる。</p>
+        </div>
+      </div>
+      <div class="at-item at-voice">
+        <span class="at-icon">🎙️</span>
+        <div class="at-body">
+          <h4>音声アノテーション</h4>
+          <p>音声データに書き起こしテキストを付ける。音声認識AIの学習データ作成に使われる。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">📋 アノテーション作業の流れ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 生データを収集する</div>
+        <div class="fb">学習させたい内容に関する大量の生データ（画像・テキスト・音声）を集める。データが少ないとAIの精度が上がらない。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② アノテーターが正解ラベルを付ける</div>
+        <div class="fb">人間のアノテーター（作業者）が「これは何か」を判定してラベルを付ける。クラウドソーシングで大量の人手を使う場合も多い。品質の一貫性が課題。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 品質確認・修正する</div>
+        <div class="fb">複数人でクロスチェックするなど、ラベルの正確さを確認する。誤ったラベルがついていると、AIが間違ったことを学ぶ（バイアスの原因になる）。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f4">
+        <div class="fh">④ 学習データとして機械学習モデルに入力</div>
+        <div class="fb">完成したアノテーション済みデータを教師あり学習の訓練データとして使う。データ量・質ともに多いほど賢いAIができる。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「AIが自動でやる作業」ではない</div>
+      <div class="tb">アノテーションは<strong>人間が行う作業</strong>。AIを作るための準備作業であり、AIが自動でラベルを付けるわけではない（半自動化はあるが基本は人手）。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">教師なし学習には不要</div>
+      <div class="tb">アノテーション（正解ラベル付け）が必要なのは<strong>教師あり学習</strong>のみ。教師なし学習はラベルなしデータでパターンを自動発見する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">アノテーションの誤りはバイアスになる</div>
+      <div class="tb">ラベル付けに偏りや誤りがあると、学習したAIも偏った判断をする（アルゴリズムバイアスの原因）。アノテーションの品質管理が重要。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">データクレンジングと混同しやすい</div>
+      <div class="tb">データクレンジングは「誤りや重複を取り除く」データ品質向上。アノテーションは「正解ラベルを付ける」作業。目的が異なる。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">アノテーション</span>＝<span class="hl">「あのっ、テーション（先生）！答え教えて！」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        AIが学ぶ前に「これが正解だよ」と人間が教える作業<br>
+        ＝答え付き問題集を手作りする
+      </span><br><br>
+      <span class="hl">アノ（あの）</span>→ あのデータに<span class="hl">テーション（注釈）</span>→ ラベル付け<br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">
+        「あのデータに注釈（ラベル）を付ける＝アノテーション」
+      </span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-annotation</div>
+
+</div>
+</body>
+</html>

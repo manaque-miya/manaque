@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>破壊的イノベーションとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="破壊的イノベーションを持続的イノベーションとの違いから解説。低価格・シンプルさで既存市場を破壊する仕組み、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-disruption">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#6c3483,#3b0a57);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(60,10,80,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#dcc8f0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-purple{--c:#6c3483;--cbg:#f0e6f7;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6c3483;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6c3483;--fbg:#f4eaf9;}
+.f2{--fc:#d9851f;--fbg:#fdf4e4;}
+.f3{--fc:#c0392b;--fbg:#fdecea;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+
+.example-list{list-style:none;margin-top:8px;}
+.example-list li{font-size:12.5px;font-weight:600;line-height:1.8;color:#3c4456;padding-left:18px;position:relative;margin-bottom:4px;}
+.example-list li::before{content:"💥";position:absolute;left:0;font-size:11px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系／経営戦略</span>
+    <h1><b>破壊的イノベーション</b>とは？</h1>
+    <p>既存市場の常識を「安く・シンプルに」で根底からひっくり返す革新。大企業が見向きもしない層から市場を奪う。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="14" y="58" width="50" height="28" rx="8" fill="#cdd9ec"/>
+        <rect x="20" y="38" width="38" height="28" rx="8" fill="#6c3483"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="30" y="32" width="18" height="9" fill="#f4c89a"/>
+        <path d="M30 41 l9 5 l9 -5 v5 h-18z" fill="#fff"/>
+        <text x="39" y="54" text-anchor="middle" font-size="9" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">NEW!</text>
+        <rect x="22" y="64" width="34" height="14" rx="4" fill="#6c3483" opacity=".5"/>
+        <text x="39" y="74" text-anchor="middle" font-size="8" fill="#fff" font-family="M PLUS Rounded 1c">格安スマホ</text>
+      </svg>
+      <div class="scene-txt">
+        2000年代、大手メーカーの携帯電話は高機能・高価格。でも突然、格安で機能は最小限の<strong>スマートフォン</strong>が登場した。最初は「こんなもの誰が使う？」と笑われた。<br>
+        10年後、世界のトップ企業が軒並み消えた。
+        <div class="scene-q">「安くて不便」なものが、なぜ市場を壊せたの？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-purple">
+    <span class="phead">📈 破壊的イノベーションの進行モデル</span>
+    <svg width="100%" viewBox="0 0 340 240" role="img" aria-label="破壊的イノベーションの進行：既存企業が高機能化する間に新参者が低価格から侵食するグラフ">
+      <!-- 背景グリッド -->
+      <rect x="40" y="10" width="285" height="190" fill="#f8f6fc" rx="6"/>
+      <!-- 軸 -->
+      <line x1="40" y1="200" x2="325" y2="200" stroke="#9aa3b2" stroke-width="1.5"/>
+      <line x1="40" y1="10" x2="40" y2="200" stroke="#9aa3b2" stroke-width="1.5"/>
+      <text x="180" y="220" text-anchor="middle" font-size="11" fill="#9aa3b2" font-family="M PLUS Rounded 1c">時間 →</text>
+      <text x="25" y="110" text-anchor="middle" font-size="11" fill="#9aa3b2" font-family="M PLUS Rounded 1c" transform="rotate(-90,25,110)">性能</text>
+      <!-- 既存企業の軌跡：上に向かう -->
+      <path d="M60 170 Q180 120 310 40" stroke="#2e6de5" stroke-width="3" fill="none"/>
+      <text x="300" y="35" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">既存企業</text>
+      <text x="300" y="47" font-size="9" fill="#2e6de5" font-family="M PLUS Rounded 1c">（高機能化）</text>
+      <!-- 市場が必要な性能レベル：横線 -->
+      <line x1="40" y1="120" x2="325" y2="100" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="50" y="117" font-size="9" fill="#2e8b4f" font-family="M PLUS Rounded 1c">市場が求める性能レベル</text>
+      <!-- 破壊的：下から食い上がる -->
+      <path d="M60 200 Q150 185 220 150 Q280 110 310 70" stroke="#c0392b" stroke-width="3" fill="none"/>
+      <text x="215" y="143" font-size="10" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">破壊的参入者</text>
+      <text x="215" y="155" font-size="9" fill="#c0392b" font-family="M PLUS Rounded 1c">（低価格・シンプル）</text>
+      <!-- 交差点バッジ -->
+      <circle cx="260" cy="98" r="18" fill="#ffd23f" stroke="#d9851f" stroke-width="2"/>
+      <text x="260" y="95" text-anchor="middle" font-size="8" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">市場</text>
+      <text x="260" y="107" text-anchor="middle" font-size="8" font-weight="900" fill="#5c4500" font-family="M PLUS Rounded 1c">逆転！</text>
+      <!-- 説明ラベル -->
+      <rect x="50" y="170" width="80" height="22" rx="5" fill="#e7eefc"/>
+      <text x="90" y="185" text-anchor="middle" font-size="9" font-weight="700" fill="#2e6de5" font-family="M PLUS Rounded 1c">既存：過剰性能に</text>
+      <rect x="50" y="195" width="80" height="22" rx="5" fill="#fdecea"/>
+      <text x="90" y="210" text-anchor="middle" font-size="9" font-weight="700" fill="#c0392b" font-family="M PLUS Rounded 1c">新参：下から侵食</text>
+    </svg>
+    <p style="margin-top:10px;font-size:12.5px;font-weight:700;color:#3c4456;">既存企業が「もっと高性能に」と突き進む間に、新参者が<strong>「十分なら安いほうがいい」層</strong>を取り込む。やがて性能が市場ニーズを超えた時点で逆転される。</p>
+  </div>
+
+  <!-- フロー：破壊の流れ -->
+  <div class="panel p-green">
+    <span class="phead">🌊 破壊的イノベーションが起きる流れ</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 新参者が「低価格・シンプル」で参入</div>
+        <div class="fb">既存企業は無視。「ローエンド市場なんて儲からない」と手を出さない。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 新参者が徐々に改良・コスト低下</div>
+        <div class="fb">「十分な品質」まで改善しながら安さを維持。メインストリーム層へ食い込み始める。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 既存企業がシェアを奪われ市場崩壊</div>
+        <div class="fb">対抗しようとしても、すでにコスト・規模で勝てない。既存の大企業が脱落する。</div>
+      </div>
+    </div>
+    <ul class="example-list" style="margin-top:12px;">
+      <li>デジタルカメラ → スマートフォンのカメラ（フィルムカメラも一緒に崩壊）</li>
+      <li>レンタルビデオ店 → Netflix（配信で実店舗崩壊）</li>
+      <li>百科事典 → Wikipedia（無料で専門書崩壊）</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「持続的イノベーション」と混同しやすい</div>
+      <div class="tb">持続的イノベーションは<strong>既存市場内で改善を続ける</strong>（iPhone新機種は持続的）。破壊的は<strong>市場の構造ごと変える</strong>。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「技術的に優れている」わけではない</div>
+      <div class="tb">最初は<strong>既存より劣っている</strong>ことが多い。「安い・シンプル・使いやすい」で未開拓層を獲得するのが破壊的イノベーションの本質。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「急激に起きる」わけではない</div>
+      <div class="tb">破壊は<strong>じわじわ進む</strong>。既存企業が気づいたときにはすでに手遅れというケースが多い。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「安い切り崩し＝破壊的」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">下から安く入って上を崩す＝破壊的イノベーション</span><br><br>
+      <span class="hl">「既存が上がると、新参が下から食う」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">対義語を一緒に覚える：持続的＝上を目指して改良 ／ 破壊的＝下から食い上がる</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>加重平均法とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="加重平均法（在庫評価方法）をわかりやすく解説。総平均法との違い、移動平均法との比較、棚卸資産の評価方法としてのITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-weighted-average">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#7b4dbf,#3d1a7a);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(61,26,122,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d5c8f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#7b4dbf;--cbg:#ede5f8;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#7b4dbf;}
+
+.calc-box{background:#f4f0fb;border-radius:12px;padding:14px 16px;margin-top:10px;}
+.calc-title{font-size:13px;font-weight:900;color:#7b4dbf;margin-bottom:8px;}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:13px;font-weight:700;color:#3c4456;}
+.calc-eq{background:#fff;border-radius:8px;padding:6px 10px;font-size:13px;font-weight:900;color:#3d1a7a;border:2px solid #d5c8f5;margin-top:6px;}
+.calc-ans{background:#7b4dbf;border-radius:8px;padding:8px 12px;font-size:14px;font-weight:900;color:#fff;margin-top:8px;text-align:center;}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.compare-cell{border-radius:12px;padding:12px;border:2px solid var(--cc);}
+.compare-cell h4{font-size:12.5px;font-weight:900;color:var(--cc);margin-bottom:6px;}
+.compare-cell p{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;}
+.cc1{--cc:#7b4dbf;background:#ede5f8;}
+.cc2{--cc:#2e6de5;background:#eef3fd;}
+@media(max-width:480px){.compare-grid{grid-template-columns:1fr;}}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ アカウンティング・マネジメント系</span>
+    <h1><b>加重平均法</b>とは？</h1>
+    <p>在庫（棚卸資産）の評価方法のひとつ。仕入れた数量と金額を全部まとめて「平均単価」を出し、払い出し原価を計算する方法。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#3d1a7a" opacity=".12"/>
+        <rect x="10" y="60" width="58" height="25" rx="6" fill="#d5c8f5"/>
+        <rect x="16" y="38" width="46" height="30" rx="9" fill="#7b4dbf"/>
+        <circle cx="39" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#4a3a5a"/>
+        <rect x="31" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 41 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- 箱のアイコン -->
+        <rect x="42" y="58" width="16" height="13" rx="2" fill="#3d1a7a"/>
+        <rect x="44" y="60" width="12" height="9" rx="1" fill="#b8a0e8"/>
+        <text x="50" y="67" text-anchor="middle" font-size="6" font-weight="900" fill="#3d1a7a" font-family="M PLUS Rounded 1c">¥</text>
+      </svg>
+      <div class="scene-txt">
+        経理担当のあなた。倉庫に残った材料の在庫を月末に評価しなければいけない。月の初めに100円で100個、月の途中に120円で50個仕入れたが、「どちらの値段で計算すればいい？」と悩んでいる。
+        <div class="scene-q">…まとめて平均を出して計算する方法、何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：計算の仕組み -->
+  <div class="panel p-purple">
+    <span class="phead">🔢 加重平均法の計算の仕組み</span>
+    <svg width="100%" viewBox="0 0 580 260" role="img" aria-label="加重平均法の計算例：100円×100個と120円×50個を合算して平均単価を求める図">
+      <!-- 仕入れ1 -->
+      <rect x="10" y="10" width="155" height="80" rx="10" fill="#ede5f8" stroke="#7b4dbf" stroke-width="2"/>
+      <text x="87" y="34" text-anchor="middle" font-size="11" font-weight="900" fill="#7b4dbf" font-family="M PLUS Rounded 1c">1回目の仕入れ</text>
+      <text x="87" y="56" text-anchor="middle" font-size="15" font-weight="900" fill="#3d1a7a" font-family="M PLUS Rounded 1c">100円 × 100個</text>
+      <text x="87" y="76" text-anchor="middle" font-size="13" font-weight="800" fill="#7b4dbf" font-family="M PLUS Rounded 1c">= 10,000円</text>
+      <!-- プラス記号 -->
+      <text x="175" y="55" text-anchor="middle" font-size="24" font-weight="900" fill="#9aa3b2" font-family="M PLUS Rounded 1c">+</text>
+      <!-- 仕入れ2 -->
+      <rect x="195" y="10" width="155" height="80" rx="10" fill="#eef3fd" stroke="#2e6de5" stroke-width="2"/>
+      <text x="272" y="34" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">2回目の仕入れ</text>
+      <text x="272" y="56" text-anchor="middle" font-size="15" font-weight="900" fill="#1a3a8a" font-family="M PLUS Rounded 1c">120円 × 50個</text>
+      <text x="272" y="76" text-anchor="middle" font-size="13" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">= 6,000円</text>
+      <!-- イコール -->
+      <text x="360" y="55" text-anchor="middle" font-size="24" font-weight="900" fill="#9aa3b2" font-family="M PLUS Rounded 1c">=</text>
+      <!-- 合計 -->
+      <rect x="375" y="10" width="190" height="80" rx="10" fill="#f4f0fb" stroke="#7b4dbf" stroke-width="2.5"/>
+      <text x="470" y="34" text-anchor="middle" font-size="11" font-weight="900" fill="#7b4dbf" font-family="M PLUS Rounded 1c">合計</text>
+      <text x="470" y="56" text-anchor="middle" font-size="15" font-weight="900" fill="#3d1a7a" font-family="M PLUS Rounded 1c">16,000円 ÷ 150個</text>
+      <text x="470" y="76" text-anchor="middle" font-size="13" font-weight="800" fill="#7b4dbf" font-family="M PLUS Rounded 1c">= 総仕入額合計</text>
+      <!-- 計算式 -->
+      <rect x="10" y="110" width="560" height="50" rx="10" fill="#7b4dbf"/>
+      <text x="290" y="130" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">加重平均単価の計算式</text>
+      <text x="290" y="150" text-anchor="middle" font-size="14" font-weight="900" fill="#ffd23f" font-family="M PLUS Rounded 1c">（仕入総額の合計）÷（仕入個数の合計）= 平均単価</text>
+      <!-- 答え -->
+      <rect x="10" y="175" width="560" height="72" rx="10" fill="#fdf4e4" stroke="#d9851f" stroke-width="2"/>
+      <text x="290" y="198" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">この例での計算</text>
+      <text x="290" y="220" text-anchor="middle" font-size="14" font-weight="900" fill="#3c4456" font-family="M PLUS Rounded 1c">16,000円 ÷ 150個 ≒ 106.7円／個</text>
+      <text x="290" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="#7a6030" font-family="M PLUS Rounded 1c">この単価で在庫全体を評価する（期末在庫も払出原価も同じ単価）</text>
+    </svg>
+  </div>
+
+  <!-- 総平均法 vs 移動平均法 -->
+  <div class="panel p-blue">
+    <span class="phead">⚖️ 総平均法 vs 移動平均法</span>
+    <p>加重平均法には「いつ平均を出すか」で2種類ある。</p>
+    <div class="compare-grid">
+      <div class="compare-cell cc1">
+        <h4>総平均法（加重平均）</h4>
+        <p>期末にまとめて1回だけ平均を計算。計算がシンプル。月末や年末に一括処理。</p>
+        <p style="margin-top:6px;font-size:11px;color:#7b4dbf;font-weight:800;">→ ITパスポートで「加重平均法」と出たらコレ</p>
+      </div>
+      <div class="compare-cell cc2">
+        <h4>移動平均法</h4>
+        <p>仕入れのたびに都度平均を再計算。リアルタイムで単価が変わる。手間はかかるが精度が高い。</p>
+        <p style="margin-top:6px;font-size:11px;color:#2e6de5;font-weight:800;">→ 仕入れのたびに計算しなおす</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">先入先出法と混同しやすい</div>
+      <div class="tb">先入先出法は「先に仕入れたものから先に払い出す」という考え方。平均は取らない。単価が違う在庫が混在するとき、最初に買った方の値段で出庫する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">後入先出法（廃止）との混同</div>
+      <div class="tb">後入先出法は「後に仕入れたものから先に払い出す」方法だが、日本の会計基準では廃止されている。試験で「廃止された方法」が問われることがある。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「重みづけ」が何を意味するか</div>
+      <div class="tb">加重の「重み」＝仕入個数（数量）。たくさん仕入れた回の価格ほど平均に大きく影響する。単純平均（100+120÷2=110）とは結果が違う点に注意。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「仕入総額 ÷ 仕入総量 = 平均単価」→ 加重平均法。「古い在庫から順に払い出し」→ 先入先出法。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「加重」＝重さ（数量）をかけた平均</span><br>
+    「<strong>荷物（在庫）の重さで割り勘</strong>」＝加重平均！<br><br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">100円×100個 と 120円×50個→ 多い方（100個）のほうが平均を引っ張る＝重みで割る</span></div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
+</div>
+</body>
+</html>

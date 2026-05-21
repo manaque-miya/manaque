@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>偽装請負とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="偽装請負を労働者派遣との違いから解説。指揮命令系統・直接指示・請負と派遣の見分け方、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-disguised-contract">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#c0392b,#7b241c);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(120,30,20,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#fadadd;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-row svg{flex-shrink:0;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#c0392b;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#2e8b4f;--fbg:#eef8f1;}
+.f2{--fc:#c0392b;--fbg:#fdecea;}
+.f3{--fc:#2e6de5;--fbg:#eef3fd;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.compare-table{width:100%;border-collapse:collapse;margin-top:6px;font-size:12.5px;}
+.compare-table th{background:#4256b8;color:#fff;font-weight:900;padding:8px 10px;text-align:center;}
+.compare-table td{padding:9px 10px;border:1px solid #e0e4ef;vertical-align:top;line-height:1.7;font-weight:600;color:#3c4456;}
+.compare-table tr:nth-child(even) td{background:#f4f6fb;}
+.compare-table .bad{color:#c0392b;font-weight:900;}
+.compare-table .good{color:#2e8b4f;font-weight:900;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ ストラテジ系／労働法</span>
+    <h1><b>偽装請負</b>とは？</h1>
+    <p>請負のふりをして、実態は違法な指揮命令をしている状態。「請負なのに直接指示」が偽装の核心。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="30" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="12" y="62" width="54" height="22" rx="6" fill="#cdd9ec"/>
+        <rect x="18" y="40" width="42" height="30" rx="9" fill="#c0392b"/>
+        <circle cx="39" cy="22" r="15" fill="#f4c89a"/>
+        <path d="M26 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="31" y="34" width="16" height="9" fill="#f4c89a"/>
+        <path d="M31 43 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <rect x="45" y="58" width="20" height="14" rx="2" fill="#c0392b" opacity=".7"/>
+        <text x="55" y="68" text-anchor="middle" font-size="9" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">指示</text>
+      </svg>
+      <div class="scene-txt">
+        システム開発会社A社から、B社のオフィスに常駐している外注エンジニアのあなた。今日もB社の社員から「この機能を明日までに直して」と直接指示を受けた。<br>
+        契約書には「<strong>請負契約</strong>」と書いてある。
+        <div class="scene-q">…これ、普通のことじゃないの？</div>
+      </div>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;background:#fdecea;border-radius:9px;padding:10px 12px;font-weight:700;color:#7a3c2a;">実はこれが<strong>「偽装請負」</strong>。請負契約なのに発注先が直接指示を出すのは違法。気づかずに続けると、発注者（B社）も労働者本人も法的リスクを負う。</p>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">🔍 請負 vs 派遣 — 指揮命令の違い</span>
+    <svg width="100%" viewBox="0 0 340 280" role="img" aria-label="適法な請負と偽装請負・適法な派遣の比較図">
+      <!-- 適法な請負 -->
+      <rect x="10" y="10" width="145" height="120" rx="10" fill="#eef8f1" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="82" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">✅ 適法な請負</text>
+      <rect x="20" y="44" width="52" height="28" rx="6" fill="#2e8b4f"/>
+      <text x="46" y="62" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">発注者</text>
+      <rect x="20" y="96" width="52" height="28" rx="6" fill="#48506a"/>
+      <text x="46" y="114" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">作業員</text>
+      <rect x="90" y="44" width="52" height="28" rx="6" fill="#2e8b4f" opacity=".6"/>
+      <text x="116" y="62" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">請負会社</text>
+      <rect x="90" y="96" width="52" height="28" rx="6" fill="#48506a" opacity=".6"/>
+      <text x="116" y="114" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">作業員</text>
+      <!-- 発注者→請負会社: 業務依頼 -->
+      <line x1="74" y1="58" x2="88" y2="58" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arr)"/>
+      <text x="81" y="52" text-anchor="middle" font-size="8" fill="#2e8b4f" font-family="M PLUS Rounded 1c">業務依頼</text>
+      <!-- 請負会社→作業員: 指示OK -->
+      <line x1="116" y1="74" x2="116" y2="94" stroke="#2e8b4f" stroke-width="2" marker-end="url(#arr)"/>
+      <text x="126" y="88" font-size="8" fill="#2e8b4f" font-family="M PLUS Rounded 1c">指示</text>
+      <!-- 発注者→作業員: 直接指示NG -->
+      <line x1="46" y1="74" x2="46" y2="94" stroke="#aaa" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="55" y="88" font-size="8" fill="#aaa" font-family="M PLUS Rounded 1c">×直接指示なし</text>
+
+      <!-- 偽装請負 -->
+      <rect x="185" y="10" width="145" height="120" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+      <text x="257" y="32" text-anchor="middle" font-size="12" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">❌ 偽装請負</text>
+      <rect x="195" y="44" width="52" height="28" rx="6" fill="#c0392b"/>
+      <text x="221" y="62" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">発注者</text>
+      <rect x="195" y="96" width="52" height="28" rx="6" fill="#48506a"/>
+      <text x="221" y="114" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">作業員</text>
+      <rect x="265" y="44" width="52" height="28" rx="6" fill="#c0392b" opacity=".4"/>
+      <text x="291" y="62" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">請負会社</text>
+      <!-- 発注者→作業員: 直接指示 -->
+      <line x1="221" y1="74" x2="221" y2="94" stroke="#c0392b" stroke-width="2.5" marker-end="url(#arrd)"/>
+      <text x="231" y="87" font-size="9" font-weight="900" fill="#c0392b" font-family="M PLUS Rounded 1c">直接指示！</text>
+
+      <!-- 適法な派遣 -->
+      <rect x="10" y="150" width="310" height="120" rx="10" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="170" y="172" text-anchor="middle" font-size="12" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">✅ 適法な労働者派遣</text>
+      <rect x="30" y="184" width="65" height="28" rx="6" fill="#2e6de5"/>
+      <text x="62" y="202" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">派遣先企業</text>
+      <rect x="135" y="184" width="65" height="28" rx="6" fill="#48506a"/>
+      <text x="167" y="202" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">派遣労働者</text>
+      <rect x="240" y="184" width="55" height="28" rx="6" fill="#2e6de5" opacity=".5"/>
+      <text x="267" y="202" text-anchor="middle" font-size="10" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">派遣会社</text>
+      <line x1="96" y1="198" x2="133" y2="198" stroke="#2e6de5" stroke-width="2" marker-end="url(#arrb)"/>
+      <text x="114" y="193" text-anchor="middle" font-size="8" fill="#2e6de5" font-family="M PLUS Rounded 1c">指揮命令OK</text>
+      <line x1="267" y1="215" x2="185" y2="230" stroke="#2e6de5" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrb)"/>
+      <text x="240" y="230" font-size="8" fill="#2e6de5" font-family="M PLUS Rounded 1c">雇用元</text>
+
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6Z" fill="#2e8b4f"/></marker>
+        <marker id="arrd" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6Z" fill="#c0392b"/></marker>
+        <marker id="arrb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6Z" fill="#2e6de5"/></marker>
+      </defs>
+    </svg>
+    <p style="margin-top:10px;font-size:12.5px;font-weight:700;color:#3c4456;">キーポイント：派遣は<strong>派遣先が指揮命令できる</strong>（合法）。請負は<strong>発注者が直接指示できない</strong>。請負なのに直接指示＝<strong style="color:#c0392b;">偽装請負</strong>。</p>
+  </div>
+
+  <!-- フロー：偽装請負の見分け方 -->
+  <div class="panel p-green">
+    <span class="phead">🔎 偽装請負を見分けるチェックポイント</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 契約の名称を確認</div>
+        <div class="fb">「請負契約」「業務委託」と書かれている場合は要注意。名称より<strong>実態</strong>で判断する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 誰が指揮命令しているか確認</div>
+        <div class="fb">発注者（契約相手方）が<strong>直接「何時までにやれ」「こう直せ」と指示</strong>していたら偽装請負の疑い。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 対応策：派遣契約への切り替え</div>
+        <div class="fb">発注者が指揮命令したいなら<strong>労働者派遣契約</strong>に切り替えるのが正しい対応。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「常駐 ＝ 偽装請負」ではない</div>
+      <div class="tb">発注先のオフィスに常駐していても、<strong>指揮命令を請負会社がしていれば合法</strong>。場所ではなく指揮命令の経路で判断する。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「業務委託」「SES」も偽装請負になりうる</div>
+      <div class="tb">契約の名称が何であれ、<strong>実態として発注者が直接指示</strong>していれば偽装請負。IT業界のSES（システムエンジニアリングサービス）でも問題になる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">違法なのは誰か</div>
+      <div class="tb">労働者ではなく、<strong>発注者と請負会社の両方</strong>が労働者派遣法違反を問われる可能性がある。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「請負なのに指示してる → ギゾウ（偽装）」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">「名前（請負）と中身（直接指示）がチグハグ＝偽装」</span><br><br>
+      覚え方：<span class="hl">「請けておいて口出し」＝偽装請負</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">請け（請負契約）＋おいて口出し（発注者が直接指示）＝アウト！</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト）</div>
+
+</div>
+</body>
+</html>

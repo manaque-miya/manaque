@@ -1,108 +1,250 @@
-<!DOCTYPE html><html lang="ja"><head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LDNLC7PWNM');</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>CMDB（構成管理データベース）とは？ITパスポート試験対策｜まなクエ！</title>
-<meta name="description" content="CMDB（構成管理データベース）の意味・自分ごとシナリオ・2択問題・詳細解説・覚え方を1ページで。ITパスポート対策に役立つ解説記事。ITパスポート 過去問・勉強方法・独学・何時間">
-<link rel="canonical" href="https://manaque.net/articles/itp-cmdb.html">
-<meta property="og:title" content="CMDB（構成管理データベース）とは？ITパスポート試験対策｜まなクエ！">
-<meta property="og:description" content="CMDB（構成管理データベース）の意味・仕組み・試験のポイントを自分ごと体験で分かりやすく。">
-<meta property="og:url" content="https://manaque.net/articles/itp-cmdb.html">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="まなクエ！">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CMDBとは？ 構成管理データベース — ITパスポート 詳細解説</title>
+<meta name="description" content="CMDB（構成管理データベース）をわかりやすく解説。ITILにおける役割、構成アイテム（CI）との関係、変更管理・インシデント管理との連携、ひっかけポイントと覚え方ゴロ。">
+<link rel="canonical" href="https://manaque.com/itp/itp-cmdb">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#EAF2FE;color:#2B3858;}
-.hd{background:rgba(255,255,255,.95);border-bottom:1px solid #E4E9F2;padding:14px 24px;position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;font-size:18px;font-weight:900;color:#0F1830;}.logo span{color:#1F56C6;}
-.back{font-size:13px;font-weight:700;color:#1F56C6;text-decoration:none;}
-.main{max-width:780px;margin:0 auto;padding:36px 20px 80px;}
-.ah{background:#fff;border-radius:20px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-.al{font-size:11px;font-weight:800;color:#1F56C6;letter-spacing:.1em;margin-bottom:6px;}
-.at{font-size:clamp(20px,4vw,28px);font-weight:900;color:#0F1830;line-height:1.35;margin-bottom:10px;}
-.am{font-size:12px;color:#8693AE;}
-.card{background:#fff;border-radius:20px;padding:28px;margin-bottom:16px;box-shadow:0 2px 8px rgba(30,50,110,.06);}
-h2{font-size:17px;font-weight:900;color:#0F1830;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #EAF2FE;}
-h3{font-size:14px;font-weight:800;color:#1F56C6;margin:16px 0 8px;}
-p{font-size:14px;line-height:1.9;color:#2B3858;margin-bottom:10px;}
-ul,ol{padding-left:1.4em;margin-bottom:10px;}
-li{font-size:14px;line-height:1.85;color:#2B3858;}
-.scenario{background:linear-gradient(135deg,#FFF8DC,#FFE4B5);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FFA500;}
-.scenario p{font-size:15px;line-height:2;color:#5C4033;font-weight:600;margin:0;}
-.qbox{background:#EAF2FE;border-radius:16px;padding:20px;margin:12px 0;}
-.qbox h3{margin-top:0;font-size:15px;color:#1F56C6;}
-.qlist{list-style:none;padding-left:0;}
-.memory{background:linear-gradient(135deg,#FFE5F1,#FFD0E0);border-radius:16px;padding:20px;margin:12px 0;border-left:5px solid #FF69B4;}
-.memory p{font-size:15px;line-height:2;color:#8B0046;font-weight:700;margin:0;}
-.kw{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px;}
-.cta{background:linear-gradient(135deg,#2E6DE5,#1A449E);border-radius:20px;padding:24px;text-align:center;margin-top:8px;}
-.cta p{color:#fff;font-weight:800;font-size:15px;margin-bottom:14px;}
-.cta a{display:inline-block;background:#F6C744;color:#0F1830;font-weight:900;font-size:15px;padding:12px 28px;border-radius:999px;text-decoration:none;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-.tag{font-size:11px;background:#EAF2FE;color:#1F56C6;border-radius:20px;padding:3px 10px;font-weight:700;}
-.ft{background:#0F1830;padding:24px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;}
-.ft a{color:rgba(255,255,255,.5);text-decoration:none;margin:0 6px;}
-</style></head>
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#5a3daa,#2d1a6b);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(45,26,107,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d5c9f5;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#5a3daa;--cbg:#ede6fb;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#5a3daa;}
+
+.ci-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.ci-cell{border-radius:10px;padding:10px 11px;}
+.ci-cell h4{font-size:12.5px;font-weight:900;margin-bottom:4px;}
+.ci-cell ul{list-style:none;}
+.ci-cell li{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;padding-left:11px;position:relative;}
+.ci-cell li::before{content:"・";position:absolute;left:0;}
+.c1{background:#ede6fb;}.c1 h4{color:#5a3daa;}
+.c2{background:#e4e7f7;}.c2 h4{color:#4256b8;}
+.c3{background:#e2f3e5;}.c3 h4{color:#2e8b4f;}
+.c4{background:#fcefd9;}.c4 h4{color:#d9851f;}
+@media(max-width:480px){.ci-grid{grid-template-columns:1fr;}}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#5a3daa;--fbg:#ede6fb;}
+.f2{--fc:#4256b8;--fbg:#eef0fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
 <body>
-<div class="hd"><a class="logo" href="../index.html">まな<span>クエ！</span></a><a class="back" href="../index.html">← TOPにもどる</a></div>
-<main class="main">
-<div class="ah">
-<div class="al">ITパスポート｜IT全般</div>
-<h1 class="at">CMDB（構成管理データベース）とは？自分ごと体験で覚えるITパスポート対策</h1>
-<div class="am">ITパスポート対策 / 読了：約3分</div>
-<div class="tags"><span class="tag">CMDB（構成管理データベース）</span> <span class="tag">IT全般</span> <span class="tag">ITパスポート</span></div>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">🗄️ ITパスポート ｜ マネジメント系（ITIL）</span>
+    <h1><b>CMDB</b>（構成管理データベース）とは？</h1>
+    <p>ITシステムを構成するすべての部品（サーバ・ソフト・ネットワーク）と、その関係性を一元管理する台帳。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true" style="flex-shrink:0">
+        <ellipse cx="39" cy="87" rx="30" ry="4" fill="#1a2a4a" opacity=".1"/>
+        <!-- 本棚風CMDB -->
+        <rect x="8" y="30" width="62" height="52" rx="5" fill="#5a3daa"/>
+        <rect x="14" y="36" width="50" height="8" rx="3" fill="#d5c9f5"/>
+        <rect x="14" y="48" width="50" height="8" rx="3" fill="#d5c9f5"/>
+        <rect x="14" y="60" width="50" height="8" rx="3" fill="#d5c9f5"/>
+        <rect x="14" y="72" width="30" height="5" rx="2" fill="#9a85d4"/>
+        <!-- ラベル -->
+        <text x="39" y="43" text-anchor="middle" font-size="8" font-weight="800" fill="#5a3daa" font-family="M PLUS Rounded 1c">サーバ</text>
+        <text x="39" y="55" text-anchor="middle" font-size="8" font-weight="800" fill="#5a3daa" font-family="M PLUS Rounded 1c">ソフトウェア</text>
+        <text x="39" y="67" text-anchor="middle" font-size="8" font-weight="800" fill="#5a3daa" font-family="M PLUS Rounded 1c">ネットワーク</text>
+        <!-- 人 -->
+        <circle cx="39" cy="14" r="10" fill="#f4c89a"/>
+        <path d="M30 11 a9 8 0 0 1 18 0 q-4-7-9-7-5 0-9 7z" fill="#3a3f4a"/>
+      </svg>
+      <div class="scene-txt">
+        深夜、本番サーバが突然ダウン。インシデント対応チームが「このサーバに関係するシステムは何か」「変更履歴は」と調べようとするが、情報がバラバラで把握できない。
+        <div class="scene-q">…こういう時に「全部一元管理している台帳」があれば？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG -->
+  <div class="panel p-indigo">
+    <span class="phead">📋 CMDBの構造</span>
+    <svg width="100%" viewBox="0 0 340 250" role="img" aria-label="CMDBの中心に構成アイテム（CI）が集まり、インシデント管理・変更管理・問題管理などの管理プロセスが参照する図。">
+      <!-- CMDB中心 -->
+      <rect x="105" y="95" width="130" height="60" rx="12" fill="#5a3daa"/>
+      <text x="170" y="118" text-anchor="middle" font-size="14" font-weight="900" fill="#fff" font-family="M PLUS Rounded 1c">CMDB</text>
+      <text x="170" y="136" text-anchor="middle" font-size="11" font-weight="700" fill="#d5c9f5" font-family="M PLUS Rounded 1c">構成管理データベース</text>
+
+      <!-- CI群（左） -->
+      <rect x="10" y="40" width="80" height="30" rx="7" fill="#e4e7f7"/>
+      <text x="50" y="60" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">サーバCI</text>
+      <path d="M90 55 L105 115" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+      <rect x="10" y="80" width="80" height="30" rx="7" fill="#e4e7f7"/>
+      <text x="50" y="100" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">ソフトウェアCI</text>
+      <path d="M90 95 L105 120" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+      <rect x="10" y="120" width="80" height="30" rx="7" fill="#e4e7f7"/>
+      <text x="50" y="140" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">NWデバイスCI</text>
+      <path d="M90 135 L105 130" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+      <rect x="10" y="160" width="80" height="30" rx="7" fill="#e4e7f7"/>
+      <text x="50" y="180" text-anchor="middle" font-size="11" font-weight="800" fill="#4256b8" font-family="M PLUS Rounded 1c">サービスCI</text>
+      <path d="M90 175 L105 145" stroke="#4256b8" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+      <!-- 管理プロセス群（右） -->
+      <rect x="250" y="40" width="80" height="30" rx="7" fill="#e2f3e5"/>
+      <text x="290" y="60" text-anchor="middle" font-size="11" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">インシデント管理</text>
+      <path d="M235 115 L250 55" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+      <rect x="250" y="80" width="80" height="30" rx="7" fill="#e2f3e5"/>
+      <text x="290" y="100" text-anchor="middle" font-size="11" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">変更管理</text>
+      <path d="M235 120" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <path d="M235 120 L250 95" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+      <rect x="250" y="120" width="80" height="30" rx="7" fill="#e2f3e5"/>
+      <text x="290" y="140" text-anchor="middle" font-size="11" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">問題管理</text>
+      <path d="M235 130 L250 135" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+      <rect x="250" y="160" width="80" height="30" rx="7" fill="#e2f3e5"/>
+      <text x="290" y="180" text-anchor="middle" font-size="11" font-weight="800" fill="#2e8b4f" font-family="M PLUS Rounded 1c">リリース管理</text>
+      <path d="M235 145 L250 175" stroke="#2e8b4f" stroke-width="1.5" stroke-dasharray="4 2"/>
+
+      <!-- ラベル -->
+      <text x="50" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="#4256b8" font-family="M PLUS Rounded 1c">構成アイテム（CI）</text>
+      <text x="290" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="#2e8b4f" font-family="M PLUS Rounded 1c">管理プロセス</text>
+      <text x="170" y="230" text-anchor="middle" font-size="10" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">管理プロセスはCMDBを参照・更新する</text>
+    </svg>
+
+    <div class="ci-grid">
+      <div class="ci-cell c1">
+        <h4>CI（構成アイテム）とは</h4>
+        <ul>
+          <li>CMDBで管理する各部品</li>
+          <li>ハードウェア・ソフトウェア</li>
+          <li>サービス・ドキュメントも含む</li>
+        </ul>
+      </div>
+      <div class="ci-cell c2">
+        <h4>CIの属性情報</h4>
+        <ul>
+          <li>名前・バージョン・場所</li>
+          <li>所有者・状態（稼働/廃止）</li>
+          <li>他CIとの関係（依存関係）</li>
+        </ul>
+      </div>
+      <div class="ci-cell c3">
+        <h4>インシデント管理での活用</h4>
+        <ul>
+          <li>障害発生時に影響範囲を特定</li>
+          <li>どのCIが関連するか即座に把握</li>
+          <li>対応スピードが上がる</li>
+        </ul>
+      </div>
+      <div class="ci-cell c4">
+        <h4>変更管理での活用</h4>
+        <ul>
+          <li>変更前にCIの依存関係を確認</li>
+          <li>変更の影響範囲を事前に評価</li>
+          <li>変更後は記録を更新する</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- フロー/詳細 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ CMDBが活きるシーン（障害対応）</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① 障害発生 — 「どのCIに問題が？」</div>
+        <div class="fb">インシデント管理チームがCMDBを参照し、障害発生CIを特定する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 影響範囲の確認 — 「他に何が関係している？」</div>
+        <div class="fb">CMDBのCI間の依存関係から、影響を受けるサービス・システムを即座に把握する。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 変更・修正後 — 「CMDBを最新状態に更新」</div>
+        <div class="fb">構成変更が発生したら必ずCMDBを更新する。古い情報が残ると次の対応で混乱する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「CMDBは資産管理台帳と同じ」→ 微妙に違う</div>
+      <div class="tb">資産管理台帳は財務・購買視点（コスト・耐用年数）。CMDBはIT運用視点（依存関係・稼働状態）。目的が異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「CMDBは一度作れば更新しなくてよい」→ 誤り</div>
+      <div class="tb">構成変更のたびに更新しなければ古い情報になり、役に立たなくなる。最新性の維持が重要。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「CMDBはITILの構成管理プロセスで使う」→ 正しい</div>
+      <div class="tb">ITILのサービストランジション（移行）フェーズにある構成管理プロセスの中核がCMDB。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">CIの意味を混同しない</div>
+      <div class="tb">CI＝Configuration Item（構成アイテム）。CMDBはそのCIを管理するデータベース。セットで覚える。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「シーエムは全部に目配り DB（でびー）」</span><br>
+      <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">CM＝Configuration Management（構成管理）／ DB＝データベース</span><br><br>
+      <span class="hl">「構成CI＝部品。CMDBはその部品リスト帳」</span><br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">工場の部品棚の管理台帳＝CMDB　どこに何がある・何と繋がっているを全部把握</span>
+    </div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ HTML+SVG（文字はすべてテキスト＝検索エンジンが読める）</div>
+
 </div>
-
-<div class="card">
-<h2>🎬 こんなシーン、想像してみて</h2>
-<div class="scenario"><p>ITSM導入担当の自分。「サーバ・NW機器・ソフト・契約とそれらの関係を一元管理」する台帳。KEDB？</p></div>
-</div>
-
-<div class="card">
-<h2>❓ 2問問題：あなたならどっち？</h2>
-<div class="qbox">
-<h3>次の状況に当てはまるのは？</h3>
-<ul class="qlist">
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">✅ <strong>CMDB（Configuration Management Database）</strong></li>
-<li style="padding:10px 14px;background:#F5F8FF;border-radius:10px;margin:8px 0;">❌ <strong>KEDB（既知エラーデータベース）</strong><div style="font-size:12px;color:#8693AE;margin-top:4px;">→ KEDBは既知問題と回避策。「IT資産構成情報（CI）と関係性管理」がCMDB</div></li>
-
-</ul>
-</div>
-<p style="margin-top:12px;"><strong>✅ 正解：CMDB（Configuration Management Database）</strong></p>
-</div>
-
-<div class="card">
-<h2>📘 CMDB（構成管理データベース）とは何か</h2>
-<span class="kw">ITインフラ全CI（サーバー・ソフト・関係性）を一元管理するDB</span>
-<p>CMDB：ITインフラの構成情報（CI：Configuration Item）を管理するデータベース。CI例：サーバー・PC・ネットワーク機器・ソフトウェア・ライセンス・仮想マシン。CIの属性・バージョン・関係性・変更履歴を記録し、インシデント対応・変更管理・問題管理に活用する。</p>
-</div>
-
-<div class="card">
-<h2>🎯 試験のキモ</h2>
-<p>CMDBの活用場面：インシデント発生時に影響範囲を特定・変更作業の影響評価・ライセンス管理・コスト管理。ServiceNow等のITSMツールにCMDB機能が統合されていることが多い。CIの自動検出（ディスカバリ）とCMDBの同期が運用上の課題。
-
-**覚え方** 🎯 **CMDB＝Config（構成）DB（CI管理）／KEDB＝Known Error DB（問題＋回避策）**。両方ITIL中核DB。</p>
-</div>
-
-<div class="card">
-<h2>⚠️ 間違いやすいポイント</h2>
-<p>CMDBとKEDBを混同しない。CMDB＝CI（構成品目）の属性・関係性・変更履歴を管理するDB。KEDB＝既知エラーと回避策を記録するDB（問題管理）。CMDBはインシデント・変更・問題すべてで参照される基盤DB。「ディスカバリ」でCI自動検出がポイント。</p>
-</div>
-
-<div class="card">
-<h2>🧠 覚え方</h2>
-<div class="memory"><p>**CMDB＝Config（構成）DB（CI管理）／KEDB＝Known Error DB（問題＋回避策）**。両方ITIL中核DB。</p></div>
-</div>
-
-<div class="card">
-<h2>📚 ITパスポートの試験対策・勉強方法</h2>
-<p>CMDB（構成管理データベース）はITパスポートのIT全般分野で頻出（mid）。ITパスポート 過去問・勉強方法・独学・何時間に取り組むなら、自分ごとシナリオで一度体験してから問題を解くのが定着の鍵。何度も繰り返して覚え方フレーズを口に出すと記憶に残りやすい。</p>
-</div>
-
-<div class="card"><div class="cta"><p>知識をクイズで確認しよう！</p><a href="../itp-vocab.html">🏆 用語4択チャレンジ →</a></div></div>
-</main>
-<footer class="ft"><div style="margin-bottom:8px;"><a href="../about.html">運営</a><a href="../privacy.html">プライバシー</a><a href="../terms.html">利用規約</a></div><div>© 2026 まなクエ！</div></footer>
-</body></html>
+</body>
+</html>

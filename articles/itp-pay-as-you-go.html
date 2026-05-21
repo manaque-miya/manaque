@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>従量課金とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="従量課金（ペイアズユーゴー）をクラウドの料金モデルで図解解説。定額制・サブスクとの違い、メリット・デメリット、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-pay-as-you-go">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#1a7f5c,#0d4a34);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(13,74,52,.22);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#c5ede0;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#1a7f5c;--cbg:#d8f3ea;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#1a7f5c;}
+
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+.cmp-card{border-radius:12px;padding:12px 11px;}
+.cmp-card h4{font-size:13px;font-weight:900;margin-bottom:6px;}
+.cmp-card ul{list-style:none;}
+.cmp-card li{font-size:11.5px;font-weight:600;line-height:1.7;color:#48506a;padding-left:14px;position:relative;}
+.cmp-card li::before{content:"・";position:absolute;left:0;}
+.card-payg{background:#d8f3ea;}.card-payg h4{color:#1a7f5c;}
+.card-flat{background:#e7eefc;}.card-flat h4{color:#2e6de5;}
+@media(max-width:480px){.compare-row{grid-template-columns:1fr;}}
+
+.merit-list{list-style:none;margin-top:6px;}
+.merit-list li{font-size:13px;font-weight:600;line-height:1.85;color:#3c4456;padding-left:22px;position:relative;margin-bottom:5px;}
+.merit-list li::before{position:absolute;left:0;font-weight:900;}
+.merit-list li.good::before{content:"✅";color:#1a7f5c;}
+.merit-list li.bad::before{content:"⚠️";}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#1a7f5c;--fbg:#d8f3ea;}
+.f2{--fc:#2e6de5;--fbg:#e7f0fd;}
+.f3{--fc:#d9851f;--fbg:#fdf4e4;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系 / クラウド</span>
+    <h1><b>従量課金</b>（Pay-as-you-go）とは？</h1>
+    <p>使った分だけ払う料金モデル。クラウドサービスで主流の課金方式。使わない月はコストゼロ、使えば使うほど請求が増える。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-blue">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="90" viewBox="0 0 72 90" aria-hidden="true">
+        <ellipse cx="36" cy="84" rx="28" ry="5" fill="#1a2a4a" opacity=".1"/>
+        <rect x="8" y="58" width="56" height="24" rx="6" fill="#cdd9ec"/>
+        <rect x="14" y="38" width="44" height="28" rx="8" fill="#1a7f5c"/>
+        <circle cx="36" cy="21" r="14" fill="#f4c89a"/>
+        <path d="M23 17 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="32" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 40 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <!-- スマホ -->
+        <rect x="44" y="52" width="18" height="28" rx="3" fill="#fff" stroke="#1a7f5c" stroke-width="1.5"/>
+        <rect x="46" y="55" width="14" height="16" rx="1" fill="#c5ede0"/>
+        <circle cx="53" cy="75" r="2" fill="#1a7f5c"/>
+      </svg>
+      <div class="scene-txt">
+        スタートアップのCTOがAWSでサーバーを立てた。「サービス開始直後はアクセスが少ないから、定額プランじゃなく使った分だけ払う方式にしよう」と決めた。
+        <div class="scene-q">…この料金モデルを何という？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：従量課金 vs 定額制 -->
+  <div class="panel p-green">
+    <span class="phead">💰 従量課金 vs 定額制（グラフで比較）</span>
+    <svg width="100%" viewBox="0 0 340 200" role="img" aria-label="従量課金と定額制の料金比較グラフ。横軸が使用量、縦軸がコスト">
+      <!-- 軸 -->
+      <line x1="50" y1="160" x2="310" y2="160" stroke="#c2c8d8" stroke-width="2"/>
+      <line x1="50" y1="30" x2="50" y2="160" stroke="#c2c8d8" stroke-width="2"/>
+      <!-- 軸ラベル -->
+      <text x="180" y="182" text-anchor="middle" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c">使用量 →</text>
+      <text x="18" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#9aa3b2" font-family="M PLUS Rounded 1c" transform="rotate(-90,18,100)">コスト →</text>
+      <!-- 定額制ライン（水平・青） -->
+      <line x1="50" y1="90" x2="305" y2="90" stroke="#2e6de5" stroke-width="2.5" stroke-dasharray="6 4"/>
+      <text x="308" y="94" font-size="9.5" font-weight="800" fill="#2e6de5" font-family="M PLUS Rounded 1c">定額</text>
+      <!-- 従量課金ライン（右上がり・緑） -->
+      <line x1="50" y1="160" x2="280" y2="50" stroke="#1a7f5c" stroke-width="2.5"/>
+      <text x="282" y="54" font-size="9.5" font-weight="800" fill="#1a7f5c" font-family="M PLUS Rounded 1c">従量</text>
+      <!-- 交差点（お得になる境界） -->
+      <circle cx="178" cy="90" r="6" fill="#ffd23f" stroke="#e0a800" stroke-width="2"/>
+      <text x="178" y="80" text-anchor="middle" font-size="9.5" font-weight="900" fill="#9a6b00" font-family="M PLUS Rounded 1c">損益分岐点</text>
+      <!-- 左ゾーン（従量がお得） -->
+      <rect x="50" y="30" width="128" height="130" fill="#d8f3ea" opacity=".4" rx="3"/>
+      <text x="114" y="140" text-anchor="middle" font-size="10" font-weight="900" fill="#1a7f5c" font-family="M PLUS Rounded 1c">従量がお得</text>
+      <!-- 右ゾーン（定額がお得） -->
+      <rect x="178" y="30" width="128" height="130" fill="#e7eefc" opacity=".4" rx="3"/>
+      <text x="242" y="140" text-anchor="middle" font-size="10" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">定額がお得</text>
+    </svg>
+    <p>使用量が少ない段階では従量課金が有利。使用量が増えて定額料金を超えるなら定額プランに切り替えた方がコスト効率が良くなる。</p>
+  </div>
+
+  <!-- 従量課金 vs 定額の比較表 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 従量課金 vs 定額制 比較</span>
+    <div class="compare-row">
+      <div class="cmp-card card-payg">
+        <h4>従量課金（Pay-as-you-go）</h4>
+        <ul>
+          <li>使った分だけ支払う</li>
+          <li>初期費用ゼロ</li>
+          <li>不使用時はコストゼロ</li>
+          <li>需要変動に柔軟対応</li>
+          <li>大量使用時はコスト増</li>
+        </ul>
+      </div>
+      <div class="cmp-card card-flat">
+        <h4>定額制（フラットレート）</h4>
+        <ul>
+          <li>毎月一定額を支払う</li>
+          <li>予算管理が容易</li>
+          <li>使わなくても料金発生</li>
+          <li>大量使用時にお得</li>
+          <li>安定した需要に向く</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- クラウドでの活用フロー -->
+  <div class="panel p-orange">
+    <span class="phead">☁️ クラウドサービスでの従量課金の典型例</span>
+    <div class="flow">
+      <div class="fstep f1"><div class="fh">① 必要な時だけリソースを確保</div><div class="fb">サーバー・ストレージ・APIなどを必要に応じて利用。アクセス急増時は自動でスケールアップ。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2"><div class="fh">② 利用量に応じて課金（秒・分・GB単位）</div><div class="fb">AWS・Azure・GCPなどのクラウドが代表例。CPU時間・データ転送量・APIコール数などで計算。</div></div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3"><div class="fh">③ 使わない時間帯はコストほぼゼロ</div><div class="fb">深夜帯・閑散期はリソースを縮小・停止。需要変動が大きいスタートアップやイベント系サービスに最適。</div></div>
+    </div>
+    <ul class="merit-list" style="margin-top:12px;">
+      <li class="good">初期投資ゼロで始められる（資本支出→運用コストへ転換）</li>
+      <li class="good">需要変動に自動対応（スケールアウト・インが容易）</li>
+      <li class="bad">使いすぎると月末の請求が予想外に高くなることも</li>
+      <li class="bad">コスト予測がしづらい（予算管理の難しさ）</li>
+    </ul>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「コストが常に安い」は誤り</div>
+      <div class="tb">従量課金は使用量が多いと定額制より高くなる。「使った分だけ払う＝節約できる」とは限らない。使用量次第。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">サブスクリプションとの違い</div>
+      <div class="tb">サブスクリプションは定額制（月額固定）。従量課金は使用量連動。「クラウド＝サブスク」と決めつけないこと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">フリーミアムとの混同</div>
+      <div class="tb">フリーミアムは「基本無料＋有料プレミアム」の2段階モデル。従量課金とは料金構造が異なる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>使った分だけ課金・使用量に比例</strong>」という記述が出たら→<strong>従量課金</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob">
+      <span class="hl">「払いながら行く」</span>＝ Pay as you go！<br>
+      <span style="font-size:12px;font-weight:700;color:#9a6b00;">タクシーと同じ──乗った距離だけメーターが上がる。クラウドも同じ、使った分だけ請求される。</span><br><br>
+      <span class="hl">従量＝水道料金</span>：使った水の量で請求が変わる→従量課金も同じ仕組み
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

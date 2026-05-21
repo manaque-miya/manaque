@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>移植性（ポータビリティ）とは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="移植性（ポータビリティ）の意味を図解で解説。ソフトウェア品質特性（ISO/IEC 25010）における位置づけ、保守性・互換性との違い、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-portability">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#218a6e,#0e4535);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(14,69,53,.28);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#b3e8d9;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+
+.p-teal{--c:#218a6e;--cbg:#d9f0e8;}
+.p-indigo{--c:#4256b8;--cbg:#e4e7f7;}
+.p-orange{--c:#d9851f;--cbg:#fcefd9;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#218a6e;}
+
+/* 品質特性グリッド */
+.quality-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.qcell{border-radius:10px;padding:10px 11px;}
+.qcell.highlight{border:2.5px solid #218a6e;background:#d9f0e8;}
+.qcell.normal{border:1.5px solid #d0d7e5;background:#f5f7fc;}
+.qcell .qh{font-size:12.5px;font-weight:900;margin-bottom:4px;}
+.qcell .qb{font-size:11px;font-weight:600;line-height:1.65;color:#48506a;}
+.qcell.highlight .qh{color:#218a6e;}
+.qcell.normal .qh{color:#4256b8;}
+@media(max-width:400px){.quality-grid{grid-template-columns:1fr;}}
+
+/* 移植のフロー */
+.port-flow{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
+.env-box{border-radius:12px;padding:12px 16px;text-align:center;font-size:12.5px;font-weight:900;}
+.env-a{background:#deeef9;color:#1a6bab;border:2px solid #1a6bab;}
+.env-b{background:#d9f0e8;color:#218a6e;border:2px solid #218a6e;}
+.env-arrow{font-size:22px;color:#9aa3b2;font-weight:900;}
+.env-label{font-size:10.5px;font-weight:700;color:#8a91a0;text-align:center;margin-top:4px;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+.foot{text-align:center;font-size:11px;color:#aab0bd;font-weight:700;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系・ソフトウェア</span>
+    <h1><b>移植性</b>（ポータビリティ）とは？</h1>
+    <p>異なる環境（OS・ハードウェア）に<strong>そのまま持ち込んで動かせる</strong>ソフトウェアの性質。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-teal">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="72" height="92" viewBox="0 0 72 92" aria-hidden="true">
+        <ellipse cx="36" cy="87" rx="28" ry="4.5" fill="#1a2a4a" opacity=".1"/>
+        <!-- PC1（Windows） -->
+        <rect x="4" y="54" width="28" height="20" rx="4" fill="#deeef9" stroke="#1a6bab" stroke-width="1.5"/>
+        <text x="18" y="67" text-anchor="middle" font-size="8" font-weight="900" fill="#1a6bab" font-family="sans-serif">Win</text>
+        <!-- PC2（Mac） -->
+        <rect x="40" y="54" width="28" height="20" rx="4" fill="#d9f0e8" stroke="#218a6e" stroke-width="1.5"/>
+        <text x="54" y="67" text-anchor="middle" font-size="8" font-weight="900" fill="#218a6e" font-family="sans-serif">Mac</text>
+        <!-- 人物 -->
+        <circle cx="36" cy="22" r="14" fill="#f4c89a"/>
+        <path d="M23 18 a13 12 0 0 1 26 0 q-5 -9 -13 -9 q-8 0 -13 9z" fill="#3a3f4a"/>
+        <rect x="28" y="33" width="16" height="8" fill="#f4c89a"/>
+        <path d="M28 41 l8 5 l8 -5 v5 h-16z" fill="#218a6e"/>
+        <!-- 矢印 両方向 -->
+        <path d="M32 64 L40 64" stroke="#d9851f" stroke-width="2" marker-end="url(#arrt)"/>
+        <defs><marker id="arrt" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#d9851f"/></marker></defs>
+      </svg>
+      <div class="scene-txt">
+        Windows向けに作ったアプリをMacに移したら<strong>修正ゼロで動いた</strong>。一方で別のアプリはWindowsのDLLに依存していてMacでは起動すらしない。
+        <div class="scene-q">…この「どこでも動く度」が移植性！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解：ISO/IEC 25010の品質特性 -->
+  <div class="panel p-indigo">
+    <span class="phead">📊 ソフトウェア品質特性における移植性の位置</span>
+    <p>ISO/IEC 25010 では、ソフトウェアの品質を8つの特性で評価する。移植性はその一つ。</p>
+    <div class="quality-grid">
+      <div class="qcell normal"><div class="qh">機能適合性</div><div class="qb">要求された機能を正確に提供する度合い</div></div>
+      <div class="qcell normal"><div class="qh">性能効率性</div><div class="qb">リソースに対する処理能力</div></div>
+      <div class="qcell normal"><div class="qh">互換性</div><div class="qb">他製品・環境と共存・連携できる度合い</div></div>
+      <div class="qcell normal"><div class="qh">使用性</div><div class="qb">ユーザーが使いやすい度合い</div></div>
+      <div class="qcell normal"><div class="qh">信頼性</div><div class="qb">障害なく動き続ける度合い</div></div>
+      <div class="qcell normal"><div class="qh">セキュリティ</div><div class="qb">不正アクセスから守る度合い</div></div>
+      <div class="qcell normal"><div class="qh">保守性</div><div class="qb">修正・変更のしやすさ</div></div>
+      <div class="qcell highlight"><div class="qh">★ 移植性</div><div class="qb">別の環境に移して動かせる度合い → これが今回のテーマ</div></div>
+    </div>
+  </div>
+
+  <!-- 移植性の構成要素 -->
+  <div class="panel p-orange">
+    <span class="phead">🔧 移植性を構成する3つの副特性</span>
+    <div class="port-flow">
+      <div>
+        <div class="env-box env-a">適応性<br><span style="font-size:10px;font-weight:700;">異なる環境に適合できる</span></div>
+      </div>
+      <div>
+        <div class="env-box" style="background:#fcefd9;color:#d9851f;border:2px solid #d9851f;">設置性<br><span style="font-size:10px;font-weight:700;">インストール・設置できる</span></div>
+      </div>
+      <div>
+        <div class="env-box env-b">置換性<br><span style="font-size:10px;font-weight:700;">別のソフトに置き換えられる</span></div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-size:12.5px;">移植性が高い例：<strong>Java（Write Once, Run Anywhere）</strong>。JVMさえあればOSを問わず動く。Webアプリ（ブラウザで動く）も移植性が高い設計の代表例。</p>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">保守性と混同しやすい</div>
+      <div class="tb">保守性は「<strong>修正・改良のしやすさ</strong>」。移植性は「<strong>別環境に持ち込んで動かせるか</strong>」。修正しやすい ≠ どこでも動く。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">互換性と混同しやすい</div>
+      <div class="tb">互換性は「<strong>他の製品・システムと共存・連携できる度合い</strong>」。移植性は「<strong>環境を変えて持っていける度合い</strong>」。共存 vs 移動 の違い。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「移植性が高い＝性能が高い」はウソ</div>
+      <div class="tb">移植性はどこでも動くかどうかの指標。処理速度や効率（性能効率性）とは別の概念。混同しないこと。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「<strong>Windows → Linux に移したら動いた</strong>」「OSに依存しない設計」→ 迷わず<strong>移植性</strong>。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方 -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">移植性＝引っ越しOK</span>ソフト！<br>
+    <span style="font-size:11.5px;font-weight:700;color:#9a6b00;">「移植（引っ越し）しても動く → 移植性」</span><br><br>
+    <span class="hl">ポータブル扇風機</span>は<span class="hl">どの部屋に持っていっても使える</span><br>
+    ポータビリティ＝ポータブル＝どこでも持ち運べる！</div>
+  </div>
+
+  <div class="foot">ITパスポート 詳細解説 ／ itp-portability</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>リバースエンジニアリングとは？ — ITパスポート 詳細解説</title>
+<meta name="description" content="リバースエンジニアリングの意味・目的・具体例をわかりやすく解説。フォワードエンジニアリングとの違い、不正競争防止法との関係、ITパスポート試験のひっかけポイントまで。">
+<link rel="canonical" href="https://example.com/itp-reverse-engineering">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;justify-content:center;-webkit-text-size-adjust:100%;}
+.wrap{max-width:660px;width:100%;padding:16px 14px 56px;}
+svg{display:block;}
+
+.hero{background:linear-gradient(155deg,#3a1f7a,#6b35c8);border-radius:22px;padding:24px 22px;color:#fff;margin-bottom:14px;box-shadow:0 8px 24px rgba(60,20,120,.25);}
+.hero .lead{display:inline-block;background:rgba(255,255,255,.16);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:11px;}
+.hero h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px;}
+.hero h1 b{background:linear-gradient(transparent 56%,#ffd23f 56%,#ffd23f 92%,transparent 92%);}
+.hero p{font-size:13.5px;font-weight:600;line-height:1.8;color:#d8c8f8;}
+
+.panel{background:#fff;border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px rgba(30,50,110,.07);border-top:5px solid var(--c);}
+.phead{display:inline-flex;align-items:center;gap:6px;background:var(--cbg);color:var(--c);font-size:13px;font-weight:900;padding:6px 13px;border-radius:10px;margin-bottom:13px;}
+.panel p{font-size:13.5px;line-height:1.9;color:#3c4456;}
+.panel p+p{margin-top:8px;}
+.p-purple{--c:#6b35c8;--cbg:#ece5fa;}
+.p-blue{--c:#2e6de5;--cbg:#e7eefc;}
+.p-green{--c:#2e8b4f;--cbg:#e2f3e5;}
+.p-red{--c:#dd5a3a;--cbg:#fce4dd;}
+
+.scene-row{display:flex;gap:13px;align-items:flex-start;}
+.scene-txt{font-size:13.5px;line-height:1.92;font-weight:600;color:#48506a;}
+.scene-q{margin-top:8px;font-weight:900;color:#6b35c8;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.fstep{border-radius:13px;padding:13px 15px;border:2px solid var(--fc);background:var(--fbg);}
+.fstep .fh{font-size:14px;font-weight:900;color:var(--fc);margin-bottom:4px;}
+.fstep .fb{font-size:12.5px;font-weight:600;line-height:1.8;color:#48506a;}
+.farrow{text-align:center;font-size:18px;color:#9aa3b2;line-height:1.2;padding:5px 0;}
+.f1{--fc:#6b35c8;--fbg:#f0eafd;}
+.f2{--fc:#2e6de5;--fbg:#eef3fd;}
+.f3{--fc:#2e8b4f;--fbg:#eef8f1;}
+
+.trap-item{background:#fce4dd;border-radius:11px;padding:11px 13px;margin-bottom:8px;}
+.trap-item:last-child{margin-bottom:0;}
+.trap-item .th{font-size:13px;font-weight:900;color:#bb3c1f;margin-bottom:3px;}
+.trap-item .tb{font-size:12px;font-weight:600;line-height:1.75;color:#7a3c2a;}
+
+.oboe{background:linear-gradient(135deg,#fff6da,#ffe9b0);border-radius:18px;padding:18px;border-left:6px solid #e0a800;}
+.oboe .oh{font-size:13px;font-weight:900;color:#9a6b00;margin-bottom:9px;}
+.oboe .ob{font-size:15px;font-weight:900;color:#5c4500;line-height:1.85;}
+.oboe .ob .hl{background:#fff;border-radius:5px;padding:1px 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="lead">💻 ITパスポート ｜ テクノロジ系</span>
+    <h1><b>リバースエンジニアリング</b>とは？</h1>
+    <p>完成品を「逆から分解」して、設計・仕様を読み取る技術。ソフトウェア解析の鍵。</p>
+  </div>
+
+  <!-- こんなシーン -->
+  <div class="panel p-purple">
+    <span class="phead">🎬 こんなシーンを想像</span>
+    <div class="scene-row">
+      <svg width="78" height="92" viewBox="0 0 78 92" aria-hidden="true">
+        <ellipse cx="39" cy="87" rx="28" ry="4" fill="#3a1f7a" opacity=".12"/>
+        <rect x="12" y="52" width="54" height="32" rx="7" fill="#e0d4f7"/>
+        <rect x="18" y="58" width="42" height="20" rx="4" fill="#6b35c8"/>
+        <circle cx="39" cy="34" r="14" fill="#f4c89a"/>
+        <path d="M27 30 a12 11 0 0 1 24 0 q-5 -9 -12 -9 q-7 0 -12 9z" fill="#3a3f4a"/>
+        <rect x="31" y="45" width="16" height="8" fill="#f4c89a"/>
+        <path d="M31 53 l8 5 l8 -5 v5 h-16z" fill="#fff"/>
+        <circle cx="56" cy="62" r="8" fill="none" stroke="#ffd23f" stroke-width="2.5"/>
+        <line x1="62" y1="68" x2="68" y2="74" stroke="#ffd23f" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="28" cy="68" r="5" fill="none" stroke="#ffd23f" stroke-width="2"/>
+        <line x1="28" y1="61" x2="28" y2="63" stroke="#ffd23f" stroke-width="1.5"/>
+        <line x1="28" y1="73" x2="28" y2="75" stroke="#ffd23f" stroke-width="1.5"/>
+        <line x1="21" y1="68" x2="23" y2="68" stroke="#ffd23f" stroke-width="1.5"/>
+        <line x1="33" y1="68" x2="35" y2="68" stroke="#ffd23f" stroke-width="1.5"/>
+      </svg>
+      <div class="scene-txt">
+        ITエンジニアのあなた。競合他社の製品バイナリを受け取り「<strong>どんな設計になっているか調べたい</strong>」と思った。設計書はない。完成品しかない。
+        <div class="scene-q">…完成品から設計を読み解く、これが何か？</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 図解SVG：フォワード vs リバース -->
+  <div class="panel p-blue">
+    <span class="phead">🔍 フォワード vs リバースの違い</span>
+    <svg width="100%" viewBox="0 0 340 160" role="img" aria-label="フォワードエンジニアリングは設計から製品へ順方向、リバースエンジニアリングは製品から設計へ逆方向">
+      <defs>
+        <marker id="arrowB" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6 Z" fill="#2e6de5"/>
+        </marker>
+        <marker id="arrowR" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6 Z" fill="#dd5a3a"/>
+        </marker>
+      </defs>
+      <!-- ラベル -->
+      <text x="170" y="14" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">フォワードエンジニアリング（順方向）→</text>
+      <!-- ボックス -->
+      <rect x="10" y="22" width="84" height="34" rx="8" fill="#e7eefc" stroke="#2e6de5" stroke-width="2"/>
+      <text x="52" y="36" text-anchor="middle" font-size="11" font-weight="900" fill="#2e6de5" font-family="M PLUS Rounded 1c">設計・仕様書</text>
+      <text x="52" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#5a7bbf" font-family="M PLUS Rounded 1c">アイデア</text>
+      <path d="M96 39 L120 39" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arrowB)"/>
+      <rect x="122" y="22" width="80" height="34" rx="8" fill="#eef8f1" stroke="#2e8b4f" stroke-width="2"/>
+      <text x="162" y="36" text-anchor="middle" font-size="11" font-weight="900" fill="#2e8b4f" font-family="M PLUS Rounded 1c">ソースコード</text>
+      <text x="162" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#5a9170" font-family="M PLUS Rounded 1c">実装</text>
+      <path d="M204 39 L228 39" stroke="#2e6de5" stroke-width="2.5" marker-end="url(#arrowB)"/>
+      <rect x="230" y="22" width="90" height="34" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="275" y="36" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">完成品・製品</text>
+      <text x="275" y="50" text-anchor="middle" font-size="10" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">バイナリ</text>
+      <!-- 区切り -->
+      <line x1="10" y1="80" x2="330" y2="80" stroke="#d0d5e0" stroke-width="1" stroke-dasharray="4 3"/>
+      <!-- リバース -->
+      <text x="170" y="98" text-anchor="middle" font-size="11" font-weight="900" fill="#dd5a3a" font-family="M PLUS Rounded 1c">← リバースエンジニアリング（逆方向）</text>
+      <rect x="10" y="104" width="84" height="34" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="52" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">設計を読取</text>
+      <text x="52" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#9a5a3a" font-family="M PLUS Rounded 1c">解析結果</text>
+      <path d="M120 121 L96 121" stroke="#dd5a3a" stroke-width="2.5" marker-end="url(#arrowR)"/>
+      <rect x="122" y="104" width="80" height="34" rx="8" fill="#fce4dd" stroke="#dd5a3a" stroke-width="2"/>
+      <text x="162" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#bb3c1f" font-family="M PLUS Rounded 1c">コード解析</text>
+      <text x="162" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#9a5a3a" font-family="M PLUS Rounded 1c">逆アセンブル</text>
+      <path d="M228 121 L204 121" stroke="#dd5a3a" stroke-width="2.5" marker-end="url(#arrowR)"/>
+      <rect x="230" y="104" width="90" height="34" rx="8" fill="#fcefd9" stroke="#d9851f" stroke-width="2"/>
+      <text x="275" y="118" text-anchor="middle" font-size="11" font-weight="900" fill="#d9851f" font-family="M PLUS Rounded 1c">完成品・製品</text>
+      <text x="275" y="132" text-anchor="middle" font-size="10" font-weight="700" fill="#bf8c47" font-family="M PLUS Rounded 1c">スタート地点</text>
+    </svg>
+    <p style="margin-top:12px;">完成品（バイナリ・実行ファイル）を<strong>逆方向に分析</strong>し、設計・仕様・アルゴリズムを再構成する手法。</p>
+  </div>
+
+  <!-- フロー：主な用途 -->
+  <div class="panel p-green">
+    <span class="phead">🗺️ リバースエンジニアリングの主な用途</span>
+    <div class="flow">
+      <div class="fstep f1">
+        <div class="fh">① セキュリティ解析（マルウェア解析）</div>
+        <div class="fb">ウイルスや不正プログラムのバイナリを逆アセンブルし、動作・目的・通信先を調べる。セキュリティ研究で頻繁に使う。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f2">
+        <div class="fh">② 互換性・相互接続の確保</div>
+        <div class="fb">仕様書が公開されていないプロトコルやファイル形式を解析し、互換ソフトウェアを開発する（例：古いレガシーシステム連携）。</div>
+      </div>
+      <div class="farrow">▼</div>
+      <div class="fstep f3">
+        <div class="fh">③ 脆弱性の検査・品質確認</div>
+        <div class="fb">自社製品のバイナリを解析し、設計どおりに実装されているか・脆弱性がないかを検証する。ペネトレーションテストにも活用。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ひっかけ注意 -->
+  <div class="panel p-red">
+    <span class="phead">⚠️ ひっかけ注意ポイント</span>
+    <div class="trap-item">
+      <div class="th">「何でもやっていい」は誤り</div>
+      <div class="tb">日本の<strong>不正競争防止法</strong>により、営業秘密の取得・競合製品の模倣目的でのリバースエンジニアリングは<strong>違法</strong>になりうる。目的と利用方法が問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">フォワードエンジニアリングと逆に覚えない</div>
+      <div class="tb">フォワード＝設計→製品（順方向）。リバース＝製品→設計（<strong>逆方向</strong>）。試験では「どちらの方向か」が問われる。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">「デコンパイル」との関係</div>
+      <div class="tb">デコンパイル（バイナリをソースコードに戻す）はリバースエンジニアリングの<strong>手段の一つ</strong>。イコールではない。</div>
+    </div>
+    <div class="trap-item">
+      <div class="th">判断のコツ</div>
+      <div class="tb">「完成品・バイナリ・実行ファイルから設計・仕様を読み取る」→ <strong>リバースエンジニアリング</strong>で確定。</div>
+    </div>
+  </div>
+
+  <!-- 覚え方ゴロ -->
+  <div class="oboe">
+    <div class="oh">🧠 覚え方（無理やりゴロ）</div>
+    <div class="ob"><span class="hl">「リバース＝逆生まれ」</span><br>
+    <span style="font-size:12px;font-weight:700;color:#9a6b00;">製品が「産まれた道」を逆戻り＝製品→設計へ逆さ辿り</span><br><br>
+    フォワード →<span class="hl">設計から産む</span>（順産）<br>
+    リバース →<span class="hl">産まれたものを解剖</span>（逆産）</div>
+  </div>
+
+</div>
+</body>
+</html>
