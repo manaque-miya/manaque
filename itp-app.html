@@ -186,6 +186,8 @@ function addDaysStr(base,n){const d=new Date(base+`T00:00:00`);d.setDate(d.getDa
 function diffDays(a,b){const da=new Date(a+`T00:00:00`),db=new Date(b+`T00:00:00`);return Math.round((db-da)/86400000);}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function esc(s){return String(s).replace(/&/g,`&amp;`).replace(/</g,`&lt;`).replace(/>/g,`&gt;`);}
+/* HTMLエスケープ後に **太字** だけHTML化（保険：mem/point/why に markdown 記法が残っていても <strong> で描画） */
+function md(s){return esc(s).replace(/\*\*([^*]+?)\*\*/g,`<strong>$1</strong>`);}
 function catClass(c){return c===`ストラテジ`?`c-st`:c===`マネジメント`?`c-mg`:`c-tc`;}
 
 /* ============ localStorage（C-2） ============ */
@@ -376,11 +378,11 @@ function quizScreen(){
   <div class="progresslbl">完了 ${doneCount} / ${total}　｜　あと ${remain}問で今日終わり</div>
   <div class="card">
     <span class="cat ${catClass(q.cat)}">${esc(q.cat)}</span>
-    <div class="qtext">${esc(q.q)}</div>`;
+    <div class="qtext">${md(q.q)}</div>`;
   if(!answered){
     body+=`<div class="choices">`;
     current.order.forEach((ch,i)=>{
-      body+=`<button class="choice" onclick="pickChoice(${i})">${esc(ch.text)}</button>`;
+      body+=`<button class="choice" onclick="pickChoice(${i})">${md(ch.text)}</button>`;
     });
     body+=`</div>`;
   }else{
@@ -407,15 +409,15 @@ function quizScreen(){
       body+=`<div class="${cls}">
         <div class="rhead">
           <span class="rmark">${isC?`◯`:`✕`}</span>
-          <span class="rtext">${esc(ch.text)}</span>
+          <span class="rtext">${md(ch.text)}</span>
           ${isP?`<span class="yourtag">あなたの答え</span>`:``}
         </div>
-        <div class="rwhy">${esc(ch.why)}</div>
+        <div class="rwhy">${md(ch.why)}</div>
       </div>`;
     });
     body+=`</div>
-    <div class="point"><div class="plabel">🔑 見分けの決め手</div><div class="pbody">${esc(q.point)}</div></div>
-    <div class="mem"><div class="mlabel">🧠 覚え方</div><div class="mbody">${esc(q.mem)}</div></div>`;
+    <div class="point"><div class="plabel">🔑 見分けの決め手</div><div class="pbody">${md(q.point)}</div></div>
+    <div class="mem"><div class="mlabel">🧠 覚え方</div><div class="mbody">${md(q.mem)}</div></div>`;
     if(!isCorrect){
       /* C-1／§4-6：間違えた時だけ詳しい解説リンク */
       body+=`<a class="detaillink" href="articles/${esc(q.detailSlug)}.html" target="_blank" rel="noopener">📖 この概念の詳しい解説を読む →</a>`;
