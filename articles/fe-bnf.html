@@ -62,7 +62,7 @@ tr:nth-child(even) td{background:#F5F8FF;}
 <p>「終端記号」は実際の文字（<code>0</code>、<code>+</code>、<code>if</code> など）で、「非終端記号」はさらに展開される抽象的な記号（<code><expr></code>、<code><digit></code> など）だ。非終端記号を展開し続けて最終的にすべてが終端記号だけになった列が「その文法に従った正しい文字列」になる。</p>
 </div>
 <div class="card"><h2>BNFの基本構文例</h2>
-<p>``<code>bnf <digit>   ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 <number>  ::= <digit> | <digit> <number> <expr>    ::= <term> | <expr> + <term> | <expr> - <term> <term>    ::= <factor> | <term> * <factor> | <term> / <factor> <factor>  ::= <number> | ( <expr> ) </code>``</p>
+<p><code>bnf <digit>   ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 <number>  ::= <digit> | <digit> <number> <expr>    ::= <term> | <expr> + <term> | <expr> - <term> <term>    ::= <factor> | <term> * <factor> | <term> / <factor> <factor>  ::= <number> | ( <expr> ) </code></p>
 <p>この文法から <code>3 + 4 <em> 2</code> を生成できる： <code><expr></code> → <code><expr> + <term></code> → <code><term> + <term></code> → <code><factor> + <term></code> → <code>3 + <term></code> → <code>3 + <term> </em> <factor></code> → <code>3 + 4 * 2</code></p>
 <div class="mb"><p>⚠️ <strong>間違いやすいパターン</strong>: <code>::=</code> の左側（非終端記号）と右側（定義）を混同しやすい。非終端記号は <code><山カッコ></code> で囲まれており、終端記号（実際の文字）は囲まれていない。</p></div>
 </div>

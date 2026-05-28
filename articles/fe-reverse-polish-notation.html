@@ -67,7 +67,7 @@ tr:nth-child(even) td{background:#F5F8FF;}
 </div>
 <div class="card"><h2>逆ポーランド記法への変換手順</h2>
 <p>中置式 <code>3 + 4 * 2</code> を逆ポーランド記法に変換する（演算子スタック法）：</p>
-<p>``` 入力：3 + 4 * 2</p>
+<p>入力：3 + 4 * 2</p>
 <p>手順：</p>
 <ol>
 <li>'3'  → 数値なので出力：  出力: [3]      スタック: []</li>
@@ -77,11 +77,11 @@ tr:nth-child(even) td{background:#F5F8FF;}
 <li>'2'  → 数値なので出力：  出力: [3,4,2]  スタック: [+,*]</li>
 <li>終了 → スタックを全て出力：出力: [3,4,2,*,+]</li>
 </ol>
-<p>結果：3 4 2 * + ```</p>
+<p>結果：3 4 2 * + </p>
 </div>
 <div class="card"><h2>逆ポーランド式の計算手順</h2>
 <p>逆ポーランド式 <code>3 4 2 * +</code> をスタックで計算する：</p>
-<p>``` 入力：3 4 2 * +</p>
+<p>入力：3 4 2 * +</p>
 <p>手順：</p>
 <ol>
 <li>'3'  → push  スタック: [3]</li>
@@ -90,7 +90,7 @@ tr:nth-child(even) td{background:#F5F8FF;}
 <li>'<em>'  → pop 2個（4と2）→ 4</em>2=8 → push  スタック: [3,8]</li>
 <li>'+'  → pop 2個（3と8）→ 3+8=11 → push スタック: [11]</li>
 </ol>
-<p>結果：11（= 3 + 4*2 の正しい値） ```</p>
+<p>結果：11（= 3 + 4*2 の正しい値） </p>
 </div>
 <div class="card"><h2>ここが試験のキモ ✅</h2>
 <ul style="list-style:none;padding-left:0;">
@@ -104,8 +104,8 @@ tr:nth-child(even) td{background:#F5F8FF;}
 </div>
 <div class="card"><h2>計算問題のトレース練習</h2>
 <p><code>5 1 2 + 4 * + 3 -</code> をスタック計算する：</p>
-<p>``` push 5       [5] push 1       [5,1] push 2       [5,1,2] '+'→pop 1,2→1+2=3 push  [5,3] push 4       [5,3,4] '<em>'→pop 3,4→3</em>4=12 push [5,12] '+'→pop 5,12→5+12=17 push [17] push 3       [17,3] '-'→pop 17,3→17-3=14 push [14]</p>
-<p>結果：14 ```</p>
+<p>push 5       [5] push 1       [5,1] push 2       [5,1,2] '+'→pop 1,2→1+2=3 push  [5,3] push 4       [5,3,4] '<em>'→pop 3,4→3</em>4=12 push [5,12] '+'→pop 5,12→5+12=17 push [17] push 3       [17,3] '-'→pop 17,3→17-3=14 push [14]</p>
+<p>結果：14 </p>
 <p>中置に戻すと <code>5 + (1+2)*4 - 3 = 5 + 12 - 3 = 14</code> で正解が確認できる。</p>
 </div>
 <div class="card"><h2>🎯 試験対策：逆ポーランド記法の重要ポイント</h2>
