@@ -529,6 +529,14 @@ function startQuiz(wrongOnly) {
   renderCard();
 }
 
+function mdBold(text) {
+  const esc = String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  return esc.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
+}
+
 function renderCard() {
   if (current >= queue.length) {
     showResult();
@@ -559,11 +567,11 @@ function renderCard() {
 
   // 解説リセット
   document.getElementById('expPanel').classList.remove('show');
-  document.getElementById('exp1Text').textContent = card.exp1 || '';
-  document.getElementById('exp2Text').textContent = card.exp2 || '';
+  document.getElementById('exp1Text').innerHTML = mdBold(card.exp1 || '');
+  document.getElementById('exp2Text').innerHTML = mdBold(card.exp2 || '');
   const exp3Row = document.querySelector('.exp-row.exp3');
   if (card.exp3) {
-    document.getElementById('exp3Text').textContent = card.exp3;
+    document.getElementById('exp3Text').innerHTML = mdBold(card.exp3);
     exp3Row.style.display = '';
   } else {
     exp3Row.style.display = 'none';
