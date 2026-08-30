@@ -12,15 +12,15 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="第二種電気工事士の頻出用語を2択カードで直感学習。仕訳の覚え方・T字勘定・借方貸方を3層解説。第二種電気工事士 過去問・独学・勉強方法に対応した効率暗記ツール。">
+<meta name="description" content="第二種電気工事士の重要用語400語を2択カードで直感学習。電気の基礎理論・配線図・工具・法令など筆記試験対策の基礎用語をシナリオ形式で3層解説。第二種電気工事士の過去問・独学対策に使える効率暗記ツール。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="まなクエ！">
-<meta property="og:title" content="第二種電気工事士 2択カード｜仕訳・勘定科目まなクエ！">
-<meta property="og:description" content="第二種電気工事士 過去問・仕訳 覚え方・T字勘定・借方貸方・第二種電気工事士 独学・第二種電気工事士 何時間—2択カードで効率暗記。シナリオ形式＋3層解説＋覚え方フレーズで合格へ。">
-<meta property="og:url" content="https://manaque.net/boki3-vocab.html">
+<meta property="og:title" content="第二種電気工事士 2択カード｜電気の基礎・配線図 まなクエ！">
+<meta property="og:description" content="第二種電気工事士の重要用語400語を2択カードで直感学習。電気の基礎理論・配線図・工具・法令など筆記試験対策の基礎用語をシナリオ形式で3層解説。第二種電気工事士の過去問・独学対策に使える効率暗記ツール。">
+<meta property="og:url" content="https://manaque.net/denko2-vocab.html">
 <meta property="og:image" content="https://manaque.net/assets/ogp.png">
-<link rel="canonical" href="https://manaque.net/boki3-vocab.html">
-<title>第二種電気工事士 2択カード｜仕訳・勘定科目 まなクエ！</title>
+<link rel="canonical" href="https://manaque.net/denko2-vocab.html">
+<title>第二種電気工事士 2択カード｜電気の基礎・配線図 まなクエ！</title>
 <link rel="icon" href="assets/img/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&display=swap" rel="stylesheet">
 <!-- SVGアニメーション（将来組み込み予定） -->
@@ -313,15 +313,15 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
 <div class="screen active" id="startScreen">
   <div class="start-hero">
     <img src="assets/img/characters/ren/base.png" class="start-chara" alt="レン先生">
-    <div class="start-bubble">🧾 2択で仕訳・勘定科目を直感体験！</div>
-    <div class="start-title">第二種電気工事士 2択カード<span class="start-badge">500語</span></div>
+    <div class="start-bubble">⚡ 2択で用語を直感体験！</div>
+    <div class="start-title">第二種電気工事士 2択カード<span class="start-badge">400語</span></div>
     <div class="start-sub">シナリオで問題→2択→3層解説＋覚え方で第二種電気工事士の用語を体に染み込ませよう</div>
   </div>
 
   <div class="stats-row">
     <div class="stat-card">
       <div class="stat-label">総問題数</div>
-      <div class="stat-val" id="statTotal">500</div>
+      <div class="stat-val" id="statTotal">400</div>
     </div>
     <div class="stat-card">
       <div class="stat-label">学習済み</div>
@@ -424,7 +424,6 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
       </div>
       <div class="exp-row exp-actions" id="actionRow">
         <a id="articleBtn" class="action-btn" href="#" target="_blank" style="display:none">📖 詳細記事を読む</a>
-        <a class="action-btn primary" href="boki3-quiz.html">📝 第二種電気工事士クイズへ</a>
       </div>
     </div>
   </div>
@@ -466,7 +465,6 @@ body { background: var(--bg); color: var(--ink); min-height: 100vh; }
   <div class="result-actions">
     <button class="result-btn primary" id="retryBtn">🔄 もう一度チャレンジ</button>
     <button class="result-btn secondary" id="wrongOnlyBtn">❌ 間違えた問題だけ</button>
-    <button class="result-btn exam-link" onclick="location.href='boki3-quiz.html'">📝 第二種電気工事士クイズへ進む →</button>
     <button class="result-btn secondary" onclick="location.href='index.html'">🏠 トップへ戻る</button>
   </div>
 </div>
@@ -488,8 +486,8 @@ let selFreq = 'all';
 let selCount = 20;
 
 // 累計学習記録（sessionStorage）
-let totalDone = parseInt(sessionStorage.getItem('boki3_vocab_done') || '0');
-let totalCorrect = parseInt(sessionStorage.getItem('boki3_vocab_correct') || '0');
+let totalDone = parseInt(sessionStorage.getItem('denko2_vocab_done') || '0');
+let totalCorrect = parseInt(sessionStorage.getItem('denko2_vocab_correct') || '0');
 
 // ===== INIT =====
 function updateStats() {
@@ -660,8 +658,8 @@ function selectAnswer(btn, isCorrect, card) {
     wrongIds.push(card.id);
   }
   totalDone++;
-  sessionStorage.setItem('boki3_vocab_done', totalDone);
-  sessionStorage.setItem('boki3_vocab_correct', totalCorrect);
+  sessionStorage.setItem('denko2_vocab_done', totalDone);
+  sessionStorage.setItem('denko2_vocab_correct', totalCorrect);
   updateStats();
 
   // 解説表示
@@ -702,7 +700,7 @@ function showResult() {
   let title, msg;
   if (acc >= 90) { title = '🏆 完璧！'; msg = 'ほぼ完璧！第二種電気工事士クイズにも自信を持って挑もう。'; }
   else if (acc >= 70) { title = '👍 いい感じ！'; msg = '基本はOK。間違えた問題をもう一度やって完成させよう。'; }
-  else if (acc >= 50) { title = '📖 もう少し！'; msg = '半分以上は理解できてる。苦手な仕訳を集中的に復習しよう。'; }
+  else if (acc >= 50) { title = '📖 もう少し！'; msg = '半分以上は理解できてる。苦手な用語を集中的に復習しよう。'; }
   else { title = '💪 まだまだこれから！'; msg = 'シナリオをじっくり読んで、借方・貸方のイメージをつかんでいこう。'; }
 
   document.getElementById('resultTitle').textContent = title;
