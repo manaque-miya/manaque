@@ -354,7 +354,15 @@ if (!quizId) {
     setMeta('meta[property="og:description"]', pageDesc);
     setMeta('meta[property="og:url"]', location.href);
     setMeta('link[rel="canonical"]', location.href, 'href');
-    initQuiz(meta, UNIT_QUIZ.questions);
+    // 4コマ漫画データ（該当問題があるユニットのみ）。読み込み完了(失敗時も)を待ってからクイズを開始する
+    const beginQuiz = function () { initQuiz(meta, UNIT_QUIZ.questions); };
+    if (UNIT_QUIZ.questions.some(function (q) { return q.manga; }) && typeof KOBUN_MANGA === 'undefined') {
+      const ms = document.createElement('script');
+      ms.onload = beginQuiz; ms.onerror = beginQuiz;
+      ms.src = 'data/kobun-manga.js'; document.head.appendChild(ms);
+    } else {
+      beginQuiz();
+    }
   };
   document.head.appendChild(s);
 }
@@ -489,6 +497,39 @@ function toggleSound() {
   if (btn) btn.textContent = SND.enabled ? '🔊' : '🔇';
 }
 
+// 解説の下に「4コマで見る」を出す（q.manga があるときのみ）
+function buildMangaEl(id, ok) {
+  const d = KOBUN_MANGA.words[id];
+  const box = document.createElement('details');
+  box.style.cssText = 'margin-top:12px;border:2px solid #e8d5f5;border-radius:12px;background:#fff;overflow:hidden;';
+  const sum = document.createElement('summary');
+  sum.style.cssText = 'cursor:pointer;padding:10px 14px;font-weight:900;font-size:0.95em;color:var(--accent,#8E44AD);';
+  sum.textContent = '🎨 「' + d.word + '」を4コマ漫画で見る';
+  box.appendChild(sum);
+  const inner = document.createElement('div');
+  inner.style.cssText = 'padding:0 12px 12px;';
+  box.appendChild(inner);
+  box.addEventListener('toggle', function () {
+    if (!box.open || inner.childNodes.length) return;
+    const img = document.createElement('img');
+    img.src = KOBUN_MANGA.file(id, 768);
+    img.srcset = KOBUN_MANGA.srcset(id);
+    img.sizes = '(max-width: 640px) calc(100vw - 108px), 740px';
+    img.width = d.w; img.height = d.h;
+    img.alt = KOBUN_MANGA.alt(id);
+    img.decoding = 'async';
+    img.style.cssText = 'display:block;width:100%;height:auto;border-radius:10px;';
+    inner.appendChild(img);
+    const a = document.createElement('a');
+    a.href = 'kobun-manga.html#' + id;
+    a.textContent = '漫画で覚える古文単語（一覧）へ →';
+    a.style.cssText = 'display:block;margin-top:8px;text-align:center;font-size:0.85em;font-weight:800;color:var(--accent,#8E44AD);text-decoration:none;';
+    inner.appendChild(a);
+    if (window.gtag) gtag('event', 'kobun_manga_open', { word: id, correct: ok ? 1 : 0 });
+  });
+  return box;
+}
+
 function selectAnswer(sel) {
   const q = QUESTIONS[current];
   const ok = sel === q.answer;
@@ -513,6 +554,10 @@ function selectAnswer(sel) {
   feedbackText.textContent = '';
   feedbackText.appendChild(shortEl);
   if (q.long_exp) feedbackText.appendChild(longEl);
+  if (q.manga && typeof KOBUN_MANGA !== 'undefined' && KOBUN_MANGA.words[q.manga]) {
+    feedbackText.appendChild(buildMangaEl(q.manga, ok));
+    if (window.gtag) gtag('event', 'kobun_manga_offer', { word: q.manga, correct: ok ? 1 : 0 });
+  }
   document.getElementById('nextBtn').classList.add('show');
   document.getElementById('scoreText').textContent = `正解 ${score}問`;
 }
