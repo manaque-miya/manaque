@@ -109,7 +109,6 @@ body.mq .detaillink{display:inline-block;margin-top:4px;font-size:13px;font-weig
 </div></footer>
 
 <script src="data/itp-questions.js"></script>
-<script src="data/itp-cats.js"></script>
 <script>
 /* ============ 設定 ============ */
 const KEY=`itp-app-v2`;   /* 旧方式(覚えた/まだ)の保存キーは itp-app-v1。新UIとは互換がないので別キー */
@@ -120,8 +119,10 @@ const WEAK_MAX=2;                  /* 苦手値の上限(0〜2) */
 const SHOW_POINT=false;            /* 「詳しい解説」に 決め手(point) を出すか。データは残してある(将来用) */
 const SHOW_MEM=false;              /* 「詳しい解説」に 覚え方(mem) を出すか。データは残してある(将来用) */
 const Q=(typeof ITP_QUESTIONS!==`undefined`&&Array.isArray(ITP_QUESTIONS))?ITP_QUESTIONS:[];
-const CATS=(typeof ITP_CATS!==`undefined`)?ITP_CATS:[];
-const MAP=(typeof ITP_CAT_MAP!==`undefined`)?ITP_CAT_MAP:{};
+/* カテゴリは問題データ(itp-questions.js の ITP_GROUPS と各問題の group)から作る。正本は ITP_問題.xlsx の『カテゴリ』列・シート */
+const GROUPS=(typeof ITP_GROUPS!==`undefined`)?ITP_GROUPS:[];
+const CATS=GROUPS.map((n,i)=>({id:`g`+(i+1),name:n}));
+const MAP={};Q.forEach(q=>{const i=GROUPS.indexOf(q.group);if(i>=0)MAP[q.id]=`g`+(i+1);});
 
 /* ============ ユーティリティ ============ */
 function esc(s){return String(s).replace(/&/g,`&amp;`).replace(/</g,`&lt;`).replace(/>/g,`&gt;`);}
