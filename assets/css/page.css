@@ -1,0 +1,100 @@
+/* =====================================================================
+   まなクエ！ ページ用CSS (assets/css/page.css)  v1 2026-09-26
+   目的   : クイズ・用語カード・学習ガイド・一覧などの「記事以外のページ」を、HTMLを書き換えずに、
+            見た目だけ新デザイン(紙・細線・角丸なし・影なし・生成り/白/墨/紺/金)に寄せる
+   使い方 : 各ページの <head> で、そのページ自身の <style> よりあとに読み込む。body に class="mqp" を付けたページだけに効く
+   方針   : ① 各ページが持つCSS変数(--brand --bg --ink --border --r など)をまとめて上書き ② ヘッダー・フッターを共通の見た目に
+            ③ 角丸・影をなくす(ガチャ・カード・囲碁の石など「ゲームの絵」は除く) ④ ボタンの派手なグラデーションを単色に
+   注意   : マナクエ共通CSS(manaque.css)は読み込まない(ページ自身の mq- クラスとぶつかるため)。必要な色はここに直接書く
+   ===================================================================== */
+
+/* ---------- ① 色・角丸の変数を、全ページ共通の値に上書き(各ページ独自の色は使わない) ---------- */
+body.mqp:not(.mqp-dark){
+  --bg:#fbfaf7;--white:#fff;--ink:#171a22;--muted:#667085;--border:#cfd4dc;
+  --brand:#143A8F;--brand-d:#142342;--brand-l:#f2efe6;--brand-mid:#143A8F;
+  --correct:#1f6b45;--correct-l:#eef5f0;--wrong:#a1352a;--wrong-l:#f8eeec;
+  --accent:#143A8F;--hero-blue:#143A8F;
+  --r:0px;--r-lg:0px;
+  background:var(--bg);color:var(--ink)}
+body.mqp{font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
+body.mqp.mqp-dark{--r:0px;--r-lg:0px}
+body.mqp a{text-decoration:none}
+
+/* ---------- ② ヘッダー(クイズ・用語カード・こども向け等の .site-header / 学習ガイドの header.header / 一覧の .hd) ---------- */
+body.mqp .site-header,body.mqp header.header,body.mqp .hd{
+  position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  height:56px;padding:0 20px;background:rgba(251,250,247,.97);border:0;border-bottom:1px solid #cfd4dc;
+  border-radius:0;box-shadow:none;backdrop-filter:blur(8px)}
+body.mqp.mqp-dark .site-header{background:rgba(15,15,19,.97);border-bottom:1px solid #2a2a33}
+body.mqp.mqp-dark .site-header__logo,body.mqp.mqp-dark .site-logo{filter:brightness(0) invert(1)}
+body.mqp header.header .header__inner{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;max-width:none;margin:0;padding:0}
+body.mqp .site-header__logo,body.mqp .site-logo,body.mqp header.header .logo,body.mqp .hd .logo{
+  display:block;width:104px;height:38px;flex:none;font-size:0;line-height:0;color:transparent;overflow:hidden;padding:0;gap:0;
+  background:url(../img/logo.svg) no-repeat left center;background-size:contain}
+body.mqp .site-logo span,body.mqp .site-logo__icon,body.mqp header.header .logo span,body.mqp header.header .logo__icon,body.mqp .hd .logo span{display:none}
+body.mqp .site-header__back,body.mqp .back-link,body.mqp header.header .back,body.mqp .hd .back{
+  font-size:12px;font-weight:700;color:#667085;text-decoration:none;background:none;border:0;border-bottom:1px solid transparent}
+body.mqp.mqp-dark .site-header__back,body.mqp.mqp-dark .back-link{color:#a0a0b0}
+/* ヘッダーの中の文字は、もとが白(青い帯用)でも、紙色のヘッダーで読める色にそろえる(ダークのページは除く) */
+body.mqp:not(.mqp-dark) .site-header :where(a,button,span,em,strong){color:#667085!important}
+@media (hover:hover){body.mqp .site-header__back:hover,body.mqp .back-link:hover,body.mqp header.header .back:hover,body.mqp .hd .back:hover{color:var(--brand);border-color:var(--brand)}}
+
+/* ---------- フッター ---------- */
+body.mqp footer.footer,body.mqp footer.ft,body.mqp .site-footer{
+  background:transparent;border:0;border-top:1px solid var(--border);border-radius:0;box-shadow:none;margin:0;padding:28px 16px 34px;
+  text-align:center;color:var(--muted);font-size:12px;line-height:1.9}
+body.mqp footer.footer a,body.mqp footer.ft a,body.mqp .site-footer a{color:var(--muted);margin:0 9px;font-size:12px}
+
+/* ---------- ③ 角丸・影をなくす(ガチャ・カード図鑑・囲碁の石など、ゲームの絵は除く) ---------- */
+body.mqp :where(div,span,p,li,ul,ol,a,button,input,select,textarea,table,th,td,section,article,header,footer,main,h1,h2,h3,h4,label,pre,details,summary):not([class*="gacha"]):not([class*="g-card"]):not([class*="g-ring"]):not([class*="g-badge"]):not([class*="capsule"]):not([class*="card-art"]):not([class*="card-info"]):not([class*="mini-art"]):not([class*="mini-info"]):not([class*="modal-art"]):not([class*="stone"]):not([class*="legend-"]):not([class*="mini-cell"]):not(.site-logo):not(.site-header__logo):not(#gachaOverlay *):not(#gachaOverlay){
+  border-radius:0!important;box-shadow:none!important}
+
+/* ---------- 学習ガイド(learn-* / itp-guide):記事と同じ紙の見た目 ---------- */
+body.mqp:has(.article-header) .main{max-width:720px;margin:0 auto;padding:24px 16px 56px}
+body.mqp .article-header{background:transparent;padding:6px 0 18px;margin:0 0 4px;border:0;border-bottom:1px solid var(--ink)}
+body.mqp .article-label{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--brand);text-transform:none;margin:0 0 8px}
+body.mqp .article-title{font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;font-weight:600;font-size:clamp(22px,3.8vw,32px);line-height:1.4;letter-spacing:.02em;color:var(--ink);margin:0 0 10px}
+body.mqp .article-meta{font-size:12px;color:var(--muted)}
+body.mqp:has(.article-header) .card{background:transparent;padding:20px 0 16px;margin:0;border:0;border-top:1px solid var(--border)}
+body.mqp .article-header + .card{border-top:0}
+body.mqp:has(.article-header) .main h2{font-size:17px;font-weight:800;line-height:1.5;color:var(--ink);margin:0 0 10px;padding:0;border:0}
+body.mqp:has(.article-header) .main h3{font-size:14px;font-weight:800;color:var(--brand);margin:16px 0 6px}
+body.mqp:has(.article-header) .main p,body.mqp:has(.article-header) .main li{font-size:14px;line-height:1.95;color:var(--ink)}
+body.mqp:has(.article-header) .highlight{background:#f7f3e8;border:1px solid var(--border);padding:14px 16px}
+body.mqp .quiz-cta{background:transparent!important;border:1px solid var(--ink);padding:20px;text-align:center;color:var(--ink);margin-top:14px}
+body.mqp .quiz-cta__text{color:var(--ink);font-weight:800}
+body.mqp .quiz-cta__btn{display:inline-block;background:transparent!important;color:var(--ink)!important;border:1px solid var(--ink);font-weight:800;padding:10px 24px}
+@media (hover:hover){body.mqp .quiz-cta__btn:hover{background:var(--ink)!important;color:#fff!important}}
+
+/* ---------- ヒーロー(一覧・ガイド・古文など):グラデーションの帯 → 単色の紺(中の白い文字はそのまま読める) ---------- */
+body.mqp:not(.mqp-dark) .hero{background:var(--brand)!important;border:0}
+body.mqp:not(.mqp-dark) .hero::before{display:none}
+body.mqp:not(.mqp-dark) .hero .badge{background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.4)}
+
+/* ---------- 記事一覧(articles.html):リンクのインラインstyleを上書き ---------- */
+body.mqp .grid a{background:transparent!important;color:var(--ink)!important;border:1px solid var(--border)!important;border-radius:0!important}
+@media (hover:hover){body.mqp .grid a:hover{background:#f2efe6!important}}
+body.mqp .cat-title{color:var(--ink)!important}
+body.mqp .cat-count{background:transparent!important;border:1px solid var(--border);color:var(--muted)!important}
+
+/* ---------- ④ ボタン・進捗:派手なグラデーションを単色に(ガチャは除く) ---------- */
+body.mqp .next-btn,body.mqp .retry-btn,body.mqp .start-go-new,body.mqp .btn-next,body.mqp .btn-quiz,body.mqp .complete-btn--quiz,
+body.mqp .action-btn.primary,body.mqp .result-btn.primary{background:var(--brand)!important;color:#fff!important;border:1px solid var(--brand)}
+body.mqp .prog-bar__fill,body.mqp .q-progress-fill,body.mqp .progress-fill,body.mqp .score-bar-fill,body.mqp .progress-bar>i{background:var(--brand)!important}
+body.mqp .choice-btn{background:var(--white);border:1px solid var(--border);color:var(--ink)}
+body.mqp .choice-btn.correct{background:var(--correct-l)!important;border-color:var(--correct)!important;color:var(--ink)!important}
+body.mqp .choice-btn.wrong{background:var(--wrong-l)!important;border-color:var(--wrong)!important;color:var(--ink)!important}
+body.mqp .count-btn.selected,body.mqp .mode-btn.selected,body.mqp .filter-btn.selected,body.mqp .sub-btn.selected{background:var(--brand-l)!important;border-color:var(--brand)!important;color:var(--ink)!important}
+body.mqp .stat-card,body.mqp .feature-card,body.mqp .feat-card,body.mqp .result-stat,body.mqp .question-box{background:var(--white);border:1px solid var(--border)}
+
+/* こども向け:コンテナの背景は透明(背景のグラデーションは body の上書きで紙色になる) */
+body.mqp .container{background:transparent}
+body.mqp .container .header h1{color:var(--brand)!important}
+body.mqp .container .header p,body.mqp .container .q-num,body.mqp .container .question-sub,body.mqp .container .pts{color:var(--muted)!important}
+
+@media (max-width:820px){
+  body.mqp .site-header,body.mqp header.header,body.mqp .hd{height:52px;padding:0 14px}
+  body.mqp .site-header__logo,body.mqp .site-logo,body.mqp header.header .logo,body.mqp .hd .logo{width:96px;height:34px}
+  body.mqp .main{padding-left:14px;padding-right:14px}
+}
+@media (prefers-reduced-motion:reduce){body.mqp *{transition:none!important;animation:none!important}}
