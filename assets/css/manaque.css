@@ -1,0 +1,209 @@
+/* =====================================================================
+   まなクエ！ 共通CSS  (assets/css/manaque.css)  v3 2026-09-26(文書ページ部品を追加)
+   目的   : トップ(index.html 2026-09-21版)の雰囲気を全ページで共有する
+   土台   : index.html の :root 変数・ヘッダー・下部ナビ・細線ルール
+   ルール : 細線1px / 角丸なし / 影なし / グラデなし / 色は 生成り・白・墨・紺・金
+   衝突防止: クラスは全て mq- 接頭辞。既存ページの独自CSSとぶつからないので
+            1ページずつ移行できる。body への指定は body.mq のページだけに効く
+   文字色  : 金は線・飾り用(--mq-gold)。金の文字は --mq-gold-text(コントラスト4.8)
+   ===================================================================== */
+
+:root{
+  --mq-bg:#fbfaf7;       /* 生成り(ページ背景) */
+  --mq-paper:#fff;       /* 白(面) */
+  --mq-soft:#f2efe6;     /* 薄い生成り(hover) */
+  --mq-cream:#f7f3e8;
+  --mq-ink:#171a22;      /* 墨(本文) */
+  --mq-muted:#667085;    /* 補助文字(コントラスト4.8) */
+  --mq-line:#cfd4dc;     /* 細線 */
+  --mq-brand:#143A8F;    /* ブランド紺 */
+  --mq-navy:#142342;
+  --mq-gold:#b79032;     /* 金(線・飾りのみ。文字には使わない) */
+  --mq-gold-text:#8a6a1f;/* 金の文字 */
+  --mq-ok:#1f6b45;  --mq-ok-bg:#eef5f0;   /* 正解 */
+  --mq-ng:#a1352a;  --mq-ng-bg:#f8eeec;   /* 不正解 */
+  --mq-sans:"Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+  --mq-serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+  --mq-max:1240px;
+  --mq-narrow:560px;     /* クイズ等 1カラムの幅 */
+  --mq-nav-h:58px;       /* スマホ下部ナビの高さ(トップと同じ) */
+  --mq-safe-bottom:env(safe-area-inset-bottom,0px);
+}
+
+/* ---------- 基本(body.mq のページだけ) ---------- */
+body.mq{margin:0;background:var(--mq-bg);color:var(--mq-ink);font-family:var(--mq-sans);
+  -webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;overflow-x:hidden;line-height:1.7;
+  -webkit-tap-highlight-color:transparent}
+body.mq *,body.mq *::before,body.mq *::after{box-sizing:border-box}
+body.mq a{color:inherit;text-decoration:none}
+body.mq button{font-family:inherit}
+/* キーボード操作時だけ選択位置を示す */
+body.mq :focus-visible{outline:2px solid var(--mq-brand);outline-offset:2px}
+.mq-wrap{width:min(var(--mq-max),calc(100% - 36px));margin:0 auto}
+.mq-narrow{width:min(var(--mq-narrow),calc(100% - 32px));margin:0 auto}
+
+/* ---------- ヘッダー(トップと同じ見た目) ---------- */
+.mq-header{position:sticky;top:0;z-index:60;background:rgba(251,250,247,.97);
+  border-bottom:1px solid var(--mq-line);backdrop-filter:blur(8px)}
+.mq-header__in{height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.mq-logo{display:block;height:40px;width:auto}
+.mq-nav{display:flex;gap:18px;font-size:12px;color:#394256}
+.mq-nav a{padding:7px 0;border-bottom:1px solid transparent}
+
+/* ---------- ページ見出し ---------- */
+.mq-pagehead{padding:22px 0 0}
+.mq-kicker{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mq-brand);margin:0 0 6px}
+.mq-title{margin:0;font-family:var(--mq-serif);font-weight:600;font-size:clamp(28px,4vw,44px);
+  line-height:1.15;letter-spacing:.035em}
+.mq-lead{margin:8px 0 0;font-size:13px;color:var(--mq-muted);line-height:1.8;
+  border-left:1px solid var(--mq-gold);padding-left:12px}
+.mq-h2{margin:0 0 12px;font-size:20px;font-weight:800;line-height:1.3;
+  padding-bottom:8px;border-bottom:1px solid var(--mq-ink)}
+
+/* ---------- 面・区切り ---------- */
+.mq-panel{background:var(--mq-paper);border:1px solid var(--mq-line);padding:20px}
+.mq-rule{border:0;border-top:1px solid var(--mq-line);margin:20px 0}
+.mq-muted{color:var(--mq-muted)}
+.mq-small{font-size:12px}
+.mq-center{text-align:center}
+
+/* ---------- ボタン ---------- */
+.mq-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;
+  border:1px solid var(--mq-ink);background:transparent;color:var(--mq-ink);
+  padding:10px 18px;font-size:14px;font-weight:800;cursor:pointer;border-radius:0;transition:background .12s,color .12s}
+.mq-btn--primary{background:var(--mq-brand);border-color:var(--mq-brand);color:#fff}
+.mq-btn--block{display:flex;width:100%;min-height:54px;font-size:16px}
+/* 控えめな文字リンク(押せる範囲は44px確保) */
+.mq-link{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;font-size:13px;font-weight:700;
+  color:var(--mq-muted);background:none;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- ラベル・バッジ ---------- */
+.mq-badge{display:inline-block;font-size:11px;font-weight:800;line-height:1.5;padding:1px 8px;
+  border:1px solid var(--mq-line);background:#fff;color:#394256}
+.mq-badge--brand{border-color:var(--mq-brand);color:var(--mq-brand)}
+
+/* ---------- 進捗・数字 ---------- */
+.mq-count{display:flex;align-items:baseline;gap:6px;font-size:13px;color:var(--mq-muted);margin:0}
+.mq-count b{font-size:30px;line-height:1;color:var(--mq-ink);font-weight:800;letter-spacing:-.02em}
+.mq-progress{height:2px;background:var(--mq-line)}
+.mq-progress>i{display:block;height:100%;background:var(--mq-brand);transition:width .3s}
+.mq-progress-label{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--mq-muted);margin-top:8px}
+.mq-streak{font-size:12px;font-weight:700;color:var(--mq-muted)}
+
+/* ---------- クイズ部品 ---------- */
+.mq-question{font-size:16px;font-weight:700;line-height:1.9;margin:0 0 18px}
+.mq-choices{display:flex;flex-direction:column;border-top:1px solid var(--mq-ink)}
+.mq-choice{position:relative;display:block;width:100%;text-align:left;background:var(--mq-paper);color:var(--mq-ink);
+  border:0;border-bottom:1px solid var(--mq-line);padding:15px 14px;min-height:52px;font-size:15px;font-weight:700;
+  line-height:1.7;cursor:pointer;transition:background .12s}
+.mq-choice:active{background:var(--mq-cream)}
+/* 正誤は色＋記号(色だけに頼らない) */
+.mq-choice.is-correct,.mq-choice.is-wrong{padding-right:44px}
+.mq-choice.is-correct{background:var(--mq-ok-bg);box-shadow:inset 3px 0 0 var(--mq-ok)}
+.mq-choice.is-wrong{background:var(--mq-ng-bg);box-shadow:inset 3px 0 0 var(--mq-ng)}
+.mq-choice.is-correct::after,.mq-choice.is-wrong::after{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:18px;font-weight:800}
+.mq-choice.is-correct::after{content:"◯";color:var(--mq-ok)}
+.mq-choice.is-wrong::after{content:"✕";color:var(--mq-ng)}
+.mq-result{padding:14px 0 12px;border-bottom:1px solid var(--mq-line)}
+.mq-result__title{font-size:18px;font-weight:800;margin:0}
+.mq-result--ok .mq-result__title{color:var(--mq-ok)}
+.mq-result--ng .mq-result__title{color:var(--mq-ng)}
+.mq-note{border-left:1px solid var(--mq-gold);padding:2px 0 2px 12px;margin:14px 0;font-size:14px;line-height:1.85}
+.mq-note__label{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--mq-gold-text);margin-bottom:2px}
+.mq-next{margin-top:18px}
+.mq-next .mq-link{display:flex;justify-content:center;margin:4px auto 0}
+
+/* ---------- 折りたたみ(詳しく見る) ---------- */
+.mq-details{border-top:1px solid var(--mq-line);border-bottom:1px solid var(--mq-line)}
+.mq-details>summary{list-style:none;cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:13px;font-weight:800;color:var(--mq-brand)}
+.mq-details>summary::-webkit-details-marker{display:none}
+.mq-details>summary::after{content:"＋";margin-left:6px}
+.mq-details[open]>summary::after{content:"−"}
+.mq-details__body{padding:0 0 14px;font-size:13px;line-height:1.85}
+
+/* ---------- 通知 ---------- */
+.mq-toast{position:fixed;left:50%;bottom:calc(20px + var(--mq-safe-bottom));transform:translateX(-50%);
+  background:var(--mq-ink);color:#fff;font-size:13px;padding:12px 18px;max-width:340px;width:88%;
+  text-align:center;line-height:1.7;z-index:110}
+
+/* ---------- フッター(トップと同じ見た目) ---------- */
+.mq-footer{border-top:1px solid var(--mq-line);padding:30px 0 34px;color:#6f7888;font-size:12px;margin-top:48px}
+.mq-footer__links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:14px}
+
+/* ---------- スマホ下部ナビ(トップと同じ。PCでは出さない) ---------- */
+.mq-bottomnav{display:none}
+
+/* ---------- マウスがある端末だけ hover を効かせる(スマホで色が残る不具合の防止) ---------- */
+@media (hover:hover){
+  .mq-nav a:hover{color:var(--mq-brand);border-color:var(--mq-brand)}
+  .mq-btn:hover{background:var(--mq-ink);color:#fff}
+  .mq-btn--primary:hover{background:var(--mq-navy);border-color:var(--mq-navy)}
+  .mq-link:hover{color:var(--mq-brand)}
+  .mq-choice:hover{background:var(--mq-soft)}
+  .mq-choice.is-correct:hover{background:var(--mq-ok-bg)}
+  .mq-choice.is-wrong:hover{background:var(--mq-ng-bg)}
+  .mq-footer__links a:hover{color:var(--mq-brand)}
+}
+
+/* ---------- スマホ(トップと同じ 820px で切替) ---------- */
+@media (max-width:820px){
+  .mq-wrap{width:calc(100% - 24px)}
+  .mq-header__in{height:56px;justify-content:center}   /* トップ同様ロゴ中央 */
+  .mq-logo{height:38px}
+  .mq-nav{display:none}
+  .mq-title{font-family:var(--mq-sans);font-weight:900;letter-spacing:-.03em;font-size:28px} /* トップ同様スマホは太ゴシック */
+  .mq-panel{padding:16px}
+  .mq-question{font-size:15px}
+  body.mq.has-bottomnav{padding-bottom:calc(var(--mq-nav-h) + var(--mq-safe-bottom))}
+  .mq-bottomnav{position:fixed;z-index:100;left:0;right:0;bottom:0;height:calc(var(--mq-nav-h) + var(--mq-safe-bottom));
+    padding-bottom:var(--mq-safe-bottom);display:grid;grid-template-columns:repeat(4,1fr);
+    background:rgba(251,250,247,.98);backdrop-filter:blur(12px);border-top:1px solid var(--mq-navy)}
+  .mq-bottomnav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    font-size:10px;font-weight:800;color:var(--mq-ink)}
+  .mq-bottomnav .mq-mark{font-size:16px;line-height:1;color:var(--mq-brand)}
+  .mq-toast{bottom:calc(var(--mq-nav-h) + 14px + var(--mq-safe-bottom))}
+}
+
+/* ---------- 文書ページ(運営について・規約・ポリシー・免責・お問い合わせ) v3で追加 ---------- */
+.mq-doc{width:min(680px,calc(100% - 32px));margin:0 auto}
+.mq-doc .mq-pagehead{padding-bottom:6px}
+.mq-doc .mq-lead{font-size:14px;color:#394256;line-height:1.9}
+.mq-title--long{font-size:clamp(22px,3.6vw,32px);line-height:1.5}
+.mq-title--long em{font-style:normal;color:var(--mq-gold-text)}
+.mq-sec{padding:20px 0 18px;border-top:1px solid var(--mq-line)}
+.mq-sec--first{border-top:1px solid var(--mq-ink);margin-top:22px}
+.mq-sec h2{margin:0 0 10px;font-size:16px;font-weight:800;line-height:1.5}
+.mq-prose p{margin:0 0 10px;font-size:14px;line-height:1.95}
+.mq-prose h3{margin:4px 0 6px;font-size:14px;font-weight:800}
+.mq-prose .mq-list{margin:2px 0 12px}
+/* 強調したい短い言葉(細線で挟む) */
+.mq-prose .mq-pull{margin:12px 0;padding:10px 0;border-top:1px solid var(--mq-line);border-bottom:1px solid var(--mq-line);font-size:14.5px;font-weight:800;line-height:1.9}
+.mq-prose p:last-child{margin-bottom:0}
+body.mq .mq-prose a{color:var(--mq-brand);text-decoration:underline;text-underline-offset:3px}
+body.mq .mq-prose a.mq-mail{color:var(--mq-ink);text-decoration:none}
+@media (hover:hover){body.mq .mq-prose a.mq-mail:hover{color:#fff;background:var(--mq-ink)}}
+/* 項目名と値の一覧(プロフィールなど) */
+.mq-dl{margin:14px 0 0;border-top:1px solid var(--mq-line)}
+.mq-dl__row{display:grid;grid-template-columns:7.5em 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--mq-line)}
+.mq-dl dt{margin:0;font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--mq-muted);padding-top:3px}
+.mq-dl dd{margin:0;font-size:14px;font-weight:700;line-height:1.75}
+/* 箇条書き(金の短い線を頭に置く) */
+.mq-list{list-style:none;margin:6px 0 0;padding:0}
+.mq-list li{position:relative;padding:11px 0 11px 22px;border-bottom:1px solid var(--mq-line);font-size:14px;line-height:1.85}
+.mq-list li:last-child{border-bottom:0}
+.mq-list li::before{content:"";position:absolute;left:0;top:1.35em;width:12px;height:1px;background:var(--mq-gold)}
+/* 名前＋補足の格子(対応コンテンツなど) */
+.mq-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));margin-top:12px;border-left:1px solid var(--mq-line);border-top:1px solid var(--mq-line)}
+.mq-tile{padding:11px 12px;border-right:1px solid var(--mq-line);border-bottom:1px solid var(--mq-line);font-size:13px;font-weight:800;line-height:1.5}
+.mq-tile span{display:block;margin-top:2px;font-size:11px;font-weight:600;color:var(--mq-muted)}
+/* 外部フォームの埋め込み枠 */
+.mq-embed{border:1px solid var(--mq-line);background:var(--mq-paper);margin-bottom:14px}
+.mq-embed iframe{display:block;width:100%;height:680px;border:0}
+@media (max-width:600px){.mq-embed iframe{height:760px}.mq-dl__row{grid-template-columns:1fr;gap:2px}}
+.mq-mail{display:inline-flex;align-items:center;min-height:44px;padding:6px 16px;border:1px solid var(--mq-ink);font-size:13px;font-weight:800;background:transparent}
+@media (hover:hover){.mq-mail:hover{background:var(--mq-ink);color:#fff}}
+
+/* ---------- 動きを減らす設定の人 ---------- */
+@media (prefers-reduced-motion:reduce){
+  body.mq *{transition:none!important;animation:none!important}
+}
