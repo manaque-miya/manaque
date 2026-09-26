@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
 <meta charset="UTF-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDNLC7PWNM"></script>
@@ -11,517 +10,373 @@
   gtag('config', 'G-LDNLC7PWNM');
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4180647894648021" crossorigin="anonymous"></script>
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="ITパスポート 過去問600問を間隔反復で確実にマスター。4択→正誤→4つの「なぜ」→詳細解説、忘れかけた頃に再出題。登録不要・スマホ対応・無料。">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="ITパスポート 過去問600問を10問ずつ解いてマスター。4択→正誤→各選択肢の理由。カテゴリテスト・総合テスト・苦手問題で確実に定着。登録不要・スマホ対応・無料。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="まなクエ！">
 <meta property="og:title" content="ITパスポート 過去問マスター 600問｜まなクエ！">
-<meta property="og:description" content="過去問600問を間隔反復で確実にマスター。忘れかけた頃にくり返し、合格メーター・連続日数・今日のノルマで毎日続けられる。">
+<meta property="og:description" content="過去問600問を10問ずつ解いてマスター。間違えた問題は苦手問題にたまり、テストで再び出会える。登録不要・無料。">
 <meta property="og:url" content="https://manaque.net/itp-app.html">
 <meta property="og:image" content="https://manaque.net/assets/ogp.png">
 <link rel="canonical" href="https://manaque.net/itp-app.html">
 <title>ITパスポート 過去問マスター 600問｜まなクエ！</title>
 <link rel="icon" href="assets/img/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/manaque.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-body{font-family:"M PLUS Rounded 1c",sans-serif;background:#eef1f7;color:#2b3245;display:flex;flex-direction:column;align-items:center;-webkit-text-size-adjust:100%;}
-.app{max-width:480px;width:100%;min-height:100vh;padding:14px 14px 64px;}
-
-/* ===== 共通ナビ・フッタ ===== */
-.site-header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1.5px solid #e2e8f0;display:flex;align-items:center;gap:12px;padding:10px 16px;box-shadow:0 2px 8px rgba(30,50,110,.07);width:100%;}
-.site-header__logo{font-size:18px;font-weight:900;color:#1f56c6;text-decoration:none;}
-.site-header__back{font-size:13px;color:#64748b;text-decoration:none;margin-left:auto;font-weight:700;}
-.site-header__back:hover{color:#1f56c6;}
-.site-footer{width:100%;max-width:480px;text-align:center;font-size:11px;color:#8a91a0;padding:14px 14px 28px;line-height:1.85;}
-.site-footer a{color:#5c6478;text-decoration:none;margin:0 6px;}
-.site-footer a:hover{color:#1f56c6;text-decoration:underline;}
-.hd{text-align:center;font-weight:900;font-size:16px;color:#1f56c6;margin-bottom:2px;}
-.sub-hd{text-align:center;font-size:11px;color:#8a91a0;margin-bottom:12px;line-height:1.7;}
-
-/* ===== 常時表示の視覚化（C-3） ===== */
-.stats{background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 4px 14px rgba(30,50,110,.07);margin-bottom:12px;}
-.strow{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;}
-.streak{font-size:13px;font-weight:900;color:#e8743c;}
-.exam{font-size:12px;font-weight:800;color:#2e6de5;}
-.meter{height:12px;background:#e3e8f1;border-radius:99px;overflow:hidden;margin-bottom:6px;}
-.meter>i{display:block;height:100%;background:linear-gradient(90deg,#2e6de5,#5b9bff);transition:width .35s;}
-.meterlbl{font-size:11.5px;font-weight:800;color:#5c6478;text-align:center;margin-bottom:8px;}
-.meterlbl b{color:#1f56c6;font-size:13px;}
-.statestrip{display:flex;justify-content:center;gap:18px;font-size:11px;font-weight:800;color:#7d8595;}
-.statestrip b{color:#2b3245;}
-
-.bar{height:8px;background:#d9e1f1;border-radius:99px;overflow:hidden;margin-bottom:5px;}
-.bar>i{display:block;height:100%;background:linear-gradient(90deg,#3fb960,#69d98a);transition:width .3s;}
-.progresslbl{text-align:center;font-size:11.5px;color:#8a91a0;font-weight:800;margin-bottom:11px;}
-
-/* ===== カード ===== */
-.card{background:#fff;border-radius:22px;padding:20px;box-shadow:0 6px 22px rgba(30,50,110,.10);}
-.cat{display:inline-block;font-size:11px;font-weight:900;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
-.cat.c-st{background:#e7eefc;color:#2e6de5;}
-.cat.c-mg{background:#e6f4ea;color:#2e8b4f;}
-.cat.c-tc{background:#f0e9fb;color:#7a4fc4;}
-.qtext{font-size:15px;line-height:1.92;font-weight:700;color:#2b3245;margin-bottom:15px;}
-
-/* ===== 選択肢 ===== */
-.choices{display:flex;flex-direction:column;gap:9px;}
-.choice{display:block;width:100%;text-align:left;border:2px solid #dde3ef;border-radius:14px;padding:13px 15px;background:#fff;font-family:inherit;font-weight:700;font-size:13.5px;line-height:1.7;color:#3c4456;cursor:pointer;transition:.12s;}
-.choice:active{transform:scale(.99);background:#f4f7fd;border-color:#2e6de5;}
-
-/* ===== 回答後 ===== */
-.banner{border-radius:14px;padding:13px 15px;margin-bottom:13px;}
-.banner .bt{font-size:16px;font-weight:900;margin-bottom:3px;}
-.banner .bs{font-size:12px;font-weight:700;line-height:1.75;}
-.banner.ok{background:#e2f3e5;}
-.banner.ok .bt{color:#1b7a35;} .banner.ok .bs{color:#3a6b48;}
-.banner.new{background:#e9e7fb;}
-.banner.new .bt{color:#5a3fc4;} .banner.new .bs{color:#574d80;}
-.banner.ng{background:#fdece6;}
-.banner.ng .bt{color:#bb3c1f;} .banner.ng .bs{color:#7a4a3a;}
-
-.rwrap{display:flex;flex-direction:column;gap:8px;margin-bottom:13px;}
-.rchoice{border:1.5px solid #e6eaf2;border-radius:13px;padding:11px 13px;background:#f7f8fc;}
-.rchoice.correct{border-color:#3fb960;background:#eef9f0;}
-.rchoice.picked{box-shadow:0 0 0 2px #2e6de5 inset;}
-.rhead{display:flex;align-items:center;gap:7px;margin-bottom:5px;}
-.rmark{font-size:15px;font-weight:900;}
-.rchoice.correct .rmark{color:#1b7a35;}
-.rchoice:not(.correct) .rmark{color:#bb3c1f;}
-.rtext{font-size:13px;font-weight:900;color:#2b3245;flex:1;line-height:1.6;}
-.yourtag{font-size:9.5px;font-weight:900;color:#2e6de5;background:#e7eefc;padding:2px 7px;border-radius:20px;white-space:nowrap;}
-.rwhy{font-size:12px;font-weight:600;line-height:1.8;color:#54607a;}
-
-.point{background:#eef3fd;border-left:5px solid #2e6de5;border-radius:12px;padding:12px 14px;margin-bottom:10px;}
-.point .plabel{font-size:11px;font-weight:900;color:#1f56c6;margin-bottom:4px;}
-.point .pbody{font-size:12.5px;font-weight:700;line-height:1.85;color:#3c4456;}
-.mem{background:linear-gradient(135deg,#ffe7f1,#ffd3e1);border-left:5px solid #ff69b4;border-radius:12px;padding:12px 14px;margin-bottom:12px;}
-.mem .mlabel{font-size:11px;font-weight:900;color:#c2185b;margin-bottom:4px;}
-.mem .mbody{font-size:13px;font-weight:800;line-height:1.85;color:#8b0046;}
-
-.detaillink{display:block;text-align:center;background:#fff3e0;border:2px solid #f0a93c;border-radius:13px;padding:13px;font-size:13px;font-weight:900;color:#b9700f;text-decoration:none;margin-bottom:13px;}
-.detaillink:active{transform:scale(.99);}
-
-.judgewrap{margin-top:4px;}
-.jt{text-align:center;font-size:12px;color:#8a91a0;font-weight:800;margin-bottom:9px;}
-.jrow{display:flex;gap:9px;}
-.jbtn{flex:1;border:2px solid transparent;border-radius:14px;padding:15px 4px;font-family:inherit;font-weight:900;font-size:14px;cursor:pointer;}
-.jbtn:active{transform:scale(.98);}
-.jrem{background:#e2f3e5;color:#1b7a35;}
-.jstill{background:#fff1cc;color:#9a6700;}
-.jbtn.suggest{box-shadow:0 4px 12px rgba(30,50,110,.16);}
-.jrem.suggest{border-color:#1b7a35;}
-.jstill.suggest{border-color:#9a6700;}
-
-/* ===== スタート / 完了 ===== */
-.flip{display:block;width:100%;border:none;border-radius:14px;padding:16px;background:#2e6de5;color:#fff;font-family:inherit;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 4px 12px rgba(46,109,229,.32);}
-.flip:active{transform:scale(.99);}
-.startttl{text-align:center;font-size:15px;font-weight:900;color:#1f56c6;margin-bottom:13px;}
-.plan{background:#f4f6fb;border:1.5px solid #e6eaf2;border-radius:14px;padding:4px 14px;margin-bottom:13px;}
-.planrow{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:13px;font-weight:800;color:#48506a;}
-.planrow+.planrow{border-top:1px dashed #d6dce7;}
-.planrow b{font-size:17px;color:#2e6de5;}
-.planrow.total b{color:#0f1830;}
-.note,.note2{font-size:12px;color:#5c6478;line-height:1.9;text-align:center;}
-.note{margin:13px 0 15px;}
-.note2{margin-top:10px;}
-.done{text-align:center;}
-.emo{font-size:42px;margin-bottom:6px;}
-.done h2{font-size:20px;font-weight:900;margin-bottom:10px;color:#1f56c6;}
-.done p{font-size:13px;color:#5c6478;line-height:1.95;margin-top:10px;}
-
-.examset{background:#fff8ec;border:1.5px dashed #f0a93c;border-radius:14px;padding:13px;margin-bottom:13px;text-align:center;}
-.examttl{font-size:12px;font-weight:800;color:#9a6700;line-height:1.7;margin-bottom:9px;}
-.dateinput{font-family:inherit;font-size:14px;font-weight:700;padding:8px 10px;border:1.5px solid #dde3ef;border-radius:10px;color:#2b3245;}
-.mini{font-family:inherit;font-size:13px;font-weight:900;border:none;background:#2e6de5;color:#fff;border-radius:10px;padding:9px 16px;margin-left:6px;cursor:pointer;}
-.pace{background:#eef3fd;border-radius:12px;padding:11px 13px;font-size:12px;font-weight:800;color:#1f56c6;text-align:center;line-height:1.8;margin-bottom:8px;}
-.examchg{text-align:center;margin-bottom:6px;}
-.examchg span{font-size:11px;color:#8a91a0;font-weight:700;cursor:pointer;text-decoration:underline;}
-
-.foot{text-align:center;margin-top:20px;}
-.setrow{font-size:11.5px;color:#8a91a0;font-weight:800;margin-bottom:10px;}
-.step{font-family:inherit;font-size:14px;font-weight:900;border:1.5px solid #dde3ef;background:#fff;color:#2e6de5;width:30px;height:30px;border-radius:9px;cursor:pointer;vertical-align:middle;}
-.setrow b{font-size:14px;color:#2b3245;margin:0 8px;vertical-align:middle;}
-.resetlink{font-size:11px;color:#aab0bd;font-weight:700;cursor:pointer;text-decoration:underline;}
-
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#2b3245;color:#fff;font-size:12.5px;font-weight:700;padding:13px 18px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.28);max-width:330px;width:88%;text-align:center;line-height:1.75;z-index:30;animation:rise .3s ease;}
-@keyframes rise{from{opacity:0;transform:translate(-50%,12px);}to{opacity:1;transform:translate(-50%,0);}}
+/* このページ専用(共通CSSのトークンだけ使う。角丸なし・影なし・グラデなし・塗りつぶしなし・細線) */
+.cat{padding:22px 0 16px;border-top:1px solid var(--mq-ink)}
+.cat + .cat{margin-top:6px}
+.cat__top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+.cat__name{font-size:16px;font-weight:800;margin:0;line-height:1.5}
+.cat__num{font-size:12px;font-weight:700;color:var(--mq-muted);white-space:nowrap}
+.sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));border-left:1px solid var(--mq-line);border-top:1px solid var(--mq-line)}
+.set{appearance:none;background:transparent;border:0;border-right:1px solid var(--mq-line);border-bottom:1px solid var(--mq-line);
+  padding:10px 4px 9px;text-align:center;cursor:pointer;font-family:inherit;color:var(--mq-ink);line-height:1.45}
+.set__no{display:block;font-size:14px;font-weight:800;letter-spacing:.06em;margin-bottom:3px}
+.set__l{display:block;font-size:10.5px;font-weight:700;color:#a3abb8;letter-spacing:.01em;white-space:nowrap}
+.set.is-clear .set__l{color:var(--mq-muted)}
+.set.is-clear .set__l.c{color:var(--mq-ok)}
+.set.is-next{box-shadow:inset 0 0 0 1px var(--mq-ink)}
+.set.is-next .set__l{color:var(--mq-muted)}
+main.mq-narrow{width:min(720px,calc(100% - 32px))}
+@media (hover:hover){.set:hover{background:var(--mq-soft)}}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--mq-line)}
+.row__l{font-size:14px;font-weight:800}
+.row__l small{display:block;font-size:12px;font-weight:600;color:var(--mq-muted);margin-top:2px}
+.row .mq-btn{min-height:40px;padding:6px 16px;font-size:13px}
+.row .mq-btn[disabled]{opacity:.4;cursor:default}
+.tests{border-top:1px solid var(--mq-ink);margin-top:20px}
+.stat{font-size:12px;color:var(--mq-muted);font-weight:700}
+.stat b{color:var(--mq-ink)}
+.cattest{margin-top:2px}
+.cattest .row{border-bottom:0;padding:10px 0 0}
+.qhead{display:flex;align-items:center;gap:10px;margin-top:0;font-size:12px;color:var(--mq-muted);padding-top:6px}
+.qhead .back{min-height:0;padding:0;font-size:12px;white-space:nowrap}
+.qhead .w{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qhead .cnt{white-space:nowrap}
+.qhead .mq-badge{margin-right:8px}
+/* クイズ中は、ヘッダーを低く・フッターを消して、回答後まで1画面に収める */
+body.inquiz .mq-footer{display:none}
+body.inquiz .mq-header__in{height:44px}
+body.inquiz .mq-logo{height:28px}
+/* 4択そのものが採点結果になる(選択肢の直下に1行解説) */
+.qs{border-top:1px solid var(--mq-ink)}
+.qc{position:relative;border-bottom:1px solid var(--mq-line)}
+/* --qs は「画面に収めるための縮小率」(JSが1.0〜0.8で自動調整) */
+.qc .mq-choice{border-bottom:0;min-height:0;padding:calc(8px*var(--qs,1)) 14px;line-height:1.5;font-size:calc(15px*var(--qs,1))}
+main .mq-question{font-size:calc(15.5px*var(--qs,1));line-height:1.5;margin:calc(8px*var(--qs,1)) 0 3px}
+.qc .mq-choice:disabled{color:var(--mq-ink);cursor:default;background:transparent;opacity:1}
+.qc.done .mq-choice{padding:calc(8px*var(--qs,1)) 44px 0 14px}
+.qc.is-correct{background:var(--mq-ok-bg)}
+.qc.is-wrong{background:var(--mq-ng-bg)}
+.qc .mk{position:absolute;right:14px;top:10px;font-size:18px;font-weight:800;line-height:1.4}
+.qc.is-correct .mk{color:var(--mq-ok)}
+.qc.is-wrong .mk{color:var(--mq-ng)}
+.ex{padding:0 14px calc(7px*var(--qs,1)) 14px;font-size:calc(12px*var(--qs,1));line-height:1.55;color:var(--mq-muted)}
+/* PC(821px以上)だけ文字を大きくする。スマホは今のサイズのまま */
+@media (min-width:821px){
+  main .mq-question{font-size:calc(18px*var(--qs,1))}
+  .qc .mq-choice{font-size:calc(17px*var(--qs,1))}
+  .ex{font-size:calc(13.5px*var(--qs,1))}
+}
+.qc.is-correct .ex,.qc.is-wrong .ex{color:#394256}
+/* 正誤と「次の問題へ」は画面下に固定(スクロールしなくても押せる) */
+.stick{position:sticky;bottom:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--mq-bg);border-top:1px solid var(--mq-ink);margin-top:6px;padding:8px 0 calc(8px + var(--mq-safe-bottom))}
+.stick .mq-btn{flex:1;max-width:220px;min-height:48px;font-size:15px}
+.verdict{font-size:20px;font-weight:800;line-height:1}
+.verdict.ok{color:var(--mq-ok)} .verdict.ng{color:var(--mq-ng)}
+.why{margin:0 0 10px;padding-left:0;list-style:none}
+.why li{margin:0 0 8px}
+.why b{margin-right:4px}
+.big{font-size:44px;font-weight:800;line-height:1;letter-spacing:-.02em;margin:6px 0}
+.perfect{color:var(--mq-gold-text)}
+body.mq .detaillink{display:inline-block;margin-top:4px;font-size:13px;font-weight:800;color:var(--mq-brand);text-decoration:underline;text-underline-offset:3px}
+.fade{animation:fade .2s ease-out}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.setrow{margin-top:26px;display:flex;flex-wrap:wrap;gap:4px 16px}
 </style>
 </head>
-<body>
-
-<header class="site-header">
-  <a href="index.html" class="site-header__logo">まなクエ！</a>
-  <a href="index.html" class="site-header__back">← TOPにもどる</a>
-</header>
-
-<div class="app">
-  <h1 class="hd">💻 まなクエ！ ITパスポート</h1>
-  <div class="sub-hd">過去問600問を「忘れかけた頃」にくり返して、確実にマスターする。</div>
-  <div id="view"></div>
-</div>
-
-<footer class="site-footer">
-  <a href="about.html">運営</a>・<a href="contact.html">お問い合わせ</a>・<a href="disclaimer.html">免責</a><br>
-  © まなクエ！
-</footer>
+<body class="mq">
+<header class="mq-header"><div class="mq-wrap mq-header__in">
+  <a href="index.html" aria-label="まなクエ！ホーム"><img class="mq-logo" src="assets/img/logo.svg" alt="まなクエ！"></a>
+  <nav class="mq-nav" aria-label="メインナビゲーション"><a href="index.html">ホーム</a><a href="index.html#grades">小中高</a><a href="index.html#qualifications">資格</a><a href="index.html#diagnosis">診断</a><a href="index.html#today">今日のクイズ</a><a href="articles.html">解説記事</a></nav>
+</div></header>
+<main class="mq-narrow" id="app"></main>
+<footer class="mq-footer"><div class="mq-wrap">
+  <div class="mq-footer__links"><a href="about.html">運営について</a><a href="privacy.html">プライバシーポリシー</a><a href="terms.html">利用規約</a><a href="disclaimer.html">免責事項</a><a href="contact.html">お問い合わせ</a></div>
+  <span>© 2026 まなクエ！</span>
+</div></footer>
 
 <script src="data/itp-questions.js"></script>
+<script src="data/itp-cats.js"></script>
 <script>
-/* ============ データ ============ */
-const QUESTIONS=(typeof ITP_QUESTIONS!==`undefined`&&Array.isArray(ITP_QUESTIONS))?ITP_QUESTIONS:[];
-const TOTAL=QUESTIONS.length;
+/* ============ 設定 ============ */
+const KEY=`itp-app-v2`;   /* 旧方式(覚えた/まだ)の保存キーは itp-app-v1。新UIとは互換がないので別キー */
+const SET_N=10;                    /* 1セットの問数(余り5問未満は直前に合流) */
+const PASS_RATE=0.8;               /* セット：8割以上で★ */
+const TEST_N=10, TEST_PASS=8;      /* カテゴリテスト・総合テスト：10問中8問以上でCLEAR */
+const WEAK_MAX=2;                  /* 苦手値の上限(0〜2) */
+const SHOW_POINT=false;            /* 「詳しい解説」に 決め手(point) を出すか。データは残してある(将来用) */
+const SHOW_MEM=false;              /* 「詳しい解説」に 覚え方(mem) を出すか。データは残してある(将来用) */
+const Q=(typeof ITP_QUESTIONS!==`undefined`&&Array.isArray(ITP_QUESTIONS))?ITP_QUESTIONS:[];
+const CATS=(typeof ITP_CATS!==`undefined`)?ITP_CATS:[];
+const MAP=(typeof ITP_CAT_MAP!==`undefined`)?ITP_CAT_MAP:{};
 
-/* ============ 間隔反復エンジン（エンジン見本から流用） ============ */
-const STORAGE_KEY=`itp-app-v1`;
-const STEPS=[1,3,7,14,30];          /* 正答で伸ばす間隔（日） */
-const MASTER_DS=STEPS.length-1;     /* この段階＝マスター（保留） */
-const DEFAULT_NEW_PER_DAY=8;        /* C-5：1日の新出上限（既定8・調整可） */
-const MAX_REVIEW=24;                /* C-4：1セッションの復習上限（数分で終わる量） */
-
-function pad2(n){return String(n).padStart(2,`0`);}
-function ymd(d){return d.getFullYear()+`-`+pad2(d.getMonth()+1)+`-`+pad2(d.getDate());}
-function todayStr(){return ymd(new Date());}
-function addDaysStr(base,n){const d=new Date(base+`T00:00:00`);d.setDate(d.getDate()+n);return ymd(d);}
-function diffDays(a,b){const da=new Date(a+`T00:00:00`),db=new Date(b+`T00:00:00`);return Math.round((db-da)/86400000);}
-function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+/* ============ ユーティリティ ============ */
 function esc(s){return String(s).replace(/&/g,`&amp;`).replace(/</g,`&lt;`).replace(/>/g,`&gt;`);}
-/* HTMLエスケープ後に **太字** だけHTML化（保険：mem/point/why に markdown 記法が残っていても <strong> で描画） */
 function md(s){return esc(s).replace(/\*\*([^*]+?)\*\*/g,`<strong>$1</strong>`);}
-function catClass(c){return c===`ストラテジ`?`c-st`:c===`マネジメント`?`c-mg`:`c-tc`;}
+function pad2(n){return String(n).padStart(2,`0`);}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+/* 1行解説：why の1文目(長いものは切らずに自然に折り返す) */
+function short(s){const m=String(s).match(/^[\s\S]*?[。！？]/);return m?m[0]:String(s);}
 
-/* ============ localStorage（C-2） ============ */
-let DB=loadDB();
-function loadDB(){
+/* ============ 問題の切り分け ============ */
+function catQs(id){return Q.filter(q=>MAP[q.id]===id).sort((a,b)=>a.id<b.id?-1:1);}
+const SB={};
+function setsOf(id){
+  if(SB[id])return SB[id];
+  const qs=catQs(id),bs=[];
+  for(let i=0;i<qs.length;i+=SET_N)bs.push({qs:qs.slice(i,i+SET_N)});
+  if(bs.length>1&&bs[bs.length-1].qs.length<5){const t=bs.pop();bs[bs.length-1].qs=bs[bs.length-1].qs.concat(t.qs);}
+  bs.forEach((b,i)=>{b.label=pad2(i+1);});
+  return SB[id]=bs;
+}
+
+/* ============ 保存(この端末のブラウザ内だけ) ============ */
+let DB=load();
+function blankSet(){return {clear:0,best:0,tries:0};}
+function blankTest(){return {clear:0,best:0,tries:0};}
+function blank(){
+  const s={},c={};
+  CATS.forEach(x=>{s[x.id]=setsOf(x.id).map(blankSet);c[x.id]=blankTest();});
+  return {v:1,set:s,q:{},ct:c,total:blankTest(),log:[]};
+}
+function load(){
   try{
-    const o=JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if(o&&o.q){
-      if(!o.streak)o.streak={count:0,last:``};
-      if(!o.newDay)o.newDay={date:``,count:0};
-      if(typeof o.examDate!==`string`)o.examDate=``;
-      if(typeof o.newPerDay!==`number`)o.newPerDay=DEFAULT_NEW_PER_DAY;
+    const o=JSON.parse(localStorage.getItem(KEY));
+    if(o&&o.set&&o.ct){
+      CATS.forEach(x=>{
+        const n=setsOf(x.id).length;
+        if(!o.set[x.id]||o.set[x.id].length!==n)o.set[x.id]=setsOf(x.id).map(blankSet);
+        if(!o.ct[x.id])o.ct[x.id]=blankTest();
+      });
+      CATS.forEach(x=>o.set[x.id].forEach(s=>{if(s.star&&!s.clear)s.clear=1;if(typeof s.clear!==`number`)s.clear=0;}));   /* 旧データ(★)の引き継ぎ */
+      if(!o.total)o.total=blankTest();
+      if(!o.q)o.q={};
       return o;
     }
   }catch(e){}
-  return {q:{},streak:{count:0,last:``},newDay:{date:``,count:0},examDate:``,newPerDay:DEFAULT_NEW_PER_DAY};
+  return blank();
 }
-function saveDB(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(DB));}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(DB));}catch(e){}}
 
-/* ============ 状態の集計 ============ */
-function counts(){
-  let mastered=0,practicing=0,untouched=0;
-  QUESTIONS.forEach(q=>{
-    const s=DB.q[q.id];
-    if(!s)untouched++;
-    else if(s.ds>=MASTER_DS)mastered++;
-    else practicing++;
-  });
-  return {mastered:mastered,practicing:practicing,untouched:untouched};
+/* ============ 苦手値(0〜2)：ミス+1／正解−1。テスト・苦手問題で出やすくする(画面には出さない) ============ */
+function weak(id){return (DB.q[id]&&DB.q[id].w)||0;}
+function weakCount(){return Q.filter(q=>weak(q.id)>=1).length;}
+function weighted(pool,n){
+  const items=pool.map(q=>({q:q,w:1+weak(q.id)}));   /* 重み 1 / 2 / 3 */
+  const res=[];
+  while(res.length<n&&items.length){
+    let sum=0;items.forEach(x=>{sum+=x.w;});
+    let r=Math.random()*sum,k=0;
+    for(;k<items.length-1;k++){r-=items[k].w;if(r<=0)break;}
+    res.push(items.splice(k,1)[0].q);
+  }
+  return res;
 }
+function clearedSets(id){return DB.set[id].filter(x=>x.clear>0).length;}
 
-/* ============ セッション構築（C-5 ドーズ設計） ============ */
-function buildSession(){
-  const today=todayStr();
-  if(DB.newDay.date!==today){DB.newDay={date:today,count:0};saveDB();}
-  const due=[],fresh=[];
-  QUESTIONS.forEach((q,i)=>{
-    const s=DB.q[q.id];
-    if(!s)fresh.push(i);
-    else if(s.due&&s.due<=today)due.push(i);   /* 保留(マスター)も期日が来たらここに入る */
-  });
-  /* 復習が主体（C-4の上限内） */
-  const reviews=shuffle(due).slice(0,MAX_REVIEW);
-  /* 新出は少量ドーズ（1日上限 − 今日すでに消化した数） */
-  const slots=Math.max(0,DB.newPerDay-DB.newDay.count);
-  const newPick=shuffle(fresh).slice(0,slots);
-  /* 新出は先頭に固めず復習へ散らす（先頭は復習を維持） */
-  const queue=reviews.slice();
-  newPick.forEach(n=>{
-    const lo=queue.length>0?1:0;
-    const pos=lo+Math.floor(Math.random()*(queue.length-lo+1));
-    queue.splice(pos,0,n);
-  });
-  return {queue:queue,reviewCount:reviews.length,newCount:newPick.length,newIds:newPick.map(i=>QUESTIONS[i].id)};
-}
-
-function bumpStreak(){
-  const today=todayStr();
-  if(DB.streak.last===today)return;
-  if(DB.streak.last===addDaysStr(today,-1))DB.streak.count++;
-  else DB.streak.count=1;
-  DB.streak.last=today;
-}
-
-function tomorrowEstimate(){
-  const tmr=addDaysStr(todayStr(),1);
-  let due=0,fresh=0;
-  QUESTIONS.forEach(q=>{
-    const s=DB.q[q.id];
-    if(!s)fresh++;
-    else if(s.due&&s.due<=tmr)due++;
-  });
-  return Math.min(MAX_REVIEW,due)+Math.min(DB.newPerDay,fresh);
-}
-
-/* ============ 視覚化（C-3） ============ */
-function countdown(){return DB.examDate?diffDays(todayStr(),DB.examDate):null;}
-function paceText(){
-  const c=counts();
-  const remain=TOTAL-c.mastered;
-  const cd=countdown();
-  if(cd===null)return `試験日を設定すると、1日の目安が出ます`;
-  if(cd<0)return `試験日は過ぎています。下から更新できます`;
-  const days=Math.max(1,cd);
-  const per=Math.ceil(remain/days);
-  return `🎯 合格まであと ${remain}問　／　このペースなら1日 約${per}問`;
-}
-function statsHTML(){
-  const c=counts();
-  const cd=countdown();
-  let cdText;
-  if(cd===null)cdText=`📅 試験日 未設定`;
-  else if(cd<0)cdText=`📅 試験日 経過`;
-  else if(cd===0)cdText=`📅 試験は今日！`;
-  else cdText=`📅 試験まで あと${cd}日`;
-  const pct=TOTAL?(c.mastered/TOTAL*100):0;
-  return `<div class="stats">
-    <div class="strow">
-      <span class="streak">🔥 ${DB.streak.count}日連続</span>
-      <span class="exam">${cdText}</span>
-    </div>
-    <div class="meter"><i style="width:${pct}%"></i></div>
-    <div class="meterlbl">🎯 ${TOTAL}問中 <b>${c.mastered}問</b> マスター（あと${TOTAL-c.mastered}問）</div>
-    <div class="statestrip">
-      <span>📘 練習中 <b>${c.practicing}</b></span>
-      <span>✅ 保留 <b>${c.mastered}</b></span>
-    </div>
-  </div>`;
-}
-function footHTML(){
-  return `<div class="foot">
-    <div class="setrow">1日の新しい問題の上限
-      <button class="step" onclick="adjNew(-2)">−</button>
-      <b>${DB.newPerDay}</b>
-      <button class="step" onclick="adjNew(2)">＋</button>
-    </div>
-    <span class="resetlink" onclick="resetAll()">学習データをリセット</span>
-  </div>`;
-}
-
-/* ============ 画面状態 ============ */
-let session=null,started=false,queue=[],total=0,doneCount=0,correctCount=0;
-let current=null,answered=false,picked=-1;
-
-function loadQuestion(){
-  if(queue.length===0){current=null;return;}
-  const q=QUESTIONS[queue[0]];
-  current={q:q,order:shuffle(q.choices)};   /* C-1：選択肢を毎回シャッフル */
-  answered=false;picked=-1;
-}
-
-/* ============ レンダリング ============ */
+/* ============ 画面 ============ */
+let S=null,screen=`home`,R=null;
+function go(s){screen=s;render();window.scrollTo(0,0);}
 function render(){
-  const v=document.getElementById(`view`);
-  if(TOTAL===0){
-    v.innerHTML=`<div class="card"><div class="qtext">問題データ（data/itp-questions.js）が読み込めませんでした。<br>data/itp-questions.js の配置を確認してください。</div></div>`;
-    return;
+  const a=document.getElementById(`app`);
+  if(!Q.length){a.innerHTML=`<p class="mq-note">問題データが読み込めませんでした。</p>`;return;}
+  document.body.classList.toggle(`inquiz`,screen===`quiz`);
+  if(screen===`quiz`){
+    /* 回答後まで1画面に収まる縮小率を、問題ごと・画面サイズごとに1回だけ計算する(回答したときに文字が変わらないように) */
+    const key=S.idx+`:`+innerWidth+`x`+innerHeight;
+    if(S.scaleKey!==key){S.scale=calcScale(a);S.scaleKey=key;}
+    a.style.setProperty(`--qs`,S.scale);
+  }else{a.style.removeProperty(`--qs`);}
+  a.innerHTML=({home:homeView,quiz:quizView,result:resultView})[screen]();
+}
+const MIN_SCALE=0.8;   /* 縮小の下限。これでも収まらないときだけスクロールに任せる */
+function calcScale(a){
+  const sa=S.answered,sp=S.picked;
+  S.answered=true;S.picked=Math.max(0,S.order.findIndex(c=>c.correct!==true));   /* 回答後(いちばん高い状態)で測る */
+  let s=1;
+  a.style.setProperty(`--qs`,s);a.innerHTML=quizView();
+  while(s>MIN_SCALE&&document.documentElement.scrollHeight>innerHeight){
+    s=Math.round((s-0.03)*100)/100;a.style.setProperty(`--qs`,s);
   }
-  if(!started){v.innerHTML=startScreen();return;}
-  if(queue.length===0){v.innerHTML=doneScreen();return;}
-  v.innerHTML=quizScreen();
+  S.answered=sa;S.picked=sp;
+  return s;
+}
+let rsT=null;
+window.addEventListener(`resize`,()=>{clearTimeout(rsT);rsT=setTimeout(()=>{if(screen===`quiz`&&S)render();},150);});
+function statLine(t){
+  return t.tries?`<span class="stat">CLEAR <b>${t.clear}</b>回　BEST <b>${t.best}</b>/${TEST_N}</span>`:`<span class="stat">未挑戦</span>`;
 }
 
-function startScreen(){
-  session=buildSession();
-  const norm=session.queue.length;
-  let examBlock;
-  if(!DB.examDate){
-    examBlock=`<div class="examset">
-      <div class="examttl">📅 試験日を入れると、毎日の目安（ノルマ）が出ます</div>
-      <input type="date" id="examInput" class="dateinput">
-      <button class="mini" onclick="saveExam()">設定</button>
-    </div>`;
-  }else{
-    examBlock=`<div class="pace">${esc(paceText())}</div>
-      <div class="examchg"><span onclick="clearExam()">試験日を変更する</span></div>`;
-  }
-  if(norm===0){
-    return `${statsHTML()}
-    <div class="card done">
-      <div class="emo">🌙</div>
-      <h2>今日のぶんは完了！</h2>
-      <p>いま出す問題はありません。<br>また明日、ちょうど忘れかけた頃に出します。</p>
-      ${examBlock}
-    </div>${footHTML()}`;
-  }
-  const rPct=norm?Math.round(session.reviewCount/norm*100):0;
-  return `${statsHTML()}
-  <div class="card">
-    <div class="startttl">今日の学習</div>
-    <div class="plan">
-      <div class="planrow"><span>🔁 復習（一度出会った問題）</span><b>${session.reviewCount}</b></div>
-      <div class="planrow"><span>✨ 新しい問題（少量ずつ）</span><b>${session.newCount}</b></div>
-      <div class="planrow total"><span>今日のノルマ 合計</span><b>${norm}問</b></div>
-    </div>
-    ${examBlock}
-    <p class="note">${rPct>=50?`今日の${rPct}%は復習。`:``}4択を選ぶ → 答え合わせ → 4つの「なぜ」。<br>外した問題は「詳しい解説」で深掘りできます。</p>
-    <button class="flip" onclick="startSession()">スタート ▶</button>
-  </div>${footHTML()}`;
-}
-
-function quizScreen(){
-  const q=current.q;
-  const remain=queue.length;
-  const prog=total?(doneCount/total*100):0;
-  let body=`${statsHTML()}
-  <div class="bar"><i style="width:${prog}%"></i></div>
-  <div class="progresslbl">完了 ${doneCount} / ${total}　｜　あと ${remain}問で今日終わり</div>
-  <div class="card">
-    <span class="cat ${catClass(q.cat)}">${esc(q.cat)}</span>
-    <div class="qtext">${md(q.q)}</div>`;
-  if(!answered){
-    body+=`<div class="choices">`;
-    current.order.forEach((ch,i)=>{
-      body+=`<button class="choice" onclick="pickChoice(${i})">${md(ch.text)}</button>`;
+/* ============ ホーム ============ */
+function homeView(){
+  const wk=weakCount();
+  const top=`<div class="tests">
+    <div class="row"><div class="row__l">総合テスト<small>全${Q.length}問から${TEST_N}問(苦手問題は少し多めに出ます)</small></div>
+      <div>${statLine(DB.total)} <button class="mq-btn" style="margin-left:8px" onclick="startTotal()">挑戦する</button></div></div>
+    <div class="row"><div class="row__l">苦手問題<small>${wk?`${wk}問`:`間違えた問題がここにたまります`}</small></div>
+      <div><button class="mq-btn" ${wk?``:`disabled`} onclick="startWeak()">${Math.min(TEST_N,wk)}問解く</button></div></div>
+  </div>`;
+  let rows=``;
+  CATS.forEach(c=>{
+    const ss=setsOf(c.id),st=DB.set[c.id];
+    const nextI=st.findIndex(x=>!(x.clear>0));
+    let cells=``;
+    ss.forEach((b,i)=>{
+      const s=st[i];
+      cells+=`<button class="set${s.clear>0?` is-clear`:``}${i===nextI?` is-next`:``}" onclick="startSet('${c.id}',${i})" aria-label="セット${b.label}">
+        <span class="set__no">${b.label}</span>
+        <span class="set__l c">CLEAR ${s.clear}回</span>
+        <span class="set__l">BEST ${s.tries?`${s.best}/${b.qs.length}`:`－`}</span></button>`;
     });
-    body+=`</div>`;
+    rows+=`<section class="cat">
+      <div class="cat__top"><h3 class="cat__name">${esc(c.name)}</h3><span class="cat__num">${clearedSets(c.id)} / ${ss.length} セットCLEAR</span></div>
+      <div class="sets">${cells}</div>
+      <div class="cattest"><div class="row"><div class="row__l">カテゴリテスト</div><div>${statLine(DB.ct[c.id])} <button class="mq-btn" style="margin-left:8px" onclick="startCat('${c.id}')">${TEST_N}問テスト</button></div></div></div>
+    </section>`;
+  });
+  return `<section class="mq-pagehead fade">
+    <p class="mq-kicker">600問・登録不要・無料</p>
+    <h1 class="mq-title">ITパスポート 過去問マスター</h1>
+    <p class="mq-lead">10問ずつ解いて、8問以上でCLEAR。<br>カテゴリテストと総合テストは、いつでも挑戦できます。</p>
+  </section>
+  ${top}
+  <div style="margin-top:22px">${rows}</div>
+  <div class="setrow"><button class="mq-link mq-small" onclick="resetAll()">学習データをリセット</button></div>`;
+}
+function resetAll(){if(confirm(`このページの学習データ(進み具合・苦手問題の記録)をすべて消します。よろしいですか？`)){DB=blank();save();render();}}
+
+/* ============ セッション ============ */
+function begin(o){S=Object.assign({idx:0,score:0,missed:[]},o);prep();go(`quiz`);}
+function startSet(id,i){
+  const b=setsOf(id)[i];
+  begin({mode:`set`,cat:id,si:i,label:b.label,list:shuffle(b.qs),pass:Math.ceil(b.qs.length*PASS_RATE)});
+}
+function startCat(id){const l=weighted(catQs(id),Math.min(TEST_N,catQs(id).length));begin({mode:`cat`,cat:id,list:l,pass:Math.ceil(l.length*TEST_PASS/TEST_N)});}
+function startTotal(){const l=weighted(Q,Math.min(TEST_N,Q.length));begin({mode:`total`,cat:null,list:l,pass:Math.ceil(l.length*TEST_PASS/TEST_N)});}
+function startWeak(){
+  const pool=Q.filter(q=>weak(q.id)>=1);if(!pool.length)return;
+  begin({mode:`weak`,cat:null,list:weighted(pool,Math.min(TEST_N,pool.length))});
+}
+function prep(){const q=S.list[S.idx];S.order=shuffle(q.choices);S.answered=false;S.picked=-1;S.t0=Date.now();}
+
+function pick(i){
+  if(S.answered)return;
+  const q=S.list[S.idx];
+  S.answered=true;S.picked=i;
+  const ok=S.order[i].correct===true;
+  const r=DB.q[q.id]||(DB.q[q.id]={w:0,c:0,x:0});
+  if(ok){S.score++;r.c++;r.w=Math.max(0,r.w-1);}
+  else{S.missed.push(q.id);r.x++;r.w=Math.min(WEAK_MAX,r.w+1);}
+  DB.log.push({id:q.id,m:S.mode,ok:ok,ms:Date.now()-S.t0,t:new Date().toISOString().slice(0,10)});
+  if(DB.log.length>3000)DB.log=DB.log.slice(-3000);
+  save();render();
+}
+function next(){
+  S.idx++;
+  if(S.idx>=S.list.length){finish();return;}
+  prep();go(`quiz`);
+}
+function finish(){
+  const n=S.list.length,pct=n?Math.round(S.score/n*100):0,pass=S.mode!==`weak`&&S.score>=S.pass;
+  let rec=null;
+  if(S.mode===`set`){rec=DB.set[S.cat][S.si];}
+  else if(S.mode===`cat`){rec=DB.ct[S.cat];}
+  else if(S.mode===`total`){rec=DB.total;}
+  if(rec){
+    rec.tries++;rec.best=Math.max(rec.best,S.score);
+    if(pass)rec.clear++;
+  }
+  save();
+  R={mode:S.mode,cat:S.cat,si:S.si,label:S.label,score:S.score,n:n,pass:pass,need:S.pass,missed:S.missed.length,perfect:S.mode!==`weak`&&S.score===n};
+  go(`result`);
+}
+
+/* ============ 出題画面(4択そのものが採点結果になる) ============ */
+const MODE_NAME={set:`セット`,cat:`カテゴリテスト`,total:`総合テスト`,weak:`苦手問題`};
+function catName(id){const c=CATS.find(x=>x.id===id);return c?c.name:``;}
+function quizView(){
+  const q=S.list[S.idx],n=S.list.length;
+  const where=S.mode===`set`?`${catName(S.cat)} ${S.label}`:S.mode===`cat`?catName(S.cat):S.mode===`total`?`全${Q.length}問`:``;
+  let h=`<div class="qhead"><button class="mq-link back" onclick="if(confirm('ホームに戻ります。途中の回答は残りません(間違えた問題の記録は残ります)。')){go('home')}">← ホーム</button><span class="w"><span class="mq-badge mq-badge--brand">${MODE_NAME[S.mode]}</span>${esc(where)}</span><span class="cnt">${S.idx+1} / ${n}</span></div>
+  <p class="mq-question">${md(q.q)}</p>
+  <div class="qs">`;
+  S.order.forEach((c,i)=>{
+    let cls=`qc${S.answered?` done`:``}`,mk=``;
+    if(S.answered){
+      if(c.correct===true){cls+=` is-correct`;mk=`<span class="mk">◯</span>`;}
+      else if(i===S.picked){cls+=` is-wrong`;mk=`<span class="mk">✕</span>`;}
+    }
+    h+=`<div class="${cls}"><button class="mq-choice" ${S.answered?`disabled`:`onclick="pick(${i})"`}>${md(c.text)}</button>${mk}${S.answered?`<div class="ex">${md(short(c.why))}</div>`:``}</div>`;
+  });
+  h+=`</div>`;
+  if(S.answered){
+    const ok=S.order[S.picked].correct===true;
+    const whys=S.order.map(c=>`<li><b style="color:${c.correct?`var(--mq-ok)`:`var(--mq-ng)`}">${c.correct?`◯`:`✕`}</b>${md(c.text)}<br><span class="mq-muted">${md(c.why)}</span></li>`).join(``);
+    h+=`<details class="mq-details" style="margin-top:6px"><summary>詳しい解説を見る</summary><div class="mq-details__body">
+      ${SHOW_POINT?`<p class="mq-note" style="margin-top:4px"><span class="mq-note__label">決め手</span>${md(q.point)}</p>`:``}
+      <ul class="why" style="margin-top:6px">${whys}</ul>
+      ${SHOW_MEM?`<p class="mq-note"><span class="mq-note__label">覚え方</span>${md(q.mem)}</p>`:``}
+      <p class="mq-prose"><a class="detaillink" href="articles/${esc(q.detailSlug)}.html" target="_blank" rel="noopener">この概念の詳しい解説記事を読む →</a></p>
+    </div></details>
+    <div class="stick"><span class="verdict ${ok?`ok`:`ng`}">${ok?`正解`:`不正解`}</span><button class="mq-btn" onclick="next()">${S.idx+1>=n?`結果を見る`:`次の問題へ`}</button></div>`;
+  }
+  return h;
+}
+
+/* ============ 結果 ============ */
+function resultView(){
+  const r=R;
+  const title=r.mode===`set`?`${catName(r.cat)} ${r.label}`:r.mode===`cat`?`${catName(r.cat)} カテゴリテスト`:r.mode===`total`?`総合テスト`:`苦手問題`;
+  let lead=``,btns=``;
+  if(r.mode===`weak`){
+    const left=weakCount();
+    lead=`${r.n}問中 ${r.score}問 正解。<br>${left?`苦手問題は あと${left}問です。`:`苦手問題はなくなりました。`}`;
+    btns=(left?`<button class="mq-btn mq-btn--block" onclick="startWeak()">もう一度 ${Math.min(TEST_N,left)}問解く</button>`:``)
+        +`<div style="text-align:center"><button class="mq-link" onclick="go('home')">ホームへ</button></div>`;
   }else{
-    const isCorrect=current.order[picked].correct===true;
-    const isNew=session.newIds.indexOf(q.id)>=0;
-    let bcls,bt,bs;
-    if(isCorrect){
-      bcls=`ok`;bt=`🎉 正解！`;bs=`しっかり選べました。この調子。`;
-    }else if(isNew){
-      /* C-5：初見の誤答は前向きフレーミング */
-      bcls=`new`;bt=`👋 初めまして！`;
-      bs=`この出会いで"覚えるスイッチ"が入りました。初見の失敗は設計どおり — 次に出たら思い出せます。`;
+    const flag=r.pass?(r.perfect?`<span class="perfect">PERFECT</span>`:`CLEAR`):`あと${r.need-r.score}問`;
+    const miss=r.missed?`間違えた${r.missed}問は、苦手問題に追加しました。`:`全問正解です。`;
+    if(r.mode===`set`){
+      const rec=DB.set[r.cat][r.si],ss=setsOf(r.cat);
+      lead=`${r.pass?``:`${r.need}問以上でCLEARです。<br>`}CLEAR ${rec.clear}回　BEST ${rec.best} / ${r.n}<br>${miss}`;
+      const hasNext=r.si+1<ss.length;
+      btns=(r.pass&&hasNext?`<button class="mq-btn mq-btn--block" onclick="startSet('${r.cat}',${r.si+1})">次のセット(${ss[r.si+1].label})</button>`:`<button class="mq-btn mq-btn--block" onclick="startSet('${r.cat}',${r.si})">もう一度</button>`)
+        +`<div style="text-align:center">${r.pass&&hasNext?`<button class="mq-link" onclick="startSet('${r.cat}',${r.si})">もう一度</button>`:``}<button class="mq-link" onclick="go('home')">ホームへ</button></div>`;
     }else{
-      bcls=`ng`;bt=`× 不正解`;bs=`下の「なぜ」と詳しい解説で、取り戻しましょう。`;
+      const t=r.mode===`cat`?DB.ct[r.cat]:DB.total;
+      lead=`CLEAR ${t.clear}回　BEST ${t.best} / ${TEST_N}<br>${miss}`;
+      btns=`<button class="mq-btn mq-btn--block" onclick="${r.mode===`cat`?`startCat('${r.cat}')`:`startTotal()`}">もう一度挑戦</button>
+        <div style="text-align:center"><button class="mq-link" onclick="go('home')">ホームへ</button></div>`;
     }
-    body+=`<div class="banner ${bcls}"><div class="bt">${bt}</div><div class="bs">${bs}</div></div>
-    <div class="rwrap">`;
-    current.order.forEach((ch,i)=>{
-      const isC=ch.correct===true;
-      const isP=i===picked;
-      let cls=`rchoice`;
-      if(isC)cls+=` correct`;
-      if(isP)cls+=` picked`;
-      body+=`<div class="${cls}">
-        <div class="rhead">
-          <span class="rmark">${isC?`◯`:`✕`}</span>
-          <span class="rtext">${md(ch.text)}</span>
-          ${isP?`<span class="yourtag">あなたの答え</span>`:``}
-        </div>
-        <div class="rwhy">${md(ch.why)}</div>
-      </div>`;
-    });
-    body+=`</div>
-    <div class="point"><div class="plabel">🔑 見分けの決め手</div><div class="pbody">${md(q.point)}</div></div>
-    <div class="mem"><div class="mlabel">🧠 覚え方</div><div class="mbody">${md(q.mem)}</div></div>`;
-    if(!isCorrect){
-      /* C-1／§4-6：間違えた時だけ詳しい解説リンク */
-      body+=`<a class="detaillink" href="articles/${esc(q.detailSlug)}.html" target="_blank" rel="noopener">📖 この概念の詳しい解説を読む →</a>`;
-    }
-    body+=`<div class="judgewrap">
-      <div class="jt">この問題、次にいつ出す？</div>
-      <div class="jrow">
-        <button class="jbtn jrem${isCorrect?` suggest`:``}" onclick="judge(true)">✅ 覚えた</button>
-        <button class="jbtn jstill${isCorrect?``:` suggest`}" onclick="judge(false)">🔁 まだ</button>
-      </div>
-    </div>`;
+    return `<section class="mq-pagehead fade">
+      <p class="mq-kicker">${esc(title)}</p>
+      <div class="big${r.pass&&r.perfect?` perfect`:``}" ${r.pass&&!r.perfect?`style="color:var(--mq-ok)"`:``}>${r.score} / ${r.n}</div>
+      <p style="margin:8px 0 0;font-size:18px;font-weight:800">${flag}</p>
+      <p class="mq-lead">${lead}</p>
+    </section>
+    <div class="mq-next" style="margin-top:22px">${btns}</div>`;
   }
-  body+=`</div>`+footHTML();
-  return body;
+  return `<section class="mq-pagehead fade">
+    <p class="mq-kicker">${esc(title)}</p>
+    <div class="big">${r.score} / ${r.n}</div>
+    <p class="mq-lead">${lead}</p>
+  </section>
+  <div class="mq-next" style="margin-top:22px">${btns}</div>`;
 }
 
-function doneScreen(){
-  return `${statsHTML()}
-  <div class="card done">
-    <div class="emo">🎉</div>
-    <h2>今日の${total}問クリア！</h2>
-    <p>🔥 ${DB.streak.count}日連続。<br>このセッションの正解 ${correctCount} / ${total}。</p>
-    <p class="note2">外した問題は明日また出ます — 忘れかけで解き直すのが、いちばん記憶に残ります。<br>明日の目安：約 ${tomorrowEstimate()}問</p>
-  </div>${footHTML()}`;
-}
-
-/* ============ 操作 ============ */
-function startSession(){
-  session=buildSession();
-  queue=session.queue.slice();
-  total=queue.length;
-  doneCount=0;correctCount=0;
-  started=true;
-  loadQuestion();
-  render();window.scrollTo(0,0);
-}
-
-function pickChoice(i){
-  if(answered)return;
-  answered=true;picked=i;
-  render();window.scrollTo(0,0);
-}
-
-function judge(remembered){
-  if(!answered||!current)return;
-  const q=current.q;
-  bumpStreak();
-  const wasNew=!DB.q[q.id];
-  let s=DB.q[q.id]||{ds:-1,reps:0,due:``,last:``};
-  const today=todayStr();
-  s.reps++;
-  s.last=today;
-  if(remembered){
-    /* 正答パス：1→3→7→14→30日 */
-    s.ds=Math.min(s.ds+1,MASTER_DS);
-    s.due=addDaysStr(today,STEPS[s.ds]);
-  }else{
-    /* 誤答パス：翌日 */
-    s.ds=0;
-    s.due=addDaysStr(today,1);
-  }
-  DB.q[q.id]=s;
-  if(wasNew&&session.newIds.indexOf(q.id)>=0)DB.newDay.count++;
-  saveDB();
-
-  if(current.order[picked]&&current.order[picked].correct===true)correctCount++;
-  doneCount++;
-  queue.shift();
-
-  showToast(remembered
-    ?`✅ 覚えた！ 少し先に、忘れかけた頃にまた出します。`
-    :`🔁 明日また出します。くり返すほど定着します。`);
-
-  loadQuestion();
-  render();window.scrollTo(0,0);
-}
-
-function saveExam(){
-  const el=document.getElementById(`examInput`);
-  if(!el||!el.value){showToast(`📅 試験日を選んでください`);return;}
-  DB.examDate=el.value;saveDB();render();
-}
-function clearExam(){DB.examDate=``;saveDB();render();}
-function adjNew(d){
-  DB.newPerDay=Math.max(2,Math.min(30,DB.newPerDay+d));
-  saveDB();render();
-}
-function resetAll(){
-  if(confirm(`学習データをすべて消して最初からにします。よろしいですか？`)){
-    localStorage.removeItem(STORAGE_KEY);
-    location.reload();
-  }
-}
-
-function showToast(msg){
-  const old=document.getElementById(`toast`);if(old)old.remove();
-  const t=document.createElement(`div`);
-  t.id=`toast`;t.className=`toast`;t.innerHTML=msg;
-  document.body.appendChild(t);
-  setTimeout(()=>{t.style.transition=`opacity .4s`;t.style.opacity=`0`;setTimeout(()=>{if(t.parentNode)t.remove();},400);},2400);
-}
-
-/* ============ 起動 ============ */
 render();
 </script>
-</body>
-</html>
+</body></html>
