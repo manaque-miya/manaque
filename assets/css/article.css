@@ -1,0 +1,115 @@
+/* =====================================================================
+   まなクエ！ 解説記事用CSS (assets/css/article.css)  v1 2026-09-26
+   目的   : 記事3,000本超のHTMLを書き換えずに、見た目だけを新デザインにする
+   使い方 : 記事の <head> で、記事自身の <style> よりあとに読み込む(あとの指定が勝つ)。
+            manaque.css(共通CSS)と組み合わせて使う。body に class="mq mqa" を付けた記事だけに効く
+   ルール : 細線1px / 角丸なし / 影なし / グラデなし / 生成り・白・墨・紺・金(共通CSSと同じ)
+   型A    : .hd .main .ah .card .cta .ft を持つ記事(全体の約8割)
+   型B    : .wrap .hero .panel を持つ詳細解説記事(SVG図解つき)。サイトのヘッダー・フッターは変換時に足す
+   注意   : 記事のSVG図解の色はそのまま(内容の一部)。文章と構造は変えない
+   ===================================================================== */
+
+body.mqa{margin:0;background:var(--mq-bg);color:var(--mq-ink);font-family:var(--mq-sans);
+  display:block;line-height:1.8;-webkit-font-smoothing:antialiased}
+body.mqa a{text-decoration:none}
+body.mqa svg{max-width:100%;height:auto}
+body.mqa img:not(.mq-logo){max-width:100%;height:auto}
+
+/* ---------- ヘッダー(型A:記事に元からある .hd をトップと同じ見た目に) ---------- */
+body.mqa .hd{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  height:56px;padding:0 20px;background:rgba(251,250,247,.97);border-bottom:1px solid var(--mq-line);
+  box-shadow:none;border-radius:0;backdrop-filter:blur(8px)}
+body.mqa .hd .logo{display:block;width:104px;height:38px;flex:none;font-size:0;line-height:0;color:transparent;overflow:hidden;
+  background:url(../img/logo.svg) no-repeat left center;background-size:contain}
+body.mqa .hd .logo span{display:none}
+body.mqa .hd .back{font-size:12px;font-weight:700;color:var(--mq-muted);border-bottom:1px solid transparent}
+@media (hover:hover){body.mqa .hd .back:hover{color:var(--mq-brand);border-color:var(--mq-brand)}}
+
+/* ---------- 本文の器 ---------- */
+body.mqa .main{max-width:720px;margin:0 auto;padding:24px 16px 56px}
+body.mqa .ah{background:transparent;border-radius:0;box-shadow:none;padding:6px 0 18px;margin:0 0 4px;border-bottom:1px solid var(--mq-ink)}
+body.mqa .al{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--mq-brand);margin:0 0 8px}
+body.mqa .at{font-family:var(--mq-serif);font-weight:600;font-size:clamp(22px,3.8vw,32px);line-height:1.4;letter-spacing:.02em;color:var(--mq-ink);margin:0 0 10px}
+body.mqa .am{font-size:12px;color:var(--mq-muted)}
+body.mqa .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+body.mqa .tag{font-size:11px;font-weight:700;background:transparent;color:var(--mq-muted);border:1px solid var(--mq-line);border-radius:0;padding:1px 9px}
+
+body.mqa .card{background:transparent;border-radius:0;box-shadow:none;padding:20px 0 16px;margin:0;border:0;border-top:1px solid var(--mq-line)}
+body.mqa .ah + .card{border-top:0}
+body.mqa h2{font-size:17px;font-weight:800;line-height:1.5;color:var(--mq-ink);margin:0 0 10px;padding:0;border:0}
+body.mqa h3{font-size:14px;font-weight:800;color:var(--mq-brand);margin:16px 0 6px}
+body.mqa p{font-size:14px;line-height:1.95;color:var(--mq-ink);margin:0 0 10px}
+body.mqa li{font-size:14px;line-height:1.9;color:var(--mq-ink)}
+body.mqa a{color:var(--mq-brand)}
+body.mqa strong{font-weight:800}
+
+/* ---------- 部品(型A) ---------- */
+body.mqa .scenario{background:var(--mq-cream);border:1px solid var(--mq-line);border-radius:0;padding:14px 16px;margin:10px 0}
+body.mqa .scenario p{font-size:14.5px;line-height:2;font-weight:500;color:var(--mq-ink);margin:0}
+body.mqa .qbox{background:var(--mq-paper);border:1px solid var(--mq-line);border-radius:0;padding:14px 16px;margin:10px 0}
+body.mqa .qbox h3{margin-top:0;font-size:15px;color:var(--mq-ink)}
+body.mqa .qlist{list-style:none;padding:0;margin:0}
+body.mqa .qlist li{background:transparent!important;border-radius:0!important;border-bottom:1px solid var(--mq-line);padding:10px 4px!important;margin:0!important}
+body.mqa .qlist li:last-child{border-bottom:0}
+body.mqa .memory{background:var(--mq-cream);border:1px solid var(--mq-gold);border-radius:0;padding:14px 16px;margin:10px 0}
+body.mqa .memory p{font-size:14.5px;line-height:2;font-weight:700;color:var(--mq-gold-text);margin:0}
+body.mqa .kw{display:inline-block;background:transparent;color:var(--mq-gold-text);border:1px solid var(--mq-gold);border-radius:0;font-weight:800;font-size:13px;padding:2px 12px;margin-bottom:12px}
+body.mqa .cta{background:transparent;border:1px solid var(--mq-ink);border-radius:0;padding:20px;text-align:center;margin:8px 0 0}
+body.mqa .cta p{color:var(--mq-ink);font-weight:800;font-size:15px;margin:0 0 12px}
+body.mqa .cta a{display:inline-block;background:transparent;color:var(--mq-ink);border:1px solid var(--mq-ink);border-radius:0;font-weight:800;font-size:14px;padding:10px 24px;text-decoration:none}
+@media (hover:hover){body.mqa .cta a:hover{background:var(--mq-ink);color:#fff}}
+body.mqa .hl{background:transparent;border-bottom:1px solid var(--mq-gold);border-radius:0}
+body.mqa table{border-collapse:collapse;max-width:100%}
+body.mqa th{background:var(--mq-cream)!important;border-radius:0}
+body.mqa th,body.mqa td{border-color:var(--mq-line)}
+
+/* ---------- フッター(型A:.ft を共通フッターと同じ見た目に) ---------- */
+body.mqa .ft{background:transparent;border-top:1px solid var(--mq-line);border-radius:0;box-shadow:none;margin:0;padding:28px 16px 34px;text-align:center;color:var(--mq-muted);font-size:12px;line-height:1.9}
+body.mqa .ft a{color:var(--mq-muted);margin:0 9px;font-size:12px}
+@media (hover:hover){body.mqa .ft a:hover{color:var(--mq-brand)}}
+
+/* ---------- 型B(詳細解説・SVG図解つき):.wrap .hero .panel ---------- */
+body.mqa .wrap{max-width:720px;width:100%;margin:0 auto;padding:22px 16px 56px}
+body.mqa .hero{background:transparent;color:var(--mq-ink);border-radius:0;box-shadow:none;padding:4px 0 18px;margin:0 0 6px;border-bottom:1px solid var(--mq-ink)}
+body.mqa .hero .lead{display:block;background:transparent;color:var(--mq-brand);border-radius:0;padding:0;margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.14em}
+body.mqa .hero h1{font-family:var(--mq-serif);font-weight:600;font-size:clamp(24px,4.2vw,34px);line-height:1.35;letter-spacing:.02em;color:var(--mq-ink);margin:0 0 10px}
+body.mqa .hero h1 b{background:none;color:var(--mq-gold-text);font-weight:600}
+body.mqa .hero p{font-size:13.5px;font-weight:500;line-height:1.9;color:var(--mq-muted);margin:0}
+body.mqa .panel{background:transparent;border:0;border-top:1px solid var(--mq-line);border-radius:0;box-shadow:none;padding:18px 0 14px;margin:0}
+body.mqa .hero + .panel{border-top:0}
+body.mqa .phead{display:block;background:transparent;color:var(--mq-ink);border-radius:0;padding:0;margin:0 0 10px;font-size:15px;font-weight:800}
+body.mqa .panel p{font-size:14px;line-height:1.95;color:var(--mq-ink)}
+body.mqa .scene-txt{font-size:14px;line-height:1.95;font-weight:500;color:var(--mq-ink)}
+body.mqa .scene-q{color:var(--mq-brand)}
+body.mqa .fstep,body.mqa .num-box{border-radius:0}
+body.mqa .fstep .fb,body.mqa .trap-item .tb{color:var(--mq-ink)}
+body.mqa .trap-item{background:transparent;border:1px solid var(--mq-line);border-radius:0}
+body.mqa .trap-item .th{color:var(--mq-ng)}
+body.mqa .oboe{background:var(--mq-cream);border:1px solid var(--mq-gold);border-left:1px solid var(--mq-gold);border-radius:0;padding:14px 16px;margin-top:10px}
+body.mqa .oboe .oh{color:var(--mq-gold-text)}
+body.mqa .oboe .ob{color:var(--mq-ink)}
+body.mqa .oboe .ob .hl{background:transparent;border-bottom:1px solid var(--mq-gold);border-radius:0}
+body.mqa .foot{color:var(--mq-muted);font-size:11px;text-align:center;margin-top:18px}
+
+/* ---------- 型Aの別の書き方(header.hd > .hd-inner、見出し部が .label / h1 / .meta) ---------- */
+body.mqa .hd .hd-inner,body.mqa .hd .hd__in{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;max-width:none;margin:0;padding:0}
+body.mqa .hd .logo-icon,body.mqa .hd .logo__icon,body.mqa .hd .logo-ic{display:none}
+body.mqa .ah .label{display:block;background:transparent;color:var(--mq-brand);border-radius:0;padding:0;margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.14em}
+body.mqa .ah h1{font-family:var(--mq-serif);font-weight:600;font-size:clamp(22px,3.8vw,32px);line-height:1.4;letter-spacing:.02em;color:var(--mq-ink);margin:0 0 10px}
+body.mqa .ah .meta{font-size:12px;color:var(--mq-muted);margin:0}
+
+/* ---------- 取りこぼし防止:記事が独自に持つ部品の角丸・影・グラデーション背景をまとめて消す(背景画像は使われていないことを確認済み) ---------- */
+body.mqa :where(div,span,p,li,ul,ol,a,pre,table,th,td,section,article,header,footer,main,h1,h2,h3,h4,button,code,figure):not(.logo){
+  border-radius:0!important;box-shadow:none!important;background-image:none!important}
+
+/* ---------- 変換時に足す共通ヘッダー・フッター(型B) ---------- */
+body.mqa .mq-header + .wrap{padding-top:22px}
+
+/* ---------- スマホ ---------- */
+@media (max-width:820px){
+  body.mqa .hd{height:52px;padding:0 14px}
+  body.mqa .hd .logo{width:96px;height:34px}
+  body.mqa .main,body.mqa .wrap{padding-left:14px;padding-right:14px}
+  body.mqa .num-row,body.mqa .scene-row{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){body.mqa *{transition:none!important;animation:none!important}}
