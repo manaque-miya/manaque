@@ -546,7 +546,7 @@ img{max-width:100%;height:auto}
         <aside class="pc-rail pc-only" aria-label="おすすめ">
           <a class="pc-rail-item visual" href="catalog.html" data-label="図鑑&#10;カードを集める"></a>
           <a class="pc-rail-item" href="kosodate-shindan.html">子育て診断<br>18問</a>
-          <a class="pc-rail-item" href="exam-quiz.html">資格 本気モード<br>600問</a>
+          <a class="pc-rail-item" href="itp-app.html">資格 本気モード<br>600問</a>
           <a class="pc-rail-item visual" href="kids-animals.html?count=5" data-label="こどもクイズ&#10;どうぶつ"></a>
         </aside>
       </div>
@@ -617,7 +617,7 @@ img{max-width:100%;height:auto}
 <div class="wrap">
 <div class="section-head"><h2>資格対策 本気モード</h2><p>クイズで学んで、合格をつかもう</p></div>
 <div id="exam-banner-grid">
-<a href="exam-quiz.html"><img src="assets/img/exam-itp-banner.png" alt="ITパスポート試験対策 600問無料公開｜まなクエ！"></a>
+<a href="itp-app.html"><img src="assets/img/exam-itp-banner.png" alt="ITパスポート試験対策 600問無料公開｜まなクエ！"></a>
 <a href="fp3-quiz.html"><img src="assets/img/fp3-banner.png" alt="FP3級対策 522問無料公開｜まなクエ！"></a>
 <a href="takken-quiz.html"><img src="assets/img/takken-banner.png" alt="宅建士試験対策 550問無料公開｜まなクエ！"></a>
 </div>
@@ -629,7 +629,7 @@ img{max-width:100%;height:auto}
 <div>
 <h2>ITパスポート 過去問マスター 600問</h2>
 <span class="feature-badge">記憶定着システム</span>
-<p>4択→正誤→4つの「なぜ」→詳細解説。忘れかけた頃に再出題する間隔反復で、過去問600問を確実に長期記憶へ。合格メーター・連続日数・今日のノルマで毎日続けられる。</p>
+<p>10問ずつ解いて、8問以上でCLEAR。4択→正誤→選択肢ごとの理由→詳しい解説。間違えた問題は苦手問題にたまり、カテゴリテスト・総合テストで再び出会える。過去問600問を、テンポよく確実に身につける。</p>
 <a class="text-link" href="itp-app.html">過去問マスターを開く →</a>
 </div>
 </article>
@@ -919,7 +919,7 @@ function goToCategory(idx) {
 // ===== LATEST自動生成（全ユニットからランダム6件表示）=====
 function getQuizUrl(quizId, count) {
   const c = count ? `&count=${count}` : '';
-  if (quizId === 'exam-itp')    return 'exam-quiz.html';
+  if (quizId === 'exam-itp')    return 'itp-app.html';
   if (quizId === 'exam-kobun')  return 'kobun-quiz.html';
   if (quizId === 'exam-fp3')    return 'fp3-quiz.html';
   if (quizId === 'exam-takken') return 'takken-quiz.html';
@@ -1135,7 +1135,7 @@ function buildUnitCard(unit, subjLabel) {
         <span>⏱ ${unit.time}</span>
         <span class="unit-card__difficulty">${stars}</span>
       </div>
-      <div class="unit-card__counts"><a href="exam-quiz.html" class="count-btn count-btn--default">本気対策モード →</a></div>
+      <div class="unit-card__counts"><a href="itp-app.html" class="count-btn count-btn--default">本気対策モード →</a></div>
     </div>`;
   }
   if (unit.quizId && unit.quizId.endsWith('-vocab')) {
