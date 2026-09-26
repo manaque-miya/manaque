@@ -108,7 +108,7 @@ body.mq .detaillink{display:inline-block;margin-top:4px;font-size:13px;font-weig
   <span>© 2026 まなクエ！</span>
 </div></footer>
 
-<script src="data/itp-questions.js"></script>
+<script src="data/itp-questions.js?v=20260926c"></script>
 <script>
 /* ============ 設定 ============ */
 const KEY=`itp-app-v2`;   /* 旧方式(覚えた/まだ)の保存キーは itp-app-v1。新UIとは互換がないので別キー */
@@ -194,6 +194,7 @@ function go(s){screen=s;render();window.scrollTo(0,0);}
 function render(){
   const a=document.getElementById(`app`);
   if(!Q.length){a.innerHTML=`<p class="mq-note">問題データが読み込めませんでした。</p>`;return;}
+  if(!CATS.length){a.innerHTML=`<p class="mq-note">問題データを更新しています。<a href="itp-app.html?r=${Date.now()}">ここを押して再読み込み</a>してください。</p>`;return;}
   document.body.classList.toggle(`inquiz`,screen===`quiz`);
   if(screen===`quiz`){
     /* 回答後まで1画面に収まる縮小率を、問題ごと・画面サイズごとに1回だけ計算する(回答したときに文字が変わらないように) */
